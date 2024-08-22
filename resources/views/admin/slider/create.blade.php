@@ -39,6 +39,7 @@
 
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs nav-justified mb-3" role="tablist">
+                                        @if($gs->lang_arabic == 1)
                                         <li class="nav-item">
                                             <a class="nav-link active" data-bs-toggle="tab" href="#base-justified-home"
                                                 role="tab" aria-selected="false">
@@ -46,6 +47,8 @@
                                                 {{ __('translation.arabic') }}
                                             </a>
                                         </li>
+                                        @endif
+                                        @if($gs->lang_english == 1)
                                         <li class="nav-item">
                                             <a class="nav-link " data-bs-toggle="tab" href="#base-justified-product"
                                                 role="tab" aria-selected="false">
@@ -53,6 +56,8 @@
                                                 {{ __('translation.english') }}
                                             </a>
                                         </li>
+                                        @endif
+                                        @if($gs->lang_france == 1)
                                         <li class="nav-item">
                                             <a class="nav-link" data-bs-toggle="tab" href="#base-justified-messages"
                                                 role="tab" aria-selected="false">
@@ -60,11 +65,12 @@
                                                 {{ __('translation.france') }}
                                             </a>
                                         </li>
+                                        @endif
 
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content  text-muted">
-                                        <div class="tab-pane active" id="base-justified-home" role="tabpanel">
+                                        <div class="tab-pane {{$gs->lang_arabic == 1 ? 'active' : '' }}" id="base-justified-home" role="tabpanel">
                                             <h6 style="text-align: center;">   {{ __('translation.arabic') }}</h6>
                                             
                                       
@@ -79,7 +85,7 @@
                                               </div>
                                               
                                         </div>
-                                        <div class="tab-pane " id="base-justified-product" role="tabpanel">
+                                        <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
                                            
                                             <div class="mb-3">

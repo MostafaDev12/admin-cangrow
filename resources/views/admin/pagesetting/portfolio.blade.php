@@ -75,7 +75,7 @@
                                                
                                               <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
-                                                  <textarea class="form-control" name="portfolio_details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $ps->portfolio_details_ar }}</textarea>
+                                                  <textarea class="form-control ckeditor" name="portfolio_details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $ps->portfolio_details_ar }}</textarea>
                                               </div>
                                               
                                         </div>
@@ -89,7 +89,7 @@
                                            
                                           <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
-                                              <textarea class="form-control" name="portfolio_details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}">{{ $ps->portfolio_details_en }}</textarea>
+                                              <textarea class="form-control ckeditor" name="portfolio_details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}">{{ $ps->portfolio_details_en }}</textarea>
                                           </div>
                                           
                                         </div>
@@ -104,7 +104,7 @@
                                            
                                           <div class="mb-3">
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
-                                              <textarea class="form-control" name="portfolio_details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}">{{ $ps->portfolio_details_fr }}</textarea>
+                                              <textarea class="form-control ckeditor" name="portfolio_details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}">{{ $ps->portfolio_details_fr }}</textarea>
                                           </div>
                                         </div>
 
