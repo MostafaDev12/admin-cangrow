@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\ModelController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\PageSettingController;
 use App\Http\Controllers\Admin\ModelCategoryController;
+use App\Http\Controllers\Admin\SocialSettingController;
+use App\Http\Controllers\Admin\GalleryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -178,6 +180,29 @@ Route::prefix('admin')->group(function() {
  
   });
 
+
+
+  Route::group(['middleware'=>'permissions:social_settings'],function(){
+
+    Route::get('/social',   [SocialSettingController::class, 'index'])->name('admin-social-index');
+    Route::post('/social/update',  [SocialSettingController::class, 'socialupdate'] )->name('admin-social-update');
+    Route::post('/social/update/all',  [SocialSettingController::class, 'socialupdateall'] )->name('admin-social-update-all');
+    Route::get('/social/facebook',  [SocialSettingController::class, 'facebook'] )->name('admin-social-facebook');
+    Route::get('/social/google',  [SocialSettingController::class, 'google'] )->name('admin-social-google');
+    Route::get('/social/facebook/{status}', [SocialSettingController::class, 'facebookup']  )->name('admin-social-facebookup');
+    Route::get('/social/google/{status}', [SocialSettingController::class, 'googleup']  )->name('admin-social-googleup');
+  
+  
+  });
+
+  // GALLERY SECTION ------------
+
+  Route::get('/gallery/show', [GalleryController::class, 'show'])->name('admin-gallery-show');
+  
+  Route::post('/gallery/store',  [GalleryController::class, 'store'])->name('admin-gallery-store');
+  Route::get('/gallery/delete', [GalleryController::class, 'destroy'])->name('admin-gallery-delete');
+
+  // GALLERY SECTION ENDS------------
 
 
 

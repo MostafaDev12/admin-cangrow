@@ -46,6 +46,10 @@ class Service extends Model
     ];
 
     
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class);
+    }  
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -63,6 +63,11 @@
                             <input class="form-check-input" type="checkbox"  value="manage_staffs" role="switch" name="section[]"  id="manage_staffs" >
                             <label class="form-check-label" for="manage_staffs">{{ __('Manage Staffs') }}  </label>
                         </div>
+ <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="social_settings" role="switch" name="section[]"  id="social_settings" >
+                            <label class="form-check-label" for="social_settings">{{ __('Manage Staffs') }}  </label>
+                        </div>
 
                         <!-- Switches Color -->
                         <div class="form-check form-switch form-check-inline">

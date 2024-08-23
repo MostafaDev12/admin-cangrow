@@ -1,20 +1,20 @@
-@extends('layouts.master')
-@section('title')
-    @lang('translation.analytics')
-@endsection
-@section('css')
+
+<?php $__env->startSection('title'); ?>
+    <?php echo app('translator')->get('translation.analytics'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
 
   
-@endsection
-@section('content')
-    @component('components.breadcrumb')
-        @slot('li_1')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <?php $__env->startComponent('components.breadcrumb'); ?>
+        <?php $__env->slot('li_1'); ?>
             Dashboards
-        @endslot
-        @slot('title')
+        <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?>
             website content
-        @endslot
-    @endcomponent
+        <?php $__env->endSlot(); ?>
+    <?php echo $__env->renderComponent(); ?>
 
  <style>
         .featured-keyword-area {
@@ -100,18 +100,19 @@
 <div class="page-content">
     <div class="container-fluid">
   
-                      <input type="hidden" id="headerdata" value="{{ __("Website Contents") }}" style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
+                      <input type="hidden" id="headerdata" value="<?php echo e(__("Website Contents")); ?>" style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
                            <div class="col-lg-12 content_row"  >
                               <div class="card">
                                   <div class="card-header">
-                                         @include('includes.admin.form-success')
+                                         <?php echo $__env->make('includes.admin.form-success', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                          <div class="btn-area"></div>
                                   </div>
                                   <div class="card-body" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
-                                       <form action="{{ route('admin-gs-update') }}" id="geniusform" method="POST" enctype="multipart/form-data">
-        {{ csrf_field() }}
+                                       <form action="<?php echo e(route('admin-gs-update')); ?>" id="geniusform" method="POST" enctype="multipart/form-data">
+        <?php echo e(csrf_field()); ?>
 
-        @include('includes.admin.form-both')
+
+        <?php echo $__env->make('includes.admin.form-both', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
    <!-- Nav tabs -->
@@ -120,14 +121,16 @@
                                             <a class="nav-link active" data-bs-toggle="tab" href="#base-justified-home"
                                                 role="tab" aria-selected="false">
                                              
-                                                {{ __('translation.website_content') }}
+                                                <?php echo e(__('translation.website_content')); ?>
+
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link " data-bs-toggle="tab" href="#base-justified-product"
                                                 role="tab" aria-selected="false">
                                                  
-                                                {{ __('translation.contact_information') }}
+                                                <?php echo e(__('translation.contact_information')); ?>
+
                                             </a>
                                         </li>
                                       
@@ -138,32 +141,32 @@
                                     <!-- Tab panes -->
                                     <div class="tab-content  text-muted">
                                         <div class="tab-pane active" id="base-justified-home" role="tabpanel">
-                                            <h6 style="text-align: center;">   {{ __('translation.website_content') }}</h6>
+                                            <h6 style="text-align: center;">   <?php echo e(__('translation.website_content')); ?></h6>
                                             
                                       
                                               <div class="mb-3">
                                                     <div class="row" style="">
             <div class="col-4">
                 <div class="mb-3">
-                    <label for="firstNameinput" class="form-label">{{ __('Website Title arabic') }}</label>
-                    <input type="text" class="form-control" placeholder="{{ __('Write Your Site Title Here') }}"
-                        name="title_ar" value="{{ $gs->title_ar }}" required="">
+                    <label for="firstNameinput" class="form-label"><?php echo e(__('Website Title arabic')); ?></label>
+                    <input type="text" class="form-control" placeholder="<?php echo e(__('Write Your Site Title Here')); ?>"
+                        name="title_ar" value="<?php echo e($gs->title_ar); ?>" required="">
                 </div>
             </div><!--end col-->   
             
             <div class="col-4">
                 <div class="mb-3">
-                    <label for="firstNameinput" class="form-label">{{ __('Website Title english') }}</label>
-                    <input type="text" class="form-control" placeholder="{{ __('Write Your Site Title Here') }}"
-                        name="title_en" value="{{ $gs->title_en }}" required="">
+                    <label for="firstNameinput" class="form-label"><?php echo e(__('Website Title english')); ?></label>
+                    <input type="text" class="form-control" placeholder="<?php echo e(__('Write Your Site Title Here')); ?>"
+                        name="title_en" value="<?php echo e($gs->title_en); ?>" required="">
                 </div>
             </div><!--end col-->
             
               <div class="col-4">
                 <div class="mb-3">
-                    <label for="firstNameinput" class="form-label">{{ __('Website Title france') }}</label>
-                    <input type="text" class="form-control" placeholder="{{ __('Write Your Site Title Here') }}"
-                        name="title_fr" value="{{ $gs->title_fr }}" required="">
+                    <label for="firstNameinput" class="form-label"><?php echo e(__('Website Title france')); ?></label>
+                    <input type="text" class="form-control" placeholder="<?php echo e(__('Write Your Site Title Here')); ?>"
+                        name="title_fr" value="<?php echo e($gs->title_fr); ?>" required="">
                 </div>
             </div><!--end col-->
             
@@ -172,9 +175,9 @@
         
              <div class="col-12">
                 <div class="mb-3">
-                    <label for="footer_ar" class="form-label">{{ __('Arabic footer') }}</label>
+                    <label for="footer_ar" class="form-label"><?php echo e(__('Arabic footer')); ?></label>
                    
-                        <textarea  class="form-control" name="footer_ar" id="footer_ar"  placeholder="{{ __('Write footer Here') }}" row="3">{{ $gs->footer_ar }}</textarea>
+                        <textarea  class="form-control" name="footer_ar" id="footer_ar"  placeholder="<?php echo e(__('Write footer Here')); ?>" row="3"><?php echo e($gs->footer_ar); ?></textarea>
                 </div>
             </div><!--end col-->
             
@@ -182,9 +185,9 @@
         
              <div class="col-12">
                 <div class="mb-3">
-                    <label for="footer_en" class="form-label">{{ __('english footer') }}</label>
+                    <label for="footer_en" class="form-label"><?php echo e(__('english footer')); ?></label>
                    
-                        <textarea  class="form-control" name="footer_en" id="footer_en"  placeholder="{{ __('Write footer Here') }}" row="3">{{ $gs->footer_en }}</textarea>
+                        <textarea  class="form-control" name="footer_en" id="footer_en"  placeholder="<?php echo e(__('Write footer Here')); ?>" row="3"><?php echo e($gs->footer_en); ?></textarea>
                 </div>
             </div><!--end col-->
             
@@ -192,18 +195,18 @@
         
              <div class="col-12">
                 <div class="mb-3">
-                    <label for="footer_fr" class="form-label">{{ __('France footer') }}</label>
+                    <label for="footer_fr" class="form-label"><?php echo e(__('France footer')); ?></label>
                    
-                        <textarea  class="form-control" name="footer_fr" id="footer_fr"  placeholder="{{ __('Write footer Here') }}" row="3">{{ $gs->footer_fr }}</textarea>
+                        <textarea  class="form-control" name="footer_fr" id="footer_fr"  placeholder="<?php echo e(__('Write footer Here')); ?>" row="3"><?php echo e($gs->footer_fr); ?></textarea>
                 </div>
             </div><!--end col-->
             
             
              <div class="col-12">
                 <div class="mb-3">
-                    <label for="map" class="form-label">{{ __('map link') }}</label>
+                    <label for="map" class="form-label"><?php echo e(__('map link')); ?></label>
                    
-                        <textarea  class="form-control" name="map" id="map"  placeholder="{{ __('Write map Here') }}" row="3">{{ $gs->map }}</textarea>
+                        <textarea  class="form-control" name="map" id="map"  placeholder="<?php echo e(__('Write map Here')); ?>" row="3"><?php echo e($gs->map); ?></textarea>
                 </div>
             </div><!--end col-->
             
@@ -214,12 +217,12 @@
                 <div class="mb-3">
                     <div class="form-check form-switch form-switch-lg" dir="ltr">
                         <input type="checkbox" class="form-check-input" value="1" name="is_capcha"
-                            id="customSwitchsizelg" {{ $gs->is_capcha == 1 ? 'checked' : '' }}>
+                            id="customSwitchsizelg" <?php echo e($gs->is_capcha == 1 ? 'checked' : ''); ?>>
                         <label class="form-check-label" for="customSwitchsizelg">is_capcha</label>
                     </div>
                 </div>
             </div>
-            {{--  --}}
+            
             <!--end col-->
 
      
@@ -230,7 +233,7 @@
                                               
                                         </div>
                                         <div class="tab-pane " id="base-justified-product" role="tabpanel">
-                                            <h6 style="text-align: center;"> {{ __('translation.contact_information') }}</h6>
+                                            <h6 style="text-align: center;"> <?php echo e(__('translation.contact_information')); ?></h6>
                                            
                                             <div class="mb-3">
                                               
@@ -240,25 +243,25 @@
                                                     <div class="col-lg-6">
                                                         <div class="featured-keyword-area">
                                                             <div class="heading-area">
-                                                                <h4 class="title">{{ __('ارقام الهاتف') }}</h4>
+                                                                <h4 class="title"><?php echo e(__('ارقام الهاتف')); ?></h4>
                                                             </div>
                     
                                                             <div class="feature-tag-top-filds" id="feature-section2">
-                                                                @if (!empty($gs->phones))
-                                                                    @php
+                                                                <?php if(!empty($gs->phones)): ?>
+                                                                    <?php
                                                                         $title = explode(',',$gs->phones);
                                                                    
                     
-                                                                    @endphp
-                                                                    @foreach ($title as $key => $data1)
+                                                                    ?>
+                                                                    <?php $__currentLoopData = $title; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <div class="feature-area">
                                                                             <span class="remove feature-remove2"><i
                                                                                     class="las la-times"></i></span>
                                                                             <div class="row">
                                                                                 <div class="col-lg-12">
                                                                                     <input type="text" name="phones[]"
-                                                                                        class="input-field" placeholder="{{ __('الهاتف') }}"
-                                                                                        value="{{ $title[$key] }}">
+                                                                                        class="input-field" placeholder="<?php echo e(__('الهاتف')); ?>"
+                                                                                        value="<?php echo e($title[$key]); ?>">
                                                                                 </div>
                                                                                
                     
@@ -266,15 +269,15 @@
                                                                             </div>
                     
                                                                         </div>
-                                                                    @endforeach
-                                                                @else
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php else: ?>
                                                                     <div class="feature-area">
                                                                         <span class="remove feature-remove2"><i
                                                                                 class="las la-times"></i></span>
                                                                         <div class="row">
                                                                             <div class="col-lg-12">
                                                                                 <input type="text" name="phones[]"
-                                                                                    class="input-field" placeholder="{{ __('الهاتف') }}">
+                                                                                    class="input-field" placeholder="<?php echo e(__('الهاتف')); ?>">
                                                                             </div>
                                                                           
                     
@@ -282,11 +285,11 @@
                                                                         </div>
                     
                                                                     </div>
-                                                                @endif
+                                                                <?php endif; ?>
                                                             </div>
                     
                                                             <a href="javascript:;" id="feature-btn2" class="add-fild-btn"><i
-                                                                    class="icofont-plus"></i> {{ __('اضافه حقول اخرى') }}</a>
+                                                                    class="icofont-plus"></i> <?php echo e(__('اضافه حقول اخرى')); ?></a>
                                                         </div>
                                                     </div>
                     
@@ -294,25 +297,25 @@
                                                     <div class="col-lg-6">
                                                         <div class="featured-keyword-area">
                                                             <div class="heading-area">
-                                                                <h4 class="title">{{ __(' البريد الالكترونى  ') }}</h4>
+                                                                <h4 class="title"><?php echo e(__(' البريد الالكترونى  ')); ?></h4>
                                                             </div>
                     
                                                             <div class="feature-tag-top-filds" id="feature-section3">
-                                                                @if (!empty($gs->emails))
-                                                                    @php
+                                                                <?php if(!empty($gs->emails)): ?>
+                                                                    <?php
                                                                         $title = explode(',',$gs->emails);
                                                                    
                     
-                                                                    @endphp
-                                                                    @foreach ($title as $key => $data1)
+                                                                    ?>
+                                                                    <?php $__currentLoopData = $title; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <div class="feature-area">
                                                                             <span class="remove feature-remove3"><i
                                                                                     class="las la-times"></i></span>
                                                                             <div class="row">
                                                                                 <div class="col-lg-12">
                                                                                     <input type="text" name="emails[]"
-                                                                                        class="input-field" placeholder="{{ __('email') }}"
-                                                                                        value="{{ $title[$key] }}">
+                                                                                        class="input-field" placeholder="<?php echo e(__('email')); ?>"
+                                                                                        value="<?php echo e($title[$key]); ?>">
                                                                                 </div>
                                                                                
                     
@@ -320,15 +323,15 @@
                                                                             </div>
                     
                                                                         </div>
-                                                                    @endforeach
-                                                                @else
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php else: ?>
                                                                     <div class="feature-area">
                                                                         <span class="remove feature-remove3"><i
                                                                                 class="las la-times"></i></span>
                                                                         <div class="row">
                                                                             <div class="col-lg-12">
                                                                                 <input type="text" name="emails[]"
-                                                                                    class="input-field" placeholder="{{ __('email') }}">
+                                                                                    class="input-field" placeholder="<?php echo e(__('email')); ?>">
                                                                             </div>
                                                                           
                     
@@ -336,11 +339,11 @@
                                                                         </div>
                     
                                                                     </div>
-                                                                @endif
+                                                                <?php endif; ?>
                                                             </div>
                     
                                                             <a href="javascript:;" id="feature-btn3" class="add-fild-btn"><i
-                                                                    class="icofont-plus"></i> {{ __('اضافه حقول اخرى') }}</a>
+                                                                    class="icofont-plus"></i> <?php echo e(__('اضافه حقول اخرى')); ?></a>
                                                         </div>
                                                     </div>
                     
@@ -350,61 +353,61 @@
                                                     <div class="col-lg-12">
                                                         <div class="featured-keyword-area">
                                                             <div class="heading-area">
-                                                                <h4 class="title">{{ __('العناوين') }}</h4>
+                                                                <h4 class="title"><?php echo e(__('العناوين')); ?></h4>
                                                             </div>
                     
                                                             <div class="feature-tag-top-filds" id="feature-section">
-                                                                @if (!empty($gs->addresses_ar))
-                                                                    @php
+                                                                <?php if(!empty($gs->addresses_ar)): ?>
+                                                                    <?php
                                                                         $addresses_ar = json_decode($gs->addresses_ar);
                                                                         $addresses_en = json_decode($gs->addresses_en);
                                                                         $addresses_fr = json_decode($gs->addresses_fr);
                     
-                                                                    @endphp
-                                                                    @foreach ($addresses_ar as $key => $data1)
+                                                                    ?>
+                                                                    <?php $__currentLoopData = $addresses_ar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <div class="feature-area">
                                                                             <span class="remove feature-remove"><i
                                                                                     class="las la-times"></i></span>
                                                                             <div class="row">
                                                                                 <div class="col-lg-4">
                                                                                     <input type="text" name="addresses_ar[]"
-                                                                                        class="input-field" placeholder="{{ __('arabic') }}"
-                                                                                        value="{{ $addresses_ar[$key] }}">
+                                                                                        class="input-field" placeholder="<?php echo e(__('arabic')); ?>"
+                                                                                        value="<?php echo e($addresses_ar[$key]); ?>">
                                                                                 </div>
                                                                                   <div class="col-lg-4">
                                                                                     <input type="text" name="addresses_en[]"
-                                                                                        class="input-field" placeholder="{{ __('english') }}"
-                                                                                        value="{{ $addresses_en[$key] }}">
+                                                                                        class="input-field" placeholder="<?php echo e(__('english')); ?>"
+                                                                                        value="<?php echo e($addresses_en[$key]); ?>">
                                                                                 </div>
                                                                                   <div class="col-lg-4">
                                                                                     <input type="text" name="addresses_fr[]"
-                                                                                        class="input-field" placeholder="{{ __('france') }}"
-                                                                                        value="{{ $addresses_fr[$key] }}">
+                                                                                        class="input-field" placeholder="<?php echo e(__('france')); ?>"
+                                                                                        value="<?php echo e($addresses_fr[$key]); ?>">
                                                                                 </div>
                                                                                  
                     
                                                                             </div>
                     
                                                                         </div>
-                                                                    @endforeach
-                                                                @else
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php else: ?>
                                                                     <div class="feature-area">
                                                                         <span class="remove feature-remove"><i
                                                                                 class="las la-times"></i></span>
                                                                         <div class="row">
                                                                           <div class="col-lg-4">
                                                                                     <input type="text" name="addresses_ar[]"
-                                                                                        class="input-field" placeholder="{{ __('arabic') }}"
+                                                                                        class="input-field" placeholder="<?php echo e(__('arabic')); ?>"
                                                                                         value="">
                                                                                 </div>
                                                                                   <div class="col-lg-4">
                                                                                     <input type="text" name="addresses_en[]"
-                                                                                        class="input-field" placeholder="{{ __('english') }}"
+                                                                                        class="input-field" placeholder="<?php echo e(__('english')); ?>"
                                                                                         value="">
                                                                                 </div>
                                                                                   <div class="col-lg-4">
                                                                                     <input type="text" name="addresses_fr[]"
-                                                                                        class="input-field" placeholder="{{ __('france') }}"
+                                                                                        class="input-field" placeholder="<?php echo e(__('france')); ?>"
                                                                                         value="">
                                                                                 </div>
                                                                                  
@@ -412,36 +415,36 @@
                                                                         </div>
                     
                                                                     </div>
-                                                                @endif
+                                                                <?php endif; ?>
                                                             </div>
                     
                                                             <a href="javascript:;" id="feature-btn" class="add-fild-btn"><i
-                                                                    class="icofont-plus"></i> {{ __('اضافه حقول اخرى') }}</a>
+                                                                    class="icofont-plus"></i> <?php echo e(__('اضافه حقول اخرى')); ?></a>
                                                         </div>
                                                     </div>
                     
                                                       <div class="col-lg-12">
                                                         <div class="featured-keyword-area">
                                                             <div class="heading-area">
-                                                                <h4 class="title">{{ __('contact_form_emails') }}</h4>
+                                                                <h4 class="title"><?php echo e(__('contact_form_emails')); ?></h4>
                                                             </div>
                     
                                                             <div class="feature-tag-top-filds" id="feature-section4">
-                                                                @if (!empty($gs->contact_emails))
-                                                                    @php
+                                                                <?php if(!empty($gs->contact_emails)): ?>
+                                                                    <?php
                                                                         $title = explode(',',$gs->contact_emails);
                                                                    
                     
-                                                                    @endphp
-                                                                    @foreach ($title as $key => $data1)
+                                                                    ?>
+                                                                    <?php $__currentLoopData = $title; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <div class="feature-area">
                                                                             <span class="remove feature-remove4"><i
                                                                                     class="las la-times"></i></span>
                                                                             <div class="row">
                                                                                 <div class="col-lg-12">
                                                                                     <input type="text" name="contact_emails[]"
-                                                                                        class="input-field" placeholder="{{ __('email') }}"
-                                                                                        value="{{ $title[$key] }}">
+                                                                                        class="input-field" placeholder="<?php echo e(__('email')); ?>"
+                                                                                        value="<?php echo e($title[$key]); ?>">
                                                                                 </div>
                                                                                
                     
@@ -449,15 +452,15 @@
                                                                             </div>
                     
                                                                         </div>
-                                                                    @endforeach
-                                                                @else
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php else: ?>
                                                                     <div class="feature-area">
                                                                         <span class="remove feature-remove4"><i
                                                                                 class="las la-times"></i></span>
                                                                         <div class="row">
                                                                             <div class="col-lg-12">
                                                                                 <input type="text" name="contact_emails[]"
-                                                                                    class="input-field" placeholder="{{ __('email') }}">
+                                                                                    class="input-field" placeholder="<?php echo e(__('email')); ?>">
                                                                             </div>
                                                                           
                     
@@ -465,11 +468,11 @@
                                                                         </div>
                     
                                                                     </div>
-                                                                @endif
+                                                                <?php endif; ?>
                                                             </div>
                     
                                                             <a href="javascript:;" id="feature-btn4" class="add-fild-btn"><i
-                                                                    class="icofont-plus"></i> {{ __('اضافه حقول اخرى') }}</a>
+                                                                    class="icofont-plus"></i> <?php echo e(__('اضافه حقول اخرى')); ?></a>
                                                         </div>
                                                     </div>
                     
@@ -484,7 +487,7 @@
                                         </div>
                                      
                                         <div class="tab-pane " id="social_media_links" role="tabpanel">
-                                            <h6 style="text-align: center;"> {{ __('translation.social_media_links') }}</h6>
+                                            <h6 style="text-align: center;"> <?php echo e(__('translation.social_media_links')); ?></h6>
                                            
                                             <div class="mb-3">
                                               
@@ -525,8 +528,8 @@
                         </div>
                       </div>
    
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
     <script>
         $("#feature-btn4").on('click', function() {
 
@@ -708,4 +711,5 @@
 
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\admin-cangrows\resources\views/admin/generalsetting/websitecontent.blade.php ENDPATH**/ ?>

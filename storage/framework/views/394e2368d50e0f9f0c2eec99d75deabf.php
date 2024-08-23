@@ -1,1 +1,0 @@
-<?php /**PATH C:\laragon\www\admin-cangrow\resources\views/front/index.blade.php ENDPATH**/ ?>

@@ -137,12 +137,20 @@
                                     <a href="{{ route('admin-gs-contact_messages') }}" class="nav-link"
                                         data-key="t-contact_messages"> @lang('translation.contact_messages') </a>
                                 </li>
+                                
+                                @if (Auth::guard('admin')->user()->sectionCheck('social_settings'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin-social-index') }}" class="nav-link"
+                                            data-key="t-Manage_Roles"> @lang('translation.social_settings') </a>
+                                    </li>
+                                @endif
                                 @if (Auth::guard('admin')->user()->sectionCheck('super'))
                                     <li class="nav-item">
                                         <a href="{{ route('admin-role-index') }}" class="nav-link"
                                             data-key="t-Manage_Roles"> @lang('translation.role_mangment') </a>
                                     </li>
                                 @endif
+                              
 
                                 @if (Auth::guard('admin')->user()->sectionCheck('manage_staffs'))
                                     <li class="nav-item">

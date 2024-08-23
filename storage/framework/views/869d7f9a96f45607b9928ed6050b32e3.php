@@ -1,8 +1,8 @@
-@extends('layouts.master')
-@section('title')
-    @lang('translation.analytics')
-@endsection
-@section('css')
+
+<?php $__env->startSection('title'); ?>
+    <?php echo app('translator')->get('translation.analytics'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
 <style>
 #setgallery .modal-body .top-area {
   display: -ms-flexbox;
@@ -84,31 +84,32 @@
 
 </style>
   
-@endsection
-@section('content')
-    @component('components.breadcrumb')
-        @slot('li_1')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <?php $__env->startComponent('components.breadcrumb'); ?>
+        <?php $__env->slot('li_1'); ?>
             Dashboards
-        @endslot
-        @slot('title')
-        {{ __('translation.services') }}
-        @endslot
-    @endcomponent
+        <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?>
+        <?php echo e(__('translation.services')); ?>
+
+        <?php $__env->endSlot(); ?>
+    <?php echo $__env->renderComponent(); ?>
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.services') }}">
+          <input type="hidden" id="headerdata" value="<?php echo e(__('translation.services')); ?>">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
-                                   	@include('includes.admin.form-success')
+                                   	<?php echo $__env->make('includes.admin.form-success', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                    	  	<div class="btn-area"></div>
                                 </div>
                                 <div class="card-body">
                                     <table id="geniustable" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                              <th>{{ __('translation.photo') }}</th>
+                                              <th><?php echo e(__('translation.photo')); ?></th>
                                           
-                                          <th>{{ __('translation.actions') }}</th>
+                                          <th><?php echo e(__('translation.actions')); ?></th>
                                             </tr>
                                         </thead>
 
@@ -119,14 +120,14 @@
 
 
 
-{{-- DELETE MODAL --}}
+
 
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
 
   <div class="modal-header d-block text-center">
-    <h4 class="modal-title d-inline-block">{{ __("Confirm Delete") }}</h4>
+    <h4 class="modal-title d-inline-block"><?php echo e(__("Confirm Delete")); ?></h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -134,24 +135,24 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-            <p class="text-center">{{ __('You are about to delete this service.') }}</p>
-            <p class="text-center">{{ __('Do you want to proceed?') }}</p>
+            <p class="text-center"><?php echo e(__('You are about to delete this service.')); ?></p>
+            <p class="text-center"><?php echo e(__('Do you want to proceed?')); ?></p>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Cancel') }}</button>
-            <a class="btn btn-danger btn-ok">{{ __('Delete') }}</a>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo e(__('Cancel')); ?></button>
+            <a class="btn btn-danger btn-ok"><?php echo e(__('Delete')); ?></a>
       </div>
 
     </div>
   </div>
 </div>
 
-{{-- DELETE MODAL ENDS --}}
 
 
-{{-- GALLERY MODAL --}}
+
+
 
 <!-- Grids in modals -->
  
@@ -159,23 +160,24 @@
   <div class="modal-dialog modal-lg">
       <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">{{ __("Image Gallery") }}</h5>
+            <h5 class="modal-title" id="exampleModalCenterTitle"><?php echo e(__("Image Gallery")); ?></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="top-area">
               <div class="row">
-                <div class="col-sm-12 text-center mb-3">( <small>{{ __("You can upload multiple Images") }}.</small> )</div>
+                <div class="col-sm-12 text-center mb-3">( <small><?php echo e(__("You can upload multiple Images")); ?>.</small> )</div>
                 <div class="col-md-10 col-8">
                 <form  method="POST" enctype="multipart/form-data" id="form-gallery">
-                  {{ csrf_field() }}
+                  <?php echo e(csrf_field()); ?>
+
                     <input type="hidden" id="pid" name="service_id" value="">
                     <input type="file" name="gallery[]" class="hidden" id="uploadgallery" accept="image/*" multiple>
-                      <label for="image-upload" id="prod_gallery"><i class="icofont-upload-alt"></i>{{ __('Upload File') }}</label>
+                      <label for="image-upload" id="prod_gallery"><i class="icofont-upload-alt"></i><?php echo e(__('Upload File')); ?></label>
                   </form>
               </div>
                 <div class="col-md-2 col-4">
-                  <a href="javascript:;" class="upload-done-btn main-bg-dark text-white" data-bs-dismiss="modal"> <i class="fas fa-check"></i> {{ __('Done') }}</a>
+                  <a href="javascript:;" class="upload-done-btn main-bg-dark text-white" data-bs-dismiss="modal"> <i class="fas fa-check"></i> <?php echo e(__('Done')); ?></a>
                 </div>
               </div>
             </div>
@@ -191,15 +193,15 @@
  
 
 
-{{-- GALLERY MODAL ENDS --}}
 
 
-@endsection
 
-@section('script')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
 
 
-{{-- DATA TABLE --}}
+
 
     <script type="text/javascript">
 
@@ -207,7 +209,7 @@
          ordering: false,
                processing: true,
                serverSide: true,
-               ajax: '{{ route('admin-services-datatables') }}',
+               ajax: '<?php echo e(route('admin-services-datatables')); ?>',
                columns: [
                         { data: 'photo', name: 'photo' },
                          
@@ -215,19 +217,19 @@
 
                      ],
                 language : {
-                  processing: '<img src="{{asset('assets/images/'.$gs->admin_loader)}}">'
+                  processing: '<img src="<?php echo e(asset('assets/images/'.$gs->admin_loader)); ?>">'
                 }
             });
 
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
-          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-services-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_service") }}'+
+          '<a class="add-btn  btn btn-sm btn-secondary" href="<?php echo e(route('admin-services-create')); ?>">'+
+          '<i class="fas fa-plus"></i> <?php echo e(__("translation.add_service")); ?>'+
           '</a>'+
           '</div>');
       });
 
-{{-- DATA TABLE ENDS--}}
+
 
 </script>
 
@@ -244,13 +246,13 @@
           $('.selected-image .row').html('');
               $.ajax({
                       type: "GET",
-                      url:"{{ route('admin-gallery-show') }}",
+                      url:"<?php echo e(route('admin-gallery-show')); ?>",
                       data:{id:pid},
                       success:function(data){
                         if(data[0] == 0)
                         {
                         $('.selected-image .row').addClass('justify-content-center');
-                  $('.selected-image .row').html('<h3 style="text-align: center;">{{ __("No Images Found.") }}</h3>');
+                  $('.selected-image .row').html('<h3 style="text-align: center;"><?php echo e(__("No Images Found.")); ?></h3>');
                  }
                         else {
                         $('.selected-image .row').removeClass('justify-content-center');
@@ -283,7 +285,7 @@
       $(this).parent().parent().remove();
         $.ajax({
             type: "GET",
-            url:"{{ route('admin-gallery-delete') }}",
+            url:"<?php echo e(route('admin-gallery-delete')); ?>",
             data:{id:id}
         });
     });
@@ -299,7 +301,7 @@
   
     $(document).on('submit', '#form-gallery' ,function() {
         $.ajax({
-         url:"{{ route('admin-gallery-store') }}",
+         url:"<?php echo e(route('admin-gallery-store')); ?>",
          method:"POST",
          data:new FormData(this),
          dataType:'JSON',
@@ -342,4 +344,6 @@
   </script>
   
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\admin-cangrows\resources\views/admin/services/index.blade.php ENDPATH**/ ?>
