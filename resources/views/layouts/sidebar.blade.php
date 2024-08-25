@@ -72,6 +72,15 @@
                     </li>
                 @endif
 
+                @if (Auth::guard('admin')->user()->sectionCheck('media'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-media-index') }}"
+                            aria-controls="sidebarmedia">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.media')</span>
+                        </a>
+                    </li>
+                @endif
+
                 @if (Auth::guard('admin')->user()->sectionCheck('services'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-services-index') }}"
@@ -137,13 +146,19 @@
                                     <a href="{{ route('admin-gs-contact_messages') }}" class="nav-link"
                                         data-key="t-contact_messages"> @lang('translation.contact_messages') </a>
                                 </li>
-                                
+                                   
+                                <li class="nav-item">
+                                    <a href="{{ route('admin-gs-subscriptions') }}" class="nav-link"
+                                        data-key="t-Manage_Roles"> @lang('translation.subscriptions') </a>
+                                </li>
+                         
                                 @if (Auth::guard('admin')->user()->sectionCheck('social_settings'))
                                     <li class="nav-item">
                                         <a href="{{ route('admin-social-index') }}" class="nav-link"
                                             data-key="t-Manage_Roles"> @lang('translation.social_settings') </a>
                                     </li>
                                 @endif
+                            
                                 @if (Auth::guard('admin')->user()->sectionCheck('super'))
                                     <li class="nav-item">
                                         <a href="{{ route('admin-role-index') }}" class="nav-link"

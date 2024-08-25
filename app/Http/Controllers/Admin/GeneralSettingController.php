@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\Generalsetting;
+use App\Models\Subscription;
 use Artisan;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -351,6 +352,21 @@ class GeneralSettingController extends Controller
          return Datatables::of($datas)
                             
                             ->rawColumns(['photo','action'])
+                            ->toJson(); //--- Returning Json Data To Client Side
+    }
+    
+     public function subscriptions()
+    {
+        return view('admin.generalsetting.subscriptions');
+    }
+  
+      public function subscriptions_datatables()
+    {
+         $datas = Subscription::orderBy('id','desc')->get();
+         //--- Integrating This Collection Into Datatables
+         return Datatables::of($datas)
+                            
+                            ->rawColumns(['email','action'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
     public function  nbe()
