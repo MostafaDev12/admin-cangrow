@@ -13,6 +13,10 @@ use App\Http\Controllers\Api\FrontController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// git clone https://github.com/MostafaDev12/admin-cangrow.git
+// git clone --branch branch-name https://github.com/MostafaDev12/admin-cangrow.git
+// git pull origin branch-name
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
