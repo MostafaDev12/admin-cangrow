@@ -34,7 +34,7 @@ Route::get('/models/{category_id}',  [FrontController::class, 'models']);
 Route::get('/single-model/{id}',  [FrontController::class, 'Singlemodel']);
 
 Route::post('/contact-submit',  [FrontController::class, 'contactSubmit']);
-
+ 
 
 Route::post('/submit-subscriptions',  [FrontController::class, 'subscriptions']);
 Route::post('/social-media',  [FrontController::class, 'social_settings']);
