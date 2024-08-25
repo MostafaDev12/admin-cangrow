@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+ 
 
 Route::get('/sliders',  [FrontController::class, 'sliders']);
 Route::get('/partners',  [FrontController::class, 'partners']);
