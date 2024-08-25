@@ -120,7 +120,7 @@
                                       <div class="row">
 
 
-                            <div class="col-xl-12 col-md-12">
+                            {{-- <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                   
                      <div class="mb-3">
@@ -136,7 +136,7 @@
                                               </div>
                                 </div>
                                 <!-- end card -->
-                            </div> <!-- end col -->
+                            </div> <!-- end col --> --}}
 
 
                         </div>

@@ -99,12 +99,12 @@
                         <div class="collapse menu-dropdown" id="models">
                             <ul class="nav nav-sm flex-column">
 
-                                
+{{--                                 
                                  <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models_category-index') }}" aria-controls="sidebarmodels_category">
                                          <span>@lang('translation.models_category')</span>
                                     </a>
-                                </li>
+                                </li> --}}
                     
                                  <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models-index') }}" aria-controls="sidebarmodels">
