@@ -260,6 +260,18 @@ return [
        "cache_clear" => "cache clear",
     
     
+    
+       "media" => "Media",
+       "add_media" => "add Media",
+       "edit_media" => "edit Media",
+   
+   
+       "home_video" => "home video",
+       "contact_messages" => "contact messages",
+       "subscriptions" => "subscriptions",
+       "social_settings" => "social settings",
+       "social_media_links" => "social media links",
+       "models_category" => "models category",
 ];
 ?>
 

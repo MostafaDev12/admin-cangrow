@@ -20,13 +20,13 @@
 						                          <div class="col-lg-7">
 						                            <div class="img-upload">
 						                                <!-- Thumbnails Images -->
-						                               <!--  <div id="image-preview" class="img-preview" style="background: url({{ $data->photo ? asset('assets/images/admins/'.$data->photo) : asset('assets/images/noimage.png') }});">
+						                               <!--  <div id="image-preview" class="img-preview" style="background: url({{ $data->photo ? asset('images/'.$data->photo) : asset('assets/images/noimage.png') }});">
 						                                   </div>
 						                               -->
 						                                  <label for="image-upload" class="img-label" id="image-label"><i class="icofont-upload-alt"></i>{{ __('   رفع الصوره') }}</label>
 						                                    <input type="file" name="photo" class="form-control " id="image-upload">
 <br>
-                                                        <img class="img-thumbnail" alt="200x200" width="200" src="{{ $data->photo ? asset('assets/images/admins/'.$data->photo) : asset('assets/images/noimage.png') }}">
+                                                        <img class="img-thumbnail" alt="200x200" width="200" src="{{ $data->photo ? asset('images/'.$data->photo) : asset('assets/images/noimage.png') }}">
 
                                                     </div>
 						                          </div>

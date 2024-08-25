@@ -30,6 +30,14 @@ Route::get('/portfolio',  [FrontController::class, 'portfolio']);
 Route::get('/visitors',  [FrontController::class, 'visitors']);
 Route::get('/models-category',  [FrontController::class, 'modelsCategory']);
 Route::get('/models/{category_id}',  [FrontController::class, 'models']);
+
 Route::get('/single-model/{id}',  [FrontController::class, 'Singlemodel']);
 
 Route::post('/contact-submit',  [FrontController::class, 'contactSubmit']);
+
+
+Route::post('/submit-subscriptions',  [FrontController::class, 'subscriptions']);
+Route::post('/social-media',  [FrontController::class, 'social_settings']);
+Route::get('/about-us-models',  [FrontController::class, 'about_us_models']);
+Route::get('/videos',  [FrontController::class, 'videos']);
+Route::get('/galleries',  [FrontController::class, 'partners']);

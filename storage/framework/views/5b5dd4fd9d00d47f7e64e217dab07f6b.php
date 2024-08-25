@@ -1,21 +1,12 @@
-@extends('layouts.master')
-@section('title')
-    @lang('translation.settings')
-@endsection
-@section('content')
+
+<?php $__env->startSection('title'); ?>
+    <?php echo app('translator')->get('translation.settings'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
     <div class="position-relative mx-n4 mt-n4">
         <div class="profile-wid-bg profile-setting-img">
-            <img src="{{ URL::asset('build/images/profile-bg.jpg') }}" class="profile-wid-img" alt="">
-            {{-- <div class="overlay-content">
-                <div class="text-end p-3">
-                    <div class="p-0 ms-auto rounded-circle profile-photo-edit">
-                        <input id="profile-foreground-img-file-input" type="file" class="profile-foreground-img-file-input">
-                        <label for="profile-foreground-img-file-input" class="profile-photo-edit btn btn-light">
-                            <i class="ri-image-edit-line align-bottom me-1"></i> Change Cover
-                        </label>
-                    </div>
-                </div>
-            </div> --}}
+            <img src="<?php echo e(URL::asset('build/images/profile-bg.jpg')); ?>" class="profile-wid-img" alt="">
+            
         </div>
     </div>
 
@@ -25,7 +16,7 @@
                 <div class="card-body p-4">
                     <div class="text-center">
                         <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-                            <img src="@if (Auth::guard('admin')->user()->photo != '') {{ URL::asset('images/' . Auth::guard('admin')->user()->photo) }}@else{{ URL::asset('build/images/cangrow.png') }} @endif"
+                            <img src="<?php if(Auth::guard('admin')->user()->photo != ''): ?> <?php echo e(URL::asset('images/' . Auth::guard('admin')->user()->photo)); ?><?php else: ?><?php echo e(URL::asset('build/images/cangrow.png')); ?> <?php endif; ?>"
                                 class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
                             <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
                            
@@ -36,9 +27,10 @@
                                 </label>
                             </div>
                         </div>
-                        <h5 class="fs-17 mb-1">{{ Auth::guard('admin')->user()->name }}</h5>
+                        <h5 class="fs-17 mb-1"><?php echo e(Auth::guard('admin')->user()->name); ?></h5>
                         <p class="text-muted mb-0">
-                            {{empty(Auth::guard('admin')->user()->role)  ? __('translation.admin')  : Auth::guard('admin')->user()->role->name}}
+                            <?php echo e(empty(Auth::guard('admin')->user()->role)  ? __('translation.admin')  : Auth::guard('admin')->user()->role->name); ?>
+
                              
 
 
@@ -85,27 +77,17 @@
                                 Change Password
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#experience" role="tab">
-                                <i class="far fa-envelope"></i>
-                                Experience
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#privacy" role="tab">
-                                <i class="far fa-envelope"></i>
-                                Privacy Policy
-                            </a>
-                        </li> --}}
+                        
                     </ul>
                 </div>
                 <div class="card-body p-4">
                     <div class="tab-content">
                         <div class="tab-pane active" id="personalDetails" role="tabpanel">
 
-                             <form id="geniusform" action="{{route('admin.profile.update')}}" method="POST" enctype="multipart/form-data">
-                                {{csrf_field()}}
-                                @include('includes.admin.form-both')
+                             <form id="geniusform" action="<?php echo e(route('admin.profile.update')); ?>" method="POST" enctype="multipart/form-data">
+                                <?php echo e(csrf_field()); ?>
+
+                                <?php echo $__env->make('includes.admin.form-both', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                                 <input id="profile-img-file-input" name="photo" type="file" class="profile-img-file-input d-none">
                                 <div class="row">
@@ -114,7 +96,7 @@
                                             <label for="firstnameInput" class="form-label">
                                                 Name</label>
                                             <input type="text" name="name" class="form-control" id="firstnameInput"
-                                                placeholder="Enter your firstname" required value="{{ Auth::guard('admin')->user()->name }}">
+                                                placeholder="Enter your firstname" required value="<?php echo e(Auth::guard('admin')->user()->name); ?>">
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -124,7 +106,7 @@
                                             <label for="phonenumberInput" class="form-label">Phone
                                                 Number</label>
                                             <input type="text" class="form-control" id="phonenumberInput"
-                                                placeholder="Enter your phone number" required name="phone" value="{{ Auth::guard('admin')->user()->phone }}">
+                                                placeholder="Enter your phone number" required name="phone" value="<?php echo e(Auth::guard('admin')->user()->phone); ?>">
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -133,7 +115,7 @@
                                             <label for="emailInput" class="form-label">Email
                                                 Address</label>
                                             <input type="email" class="form-control" id="emailInput"
-                                                placeholder="Enter your email" required name="email" value="{{ Auth::guard('admin')->user()->email }}">
+                                                placeholder="Enter your email" required name="email" value="<?php echo e(Auth::guard('admin')->user()->email); ?>">
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -143,7 +125,7 @@
                                         <div class="mb-3">
                                             <label for="cityInput" class="form-label">City</label>
                                             <input type="text" class="form-control" name="city" id="cityInput" placeholder="City"
-                                                value="{{ Auth::guard('admin')->user()->city }}" />
+                                                value="<?php echo e(Auth::guard('admin')->user()->city); ?>" />
                                         </div>
                                     </div>
                                      
@@ -162,9 +144,10 @@
                         <!--end tab-pane-->
                         <div class="tab-pane" id="changePassword" role="tabpanel">
                           
-                          <form id="geniusform" action="{{route('admin.password.update')}}" method="POST" enctype="multipart/form-data">
-                                    {{csrf_field()}}
-                                    @include('includes.admin.form-both')
+                          <form id="geniusform" action="<?php echo e(route('admin.password.update')); ?>" method="POST" enctype="multipart/form-data">
+                                    <?php echo e(csrf_field()); ?>
+
+                                    <?php echo $__env->make('includes.admin.form-both', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                 <div class="row g-2">
                                     <div class="col-lg-4">
                                         <div>
@@ -193,13 +176,7 @@
                                         </div>
                                     </div>
                                     <!--end col-->
-                                    {{-- <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <a href="javascript:void(0);"
-                                                class="link-primary text-decoration-underline">Forgot
-                                                Password ?</a>
-                                        </div>
-                                    </div> --}}
+                                    
                                     <!--end col-->
                                     <div class="col-lg-12">
                                         <div class="text-end">
@@ -222,8 +199,10 @@
         <!--end col-->
     </div>
     <!--end row-->
-@endsection
-@section('script')
-    <script src="{{ URL::asset('build/js/pages/profile-setting.init.js') }}"></script>
-    <script src="{{ URL::asset('build/js/app.js') }}"></script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+    <script src="<?php echo e(URL::asset('build/js/pages/profile-setting.init.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('build/js/app.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\admin-cangrow\resources\views/admin/profile.blade.php ENDPATH**/ ?>

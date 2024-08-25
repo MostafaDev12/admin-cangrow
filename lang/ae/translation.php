@@ -204,5 +204,18 @@ return [
     "level-2.2" => "المستوى 2.2",
     "level-3.1" => "المستوى 3.1",
     "level-3.2" => "المستوى 3.2",
+
+
+    
+    "media" => "Media",
+    "add_media" => "add Media",
+    "edit_media" => "edit Media",
+
+
+    "home_video" => "home video",
+    "contact_messages" => "contact messages",
+    "subscriptions" => "subscriptions",
+    "social_media_links" => "social media links",
+
 ];
 ?>

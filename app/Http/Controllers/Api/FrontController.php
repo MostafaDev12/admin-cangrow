@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Models\Generalsetting;
 use App\Models\Contact;
+use App\Models\Subscription;
+use App\Models\Media;
+use App\Models\Socialsetting;
 use Validator;
 use App\Classes\GeniusMailer;
 
@@ -29,7 +32,7 @@ class FrontController extends Controller
      */
     public function __construct()
     {
-       // $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -39,72 +42,72 @@ class FrontController extends Controller
      */
     public function sliders()
     {
-         
-        
-         $data = [];
-         
+
+
+        $data = [];
+
         $lang = request()->header('Accept-Language');
-          
+
         $datas = Slider::get();
-      
-      foreach($datas as $k=>$dat){
-          
-         $data[$k]['title'] = $dat->{'title_'.$lang} ; 
-         $data[$k]['details'] =  $dat->{'details_'.$lang} ; 
-         
-         $data[$k]['id'] = $dat->id  ; 
-         $data[$k]['photo'] = $dat->photo  ; 
-      }
-      
+
+        foreach ($datas as $k => $dat) {
+
+            $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['details'] =  $dat->{'details_' . $lang};
+
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['photo'] = $dat->photo;
+        }
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
     }
 
     public function partners()
     {
-         
+
         $data = Partner::get();
-      
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
     }
 
     public function services()
     {
-         
-         $data = [];
-         
+
+        $data = [];
+
         $lang = request()->header('Accept-Language');
-          
+
         $datas = Service::get();
-      
-      foreach($datas as $k=>$dat){
-           $data[$k]['id'] = $dat->id  ; 
-         $data[$k]['title'] = $dat->{'title_'.$lang} ; 
-         $data[$k]['details'] =  $dat->{'details_'.$lang} ; 
-         $data[$k]['meta_title'] =  $dat->{'meta_title_'.$lang} ; 
-         $data[$k]['meta_details'] = $dat->{'meta_details_'.$lang}  ; 
-         $data[$k]['slug'] = $dat->{'slug_'.$lang}  ; 
-         $data[$k]['tags'] = $dat->tags  ; 
-         $data[$k]['photo'] = $dat->photo  ; 
-      }
-      
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['details'] =  $dat->{'details_' . $lang};
+            $data[$k]['meta_title'] =  $dat->{'meta_title_' . $lang};
+            $data[$k]['meta_details'] = $dat->{'meta_details_' . $lang};
+            $data[$k]['slug'] = $dat->{'slug_' . $lang};
+            $data[$k]['tags'] = $dat->tags;
+            $data[$k]['photo'] = $dat->photo;
+        }
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
     }
 
@@ -112,210 +115,271 @@ class FrontController extends Controller
 
     public function singleService($id)
     {
-         
-         
-         
+
+
+
         $dat = Service::where('slug_ar', 'like', '%' . $id . '%')->orwhere('slug_en', 'like', '%' . $id . '%')->orwhere('slug_fr', 'like', '%' . $id . '%')->first();
-       
-   
-       
+
+
+
         $data = [];
-           if($dat){
-               
-             $lang = request()->header('Accept-Language');
-          $data['id'] = $dat->id  ; 
-         $data['title'] = $dat->{'title_'.$lang} ; 
-         $data['details'] =  $dat->{'details_'.$lang} ; 
-         $data['meta_title'] =  $dat->{'meta_title_'.$lang} ; 
-         $data['meta_details'] = $dat->{'meta_details_'.$lang}  ; 
-         $data['slug'] = $dat->{'slug_'.$lang}  ; 
-         $data['tags'] = $dat->tags  ; 
-         $data['photo'] = $dat->photo  ; 
-           
-           }  
-      
+        if ($dat) {
+
+            $lang = request()->header('Accept-Language');
+            $data['id'] = $dat->id;
+            $data['title'] = $dat->{'title_' . $lang};
+            $data['details'] =  $dat->{'details_' . $lang};
+            $data['meta_title'] =  $dat->{'meta_title_' . $lang};
+            $data['meta_details'] = $dat->{'meta_details_' . $lang};
+            $data['slug'] = $dat->{'slug_' . $lang};
+            $data['tags'] = $dat->tags;
+            $data['photo'] = $dat->photo;
+        }
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
-
-
     }
 
     public function settings()
     {
-         
+
         $dat = Generalsetting::first();
-      
-      
+
+
         $lang = request()->header('Accept-Language');
-           
-         $data['logo'] = $dat->{'logo_'.$lang} ; 
-         $data['title'] =  $dat->{'title_'.$lang} ; 
-         $data['footer'] =  $dat->{'footer_'.$lang} ; 
-         $data['addresses'] =  json_decode($dat->{'addresses_'.$lang}) ; 
-         
-         $data['favicon'] = $dat->favicon  ; 
-         $data['phones'] =  explode(',',$dat->phones)  ; 
-         $data['emails'] =   explode(',',$dat->emails) ; 
-         $data['contact_emails'] =  explode(',',$dat->contact_emails)   ; 
-         $data['map'] = $dat->map  ; 
-         $data['home_video'] = $dat->home_video  ; 
-       
-      
+
+        $data['logo'] = $dat->{'logo_' . $lang};
+        $data['title'] =  $dat->{'title_' . $lang};
+        $data['footer'] =  $dat->{'footer_' . $lang};
+        $data['addresses'] =  json_decode($dat->{'addresses_' . $lang});
+
+        $data['favicon'] = $dat->favicon;
+        $data['phones'] =  explode(',', $dat->phones);
+        $data['emails'] =   explode(',', $dat->emails);
+        $data['contact_emails'] =  explode(',', $dat->contact_emails);
+        $data['map'] = $dat->map;
+        $data['home_video'] = $dat->home_video;
+
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
     }
 
     public function about_us()
     {
-         
-        $dat = Pagesetting::select('about_title_en', 
-        'about_title_fr', 
-        'about_title_ar',
-        'about_details_en', 
-        'about_details_fr', 
-        'about_details_ar',
-       
-        'about_photo')->first();
-      
-      
-      
+
+        $dat = Pagesetting::select(
+            'about_title_en',
+            'about_title_fr',
+            'about_title_ar',
+            'about_details_en',
+            'about_details_fr',
+            'about_details_ar',
+
+            'about_photo'
+        )->first();
+
+
+
         $data = [];
-         
+
         $lang = request()->header('Accept-Language');
-           
-         $data['title'] = $dat->{'about_title_'.$lang} ; 
-         $data['details'] =  $dat->{'about_details_'.$lang} ; 
-         
-         $data['photo'] = $dat->about_photo  ; 
-        
-      
+
+        $data['title'] = $dat->{'about_title_' . $lang};
+        $data['details'] =  $dat->{'about_details_' . $lang};
+
+        $data['photo'] = $dat->about_photo;
+
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
     }
 
     public function portfolio()
     {
-         
-        $dat = Pagesetting::select('portfolio_title_en', 
-        'portfolio_title_fr', 
-        'portfolio_title_ar',
-        'portfolio_details_en', 
-        'portfolio_details_fr', 
-        'portfolio_details_ar',
-        'portfolio_photo')->first();
-      
-      
-      
+
+        $dat = Pagesetting::select(
+            'portfolio_title_en',
+            'portfolio_title_fr',
+            'portfolio_title_ar',
+            'portfolio_details_en',
+            'portfolio_details_fr',
+            'portfolio_details_ar',
+            'portfolio_photo'
+        )->first();
+
+
+
         $data = [];
-         
+
         $lang = request()->header('Accept-Language');
-           
-         $data['title'] = $dat->{'portfolio_title_'.$lang} ; 
-         $data['details'] =  $dat->{'portfolio_details_'.$lang} ; 
-         
-         $data['photo'] = $dat->portfolio_photo  ; 
-       
-      
+
+        $data['title'] = $dat->{'portfolio_title_' . $lang};
+        $data['details'] =  $dat->{'portfolio_details_' . $lang};
+
+        $data['photo'] = $dat->portfolio_photo;
+
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
     }
 
     public function modelsCategory()
     {
-         
-       
-       $data = [];
-         
+
+
+        $data = [];
+
         $lang = request()->header('Accept-Language');
-          
+
         $datas = ModelCategory::get();
-      
-      foreach($datas as $k=>$dat){
-           $data[$k]['id'] = $dat->id  ; 
-         $data[$k]['title'] = $dat->{'title_'.$lang} ; 
-      
-      }
-      
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = $dat->{'title_' . $lang};
+        }
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
     }
     public function models($category_id)
     {
-         
-       
-       $data = [];
-         
+
+
+        $data = [];
+
         $lang = request()->header('Accept-Language');
-          
-        $datas = PageModel::where('model_category_id',$category_id)->get();
-      
-      foreach($datas as $k=>$dat){
-           $data[$k]['id'] = $dat->id  ; 
-         $data[$k]['title'] = $dat->{'title_'.$lang} ; 
-         $data[$k]['details'] =  $dat->{'details_'.$lang} ; 
-         
-         $data[$k]['photo'] = $dat->photo  ; 
-      }
-      
+
+        $datas = PageModel::where('model_category_id', $category_id)->get();
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['details'] =  $dat->{'details_' . $lang};
+
+            $data[$k]['photo'] = $dat->photo;
+        }
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
+        ], 200);
+    }
+    public function about_us_models()
+    {
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        $datas = PageModel::get();
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['details'] =  $dat->{'details_' . $lang};
+
+            $data[$k]['photo'] = $dat->photo;
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }  
+    
+    public function videos()
+    {
+ 
+        $data = Media::get();
+
+         
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+    public function social_settings()
+    {
+        $data = [];
+        $Socialsetting = Socialsetting::first();
+
+        $data['facebook'] =  $Socialsetting->f_status == 1 ? $Socialsetting->facebook : '';  
+        $data['twitter'] =  $Socialsetting->t_status == 1 ? $Socialsetting->twitter : '';  
+        $data['linkedin'] =  $Socialsetting->l_status == 1 ? $Socialsetting->linkedin : '';  
+        $data['youtube'] =  $Socialsetting->youtube == 1 ? $Socialsetting->youtube : '';  
+        $data['tiktok'] =  $Socialsetting->d_status == 1 ? $Socialsetting->dribble : '';  
+
+        
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
         ], 200);
     }
     public function Singlemodel($id)
     {
-         
+
         $dat = PageModel::find($id);
-      
-      
+
+
         $data = [];
-         
+
         $lang = request()->header('Accept-Language');
-         $data['id'] = $dat->id  ; 
-         $data['title'] = $dat->{'title_'.$lang} ; 
-         $data['details'] =  $dat->{'details_'.$lang} ; 
-         
-         $data['photo'] = $dat->photo  ; 
-       
+        $data['id'] = $dat->id;
+        $data['title'] = $dat->{'title_' . $lang};
+        $data['details'] =  $dat->{'details_' . $lang};
+
+        $data['photo'] = $dat->photo;
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $data,
 
-          
+
         ], 200);
     }
     public function visitors()
     {
-         
+
         $deep_detect = TRUE;
         $ip = 'Visitor';
         $purpose = 'location';
@@ -397,122 +461,147 @@ class FrontController extends Controller
                     'city' => $output['city'],
 
                 ]);
-
-               
-
             }
         }
 
-      
+
         return response()->json([
             'status' => true,
-              'message' => 'success',
+            'message' => 'success',
             'data' => $output,
 
-          
+
         ], 200);
     }
 
 
-       //Send email to admin
-       public function contactSubmit(Request $request)
-       {
-           $gs = Generalsetting::findOrFail(1);
-            $ps = Pagesetting::find(1);
-   
-   
-   
-    $rules = [
-               'name'      => 'required',
-               'phone'      => 'required',
-               'email'      => 'email',
-                ];
+    //Send email to admin
+    public function contactSubmit(Request $request)
+    {
+        $gs = Generalsetting::findOrFail(1);
+        $ps = Pagesetting::find(1);
+
+
+
+        $rules = [
+            'name'      => 'required',
+            'phone'      => 'required',
+            'email'      => 'email',
+        ];
 
         $validator = Validator::make($request->all(), $rules);
-        
+
         if ($validator->fails()) {
-          return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
+            return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
         }
-   
+
         //    if($gs->is_capcha == 1)
         //    {
-   
+
         //    // Capcha Check
         //    $value = session('captcha_string');
         //    if ($request->codes != $value){
         //        return response()->json(array('errors' => [ 0 => 'Please enter Correct Capcha Code.' ]));
         //    }
-   
-        //    }
-   
-     
-           $name = $request->name ;
-           $phone = $request->phone ;
-           $job = $request->job ;
-           $from = $request->email ;
-           $message = $request->message ;
-           $subject_title = $request->subject ;
-   
-           
-               $subject = "Email From Of ".$request->name ;
-   
-               $msg = "Name: ".$name."\nEmail: ".$from."\nPhone: ".$phone."\nSubject: ".$subject_title ."\nMessage: ".$message;
-         
-           
-            
-          
-          if(!empty($gs->contact_emails)){
-   
-   
-               $to =    explode(',', $gs->contact_emails);
-               
-              
-               
-        
-           foreach($to as $key => $data1){
-   
-         
-               if($gs->is_smtp == 1)
-               {
-               $data = [
-                   'to' => $to[$key],
-                   'subject' => $subject,
-                   'body' => $msg,
-               ];
-       
-               $mailer = new GeniusMailer();
-               $mailer->sendCustomMail($data);
-               }
-               else
-               {
-               $headers = "From: ".$gs->from_name."<".$gs->from_email.">";
-               mail($to[$key],$subject,$msg,$headers);
-               }
-               // Login Section Ends
-       
-       
-           }
-   
-           
-           } 
-    
-        $data =   Contact::create([
-               'name' => $name ,
-               'phone' => $phone ,
-               'email' => $from ,
-               'subject' => $subject_title , 
-               'message' => $message ,
-           ]);
 
-           // Redirect Section
-           return response()->json([
+        //    }
+
+
+        $name = $request->name;
+        $phone = $request->phone;
+        $job = $request->job;
+        $from = $request->email;
+        $message = $request->message;
+        $subject_title = $request->subject;
+
+
+        $subject = "Email From Of " . $request->name;
+
+        $msg = "Name: " . $name . "\nEmail: " . $from . "\nPhone: " . $phone . "\nSubject: " . $subject_title . "\nMessage: " . $message;
+
+
+
+
+        if (!empty($gs->contact_emails)) {
+
+
+            $to =    explode(',', $gs->contact_emails);
+
+
+
+
+            foreach ($to as $key => $data1) {
+
+
+                if ($gs->is_smtp == 1) {
+                    $data = [
+                        'to' => $to[$key],
+                        'subject' => $subject,
+                        'body' => $msg,
+                    ];
+
+                    $mailer = new GeniusMailer();
+                    $mailer->sendCustomMail($data);
+                } else {
+                    $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
+                    mail($to[$key], $subject, $msg, $headers);
+                }
+                // Login Section Ends
+
+
+            }
+        }
+
+        $data =   Contact::create([
+            'name' => $name,
+            'phone' => $phone,
+            'email' => $from,
+            'subject' => $subject_title,
+            'message' => $message,
+        ]);
+
+        // Redirect Section
+        return response()->json([
             'status' => true,
-              'message' => 'success',
-              'data' =>  $data,
-            
+            'message' => 'success',
+            'data' =>  $data,
+
         ], 200);
-       }
-   
+    }
+    public function subscriptions(Request $request)
+    {
+
+        $rules = [
+
+            'email'      => 'required|email',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
+        }
+
+
+
+
+        $email = $request->email;
+
+        $data = Subscription::create([
+
+            'email' => $email,
+
+        ]);
+
+        // Redirect Section
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' =>  $data,
+
+        ], 200);
+    }
+
     public function root()
     {
         return view('index');
@@ -530,5 +619,4 @@ class FrontController extends Controller
             return redirect()->back();
         }
     }
-
 }
