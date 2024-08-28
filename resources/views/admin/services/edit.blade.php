@@ -85,7 +85,7 @@
                                               </div>
                                                 <div class="mb-3">
                                                   <label for="slug_ar" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar"  value="{{ $data->slug_ar }}" required placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar"  value="{{ $data->slug_ar }}"  placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>
@@ -114,7 +114,7 @@
                                           
                                            <div class="mb-3">
                                                   <label for="slug_en" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_en" id="slug_en"  value="{{ $data->slug_en }}" required placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_en" id="slug_en"  value="{{ $data->slug_en }}"  placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>

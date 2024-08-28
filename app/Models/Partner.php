@@ -25,6 +25,9 @@ class Partner extends Model
     protected $fillable = [
         
         'photo',
+        'title_ar',
+        'title_en',
+        'title_fr',
        
       
     ];

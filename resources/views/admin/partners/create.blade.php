@@ -28,6 +28,84 @@
                     @include('includes.admin.form-both')
 
  
+                    <div class="row">
+
+
+                        <div class="col-xxl-12">
+
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs nav-justified mb-3" role="tablist">
+                                        @if($gs->lang_arabic == 1)
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#base-justified-home"
+                                                role="tab" aria-selected="false">
+                                                <img style="width: 35px;" src="{{ asset('assets/images/ar.jpg') }}">
+                                                {{ __('translation.arabic') }}
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if($gs->lang_english == 1)
+                                        <li class="nav-item">
+                                            <a class="nav-link " data-bs-toggle="tab" href="#base-justified-product"
+                                                role="tab" aria-selected="false">
+                                                <img style="width: 35px;" src="{{ asset('assets/images/en.png') }}">
+                                                {{ __('translation.english') }}
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if($gs->lang_france == 1)
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#base-justified-messages"
+                                                role="tab" aria-selected="false">
+                                                <img style="width: 35px;" src="{{ asset('assets/images/fr.png') }}">
+                                                {{ __('translation.france') }}
+                                            </a>
+                                        </li>
+                                        @endif
+
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content  text-muted">
+                                        <div class="tab-pane {{$gs->lang_arabic == 1 ? 'active' : '' }}" id="base-justified-home" role="tabpanel">
+                                            <h6 style="text-align: center;">   {{ __('translation.arabic') }}</h6>
+                                            
+                                      
+                                              <div class="mb-3">
+                                                  <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
+                                                  <input type="text" class="form-control" name="title_ar" id="title_ar" placeholder="{{ __('translation.title') }}">
+                                              </div>
+                                               
+                                        </div>
+                                        <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
+                                            <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
+                                           
+                                            <div class="mb-3">
+                                              <label for="title_en" class="form-label">{{ __('translation.title') }}</label>
+                                              <input type="text" class="form-control" name="title_en" id="title_en" placeholder="{{ __('translation.title') }}">
+                                          </div>
+                                            
+                                        </div>
+                                        <div class="tab-pane" id="base-justified-messages" role="tabpanel">
+                                            <h6 style="text-align: center;">{{ __('translation.france') }}</h6>
+                                           
+
+                                            <div class="mb-3">
+                                              <label for="title_fr" class="form-label">{{ __('translation.title') }}</label>
+                                              <input type="text" class="form-control" name="title_fr" id="title_fr" placeholder="{{ __('translation.title') }}">
+                                          </div>
+                                           
+                                            
+                                        </div>
+
+                                    </div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
+                        </div>
+                    </div>
+  
                         <div class="row">
 
 
