@@ -70,9 +70,16 @@ class FrontController extends Controller
 
     public function partners()
     {
+        $data = [];
+        $datas = Partner::get();
+        $lang = request()->header('Accept-Language');
 
-        $data = Partner::get();
 
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['photo'] = $dat->photo;
+        }
         return response()->json([
             'status' => true,
             'message' => 'success',
