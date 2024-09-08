@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\SocialSettingController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -170,6 +171,18 @@ Route::prefix('admin')->group(function () {
       Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin-categories-update');
 
       Route::get('/categories/delete/{id}',  [CategoryController::class, 'destroy'])->name('admin-categories-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:blogs'], function () {
+
+      Route::get('/blogs/datatables',  [BlogController::class, 'datatables'])->name('admin-blogs-datatables');
+      Route::get('/blogs',  [BlogController::class, 'index'])->name('admin-blogs-index');
+      Route::get('/blogs/create',   [BlogController::class, 'create'])->name('admin-blogs-create');
+      Route::post('/blogs/create',  [BlogController::class, 'store'])->name('admin-blogs-store');
+      Route::get('/blogs/edit/{id}',  [BlogController::class, 'edit'])->name('admin-blogs-edit');
+      Route::post('/blogs/update/{id}', [BlogController::class, 'update'])->name('admin-blogs-update');
+
+      Route::get('/blogs/delete/{id}',  [BlogController::class, 'destroy'])->name('admin-blogs-delete');
     });
 
 
