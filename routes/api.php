@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/sliders',  [FrontController::class, 'sliders']);
-Route::get('/partners',  [FrontController::class, 'partners']);
+Route::get('/teams',  [FrontController::class, 'partners']);
 Route::get('/services',  [FrontController::class, 'services']);
 Route::get('/single-service/{id}',  [FrontController::class, 'singleService']);
 Route::get('/settings',  [FrontController::class, 'settings']);

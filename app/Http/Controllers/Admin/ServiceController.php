@@ -28,6 +28,11 @@ class ServiceController extends Controller
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
+                            ->addColumn('category', function(Service $data) {
+                                $category =  optional($data->category)->title;
+                              
+                                return   $category;
+                            })
                             ->addColumn('action', function(Service $data) {
                                 return '<div class="action-list">
                                 <a class=" btn btn-sm btn-secondary" href="' . route('admin-services-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
@@ -38,7 +43,7 @@ class ServiceController extends Controller
                               <a href="javascript:;" data-href="' . route('admin-services-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
-                            ->rawColumns(['photo','action'])
+                            ->rawColumns(['photo','action','category'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
 
