@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DataTables;
 use App\Models\Service;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -50,7 +51,8 @@ class ServiceController extends Controller
     //*** GET Request
     public function create()
     {
-        return view('admin.services.create');
+        $cats = Category::get();
+        return view('admin.services.create',compact('cats'));
     }
 
     //*** POST Request
@@ -100,7 +102,8 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $data = Service::findOrFail($id);
-        return view('admin.services.edit',compact('data'));
+        $cats = Category::get();
+        return view('admin.services.edit',compact('data','cats'));
     }
 
     //*** POST Request

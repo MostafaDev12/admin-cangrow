@@ -170,7 +170,21 @@
   
                         <div class="row">
 
+{{-- 
+                            <div class="col-xl-12 col-md-12">
 
+                                <div class="mb-3">
+                                    <label for="category_id" class="form-label">{{ __('translation.categories') }}</label>
+                                    <select class="form-control" name="category_id"> 
+                                        <option value="">{{ __('translation.select') }}</option>
+                                        @foreach ($cats as $cat)
+                                            <option value="{{ $cat->id }}" {{ $cat->id == $data->category_id ? 'selected' : '' }}>{{ $cat->title }}</option>
+ 
+                                        @endforeach
+                                       
+                                    </select>
+                                </div>  
+                            </div> --}}
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
