@@ -9,6 +9,7 @@ use App\Models\Visitor;
 use App\Models\PageModel;
 use App\Models\ModelCategory;
 use App\Models\Category;
+use App\Models\Blog;
 use App\Models\Pagesetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -683,6 +684,71 @@ class FrontController extends Controller
             }
 
             $data['products'] = $products;
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+    public function blogs()
+    {
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        $datas = Blog::get();
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['details'] =  $dat->{'details_' . $lang};
+            $data[$k]['meta_title'] =  $dat->{'meta_title_' . $lang};
+            $data[$k]['meta_details'] = $dat->{'meta_details_' . $lang};
+            $data[$k]['slug'] = $dat->{'slug_' . $lang};
+            $data[$k]['tags'] = $dat->tags;
+            $data[$k]['photo'] = $dat->photo;
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
+
+
+    public function singleBlog($id)
+    {
+
+
+
+        $dat = Blog::where('slug_ar', 'like', '%' . $id . '%')->orwhere('slug_en', 'like', '%' . $id . '%')->orwhere('slug_fr', 'like', '%' . $id . '%')->first();
+
+
+
+        $data = [];
+      
+        if ($dat) {
+
+            $lang = request()->header('Accept-Language');
+            $data['id'] = $dat->id;
+            $data['title'] = $dat->{'title_' . $lang};
+            $data['details'] =  $dat->{'details_' . $lang};
+            $data['meta_title'] =  $dat->{'meta_title_' . $lang};
+            $data['meta_details'] = $dat->{'meta_details_' . $lang};
+            $data['slug'] = $dat->{'slug_' . $lang};
+            $data['tags'] = $dat->tags;
+            $data['photo'] = $dat->photo;
+          
+          
         }
 
         return response()->json([
