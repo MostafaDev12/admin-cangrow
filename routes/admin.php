@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ModelCategoryController;
 use App\Http\Controllers\Admin\SocialSettingController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -157,6 +158,18 @@ Route::prefix('admin')->group(function () {
       Route::post('/services/update/{id}', [ServiceController::class, 'update'])->name('admin-services-update');
 
       Route::get('/services/delete/{id}',  [ServiceController::class, 'destroy'])->name('admin-services-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:categories'], function () {
+
+      Route::get('/categories/datatables',  [CategoryController::class, 'datatables'])->name('admin-categories-datatables');
+      Route::get('/categories',  [CategoryController::class, 'index'])->name('admin-categories-index');
+      Route::get('/categories/create',   [CategoryController::class, 'create'])->name('admin-categories-create');
+      Route::post('/categories/create',  [CategoryController::class, 'store'])->name('admin-categories-store');
+      Route::get('/categories/edit/{id}',  [CategoryController::class, 'edit'])->name('admin-categories-edit');
+      Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin-categories-update');
+
+      Route::get('/categories/delete/{id}',  [CategoryController::class, 'destroy'])->name('admin-categories-delete');
     });
 
 

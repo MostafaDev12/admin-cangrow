@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\Visitor;
 use App\Models\PageModel;
 use App\Models\ModelCategory;
+use App\Models\Category;
 use App\Models\Pagesetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -329,14 +330,14 @@ class FrontController extends Controller
 
 
         ], 200);
-    }  
-    
+    }
+
     public function videos()
     {
- 
+
         $data = Media::get();
 
-         
+
         return response()->json([
             'status' => true,
             'message' => 'success',
@@ -350,13 +351,13 @@ class FrontController extends Controller
         $data = [];
         $Socialsetting = Socialsetting::first();
 
-        $data['facebook'] =  $Socialsetting->f_status == 1 ? $Socialsetting->facebook : '';  
-        $data['twitter'] =  $Socialsetting->t_status == 1 ? $Socialsetting->twitter : '';  
-        $data['linkedin'] =  $Socialsetting->l_status == 1 ? $Socialsetting->linkedin : '';  
-        $data['youtube'] =  $Socialsetting->youtube == 1 ? $Socialsetting->youtube : '';  
-        $data['tiktok'] =  $Socialsetting->d_status == 1 ? $Socialsetting->dribble : '';  
+        $data['facebook'] =  $Socialsetting->f_status == 1 ? $Socialsetting->facebook : '';
+        $data['twitter'] =  $Socialsetting->t_status == 1 ? $Socialsetting->twitter : '';
+        $data['linkedin'] =  $Socialsetting->l_status == 1 ? $Socialsetting->linkedin : '';
+        $data['youtube'] =  $Socialsetting->youtube == 1 ? $Socialsetting->youtube : '';
+        $data['tiktok'] =  $Socialsetting->d_status == 1 ? $Socialsetting->dribble : '';
 
-        
+
         return response()->json([
             'status' => true,
             'message' => 'success',
@@ -613,6 +614,88 @@ class FrontController extends Controller
         ], 200);
     }
 
+
+    public function categories()
+    {
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        $datas = Category::get();
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['details'] =  $dat->{'details_' . $lang};
+            $data[$k]['meta_title'] =  $dat->{'meta_title_' . $lang};
+            $data[$k]['meta_details'] = $dat->{'meta_details_' . $lang};
+            $data[$k]['slug'] = $dat->{'slug_' . $lang};
+            $data[$k]['tags'] = $dat->tags;
+            $data[$k]['photo'] = $dat->photo;
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
+
+
+    public function singleCategory($id)
+    {
+
+
+
+        $dat = Category::where('slug_ar', 'like', '%' . $id . '%')->orwhere('slug_en', 'like', '%' . $id . '%')->orwhere('slug_fr', 'like', '%' . $id . '%')->first();
+
+
+
+        $data = [];
+        $products = [];
+        if ($dat) {
+
+            $lang = request()->header('Accept-Language');
+            $data['id'] = $dat->id;
+            $data['title'] = $dat->{'title_' . $lang};
+            $data['details'] =  $dat->{'details_' . $lang};
+            $data['meta_title'] =  $dat->{'meta_title_' . $lang};
+            $data['meta_details'] = $dat->{'meta_details_' . $lang};
+            $data['slug'] = $dat->{'slug_' . $lang};
+            $data['tags'] = $dat->tags;
+            $data['photo'] = $dat->photo;
+          
+            foreach($dat->services as $k=>$service){
+
+                $products[$k]['id'] = $service->id;
+                $products[$k]['title'] = $service->{'title_' . $lang};
+                $products[$k]['details'] =  $service->{'details_' . $lang};
+                $products[$k]['meta_title'] =  $service->{'meta_title_' . $lang};
+                $products[$k]['meta_details'] = $service->{'meta_details_' . $lang};
+                $products[$k]['slug'] = $service->{'slug_' . $lang};
+                $products[$k]['tags'] = $service->tags;
+                $products[$k]['photo'] = $service->photo;
+                 
+            }
+
+            $data['products'] = $products;
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
+
+
     public function root()
     {
         return view('index');
@@ -631,3 +714,4 @@ class FrontController extends Controller
         }
     }
 }
+

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Category extends Model
 {
     
 
@@ -13,14 +13,14 @@ class Service extends Model
      *
      * @var array<int, string>
      */
-    protected $table ='services';
+    protected $table ='categories';
     
      protected $appends = ['photo'];
 
 
     public function getPhotoAttribute()
     {
-        return url('/') . '/assets/images/services/' . $this->attributes['photo'];
+        return url('/') . '/assets/images/categories/' . $this->attributes['photo'];
     }
     protected $fillable = [
         
@@ -42,14 +42,13 @@ class Service extends Model
         'slug_en',
         'slug_fr',
         'tags',
-        'category_id',
       
     ];
 
     
-    public function galleries()
+    public function services()
     {
-        return $this->hasMany(Gallery::class);
+        return $this->hasMany(Service::class);
     }  
     /**
      * The attributes that should be hidden for serialization.
@@ -58,10 +57,6 @@ class Service extends Model
      */
     
 
-     public function category()
-     {
-         return $this->belongsTo(Category::class,'category_id');
-     }
     /**
      * The attributes that should be cast.
      *

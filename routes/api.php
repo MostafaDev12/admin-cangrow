@@ -45,3 +45,6 @@ Route::post('/social-media',  [FrontController::class, 'social_settings']);
 Route::get('/about-us-models',  [FrontController::class, 'about_us_models']);
 Route::get('/videos',  [FrontController::class, 'videos']);
 Route::get('/galleries',  [FrontController::class, 'partners']);
+
+Route::get('/categories',  [FrontController::class, 'categories']);
+Route::get('/single-category/{id}',  [FrontController::class, 'singleCategory']);
