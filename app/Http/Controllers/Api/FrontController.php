@@ -9,6 +9,7 @@ use App\Models\Visitor;
 use App\Models\PageModel;
 use App\Models\ModelCategory;
 use App\Models\Category;
+use App\Models\Subcategory;
 use App\Models\Blog;
 use App\Models\Pagesetting;
 use Illuminate\Support\Facades\Auth;
@@ -624,7 +625,8 @@ class FrontController extends Controller
         $lang = request()->header('Accept-Language');
 
         $datas = Category::get();
-
+        $subs = [];
+        
         foreach ($datas as $k => $dat) {
             $data[$k]['id'] = $dat->id;
             $data[$k]['title'] = $dat->{'title_' . $lang};
@@ -634,6 +636,22 @@ class FrontController extends Controller
             $data[$k]['slug'] = $dat->{'slug_' . $lang};
             $data[$k]['tags'] = $dat->tags;
             $data[$k]['photo'] = $dat->photo;
+            $sub = [];
+            foreach ($dat->subcategories as $ke => $subcategory) {
+                $sub[$ke]['id'] = $subcategory->id;
+                $sub[$ke]['title'] = $subcategory->{'title_' . $lang};
+                $sub[$ke]['details'] =  $subcategory->{'details_' . $lang};
+                $sub[$ke]['meta_title'] =  $subcategory->{'meta_title_' . $lang};
+                $sub[$ke]['meta_details'] = $subcategory->{'meta_details_' . $lang};
+                $sub[$ke]['slug'] = $subcategory->{'slug_' . $lang};
+                $sub[$ke]['tags'] = $subcategory->tags;
+                $sub[$ke]['photo'] = $subcategory->photo;
+    
+                
+             
+            } 
+            
+            $data[$k]['subcategories'] = $sub ;
         }
 
         return response()->json([
@@ -647,6 +665,55 @@ class FrontController extends Controller
 
 
 
+    public function singleSubcategory($id)
+    {
+
+
+
+        $dat = Subcategory::where('slug_ar', 'like', '%' . $id . '%')->orwhere('slug_en', 'like', '%' . $id . '%')->orwhere('slug_fr', 'like', '%' . $id . '%')->first();
+
+
+
+        $data = [];
+        $products = [];
+        if ($dat) {
+
+            $lang = request()->header('Accept-Language');
+            $data['id'] = $dat->id;
+            $data['title'] = $dat->{'title_' . $lang};
+            $data['details'] =  $dat->{'details_' . $lang};
+            $data['meta_title'] =  $dat->{'meta_title_' . $lang};
+            $data['meta_details'] = $dat->{'meta_details_' . $lang};
+            $data['slug'] = $dat->{'slug_' . $lang};
+            $data['tags'] = $dat->tags;
+            $data['photo'] = $dat->photo;
+          
+            foreach($dat->services as $k=>$service){
+
+                $products[$k]['id'] = $service->id;
+                $products[$k]['title'] = $service->{'title_' . $lang};
+                $products[$k]['details'] =  $service->{'details_' . $lang};
+                $products[$k]['meta_title'] =  $service->{'meta_title_' . $lang};
+                $products[$k]['meta_details'] = $service->{'meta_details_' . $lang};
+                $products[$k]['slug'] = $service->{'slug_' . $lang};
+                $products[$k]['tags'] = $service->tags;
+                $products[$k]['photo'] = $service->photo;
+                 
+            }
+
+            $data['products'] = $products;
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
+    
     public function singleCategory($id)
     {
 
@@ -694,6 +761,8 @@ class FrontController extends Controller
 
         ], 200);
     }
+
+
     public function blogs()
     {
 

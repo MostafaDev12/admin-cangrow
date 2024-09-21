@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\SubcategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -171,6 +172,18 @@ Route::prefix('admin')->group(function () {
       Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin-categories-update');
 
       Route::get('/categories/delete/{id}',  [CategoryController::class, 'destroy'])->name('admin-categories-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:subcategories'], function () {
+
+      Route::get('/subcategories/datatables',  [SubcategoryController::class, 'datatables'])->name('admin-subcategories-datatables');
+      Route::get('/subcategories',  [SubcategoryController::class, 'index'])->name('admin-subcategories-index');
+      Route::get('/subcategories/create',   [SubcategoryController::class, 'create'])->name('admin-subcategories-create');
+      Route::post('/subcategories/create',  [SubcategoryController::class, 'store'])->name('admin-subcategories-store');
+      Route::get('/subcategories/edit/{id}',  [SubcategoryController::class, 'edit'])->name('admin-subcategories-edit');
+      Route::post('/subcategories/update/{id}', [SubcategoryController::class, 'update'])->name('admin-subcategories-update');
+
+      Route::get('/subcategories/delete/{id}',  [SubcategoryController::class, 'destroy'])->name('admin-subcategories-delete');
     });
 
     Route::group(['middleware' => 'permissions:blogs'], function () {
