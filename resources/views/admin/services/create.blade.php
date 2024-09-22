@@ -177,7 +177,7 @@
                                     <select class="form-control" name="category_id"> 
                                         <option value="">{{ __('translation.select') }}</option>
                                         @foreach ($cats as $cat)
-                                            <option value="{{ $cat->id }}">{{ $cat->title }}</option>
+                                            <option value="{{ $cat->id }}">{{ $cat->title_ar ??  $cat->title_en}}</option>
  
                                         @endforeach
                                        
