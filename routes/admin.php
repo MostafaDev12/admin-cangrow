@@ -185,6 +185,9 @@ Route::prefix('admin')->group(function () {
 
       Route::get('/subcategories/delete/{id}',  [SubcategoryController::class, 'destroy'])->name('admin-subcategories-delete');
     });
+    Route::get('/load/subcategories/{id}/',[SubcategoryController::class, 'load'])->name('admin-subcat-load'); //JSON REQUEST
+
+
 
     Route::group(['middleware' => 'permissions:blogs'], function () {
 

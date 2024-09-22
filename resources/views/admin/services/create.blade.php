@@ -169,21 +169,35 @@
                     </div>
   
                         <div class="row">
-{{-- 
+
                             <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">
                                     <label for="category_id" class="form-label">{{ __('translation.categories') }}</label>
-                                    <select class="form-control" name="category_id"> 
+                                    <select class="form-control" name="category_id" id="cat"> 
                                         <option value="">{{ __('translation.select') }}</option>
                                         @foreach ($cats as $cat)
-                                            <option value="{{ $cat->id }}">{{ $cat->title }}</option>
+                                            <option  data-href="{{ route('admin-subcat-load',$cat->id) }}"  value="{{ $cat->id }}">{{ $cat->title_ar ??  $cat->title_en }}</option>
  
                                         @endforeach
                                        
                                     </select>
                                 </div>  
-                            </div> --}}
+                            </div>
+                            
+                          <div class="col-xl-12 col-md-12">
+
+                                <div class="mb-3">
+                                    <label for="category_id" class="form-label">{{ __('translation.subcategories') }}</label>
+                                    <select class="form-control" name="subcategory_id" id="subcat" disabled="" > 
+                                        <option value="">{{ __('translation.select') }}</option>
+                                     
+                                    </select>
+                                </div>  
+                            </div>
+                            
+                            
+                            {{--  --}}
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -236,3 +250,20 @@
         </div>
     </div>
 @endsection
+
+
+@section('script')
+<script>
+
+
+$(document).on('change','#cat',function () {
+        var link = $(this).find(':selected').attr('data-href');
+        if(link != "")
+        {
+          $('#subcat').load(link);
+          $('#subcat').prop('disabled',false);
+        }
+      
+      });
+</script>
+@stop

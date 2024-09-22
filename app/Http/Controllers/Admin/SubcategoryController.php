@@ -171,4 +171,11 @@ class SubcategoryController extends Controller
         return response()->json($msg);      
         //--- Redirect Section Ends     
     }
+
+    public function load($id)
+    {
+        $cat = Category::findOrFail($id);
+        return view('load.subcategory',compact('cat'));
+    }
+
 }
