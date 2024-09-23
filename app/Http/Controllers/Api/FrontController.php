@@ -651,7 +651,7 @@ class FrontController extends Controller
              
             } 
             
-            $data[$k]['subcategories'] = $sub ;
+       //     $data[$k]['subcategories'] = $sub ;
         }
 
         return response()->json([

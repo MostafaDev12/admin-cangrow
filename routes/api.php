@@ -51,3 +51,5 @@ Route::get('/single-category/{id}',  [FrontController::class, 'singleCategory'])
 
 Route::get('/blogs',  [FrontController::class, 'blogs']);
 Route::get('/single-blog/{id}',  [FrontController::class, 'singleBlog']);
+Route::get('/business',  [FrontController::class, 'portfolio']);
+Route::get('/business-models',  [FrontController::class, 'about_us_models']);
