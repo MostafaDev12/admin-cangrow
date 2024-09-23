@@ -29,7 +29,7 @@
                                             <tr>
                                               <th>{{ __('translation.photo') }}</th>
                                               <th>{{ __('translation.title') }}</th>
-                                              <th>{{ __('translation.category') }}</th>
+                                              {{-- <th>{{ __('translation.category') }}</th> --}}
                                           
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
@@ -90,7 +90,7 @@
                columns: [
                         { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
-                        { data: 'category', name: 'category' },
+                    //    { data: 'category', name: 'category' },
                          
                         { data: 'action', searchable: false, orderable: false }
 
