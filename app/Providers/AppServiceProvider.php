@@ -7,6 +7,7 @@ use App\Models\Pagesetting;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -50,9 +51,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
-        // if($this->app->environment('production')) {
-        //     URL::forceScheme('https');
-        // }
+        if($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
   
     }
 
