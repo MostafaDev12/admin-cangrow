@@ -348,6 +348,30 @@ class FrontController extends Controller
 
         ], 200);
     }
+    public function media()
+    {
+        $data = [];
+        $datas = Media::get();
+
+        $lang = request()->header('Accept-Language');
+
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = '';
+            $data[$k]['caption'] =  '';
+            $data[$k]['alt'] = '';
+            $data[$k]['photo'] = $dat->media;
+            $data[$k]['src'] = $dat->media;
+        }
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
     public function social_settings()
     {
         $data = [];
