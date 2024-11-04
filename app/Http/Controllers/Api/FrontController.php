@@ -224,6 +224,35 @@ class FrontController extends Controller
         ], 200);
     }
 
+    public function after_before()
+    {
+
+        $dat = Pagesetting::select(
+            'before_photo',
+         
+            'after_photo'
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        
+        $data['before_photo'] = $dat->before_photo;
+        $data['after_photo'] = $dat->after_photo;
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
     public function portfolio()
     {
 

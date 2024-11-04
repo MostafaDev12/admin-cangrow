@@ -76,6 +76,21 @@ class PageSettingController extends Controller
                 $input['portfolio_photo'] = $name;
             }
               
+            if ($file = $request->file('after_photo'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->after_photo);
+                $input['after_photo'] = $name;
+            }
+              
+              
+            if ($file = $request->file('before_photo'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->before_photo);
+                $input['before_photo'] = $name;
+            }
+              
            
         $data->update($input);
         //--- Logic Section Ends
@@ -106,6 +121,17 @@ class PageSettingController extends Controller
     public function portfolio()
     {
         return view('admin.pagesetting.portfolio');
+    }
+
+ 
+    public function after_before()
+    {
+        return view('admin.pagesetting.after_before');
+    }
+
+   public function our_team()
+    {
+        return view('admin.pagesetting.our_team');
     }
 
  

@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __("translation.add_model_category") }}
+        {{ __("translation.add") }}
         @endslot
     @endcomponent
 
@@ -79,10 +79,10 @@
                                                   <input type="text" class="form-control" name="title_ar" id="title_ar" placeholder="{{ __('translation.title') }}">
                                               </div>
                                                
-                                              <!--<div class="mb-3">-->
-                                              <!--    <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>-->
-                                              <!--    <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>-->
-                                              <!--</div>-->
+                                              <!----><div class="mb-3">
+                                              <!--   --> <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
+                                              <!--  -->  <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                              <!----></div>
                                               
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
@@ -93,10 +93,10 @@
                                               <input type="text" class="form-control" name="title_en" id="title_en" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <!--<div class="mb-3">-->
-                                          <!--    <label for="details_en" class="form-label">{{ __('translation.details') }}</label>-->
-                                          <!--    <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>-->
-                                          <!--</div>-->
+                                          <!----><div class="mb-3">
+                                          <!--   --> <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
+                                          <!-- -->   <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                          <!----></div>
                                           
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
@@ -108,10 +108,10 @@
                                               <input type="text" class="form-control" name="title_fr" id="title_fr" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <!--<div class="mb-3">-->
-                                          <!--    <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>-->
-                                          <!--    <textarea class="form-control" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}"></textarea>-->
-                                          <!--</div>-->
+                                          <!----><div class="mb-3">
+                                          <!--  -->  <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
+                                          <!--  -->  <textarea class="form-control" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                          <!----></div>
                                         </div>
 
                                     </div>

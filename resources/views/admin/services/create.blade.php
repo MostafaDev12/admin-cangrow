@@ -169,7 +169,7 @@
                     </div>
   
                         <div class="row">
-
+{{-- 
                             <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">
@@ -194,7 +194,7 @@
                                      
                                     </select>
                                 </div>  
-                            </div>
+                            </div> --}}
                             
                             
                             {{--  --}}

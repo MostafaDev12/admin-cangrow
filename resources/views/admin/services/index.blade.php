@@ -107,6 +107,8 @@
                                         <thead>
                                             <tr>
                                               <th>{{ __('translation.photo') }}</th>
+                                              <th>{{ __('translation.title_ar') }}</th>
+                                              <th>{{ __('translation.title_en') }}</th>
                                           
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
@@ -210,6 +212,8 @@
                ajax: '{{ route('admin-services-datatables') }}',
                columns: [
                         { data: 'photo', name: 'photo' },
+                        { data: 'title_ar', name: 'title_ar' },
+                        { data: 'title_en', name: 'title_en' },
                          
                         { data: 'action', searchable: false, orderable: false }
 

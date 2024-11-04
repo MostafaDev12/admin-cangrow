@@ -12,7 +12,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.model_category') }}
+        {{ __('translation.about_us_page_section') }}
         @endslot
     @endcomponent
  
@@ -99,7 +99,7 @@
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
           '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-models_category-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_model_category") }}'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add") }}'+
           '</a>'+
           '</div>');
       });
