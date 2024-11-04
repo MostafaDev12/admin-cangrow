@@ -287,6 +287,40 @@ class FrontController extends Controller
         ], 200);
     }
 
+    public function our_team()
+    {
+
+        $dat = Pagesetting::select(
+            'our_team_title_en',
+           
+            'our_team_title_ar',
+            'our_team_details_en',
+        
+            'our_team_details_ar',
+         
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        $data['title'] = $dat->{'our_team_title_' . $lang};
+        $data['details'] =  $dat->{'our_team_details_' . $lang};
+
+        
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
     public function modelsCategory()
     {
 
@@ -300,6 +334,7 @@ class FrontController extends Controller
         foreach ($datas as $k => $dat) {
             $data[$k]['id'] = $dat->id;
             $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['details'] = $dat->{'details_' . $lang};
         }
 
         return response()->json([

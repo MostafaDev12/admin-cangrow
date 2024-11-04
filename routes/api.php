@@ -31,8 +31,10 @@ Route::get('/single-service/{id}',  [FrontController::class, 'singleService']);
 Route::get('/settings',  [FrontController::class, 'settings']);
 Route::get('/about-us',  [FrontController::class, 'about_us']);
 Route::get('/portfolio',  [FrontController::class, 'portfolio']);
+Route::get('/our_team',  [FrontController::class, 'our_team']);
 Route::get('/visitors',  [FrontController::class, 'visitors']);
 Route::get('/models-category',  [FrontController::class, 'modelsCategory']);
+Route::get('/about_us_page_section',  [FrontController::class, 'modelsCategory']);
 Route::get('/models/{category_id}',  [FrontController::class, 'models']);
 
 Route::get('/single-model/{id}',  [FrontController::class, 'Singlemodel']);
