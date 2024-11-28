@@ -167,6 +167,15 @@
                         </div>
                     </li> <!-- end Dashboard Menu -->
                 @endif
+
+           @if (Auth::guard('admin')->user()->sectionCheck('blogs'))
+                <li class="nav-item">
+                    <a class="nav-link  " href="{{ route('admin-blogs-index') }}" aria-controls="sidebarblogs">
+                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.blogs')</span>
+                    </a>
+                </li>
+            @endif
+
                 @if (Auth::guard('admin')->user()->sectionCheck('general_settings'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#general" data-bs-toggle="collapse" role="button"
