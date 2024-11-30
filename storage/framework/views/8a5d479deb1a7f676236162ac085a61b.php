@@ -87,7 +87,7 @@
                serverSide: true,
                ajax: '<?php echo e(route('admin-slider-datatables')); ?>',
                columns: [
-                        { data: 'photo', name: 'photo' },
+                        { data: 'photo_ar', name: 'photo_ar' },
                          
                         { data: 'action', searchable: false, orderable: false }
 

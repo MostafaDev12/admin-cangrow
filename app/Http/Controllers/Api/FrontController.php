@@ -59,7 +59,7 @@ class FrontController extends Controller
             $data[$k]['details'] =  $dat->{'details_' . $lang};
 
             $data[$k]['id'] = $dat->id;
-            $data[$k]['photo'] = $dat->photo;
+            $data[$k]['photo'] = $dat->{'photo_' . $lang};
         }
 
         return response()->json([

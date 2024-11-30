@@ -84,6 +84,41 @@
                                                   <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                               </div>
                                               
+                                              <div class="row">
+
+
+                                                <div class="col-xl-12 col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>
+                                                        </div><!-- end card header -->
+                    
+                                                        <div class="card-body">
+                                                            <p class="text-muted">FilePond is a JavaScript library with profile picture-shaped
+                                                                file
+                                                                upload variation.</p>
+                                                            <div class="currrent-logo" style="text-align: center;">
+                                                                <img style="width: 171px;" src="{{ asset('assets/images/noimage.png') }}"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="avatar-xl mx-auto">
+                                                                <input type="file" class="filepond filepond-input-circle" name="photo_ar"
+                                                                    accept="image/png, image/jpeg, image/gif, image/webp" />
+                                                            </div>
+                    
+                    
+                                                        </div>
+                                                        <!-- end card body -->
+                    
+                    
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div> <!-- end col -->
+                    
+                    
+                                            </div>
+                    
+                    
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
@@ -98,6 +133,42 @@
                                               <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                           </div>
                                           
+
+                                          <div class="row">
+
+
+                                            <div class="col-xl-12 col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>
+                                                    </div><!-- end card header -->
+                
+                                                    <div class="card-body">
+                                                        <p class="text-muted">FilePond is a JavaScript library with profile picture-shaped
+                                                            file
+                                                            upload variation.</p>
+                                                        <div class="currrent-logo" style="text-align: center;">
+                                                            <img style="width: 171px;" src="{{ asset('assets/images/noimage.png') }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="avatar-xl mx-auto">
+                                                            <input type="file" class="filepond filepond-input-circle" name="photo_en"
+                                                                accept="image/png, image/jpeg, image/gif, image/webp" />
+                                                        </div>
+                
+                
+                                                    </div>
+                                                    <!-- end card body -->
+                
+                
+                                                </div>
+                                                <!-- end card -->
+                                            </div> <!-- end col -->
+                
+                
+                                        </div>
+                
+                
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
                                             <h6 style="text-align: center;">{{ __('translation.france') }}</h6>
@@ -120,41 +191,7 @@
                         </div>
                     </div>
   
-                        <div class="row">
-
-
-                            <div class="col-xl-12 col-md-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <p class="text-muted">FilePond is a JavaScript library with profile picture-shaped
-                                            file
-                                            upload variation.</p>
-                                        <div class="currrent-logo" style="text-align: center;">
-                                            <img style="width: 171px;" src="{{ asset('assets/images/noimage.png') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="avatar-xl mx-auto">
-                                            <input type="file" class="filepond filepond-input-circle" name="photo"
-                                                accept="image/png, image/jpeg, image/gif, image/webp" />
-                                        </div>
-
-
-                                    </div>
-                                    <!-- end card body -->
-
-
-                                </div>
-                                <!-- end card -->
-                            </div> <!-- end col -->
-
-
-                        </div>
-
-
+                     
 
                         <br>
                         <br>

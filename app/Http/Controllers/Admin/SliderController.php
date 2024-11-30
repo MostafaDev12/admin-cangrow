@@ -22,8 +22,8 @@ class SliderController extends Controller
          $datas = Slider::orderBy('id','desc')->get();
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)
-                            ->editColumn('photo', function(Slider $data) {
-                                $photo =  $data->photo;
+                            ->editColumn('photo_ar', function(Slider $data) {
+                                $photo =  $data->photo_ar;
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
@@ -33,7 +33,7 @@ class SliderController extends Controller
                                 <a href="javascript:;" data-href="' . route('admin-slider-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
-                            ->rawColumns(['photo','action'])
+                            ->rawColumns(['photo_ar','action'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
 
@@ -74,6 +74,20 @@ class SliderController extends Controller
             $file->move('assets/images/slider/',$name);
                     
         $input['photo'] = $name;
+        } 
+        if ($file = $request->file('photo_ar')) 
+        {              
+            $name = time().$file->getClientOriginalName();
+            $file->move('assets/images/slider/',$name);
+                    
+        $input['photo_ar'] = $name;
+        } 
+        if ($file = $request->file('photo_en')) 
+        {              
+            $name = time().$file->getClientOriginalName();
+            $file->move('assets/images/slider/',$name);
+                    
+        $input['photo_en'] = $name;
         } 
         $data->fill($input)->save();
         //--- Logic Section Ends
@@ -123,6 +137,30 @@ class SliderController extends Controller
                 }
             }            
         $input['photo'] = $name;
+        } 
+        if ($file = $request->file('photo_ar')) 
+        {              
+            $name = time().$file->getClientOriginalName();
+            $file->move('assets/images/slider/',$name);
+            if($data->photo_ar != null)
+            {
+                if (file_exists(public_path().'/assets/images/slider/'.$data->photo_ar)) {
+                    unlink(public_path().'/assets/images/slider/'.$data->photo_ar);
+                }
+            }            
+        $input['photo_ar'] = $name;
+        } 
+        if ($file = $request->file('photo_en')) 
+        {              
+            $name = time().$file->getClientOriginalName();
+            $file->move('assets/images/slider/',$name);
+            if($data->photo_en != null)
+            {
+                if (file_exists(public_path().'/assets/images/slider/'.$data->photo_en)) {
+                    unlink(public_path().'/assets/images/slider/'.$data->photo_en);
+                }
+            }            
+        $input['photo_en'] = $name;
         } 
         $data->update($input);
         //--- Logic Section Ends
