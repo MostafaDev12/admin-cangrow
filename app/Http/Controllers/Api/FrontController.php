@@ -59,7 +59,7 @@ class FrontController extends Controller
             $data[$k]['details'] =  $dat->{'details_' . $lang};
 
             $data[$k]['id'] = $dat->id;
-            $data[$k]['photo'] = $dat->photo;
+            $data[$k]['photo'] = $dat->{'photo_' . $lang};
         }
 
         return response()->json([
@@ -109,6 +109,7 @@ class FrontController extends Controller
             $data[$k]['id'] = $dat->id;
             $data[$k]['title'] = $dat->{'title_' . $lang};
             $data[$k]['details'] =  $dat->{'details_' . $lang};
+            $data[$k]['short_details'] =  $dat->{'short_details_' . $lang};
             $data[$k]['meta_title'] =  $dat->{'meta_title_' . $lang};
             $data[$k]['meta_details'] = $dat->{'meta_details_' . $lang};
             $data[$k]['slug'] = $dat->{'slug_' . $lang};
@@ -143,6 +144,7 @@ class FrontController extends Controller
             $data['id'] = $dat->id;
             $data['title'] = $dat->{'title_' . $lang};
             $data['details'] =  $dat->{'details_' . $lang};
+            $data['short_details'] =  $dat->{'short_details_' . $lang};
             $data['meta_title'] =  $dat->{'meta_title_' . $lang};
             $data['meta_details'] = $dat->{'meta_details_' . $lang};
             $data['slug'] = $dat->{'slug_' . $lang};
@@ -224,35 +226,6 @@ class FrontController extends Controller
         ], 200);
     }
 
-    public function after_before()
-    {
-
-        $dat = Pagesetting::select(
-            'before_photo',
-         
-            'after_photo'
-        )->first();
-
-
-
-        $data = [];
-
-        $lang = request()->header('Accept-Language');
-
-        
-        $data['before_photo'] = $dat->before_photo;
-        $data['after_photo'] = $dat->after_photo;
-
-
-        return response()->json([
-            'status' => true,
-            'message' => 'success',
-            'data' => $data,
-
-
-        ], 200);
-    }
-
     public function portfolio()
     {
 
@@ -287,40 +260,6 @@ class FrontController extends Controller
         ], 200);
     }
 
-    public function our_team()
-    {
-
-        $dat = Pagesetting::select(
-            'our_team_title_en',
-           
-            'our_team_title_ar',
-            'our_team_details_en',
-        
-            'our_team_details_ar',
-         
-        )->first();
-
-
-
-        $data = [];
-
-        $lang = request()->header('Accept-Language');
-
-        $data['title'] = $dat->{'our_team_title_' . $lang};
-        $data['details'] =  $dat->{'our_team_details_' . $lang};
-
-        
-
-
-        return response()->json([
-            'status' => true,
-            'message' => 'success',
-            'data' => $data,
-
-
-        ], 200);
-    }
-
     public function modelsCategory()
     {
 
@@ -334,7 +273,6 @@ class FrontController extends Controller
         foreach ($datas as $k => $dat) {
             $data[$k]['id'] = $dat->id;
             $data[$k]['title'] = $dat->{'title_' . $lang};
-            $data[$k]['details'] = $dat->{'details_' . $lang};
         }
 
         return response()->json([
@@ -715,7 +653,7 @@ class FrontController extends Controller
              
             } 
             
-            $data[$k]['subcategories'] = $sub ;
+       //     $data[$k]['subcategories'] = $sub ;
         }
 
         return response()->json([
@@ -840,6 +778,7 @@ class FrontController extends Controller
             $data[$k]['id'] = $dat->id;
             $data[$k]['title'] = $dat->{'title_' . $lang};
             $data[$k]['details'] =  $dat->{'details_' . $lang};
+            $data[$k]['short_details'] =  $dat->{'short_details_' . $lang};
             $data[$k]['meta_title'] =  $dat->{'meta_title_' . $lang};
             $data[$k]['meta_details'] = $dat->{'meta_details_' . $lang};
             $data[$k]['slug'] = $dat->{'slug_' . $lang};
@@ -875,6 +814,7 @@ class FrontController extends Controller
             $data['id'] = $dat->id;
             $data['title'] = $dat->{'title_' . $lang};
             $data['details'] =  $dat->{'details_' . $lang};
+            $data['short_details'] =  $dat->{'short_details_' . $lang};
             $data['meta_title'] =  $dat->{'meta_title_' . $lang};
             $data['meta_details'] = $dat->{'meta_details_' . $lang};
             $data['slug'] = $dat->{'slug_' . $lang};

@@ -41,6 +41,9 @@ class Service extends Model
         'slug_ar',
         'slug_en',
         'slug_fr',
+        'short_details_ar',
+        'short_details_en',
+        'short_details_fr',
         'tags',
         'category_id',
       
