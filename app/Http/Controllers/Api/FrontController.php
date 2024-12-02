@@ -59,7 +59,7 @@ class FrontController extends Controller
             $data[$k]['details'] =  $dat->{'details_' . $lang};
 
             $data[$k]['id'] = $dat->id;
-            $data[$k]['photo'] = $dat->{'photo_' . $lang};
+            $data[$k]['photo'] = $dat->photo;
         }
 
         return response()->json([
@@ -226,6 +226,35 @@ class FrontController extends Controller
         ], 200);
     }
 
+    public function after_before()
+    {
+
+        $dat = Pagesetting::select(
+            'before_photo',
+         
+            'after_photo'
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        
+        $data['before_photo'] = $dat->before_photo;
+        $data['after_photo'] = $dat->after_photo;
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
     public function portfolio()
     {
 
@@ -260,6 +289,40 @@ class FrontController extends Controller
         ], 200);
     }
 
+    public function our_team()
+    {
+
+        $dat = Pagesetting::select(
+            'our_team_title_en',
+           
+            'our_team_title_ar',
+            'our_team_details_en',
+        
+            'our_team_details_ar',
+         
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        $data['title'] = $dat->{'our_team_title_' . $lang};
+        $data['details'] =  $dat->{'our_team_details_' . $lang};
+
+        
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
     public function modelsCategory()
     {
 
@@ -273,6 +336,7 @@ class FrontController extends Controller
         foreach ($datas as $k => $dat) {
             $data[$k]['id'] = $dat->id;
             $data[$k]['title'] = $dat->{'title_' . $lang};
+            $data[$k]['details'] = $dat->{'details_' . $lang};
         }
 
         return response()->json([
@@ -653,7 +717,7 @@ class FrontController extends Controller
              
             } 
             
-       //     $data[$k]['subcategories'] = $sub ;
+            $data[$k]['subcategories'] = $sub ;
         }
 
         return response()->json([
