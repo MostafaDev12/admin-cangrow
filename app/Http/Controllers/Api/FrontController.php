@@ -113,6 +113,8 @@ class FrontController extends Controller
             $data[$k]['meta_title'] =  $dat->{'meta_title_' . $lang};
             $data[$k]['meta_details'] = $dat->{'meta_details_' . $lang};
             $data[$k]['slug'] = $dat->{'slug_' . $lang};
+            $data[$k]['slug_ar'] = $dat->slug_ar;
+            $data[$k]['slug_en'] = $dat->slug_en;
             $data[$k]['tags'] = $dat->tags;
             $data[$k]['photo'] = $dat->photo;
         }
@@ -148,6 +150,8 @@ class FrontController extends Controller
             $data['meta_title'] =  $dat->{'meta_title_' . $lang};
             $data['meta_details'] = $dat->{'meta_details_' . $lang};
             $data['slug'] = $dat->{'slug_' . $lang};
+            $data['slug_ar'] = $dat->slug_ar;
+            $data['slug_en'] = $dat->slug_en;
             $data['tags'] = $dat->tags;
             $data['photo'] = $dat->photo;
         }
