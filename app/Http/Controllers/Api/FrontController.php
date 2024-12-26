@@ -624,7 +624,7 @@ class FrontController extends Controller
 
         $lang = request()->header('Accept-Language');
 
-        $datas = Category::get();
+        $datas = Category::with(['videos'])->get();
         $subs = [];
         
         foreach ($datas as $k => $dat) {
@@ -719,7 +719,7 @@ class FrontController extends Controller
 
 
 
-        $dat = Category::where('slug_ar', 'like', '%' . $id . '%')->orwhere('slug_en', 'like', '%' . $id . '%')->orwhere('slug_fr', 'like', '%' . $id . '%')->first();
+        $dat = Category::with(['videos'])->where('slug_ar', 'like', '%' . $id . '%')->orwhere('slug_en', 'like', '%' . $id . '%')->orwhere('slug_fr', 'like', '%' . $id . '%')->first();
 
 
 

@@ -54,6 +54,10 @@ class Category extends Model
     {
         return $this->hasMany(Subcategory::class);
     }  
+    public function videos()
+    {
+        return $this->hasMany(Media::class);
+    }  
     /**
      * The attributes that should be hidden for serialization.
      *
