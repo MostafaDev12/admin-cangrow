@@ -636,6 +636,7 @@ class FrontController extends Controller
             $data[$k]['slug'] = $dat->{'slug_' . $lang};
             $data[$k]['tags'] = $dat->tags;
             $data[$k]['photo'] = $dat->photo;
+            $data[$k]['videos'] = $dat->videos;
             $sub = [];
             foreach ($dat->subcategories as $ke => $subcategory) {
                 $sub[$ke]['id'] = $subcategory->id;
@@ -736,6 +737,7 @@ class FrontController extends Controller
             $data['slug'] = $dat->{'slug_' . $lang};
             $data['tags'] = $dat->tags;
             $data['photo'] = $dat->photo;
+            $data['videos'] = $dat->videos;
           
             foreach($dat->services as $k=>$service){
 
