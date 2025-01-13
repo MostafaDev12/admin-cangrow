@@ -28,6 +28,7 @@
                                         <thead>
                                             <tr>
                                               <th>{{ __('translation.media') }}</th>
+                                              <th>{{ __('translation.category') }}</th>
                                           
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
@@ -87,6 +88,7 @@
                ajax: '{{ route('admin-media-datatables') }}',
                columns: [
                         { data: 'media', name: 'media' },
+                        { data: 'category', name: 'category' , searchable: false, orderable: false},
                          
                         { data: 'action', searchable: false, orderable: false }
 

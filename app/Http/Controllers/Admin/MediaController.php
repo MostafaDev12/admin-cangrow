@@ -6,6 +6,7 @@ use DataTables;
 use App\Models\Media;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Input;
 use Validator;
 
@@ -38,6 +39,11 @@ class MediaController extends Controller
                 }
 
                 return $html;
+            }) 
+            ->editColumn('category', function (Media $data) {
+                $media =  optional($data->category)->title_ar ?? '';
+ 
+                return $media;
             })
             ->addColumn('action', function (Media $data) {
                 return '<div class="action-list">
@@ -58,7 +64,9 @@ class MediaController extends Controller
     //*** GET Request
     public function create()
     {
-        return view('admin.media.create');
+        $cats = Category::get();
+
+        return view('admin.media.create',compact('cats'));
     }
 
     //*** POST Request
@@ -115,7 +123,8 @@ class MediaController extends Controller
     public function edit($id)
     {
         $data = Media::findOrFail($id);
-        return view('admin.media.edit', compact('data'));
+        $cats = Category::get();
+        return view('admin.media.edit', compact('data','cats'));
     }
 
     //*** POST Request

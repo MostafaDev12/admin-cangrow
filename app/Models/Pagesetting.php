@@ -24,6 +24,23 @@ class Pagesetting extends Model
      'portfolio_details_ar',
      'portfolio_photo',
    
+     
+     'factory_title_en', 
+     'factory_title_fr', 
+     'factory_title_ar',
+     'factory_details_en', 
+     'factory_details_fr', 
+     'factory_details_ar',
+     'factory_photo',
+     
+     'business_title_en', 
+     'business_title_fr', 
+     'business_title_ar',
+     'business_details_en', 
+     'business_details_fr', 
+     'business_details_ar',
+     'business_photo',
+     
 ];
 
     public $timestamps = false;
@@ -33,6 +50,18 @@ class Pagesetting extends Model
     public function getAboutPhotoAttribute()
     {
         return !empty($this->attributes['about_photo']) ? url('/') . '/assets/images/' . $this->attributes['about_photo'] : '';
+    }
+
+
+    public function getFactoryPhotoAttribute()
+    {
+        return !empty($this->attributes['factory_photo']) ? url('/') . '/assets/images/' . $this->attributes['factory_photo'] : '';
+    }
+
+
+    public function getBusinessPhotoAttribute()
+    {
+        return !empty($this->attributes['business_photo']) ? url('/') . '/assets/images/' . $this->attributes['business_photo'] : '';
     }
 
 

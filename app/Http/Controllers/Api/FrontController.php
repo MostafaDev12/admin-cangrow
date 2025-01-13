@@ -850,5 +850,79 @@ class FrontController extends Controller
             return redirect()->back();
         }
     }
+
+
+
+
+    public function our_factory()
+    {
+
+        $dat = Pagesetting::select(
+            'factory_title_en',
+            'factory_title_fr',
+            'factory_title_ar',
+            'factory_details_en',
+            'factory_details_fr',
+            'factory_details_ar',
+
+            'factory_photo'
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        $data['title'] = $dat->{'factory_title_' . $lang};
+        $data['details'] =  $dat->{'factory_details_' . $lang};
+
+        $data['photo'] = $dat->factory_photo;
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
+    public function our_business()
+    {
+
+        $dat = Pagesetting::select(
+            'business_title_en',
+            'business_title_fr',
+            'business_title_ar',
+            'business_details_en',
+            'business_details_fr',
+            'business_details_ar',
+
+            'business_photo'
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        $data['title'] = $dat->{'business_title_' . $lang};
+        $data['details'] =  $dat->{'business_details_' . $lang};
+
+        $data['photo'] = $dat->business_photo;
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
 }
 

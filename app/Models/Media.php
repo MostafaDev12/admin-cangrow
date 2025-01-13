@@ -21,6 +21,7 @@ class Media extends Model
         'media',
         'ext',
         'type',
+        'category_id',
        
       
     ];
@@ -36,7 +37,10 @@ class Media extends Model
      * @var array<int, string>
      */
     
-
+     public function category()
+     {
+         return $this->belongsTo(Category::class,'category_id');
+     }
     /**
      * The attributes that should be cast.
      *

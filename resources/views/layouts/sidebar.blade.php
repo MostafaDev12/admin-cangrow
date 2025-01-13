@@ -50,16 +50,43 @@
                     </li>
                 @endif
                 @if (Auth::guard('admin')->user()->sectionCheck('page_settings'))
-                    <li class="nav-item">
-                        <a class="nav-link  " href="{{ route('admin-ps-about_us') }}" aria-controls="sidebarabout_us">
-                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_us')</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  " href="{{ route('admin-ps-portfolio') }}" aria-controls="sidebarportfolio">
-                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
-                        </a>
-                    </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#about_us" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="models">
+                        <i class="las la-cog"></i> <span data-key="t-General_Settings"> @lang('translation.about_us')</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="about_us">
+                        <ul class="nav nav-sm flex-column">
+
+                            
+                            <li class="nav-item">
+                                <a class="nav-link  " href="{{ route('admin-ps-about_us') }}" aria-controls="sidebarabout_us">
+                                    <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_us')</span>
+                                </a>
+                            </li> 
+                            
+                            <li class="nav-item">
+                                <a class="nav-link  " href="{{ route('admin-ps-our_factory') }}" aria-controls="sidebarour_factory">
+                                    <i class="las la-tachometer-alt"></i> <span>@lang('translation.our_factory')</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="{{ route('admin-ps-our_business') }}" aria-controls="sidebarour_business">
+                                    <i class="las la-tachometer-alt"></i> <span>@lang('translation.our_business')</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="{{ route('admin-ps-portfolio') }}" aria-controls="sidebarportfolio">
+                                    <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> <!-- end Dashboard Menu -->
+                
+                  
                     
                 @endif
 

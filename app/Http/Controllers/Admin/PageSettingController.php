@@ -103,6 +103,18 @@ class PageSettingController extends Controller
     }
 
  
+    public function our_factory()
+    {
+        return view('admin.pagesetting.our_factory');
+    }
+
+ 
+    public function our_business()
+    {
+        return view('admin.pagesetting.our_business');
+    }
+
+ 
     public function portfolio()
     {
         return view('admin.pagesetting.portfolio');
