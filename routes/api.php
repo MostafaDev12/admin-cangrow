@@ -57,3 +57,4 @@ Route::get('/business-models',  [FrontController::class, 'about_us_models']);
 
 Route::get('/our-factory',  [FrontController::class, 'our_factory']);
 Route::get('/our-business',  [FrontController::class, 'our_business']);
+Route::get('/website-galleries',  [FrontController::class, 'galleries']);

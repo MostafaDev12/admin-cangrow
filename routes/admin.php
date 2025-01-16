@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ImageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -149,6 +150,18 @@ Route::prefix('admin')->group(function () {
       Route::post('/media/update/{id}', [MediaController::class, 'update'])->name('admin-media-update');
 
       Route::get('/media/delete/{id}',  [MediaController::class, 'destroy'])->name('admin-media-delete');
+     
+      Route::get('/image/datatables',  [ImageController::class, 'datatables'])->name('admin-image-datatables');
+      Route::get('/image',  [ImageController::class, 'index'])->name('admin-image-index');
+      Route::get('/image/create',   [ImageController::class, 'create'])->name('admin-image-create');
+      Route::post('/image/create',  [ImageController::class, 'store'])->name('admin-image-store');
+      Route::get('/image/edit/{id}',  [ImageController::class, 'edit'])->name('admin-image-edit');
+      Route::post('/image/update/{id}', [ImageController::class, 'update'])->name('admin-image-update');
+
+      Route::get('/image/delete/{id}',  [ImageController::class, 'destroy'])->name('admin-image-delete');
+   
+   
+   
     });
     Route::group(['middleware' => 'permissions:services'], function () {
 

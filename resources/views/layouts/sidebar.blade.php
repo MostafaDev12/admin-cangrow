@@ -105,6 +105,13 @@
                             aria-controls="sidebarmedia">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.media')</span>
                         </a>
+                    </li>  
+                    
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-image-index') }}"
+                            aria-controls="sidebarimage">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.gallery')</span>
+                        </a>
                     </li>
                 @endif
 

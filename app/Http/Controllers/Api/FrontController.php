@@ -25,6 +25,7 @@ use App\Models\Media;
 use App\Models\Socialsetting;
 use Validator;
 use App\Classes\GeniusMailer;
+use App\Models\Image;
 
 class FrontController extends Controller
 {
@@ -338,6 +339,21 @@ class FrontController extends Controller
     {
 
         $data = Media::get();
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }  
+    
+    public function galleries()
+    {
+
+        $data = Image::get();
 
 
         return response()->json([
