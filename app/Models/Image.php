@@ -13,7 +13,7 @@ class Image extends Model
      *
      * @var array<int, string>
      */
-    protected $table ='media';
+    protected $table ='images';
     
      
     protected $fillable = [

@@ -48,8 +48,8 @@ class ImageController extends Controller
             })
             ->addColumn('action', function (Image $data) {
                 return '<div class="action-list">
-                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-media-edit', $data->id) . '"> <i class="las la-edit"></i>تعديل</a>
-                                <a href="javascript:;" data-href="' . route('admin-media-delete', $data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
+                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-image-edit', $data->id) . '"> <i class="las la-edit"></i>تعديل</a>
+                                <a href="javascript:;" data-href="' . route('admin-image-delete', $data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
             })
             ->rawColumns(['media', 'action'])
