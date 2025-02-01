@@ -43,4 +43,4 @@
 </body>
 
 </html>
-<?php /**PATH C:\laragon\www\admin-cangrow\resources\views/layouts/master.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\admin-cangrows\resources\views/layouts/master.blade.php ENDPATH**/ ?>

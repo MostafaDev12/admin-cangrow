@@ -207,7 +207,7 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="<?php if(Auth::guard('admin')->user()->photo != ''): ?> <?php echo e(URL::asset('images/' . Auth::guard('admin')->user()->photo)); ?><?php else: ?><?php echo e(URL::asset('build/images/users/avatar-1.jpg')); ?> <?php endif; ?>" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="<?php if(Auth::guard('admin')->user()->photo != ''): ?> <?php echo e(URL::asset('images/' . Auth::guard('admin')->user()->photo)); ?><?php else: ?> <?php echo e(URL::asset('build/images/cangrow.png')); ?> <?php endif; ?>" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?php echo e(Auth::guard('admin')->user()->name); ?></span>
                                 <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"> <?php echo e(empty(Auth::guard('admin')->user()->role)  ? __('translation.admin')  : Auth::guard('admin')->user()->role->name); ?>
@@ -255,4 +255,4 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<?php /**PATH C:\wamp64\www\admin-cangrows\resources\views/layouts/topbar.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\admin-cangrows\resources\views/layouts/topbar.blade.php ENDPATH**/ ?>

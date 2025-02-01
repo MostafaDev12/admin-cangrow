@@ -12,4 +12,4 @@
         </div>
     </div>
 </footer>
-<?php /**PATH C:\wamp64\www\admin-cangrows\resources\views/layouts/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\admin-cangrows\resources\views/layouts/footer.blade.php ENDPATH**/ ?>

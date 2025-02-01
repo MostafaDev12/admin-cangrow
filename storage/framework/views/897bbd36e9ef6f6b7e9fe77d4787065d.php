@@ -805,4 +805,4 @@
         </div>
     </div>
 </div>
-<?php /**PATH C:\wamp64\www\admin-cangrows\resources\views/layouts/customizer.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\admin-cangrows\resources\views/layouts/customizer.blade.php ENDPATH**/ ?>

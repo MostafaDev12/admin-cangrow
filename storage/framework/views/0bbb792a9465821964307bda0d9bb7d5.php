@@ -51,4 +51,4 @@ var admin_loader = 0;
   </script>
 <?php echo $__env->yieldContent('script'); ?>
 <?php echo $__env->yieldContent('script-bottom'); ?>
-<?php /**PATH C:\laragon\www\admin-cangrow\resources\views/layouts/vendor-scripts.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\admin-cangrows\resources\views/layouts/vendor-scripts.blade.php ENDPATH**/ ?>

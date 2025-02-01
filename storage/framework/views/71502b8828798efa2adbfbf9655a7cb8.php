@@ -60,7 +60,6 @@
                             <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.portfolio'); ?></span>
                         </a>
                     </li>
-                    
                 <?php endif; ?>
 
                 <?php if(Auth::guard('admin')->user()->sectionCheck('partners')): ?>
@@ -72,17 +71,57 @@
                     </li>
                 <?php endif; ?>
 
-                <?php if(Auth::guard('admin')->user()->sectionCheck('services')): ?>
+                <?php if(Auth::guard('admin')->user()->sectionCheck('media')): ?>
                     <li class="nav-item">
-                        <a class="nav-link  " href="<?php echo e(route('admin-services-index')); ?>"
-                            aria-controls="sidebarservices">
-                            <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.services'); ?></span>
+                        <a class="nav-link  " href="<?php echo e(route('admin-media-index')); ?>" aria-controls="sidebarmedia">
+                            <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.media'); ?></span>
                         </a>
                     </li>
                 <?php endif; ?>
+
+                
+                <?php if(Auth::guard('admin')->user()->sectionCheck('services') ||
+                        Auth::guard('admin')->user()->sectionCheck('categories') ||
+                        Auth::guard('admin')->user()->sectionCheck('subcategories')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#services" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="services">
+                            <i class="las la-cog"></i> <span data-key="t-General_Settings"> <?php echo app('translator')->get('translation.services'); ?></span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="services">
+                            <ul class="nav nav-sm flex-column">
+
+                                <?php if(Auth::guard('admin')->user()->sectionCheck('categories')): ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="<?php echo e(route('admin-categories-index')); ?>"
+                                            aria-controls="sidebar_category">
+                                            <span><?php echo app('translator')->get('translation.categories'); ?></span>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php if(Auth::guard('admin')->user()->sectionCheck('subcategories')): ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="<?php echo e(route('admin-subcategories-index')); ?>"
+                                            aria-controls="sidebar_subcategories">
+                                            <span><?php echo app('translator')->get('translation.subcategories'); ?></span>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php if(Auth::guard('admin')->user()->sectionCheck('services')): ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="<?php echo e(route('admin-services-index')); ?>"
+                                            aria-controls="sidebarservices">
+                                            <span><?php echo app('translator')->get('translation.services'); ?></span>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </li>
+
+                <?php endif; ?>
                 <?php if(Auth::guard('admin')->user()->sectionCheck('models')): ?>
-                  
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link menu-link" href="#models" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="models">
                             <i class="las la-cog"></i> <span data-key="t-General_Settings"> <?php echo app('translator')->get('translation.models'); ?></span>
@@ -90,23 +129,24 @@
                         <div class="collapse menu-dropdown" id="models">
                             <ul class="nav nav-sm flex-column">
 
-                                
-                                 <li class="nav-item">
-                                    <a class="nav-link  " href="<?php echo e(route('admin-models_category-index')); ?>" aria-controls="sidebarmodels_category">
-                                         <span><?php echo app('translator')->get('translation.models_category'); ?></span>
+
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="<?php echo e(route('admin-models_category-index')); ?>"
+                                        aria-controls="sidebarmodels_category">
+                                        <span><?php echo app('translator')->get('translation.models_category'); ?></span>
                                     </a>
                                 </li>
-                    
-                                 <li class="nav-item">
-                                    <a class="nav-link  " href="<?php echo e(route('admin-models-index')); ?>" aria-controls="sidebarmodels">
-                                         <span><?php echo app('translator')->get('translation.models'); ?></span>
+
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="<?php echo e(route('admin-models-index')); ?>"
+                                        aria-controls="sidebarmodels">
+                                        <span><?php echo app('translator')->get('translation.models'); ?></span>
                                     </a>
                                 </li>
-                    
+
                             </ul>
                         </div>
                     </li> <!-- end Dashboard Menu -->
-                    
                 <?php endif; ?>
                 <?php if(Auth::guard('admin')->user()->sectionCheck('general_settings')): ?>
                     <li class="nav-item">
@@ -123,7 +163,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo e(route('admin-gs-home_video')); ?>" class="nav-link" data-key="t-home_video">
+                                    <a href="<?php echo e(route('admin-gs-home_video')); ?>" class="nav-link"
+                                        data-key="t-home_video">
                                         <?php echo app('translator')->get('translation.home_video'); ?>
                                     </a>
                                 </li>
@@ -131,26 +172,32 @@
                                 <li class="nav-item">
                                     <a href="<?php echo e(route('admin-gs-contents')); ?>" class="nav-link"
                                         data-key="t-Website_Contents"> <?php echo app('translator')->get('translation.content'); ?> </a>
-                                </li>  
-                                
+                                </li>
+
                                 <li class="nav-item">
                                     <a href="<?php echo e(route('admin-gs-contact_messages')); ?>" class="nav-link"
                                         data-key="t-contact_messages"> <?php echo app('translator')->get('translation.contact_messages'); ?> </a>
                                 </li>
-                                
+
+                                <li class="nav-item">
+                                    <a href="<?php echo e(route('admin-gs-subscriptions')); ?>" class="nav-link"
+                                        data-key="t-Manage_Roles"> <?php echo app('translator')->get('translation.subscriptions'); ?> </a>
+                                </li>
+
                                 <?php if(Auth::guard('admin')->user()->sectionCheck('social_settings')): ?>
                                     <li class="nav-item">
                                         <a href="<?php echo e(route('admin-social-index')); ?>" class="nav-link"
                                             data-key="t-Manage_Roles"> <?php echo app('translator')->get('translation.social_settings'); ?> </a>
                                     </li>
                                 <?php endif; ?>
+
                                 <?php if(Auth::guard('admin')->user()->sectionCheck('super')): ?>
                                     <li class="nav-item">
                                         <a href="<?php echo e(route('admin-role-index')); ?>" class="nav-link"
                                             data-key="t-Manage_Roles"> <?php echo app('translator')->get('translation.role_mangment'); ?> </a>
                                     </li>
                                 <?php endif; ?>
-                              
+
 
                                 <?php if(Auth::guard('admin')->user()->sectionCheck('manage_staffs')): ?>
                                     <li class="nav-item">
@@ -178,4 +225,4 @@
 <!-- Left Sidebar End -->
 <!-- Vertical Overlay-->
 <div class="vertical-overlay"></div>
-<?php /**PATH C:\wamp64\www\admin-cangrows\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\admin-cangrows\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>
