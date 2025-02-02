@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutPointController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\LanguageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +37,7 @@ use App\Http\Controllers\Admin\SubcategoryController;
 Route::prefix('admin')->group(function () {
 
 
-  Route::middleware('auth.admin')->group(function () {
+  Route::middleware(['auth.admin'])->group(function () {
 
     //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -242,6 +244,32 @@ Route::prefix('admin')->group(function () {
       Route::get('/social/google',  [SocialSettingController::class, 'google'])->name('admin-social-google');
       Route::get('/social/facebook/{status}', [SocialSettingController::class, 'facebookup'])->name('admin-social-facebookup');
       Route::get('/social/google/{status}', [SocialSettingController::class, 'googleup'])->name('admin-social-googleup');
+    });
+
+
+    Route::group(['middleware' => 'permissions:language'], function () {
+
+      Route::get('/languages', [LanguageController::class, 'index'])->name('admin-flang-index');
+      Route::get('/languages/create', [LanguageController::class, 'create'])->name('admin-flang-create');
+      Route::post('/languages/create', [LanguageController::class, 'store'])->name('admin-flang-store');
+      Route::get('/languages/edit/{id}', [LanguageController::class, 'edit'])->name('admin-flang-edit');
+      Route::post('/languages/update/{id}', [LanguageController::class, 'update'])->name('admin-flang-update');
+      Route::get('/languages/delete/{id}', [LanguageController::class, 'destroy'])->name('admin-flang-delete');
+      Route::get('/languages/statusupdate/{id}/{status}', [LanguageController::class, 'statusupdate'])->name('admin-flang-statusupdate');
+       });
+
+    Route::group(['middleware' => 'permissions:about_points'], function () {
+
+     
+      Route::get('/about_points/datatables',  [AboutPointController::class, 'datatables'])->name('admin-about_points-datatables');
+      Route::get('/about_points',  [AboutPointController::class, 'index'])->name('admin-about_points-index');
+      Route::get('/about_points/create',   [AboutPointController::class, 'create'])->name('admin-about_points-create');
+      Route::post('/about_points/create',  [AboutPointController::class, 'store'])->name('admin-about_points-store');
+      Route::get('/about_points/edit/{id}',  [AboutPointController::class, 'edit'])->name('admin-about_points-edit');
+      Route::post('/about_points/update/{id}', [AboutPointController::class, 'update'])->name('admin-about_points-update');
+
+      Route::get('/about_points/delete/{id}',  [AboutPointController::class, 'destroy'])->name('admin-about_points-delete');
+   
     });
 
     // GALLERY SECTION ------------

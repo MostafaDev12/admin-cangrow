@@ -25,6 +25,7 @@
 var admin_loader = 0;
 </script>
 <script src="<?php echo e(URL::asset('build/js/pages/datatables.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('build/js/pages/sweetalert2.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('build/js/myscript.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('build/libs/dropzone/dropzone-min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('build/libs/filepond/filepond.min.js')); ?>"></script>
@@ -47,6 +48,57 @@ var admin_loader = 0;
             document.querySelectorAll('.ckeditor').forEach(function(textarea) {
                 CKEDITOR.replace(textarea);
             });
+        });
+
+        
+        $(document).on('submit', '#geniusform2', function(e) {
+            e.preventDefault();
+
+            var fd = new FormData(this);
+
+            var geniusform = $(this);
+            $('button.addProductSubmit-btn').prop('disabled', true);
+            $.ajax({
+                method: "POST",
+                url: $(this).prop('action'),
+                data: fd,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data) {
+                    console.log(data);
+                    if ((data.errors)) {
+                        geniusform.parent().find('.alert-success').hide();
+                        geniusform.parent().find('.alert-danger').show();
+                        geniusform.parent().find('.alert-danger ul').html('');
+                        for (var error in data.errors) {
+                            $('.alert-danger ul').append('<li>' + data.errors[error] + '</li>')
+                        }
+                        geniusform.find('input , select , textarea').eq(1).focus();
+                    } else {
+
+                        if(data.status == false){
+
+                        toastr.error(data.msg);
+
+                        }else{
+
+                        geniusform.parent().find('.alert-danger').hide();
+
+                            toastr.success(data.msg);
+                            window.location.href = data.url;
+                            geniusform.find('input , select , textarea').eq(1).focus();
+
+                        }
+
+                    }
+
+
+                    $('button.addProductSubmit-btn').prop('disabled', false);
+                }
+
+            });
+
         });
   </script>
 <?php echo $__env->yieldContent('script'); ?>

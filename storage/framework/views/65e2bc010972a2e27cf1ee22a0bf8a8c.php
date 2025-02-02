@@ -10,6 +10,7 @@
 <!-- custom Css-->
 <link href="<?php echo e(URL::asset('build/css/custom.min.css')); ?>"  rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('build/css/toastr.css')); ?>"  rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('build/css/sweetalert2.min.css')); ?>"  rel="stylesheet" type="text/css" />
 
 <!--datatable css-->
 
@@ -22,4 +23,5 @@
 <!--datatable responsive css-->
 <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+
 <?php /**PATH C:\laragon\www\admin-cangrows\resources\views/layouts/head-css.blade.php ENDPATH**/ ?>
