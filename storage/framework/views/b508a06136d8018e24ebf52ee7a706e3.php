@@ -34,16 +34,16 @@
                 <div class="col-12 col-lg-4 col-md-6 box">
                     <div class=" p-4">
                         <div class="blog-div">
-                            <h2>احدث المقالات</h2>
+                            <h2> <?php echo e(__('احدث المقالات')); ?></h2>
                             <hr>
 
-                            <?php $__currentLoopData = App\Models\Blog::orderBy('created_at', 'desc')->where('id','!=',$blog->id)->limit(6)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=> $blogg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = App\Models\Blog::orderBy('blog_date', 'desc')->where('id','!=',$blog->id)->limit(6)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=> $blogg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php
                             $k++
                             ?>
                             <div class="d-flex justify-content-between">
                                 <div class="pt-2">
-                                    <h3> <?php echo e($blogg->{'title_' . $sign}); ?>  </h3>
+                                    <h3> <a href="<?php echo e(route('single-blog.index',$blog->{'slug_' . $sign})); ?>"> <?php echo e($blogg->{'title_' . $sign}); ?> </a> </h3>
                                     <span><?php echo e($blogg->blog_date); ?></span>
                                 </div>
                                 <img class="mb-4" src="<?php echo e($blogg->photo); ?>" alt="">

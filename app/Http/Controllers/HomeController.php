@@ -103,6 +103,34 @@ class HomeController extends Controller
 
     return view('front.services', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
+  public function BookNow(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $services = Service::get();
+    $models = PageModel::get();
+    $reviews = Partner::get();
+
+    return view('front.reservation', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+  }
+ public function contact(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $services = Service::get();
+    $models = PageModel::get();
+    $reviews = Partner::get();
+
+    return view('front.contact', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+  }
 
   public function singleBlog(Request $request, $slug)
   {
@@ -263,8 +291,15 @@ class HomeController extends Controller
     if (!empty($request->reservation)) {
 
       $subject = "Reservation From Of " . $request->name;
-
-      $msg = "Name: " . $name . "\nEmail: " . $from . "\nPhone: " . $phone . "\nJob: " . $job . "\nSubject: " . $subject_title . "\nMessage: " . $message;
+      $service = $request->specialty;
+      $msg = "Name: " . $name . 
+      "\nEmail: " . $from . 
+      "\nPhone: " . $phone . 
+      "\nAge: " . $request->age . 
+      "\nSpecialty: " . $request->specialty . 
+      "\nBookingDate: " . $request->bookingDate . 
+    
+      "\nMessage: " . $message;
     
     } elseif (!empty($request->service)) {
 
@@ -277,8 +312,16 @@ class HomeController extends Controller
     } else {
 
       $subject = "Email From Of " . $request->name;
+      $service = $request->specialty;
+      $msg = "Name: " . $name . 
+      "\nEmail: " . $from . 
+      "\nPhone: " . $phone . 
+      "\nAge: " . $request->age . 
+      "\nSpecialty: " . $request->specialty . 
+      "\nBookingDate: " . $request->bookingDate . 
+    
+      "\nMessage: " . $message;
 
-      $msg = "Name: " . $name . "\nEmail: " . $from . "\nPhone: " . $phone . "\nSubject: " . $subject_title . "\nMessage: " . $message;
     }
 
     if (!empty($gs->contact_emails)) {
@@ -311,11 +354,13 @@ class HomeController extends Controller
       }
     }
  
-    Contact::create([
+    Contact::create( [
       'name' => $name,
       'phone' => $phone,
       'email' => $from,
-      'subject' => $subject_title,
+      'service' => $service ?? '',
+      'booking_date' => $request->bookingDate ?? '',
+      'age' => $request->age ?? '',
       'message' => $message,
     ]);
     // Redirect Section

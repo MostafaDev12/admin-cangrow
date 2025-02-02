@@ -39,15 +39,17 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/الخدمات', [HomeController::class, 'services'])->name('services.index');
         Route::get('/services/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
         Route::get('/فيديوهات', [HomeController::class, 'videos'])->name('videos.index');
-        Route::get('/المقالات', [HomeController::class, 'blogs'])->name('blogs.index');
-        Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+        Route::get('/المقالات', [HomeController::class, 'blogs'])->name('blogs.index');    
+        
         Route::get('/اتصل-بنا', [HomeController::class, 'contact'])->name('contact.index');
         Route::get('/contact-submit', [HomeController::class, 'contact'])->name('front.contact.submit');
         Route::get('/احجز-الان', [HomeController::class, 'BookNow'])->name('book.index');
 
-
         Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');
         
     
+        Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+    
+
 
 });
