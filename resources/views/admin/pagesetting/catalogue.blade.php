@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="avatar-xl mx-auto">
                                             <input type="file" class="filepond filepond-input-circle" name="catalogue_link"
-                                                accept="image/png, image/jpeg, image/gif, image/webp" />
+                                             />
                                         </div>
 
 
