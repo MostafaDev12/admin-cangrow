@@ -41,6 +41,19 @@ class Pagesetting extends Model
      'business_details_ar',
      'business_photo',
      
+     'label_details_ar', 
+     'label_details_en', 
+     'label_details_fr',
+     'label_photo',
+
+     'catalogue_photo',
+     'catalogue_link',
+
+     'export_details_ar',
+     'export_details_en',
+     'export_details_fr',
+     'export_photo',
+     
 ];
 
     public $timestamps = false;
@@ -68,6 +81,28 @@ class Pagesetting extends Model
     public function getPortfolioPhotoAttribute()
     {
         return !empty($this->attributes['portfolio_photo']) ? url('/') . '/assets/images/' . $this->attributes['portfolio_photo'] : '';
+    }
+
+
+    public function getCataloguePhotoAttribute()
+    {
+        return !empty($this->attributes['catalogue_photo']) ? url('/') . '/assets/images/' . $this->attributes['catalogue_photo'] : '';
+    }
+
+    public function getExportPhotoAttribute()
+    {
+        return !empty($this->attributes['export_photo']) ? url('/') . '/assets/images/' . $this->attributes['export_photo'] : '';
+    }
+
+
+    public function getCatalogueLinkAttribute()
+    {
+        return !empty($this->attributes['catalogue_link']) ? url('/') . '/assets/images/' . $this->attributes['catalogue_link'] : '';
+    }
+
+    public function getLabelPhotoAttribute()
+    {
+        return !empty($this->attributes['label_photo']) ? url('/') . '/assets/images/' . $this->attributes['label_photo'] : '';
     }
 
 

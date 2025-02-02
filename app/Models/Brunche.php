@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Partner extends Model
+class Brunche extends Model
 {
     
 
@@ -13,14 +13,14 @@ class Partner extends Model
      *
      * @var array<int, string>
      */
-    protected $table ='partners';
+    protected $table ='brunches';
     
      protected $appends = ['photo'];
 
 
     public function getPhotoAttribute()
     {
-        return url('/') . '/assets/images/partners/' . $this->attributes['photo'];
+        return url('/') . '/assets/images/brunches/' . $this->attributes['photo'];
     }
     protected $fillable = [
         
@@ -29,9 +29,8 @@ class Partner extends Model
         'title_en',
         'title_fr',
        
-        'name_ar',
-        'name_en',
-        'name_fr',
+        'phone',
+      
        
       
     ];

@@ -25,6 +25,7 @@ use App\Models\Media;
 use App\Models\Socialsetting;
 use Validator;
 use App\Classes\GeniusMailer;
+use App\Models\Brunche;
 use App\Models\Image;
 
 class FrontController extends Controller
@@ -75,7 +76,7 @@ class FrontController extends Controller
     public function partners()
     {
         $data = [];
-        $datas = Partner::get();
+        $datas = Partner::where('type','team')->get();
 
         $lang = request()->header('Accept-Language');
 
@@ -83,6 +84,58 @@ class FrontController extends Controller
         foreach ($datas as $k => $dat) {
             $data[$k]['id'] = $dat->id;
             $data[$k]['title'] = $dat->{'title_' . $lang} ?? '';
+            $data[$k]['position'] = $dat->{'name_' . $lang} ?? '';
+            $data[$k]['caption'] = $dat->{'title_' . $lang}  ?? '';
+            $data[$k]['alt'] = $dat->{'title_' . $lang}  ?? '';
+            $data[$k]['photo'] = $dat->photo;
+            $data[$k]['src'] = $dat->photo;
+        }
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+  public function sales()
+    {
+        $data = [];
+        $datas = Partner::where('type','sales')->get();
+
+        $lang = request()->header('Accept-Language');
+
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['title'] = $dat->{'title_' . $lang} ?? '';
+            $data[$k]['position'] = $dat->{'name_' . $lang} ?? '';
+            $data[$k]['caption'] = $dat->{'title_' . $lang}  ?? '';
+            $data[$k]['alt'] = $dat->{'title_' . $lang}  ?? '';
+            $data[$k]['photo'] = $dat->photo;
+            $data[$k]['src'] = $dat->photo;
+        }
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+
+  public function brunches()
+    {
+        $data = [];
+        $datas = Brunche::get();
+
+        $lang = request()->header('Accept-Language');
+
+
+        foreach ($datas as $k => $dat) {
+            $data[$k]['id'] = $dat->id;
+            $data[$k]['address'] = $dat->{'title_' . $lang} ?? '';
+            $data[$k]['phone'] = $dat->phone ?? '';
             $data[$k]['caption'] = $dat->{'title_' . $lang}  ?? '';
             $data[$k]['alt'] = $dat->{'title_' . $lang}  ?? '';
             $data[$k]['photo'] = $dat->photo;
@@ -929,6 +982,96 @@ class FrontController extends Controller
         $data['details'] =  $dat->{'business_details_' . $lang};
 
         $data['photo'] = $dat->business_photo;
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }    
+    
+    public function label()
+    {
+
+        $dat = Pagesetting::select(
+            'label_details_en',
+            'label_details_fr',
+            'label_details_ar',
+
+            'label_photo'
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        
+        $data['details'] =  $dat->{'label_details_' . $lang};
+
+        $data['photo'] = $dat->label_photo;
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+    public function export()
+    {
+
+        $dat = Pagesetting::select(
+            'export_details_en',
+            'export_details_fr',
+            'export_details_ar',
+
+            'export_photo'
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+        
+        $data['details'] =  $dat->{'export_details_' . $lang};
+
+        $data['photo'] = $dat->export_photo;
+
+
+        return response()->json([
+            'status' => true,
+            'message' => 'success',
+            'data' => $data,
+
+
+        ], 200);
+    }
+    public function catalogue()
+    {
+
+        $dat = Pagesetting::select(
+             'catalogue_photo',
+             'catalogue_link'
+        )->first();
+
+
+
+        $data = [];
+
+        $lang = request()->header('Accept-Language');
+
+         
+        $data['catalogue'] = $dat->catalogue_link;
+        $data['photo'] = $dat->catalogue_photo;
 
 
         return response()->json([

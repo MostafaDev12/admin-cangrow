@@ -82,6 +82,21 @@
                                     <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="{{ route('admin-ps-catalogue') }}" aria-controls="sidebarcatalogue">
+                                    <i class="las la-tachometer-alt"></i> <span>@lang('translation.catalogue')</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="{{ route('admin-ps-export') }}" aria-controls="sidebarexport">
+                                    <i class="las la-tachometer-alt"></i> <span>@lang('translation.export')</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="{{ route('admin-ps-label') }}" aria-controls="sidebarlabel">
+                                    <i class="las la-tachometer-alt"></i> <span>@lang('translation.label')</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li> <!-- end Dashboard Menu -->
@@ -95,6 +110,15 @@
                         <a class="nav-link  " href="{{ route('admin-partners-index') }}"
                             aria-controls="sidebarpartners">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.teams')</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('brunches'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-brunches-index') }}"
+                            aria-controls="sidebarbrunches">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.brunches')</span>
                         </a>
                     </li>
                 @endif

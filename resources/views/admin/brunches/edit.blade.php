@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __("translation.edit_partners") }}
+        {{ __("translation.edit_brunches") }}
         @endslot
     @endcomponent
 
@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-body">
-              <form id="geniusform" action="{{route('admin-partners-update',$data->id)}}" method="POST" enctype="multipart/form-data">
+              <form id="geniusform" action="{{route('admin-brunches-update',$data->id)}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 @include('includes.admin.form-both')
 
@@ -77,10 +77,7 @@
                                               <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
                                               <input type="text" class="form-control" name="title_ar" value="{{ $data->title_ar }}"  id="title_ar" placeholder="{{ __('translation.title') }}">
                                           </div>
-                                          <div class="mb-3">
-                                              <label for="name_ar" class="form-label">{{ __('translation.name') }}</label>
-                                              <input type="text" class="form-control" name="name_ar" value="{{ $data->name_ar }}"  id="name_ar" placeholder="{{ __('translation.name') }}">
-                                          </div>
+                                          
                                            
                                     </div>
                                     <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
@@ -91,10 +88,7 @@
                                           <input type="text" class="form-control" name="title_en" id="title_en" value="{{ $data->title_en }}" placeholder="{{ __('translation.title') }}">
                                       </div>
                                         
-                                        <div class="mb-3">
-                                          <label for="name_en" class="form-label">{{ __('translation.name') }}</label>
-                                          <input type="text" class="form-control" name="name_en" id="name_en" value="{{ $data->name_en }}" placeholder="{{ __('translation.name') }}">
-                                      </div>
+                                         
                                         
                                     </div>
                                     <div class="tab-pane" id="base-justified-messages" role="tabpanel">
@@ -107,10 +101,7 @@
                                       </div>
                                        
                                         
-                                        <div class="mb-3">
-                                          <label for="name_fr" class="form-label">{{ __('translation.name') }}</label>
-                                          <input type="text" class="form-control" name="name_fr" id="name_fr" value="{{ $data->name_fr }}"  placeholder="{{ __('translation.name') }}">
-                                      </div>
+                                         
                                        
                                         
                                     </div>
@@ -124,18 +115,13 @@
                         <div class="row">
 
 
+                            
                             <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">
-                                    <label for="type" class="form-label">{{ __('translation.type') }}</label>
-                                    <select class="form-control" name="type">  
-                                            <option value="team" {{ $data->type == 'team' ? 'selected' : '' }}>team</option>
-                                            <option value="sales" {{ $data->type == 'sales' ? 'selected' : '' }}>sales</option>
- 
-                                      
-                                       
-                                    </select>
-                                </div>  
+                                    <label for="phone" class="form-label">{{ __('translation.phone') }}</label>
+                                    <input type="text" class="form-control" name="phone" id="phone" value="{{ $data->phone }}"  placeholder="{{ __('translation.phone') }}">
+                                </div>
                             </div>
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">

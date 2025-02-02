@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\BruncheController;
 use App\Http\Controllers\Admin\SubcategoryController;
 /*
 |--------------------------------------------------------------------------
@@ -141,6 +142,19 @@ Route::prefix('admin')->group(function () {
       Route::get('/partners/delete/{id}',  [PartnerController::class, 'destroy'])->name('admin-partners-delete');
     });
 
+    Route::group(['middleware' => 'permissions:partners'], function () {
+
+
+      Route::get('/brunches/datatables',  [BruncheController::class, 'datatables'])->name('admin-brunches-datatables');
+      Route::get('/brunches',  [BruncheController::class, 'index'])->name('admin-brunches-index');
+      Route::get('/brunches/create',   [BruncheController::class, 'create'])->name('admin-brunches-create');
+      Route::post('/brunches/create',  [BruncheController::class, 'store'])->name('admin-brunches-store');
+      Route::get('/brunches/edit/{id}',  [BruncheController::class, 'edit'])->name('admin-brunches-edit');
+      Route::post('/brunches/update/{id}', [BruncheController::class, 'update'])->name('admin-brunches-update');
+
+      Route::get('/brunches/delete/{id}',  [BruncheController::class, 'destroy'])->name('admin-brunches-delete');
+    });
+
     Route::group(['middleware' => 'permissions:media'], function () {
       Route::get('/media/datatables',  [MediaController::class, 'datatables'])->name('admin-media-datatables');
       Route::get('/media',  [MediaController::class, 'index'])->name('admin-media-index');
@@ -241,6 +255,10 @@ Route::prefix('admin')->group(function () {
       Route::get('/page-settings/our_factory', [PageSettingController::class, 'our_factory'])->name('admin-ps-our_factory');
       Route::get('/page-settings/portfolio', [PageSettingController::class, 'portfolio'])->name('admin-ps-portfolio');
       Route::post('/page-settings/update/all', [PageSettingController::class, 'pageupdate'])->name('admin-ps-update');
+    
+      Route::get('/page-settings/export', [PageSettingController::class, 'export'])->name('admin-ps-export');
+      Route::get('/page-settings/label', [PageSettingController::class, 'label'])->name('admin-ps-label');
+      Route::get('/page-settings/catalogue', [PageSettingController::class, 'catalogue'])->name('admin-ps-catalogue');
     });
 
 

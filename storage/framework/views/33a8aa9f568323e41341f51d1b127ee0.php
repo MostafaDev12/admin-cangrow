@@ -1,18 +1,19 @@
-@extends('layouts.master')
-@section('title')
-    @lang('translation.analytics')
-@endsection
-@section('css')
-@endsection
-@section('content')
-    @component('components.breadcrumb')
-        @slot('li_1')
+
+<?php $__env->startSection('title'); ?>
+    <?php echo app('translator')->get('translation.analytics'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <?php $__env->startComponent('components.breadcrumb'); ?>
+        <?php $__env->slot('li_1'); ?>
             Dashboards
-        @endslot
-        @slot('title')
-        {{ __("translation.add_partners") }}
-        @endslot
-    @endcomponent
+        <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?>
+        <?php echo e(__("translation.add_partners")); ?>
+
+        <?php $__env->endSlot(); ?>
+    <?php echo $__env->renderComponent(); ?>
 
 
     <div class="col-lg-12">
@@ -23,9 +24,10 @@
 
             </div>
             <div class="card-body">
-                <form id="geniusform" action="{{ route('admin-partners-create') }}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    @include('includes.admin.form-both')
+                <form id="geniusform" action="<?php echo e(route('admin-partners-create')); ?>" method="POST" enctype="multipart/form-data">
+                    <?php echo e(csrf_field()); ?>
+
+                    <?php echo $__env->make('includes.admin.form-both', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
  
                     <div class="row">
@@ -38,79 +40,82 @@
 
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs nav-justified mb-3" role="tablist">
-                                        @if($gs->lang_arabic == 1)
+                                        <?php if($gs->lang_arabic == 1): ?>
                                         <li class="nav-item">
                                             <a class="nav-link active" data-bs-toggle="tab" href="#base-justified-home"
                                                 role="tab" aria-selected="false">
-                                                <img style="width: 35px;" src="{{ asset('assets/images/ar.jpg') }}">
-                                                {{ __('translation.arabic') }}
+                                                <img style="width: 35px;" src="<?php echo e(asset('assets/images/ar.jpg')); ?>">
+                                                <?php echo e(__('translation.arabic')); ?>
+
                                             </a>
                                         </li>
-                                        @endif
-                                        @if($gs->lang_english == 1)
+                                        <?php endif; ?>
+                                        <?php if($gs->lang_english == 1): ?>
                                         <li class="nav-item">
                                             <a class="nav-link " data-bs-toggle="tab" href="#base-justified-product"
                                                 role="tab" aria-selected="false">
-                                                <img style="width: 35px;" src="{{ asset('assets/images/en.png') }}">
-                                                {{ __('translation.english') }}
+                                                <img style="width: 35px;" src="<?php echo e(asset('assets/images/en.png')); ?>">
+                                                <?php echo e(__('translation.english')); ?>
+
                                             </a>
                                         </li>
-                                        @endif
-                                        @if($gs->lang_france == 1)
+                                        <?php endif; ?>
+                                        <?php if($gs->lang_france == 1): ?>
                                         <li class="nav-item">
                                             <a class="nav-link" data-bs-toggle="tab" href="#base-justified-messages"
                                                 role="tab" aria-selected="false">
-                                                <img style="width: 35px;" src="{{ asset('assets/images/fr.png') }}">
-                                                {{ __('translation.france') }}
+                                                <img style="width: 35px;" src="<?php echo e(asset('assets/images/fr.png')); ?>">
+                                                <?php echo e(__('translation.france')); ?>
+
                                             </a>
                                         </li>
-                                        @endif
+                                        <?php endif; ?>
 
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content  text-muted">
-                                        <div class="tab-pane {{$gs->lang_arabic == 1 ? 'active' : '' }}" id="base-justified-home" role="tabpanel">
-                                            <h6 style="text-align: center;">   {{ __('translation.arabic') }}</h6>
+                                        <div class="tab-pane <?php echo e($gs->lang_arabic == 1 ? 'active' : ''); ?>" id="base-justified-home" role="tabpanel">
+                                            <h6 style="text-align: center;">   <?php echo e(__('translation.arabic')); ?></h6>
                                             
                                       
                                               <div class="mb-3">
-                                                  <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
-                                                  <input type="text" class="form-control" name="title_ar" id="title_ar" placeholder="{{ __('translation.title') }}">
+                                                  <label for="title_ar" class="form-label"><?php echo e(__('translation.title')); ?></label>
+                                                  <input type="text" class="form-control" name="title_ar" id="title_ar" placeholder="<?php echo e(__('translation.title')); ?>">
                                               </div>
                                                
                                               <div class="mb-3">
-                                                  <label for="name_ar" class="form-label">{{ __('translation.name') }}</label>
-                                                  <input type="text" class="form-control" name="name_ar" id="name_ar" placeholder="{{ __('translation.name') }}">
+                                                  <label for="name_ar" class="form-label"><?php echo e(__('translation.name')); ?></label>
+                                                  <input type="text" class="form-control" name="name_ar" id="name_ar" placeholder="<?php echo e(__('translation.name')); ?>">
                                               </div>
                                                
                                         </div>
-                                        <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
-                                            <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
+                                        <div class="tab-pane <?php echo e($gs->lang_arabic == 0 ? 'active' : ''); ?>" id="base-justified-product" role="tabpanel">
+                                            <h6 style="text-align: center;"> <?php echo e(__('translation.english')); ?></h6>
                                            
                                             <div class="mb-3">
-                                              <label for="title_en" class="form-label">{{ __('translation.title') }}</label>
-                                              <input type="text" class="form-control" name="title_en" id="title_en" placeholder="{{ __('translation.title') }}">
+                                              <label for="title_en" class="form-label"><?php echo e(__('translation.title')); ?></label>
+                                              <input type="text" class="form-control" name="title_en" id="title_en" placeholder="<?php echo e(__('translation.title')); ?>">
                                           </div>
                                             
                                             <div class="mb-3">
-                                              <label for="name_en" class="form-label">{{ __('translation.name') }}</label>
-                                              <input type="text" class="form-control" name="name_en" id="name_en" placeholder="{{ __('translation.name') }}">
+                                              <label for="name_en" class="form-label"><?php echo e(__('translation.name')); ?></label>
+                                              <input type="text" class="form-control" name="name_en" id="name_en" placeholder="<?php echo e(__('translation.name')); ?>">
                                           </div>
                                             
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
-                                            <h6 style="text-align: center;">{{ __('translation.france') }}</h6>
+                                            <h6 style="text-align: center;"><?php echo e(__('translation.france')); ?></h6>
                                            
 
                                             <div class="mb-3">
-                                              <label for="title_fr" class="form-label">{{ __('translation.title') }}</label>
-                                              <input type="text" class="form-control" name="title_fr" id="title_fr" placeholder="{{ __('translation.title') }}">
+                                              <label for="title_fr" class="form-label"><?php echo e(__('translation.title')); ?></label>
+                                              <input type="text" class="form-control" name="title_fr" id="title_fr" placeholder="<?php echo e(__('translation.title')); ?>">
                                           </div>
                                            
                                             
                                             <div class="mb-3">
-                                              <label for="name_fr" class="form-label">{{ __('translation.name') }}</label>
-                                              <input type="text" class="form-control" name="name_fr" id="name_fr" placeholder="{{ __('translation.name') }}">
+                                              <label for="name_fr" class="form-label"><?php echo e(__('translation.name')); ?></label>
+                                              <input type="text" class="form-control" name="name_fr" id="name_fr" placeholder="<?php echo e(__('translation.name')); ?>">
                                           </div>
                                            
                                             
@@ -128,7 +133,7 @@
                             <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">
-                                    <label for="type" class="form-label">{{ __('translation.type') }}</label>
+                                    <label for="type" class="form-label"><?php echo e(__('translation.type')); ?></label>
                                     <select class="form-control" name="type">  
                                             <option value="team">team</option>
                                             <option value="sales">sales</option>
@@ -141,7 +146,7 @@
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>
+                                        <h4 class="card-title mb-0"> <?php echo e(__('translation.photo')); ?></h4>
                                     </div><!-- end card header -->
 
                                     <div class="card-body">
@@ -149,7 +154,7 @@
                                             file
                                             upload variation.</p>
                                         <div class="currrent-logo" style="text-align: center;">
-                                            <img style="width: 171px;" src="{{ asset('assets/images/noimage.png') }}"
+                                            <img style="width: 171px;" src="<?php echo e(asset('assets/images/noimage.png')); ?>"
                                                 alt="">
                                         </div>
                                         <div class="avatar-xl mx-auto">
@@ -182,11 +187,13 @@
                             </div>
                             <div class="col-lg-7">
                                 <button class="addProductSubmit-btn btn btn-secondary"
-                                    type="submit">{{ __('translation.save') }}</button>
+                                    type="submit"><?php echo e(__('translation.save')); ?></button>
                             </div>
                         </div>
                 </form>
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\admin-cangrows\resources\views/admin/partners/create.blade.php ENDPATH**/ ?>

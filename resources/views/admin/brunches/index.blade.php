@@ -12,11 +12,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.partners') }}
+        {{ __('translation.brunches') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.partners') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.brunches') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -27,8 +27,8 @@
                                     <table id="geniustable" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
+                                              <th>{{ __('translation.photo') }}</th>
                                               <th>{{ __('translation.title') }}</th>
-                                              <th>{{ __('translation.type') }}</th>
                                           
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
@@ -85,10 +85,10 @@
          ordering: false,
                processing: true,
                serverSide: true,
-               ajax: '{{ route('admin-partners-datatables') }}',
+               ajax: '{{ route('admin-brunches-datatables') }}',
                columns: [
+                        { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
-                        { data: 'type', name: 'type' },
                          
                         { data: 'action', searchable: false, orderable: false }
 
@@ -100,8 +100,8 @@
 
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
-          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-partners-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_partners") }}'+
+          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-brunches-create')}}">'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_brunches") }}'+
           '</a>'+
           '</div>');
       });

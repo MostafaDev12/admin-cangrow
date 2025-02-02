@@ -76,6 +76,49 @@ class PageSettingController extends Controller
                 $input['portfolio_photo'] = $name;
             }
               
+            if ($file = $request->file('factory_photo'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->factory_photo);
+                $input['factory_photo'] = $name;
+            }
+              
+            if ($file = $request->file('business_photo'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->business_photo);
+                $input['business_photo'] = $name;
+            }
+              
+            if ($file = $request->file('catalogue_photo'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->catalogue_photo);
+                $input['catalogue_photo'] = $name;
+            }
+              
+            if ($file = $request->file('catalogue_link'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->catalogue_link);
+                $input['catalogue_link'] = $name;
+            }
+              
+           
+            if ($file = $request->file('export_photo'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->export_photo);
+                $input['export_photo'] = $name;
+            }
+              
+            if ($file = $request->file('label_photo'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->label_photo);
+                $input['label_photo'] = $name;
+            }
+              
            
         $data->update($input);
         //--- Logic Section Ends
@@ -118,6 +161,21 @@ class PageSettingController extends Controller
     public function portfolio()
     {
         return view('admin.pagesetting.portfolio');
+    }
+
+     public function catalogue()
+    {
+        return view('admin.pagesetting.catalogue');
+    }
+
+   public function export()
+    {
+        return view('admin.pagesetting.export');
+    }
+
+   public function label()
+    {
+        return view('admin.pagesetting.label');
     }
 
  

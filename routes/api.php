@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/sliders',  [FrontController::class, 'sliders']);
 Route::get('/teams',  [FrontController::class, 'partners']);
+Route::get('/sales',  [FrontController::class, 'sales']);
 Route::get('/services',  [FrontController::class, 'services']);
 Route::get('/single-service/{id}',  [FrontController::class, 'singleService']);
 Route::get('/settings',  [FrontController::class, 'settings']);
@@ -58,3 +59,8 @@ Route::get('/business-models',  [FrontController::class, 'about_us_models']);
 Route::get('/our-factory',  [FrontController::class, 'our_factory']);
 Route::get('/our-business',  [FrontController::class, 'our_business']);
 Route::get('/website-galleries',  [FrontController::class, 'galleries']);
+
+Route::get('/brunches',  [FrontController::class, 'brunches']);
+Route::get('/private-label',  [FrontController::class, 'label']);
+Route::get('/catalogue',  [FrontController::class, 'catalogue']);
+Route::get('/export',  [FrontController::class, 'export']);
