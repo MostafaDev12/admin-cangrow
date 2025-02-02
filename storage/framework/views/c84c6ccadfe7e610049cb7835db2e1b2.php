@@ -161,7 +161,15 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a class="dropdown-item" href="#"><?php echo e($category->{'title_' . $sign}); ?></a>
+                                    <li><a class="dropdown-item nav-link dropdown-toggle" href="javascript();"><?php echo e($category->{'title_' . $sign}); ?></a>
+                                      <ul class="dropdown-menu">
+                                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <li><a class="dropdown-item" href="javascript();"><?php echo e($category->{'title_' . $sign}); ?></a>
+                                              
+                                            </li>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        
+                                    </ul>
                                     </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

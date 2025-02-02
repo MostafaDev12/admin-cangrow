@@ -140,6 +140,11 @@ class HomeController extends Controller
 
     $blog = Blog::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
 
+    if(!$blog){
+
+      abort(404);
+    }
+
     return view('front.details-blog', compact('sign', 'blog'));
   }
 
@@ -150,7 +155,10 @@ class HomeController extends Controller
 
 
     $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    if(!$service){
 
+      abort(404);
+    }
     return view('front.details-service', compact('sign', 'service'));
   }
 
