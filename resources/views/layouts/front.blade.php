@@ -159,10 +159,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 @foreach ($categories as $category)
-                                    <li><a class="dropdown-item nav-link dropdown-toggle" href="javascript();">{{ $category->{'title_' . $sign} }}</a>
+                                    <li><a class="dropdown-item nav-link dropdown-toggle" href="#">{{ $category->{'title_' . $sign} }}</a>
                                       <ul class="dropdown-menu">
                                         @foreach ($categories as $category)
-                                            <li><a class="dropdown-item" href="javascript();">{{ $category->{'title_' . $sign} }}</a>
+                                            <li><a class="dropdown-item" href="#">{{ $category->{'title_' . $sign} }}</a>
                                               
                                             </li>
                                         @endforeach
