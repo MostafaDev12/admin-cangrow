@@ -187,7 +187,12 @@
   
                         <div class="row">
 
-
+                            <div class="col-xl-12 col-md-12">
+                                <div class="mb-3">
+                                    <label for="blog_date" class="form-label">{{ __('translation.blog_date') }}</label>
+                                    <input type="date" class="form-control" name="blog_date" id="blog_date" placeholder="{{ __('translation.blog_date') }}">
+                                </div>
+                            </div>
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">

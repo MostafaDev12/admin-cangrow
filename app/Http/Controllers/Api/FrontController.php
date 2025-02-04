@@ -854,6 +854,7 @@ class FrontController extends Controller
             $data[$k]['slug_en'] = $dat->slug_en;
             $data[$k]['tags'] = $dat->tags;
             $data[$k]['photo'] = $dat->photo;
+            $data[$k]['date'] = $dat->blog_date ?? $dat->created_at;
         }
 
         return response()->json([
@@ -892,6 +893,7 @@ class FrontController extends Controller
             $data['slug_en'] = $dat->slug_en;
             $data['tags'] = $dat->tags;
             $data['photo'] = $dat->photo;
+            $data['date'] = $dat->blog_date ?? $dat->created_at;
           
           
         }
