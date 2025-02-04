@@ -48,8 +48,11 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');
         
     
-        Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+        Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
     
 
+        Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+
+        
 
 });

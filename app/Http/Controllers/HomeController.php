@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
 use App\Models\Blog;
 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 class HomeController extends Controller
 {
   /**
@@ -421,5 +425,92 @@ class HomeController extends Controller
   }
 
 
+  public function import_xml()
+  {
+ 
+    $xmlPath = public_path('build/WordPress.2025-02-04.xml'); // Adjust the path as needed
 
+    $xml = simplexml_load_file($xmlPath, 'SimpleXMLElement', LIBXML_NOCDATA);
+    $namespaces = $xml->getNamespaces(true);
+    $data = [] ;
+    foreach ($xml->channel->item as $item) {
+      $title = (string) $item->title;
+      $link = (string) $item->link;
+      $pubDate = (string) $item->pubDate;
+      $content = isset($item->children($namespaces['content'])->encoded) ? (string) $item->children($namespaces['content'])->encoded : null;
+
+
+
+      $slug = (string) $item->children($namespaces['wp'])->post_name ;
+      $slug = urldecode($slug);
+      $postDate = isset($item->children($namespaces['wp'])->post_date) ? (string) $item->children($namespaces['wp'])->post_date : null;
+  
+      // Convert date format if needed
+      $dateToInsert = $postDate ?? date('Y-m-d H:i:s', strtotime($pubDate));
+       $plainTextContent = strip_tags($content); // Remove HTML tags
+
+
+       $wordCount = count(preg_split('/\s+/u', trim($plainTextContent), -1, PREG_SPLIT_NO_EMPTY));
+
+       if ($wordCount < 50) {
+           continue; // Skip this item if it has less than 50 words
+       }
+    // Extract first 100 words while maintaining sentence structure
+    $wordsArray = preg_split('/\s+/', trim($plainTextContent)); // Split into words
+    $shortContent = implode(' ', array_slice($wordsArray, 0, 50));
+
+
+       // **Handle Image Download**
+       $imageUrl = isset($item->children($namespaces['wp'])->attachment_url) ? (string) $item->children($namespaces['wp'])->attachment_url : null;
+       $imageName = null;
+   
+       if ($imageUrl) {
+           $imageName = basename(parse_url($imageUrl, PHP_URL_PATH)); // Extract filename with extension
+           $imagePath = public_path('assets/images/blogs/' . $imageName); // Define storage path
+   
+           // Download the image if it doesn't exist
+           if (!File::exists($imagePath)) {
+               try {
+                   $imageData = file_get_contents($imageUrl);
+                   File::put($imagePath, $imageData);
+               } catch (\Exception $e) {
+                   \Log::error("Failed to download image: " . $imageUrl);
+                   $imageName = null; // Set to null if download fails
+               }
+           }
+       }
+   
+      // Insert into the database
+      $data[] = [
+          'title' => $title,
+          'content' => $content,
+          'slug' => $slug,
+          'published_at' => $dateToInsert, // Adjust column name if necessary
+          'created_at' => now(),
+          'updated_at' => now(),
+      ];
+
+      DB::table('blogs')->insert([
+        'title_ar' => $title,
+        'title_en' => $title,
+        'meta_title_ar' => $title,
+        'meta_title_en' => $title,
+        'details_ar' => $content,
+        'details_en' => $content,
+        'slug_ar' => $slug,
+        'slug_en' => $slug,
+        'photo' => $imageName,
+        'short_details_ar' => $shortContent, // Ensure your blogs table has a 'content' column
+        'short_details_en' => $shortContent, // Ensure your blogs table has a 'content' column
+        'meta_details_ar' => $shortContent, // Ensure your blogs table has a 'content' column
+        'meta_details_en' => $shortContent, // Ensure your blogs table has a 'content' column
+        'blog_date' => $dateToInsert
+    ]);
+  }
+   // dd($data);
+    
+
+
+    return "done";
+  }
 }
