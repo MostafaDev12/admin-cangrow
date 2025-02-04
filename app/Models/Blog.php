@@ -42,6 +42,7 @@ class Blog extends Model
         'short_details_en',
         'short_details_fr',
         
+        'blog_date',
         'slug_ar',
         'slug_en',
         'slug_fr',
