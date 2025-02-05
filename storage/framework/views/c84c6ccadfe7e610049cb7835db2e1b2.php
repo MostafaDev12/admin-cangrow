@@ -153,28 +153,47 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo e(route('about.index')); ?>"><?php echo e(__('عن الشركة')); ?></a>
                         </li>
+
+
+
+
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="<?php echo e(route('services.index')); ?>" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="<?php echo e(route('services.index')); ?>" id="servicesDropdown" role="button"
+                                aria-expanded="false">
                                 <?php echo e(__('الخدمات')); ?>
 
                             </a>
-                            <ul class="dropdown-menu">
-                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a class="dropdown-item nav-link dropdown-toggle" href="javascript();"><?php echo e($category->{'title_' . $sign}); ?></a>
-                                      <ul class="dropdown-menu">
-                                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <li><a class="dropdown-item" href="javascript();"><?php echo e($category->{'title_' . $sign}); ?></a>
-                                              
-                                            </li>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        
-                                    </ul>
-                                    </li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
 
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li class="dropdown">
+                                <a  <?php if(count($category->services) > 0): ?> <?php endif; ?>   class="dropdown-item dropdown-toggle" href="#"><?php echo e($category->{'title_' . $sign}); ?></a>
+                                <?php if(count($category->services) > 0): ?>
+                                <ul class="dropdown-menu"> 
+                                    
+                                
+                                    <?php $__currentLoopData = $category->services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><a class="dropdown-item" href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><?php echo e($service->{'title_' . $sign}); ?>  </a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    
+                                </ul>
+                                <?php endif; ?>
+                                </li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                
+
+                                <?php $__currentLoopData = $servicesWithoutCats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li class="dropdown">
+                                <a    class="dropdown-item dropdown-toggle" href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><?php echo e($service->{'title_' . $sign}); ?></a>
+                              
+                                </li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                
                             </ul>
-                        </li>
+                       </li>
+
+
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo e(route('videos.index')); ?>"><?php echo e(__('الفيديوهات')); ?></a>
                         </li>

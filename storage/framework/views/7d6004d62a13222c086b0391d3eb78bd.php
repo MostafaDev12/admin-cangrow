@@ -29,10 +29,10 @@
              <div class="col-12 col-lg-4 col-md-4 mb-3">
                  <div class="box blogs-div ">
                      <div>
-                         <img src="<?php echo e($blog->photo); ?>" alt="">
+                         <a href="<?php echo e(route('single-blog.index',$blog->{'slug_' . $sign})); ?>"><img src="<?php echo e($blog->photo); ?>" alt=""></a>
                      </div>
                      <div class="p-4">
-                         <h2 class="fw-bold">  <?php echo e($blog->{'title_' . $sign}); ?> </h2>
+                         <h2 class="fw-bold"> <a href="<?php echo e(route('single-blog.index',$blog->{'slug_' . $sign})); ?>"> <?php echo e($blog->{'title_' . $sign}); ?> </a></h2>
                          <p class="fw-bold"> <?php echo e($blog->{'short_details_' . $sign}); ?> </p>
                          <a href="<?php echo e(route('single-blog.index',$blog->{'slug_' . $sign})); ?>"><span class="mt-3 d-block"> <?php echo e(__('المزيد')); ?><i
                                      class="fa-solid fa-angles-left"></i></span></a>

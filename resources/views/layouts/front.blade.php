@@ -152,6 +152,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('about.index') }}">{{ __('عن الشركة') }}</a>
                         </li>
+
+{{-- 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -172,36 +174,45 @@
                                 @endforeach
 
                             </ul>
-                        </li>
+                        </li> --}}
+
+
+
                         <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="service.html" id="servicesDropdown" role="button"
-                aria-expanded="false">
-                الخدمات
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                <li class="dropdown">
-                  <a class="dropdown-item dropdown-toggle" href="#">خدمات أخرى</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="details-service.html">تصميم وتركيب</a></li>
-                    <li><a class="dropdown-item" href="details-service.html">صيانة الأنظمة</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a class="dropdown-item dropdown-toggle" href="#">خدمات أخرى</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="details-service.html">تصميم وتركيب</a></li>
-                    <li><a class="dropdown-item" href="details-service.html">صيانة الأنظمة</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a class="dropdown-item dropdown-toggle" href="#">خدمات أخرى</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="details-service.html">تصميم وتركيب</a></li>
-                    <li><a class="dropdown-item" href="details-service.html">صيانة الأنظمة</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" id="servicesDropdown" role="button"
+                                aria-expanded="false">
+                                {{ __('الخدمات') }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+
+                                @foreach ($categories as $category)
+                                <li class="dropdown">
+                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="#">{{ $category->{'title_' . $sign} }}</a>
+                                @if(count($category->services) > 0)
+                                <ul class="dropdown-menu"> 
+                                    
+                                
+                                    @foreach ($category->services as $service)
+                                    <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
+                                    @endforeach
+                                    
+                                </ul>
+                                @endif
+                                </li>
+                                @endforeach
+                
+
+                                @foreach ($servicesWithoutCats as $service)
+                                <li class="dropdown">
+                                <a    class="dropdown-item dropdown-toggle" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}</a>
+                              
+                                </li>
+                                @endforeach
+                
+                            </ul>
+                       </li>
+
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('videos.index') }}">{{ __('الفيديوهات') }}</a>
                         </li>

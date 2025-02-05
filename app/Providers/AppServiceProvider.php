@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('ps', Pagesetting::first());
             $settings->with('services', Service::get());
             $settings->with('categories', Category::get());
-           
+            $settings->with('servicesWithoutCats', Service::whereNull('category_id')->get());
         });
 
 
