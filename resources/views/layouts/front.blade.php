@@ -116,10 +116,10 @@
             <div class="row">
                 <div class="col-4">
                     <div class="d-flex justify-content-center justify-content-evenly">
-                      @if(App\Models\Socialsetting::find(1)->f_status == 1)   <a href="{{ App\Models\Socialsetting::find(1)->facebook }}"> <i class="fab fa-facebook"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a href="{{ App\Models\Socialsetting::find(1)->youtube }}"> <i class="fab fa-youtube"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">  <i class="fab fa-instagram"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->dribble }}">  <i class="fab fa-tiktok"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->f_status == 1)   <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->facebook }}"> <i class="fab fa-facebook"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->youtube }}"> <i class="fab fa-youtube"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->twitter }}">  <i class="fab fa-instagram"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->dribble }}">  <i class="fab fa-tiktok"></i></a>  @endif
                     </div>
                 </div>
                 <div class="col-4">
@@ -292,16 +292,16 @@
                 </div>
             </div>
             <hr>
-            <p class="text-center fw-bold">جميع الحقوق محفوظة © {{ date('Y') }} لصالح الدكتور عبدالرحمن شمس</p>
+            <p class="text-center fw-bold">جميع الحقوق محفوظة © {{ date('Y') }}  <a href="https://cangrowonline.com">CangrowOnline</a>      </p>
         </div>
     </section>
     <div class="social-media">
         <ul class="custom">
 
            @if(App\Models\Socialsetting::find(1)->f_status == 1)   <a href="{{ App\Models\Socialsetting::find(1)->facebook }}"> <i class="fab fa-facebook"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a href="{{ App\Models\Socialsetting::find(1)->youtube }}"> <i class="fab fa-youtube"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">  <i class="fab fa-instagram"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->dribble }}">  <i class="fab fa-tiktok"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->youtube }}"> <i class="fab fa-youtube"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->twitter }}">  <i class="fab fa-instagram"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->dribble }}">  <i class="fab fa-tiktok"></i></a>  @endif
 
         </ul>
     </div>
