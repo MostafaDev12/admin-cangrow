@@ -66,7 +66,7 @@
                                                   </div>
                                                   </div>
                                                   <input type="text" class="form-control" name="twitter" id="twitter" value="{{ $data->twitter }}" aria-label="write link here">
-                                                  <label class="input-group-text" for="twitter">Instagram</label>
+                                                  <label class="input-group-text" for="twitter">Twitter</label>
                                               </div> 
                                               <br>
 

@@ -54,11 +54,6 @@ class Generalsetting extends Model
         return !empty($this->attributes['home_video']) ? url('/') . '/assets/videos/' . $this->attributes['home_video'] : '';
     }
 
-public function getFaviconAttribute()
-    {
-        return !empty($this->attributes['favicon']) ? url('/') . '/assets/images/' . $this->attributes['favicon'] : '';
-    }
-
 
     
     public function upload($name,$file,$oldname)

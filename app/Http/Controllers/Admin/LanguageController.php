@@ -62,7 +62,6 @@ class LanguageController extends Controller
         $data->is_default = '0';
         $data->file = $name.'.json';
         $data->rtl = $input['rtl'];
-        $data->sign = $input['sign'];
         $data->save();
         unset($input['_token']);
         unset($input['language']);
@@ -89,7 +88,7 @@ class LanguageController extends Controller
         
         return response()->json([
             'status' => true,
-            'url' => url('admin/languages/'),
+            'url' => url('admins/languages/'),
             'msg'   => $msg
             
         ],200);
@@ -128,7 +127,7 @@ class LanguageController extends Controller
         if ($file = $request->file('photo')) 
         {              
             $photo = time().$file->getClientOriginalName();
-            $file->move('assets/images/language/',$photo);
+            $file->move('assets/images/admins/',$photo);
             if($data->photo != null)
             {
                 if (file_exists(public_path().'/assets/images/language/'.$data->photo)) {
@@ -145,7 +144,6 @@ class LanguageController extends Controller
        
        // $data->file = $name.'.json';
         $data->rtl = $input['rtl'];
-        $data->sign = $input['sign'];
         $data->update();
         unset($input['_token']);
         unset($input['language']);
@@ -167,7 +165,7 @@ class LanguageController extends Controller
         return response()->json([
             
             'status'  => true,
-            'url' => url('admin/languages/'),
+            'url' => url('admins/adminlanguages/'),
             'msg'   =>   $msg
             
         ],200);
@@ -180,7 +178,7 @@ class LanguageController extends Controller
             $data = Language::findOrFail($id1);
             $data->is_default = '1';
             $data->update();
-            $data = Language::where('id','!=',$id1)->update(['is_default' => '0']);
+            $data = Language::where('_id','!=',$id1)->update(['is_default' => '0']);
             //--- Redirect Section     
            
                $msg = trans('Update Success');
@@ -214,6 +212,20 @@ class LanguageController extends Controller
         //--- Redirect Section Ends     
     }
     //*** GET Request Delete
+    public function change($id)
+    {
+         
+        $data = Language::findOrFail($id);
+       
+        App::setlocale($data->name);
+
+        session(['admin_language' => $data->name]);
+        session(['language_photo' => $data->photo]);
+        $language_duraction = $data->rtl == 1 ? 'rtl' :  'ltr';
+        session(['language_duraction' => $language_duraction]);
  
+      return redirect()->back();
+    }
+
     
 }

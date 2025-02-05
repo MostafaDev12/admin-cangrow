@@ -74,7 +74,6 @@ class Kernel extends HttpKernel
         'maintenance' => \App\Http\Middleware\MaintenanceMode::class,
         'permissions' => \App\Http\Middleware\Permissions::class,
         'IpLocation' => \App\Http\Middleware\IpLocation::class,
-        'FrontLanguages' => \App\Http\Middleware\FrontLanguages::class,
         'super' => \App\Http\Middleware\SuperAdmin::class,
     ];
 }

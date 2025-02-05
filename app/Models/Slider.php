@@ -35,9 +35,6 @@ class Slider extends Model
     ];
 
     
-   
-
-
     /**
      * The attributes that should be hidden for serialization.
      *

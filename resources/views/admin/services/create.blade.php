@@ -80,16 +80,12 @@
                                               </div>
                                                
                                               <div class="mb-3">
-                                                  <label for="short_details_ar" class="form-label">{{ __('translation.short_details') }}</label>
-                                                  <textarea class="form-control ckeditor" name="short_details_ar"  id="short_details_ar" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
-                                              </div>
-                                              <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                               </div>
                                              <div class="mb-3">
                                                   <label for="slug_ar" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar" required placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar"  placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>
@@ -111,11 +107,6 @@
                                               <input type="text" class="form-control" name="title_en" id="title_en" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <div class="mb-3">
-                                              <label for="short_details_en" class="form-label">{{ __('translation.short_details') }}</label>
-                                              <textarea class="form-control ckeditor" name="short_details_en"  id="short_details_en" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
-                                          </div>
-                                          
                                           <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
@@ -148,11 +139,6 @@
                                               <input type="text" class="form-control" name="title_fr" id="title_fr" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <div class="mb-3">
-                                              <label for="short_details_fr" class="form-label">{{ __('translation.short_details') }}</label>
-                                              <textarea class="form-control ckeditor" name="short_details_fr"  id="short_details_fr" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
-                                          </div>
-                                          
                                           <div class="mb-3">
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
