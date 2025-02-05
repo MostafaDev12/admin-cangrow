@@ -14,7 +14,33 @@ body {
     direction: rtl;
     overflow-x: hidden;
 }
-
+.dropdown-menu .dropdown-menu {
+    position: absolute;
+    right: 100%;
+    top: 0;
+    margin-top: -1px;
+    display: none;
+}
+.dropdown-item {
+    text-align: right;
+}
+.dropdown-menu .dropdown-toggle::after {
+    display: none;
+}
+.dropdown-menu > .dropdown:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    display: none;
+  }
+  .nav-item.dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-item.dropdown-toggle:hover + .dropdown-menu {
+    display: block;
+  }
+  
 .social-media i {
     width: 50px;
     height: 50px;
