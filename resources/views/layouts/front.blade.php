@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <a href="http://wa.me/2{{ $randomPhone }}"><i class="fab fa-whatsapp"></i> {{ $randomPhone }}</a>
+                    <a target="_blank"  href="http://wa.me/2{{ $randomPhone }}"><i class="fab fa-whatsapp"></i> {{ $randomPhone }}</a>
                 </div>
                 <div class="col-4">
                     <a href="tel:+2{{ $randomPhone }}"><i class="fas fa-phone"></i> {{ $randomPhone }} </a>
@@ -282,7 +282,7 @@
                       @endforeach
                      @foreach ($phones as $phone)
 
-                      <i class="fab fa-whatsapp"></i><a href="http://wa.me/2{{ $phone }}" target="_blank">{{ $phone }}</a><br>
+                      <i class="fab fa-whatsapp"></i><a target="_blank"  href="http://wa.me/2{{ $phone }}" target="_blank">{{ $phone }}</a><br>
                       @endforeach
                       @foreach ($addresses as $address)
                         <i class="fas fa-location"></i> <a href="#">   {{ $address }}   </a>
