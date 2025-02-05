@@ -173,6 +173,35 @@
 
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="service.html" id="servicesDropdown" role="button"
+                aria-expanded="false">
+                الخدمات
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                <li class="dropdown">
+                  <a class="dropdown-item dropdown-toggle" href="#">خدمات أخرى</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="details-service.html">تصميم وتركيب</a></li>
+                    <li><a class="dropdown-item" href="details-service.html">صيانة الأنظمة</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-item dropdown-toggle" href="#">خدمات أخرى</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="details-service.html">تصميم وتركيب</a></li>
+                    <li><a class="dropdown-item" href="details-service.html">صيانة الأنظمة</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-item dropdown-toggle" href="#">خدمات أخرى</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="details-service.html">تصميم وتركيب</a></li>
+                    <li><a class="dropdown-item" href="details-service.html">صيانة الأنظمة</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('videos.index') }}">{{ __('الفيديوهات') }}</a>
                         </li>
