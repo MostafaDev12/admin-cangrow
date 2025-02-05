@@ -211,7 +211,7 @@
                ajax: '{{ route('admin-categories-datatables') }}',
                columns: [
                         { data: 'photo', name: 'photo' },
-                        { data: 'title_ar', name: 'title_ar' },
+                        { data: 'title', name: 'title' },
                          
                         { data: 'action', searchable: false, orderable: false }
 

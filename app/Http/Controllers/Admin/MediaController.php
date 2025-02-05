@@ -25,18 +25,7 @@ class MediaController extends Controller
             ->editColumn('media', function (Media $data) {
                 $media =  $data->media;
 
-                if ($data->youtube_url) {
-
-
-                    $html = '<iframe width="200" height="100"
-                            src="'.$data->youtube_url.'"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-
-
-
-                } elseif ($data->type == 'photo') {
+                if ($data->type == 'photo') {
 
                     $html = '<div><img style="width:200px;height:100px" src="' . $media . '"></div>';
                 } else {
