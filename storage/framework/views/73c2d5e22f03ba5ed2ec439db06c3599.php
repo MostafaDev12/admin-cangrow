@@ -1,1 +1,0 @@
-<?php /**PATH C:\wamp64\www\admin-cangrows\resources\views/front/index.blade.php ENDPATH**/ ?>

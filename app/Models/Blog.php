@@ -38,6 +38,11 @@ class Blog extends Model
         'meta_details_en',
         'meta_details_fr',
         
+        'short_details_ar',
+        'short_details_en',
+        'short_details_fr',
+        'blog_date',
+        
         'slug_ar',
         'slug_en',
         'slug_fr',

@@ -12,11 +12,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.partners') }}
+        {{ __('translation.reviews') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.partners') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.reviews') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -99,7 +99,7 @@
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
           '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-partners-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_partners") }}'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_review") }}'+
           '</a>'+
           '</div>');
       });
