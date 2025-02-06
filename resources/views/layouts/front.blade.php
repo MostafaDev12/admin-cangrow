@@ -292,7 +292,7 @@
                 </div>
             </div>
             <hr>
-            <p class="text-center fw-bold">جميع الحقوق محفوظة © {{ date('Y') }}  <a href="https://cangrowonline.com">CangrowOnline</a>      </p>
+            <p class="text-center fw-bold">جميع الحقوق محفوظة © {{ date('Y') }}  <a target="_blank" href="https://cangrowonline.com">CangrowOnline</a>      </p>
         </div>
     </section>
     <div class="social-media">
