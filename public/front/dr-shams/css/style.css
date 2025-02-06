@@ -916,4 +916,44 @@ a {
         padding: 0;
         height: 100%;
     }
+    .btn-video {
+        position: unset !important;
+        display: block;
+        margin: auto;
+
+    }
+    .navbar {
+        margin-top: 15px;
+    }
+}
+.btn-custom {
+    display: flex;
+    background-color: #c5e3be;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 37px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.bg-2 {
+    background-color: #d8eff5;
+}
+.btn-video {
+    width: 90px;
+    height: 90px;
+    background-color: #314c5b;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50%;
+    font-weight: bold;
+    border: 0;
+    position: absolute;
+    right: 47%;
+    top: -5%;
+    font-size: 35px;
+    transition: all 0.3s ease-in-out;   
+}
+.btn-video:hover {
+    background-color: white;
+    color: #314c5b;
 }

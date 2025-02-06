@@ -22,8 +22,21 @@
 
     </div>
     <div class="about-us-page bg-white">
+        <!-- Modal -->
+<div class="modal fade" id="staticBackdrop"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg  modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/oqflk_NfckE?si=jCsso45Lq2PM5DJc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
         <div class="container position-top box p-5">
-            <div class="row">
+        <button type="button" class="btn btn-video" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <i class="fas fa-play"></i>
+        </button>
+            <div class="row pt-5">
                 <div class="col-12 col-lg-4 col-md-6">
                     <div class="p-5 wow animate__animated animate__fadeInRight" data-wow-delay="1s"
                         data-wow-duration="1s">

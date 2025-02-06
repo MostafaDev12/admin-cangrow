@@ -287,10 +287,10 @@
     <div class="social-media">
         <ul class="custom">
 
-           @if(App\Models\Socialsetting::find(1)->f_status == 1)   <a href="{{ App\Models\Socialsetting::find(1)->facebook }}"> <i class="fab fa-facebook"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a href="{{ App\Models\Socialsetting::find(1)->youtube }}"> <i class="fab fa-youtube"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">  <i class="fab fa-instagram"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->dribble }}">  <i class="fab fa-tiktok"></i></a>  @endif
+           @if(App\Models\Socialsetting::find(1)->f_status == 1)   <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"> <i class="fab fa-facebook"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"> <i class="fab fa-youtube"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank">  <i class="fab fa-instagram"></i></a>  @endif
+                      @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank">  <i class="fab fa-tiktok"></i></a>  @endif
 
         </ul>
     </div>
