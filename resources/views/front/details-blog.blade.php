@@ -27,6 +27,33 @@
                         <img class="mb-4" width="100%" src="{{ $blog->photo }}" alt="">
                         
                         <p>   {!! $blog->{'details_' . $sign} !!}   </p>
+                        <div class="social-connect">
+                            <div class="container">
+                                <div class="row px-2">
+                                    <div class="col-6 col-md-6 col-lg-4 mb-2 mb-lg-0">
+                                        <a href="" target="_blank" class="btn-custom btn-responsive-action">
+                                            <div class="icon-container d-flex pt-3">
+                                                <i class="fab fa-whatsapp"></i>
+                                                <p class="color-white-important"> WhatsApp</p>
+                                               
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-6 col-md-6 col-lg-4 mb-2 mb-lg-0">
+                                        <a href="tel:+201118886541" class="btn-custom btn-responsive-action bg-2">
+                                            <div class="icon-container  d-flex pt-3">
+                                                <i class="fas fa-phone-alt"></i>
+                                                <p class="color-white-important"> Call Us</p>
+                                                
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
                         
                     </div>
                 </div>
