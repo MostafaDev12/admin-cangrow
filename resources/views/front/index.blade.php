@@ -15,9 +15,20 @@
 
 
 @section('content')
+<div class="slider-phone  d-block  d-md-none">
+    <div class="title-doc  wow animate__animated animate__fadeInLeft" data-wow-delay="1s" data-wow-duration="1s">
+      <h1>دكتور عبدالرحمن شمس</h1>
+      <p>مدرس طب وجراحة العيون جامعة عين شمس
+        <br>
+        دكتوراه طب وجراحة العيون جامعة عين شمس
+        <br>
+        استشاري جراحات المياه البيضاء وتصحيح الابصار وعلاج جفاف العيون
+      </p>
+      <button>اتصل بنا</button>
+    </div>
+  </div>
 
-
-  <div class="slider" style="background-image: url('{{ $sliders->{'photo'}  ?? ''}}');">
+  <div class="slider d-md-block d-none" style="background-image: url('{{ $sliders->{'photo'}  ?? ''}}');">
     <div class="title-doc  wow animate__animated animate__fadeInLeft" data-wow-delay="1s" data-wow-duration="1s" >
       <h1> {{ $sliders->{'title_' . $sign}  ?? ''}} </h1>
       {!! $sliders->{'details_' . $sign}  ?? '' !!}

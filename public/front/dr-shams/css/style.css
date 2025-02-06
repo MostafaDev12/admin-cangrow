@@ -129,7 +129,14 @@ body {
     background-image: url('../img/Untitled-22.webp');
     background-size: cover;
 }
-
+.slider-phone {
+    margin-top: 100px;
+    width: 100%;
+    height: 630px;
+    position: relative;
+    background-image: url('../img/slider.jpg');
+    background-size: cover;
+}
 .header-title {
     width: 100%;
     height: 480px;
@@ -180,7 +187,31 @@ body {
     border: 0;
     border-radius: 10px;
 }
+.slider-phone .title-doc {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    width: 34%;
+    position: absolute;
+    left: 0;
+    right: 60%;
+    top: 30%;
+}
 
+.slider-phone .title-doc p {
+    font-size: medium;
+    line-height: 40px;
+}
+
+.slider-phone button {
+    padding: 10px 20px;
+    background-color: #D8EFF5;
+    color: #314c5b;
+    font-weight: bold;
+    font-size: 22px;
+    border: 0;
+    border-radius: 10px;
+}
 .nav-link {
     color: #000000;
     font-size: 16px;
@@ -332,7 +363,7 @@ body {
     position: relative;
     color: white;
     padding: 25px;
-    background-image: url("../img/back-service.jpg");
+    background-image: url("../img/back-service.webp");
     width: 100%;
     height: 100%;
     background-position: center center;
@@ -868,7 +899,10 @@ a {
 
         left: 33%;
     }
+    .slider-phone .title {
 
+        left: 33%;
+    }
     .blogs .card {
         margin: auto;
     }
@@ -884,7 +918,19 @@ a {
         top: 23%;
         width: 87%;
     }
-
+    .slider-phone .title-doc {
+        position: absolute;
+        left: 0;
+        right: 2%;
+        top: 43%;
+        width: 55%;
+    }
+    .slider-phone .title-doc h1 {
+        font-size: 15px;
+    }
+    .slider-phone .title-doc p {
+        font-size: 12px;
+    }
     .about-us {
         overflow-x: hidden;
         height: 100%;
