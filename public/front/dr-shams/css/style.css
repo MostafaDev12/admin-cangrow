@@ -145,7 +145,11 @@ body {
     background-size: cover;
     margin-top: 100px;
 }
-
+.title-category {
+    margin-top:10rem;
+    font-weight: bold;
+    font-size: 30px;
+}
 .header-title .overlay {
     position: absolute;
     left: 0;
@@ -155,7 +159,15 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
 }
-
+.header-title a {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #314c5b;
+    padding: 10px 20px;
+    margin-right: 10px;
+}
 .header-title h1 {
     font-size: 45px;
     font-weight: bold;
