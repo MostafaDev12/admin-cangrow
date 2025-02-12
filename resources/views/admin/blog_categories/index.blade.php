@@ -223,7 +223,7 @@
 
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
-          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-categories-create')}}">'+
+          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-blog_categories-create')}}">'+
           '<i class="fas fa-plus"></i> {{ __("translation.add_category") }}'+
           '</a>'+
           '</div>');
