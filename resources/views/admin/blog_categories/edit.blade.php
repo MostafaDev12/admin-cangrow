@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __("translation.edit_blog") }}
+        {{ __("translation.edit_category") }}
         @endslot
     @endcomponent
 
@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-body">
-              <form id="geniusform" action="{{route('admin-blogs-update',$data->id)}}" method="POST" enctype="multipart/form-data">
+              <form id="geniusform" action="{{route('admin-blog_categories-update',$data->id)}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 @include('includes.admin.form-both')
 
@@ -78,11 +78,7 @@
                                                   <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
                                                   <input type="text" class="form-control" name="title_ar" value="{{ $data->title_ar }}" id="title_ar" placeholder="{{ __('translation.title') }}">
                                               </div>
-                                                                
-                                              <div class="mb-3">
-                                                <label for="short_details_ar" class="form-label">{{ __('translation.short_details') }}</label>
-                                                <textarea class="form-control " name="short_details_ar"  id="short_details_ar" rows="3" placeholder="{{ __('translation.short_details') }}">{{ $data->short_details_ar }}</textarea>
-                                            </div>
+                                               
                                               <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_ar }}</textarea>
@@ -111,11 +107,6 @@
                                               <input type="text" class="form-control" name="title_en"  value="{{ $data->title_en }}"  id="title_en" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <div class="mb-3">
-                                            <label for="short_details_en" class="form-label">{{ __('translation.short_details') }}</label>
-                                            <textarea class="form-control " name="short_details_en"  id="short_details_en" rows="3" placeholder="{{ __('translation.short_details') }}">{{ $data->short_details_en }}</textarea>
-                                        </div>
-                                        
                                           <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_en }}</textarea>
@@ -147,11 +138,6 @@
                                               <input type="text" class="form-control" name="title_fr"  value="{{ $data->title_fr }}"  id="title_fr" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <div class="mb-3">
-                                            <label for="short_details_fr" class="form-label">{{ __('translation.short_details') }}</label>
-                                            <textarea class="form-control " name="short_details_fr"  id="short_details_fr" rows="3" placeholder="{{ __('translation.short_details') }}">{{ $data->short_details_fr }}</textarea>
-                                        </div>
-                                        
                                           <div class="mb-3">
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_fr }}</textarea>
@@ -185,28 +171,6 @@
                         <div class="row">
 
 
-                            <div class="col-xl-12 col-md-12">
-
-                                <div class="mb-3">
-                                    <label for="blog_date" class="form-label">{{ __('translation.blog_date') }}</label>
-                                    <input type="date" class="form-control" name="blog_date" id="blog_date"  value="{{ $data->blog_date }}" placeholder="{{ __('translation.date') }}">
-                                </div>  
-                            </div> 
-
-                            <div class="col-xl-12 col-md-12">
-
-                                <div class="mb-3">
-                                    <label for="category_id" class="form-label">{{ __('translation.categories') }}</label>
-                                    <select class="form-control" name="category_id" id="cat"> 
-                                        <option value="">{{ __('translation.select') }}</option>
-                                        @foreach ($cats as $cat)
-                                            <option  data-href="{{ route('admin-subcat-load',$cat->id) }}"   value="{{ $cat->id }}" {{ $cat->id == $data->category_id ? 'selected' : '' }}>{{ $cat->title_ar ??  $cat->title_en }}</option>
- 
-                                        @endforeach
-                                       
-                                    </select>
-                                </div>  
-                            </div> 
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">

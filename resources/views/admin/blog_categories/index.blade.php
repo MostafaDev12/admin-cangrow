@@ -91,11 +91,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.blogs') }}
+        {{ __('translation.categories') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.blogs') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.categories') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -106,9 +106,8 @@
                                     <table id="geniustable" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                              <th>{{ __('translation.photo') }}</th>
+                                              {{-- <th>{{ __('translation.photo') }}</th> --}}
                                               <th>{{ __('translation.title') }}</th>
-                                              <th>{{ __('translation.category') }}</th>
                                           
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
@@ -209,11 +208,10 @@
          ordering: false,
                processing: true,
                serverSide: true,
-               ajax: '{{ route('admin-blogs-datatables') }}',
+               ajax: '{{ route('admin-blog_categories-datatables') }}',
                columns: [
-                        { data: 'photo', name: 'photo' },
-                        { data: 'title', name: 'title' },
-                        { data: 'category', name: 'category' , searchable: false, orderable: false },
+                     //   { data: 'photo', name: 'photo' },
+                        { data: 'title_ar', name: 'title_ar' },
                          
                         { data: 'action', searchable: false, orderable: false }
 
@@ -225,8 +223,8 @@
 
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
-          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-blogs-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_blog") }}'+
+          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-categories-create')}}">'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_category") }}'+
           '</a>'+
           '</div>');
       });

@@ -13,9 +13,15 @@
 
 
 <?php $__env->startSection('content'); ?>
-
+<?php
+$phones =  explode(',', $gs->phones);
+ 
+$randomPhone = Arr::random($phones);
+?>
     <div class="header-title ">
         <div class="overlay d-flex justify-content-center align-items-center">
+           <?php if(!empty(optional($blog->category)->{'title_' . $sign} )): ?> <a href="<?php echo e(route('blogs-category.index',$blog->category->{'slug_' . $sign})); ?>" class=""><?php echo e(optional($blog->category)->{'title_' . $sign}); ?></a> <?php endif; ?>
+
             <h1> <?php echo e($blog->{'title_' . $sign}); ?>   </h1>
         </div>
 
@@ -28,7 +34,7 @@
                         <img class="mb-4" width="100%" src="<?php echo e($blog->photo); ?>" alt="">
                         
                         <p>   <?php echo $blog->{'details_' . $sign}; ?>   </p>
-                        
+                     
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-md-6 box">

@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -174,6 +175,8 @@ Route::prefix('admin')->group(function () {
       Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin-categories-update');
 
       Route::get('/categories/delete/{id}',  [CategoryController::class, 'destroy'])->name('admin-categories-delete');
+    
+    
     });
 
     Route::group(['middleware' => 'permissions:subcategories'], function () {
@@ -201,6 +204,19 @@ Route::prefix('admin')->group(function () {
       Route::post('/blogs/update/{id}', [BlogController::class, 'update'])->name('admin-blogs-update');
 
       Route::get('/blogs/delete/{id}',  [BlogController::class, 'destroy'])->name('admin-blogs-delete');
+
+
+      
+      Route::get('/blog_categories/datatables',  [BlogCategoryController::class, 'datatables'])->name('admin-blog_categories-datatables');
+      Route::get('/blog_categories',  [BlogCategoryController::class, 'index'])->name('admin-blog_categories-index');
+      Route::get('/blog_categories/create',   [BlogCategoryController::class, 'create'])->name('admin-blog_categories-create');
+      Route::post('/blog_categories/create',  [BlogCategoryController::class, 'store'])->name('admin-blog_categories-store');
+      Route::get('/blog_categories/edit/{id}',  [BlogCategoryController::class, 'edit'])->name('admin-blog_categories-edit');
+      Route::post('/blog_categories/update/{id}', [BlogCategoryController::class, 'update'])->name('admin-blog_categories-update');
+
+      Route::get('/blog_categories/delete/{id}',  [BlogCategoryController::class, 'destroy'])->name('admin-blog_categories-delete');
+    
+    
     });
 
 

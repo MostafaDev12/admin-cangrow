@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
 use App\Models\Blog;
-
+use App\Models\BlogCategory;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -536,4 +536,26 @@ class HomeController extends Controller
 
     return "done";
   }
+
+
+  
+  public function blogsCategory(Request $request, $slug)
+  {
+
+    $sign = $this->langSign();
+
+
+    $category = BlogCategory::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+
+    if(!$category){
+
+      abort(404);
+    }
+
+
+    return view('front.blog_categories', compact('sign', 'category'));
+  }
+ 
+
+
 }

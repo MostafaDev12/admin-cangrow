@@ -16,9 +16,20 @@
 
 
 <?php $__env->startSection('content'); ?>
+<div class="slider-phone  d-block  d-md-none">
+    <div class="title-doc  wow animate__animated animate__fadeInLeft" data-wow-delay="1s" data-wow-duration="1s">
+      <h1>دكتور عبدالرحمن شمس</h1>
+      <p>مدرس طب وجراحة العيون جامعة عين شمس
+        <br>
+        دكتوراه طب وجراحة العيون جامعة عين شمس
+        <br>
+        استشاري جراحات المياه البيضاء وتصحيح الابصار وعلاج جفاف العيون
+      </p>
+      <button>اتصل بنا</button>
+    </div>
+  </div>
 
-
-  <div class="slider" style="background-image: url('<?php echo e($sliders->{'photo'}  ?? ''); ?>');">
+  <div class="slider d-md-block d-none" style="background-image: url('<?php echo e($sliders->{'photo'}  ?? ''); ?>');">
     <div class="title-doc  wow animate__animated animate__fadeInLeft" data-wow-delay="1s" data-wow-duration="1s" >
       <h1> <?php echo e($sliders->{'title_' . $sign}  ?? ''); ?> </h1>
       <?php echo $sliders->{'details_' . $sign}  ?? ''; ?>

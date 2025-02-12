@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class BlogCategory extends Model
 {
     
 
@@ -13,14 +13,14 @@ class Blog extends Model
      *
      * @var array<int, string>
      */
-    protected $table ='blogs';
+    protected $table ='blog_categories';
     
      protected $appends = ['photo'];
 
 
     public function getPhotoAttribute()
     {
-        return url('/') . '/assets/images/blogs/' . $this->attributes['photo'];
+        return url('/') . '/assets/images/blog_categories/' . $this->attributes['photo'];
     }
     protected $fillable = [
         
@@ -31,30 +31,25 @@ class Blog extends Model
         'details_ar',
         'details_en',
         'details_fr',
-       'meta_title_ar',
+        'meta_title_ar',
         'meta_title_en',
         'meta_title_fr',
         'meta_details_ar',
         'meta_details_en',
         'meta_details_fr',
         
-        'short_details_ar',
-        'short_details_en',
-        'short_details_fr',
-        'blog_date',
-        
         'slug_ar',
         'slug_en',
         'slug_fr',
         'tags',
-        'category_id',
       
     ];
 
-    public function category()
+    
+    public function blogs()
     {
-        return $this->belongsTo(BlogCategory::class,'category_id');
-    }
+        return $this->hasMany(Blog::class,'category_id');
+    }   
  
     /**
      * The attributes that should be hidden for serialization.

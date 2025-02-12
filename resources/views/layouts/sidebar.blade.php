@@ -187,6 +187,15 @@
 
 
                                 <li class="nav-item">
+                                    <a class="nav-link  " href="{{ route('admin-blog_categories-index') }}"
+                                        aria-controls="sidebarmodels_category">
+                                        <span>@lang('translation.blog_categories')</span>
+                                    </a>
+                                </li>
+
+                                
+
+                                <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-blogs-index') }}"
                                         aria-controls="sidebarmodels_category">
                                         <span>@lang('translation.blogs')</span>

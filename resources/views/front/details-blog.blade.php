@@ -19,6 +19,8 @@ $randomPhone = Arr::random($phones);
 @endphp
     <div class="header-title ">
         <div class="overlay d-flex justify-content-center align-items-center">
+           @if(!empty(optional($blog->category)->{'title_' . $sign} )) <a href="{{ route('blogs-category.index',$blog->category->{'slug_' . $sign}) }}" class="">{{ optional($blog->category)->{'title_' . $sign} }}</a> @endif
+
             <h1> {{ $blog->{'title_' . $sign} }}   </h1>
         </div>
 

@@ -117,14 +117,14 @@
             <div class="row">
                 <div class="col-4">
                     <div class="d-flex justify-content-center justify-content-evenly">
-                      <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   <a href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>"> <i class="fab fa-facebook"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>"> <i class="fab fa-youtube"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>">  <i class="fab fa-instagram"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->d_status == 1): ?>     <a href="<?php echo e(App\Models\Socialsetting::find(1)->dribble); ?>">  <i class="fab fa-tiktok"></i></a>  <?php endif; ?>
+                      <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   <a target="_blank"  href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>"> <i class="fab fa-facebook"></i></a>  <?php endif; ?>
+                      <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>    <a target="_blank"  href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>"> <i class="fab fa-youtube"></i></a>  <?php endif; ?>
+                      <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?>    <a target="_blank"  href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>">  <i class="fab fa-instagram"></i></a>  <?php endif; ?>
+                      <?php if(App\Models\Socialsetting::find(1)->d_status == 1): ?>     <a target="_blank"  href="<?php echo e(App\Models\Socialsetting::find(1)->dribble); ?>">  <i class="fab fa-tiktok"></i></a>  <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-4">
-                    <a href="http://wa.me/2<?php echo e($randomPhone); ?>"><i class="fab fa-whatsapp"></i> <?php echo e($randomPhone); ?></a>
+                    <a target="_blank"  href="http://wa.me/2<?php echo e($randomPhone); ?>"><i class="fab fa-whatsapp"></i> <?php echo e($randomPhone); ?></a>
                 </div>
                 <div class="col-4">
                     <a href="tel:+2<?php echo e($randomPhone); ?>"><i class="fas fa-phone"></i> <?php echo e($randomPhone); ?> </a>
@@ -264,7 +264,7 @@
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                      <?php $__currentLoopData = $phones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $phone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                      <i class="fab fa-whatsapp"></i><a href="http://wa.me/2<?php echo e($phone); ?>" target="_blank"><?php echo e($phone); ?></a><br>
+                      <i class="fab fa-whatsapp"></i><a target="_blank"  href="http://wa.me/2<?php echo e($phone); ?>" target="_blank"><?php echo e($phone); ?></a><br>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       <?php $__currentLoopData = $addresses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $address): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <i class="fas fa-location"></i> <a href="#">   <?php echo e($address); ?>   </a>
@@ -274,16 +274,16 @@
                 </div>
             </div>
             <hr>
-            <p class="text-center fw-bold">جميع الحقوق محفوظة © <?php echo e(date('Y')); ?> لصالح الدكتور عبدالرحمن شمس</p>
+            <p class="text-center fw-bold">جميع الحقوق محفوظة © <?php echo e(date('Y')); ?>  <a target="_blank" href="https://cangrowonline.com">CanGrow Digital Marketing Agency</a>      </p>
         </div>
     </section>
     <div class="social-media">
         <ul class="custom">
 
-           <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   <a href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>"> <i class="fab fa-facebook"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>"> <i class="fab fa-youtube"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>">  <i class="fab fa-instagram"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->d_status == 1): ?>     <a href="<?php echo e(App\Models\Socialsetting::find(1)->dribble); ?>">  <i class="fab fa-tiktok"></i></a>  <?php endif; ?>
+           <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   <a href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>" target="_blank"> <i class="fab fa-facebook"></i></a>  <?php endif; ?>
+                      <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>" target="_blank"> <i class="fab fa-youtube"></i></a>  <?php endif; ?>
+                      <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>" target="_blank">  <i class="fab fa-instagram"></i></a>  <?php endif; ?>
+                      <?php if(App\Models\Socialsetting::find(1)->d_status == 1): ?>     <a href="<?php echo e(App\Models\Socialsetting::find(1)->dribble); ?>" target="_blank">  <i class="fab fa-tiktok"></i></a>  <?php endif; ?>
 
         </ul>
     </div>
