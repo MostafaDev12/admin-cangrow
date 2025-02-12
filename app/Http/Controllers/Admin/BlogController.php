@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DataTables;
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -55,7 +56,8 @@ class BlogController extends Controller
     //*** GET Request
     public function create()
     {
-        return view('admin.blogs.create');
+        $cats = BlogCategory::get();
+        return view('admin.blogs.create',compact('cats'));
     }
 
     //*** POST Request
@@ -105,7 +107,8 @@ class BlogController extends Controller
     public function edit($id)
     {
         $data = Blog::findOrFail($id);
-        return view('admin.blogs.edit',compact('data'));
+        $cats = BlogCategory::get();
+        return view('admin.blogs.edit',compact('data','cats'));
     }
 
     //*** POST Request
