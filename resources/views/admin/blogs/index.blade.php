@@ -212,7 +212,7 @@
                ajax: '{{ route('admin-blogs-datatables') }}',
                columns: [
                         { data: 'photo', name: 'photo' },
-                        { data: 'title', name: 'title' },
+                        { data: 'title_ar', name: 'title_ar' },
                         { data: 'category', name: 'category' , searchable: false, orderable: false },
                          
                         { data: 'action', searchable: false, orderable: false }
