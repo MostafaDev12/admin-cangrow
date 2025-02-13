@@ -43,6 +43,8 @@
              @endforeach
              
          </div>
+
+         {{ $blogs->links('includes.pagination.custom') }}
      </div>
  </div> 
 @stop

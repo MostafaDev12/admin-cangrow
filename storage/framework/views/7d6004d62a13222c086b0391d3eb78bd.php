@@ -44,6 +44,9 @@
              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
              
          </div>
+
+         <?php echo e($blogs->links('includes.pagination.custom')); ?>
+
      </div>
  </div> 
 <?php $__env->stopSection(); ?>

@@ -36,10 +36,14 @@ $randomPhone = Arr::random($phones);
 
         </div>
     </div>
+    @php
+        
+        $blogs = $category->blogs()->paginate(9);
+    @endphp
     <div class="blogs">
         <div class="container">
             <div class="row pt-5">
-              @foreach($category->blogs as $blog)
+              @foreach($blogs as $blog)
               <div class="col-12 col-lg-4 col-md-4 mb-3">
                   <div class="box blogs-div ">
                       <div>
@@ -57,6 +61,8 @@ $randomPhone = Arr::random($phones);
               </div>
               @endforeach
             </div>
+            {{ $blogs->links('includes.pagination.custom') }}
+
         </div>
     </div>
    @stop
