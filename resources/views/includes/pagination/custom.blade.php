@@ -16,15 +16,15 @@
             @php
                 $currentPage = $paginator->currentPage();
                 $lastPage = $paginator->lastPage();
-                $startPage = max(1, $currentPage - 3);
-                $endPage = min($lastPage, $currentPage + 3);
+                $startPage = max(1, $currentPage - 1);
+                $endPage = min($lastPage, $currentPage + 1);
             @endphp
 
             {{-- First page --}}
             @if ($startPage > 1)
                 <li class="page-item"><a class="page-link" href="{{ $paginator->url(1) }}">1</a></li>
                 @if ($startPage > 2)
-                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
                 @endif
             @endif
 
@@ -38,8 +38,8 @@
             @endfor
 
             {{-- Last page --}}
-            @if ($endPage < $lastPage)
-                @if ($endPage < $lastPage - 1)
+            @if ($endPage <= $lastPage)
+                @if ($endPage <= $lastPage - 1)
                     <li class="page-item disabled"><a class="page-link">...</a></li>
                 @endif
                 <li class="page-item"><a class="page-link" href="{{ $paginator->url($lastPage) }}">{{ $lastPage }}</a></li>
