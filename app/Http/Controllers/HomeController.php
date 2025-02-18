@@ -347,7 +347,7 @@ class HomeController extends Controller
       foreach ($to as $key => $data1) {
 
 
-        if ($gs->is_smtp == 1) {
+       
           $data = [
             'to' => $to[$key],
             'subject' => $subject,
@@ -356,10 +356,10 @@ class HomeController extends Controller
 
           $mailer = new GeniusMailer();
           $mailer->sendCustomMail($data);
-        } else {
-          $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
-          mail($to[$key], $subject, $msg, $headers);
-        }
+        // if ($gs->is_smtp == 1) { } else {
+        //   $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
+        //   mail($to[$key], $subject, $msg, $headers);
+        // }
         // Login Section Ends
 
 
