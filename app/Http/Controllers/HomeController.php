@@ -305,13 +305,13 @@ class HomeController extends Controller
       $subject = "Reservation From Of " . $request->name;
       $service = $request->specialty;
       $msg = "Name: " . $name . 
-      "\nEmail: " . $from . 
-      "\nPhone: " . $phone . 
-      "\nAge: " . $request->age . 
-      "\nSpecialty: " . $request->specialty . 
-      "\nBookingDate: " . $request->bookingDate . 
+      "<br>Email: " . $from . 
+      "<br>Phone: " . $phone . 
+      "<br>Age: " . $request->age . 
+      "<br>Specialty: " . $request->specialty . 
+      "<br>BookingDate: " . $request->bookingDate . 
     
-      "\nMessage: " . $message;
+      "<br>Message: " . $message;
     
     } elseif (!empty($request->service)) {
 
@@ -326,11 +326,11 @@ class HomeController extends Controller
       $subject = "Email From Of " . $request->name;
       $service = $request->specialty;
       $msg = "Name: " . $name . 
-      "\nEmail: " . $from . 
-      "\nPhone: " . $phone . 
-      "\nAge: " . $request->age . 
-      "\nSpecialty: " . $request->specialty . 
-      "\nBookingDate: " . $request->bookingDate . 
+      "<br>Email: " . $from . 
+      "<br>Phone: " . $phone . 
+      "<br>Age: " . $request->age . 
+      "<br>Specialty: " . $request->specialty . 
+      "<br>BookingDate: " . $request->bookingDate . 
     
       "\nMessage: " . $message;
 
