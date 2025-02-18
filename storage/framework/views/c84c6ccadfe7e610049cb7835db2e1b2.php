@@ -494,7 +494,7 @@
                 processData: false,
                 beforeSend: function() {
                     $('#email-form .response').html(
-                        '<div class="text-info"><img src="<?php echo e(asset('assets/images/preloader.gif')); ?>"> Loading...</div>'
+                        '<div class="text-info">Loading...</div>'
                     );
                     console.log(1);
                 },

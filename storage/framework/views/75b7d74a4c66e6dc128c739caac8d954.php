@@ -1,10 +1,10 @@
 <?php if($paginator->hasPages()): ?>
-    <nav aria-label="..."  class="d-flex justify-content-center">
+    <nav aria-label="..." class="d-flex justify-content-center">
         <ul class="pagination">
             
             <?php if($paginator->onFirstPage()): ?>
-                <li class="page-item  " aria-disabled="true" aria-label="<?php echo app('translator')->get('السابق'); ?>">
-                    <span class="page-link" aria-hidden="true"><?php echo app('translator')->get('السابق'); ?></span>
+                <li class="page-item" aria-disabled="true" aria-label="<?php echo app('translator')->get('السابق'); ?>">
+                    <a class="page-link" aria-hidden="true"><?php echo app('translator')->get('السابق'); ?></a>
                 </li>
             <?php else: ?>
                 <li class="page-item">
@@ -13,32 +13,46 @@
             <?php endif; ?>
 
             
-            <?php $__currentLoopData = $elements; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $element): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                
-                <?php if(is_string($element)): ?>
-                    <li class="page-item  " aria-disabled="true"><span class="page-link"><?php echo e($element); ?></span></li>
-                <?php endif; ?>
+            <?php
+                $currentPage = $paginator->currentPage();
+                $lastPage = $paginator->lastPage();
+                $startPage = max(1, $currentPage - 1);
+                $endPage = min($lastPage, $currentPage + 1);
+            ?>
 
-                
-                <?php if(is_array($element)): ?>
-                    <?php $__currentLoopData = $element; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page => $url): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php if($page == $paginator->currentPage()): ?>
-                            <li class="page-item active" aria-current="page"><span class="page-link"><?php echo e($page); ?></span></li>
-                        <?php else: ?>
-                            <li class="page-item"><a class="page-link" href="<?php echo e($url); ?>"><?php echo e($page); ?></a></li>
-                        <?php endif; ?>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            
+            <?php if($startPage > 1): ?>
+                <li class="page-item"><a class="page-link" href="<?php echo e($paginator->url(1)); ?>">1</a></li>
+                <?php if($startPage > 2): ?>
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
                 <?php endif; ?>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
+
+            
+            <?php for($page = $startPage; $page <= $endPage; $page++): ?>
+                <?php if($page == $currentPage): ?>
+                    <li class="page-item active" aria-current="page"><a class="page-link"><?php echo e($page); ?></a></li>
+                <?php else: ?>
+                    <li class="page-item"><a class="page-link" href="<?php echo e($paginator->url($page)); ?>"><?php echo e($page); ?></a></li>
+                <?php endif; ?>
+            <?php endfor; ?>
+
+            
+            <?php if($endPage <= $lastPage): ?>
+                <?php if($endPage <= $lastPage - 1): ?>
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
+                <?php endif; ?>
+                <li class="page-item"><a class="page-link" href="<?php echo e($paginator->url($lastPage)); ?>"><?php echo e($lastPage); ?></a></li>
+            <?php endif; ?>
 
             
             <?php if($paginator->hasMorePages()): ?>
                 <li class="page-item">
-                    <a class="page-link" href="<?php echo e($paginator->nextPageUrl()); ?>" rel="next" aria-label="<?php echo app('translator')->get('next'); ?>"><?php echo app('translator')->get('التالى'); ?></a>
+                    <a class="page-link" href="<?php echo e($paginator->nextPageUrl()); ?>" rel="next" aria-label="<?php echo app('translator')->get('التالى'); ?>"><?php echo app('translator')->get('التالى'); ?></a>
                 </li>
             <?php else: ?>
                 <li class="page-item disabled" aria-disabled="true" aria-label="<?php echo app('translator')->get('التالى'); ?>">
-                    <span class="page-link" aria-hidden="true"><?php echo app('translator')->get('التالى'); ?></span>
+                    <a class="page-link" aria-hidden="true"><?php echo app('translator')->get('التالى'); ?></a>
                 </li>
             <?php endif; ?>
         </ul>
