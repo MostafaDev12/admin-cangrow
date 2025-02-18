@@ -15,10 +15,14 @@ class Service extends Model
      */
     protected $table ='services';
     
-     protected $appends = ['photo'];
+     protected $appends = ['photo','photo_url'];
 
 
     public function getPhotoAttribute()
+    {
+        return url('/') . '/assets/images/services/' . $this->attributes['photo'];
+    }  
+    public function getPhotoUrlAttribute()
     {
         return url('/') . '/assets/images/services/' . $this->attributes['photo'];
     }
