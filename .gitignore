@@ -18,6 +18,8 @@ public_html/hot
 
 storage/*.key
 storage/*
+storage/
+storage
 
 Homestead.yaml
 Homestead.json
