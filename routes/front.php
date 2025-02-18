@@ -46,7 +46,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/المقالات', [HomeController::class, 'blogs'])->name('blogs.index');    
         
         Route::get('/اتصل-بنا', [HomeController::class, 'contact'])->name('contact.index');
-        Route::post('/contact-submit', [HomeController::class, 'contact'])->name('front.contact.submit');
+        Route::post('/contact-submit', [HomeController::class, 'contactemail'])->name('front.contact.submit');
         Route::get('/احجز-الان', [HomeController::class, 'BookNow'])->name('book.index');
 
         Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');

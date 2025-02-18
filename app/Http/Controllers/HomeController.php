@@ -278,14 +278,14 @@ class HomeController extends Controller
     $gs = Generalsetting::findOrFail(1);
     $ps = DB::table('pagesettings')->find(1);
 
-    if ($gs->is_capcha == 1) {
+    // if ($gs->is_capcha == 1) {
 
-      // Capcha Check
-      $value = session('captcha_string');
-      if ($request->codes != $value) {
-        return response()->json(array('errors' => [0 => 'Please enter Correct Capcha Code.']));
-      }
-    }
+    //   // Capcha Check
+    //   $value = session('captcha_string');
+    //   if ($request->codes != $value) {
+    //     return response()->json(array('errors' => [0 => 'Please enter Correct Capcha Code.']));
+    //   }
+    // }
 
 
     // Login Section

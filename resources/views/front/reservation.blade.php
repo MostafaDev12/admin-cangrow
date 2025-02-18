@@ -72,6 +72,7 @@
                                 <textarea id="details" class="form-control" rows="4" name="text"
                                     placeholder="{{ __('تفاصيل الحجز') }}"></textarea>
                             </div>
+                            
                             <div class="text-center">
                                 <button type="submit" class="btn btn-submit w-100 mt-3 px-5">  {{ __('إرسال') }}<i class="fa-solid fa-envelope"></i> </button>
                             </div>
