@@ -376,7 +376,7 @@ class HomeController extends Controller
       'message' => $message,
     ]);
     // Redirect Section
-    return response()->json($ps->contact_success);
+    return response()->json(__('submit success'));
   }
 
   public function refresh_code()
