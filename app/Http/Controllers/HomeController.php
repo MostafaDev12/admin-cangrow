@@ -318,9 +318,9 @@ class HomeController extends Controller
       $subject = "Contact Email From Of " . $request->name;
       $subject_title = $request->service;
       $msg = "Name: " . $name .
-        "\nEmail: " . $from .
-        "\nService: " . $service .
-        "\nMessage: " . $message;
+        "<br>Email: " . $from .
+        "<br>Service: " . $service .
+        "<br>Message: " . $message;
     } else {
 
       $subject = "Email From Of " . $request->name;
@@ -332,7 +332,7 @@ class HomeController extends Controller
       "<br>Specialty: " . $request->specialty . 
       "<br>BookingDate: " . $request->bookingDate . 
     
-      "\nMessage: " . $message;
+      "<br>Message: " . $message;
 
     }
 
