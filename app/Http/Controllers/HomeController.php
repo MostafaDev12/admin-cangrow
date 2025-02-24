@@ -50,13 +50,15 @@ class HomeController extends Controller
     // return abort(404);
     $sign = $this->langSign();
 
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
+    $sliders = Slider::get();
+  //  $points = AboutPoint::get();
     $services = Service::get();
-    $models = PageModel::get();
+   // $models = PageModel::get();
     $reviews = Partner::get();
+    $videos = Media::get();
+    $blogs = Blog::get();
 
-    return view('front.index', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.index', compact('sign', 'sliders', 'services', 'blogs', 'reviews', 'videos'));
   }
 
   public function about(Request $request)

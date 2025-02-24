@@ -18,10 +18,10 @@ class Blog extends Model
      protected $appends = ['photo','photo_url'];
 
 
-    public function getPhotoAttribute()
-    {
-        return url('/') . '/assets/images/blogs/' . $this->attributes['photo'];
-    }
+    // public function getPhotoAttribute()
+    // {
+    //     return url('/') . '/assets/images/blogs/' . $this->attributes['photo'];
+    // }
     public function getPhotoUrlAttribute()
     {
         return url('/') . '/assets/images/blogs/' . $this->attributes['photo'];

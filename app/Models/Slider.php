@@ -15,13 +15,18 @@ class Slider extends Model
      */
     protected $table ='sliders';
     
-     protected $appends = ['photo'];
+     protected $appends = ['photo','photo_url'];
 
 
-    public function getPhotoAttribute()
+    // public function getPhotoAttribute()
+    // {
+    //     return url('/') . '/assets/images/slider/' . $this->attributes['photo'];
+    // }
+    public function getPhotoUrlAttribute()
     {
         return url('/') . '/assets/images/slider/' . $this->attributes['photo'];
     }
+    
     protected $fillable = [
         
         'photo',

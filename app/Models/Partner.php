@@ -15,10 +15,14 @@ class Partner extends Model
      */
     protected $table ='partners';
     
-     protected $appends = ['photo'];
+     protected $appends = ['photo','photo_url'];
 
 
-    public function getPhotoAttribute()
+    // public function getPhotoAttribute()
+    // {
+    //     return url('/') . '/assets/images/partners/' . $this->attributes['photo'];
+    // }
+    public function getPhotoUrlAttribute()
     {
         return url('/') . '/assets/images/partners/' . $this->attributes['photo'];
     }

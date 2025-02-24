@@ -89,10 +89,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="<?php echo e(asset('front/dr-shams/')); ?>/css/style.css">
+    <link rel="stylesheet" href="<?php echo e(asset('front/cairo/')); ?>/css/style.css">
 
 
 
@@ -112,27 +112,65 @@
 
   $randomPhone = Arr::random($phones);
   ?>
-    <div class="header-social text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <div class="d-flex justify-content-center justify-content-evenly">
-                      <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   <a target="_blank"  href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>"> <i class="fab fa-facebook"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>    <a target="_blank"  href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>"> <i class="fab fa-youtube"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?>    <a target="_blank"  href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>">  <i class="fab fa-instagram"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->d_status == 1): ?>     <a target="_blank"  href="<?php echo e(App\Models\Socialsetting::find(1)->dribble); ?>">  <i class="fab fa-tiktok"></i></a>  <?php endif; ?>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <a target="_blank"  href="http://wa.me/2<?php echo e($randomPhone); ?>"><i class="fab fa-whatsapp"></i> <?php echo e($randomPhone); ?></a>
-                </div>
-                <div class="col-4">
-                    <a href="tel:+2<?php echo e($randomPhone); ?>"><i class="fas fa-phone"></i> <?php echo e($randomPhone); ?> </a>
-                </div>
-            </div>
+
+<div class="header">
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="<?php echo e(route('front.index')); ?>">
+          <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="" class="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active fw-bold" aria-current="page" href="<?php echo e(route('front.index', $sign)); ?>"><?php echo e(__('الرئيسية')); ?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="<?php echo e(route('about.index')); ?>">عن الشركة</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="projects.html">مشاريعنا</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="<?php echo e(route('services.index')); ?>">الخدمات</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                
+                مركز التعليم
+
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="<?php echo e(route('videos.index')); ?>">ما الافضل بالنسبة لي</a></li>
+                <li><a class="dropdown-item" href="news.html">اخبار كايرو سولار</a></li>
+                <li><a class="dropdown-item" href="<?php echo e(route('blogs.index')); ?>"><?php echo e(__('المقالات')); ?></a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="<?php echo e(route('contact.index')); ?>"> <?php echo e(__('اتصل بنا')); ?></a>
+            </li>
+          </ul>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             ar
+            </a>
+          
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">ar</a></li>
+              <li><a class="dropdown-item" href="#">en</a></li>
+            </ul>
+          </div>
         </div>
-    </div>
-    <div class="header">
+      </div>
+    </nav>
+  </div>
+
+ 
+    <div class="header  d-none">
         <nav class="navbar navbar-expand-lg bg-white">
             <div class="container-fluid">
                 <a class="navbar-brand wow animate__animated animate__fadeInDown" data-wow-delay="1s"
@@ -219,199 +257,157 @@
 
 
 
+
     <section class="footer-section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 ">
-                    <div class="logo">
-                        <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="RGS Logo">
-                    </div>
-                    <p class="branch-info fw-bold">
-                      <?php echo e($gs->{'footer_' . $sign}); ?>
-
-                    </p>
-                </div>
-                <div class="col-lg-2 col-md-6 ">
-                    <h1><?php echo e(__('روابط هامة')); ?></h1>
-                    <ul class="list-unstyled">
-                        <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('الرئيسية')); ?></a></li>
-                        <li><a href="<?php echo e(route('about.index')); ?>"> <?php echo e(__('عن الشركة')); ?> </a></li>
-                        <li><a href="<?php echo e(route('services.index')); ?>"> <?php echo e(__('الخدمات')); ?></a></li>
-                        <li><a href="<?php echo e(route('videos.index')); ?>"><?php echo e(__('الفيديوهات')); ?></a></li>
-                        <li><a href="<?php echo e(route('book.index')); ?>"><?php echo e(__('احجز الان')); ?></a></li>
-                        <li><a href="<?php echo e(route('contact.index')); ?>">    <?php echo e(__('اتصل بنا')); ?></a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 ">
-                    <h1> <?php echo e(__('الخدمات')); ?></h1>
-                    <ul class="list-unstyled">
-                      <?php $__currentLoopData = $services->shuffle()->take(6); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      <li><a href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"> <?php echo e($service->{'title_' . $sign}); ?>  </a></li>
-                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                     
-                       
-
-                    </ul>
-                </div>
-                <!-- تواصل معنا -->
-                <div class="col-lg-4 col-md-6 ">
-                    <h1> <?php echo e(__('تواصل معنا')); ?></h1>
-                    <p class="contact-info">
-                      <?php $__currentLoopData = $phones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $phone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
- 
-                      <i class="fas fa-phone"></i><a href="tel:+2<?php echo e($phone); ?>"><?php echo e($phone); ?></a> <br>
-
-                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                     <?php $__currentLoopData = $phones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $phone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                      <i class="fab fa-whatsapp"></i><a target="_blank"  href="http://wa.me/2<?php echo e($phone); ?>" target="_blank"><?php echo e($phone); ?></a><br>
-                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                      <?php $__currentLoopData = $addresses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $address): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <i class="fas fa-location"></i> <a href="#">   <?php echo e($address); ?>   </a>
-                        <br>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </p>
-                </div>
+          <div class="row text-center">
+            <!-- روابط هامة -->
+    
+            <!-- عناوين فروعنا -->
+            <div class="col-lg-6 col-md-6 ">
+              <div class="logo">
+                <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="">
+              </div>
+              <h1><?php echo e(__('عناوين فروعنا')); ?></h1>
+              <p class="branch-info">
+                <?php $__currentLoopData = $addresses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $address): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <i class="fas fa-map-marker-alt"></i> <a href="#">   <?php echo e($address); ?>   </a>
+                <br>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            
             </div>
-            <hr>
+            <div class="col-lg-3 col-md-6 ">
+              <h1> <?php echo e(__('روابط هامه')); ?> </h1>
+              <ul class="list-unstyled">
+                <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('الرئيسية')); ?></a></li>
+                <li><a href="<?php echo e(route('about.index')); ?>"> <?php echo e(__('عن الشركة')); ?> </a></li>
+                <li><a href="<?php echo e(route('services.index')); ?>"> <?php echo e(__('الخدمات')); ?></a></li>
+                <li><a href="<?php echo e(route('videos.index')); ?>"><?php echo e(__('الفيديوهات')); ?></a></li>
+                <li><a href="<?php echo e(route('blogs.index')); ?>"><?php echo e(__('المقالات')); ?></a></li>
+                <li><a href="<?php echo e(route('contact.index')); ?>">    <?php echo e(__('اتصل بنا')); ?></a></li>
+              
+              </ul>
+            </div>
+            <!-- تواصل معنا -->
+            <div class="col-lg-3 col-md-6 ">
+              <h1> <?php echo e(__('تواصل معنا')); ?>  </h1>
+              <p class="contact-info">
+                <?php $__currentLoopData = $phones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $phone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+ 
+                <i class="fas fa-phone"></i><a href="tel:+2<?php echo e($phone); ?>"><?php echo e($phone); ?></a> <br>
+
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $emails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $email): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+ 
+                <i class="fas fa-envelope"></i><a href="mailto:<?php echo e($email); ?>"><?php echo e($email); ?></a> <br>
+
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                
+              </p>
+            </div>
+          </div>
+          <hr>
             <p class="text-center fw-bold">جميع الحقوق محفوظة © <?php echo e(date('Y')); ?>  <a target="_blank" href="https://cangrowonline.com">CanGrow Digital Marketing Agency</a>      </p>
         </div>
-    </section>
-    <div class="social-media">
+      </section>
+      <div class="social-media">
         <ul class="custom">
 
-           <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   <a href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>" target="_blank"> <i class="fab fa-facebook"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>" target="_blank"> <i class="fab fa-youtube"></i></a>  <?php endif; ?>
-                      <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>" target="_blank">  <i class="fab fa-instagram"></i></a>  <?php endif; ?>
+            <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   <a href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>" target="_blank"> <i class="fab fa-facebook-f"></i></a>  <?php endif; ?>
+                
+                      <?php $__currentLoopData = $phones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$phone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($k == 0): ?>
+                      
+                      <li><a href="http://wa.me/2<?php echo e($phone); ?>" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                        <?php endif; ?>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                      
                       <?php if(App\Models\Socialsetting::find(1)->d_status == 1): ?>     <a href="<?php echo e(App\Models\Socialsetting::find(1)->dribble); ?>" target="_blank">  <i class="fab fa-tiktok"></i></a>  <?php endif; ?>
-
+                     
+                      <?php $__currentLoopData = $phones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$phone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($k == 0): ?>
+                       
+                      <li><a href="tel:+2<?php echo e($phone); ?>" target="_blank"><i class="fas fa-phone"></i></a></li>
+                        <?php endif; ?>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        
+                      
+                       <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>" target="_blank">  <i class="fab fa-instagram"></i></a>  <?php endif; ?>
+                      <?php if(App\Models\Socialsetting::find(1)->l_status == 1): ?>     <a href="<?php echo e(App\Models\Socialsetting::find(1)->linkedin); ?>" target="_blank">  <i class="fab fa-linkedin-in"></i></a>  <?php endif; ?>
+  
+                      <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>    <a href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>" target="_blank"> <i class="fab fa-youtube"></i></a>  <?php endif; ?>
         </ul>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
         integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-    </script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        </script>
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
         integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
         integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
+      <script>
         new WOW().init();
-    </script>
-    <script>
-        let lastScrollTop = 0;
-        const header = document.querySelector('.header');
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-
-            if (currentScroll > lastScrollTop) {
-                // Scroll Down
-                header.classList.add('hidden');
-            } else {
-                // Scroll Up
-                header.classList.remove('hidden');
-            }
-
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-        });
-        const headerSocial = document.querySelector('.header-social');
-
-        // استماع لحدث التمرير
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > headerSocial.offsetHeight) {
-                // إضافة كلاس عندما يتم التمرير
-                document.body.classList.add('scrolled');
-            } else {
-                // إزالة الكلاس عندما نعود للأعلى
-                document.body.classList.remove('scrolled');
-            }
-        });
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"
         integrity="sha512-vKtlh10whXT2NhAshnxhceCdwq/bMyMrfeZ3p2IaF89qGCwbC94ATb7Qyg8cFs8EL3Hgz9bJBF++ZWfKn4ligg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/3.0.0-rc3/lazysizes.min.js"
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/3.0.0-rc3/lazysizes.min.js"
         integrity="sha512-HMnm5Dp1stoEycrUKuMyGDHIudidstU6uRwRgRxPbl2jNxU9xS2B0XLon7xowk3ZitrjNw7WIbQwXroIwY33sw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
         integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        var swiper = new Swiper(".service  .mySwiper", {
-            autoplay: {
-                delay: 3000,
+      <script>
+        var swiper = new Swiper(".slider .mySwiper", {
+          autoplay: {
+            delay: 3000,
+          },
+          loop: true,
+          effect: "fade",
+          grabCursor: true,
+          keyboard: {
+            enabled: true,
+          },
+          autoplay: {
+            delay: 3000,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          breakpoints: {
+            // when window width is >= 320px
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 20
             },
-            loop: true,
-            slidesPerView: 4,
-            spaceBetween: 20,
-            breakpoints: {
-                // when window width is >= 320px
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                // when window width is >= 480px
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                // when window width is >= 640px
-                640: {
-                    slidesPerView: 1,
-                    spaceBetween: 40
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 20
-                }
-            }
-        });
-        var swiper = new Swiper(".blog .mySwiper", {
-            autoplay: {
-                delay: 3000,
+            // when window width is >= 480px
+            480: {
+              slidesPerView: 1,
+              spaceBetween: 30
             },
-            loop: true,
-            slidesPerView: 4,
-            spaceBetween: 20,
-
-            breakpoints: {
-                // when window width is >= 320px
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                // when window width is >= 480px
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                // when window width is >= 640px
-                640: {
-                    slidesPerView: 1,
-                    spaceBetween: 40
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 20
-                }
+            // when window width is >= 640px
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 40
             }
+          }
         });
-    </script>
-
-
+        
+      </script>
+ 
     <script src="<?php echo e(asset('build/js/toastr.js')); ?>"></script>
 
     <script type="text/javascript">

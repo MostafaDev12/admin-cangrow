@@ -1,111 +1,129 @@
+ <!-- #endregion -->
+ 
 
-
-<?php $__env->startSection('title'); ?>
-   
-<?php echo e(__('عن الشركة')); ?>  -  <?php echo e($gs->{'title_' . $sign}); ?>
-
-     
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('gsearch'); ?>
-    <meta property="og:image" content=" <?php echo e($gs->{'logo_' . $sign}); ?>" />
-<?php $__env->stopSection(); ?>
-
-
-<?php $__env->startSection('content'); ?>
-
-
+ <?php $__env->startSection('title'); ?>
     
-    <div class="header-title ">
-        <div class="overlay d-flex justify-content-center align-items-center">
-            <h1> <?php echo e(__('عن الشركة')); ?> </h1>
-        </div>
+ <?php echo e(__('عن الشركة')); ?>  -  <?php echo e($gs->{'title_' . $sign}); ?>
 
-    </div>
-    <div class="about-us-page bg-white">
-        <div class="container position-top box p-5">
-            <div class="row">
-                <div class="col-12 col-lg-4 col-md-6">
-                    <div class="p-5 wow animate__animated animate__fadeInRight" data-wow-delay="1s"
-                        data-wow-duration="1s">
-                        <h2 class="fw-bold">لماذا يعد دكتور عبدالرحمن شمس </h2>
-                        <h2 class="fw-bold">افضل دكتور عيون في مصر</h2>
-                    </div>
-                </div>
-                
-                <?php echo $ps->about_details_ar; ?>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="about-us-2-page bg-white">
-        <div class="overlay">
-            <div class="container p-5">
-                <div class="row mb-5">
-                    <div class="col-12 col-lg-6 col-md-6">
-                        <div class="pt-5 wow animate__animated animate__fadeInRight" data-wow-delay="1s"
-                            data-wow-duration="1s">
-                            <h1> <?php echo e(__('يعتبر ايضا دكتور عبد الرحمن شمس هو افضل دكتور عيون في القاهرة ')); ?>  </h1>
-                            <p class="fw-bold" >  <?php echo e(__('يعد الدكتور عبد الرحمن شمس اكبر دكتور عيون فى مصر في علاج جفاف العين والمياه البيضاء و تصحيح الابصار والافضل في عمليات الليزك وزرع العدسات في مصر وذلك لأنه يتمتع بخبرة كبيرة في علاج حالات جفاف العين الشديدة حيث قام بالعلاج العديد من الحالات الناجحة بإستخدام أحدث التقنيات بالإضافة إلى أنه حاصل على:')); ?> </p>
-                            <button   onclick="window.location.href='<?php echo e(route('book.index')); ?>'"> <?php echo e(__('احجز الان')); ?>  </button>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 col-md-6">
-                        <div class=" wow animate__animated animate__fadeInRight" data-wow-delay="1s"
-                            data-wow-duration="1s">
-                            <img src="<?php echo e($ps->about_photo); ?>" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="blog p-5 wow animate__animated animate__fadeIn" data-wow-delay="1s" data-wow-duration="1s">
-        <div class="container">
-            <div class="text-center">
-                <span>    <?php echo e(__('اراء العملاء')); ?> </span>
-                <h1 class="fs-3">
-                  <?php echo e(__('ماذا قال عملاءنا')); ?> 
+      
+ <?php $__env->stopSection(); ?>
+ 
+ <?php $__env->startSection('gsearch'); ?>
+     <meta property="og:image" content=" <?php echo e($gs->{'logo_' . $sign}); ?>" />
+ <?php $__env->stopSection(); ?>
+ 
+ 
+ <?php $__env->startSection('content'); ?>
+ 
+    <div class="about-us mt-5 pt-5">
+        <div class="container pt-5">
+            <div class="title_lines">
+                <h1>
+                  <?php echo e(__('عن الشركة')); ?>  
                 </h1>
             </div>
-            <div class="swiper mySwiper mt-5">
-                <div class="swiper-wrapper">
-
-                  <?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            
-                  <div class="swiper-slide">
-                    <div class="card">
-        
-                      <img class="card-img-top" src="<?php echo e($review->photo); ?>" alt="Card image cap">
-        
+            <div class="row">
+                <div class="">
+                    <div class="text-center animate__animated animate__fadeInRight" data-wow-delay="1s" data-wow-duration="1s">
+                        <img width="100%" height="400px" class="m-auto" src="<?php echo e($ps->about_photo); ?>" alt="">
                     </div>
-                  </div>
-        
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                   
-
                 </div>
-                <div class="swiper-pagination"></div>
-            </div>
+                <div class="">
+                    <div class="pt-5 animate__animated animate__fadeInLeft " data-wow-delay="0.5s" data-wow-duration="1s">
+                        <h2> <?php echo e(__('Cairo solar')); ?> </h2>
+                        <p >    <?php echo $ps->about_details_ar; ?>  </p>
+                    </div>
+                </div>
 
+            </div>
         </div>
     </div>
- 
-    <div class="pannar">
+
+    
+    <div class="mission text-center mt-5 p-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-6 col-md-6">
+                    <div class="border p-4 mb-3">
+                        <img src="img/business-target.png" width="120px" height="120px" alt="">
+                        <h1>Our Mission</h1>
+                        
+                        <p> للمصانع والفنادق والمزارع والمستودعات والمدارس ومباني الإدارات ومضخات آبار المياه والمنازل.
+                            
+                            بدأ كل شيء في عام 2014 عندما أصبحت شركة كايرو سولار أول شركة مصرية توفر المال لعملائها عن طريق تحويل الطاقة الشمسية إلى كهرباء.
+                            
+                            ومنذ ذلك الحين، قامت شركة القاهرة للطاقة الشمسية. نجحت في تصميم وشراء وتركيب 75 مشروعًا بإجمالي حوالي 16 ميجاوات من محطات الطاقة الشمسية. قام شريك المقاولات من الباطن لشركة كايرو سولار بتركيب إجمالي 200 ميجاوات في مصر.
+                            </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 col-md-6">
+                    <div class="border p-4">
+                        <img src="img/planning.png" width="120px" height="120px" alt="">
+                        <h1>Our strategy</h1>
+                        <p> للمصانع والفنادق والمزارع والمستودعات والمدارس ومباني الإدارات ومضخات آبار المياه والمنازل.
+                            
+                            بدأ كل شيء في عام 2014 عندما أصبحت شركة كايرو سولار أول شركة مصرية توفر المال لعملائها عن طريق تحويل الطاقة الشمسية إلى كهرباء.
+                            
+                            ومنذ ذلك الحين، قامت شركة القاهرة للطاقة الشمسية. نجحت في تصميم وشراء وتركيب 75 مشروعًا بإجمالي حوالي 16 ميجاوات من محطات الطاقة الشمسية. قام شريك المقاولات من الباطن لشركة كايرو سولار بتركيب إجمالي 200 ميجاوات في مصر.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="team p-2">
       <div class="container">
+        <div class="title_lines">
+          <h1>
+             فريقنا
+          </h1>
+      </div>
         <div class="row">
-          <div class="col-6">
-            <p>  <?php echo e(__('هل تريد حجز موعد وسنتواصل معك')); ?>     </p>
+          <div class="col-12 col-lg-4 col-md-6">
+            <div class="div-team">
+              <img src="img/membar1.webp" alt="">
+              <h1>Hisham Tawfik هشام توفيق</h1>
+              <span>Board Member عضو مجلس ادارة</span>
+              <p>كان هشام وزيراً لقطاع الأعمال بين عامي 2018-2022. يتمتع بخبرة تزيد عن 30 عامًا في مجال الخدمات المصرفية الاستثمارية. شغل منصب عضو مجلس إدارة بورصة القاهرة لمدة 7 سنوات، ويشغل حاليًا منصب رئيس مجلس إدارة شركة عربية أون لاين للوساطة في الأوراق المالية والتي تحتل المرتبة الثالثة في البورصة المصرية EGX. حصل هشام على شهادة الأنظمة الكهروضوئية (PV) من كندا.              </p>
+            </div>
           </div>
-          <div class="col-6">
-            <button   onclick="window.location.href='<?php echo e(route('book.index')); ?>'"> <?php echo e(__('احجز الان')); ?>   </button>
+          <div class="col-12 col-lg-4 col-md-6">
+            <div class="div-team">
+              <img src="img/membar2.png" alt="">
+              <h1>Samer Saad سامر سعد</h1>
+              <span>Chairman رئيس مجلس ادارة</span>
+              <p>يشغل سامر حاليًا منصب رئيس مجلس إدارة شركة كايرو سولار. بالإضافة إلى المدير العام لشركة Trade Net، وهي شركة تكنولوجيا معلومات مملوكة للقطاع الخاص تأسست عام 1997. تقدم Trade Net حلول تكنولوجيا المعلومات والخدمات الاستشارية للشركات الصغيرة والمتوسطة.              </p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 col-md-6">
+            <div class="div-team">
+              <img src="img/maher-2.webp" alt="">
+              <h1>Maher Hanna ماهر حنا</h1>
+              <span>Board memeber عضو مجلس ادارة</span>
+              <p>يشغل ماهر حاليًا منصب رئيس مجلس الإدارة والرئيس التنفيذي لشركة الأنظمة المكتبية المتكاملة (IOS)، وهي شركة رائدة في أنظمة التشغيل الآلي للمكاتب ووكيل لشركة OCE/Canon وRicoh. يتمتع ماهر بخبرة واسعة في العمليات التجارية ودعم ما بعد البيع، حيث تعامل مع مئات العملاء من المؤسسات والمنظمات متعددة الجنسيات.</p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 col-md-6">
+            <div class="div-team">
+              <img src="img/membar3.webp" alt="">
+              <h1>Hatem Tawfik حاتم توفيق</h1>
+              <span>Managing Director عضو منتدب</span>
+              <p>حصل حاتم على درجة البكالوريوس مع مرتبة الشرف في الاقتصاد وماجستير في إدارة الأعمال من جامعة ماكماستر في كندا. يشغ حاليا منصب سكرتير عام شعبة الطاقة المستدامة بالغرفة التجارية بالقاهرة. عمل حاتم سابقًا كمحلل أول للشركات في البنك التجاري الدولي بمصر في قطاعي البتروكيماويات والتشييد ومواد البناء.              </p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 col-md-6">
+            <div class="div-team">
+              <img src="img/membar4.webp" alt="">
+              <h1>Tamer Hanna تامر حنا</h1>
+              <span>Board Member عضو مجلس ادارة</span>
+              <p>تامر هو مالك وعضو مجلس إدارة شركة كايرو سولار. حصل تامر على درجة البكالوريوس في الهندسة الكهربائية من الجامعة الألمانية بالقاهرة ودرجة الماجستير المزدوجة في الطاقة الشمسية من جامعة كاسل بألمانيا وجامعة القاهرة بمصر. عمله في مجال البحث والتطوير مع معهد فراونهوفر، وهو أكبر معهد للبحث والتطوير في ألمانيا، وعمله مع برنامج الطاقة المتجددة GIZ في مصر، منحه أساسًا قويًا في تطبيقات الطاقة الشمسية. يعمل تامر حاليًا لدى مستشار الطاقة المتجددة (EBRD-GEFF) في Stantec.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  
+
      <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\admin-cangrows\resources\views/front/about.blade.php ENDPATH**/ ?>
