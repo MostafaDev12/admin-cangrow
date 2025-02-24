@@ -407,7 +407,7 @@ class FrontController extends Controller
     public function videos()
     {
 
-        $data = Media::get();
+        $data = Media::select('youtube_url')->get();
 
 
         return response()->json([

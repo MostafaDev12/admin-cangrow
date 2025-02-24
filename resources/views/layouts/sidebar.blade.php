@@ -80,15 +80,15 @@
                         </a>
                     </li>
                 @endif --}}
-{{-- 
+{{-- --}}
+
                 @if (Auth::guard('admin')->user()->sectionCheck('media'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-media-index') }}" aria-controls="sidebarmedia">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.media')</span>
                         </a>
                     </li>
-                @endif --}}
-
+                @endif 
                 {{--       @if (Auth::guard('admin')->user()->sectionCheck('services'))
          
                      <li class="nav-item">

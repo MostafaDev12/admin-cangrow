@@ -32,6 +32,15 @@
 
 
                             <div class="col-xl-12 col-md-12">
+                                <div class="mb-3">
+                                    <label for="youtube_url" class="form-label">{{ __('translation.youtube_url') }}</label>
+                                    <input type="text" class="form-control" name="youtube_url" value="" id="youtube_url" placeholder="{{ __('translation.youtube_url') }}">
+                                </div>
+                                 
+                            </div> <!-- end col -->
+
+
+                            <div class="col-xl-12 col-md-12  d-none">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title mb-0"> {{ __('translation.media') }}</h4>
