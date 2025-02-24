@@ -88,7 +88,7 @@ class HomeController extends Controller
     $sign = $this->langSign();
 
  
-    $blogs = Blog::paginate(9);
+    $blogs = Blog::orderby('blog_date','desc')->paginate(9);
 
     return view('front.blogs', compact('sign', 'blogs'));
   }
