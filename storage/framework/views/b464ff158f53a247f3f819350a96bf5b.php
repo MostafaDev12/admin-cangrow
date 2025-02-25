@@ -84,10 +84,10 @@
                                                   <input type="text" class="form-control" name="title_ar" value="<?php echo e($data->title_ar); ?>" id="title_ar" placeholder="<?php echo e(__('translation.title')); ?>">
                                               </div>
                                                
-                                         <!--     <div class="mb-3">
+                                           <div class="mb-3">
                                                   <label for="details_ar" class="form-label"><?php echo e(__('translation.details')); ?></label>
                                                   <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="<?php echo e(__('translation.details')); ?>"><?php echo e($data->details_ar); ?></textarea>
-                                              </div>-->
+                                              </div> 
                                               
                                         </div>
                                         <div class="tab-pane <?php echo e($gs->lang_arabic == 0 ? 'active' : ''); ?>" id="base-justified-product" role="tabpanel">
@@ -98,10 +98,10 @@
                                               <input type="text" class="form-control" name="title_en"  value="<?php echo e($data->title_en); ?>"  id="title_en" placeholder="<?php echo e(__('translation.title')); ?>">
                                           </div>
                                            
-                                       <!--   <div class="mb-3">
+                                         <div class="mb-3">
                                               <label for="details_en" class="form-label"><?php echo e(__('translation.details')); ?></label>
                                               <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="<?php echo e(__('translation.details')); ?>"><?php echo e($data->details_en); ?></textarea>
-                                          </div>-->
+                                          </div> 
                                           
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
@@ -113,10 +113,10 @@
                                               <input type="text" class="form-control" name="title_fr"  value="<?php echo e($data->title_fr); ?>"  id="title_fr" placeholder="<?php echo e(__('translation.title')); ?>">
                                           </div>
                                            
-                                          <!--<div class="mb-3">-->
-                                          <!--    <label for="details_fr" class="form-label"><?php echo e(__('translation.details')); ?></label>-->
-                                          <!--    <textarea class="form-control" name="details_fr"  id="details_fr" rows="3" placeholder="<?php echo e(__('translation.details')); ?>"><?php echo e($data->details_fr); ?></textarea>-->
-                                          <!--</div>-->
+                                          <div class="mb-3"> 
+                                              <label for="details_fr" class="form-label"><?php echo e(__('translation.details')); ?></label> 
+                                           <textarea class="form-control" name="details_fr"  id="details_fr" rows="3" placeholder="<?php echo e(__('translation.details')); ?>"><?php echo e($data->details_fr); ?></textarea> 
+                                         </div> 
                                         </div>
 
                                     </div>
@@ -139,7 +139,7 @@
                                             file
                                             upload variation.</p>
                                         <div class="currrent-logo" style="text-align: center;">
-                                            <img style="width: 171px;" src="<?php echo e($data->photo ? $data->photo  :  asset('assets/images/noimage.png')); ?>"
+                                            <img style="width: 171px;" src="<?php echo e($data->photo ? $data->photo_url  :  asset('assets/images/noimage.png')); ?>"
                                                 alt="">
                                         </div>
                                         <div class="avatar-xl mx-auto">

@@ -24,7 +24,7 @@ class ServiceController extends Controller
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)
                             ->editColumn('photo', function(Service $data) {
-                                $photo =  $data->photo;
+                                $photo =  $data->photo_url;
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })

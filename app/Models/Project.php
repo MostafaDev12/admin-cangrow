@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ModelCategory extends Model
+class Project extends Model
 {
     
 
@@ -13,46 +13,40 @@ class ModelCategory extends Model
      *
      * @var array<int, string>
      */
-    protected $table ='model_categories';
+    protected $table ='projects';
     
      protected $appends = ['photo_url'];
 
 
     // public function getPhotoAttribute()
     // {
-    //     return url('/') . '/assets/images/models/' . $this->attributes['photo'];
-    // }
-
+    //     return url('/') . '/assets/images/services/' . $this->attributes['photo'];
+    // }  
     public function getPhotoUrlAttribute()
     {
-        return url('/') . '/assets/images/models/' . $this->attributes['photo'];
+        return url('/') . '/assets/images/projects/' . $this->attributes['photo'];
     }
     protected $fillable = [
         
         'photo',
+
         'title_ar',
         'title_en',
         'title_fr',
+
         'details_ar',
         'details_en',
         'details_fr',
+        
+        'slug_ar',
+        'slug_en',
+        'slug_fr',
+         
+       
       
     ];
 
-    
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    
+      
     
      
 }

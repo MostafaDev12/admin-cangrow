@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutPoint;
+use App\Models\Project;
 use App\Models\User;
 use App\Models\Language;
 use App\Models\PageModel;
+use App\Models\ModelCategory;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Partner;
@@ -70,9 +72,10 @@ class HomeController extends Controller
     $points = AboutPoint::get();
     $services = Service::get();
     $models = PageModel::get();
-    $reviews = Partner::get();
+    $teams = ModelCategory::get();
+    //$reviews = Partner::get();
 
-    return view('front.about', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.about', compact('sign', 'sliders', 'points', 'services', 'models', 'teams'));
   }
   public function videos(Request $request)
   {
@@ -108,8 +111,9 @@ class HomeController extends Controller
     $reviews = Partner::get();
 
     return view('front.services', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
-  }
-  public function BookNow(Request $request)
+  } 
+  
+  public function projects(Request $request)
   {
 
     $sign = $this->langSign();
@@ -117,12 +121,13 @@ class HomeController extends Controller
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
-    $services = Service::get();
+    $projects = Project::get();
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.reservation', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.projects', compact('sign', 'sliders', 'points', 'projects', 'models', 'reviews'));
   }
+ 
  public function contact(Request $request)
   {
 

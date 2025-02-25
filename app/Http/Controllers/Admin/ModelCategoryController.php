@@ -23,7 +23,7 @@ class ModelCategoryController extends Controller
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)
                             ->editColumn('photo', function(ModelCategory $data) {
-                                $photo =  $data->photo;
+                                $photo =  $data->photo_url;
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })

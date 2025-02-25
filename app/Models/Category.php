@@ -15,13 +15,17 @@ class Category extends Model
      */
     protected $table ='categories';
     
-     protected $appends = ['photo'];
+     protected $appends = ['photo_url'];
 
 
-    public function getPhotoAttribute()
-    {
-        return url('/') . '/assets/images/categories/' . $this->attributes['photo'];
-    }
+     public function getPhotoUrlAttribute()
+     {
+         return url('/') . '/assets/images/categories/' . $this->attributes['photo'];
+     }
+    // public function getPhotoAttribute()
+    // {
+    //     return url('/') . '/assets/images/categories/' . $this->attributes['photo'];
+    // }
     protected $fillable = [
         
         'photo',

@@ -129,24 +129,25 @@
               <a class="nav-link active fw-bold" aria-current="page" href="<?php echo e(route('front.index', $sign)); ?>"><?php echo e(__('الرئيسية')); ?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="<?php echo e(route('about.index')); ?>">عن الشركة</a>
+              <a class="nav-link fw-bold" href="<?php echo e(route('about.index')); ?>"> <?php echo e(__('عن الشركة')); ?>  </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="projects.html">مشاريعنا</a>
+              <a class="nav-link fw-bold" href="<?php echo e(route('projects.index')); ?>"><?php echo e(__('مشاريعنا')); ?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="<?php echo e(route('services.index')); ?>">الخدمات</a>
+              <a class="nav-link fw-bold" href="<?php echo e(route('services.index')); ?>"><?php echo e(__('الخدمات')); ?></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 
-                مركز التعليم
+            
+                <?php echo e(__('مركز التعليم')); ?>
 
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="<?php echo e(route('videos.index')); ?>">ما الافضل بالنسبة لي</a></li>
-                <li><a class="dropdown-item" href="news.html">اخبار كايرو سولار</a></li>
+                <li><a class="dropdown-item" href="<?php echo e(route('videos.index')); ?>"> <?php echo e(__('ما الافضل بالنسبة لي')); ?>  </a></li>
+              
                 <li><a class="dropdown-item" href="<?php echo e(route('blogs.index')); ?>"><?php echo e(__('المقالات')); ?></a></li>
               </ul>
             </li>
@@ -168,89 +169,7 @@
       </div>
     </nav>
   </div>
-
  
-    <div class="header  d-none">
-        <nav class="navbar navbar-expand-lg bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand wow animate__animated animate__fadeInDown" data-wow-delay="1s"
-                    data-wow-duration="1s" href="<?php echo e(route('front.index', $sign)); ?>"><img
-                        src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="RGS Logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav wow animate__animated animate__fadeInDown" data-wow-delay="1s"
-                        data-wow-duration="1s">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="<?php echo e(route('front.index')); ?>"><?php echo e(__('الرئيسية')); ?> </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo e(route('about.index')); ?>"><?php echo e(__('عن الشركة')); ?></a>
-                        </li>
-
-
-
-
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="<?php echo e(route('services.index')); ?>" id="servicesDropdown" role="button"
-                                aria-expanded="false">
-                                <?php echo e(__('الخدمات')); ?>
-
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-
-                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <li class="dropdown">
-                                <a  <?php if(count($category->services) > 0): ?> <?php endif; ?>   class="dropdown-item dropdown-toggle" href="#"><?php echo e($category->{'title_' . $sign}); ?></a>
-                                <?php if(count($category->services) > 0): ?>
-                                <ul class="dropdown-menu"> 
-                                    
-                                
-                                    <?php $__currentLoopData = $category->services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a class="dropdown-item" href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><?php echo e($service->{'title_' . $sign}); ?>  </a></li>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    
-                                </ul>
-                                <?php endif; ?>
-                                </li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                
-
-                                <?php $__currentLoopData = $servicesWithoutCats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <li class="dropdown">
-                                <a    class="dropdown-item dropdown-toggle" href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><?php echo e($service->{'title_' . $sign}); ?></a>
-                              
-                                </li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                
-                            </ul>
-                       </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo e(route('videos.index')); ?>"><?php echo e(__('الفيديوهات')); ?></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo e(route('blogs.index')); ?>"><?php echo e(__('المقالات')); ?></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo e(route('book.index')); ?>"> <?php echo e(__('احجز الان')); ?>  </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo e(route('contact.index')); ?>">   <?php echo e(__('اتصل بنا')); ?></a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-
 
 
     <?php echo $__env->yieldContent('content'); ?>

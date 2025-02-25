@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ModelController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\PageSettingController;
@@ -163,6 +164,18 @@ Route::prefix('admin')->group(function () {
       Route::post('/services/update/{id}', [ServiceController::class, 'update'])->name('admin-services-update');
 
       Route::get('/services/delete/{id}',  [ServiceController::class, 'destroy'])->name('admin-services-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:projects'], function () {
+
+      Route::get('/projects/datatables',  [ProjectController::class, 'datatables'])->name('admin-projects-datatables');
+      Route::get('/projects',  [ProjectController::class, 'index'])->name('admin-projects-index');
+      Route::get('/projects/create',   [ProjectController::class, 'create'])->name('admin-projects-create');
+      Route::post('/projects/create',  [ProjectController::class, 'store'])->name('admin-projects-store');
+      Route::get('/projects/edit/{id}',  [ProjectController::class, 'edit'])->name('admin-projects-edit');
+      Route::post('/projects/update/{id}', [ProjectController::class, 'update'])->name('admin-projects-update');
+
+      Route::get('/projects/delete/{id}',  [ProjectController::class, 'destroy'])->name('admin-projects-delete');
     });
 
     Route::group(['middleware' => 'permissions:categories'], function () {

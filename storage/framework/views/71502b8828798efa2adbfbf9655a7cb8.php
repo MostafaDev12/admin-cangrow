@@ -85,7 +85,7 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="<?php echo e(route('admin-partners-index')); ?>"
                             aria-controls="sidebarpartners">
-                            <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.reviews'); ?></span>
+                            <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.certificates'); ?></span>
                         </a>
                     </li>
                 <?php endif; ?>
@@ -94,6 +94,13 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="<?php echo e(route('admin-media-index')); ?>" aria-controls="sidebarmedia">
                             <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.media'); ?></span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <?php if(Auth::guard('admin')->user()->sectionCheck('projects')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link  " href="<?php echo e(route('admin-projects-index')); ?>" aria-controls="sidebarmedia">
+                            <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.projects'); ?></span>
                         </a>
                     </li>
                 <?php endif; ?>
@@ -110,22 +117,7 @@
                         <div class="collapse menu-dropdown" id="services">
                             <ul class="nav nav-sm flex-column">
 
-                                <?php if(Auth::guard('admin')->user()->sectionCheck('categories')): ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link  " href="<?php echo e(route('admin-categories-index')); ?>"
-                                            aria-controls="sidebar_category">
-                                            <span><?php echo app('translator')->get('translation.categories'); ?></span>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
-                                <?php if(Auth::guard('admin')->user()->sectionCheck('subcategories')): ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link  " href="<?php echo e(route('admin-subcategories-index')); ?>"
-                                            aria-controls="sidebar_subcategories">
-                                            <span><?php echo app('translator')->get('translation.subcategories'); ?></span>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
+                                
                                 <?php if(Auth::guard('admin')->user()->sectionCheck('services')): ?>
                                     <li class="nav-item">
                                         <a class="nav-link  " href="<?php echo e(route('admin-services-index')); ?>"
@@ -176,6 +168,15 @@
                         <div class="collapse menu-dropdown" id="blogs">
                             <ul class="nav nav-sm flex-column">
 
+
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="<?php echo e(route('admin-blog_categories-index')); ?>"
+                                        aria-controls="sidebarmodels_category">
+                                        <span><?php echo app('translator')->get('translation.blog_categories'); ?></span>
+                                    </a>
+                                </li>
+
+                                
 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="<?php echo e(route('admin-blogs-index')); ?>"

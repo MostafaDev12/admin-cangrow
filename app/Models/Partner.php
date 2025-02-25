@@ -15,7 +15,7 @@ class Partner extends Model
      */
     protected $table ='partners';
     
-     protected $appends = ['photo','photo_url'];
+     protected $appends = ['photo_url'];
 
 
     // public function getPhotoAttribute()

@@ -85,7 +85,7 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-partners-index') }}"
                             aria-controls="sidebarpartners">
-                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.reviews')</span>
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.certificates')</span>
                         </a>
                     </li>
                 @endif
@@ -94,6 +94,13 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-media-index') }}" aria-controls="sidebarmedia">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.media')</span>
+                        </a>
+                    </li>
+                @endif
+                @if (Auth::guard('admin')->user()->sectionCheck('projects'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-projects-index') }}" aria-controls="sidebarmedia">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.projects')</span>
                         </a>
                     </li>
                 @endif
@@ -119,7 +126,7 @@
                         <div class="collapse menu-dropdown" id="services">
                             <ul class="nav nav-sm flex-column">
 
-                                @if (Auth::guard('admin')->user()->sectionCheck('categories'))
+                                {{-- @if (Auth::guard('admin')->user()->sectionCheck('categories'))
                                     <li class="nav-item">
                                         <a class="nav-link  " href="{{ route('admin-categories-index') }}"
                                             aria-controls="sidebar_category">
@@ -134,7 +141,7 @@
                                             <span>@lang('translation.subcategories')</span>
                                         </a>
                                     </li>
-                                @endif
+                                @endif --}}
                                 @if (Auth::guard('admin')->user()->sectionCheck('services'))
                                     <li class="nav-item">
                                         <a class="nav-link  " href="{{ route('admin-services-index') }}"
@@ -161,14 +168,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models_category-index') }}"
                                         aria-controls="sidebarmodels_category">
-                                        <span>@lang('translation.models_category')</span>
+                                        <span>@lang('translation.about_models')</span>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models-index') }}"
                                         aria-controls="sidebarmodels">
-                                        <span>@lang('translation.models')</span>
+                                        <span>@lang('translation.teams')</span>
                                     </a>
                                 </li>
 

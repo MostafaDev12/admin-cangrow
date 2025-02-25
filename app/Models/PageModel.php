@@ -15,10 +15,15 @@ class PageModel extends Model
      */
     protected $table ='models';
     
-     protected $appends = ['photo'];
+     protected $appends = ['photo_url'];
 
 
-    public function getPhotoAttribute()
+    // public function getPhotoAttribute()
+    // {
+    //     return url('/') . '/assets/images/models/' . $this->attributes['photo'];
+    // }
+
+    public function getPhotoUrlAttribute()
     {
         return url('/') . '/assets/images/models/' . $this->attributes['photo'];
     }

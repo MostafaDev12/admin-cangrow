@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use DataTables;
-use App\Models\Partner;
+use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 
-class PartnerController extends Controller
+class ProjectController extends Controller
 {
     public function __construct()
     {
@@ -19,18 +20,22 @@ class PartnerController extends Controller
     //*** JSON Request
     public function datatables()
     {
-         $datas = Partner::orderBy('id','desc')->get();
+         $datas = Project::orderBy('id','desc')->get();
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)
-                            ->editColumn('photo', function(Partner $data) {
+                            ->editColumn('photo', function(Project $data) {
                                 $photo =  $data->photo_url;
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
-                            ->addColumn('action', function(Partner $data) {
+                            ->addColumn('action', function(Project $data) {
                                 return '<div class="action-list">
-                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-partners-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
-                                <a href="javascript:;" data-href="' . route('admin-partners-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
+                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-projects-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
+                             
+                                <a href="javascript:;" class="set-gallery btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#setgallery"><input type="hidden" value="'.$data->id.'"><i class="las la-eye"></i> View Gallery</a>
+                               
+                              
+                              <a href="javascript:;" data-href="' . route('admin-projects-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
                             ->rawColumns(['photo','action'])
@@ -40,13 +45,14 @@ class PartnerController extends Controller
     //*** GET Request
     public function index()
     {
-        return view('admin.partners.index');
+        return view('admin.projects.index');
     }
 
     //*** GET Request
     public function create()
     {
-        return view('admin.partners.create');
+        $cats = Category::get();
+        return view('admin.projects.create',compact('cats'));
     }
 
     //*** POST Request
@@ -65,22 +71,27 @@ class PartnerController extends Controller
         //--- Validation Section Ends
 
         //--- Logic Section
-        $data = new Partner();
+        $data = new Project();
         $input = $request->all();
         
         if ($file = $request->file('photo')) 
         {              
             $name = time().$file->getClientOriginalName();
-            $file->move('assets/images/partners/',$name);
+            $file->move('assets/images/projects/',$name);
                     
         $input['photo'] = $name;
         } 
+        
+         $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
+         $input['slug_en'] = str_replace(' ','-',$request->slug_en);
+         $input['slug_fr'] = str_replace(' ','-',$request->slug_fr);
+         
         $data->fill($input)->save();
         //--- Logic Section Ends
       
         //--- Redirect Section
-        $msg = 'New Data Added Successfully.<a href="'.route('admin-partners-index').'">View partners Lists.</a>';
-       //   return redirect(route('admin-partners-index'))->with($msg);
+        $msg = 'New Data Added Successfully.<a href="'.route('admin-projects-index').'">View projects Lists.</a>';
+       //   return redirect(route('admin-projects-index'))->with($msg);
       return response()->json($msg);
         //--- Redirect Section Ends    
 
@@ -90,8 +101,9 @@ class PartnerController extends Controller
     //*** GET Request
     public function edit($id)
     {
-        $data = Partner::findOrFail($id);
-        return view('admin.partners.edit',compact('data'));
+        $data = Project::findOrFail($id);
+        $cats = Category::get();
+        return view('admin.projects.edit',compact('data','cats'));
     }
 
     //*** POST Request
@@ -110,25 +122,30 @@ class PartnerController extends Controller
         //--- Validation Section Ends
 
         //--- Logic Section
-        $data = Partner::findOrFail($id);
+        $data = Project::findOrFail($id);
         $input = $request->all();
         if ($file = $request->file('photo')) 
         {              
             $name = time().$file->getClientOriginalName();
-            $file->move('assets/images/partners/',$name);
+            $file->move('assets/images/projects/',$name);
             if($data->photo != null)
             {
-                if (file_exists(public_path().'/assets/images/partners/'.$data->photo)) {
-                    unlink(public_path().'/assets/images/partners/'.$data->photo);
+                if (file_exists(public_path().'/assets/images/projects/'.$data->photo)) {
+                    unlink(public_path().'/assets/images/projects/'.$data->photo);
                 }
             }            
         $input['photo'] = $name;
         } 
+        
+         $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
+         $input['slug_en'] = str_replace(' ','-',$request->slug_en);
+         $input['slug_fr'] = str_replace(' ','-',$request->slug_fr);
+         
         $data->update($input);
         //--- Logic Section Ends
 
         //--- Redirect Section
-        $msg = 'Data Updated Successfully.<a href="'.route('admin-partners-index').'">View partners Lists.</a>';
+        $msg = 'Data Updated Successfully.<a href="'.route('admin-projects-index').'">View projects Lists.</a>';
         return response()->json($msg);
         //--- Redirect Section Ends    
 
@@ -137,7 +154,7 @@ class PartnerController extends Controller
     //*** GET Request Delete
     public function destroy($id)
     {
-        $data = Partner::findOrFail($id);
+        $data = Project::findOrFail($id);
         $data->delete();
         //--- Redirect Section     
         $msg = 'Data Deleted Successfully.';

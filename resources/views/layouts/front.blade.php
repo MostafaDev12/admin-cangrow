@@ -128,24 +128,24 @@
               <a class="nav-link active fw-bold" aria-current="page" href="{{ route('front.index', $sign) }}">{{ __('الرئيسية') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="{{ route('about.index') }}">عن الشركة</a>
+              <a class="nav-link fw-bold" href="{{ route('about.index') }}"> {{ __('عن الشركة') }}  </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="projects.html">مشاريعنا</a>
+              <a class="nav-link fw-bold" href="{{ route('projects.index') }}">{{ __('مشاريعنا') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="{{ route('services.index') }}">الخدمات</a>
+              <a class="nav-link fw-bold" href="{{ route('services.index') }}">{{ __('الخدمات') }}</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 
-                مركز التعليم
-
+            
+                {{ __('مركز التعليم') }}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ route('videos.index') }}">ما الافضل بالنسبة لي</a></li>
-                <li><a class="dropdown-item" href="news.html">اخبار كايرو سولار</a></li>
+                <li><a class="dropdown-item" href="{{ route('videos.index') }}"> {{ __('ما الافضل بالنسبة لي') }}  </a></li>
+              
                 <li><a class="dropdown-item" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a></li>
               </ul>
             </li>
@@ -167,109 +167,7 @@
       </div>
     </nav>
   </div>
-
  
-    <div class="header  d-none">
-        <nav class="navbar navbar-expand-lg bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand wow animate__animated animate__fadeInDown" data-wow-delay="1s"
-                    data-wow-duration="1s" href="{{ route('front.index', $sign) }}"><img
-                        src="{{ $gs->{'logo_' . $sign} }}" alt="RGS Logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav wow animate__animated animate__fadeInDown" data-wow-delay="1s"
-                        data-wow-duration="1s">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="{{ route('front.index') }}">{{ __('الرئيسية') }} </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about.index') }}">{{ __('عن الشركة') }}</a>
-                        </li>
-
-{{-- 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ __('الخدمات') }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                @foreach ($categories as $category)
-                                    <li><a class="dropdown-item nav-link dropdown-toggle" href="#">{{ $category->{'title_' . $sign} }}</a>
-                                      <ul class="dropdown-menu">
-                                        @foreach ($categories as $category)
-                                            <li><a class="dropdown-item" href="#">{{ $category->{'title_' . $sign} }}</a>
-                                              
-                                            </li>
-                                        @endforeach
-        
-                                    </ul>
-                                    </li>
-                                @endforeach
-
-                            </ul>
-                        </li> --}}
-
-
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" id="servicesDropdown" role="button"
-                                aria-expanded="false">
-                                {{ __('الخدمات') }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-
-                                @foreach ($categories as $category)
-                                <li class="dropdown">
-                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="#">{{ $category->{'title_' . $sign} }}</a>
-                                @if(count($category->services) > 0)
-                                <ul class="dropdown-menu"> 
-                                    
-                                
-                                    @foreach ($category->services as $service)
-                                    <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
-                                    @endforeach
-                                    
-                                </ul>
-                                @endif
-                                </li>
-                                @endforeach
-                
-
-                                @foreach ($servicesWithoutCats as $service)
-                                <li class="dropdown">
-                                <a    class="dropdown-item dropdown-toggle" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}</a>
-                              
-                                </li>
-                                @endforeach
-                
-                            </ul>
-                       </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('videos.index') }}">{{ __('الفيديوهات') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('book.index') }}"> {{ __('احجز الان') }}  </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">   {{ __('اتصل بنا') }}</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-
 
 
     @yield('content')

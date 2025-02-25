@@ -15,7 +15,7 @@ class Blog extends Model
      */
     protected $table ='blogs';
     
-     protected $appends = ['photo','photo_url'];
+     protected $appends = ['photo_url'];
 
 
     // public function getPhotoAttribute()

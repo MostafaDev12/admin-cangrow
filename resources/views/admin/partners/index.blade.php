@@ -12,11 +12,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.reviews') }}
+        {{ __('translation.certificates') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.reviews') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.certificates') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">

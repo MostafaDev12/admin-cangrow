@@ -15,7 +15,7 @@ class Service extends Model
      */
     protected $table ='services';
     
-     protected $appends = ['photo','photo_url'];
+     protected $appends = ['photo_url'];
 
 
     // public function getPhotoAttribute()
