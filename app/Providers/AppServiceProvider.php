@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Generalsetting;
 use App\Models\Pagesetting;
 use App\Models\Service;
+use App\Models\Language;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('services', Service::get());
             $settings->with('categories', Category::get());
             $settings->with('servicesWithoutCats', Service::whereNull('category_id')->get());
+            $settings->with('languages', Language::get());
+            $settings->with('default_front_language', Language::where('is_default', '1')->first());
         });
 
 

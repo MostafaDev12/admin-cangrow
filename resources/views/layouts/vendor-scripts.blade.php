@@ -38,7 +38,9 @@ var admin_loader = 0;
     src="{{ URL::asset('build/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}">
 </script>
 <script src="{{ URL::asset('build/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
-<script src="{{ URL::asset('build/libs/ckeditor/ckeditor.js') }}"></script>
+{{-- <script src="{{ URL::asset('build/libs/ckeditor/ckeditor.js') }}"></script> --}}
+<script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+
 <script src="{{ URL::asset('build/js/pages/form-file-upload.init.js') }}"></script>
 <script src="{{ URL::asset('build/js/app.js') }}"></script>
 

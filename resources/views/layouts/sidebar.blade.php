@@ -64,11 +64,11 @@
                                     <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_us')</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link  " href="{{ route('admin-about_points-index') }}" aria-controls="sidebarabout_us">
                                     <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_us_points')</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link  " href="{{ route('admin-ps-portfolio') }}" aria-controls="sidebarportfolio">
                                     <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
@@ -229,12 +229,12 @@
                                         @lang('translation.logo')
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('admin-gs-home_video') }}" class="nav-link"
                                         data-key="t-home_video">
                                         @lang('translation.home_video')
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="nav-item">
                                     <a href="{{ route('admin-gs-contents') }}" class="nav-link"

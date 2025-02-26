@@ -155,12 +155,14 @@
           </ul>
           <div class="dropdown">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             ar
+              {{ Session::has('sign') ? Session::get('sign')  : $default_front_language->language }}
             </a>
           
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">ar</a></li>
-              <li><a class="dropdown-item" href="#">en</a></li>
+              @foreach ($languages as $language)
+              <li><a class="dropdown-item" href="{{ route('front.lang-change',$language->id) }}"> {{$language->language}}</a></li>
+        
+              @endforeach
             </ul>
           </div>
         </div>

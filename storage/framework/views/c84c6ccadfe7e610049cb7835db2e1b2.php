@@ -157,12 +157,15 @@
           </ul>
           <div class="dropdown">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             ar
+              <?php echo e(Session::has('sign') ? Session::get('sign')  : $default_front_language->language); ?>
+
             </a>
           
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">ar</a></li>
-              <li><a class="dropdown-item" href="#">en</a></li>
+              <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <li><a class="dropdown-item" href="<?php echo e(route('front.lang-change',$language->id)); ?>"> <?php echo e($language->language); ?></a></li>
+        
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
           </div>
         </div>
