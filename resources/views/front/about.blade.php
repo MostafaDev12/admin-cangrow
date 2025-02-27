@@ -76,7 +76,7 @@
               <img src="{{ $team->photo_url }}" alt="">
               <h1>{{ $team->{'title_' . $sign}  ?? ''}}</h1>
              
-              <p>    {{ $team->{'details_' . $sign}  ?? ''}}  </p>
+              <p>    {!! $team->{'details_' . $sign}  ?? ''!!}  </p>
             </div>
           </div>
           @endforeach
