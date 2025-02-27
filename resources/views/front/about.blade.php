@@ -73,7 +73,7 @@
           @foreach ($teams as $team)
           <div class="col-12 col-lg-4 col-md-6">
             <div class="div-team">
-              {{-- <img src="{{ $team->photo_url }}" alt=""> --}}
+              <img src="{{ $team->photo_url }}" alt="">
               <h1>{{ $team->{'title_' . $sign}  ?? ''}}</h1>
              
               <p>    {{ $team->{'details_' . $sign}  ?? ''}}  </p>
