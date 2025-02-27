@@ -15,7 +15,7 @@ class Slider extends Model
      */
     protected $table ='sliders';
     
-     protected $appends = ['photo','photo_url'];
+     protected $appends = ['photo_url'];
 
 
     // public function getPhotoAttribute()

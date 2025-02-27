@@ -134,7 +134,7 @@
                                             file
                                             upload variation.</p>
                                         <div class="currrent-logo" style="text-align: center;">
-                                            <img style="width: 171px;" src="{{$data->photo ? $data->photo  :  asset('assets/images/noimage.png') }}"
+                                            <img style="width: 171px;" src="{{$data->photo ? $data->photo_url  :  asset('assets/images/noimage.png') }}"
                                                 alt="">
                                         </div>
                                         <div class="avatar-xl mx-auto">
