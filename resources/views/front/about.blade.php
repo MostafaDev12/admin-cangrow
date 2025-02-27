@@ -30,7 +30,7 @@
                 <div class="">
                     <div class="pt-5 animate__animated animate__fadeInLeft " data-wow-delay="0.5s" data-wow-duration="1s">
                         <h2> {{ __('Cairo solar') }} </h2>
-                        <p >    {!! $ps->about_details_ar !!}  </p>
+                        <p >    {!! $ps->{'about_details_' . $sign} !!}  </p>
                     </div>
                 </div>
 
