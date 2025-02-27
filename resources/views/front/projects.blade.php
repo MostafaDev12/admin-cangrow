@@ -29,8 +29,8 @@
                         <div class="card">
                             <img class="card-img-top" src="{{ $project->photo_url }}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title"> {{ $service->{'title_' . $sign} }}  </h5>
-                                <p class="card-text">{{ $service->{'details_' . $sign} }}</p>
+                                <h5 class="card-title"> {{ $project->{'title_' . $sign} }}  </h5>
+                                <p class="card-text">{{ $project->{'details_' . $sign} }}</p>
                             </div>
                         </div>
                     </div>
