@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -217,6 +218,17 @@ Route::prefix('admin')->group(function () {
       Route::post('/blogs/update/{id}', [BlogController::class, 'update'])->name('admin-blogs-update');
 
       Route::get('/blogs/delete/{id}',  [BlogController::class, 'destroy'])->name('admin-blogs-delete');
+
+
+      
+      Route::get('/news/datatables',  [NewsController::class, 'datatables'])->name('admin-news-datatables');
+      Route::get('/news',  [NewsController::class, 'index'])->name('admin-news-index');
+      Route::get('/news/create',   [NewsController::class, 'create'])->name('admin-news-create');
+      Route::post('/news/create',  [NewsController::class, 'store'])->name('admin-news-store');
+      Route::get('/news/edit/{id}',  [NewsController::class, 'edit'])->name('admin-news-edit');
+      Route::post('/news/update/{id}', [NewsController::class, 'update'])->name('admin-news-update');
+
+      Route::get('/news/delete/{id}',  [NewsController::class, 'destroy'])->name('admin-news-delete');
 
 
       

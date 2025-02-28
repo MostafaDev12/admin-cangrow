@@ -93,9 +93,21 @@ class HomeController extends Controller
     $sign = $this->langSign();
 
  
-    $blogs = Blog::paginate(9);
+    $blogs = Blog::where('type','blogs')->paginate(9);
 
     return view('front.blogs', compact('sign', 'blogs'));
+  }
+
+
+  public function news(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+ 
+    $blogs = Blog::where('type','news')->paginate(9);
+
+    return view('front.news', compact('sign', 'blogs'));
   }
 
   public function services(Request $request)
@@ -149,14 +161,40 @@ class HomeController extends Controller
     $sign = $this->langSign();
 
 
-    $blog = Blog::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
-
+    $blog = Blog::where('type', 'blogs')
+    ->where(function ($query) use ($slug) {
+        $query->where('slug_ar', $slug)
+              ->orWhere('slug_en', $slug)
+              ->orWhere('slug_fr', $slug);
+    })
+    ->first();
     if(!$blog){
 
       abort(404);
     }
 
     return view('front.details-blog', compact('sign', 'blog'));
+  }
+
+  public function singleNews(Request $request, $slug)
+  {
+
+    $sign = $this->langSign();
+
+    $blog = Blog::where('type', 'news')
+    ->where(function ($query) use ($slug) {
+        $query->where('slug_ar', $slug)
+              ->orWhere('slug_en', $slug)
+              ->orWhere('slug_fr', $slug);
+    })
+    ->first();
+
+    if(!$blog){
+
+      abort(404);
+    }
+
+    return view('front.details-news', compact('sign', 'blog'));
   }
 
   public function singleService(Request $request, $slug)

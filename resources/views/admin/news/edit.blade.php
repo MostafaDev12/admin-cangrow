@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __("translation.add_blog") }}
+        {{ __("translation.edit_news") }}
         @endslot
     @endcomponent
 
@@ -23,13 +23,12 @@
 
             </div>
             <div class="card-body">
-                <form id="geniusform" action="{{ route('admin-blogs-create') }}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    @include('includes.admin.form-both')
+              <form id="geniusform" action="{{route('admin-news-update',$data->id)}}" method="POST" enctype="multipart/form-data">
+                {{csrf_field()}}
+                @include('includes.admin.form-both')
 
 
-                    <input type="hidden" name="type" value="blogs" >
-                    
+
                     <div class="row">
 
 
@@ -77,65 +76,65 @@
                                       
                                               <div class="mb-3">
                                                   <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
-                                                  <input type="text" class="form-control" name="title_ar" id="title_ar" placeholder="{{ __('translation.title') }}">
+                                                  <input type="text" class="form-control" name="title_ar" value="{{ $data->title_ar }}" id="title_ar" placeholder="{{ __('translation.title') }}">
                                               </div>
-                                               
+                                                                
                                               <div class="mb-3">
                                                 <label for="short_details_ar" class="form-label">{{ __('translation.short_details') }}</label>
-                                                <textarea class="form-control " name="short_details_ar"  id="short_details_ar" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
+                                                <textarea class="form-control " name="short_details_ar"  id="short_details_ar" rows="3" placeholder="{{ __('translation.short_details') }}">{{ $data->short_details_ar }}</textarea>
                                             </div>
                                               <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
-                                                  <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                                  <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_ar }}</textarea>
                                               </div>
-                                             <div class="mb-3">
+                                                <div class="mb-3">
                                                   <label for="slug_ar" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar"  placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar"  value="{{ $data->slug_ar }}"  placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>
                                             <div class="mb-3">
                                                   <label for="meta_title_ar" class="form-label">{{ __('translation.meta_title') }}</label>
-                                                  <input type="text" class="form-control" name="meta_title_ar" id="meta_title_ar" placeholder="{{ __('translation.meta_title') }}">
+                                                  <input type="text" class="form-control" name="meta_title_ar" id="meta_title_ar"  value="{{ $data->meta_title_ar }}" placeholder="{{ __('translation.meta_title') }}">
                                               </div>
                                                
                                               <div class="mb-3">
                                                   <label for="meta_details_ar" class="form-label">{{ __('translation.meta_details') }}</label>
-                                                  <textarea class="form-control" name="meta_details_ar"  id="meta_details_ar" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
+                                                  <textarea class="form-control" name="meta_details_ar"  id="meta_details_ar" rows="3" placeholder="{{ __('translation.meta_details') }}">{{ $data->meta_details_ar }}</textarea>
+                                              </div> 
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
                                            
                                             <div class="mb-3">
                                               <label for="title_en" class="form-label">{{ __('translation.title') }}</label>
-                                              <input type="text" class="form-control" name="title_en" id="title_en" placeholder="{{ __('translation.title') }}">
+                                              <input type="text" class="form-control" name="title_en"  value="{{ $data->title_en }}"  id="title_en" placeholder="{{ __('translation.title') }}">
                                           </div>
+                                           
                                           <div class="mb-3">
                                             <label for="short_details_en" class="form-label">{{ __('translation.short_details') }}</label>
-                                            <textarea class="form-control " name="short_details_en"  id="short_details_en" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
+                                            <textarea class="form-control " name="short_details_en"  id="short_details_en" rows="3" placeholder="{{ __('translation.short_details') }}">{{ $data->short_details_en }}</textarea>
                                         </div>
                                         
                                           <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
-                                              <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                              <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_en }}</textarea>
                                           </div>
-                                          
                                           
                                            <div class="mb-3">
                                                   <label for="slug_en" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_en" id="slug_en"   placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_en" id="slug_en"  value="{{ $data->slug_en }}"  placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>
                                             <div class="mb-3">
                                                   <label for="meta_title_en" class="form-label">{{ __('translation.meta_title') }}</label>
-                                                  <input type="text" class="form-control" name="meta_title_en" id="meta_title_en" placeholder="{{ __('translation.meta_title') }}">
+                                                  <input type="text" class="form-control" name="meta_title_en" id="meta_title_en"  value="{{ $data->meta_title_en }}" placeholder="{{ __('translation.meta_title') }}">
                                               </div>
                                                
                                               <div class="mb-3">
                                                   <label for="meta_details_en" class="form-label">{{ __('translation.meta_details') }}</label>
-                                                  <textarea class="form-control" name="meta_details_en"  id="meta_details_en" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
+                                                  <textarea class="form-control" name="meta_details_en"  id="meta_details_en" rows="3" placeholder="{{ __('translation.meta_details') }}"> {{ $data->meta_details_en }}</textarea>
                                               </div>   
                                           
                                         </div>
@@ -145,33 +144,35 @@
 
                                             <div class="mb-3">
                                               <label for="title_fr" class="form-label">{{ __('translation.title') }}</label>
-                                              <input type="text" class="form-control" name="title_fr" id="title_fr" placeholder="{{ __('translation.title') }}">
+                                              <input type="text" class="form-control" name="title_fr"  value="{{ $data->title_fr }}"  id="title_fr" placeholder="{{ __('translation.title') }}">
                                           </div>
-                                             
+                                           
                                           <div class="mb-3">
                                             <label for="short_details_fr" class="form-label">{{ __('translation.short_details') }}</label>
-                                            <textarea class="form-control " name="short_details_fr"  id="short_details_fr" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
+                                            <textarea class="form-control " name="short_details_fr"  id="short_details_fr" rows="3" placeholder="{{ __('translation.short_details') }}">{{ $data->short_details_fr }}</textarea>
                                         </div>
+                                        
                                           <div class="mb-3">
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
-                                              <textarea class="form-control ckeditor" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                              <textarea class="form-control ckeditor" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_fr }}</textarea>
                                           </div>
                                           
                                           
+                                             
                                            <div class="mb-3">
                                                   <label for="slug_fr" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_fr" id="slug_fr" placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_fr" id="slug_fr"  value="{{ $data->slug_fr }}" placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>
                                             <div class="mb-3">
                                                   <label for="meta_title_fr" class="form-label">{{ __('translation.meta_title') }}</label>
-                                                  <input type="text" class="form-control" name="meta_title_fr" id="meta_title_fr" placeholder="{{ __('translation.meta_title') }}">
+                                                  <input type="text" class="form-control" name="meta_title_fr" id="meta_title_fr"  value="{{ $data->meta_title_fr }}" placeholder="{{ __('translation.meta_title') }}">
                                               </div>
                                                
                                               <div class="mb-3">
                                                   <label for="meta_details_fr" class="form-label">{{ __('translation.meta_details') }}</label>
-                                                  <textarea class="form-control" name="meta_details_fr"  id="meta_details_fr" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
+                                                  <textarea class="form-control" name="meta_details_fr"  id="meta_details_fr" rows="3" placeholder="{{ __('translation.meta_details') }}">{{ $data->meta_details_fr }}</textarea>
                                               </div>   
                                         </div>
 
@@ -188,9 +189,10 @@
 
                                 <div class="mb-3">
                                     <label for="blog_date" class="form-label">{{ __('translation.blog_date') }}</label>
-                                    <input type="date" class="form-control" name="blog_date" id="blog_date"  value="" placeholder="{{ __('translation.date') }}">
+                                    <input type="date" class="form-control" name="blog_date" id="blog_date"  value="{{ $data->blog_date }}" placeholder="{{ __('translation.date') }}">
                                 </div>  
                             </div> 
+
                             <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">
@@ -198,14 +200,13 @@
                                     <select class="form-control" name="category_id" id="cat"> 
                                         <option value="">{{ __('translation.select') }}</option>
                                         @foreach ($cats as $cat)
-                                            <option  data-href="{{ route('admin-subcat-load',$cat->id) }}"  value="{{ $cat->id }}">{{ $cat->title_ar ??  $cat->title_en }}</option>
+                                            <option  data-href="{{ route('admin-subcat-load',$cat->id) }}"   value="{{ $cat->id }}" {{ $cat->id == $data->category_id ? 'selected' : '' }}>{{ $cat->title_ar ??  $cat->title_en }}</option>
  
                                         @endforeach
                                        
                                     </select>
                                 </div>  
-                            </div>
-                            
+                            </div> 
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -217,7 +218,7 @@
                                             file
                                             upload variation.</p>
                                         <div class="currrent-logo" style="text-align: center;">
-                                            <img style="width: 171px;" src="{{ asset('assets/images/noimage.png') }}"
+                                            <img style="width: 171px;" src="{{$data->photo ? $data->photo  :  asset('assets/images/noimage.png') }}"
                                                 alt="">
                                         </div>
                                         <div class="avatar-xl mx-auto">

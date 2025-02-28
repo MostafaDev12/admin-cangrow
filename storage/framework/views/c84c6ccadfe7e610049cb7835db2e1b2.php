@@ -147,6 +147,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="<?php echo e(route('videos.index')); ?>"> <?php echo e(__('ما الافضل بالنسبة لي')); ?>  </a></li>
+                <li><a class="dropdown-item" href="<?php echo e(route('news.index')); ?>"> <?php echo e(__('اخبار كايرو سولار')); ?>  </a></li>
               
                 <li><a class="dropdown-item" href="<?php echo e(route('blogs.index')); ?>"><?php echo e(__('المقالات')); ?></a></li>
               </ul>
@@ -229,7 +230,7 @@
             </div>
           </div>
           <hr>
-            <p class="text-center fw-bold">جميع الحقوق محفوظة © <?php echo e(date('Y')); ?>  <a target="_blank" href="https://cangrowonline.com">CanGrow Digital Marketing Agency</a>      </p>
+            <p class="text-center fw-bold"><?php echo e(__('جميع الحقوق محفوظة')); ?>    © <?php echo e(date('Y')); ?>  <a target="_blank" href="https://cangrowonline.com">CanGrow Digital Marketing Agency</a>      </p>
         </div>
       </section>
       <div class="social-media">

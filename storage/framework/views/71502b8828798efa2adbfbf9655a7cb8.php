@@ -64,11 +64,7 @@
                                     <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.about_us'); ?></span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link  " href="<?php echo e(route('admin-about_points-index')); ?>" aria-controls="sidebarabout_us">
-                                    <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.about_us_points'); ?></span>
-                                </a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link  " href="<?php echo e(route('admin-ps-portfolio')); ?>" aria-controls="sidebarportfolio">
                                     <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.portfolio'); ?></span>
@@ -144,14 +140,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link  " href="<?php echo e(route('admin-models_category-index')); ?>"
                                         aria-controls="sidebarmodels_category">
-                                        <span><?php echo app('translator')->get('translation.models_category'); ?></span>
+                                        <span><?php echo app('translator')->get('translation.about_models'); ?></span>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="<?php echo e(route('admin-models-index')); ?>"
                                         aria-controls="sidebarmodels">
-                                        <span><?php echo app('translator')->get('translation.models'); ?></span>
+                                        <span><?php echo app('translator')->get('translation.teams'); ?></span>
                                     </a>
                                 </li>
 
@@ -169,12 +165,13 @@
                             <ul class="nav nav-sm flex-column">
 
 
+
                                 <li class="nav-item">
                                     <a class="nav-link  " href="<?php echo e(route('admin-blog_categories-index')); ?>"
                                         aria-controls="sidebarmodels_category">
                                         <span><?php echo app('translator')->get('translation.blog_categories'); ?></span>
                                     </a>
-                                </li>
+                                </li> 
 
                                 
 
@@ -182,6 +179,14 @@
                                     <a class="nav-link  " href="<?php echo e(route('admin-blogs-index')); ?>"
                                         aria-controls="sidebarmodels_category">
                                         <span><?php echo app('translator')->get('translation.blogs'); ?></span>
+                                    </a>
+                                </li>
+
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="<?php echo e(route('admin-news-index')); ?>"
+                                        aria-controls="sidebarmodels_category">
+                                        <span><?php echo app('translator')->get('translation.news'); ?></span>
                                     </a>
                                 </li>
 
@@ -205,12 +210,7 @@
                                         <?php echo app('translator')->get('translation.logo'); ?>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="<?php echo e(route('admin-gs-home_video')); ?>" class="nav-link"
-                                        data-key="t-home_video">
-                                        <?php echo app('translator')->get('translation.home_video'); ?>
-                                    </a>
-                                </li>
+                                
 
                                 <li class="nav-item">
                                     <a href="<?php echo e(route('admin-gs-contents')); ?>" class="nav-link"

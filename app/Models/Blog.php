@@ -52,6 +52,7 @@ class Blog extends Model
         'slug_fr',
         'tags',
         'category_id',
+        'type',
       
     ];
 

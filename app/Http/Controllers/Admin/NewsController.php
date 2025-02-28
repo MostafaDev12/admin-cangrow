@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 
-class BlogController extends Controller
+class NewsController extends Controller
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ class BlogController extends Controller
     //*** JSON Request
     public function datatables()
     {
-         $datas = Blog::where('type', 'blogs')
+         $datas = Blog::where('type', 'news')
          ->orderBy('id','desc')->get();
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)
@@ -37,11 +37,11 @@ class BlogController extends Controller
                             })
                             ->addColumn('action', function(Blog $data) {
                                 return '<div class="action-list">
-                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-blogs-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
+                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-news-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
                              
                                 
                               
-                              <a href="javascript:;" data-href="' . route('admin-blogs-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
+                              <a href="javascript:;" data-href="' . route('admin-news-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
                             ->rawColumns(['photo','action','category'])
@@ -51,14 +51,14 @@ class BlogController extends Controller
     //*** GET Request
     public function index()
     {
-        return view('admin.blogs.index');
+        return view('admin.news.index');
     }
 
     //*** GET Request
     public function create()
     {
         $cats = BlogCategory::get();
-        return view('admin.blogs.create',compact('cats'));
+        return view('admin.news.create',compact('cats'));
     }
 
     //*** POST Request
@@ -96,8 +96,8 @@ class BlogController extends Controller
         //--- Logic Section Ends
       
         //--- Redirect Section
-        $msg = 'New Data Added Successfully.<a href="'.route('admin-blogs-index').'">View blogs Lists.</a>';
-       //   return redirect(route('admin-blogs-index'))->with($msg);
+        $msg = 'New Data Added Successfully.<a href="'.route('admin-news-index').'">View news Lists.</a>';
+       //   return redirect(route('admin-news-index'))->with($msg);
       return response()->json($msg);
         //--- Redirect Section Ends    
 
@@ -109,7 +109,7 @@ class BlogController extends Controller
     {
         $data = Blog::findOrFail($id);
         $cats = BlogCategory::get();
-        return view('admin.blogs.edit',compact('data','cats'));
+        return view('admin.news.edit',compact('data','cats'));
     }
 
     //*** POST Request
@@ -151,7 +151,7 @@ class BlogController extends Controller
         //--- Logic Section Ends
 
         //--- Redirect Section
-        $msg = 'Data Updated Successfully.<a href="'.route('admin-blogs-index').'">View blogs Lists.</a>';
+        $msg = 'Data Updated Successfully.<a href="'.route('admin-news-index').'">View news Lists.</a>';
         return response()->json($msg);
         //--- Redirect Section Ends    
 

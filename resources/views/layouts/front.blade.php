@@ -145,6 +145,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{{ route('videos.index') }}"> {{ __('ما الافضل بالنسبة لي') }}  </a></li>
+                <li><a class="dropdown-item" href="{{ route('news.index') }}"> {{ __('اخبار كايرو سولار') }}  </a></li>
               
                 <li><a class="dropdown-item" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a></li>
               </ul>
@@ -226,7 +227,7 @@
             </div>
           </div>
           <hr>
-            <p class="text-center fw-bold">جميع الحقوق محفوظة © {{ date('Y') }}  <a target="_blank" href="https://cangrowonline.com">CanGrow Digital Marketing Agency</a>      </p>
+            <p class="text-center fw-bold">{{ __('جميع الحقوق محفوظة') }}    © {{ date('Y') }}  <a target="_blank" href="https://cangrowonline.com">CanGrow Digital Marketing Agency</a>      </p>
         </div>
       </section>
       <div class="social-media">

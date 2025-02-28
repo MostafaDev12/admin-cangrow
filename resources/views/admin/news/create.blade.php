@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __("translation.add_blog") }}
+        {{ __("translation.add_news") }}
         @endslot
     @endcomponent
 
@@ -23,12 +23,12 @@
 
             </div>
             <div class="card-body">
-                <form id="geniusform" action="{{ route('admin-blogs-create') }}" method="POST" enctype="multipart/form-data">
+                <form id="geniusform" action="{{ route('admin-news-create') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @include('includes.admin.form-both')
 
 
-                    <input type="hidden" name="type" value="blogs" >
+                    <input type="hidden" name="type" value="news" >
                     
                     <div class="row">
 
