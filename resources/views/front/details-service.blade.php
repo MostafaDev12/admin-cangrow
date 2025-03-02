@@ -102,7 +102,8 @@
                             <i class="fab fa-whatsapp"></i><a href="http://wa.me/2{{ $randomPhone }}">{{ $randomPhone }}</a><br>
                         </div>
                         <div >
-                            <a href="{{ route('book.index') }}">
+                            {{-- {{ route('book.index') }} --}}
+                            <a href="https://abdelrhmanshams.com/services/%D8%AC%D9%84%D8%B3%D8%A7%D8%AA-%D8%AC%D9%81%D8%A7%D9%81-%D8%A7%D9%84%D8%B9%D9%8A%D9%86">
                                 <img src="{{ asset('front/dr-shams/') }}/img/asa.webp" width="100%" alt="">
                             </a>
                         </div>
