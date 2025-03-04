@@ -26,10 +26,11 @@
                                     <img src="{{ $gs->{'logo_' . $sign} }}" class="mb-3" alt="">
                                    <div class="me-4">
                                     @foreach ($phones as $phone)
-                                    <p>
-                                        <a href="tel:+2{{ $phone }}"><i class="fas fa-phone"></i> {{ $phone }} </a>
-                                    </p>
-                                    
+                                        @if($phone)
+                                            <p>
+                                                <a href="tel:+2{{ $phone }}"><i class="fas fa-phone"></i> {{ $phone }} </a>
+                                            </p>
+                                        @endif
                                     @endforeach
                                     @foreach ($emails as $email)
  
@@ -64,7 +65,7 @@
             </div>
             <div class="col-12 col-lg-12 col-md-6">
                 <div class="form-maintenance ">
-                    <p>"كايرو سولر متخصصة بناء محطات للمؤسسات ولا تعمل في التركيبات المنزلية".</p>
+                    <p>  {{ __('كايرو سولر متخصصة بناء محطات للمؤسسات ولا تعمل في التركيبات المنزلية') }} </p>
                     <form action="{{route('front.contact.submit')}}" name="appointment" id="email-form" method="POST" autocomplete="off" class="cons-contact-form">
                         {{csrf_field()}}
                         <div class="form-group w-100">

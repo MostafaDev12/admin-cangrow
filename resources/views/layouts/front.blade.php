@@ -133,8 +133,11 @@
             <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('projects.index') }}">{{ __('مشاريعنا') }}</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('services.index') }}">{{ __('الخدمات') }}</a>
+            </li> --}}
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="{{ route('videos.index') }}">{{ __('ما الافضل بالنسبة لي') }}</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown"
@@ -144,7 +147,7 @@
                 {{ __('مركز التعليم') }}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ route('videos.index') }}"> {{ __('ما الافضل بالنسبة لي') }}  </a></li>
+                {{-- <li><a class="dropdown-item" href="{{ route('videos.index') }}"> {{ __('ما الافضل بالنسبة لي') }}  </a></li> --}}
                 <li><a class="dropdown-item" href="{{ route('news.index') }}"> {{ __('اخبار كايرو سولار') }}  </a></li>
               
                 <li><a class="dropdown-item" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a></li>
@@ -213,9 +216,9 @@
               <h1> {{ __('تواصل معنا') }}  </h1>
               <p class="contact-info">
                 @foreach ($phones as $phone)
- 
+                @if($phone)
                 <i class="fas fa-phone"></i><a href="tel:+2{{ $phone }}">{{ $phone }}</a> <br>
-
+                @endif
                 @endforeach
                 @foreach ($emails as $email)
  
@@ -235,22 +238,22 @@
 
             @if(App\Models\Socialsetting::find(1)->f_status == 1)   <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"> <i class="fab fa-facebook-f"></i></a>  @endif
                 
-                      @foreach ($phones as $k=>$phone)
+                      {{-- @foreach ($phones as $k=>$phone)
                         @if($k == 0)
                       
                       <li><a href="http://wa.me/2{{ $phone }}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
                         @endif
-                      @endforeach
+                      @endforeach --}}
                       
                       @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank">  <i class="fab fa-tiktok"></i></a>  @endif
                      
-                      @foreach ($phones as $k=>$phone)
+                      {{-- @foreach ($phones as $k=>$phone)
                         @if($k == 0)
                        
                       <li><a href="tel:+2{{ $phone }}" target="_blank"><i class="fas fa-phone"></i></a></li>
                         @endif
                       @endforeach
-        
+         --}}
                       
                        @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank">  <i class="fab fa-instagram"></i></a>  @endif
                       @if(App\Models\Socialsetting::find(1)->l_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->linkedin }}" target="_blank">  <i class="fab fa-linkedin-in"></i></a>  @endif
