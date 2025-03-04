@@ -64,6 +64,7 @@
             </div>
             <div class="col-12 col-lg-12 col-md-6">
                 <div class="form-maintenance ">
+                    <p>"كايرو سولر متخصصة بناء محطات للمؤسسات ولا تعمل في التركيبات المنزلية".</p>
                     <form action="{{route('front.contact.submit')}}" name="appointment" id="email-form" method="POST" autocomplete="off" class="cons-contact-form">
                         {{csrf_field()}}
                         <div class="form-group w-100">
