@@ -35,7 +35,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
 
         Route::get('/', [HomeController::class, 'index'])->name('front.index');
-        Route::get('/عن-الدكتور', [HomeController::class, 'about'])->name('about.index');
+        Route::get('/عن-الشركه', [HomeController::class, 'about'])->name('about.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
         Route::get('/projects', [HomeController::class, 'projects'])->name('projects.index');
 
