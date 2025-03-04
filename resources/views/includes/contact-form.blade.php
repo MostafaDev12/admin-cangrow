@@ -23,7 +23,7 @@
                             
                             <div class="col-12 col-lg-6">
                                 <div class="info-item d-flex  align-items-center">
-                                    <img src="{{ $gs->{'logo_' . $sign} }}" class="mb-3" alt="">
+                                    {{-- <img src="{{ $gs->{'logo_' . $sign} }}" class="mb-3" alt=""> --}}
                                    <div class="me-4">
                                     @foreach ($phones as $phone)
                                         @if($phone)
