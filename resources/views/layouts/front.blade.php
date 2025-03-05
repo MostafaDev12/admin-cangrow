@@ -125,7 +125,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link active fw-bold" aria-current="page" href="{{ route('front.index', $sign) }}">{{ __('الرئيسية') }}</a>
+              <a class="nav-link  fw-bold" aria-current="page" href="{{ route('front.index', $sign) }}">{{ __('الرئيسية') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('about.index') }}"> {{ __('عن الشركة') }}  </a>
@@ -329,6 +329,34 @@
           }
         });
         
+document.addEventListener("DOMContentLoaded", function () {
+    let navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+    let activeLink = localStorage.getItem("activeNavLink");
+
+    if (activeLink) {
+        navLinks.forEach(link => {
+            if (link.href === activeLink) {
+                link.classList.add("active");
+            }
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            
+            navLinks.forEach(l => l.classList.remove("active"));
+
+            this.classList.add("active");
+
+          
+            localStorage.setItem("activeNavLink", this.href);
+        });
+    });
+});
+
+</script>
+
       </script>
  
     <script src="{{ asset('build/js/toastr.js') }}"></script>
