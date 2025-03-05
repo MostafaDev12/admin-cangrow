@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="{{ \Session::get('sign') }}" dir="{{ \Session::get('front_language_duraction') }}">
 
 <head>
     <meta charset="UTF-8">
