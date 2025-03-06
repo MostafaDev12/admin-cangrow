@@ -74,7 +74,15 @@
   }
 </script>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RJGGYWDV7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-8RJGGYWDV7');
+</script>
 
     <?php echo $__env->yieldContent('gsearch'); ?>
     <!-- Google Font -->
@@ -168,7 +176,7 @@
 
                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li class="dropdown">
-                                <a  <?php if(count($category->services) > 0): ?> <?php endif; ?>   class="dropdown-item dropdown-toggle" href="#"><?php echo e($category->{'title_' . $sign}); ?></a>
+                                <a  <?php if(count($category->services) > 0): ?> <?php endif; ?>   class="dropdown-item dropdown-toggle" href="<?php echo e(route('single-category-service.index',['slug' => $category->{'slug_' . $sign} ])); ?>"><?php echo e($category->{'title_' . $sign}); ?></a>
                                 <?php if(count($category->services) > 0): ?>
                                 <ul class="dropdown-menu"> 
                                     

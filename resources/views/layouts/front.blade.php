@@ -195,7 +195,7 @@
 
                                 @foreach ($categories as $category)
                                 <li class="dropdown">
-                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="#">{{ $category->{'title_' . $sign} }}</a>
+                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="{{ route('single-category-service.index',['slug' => $category->{'slug_' . $sign} ]) }}">{{ $category->{'title_' . $sign} }}</a>
                                 @if(count($category->services) > 0)
                                 <ul class="dropdown-menu"> 
                                     

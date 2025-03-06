@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Partner;
 use App\Models\Contact;
+use App\Models\Category;
 use App\Models\Generalsetting;
 use App\Models\Media;
 use Illuminate\Support\Facades\Auth;
@@ -164,6 +165,20 @@ class HomeController extends Controller
       abort(404);
     }
     return view('front.details-service', compact('sign', 'service'));
+  }
+
+  public function singleCategoryService(Request $request, $slug)
+  {
+
+    $sign = $this->langSign();
+    $category = Category::where('slug_ar', $slug)->orwhere('slug_en',$slug)
+     ->orwhere('slug_fr',$slug)->first();
+
+    if(!$category){
+
+      abort(404);
+    }
+    return view('front.category', compact('sign', 'category'));
   }
 
   public function root()
