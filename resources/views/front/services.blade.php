@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row pt-5">
 
-              @foreach ($services as $service)
+              @foreach ($categories as $service)
                 <div class="col-12 col-lg-4 col-md-4 mb-3">
                     <div class="text-center box service-div ">
                         <div>
@@ -32,7 +32,7 @@
                         </div>
                         <div class=" p-5">
                             <h2 class="fw-bold"> {{ $service->{'title_' . $sign} }}   </h2>
-                            <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"><span class="mt-3 d-block"> {{ __('المزيد') }}<i
+                            <a href="{{ route('single-category-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"><span class="mt-3 d-block"> {{ __('المزيد') }}<i
                                         class="fa-solid fa-angles-left"></i></span></a>
                         </div>
                     </div>

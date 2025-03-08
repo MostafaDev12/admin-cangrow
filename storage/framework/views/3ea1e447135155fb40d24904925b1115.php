@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row pt-5">
 
-              <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-12 col-lg-4 col-md-4 mb-3">
                     <div class="text-center box service-div ">
                         <div>
@@ -33,7 +33,7 @@
                         </div>
                         <div class=" p-5">
                             <h2 class="fw-bold"> <?php echo e($service->{'title_' . $sign}); ?>   </h2>
-                            <a href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><span class="mt-3 d-block"> <?php echo e(__('المزيد')); ?><i
+                            <a href="<?php echo e(route('single-category-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><span class="mt-3 d-block"> <?php echo e(__('المزيد')); ?><i
                                         class="fa-solid fa-angles-left"></i></span></a>
                         </div>
                     </div>
