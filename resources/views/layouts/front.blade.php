@@ -16,14 +16,14 @@
 
 
 <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-<meta property="og:description" content="Engage teams, schools, and social groups with SABEQ's interactive challenge-based games. Start building your custom game today!">
+<meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
 <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
 <meta property="og:url" content="{{ url('/') }}">
 <meta property="og:type" content="website">
 
 
 
-    @if (isset($page->meta_tag) && isset($page->meta_description))
+  @if (isset($page->meta_tag) && isset($page->meta_description))
         <meta name="keywords" content="{{ $page->meta_tag }}">
         <meta name="description" content="{{ $page->meta_description }}">
         <title>@yield('title') -
@@ -34,8 +34,10 @@
     @elseif(isset($blog->meta_tag) && isset($blog->meta_description))
         <meta name="keywords" content="{{ $blog->meta_tag }}">
         <meta name="description" content="{{ $blog->meta_description }}">
+        <meta property="og:description" content="{{ $blog->meta_description }}">
     @else
         <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
+        
         <title>
             @yield('title')
         </title>
@@ -73,16 +75,7 @@
   }
 </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RJGGYWDV7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8RJGGYWDV7');
-</script>
-
+ 
     @yield('gsearch')
     <!-- Google Font -->
 
@@ -90,18 +83,21 @@
     <link rel="icon" type="image/x-icon" href="{{ $gs->favicon }}" />
     <!-- bootstrap -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+ 
+    
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+  <!-- Bootstrap5 CDN Link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{{ asset('front/dr-shams/') }}/css/style.css">
+  <!-- Font Awesome Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-
+  <!-- Custom CSS Files Link -->
+  <link rel="stylesheet" href="{{ asset('front/dr-heba/') }}/css/style.css">
+  <link rel="stylesheet" href="{{ asset('front/dr-heba/') }}/css/reponsive.css">
+  <link rel="stylesheet" href="{{ asset('front/dr-heba/') }}/css/motion.css">
 
     <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
 
@@ -110,8 +106,6 @@
 
 </head>
 
-<body>
-
   @php
   $phones =  explode(',', $gs->phones);
   $emails =   explode(',', $gs->emails);
@@ -119,323 +113,436 @@
 
   $randomPhone = Arr::random($phones);
   @endphp
-    <div class="header-social text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <div class="d-flex justify-content-center justify-content-evenly">
-                      @if(App\Models\Socialsetting::find(1)->f_status == 1)   <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->facebook }}"> <i class="fab fa-facebook"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->youtube }}"> <i class="fab fa-youtube"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->twitter }}">  <i class="fab fa-instagram"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a target="_blank"  href="{{ App\Models\Socialsetting::find(1)->dribble }}">  <i class="fab fa-tiktok"></i></a>  @endif
-                    </div>
-                </div>
-                <div class="col-4">
-                    <a target="_blank"  href="http://wa.me/2{{ $randomPhone }}"><i class="fab fa-whatsapp"></i> {{ $randomPhone }}</a>
-                </div>
-                <div class="col-4">
-                    <a href="tel:+2{{ $randomPhone }}"><i class="fas fa-phone"></i> {{ $randomPhone }} </a>
-                </div>
+ 
+
+ <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100" class="loading">
+    <!-- Navbar Section -->
+    <header>
+      <nav class="header-desktop">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="{{ route('front.index', $sign) }}">
+              <img src="{{ $gs->{'logo_' . $sign} }}" alt="Logo">
+            </a>
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('contact.index') }}#appointments">
+                    <i class="fas fa-clock"></i>
+                    <span>السبت - الأربعاء</span>
+                    <small>الاقصر كل اسبوعين</small>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('contact.index') }}#locations">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>
+                      المهندسين
+                    </span>
+                    <span>-</span>
+                    <span>
+                      الاقصر
+                    </span>
+                    <span>-</span>
+                    <span>
+                      الشيخ زايد
+                    </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="tel:+2{{ $randomPhone }}">
+                    <i class="fas fa-phone"></i>
+                    <span>+{{ $randomPhone }}</span>
+                  </a>
+                </li>
+            @if(App\Models\Socialsetting::find(1)->f_status == 1)   
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+               @endif
+
+               @if(App\Models\Socialsetting::find(1)->d_status == 1)  
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                @endif
+                @if(App\Models\Socialsetting::find(1)->ystatus == 1) 
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                </li>
+                @endif
+                @if(App\Models\Socialsetting::find(1)->t_status == 1)   
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->twitter }}"
+                    target="_blank">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                @endif
+              </ul>
             </div>
-        </div>
-    </div>
-    <div class="header">
-        <nav class="navbar navbar-expand-lg bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand wow animate__animated animate__fadeInDown" data-wow-delay="1s"
-                    data-wow-duration="1s" href="{{ route('front.index', $sign) }}"><img
-                        src="{{ $gs->{'logo_' . $sign} }}" alt="RGS Logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav wow animate__animated animate__fadeInDown" data-wow-delay="1s"
-                        data-wow-duration="1s">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="{{ route('front.index') }}">{{ __('الرئيسية') }} </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about.index') }}">{{ __('عن الشركة') }}</a>
-                        </li>
-
-{{-- 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ __('الخدمات') }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                @foreach ($categories as $category)
-                                    <li><a class="dropdown-item nav-link dropdown-toggle" href="#">{{ $category->{'title_' . $sign} }}</a>
-                                      <ul class="dropdown-menu">
-                                        @foreach ($categories as $category)
-                                            <li><a class="dropdown-item" href="#">{{ $category->{'title_' . $sign} }}</a>
-                                              
-                                            </li>
-                                        @endforeach
-        
-                                    </ul>
-                                    </li>
-                                @endforeach
-
-                            </ul>
-                        </li> --}}
+          </div>
+        </nav>
+      </nav>
+  
+      <!-- Divider -->
+      <hr class="divider">
+  
+      <!-- Second Header (Visible on Desktop/Tablet) -->
+      <nav class="header-desktop nav-scroll d-none d-lg-block">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+            <a class="navbar-brand logo-scroll" href="{{ route('front.index', $sign) }}" style="display:none;">
+              <img src="{{ $gs->{'logo_' . $sign} }}" alt="Logo">
+            </a>
+  
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse">
+              <div class="d-flex justify-content-between w-100">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('front.index', $sign) }}">  {{ __('مركز علاج الحول والمياه البيضاء') }}</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" role="" data-bs-toggle=""
+                      aria-expanded="false">
+                      الخدمات
+                    </a>
+                    <ul class="dropdown-menu text-end dropdown-home-items">
 
 
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" id="servicesDropdown" role="button"
-                                aria-expanded="false">
-                                {{ __('الخدمات') }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-
-                                @foreach ($categories as $category)
-                                <li class="dropdown">
-                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="{{ route('single-category-service.index',['slug' => $category->{'slug_' . $sign} ]) }}">{{ $category->{'title_' . $sign} }}</a>
-                                @if(count($category->services) > 0)
-                                <ul class="dropdown-menu"> 
-                                    
-                                
-                                    @foreach ($category->services as $service)
-                                    <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
-                                    @endforeach
-                                    
-                                </ul>
-                                @endif
-                                </li>
-                                @endforeach
-                
-
-                                @foreach ($servicesWithoutCats as $service)
-                                <li class="dropdown">
-                                <a    class="dropdown-item dropdown-toggle" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}</a>
-                              
-                                </li>
-                                @endforeach
-                
-                            </ul>
-                       </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('videos.index') }}">{{ __('الفيديوهات') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('book.index') }}"> {{ __('احجز الان') }}  </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">   {{ __('اتصل بنا') }}</a>
-                        </li>
+                        @foreach ($services as $service)
+                        <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
+                        @endforeach
+                     
 
                     </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('about.index') }}">{{ __('عن الدكتورة') }} </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contact.index') }}"> {{ __('اتصل بنا') }}  </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contact.index') }}#contact-section">{{ $randomPhone }}</a>
+                  </li>
+                </ul>
+                <!-- Search Container -->
+                <div class="search-container">
+                  <button id="searchButton" class="btn" type="button">
+                    <i class="fas fa-search"></i>
+                  </button>
+                  <form>
+
+                   <input id="searchInput" class="form-control search-input" type="text" placeholder="{{ __('ابحث') }}">
+
+                  </form>
                 </div>
+              </div>
             </div>
+          </div>
         </nav>
-    </div>
+      </nav>
+  
+      <!-- Offcanvas for Mobile -->
+      <nav class="navbar navbar-light bg-light fixed-top d-lg-none">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Logo">
+          </a>
+  
+          <!-- Offcanvas Toggle Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+            <i class="fas fa-bars"></i>
+          </button>
+          <!-- Offcanvas Menu -->
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <a class="navbar-brand" href="#">
+                <img src="{{ $gs->{'logo_' . $sign} }}" alt="Logo">
+              </a>
+  
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- First Header Content -->
+              <h5 class="offcanvas-title text-end" id="offcanvasNavbarLabel">{{ __('القائمة') }}</h5>
+  
+              <div class="search-container border-bottom mb-3">
+                <button id="searchButton" class="btn  p-0" type="button">
+                  <i class="fas fa-search"></i>
+                </button>
+
+                <input id="" class="form-control border-0 shadow-none" type="text" placeholder="{{ __('ابحث') }}">
+            
+            </div>
+  
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html#appointments">
+                    <i class="fas fa-clock"></i>
+                    <span>السبت - الأربعاء</span>
+                    <small>الاقصر كل اسبوعين</small>
+                  </a>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html#locations">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>
+                      المهندسين
+                    </span>
+                    <span>-</span>
+                    <span>
+                      الاقصر
+                    </span>
+                    <span>-</span>
+                    <span>
+                      الشيخ زايد
+                    </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="tel:01155611453">
+                    <i class="fas fa-phone"></i>
+                    <span>+01155611453</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.facebook.com/drhebametwally.eyeclinic">
+                    <i class="fab fa-facebook"></i>
+                    <span>الفيسبوك</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.instagram.com/dr.hebametwally/">
+                    <i class="fab fa-instagram"></i>
+                    <span>انستجرام</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.youtube.com/channel/UCQ3UstS1JRL46hyNrSawO5w">
+                    <i class="fab fa-youtube"></i>
+                    <span>يوتيوب</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://x.com/i/flow/login?redirect_after_login=%2Fdrhebametwally">
+                    <i class="fab fa-twitter"></i>
+                    <span>تويتر</span>
+                  </a>
+                </li>
+              </ul>
+              <!-- Divider -->
+              <hr class="divider">
+              <!-- Second Header Content -->
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="">مركز علاج الحول والمياه البيضاء</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bold" href="services.html">
+                    الخدمات
+                  </a>
+                  <ul class=" border-bottom">
+                    <li class="list-unstyled"><a class="nav-link" href="portfolio2.html">تصحيح الابصار</a></li>
+                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">علاج ازدواجية الرؤية</a></li>
+                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">المياة البيضاء للكبار والاطفال</a>
+                    </li>
+                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">علاج الحول للكبار والاطفال</a>
+                    </li>
+                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">علاج كسل العين الوظيفي</a></li>
+                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">علاج امراض الجهاز الدمعي</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bold" href="articles.html">المقالات</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bold" href="about.html">عن الدكتورة</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bold" href="contact.html">اتصل بنا</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bold" href="tel:01155611453">01155611453</a>
+                </li>
+              </ul>
+              <!-- Search Container -->
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
 
 
 
     @yield('content')
 
 
-
-    <section class="footer-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 ">
-                    <div class="logo">
-                        <img src="{{ $gs->{'logo_' . $sign} }}" alt="RGS Logo">
-                    </div>
-                    <p class="branch-info fw-bold">
-                      {{ $gs->{'footer_' . $sign} }}
-                    </p>
-                </div>
-                <div class="col-lg-2 col-md-6 ">
-                    <h1>{{ __('روابط هامة') }}</h1>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a></li>
-                        <li><a href="{{ route('about.index') }}"> {{ __('عن الشركة') }} </a></li>
-                        <li><a href="{{ route('services.index') }}"> {{ __('الخدمات') }}</a></li>
-                        <li><a href="{{ route('videos.index') }}">{{ __('الفيديوهات') }}</a></li>
-                        <li><a href="{{ route('book.index') }}">{{ __('احجز الان') }}</a></li>
-                        <li><a href="{{ route('contact.index') }}">    {{ __('اتصل بنا') }}</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 ">
-                    <h1> {{ __('الخدمات') }}</h1>
-                    <ul class="list-unstyled">
-                      @foreach ($services->shuffle()->take(6) as $service)
-                      <li><a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"> {{ $service->{'title_' . $sign} }}  </a></li>
-                      @endforeach
-                     
-                       
-
-                    </ul>
-                </div>
-                <!-- تواصل معنا -->
-                <div class="col-lg-4 col-md-6 ">
-                    <h1> {{ __('تواصل معنا') }}</h1>
-                    <p class="contact-info">
-                      @foreach ($phones as $phone)
- 
-                      <i class="fas fa-phone"></i><a href="tel:+2{{ $phone }}">{{ $phone }}</a> <br>
-
-                      @endforeach
-                     @foreach ($phones as $phone)
-
-                      <i class="fab fa-whatsapp"></i><a target="_blank"  href="http://wa.me/2{{ $phone }}" target="_blank">{{ $phone }}</a><br>
-                      @endforeach
-                      @foreach ($addresses as $address)
-                        <i class="fas fa-location"></i> <a href="#">   {{ $address }}   </a>
-                        <br>
-                        @endforeach
-                    </p>
-                </div>
-            </div>
-            <hr>
-            <p class="text-center fw-bold">جميع الحقوق محفوظة © {{ date('Y') }}  <a target="_blank" href="https://cangrowonline.com">CanGrow Digital Marketing Agency</a>      </p>
+ <!-- Footer Section -->
+ <footer id="footer" class="footer-wrapper wrapper">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-md-4 col-sm-6 mb-4 box-invisible">
+          <h5>دكتورة هبه متولي
+          </h5>
+          <p>
+            استشاري طب وجراحات العيون وعيون الاطفال والحول وتصحيح الابصار دكتوراه طب وجراحه العيون جامعه
+            القاهره زميل
+            كليه الجراحين الملكيه البريطانية "جلاسجو" زميل المجلس العالمي لطب العيون عضو الجمعيه الاوروبيه
+            لعيون الاطفال
+            و الحول
+          </p>
+          <div class="contact-info">
+            <ul class="list-unstyled d-flex gap-3">
+              <li>
+                <a href="https://www.facebook.com/drhebametwally.eyeclinic">
+                  <i class="fab fa-brands fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/dr.hebametwally/">
+                  <i class="fab fa-brands fa-instagram"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UCQ3UstS1JRL46hyNrSawO5w">
+                  <i class="fab fa-brands fa-youtube"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/i/flow/login?redirect_after_login=%2Fdrhebametwally">
+                  <i class="fab fa-brands fa-twitter"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="contact-info ">
+            <ul class="list-unstyled ">
+              <li>
+                <a href="contact.html#locations" class="d-flex gap-1">
+                  <i class="fa fa-home">
+                  </i>116 ش محيي الدين ابو العز الدور الاول متفرع من جامعة الدول
+                  المهندسين, القاهرة, مصر
+                </a>
+              </li>
+              <li>
+                <a href="contact.html#contact-section" class="d-flex gap-1">
+                  <i class="fa fa-phone">
+                  </i>+01155611453</a>
+              </li>
+              <li>
+                <a href="contact.html#appointments" class="d-flex gap-1">
+                  <i class="fa fa-clock">
+                  </i>السبت - الأربعاء
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </section>
-    <div class="social-media">
-        <ul class="custom">
-
-           @if(App\Models\Socialsetting::find(1)->f_status == 1)   <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"> <i class="fab fa-facebook"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"> <i class="fab fa-youtube"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank">  <i class="fab fa-instagram"></i></a>  @endif
-                      @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank">  <i class="fab fa-tiktok"></i></a>  @endif
-
-        </ul>
+        <div class="col-md-4 col-sm-6 mb-4 box-invisible">
+          <h5>الخدمات</h5>
+          <ul class="link-widget p-0">
+            <li><a href="portfolio.html" target="_blank">تصحيح الابصار</a></li>
+            <li><a href="portfolio.html" target="_blank">علاج ازدواجية الرؤية</a></li>
+            <li><a href="portfolio.html" target="_blank">المياة البيضاء للكبار والاطفال</a></li>
+            <li><a href="portfolio.html" target="_blank">علاج الحول للكبار والاطفال</a></li>
+            <li><a href="portfolio.html" target="_blank">علاج كسل العين الوظيفي</a></li>
+            <li><a href="portfolio.html" target="_blank">علاج امراض الجهاز الدمعي</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-md-4 col-sm-6 mb-4 box-invisible">
+          <p class="p-0">Copyright
+            <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fcangrowonline.com%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAAR3KNukx3qxSbcbTSEXIZ6Rj79xtffAMjPYLa0lbqls0Y83W_99zNC9KLg4_aem_ZEXpIYgzA01ISRxDbXEdag&h=AT2QF-bNAZ95QrxslckRpIAxiulfEj6cYDth-HwHc8YyfO0MCTb7LEFz45rpWZXV9KaA8bddVlDFRLP5l4-tJuSqQhJDrd1iqCLWGwIAVNeCfCCwFxtSsdaX71bBBv8lTK4rEg"
+              target="_blank">@CanGrow
+              .</a> All Rights Reserved
+          </p>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-4 box-invisible">
+          <ul id="" class="d-flex flex-column about list-footer">
+            <li class="list-unstyled">
+              <a class=" p-0 m-0" href="services.html" target="_blank">
+                الخدمات
+              </a>
+            </li>
+            <li class="list-unstyled">
+              <a class=" p-0 m-0" href="about.html" target="_blank"> عنا
+              </a>
+            </li>
+            <li class="list-unstyled">
+              <a class=" p-0 m-0" href="contact.html" target="_blank">
+                اتصل بنا
+              </a>
+            </li>
+            <li class="list-unstyled">
+              <a class=" p-0 m-0" href="tel:01155611453">01155611453</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
-        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-    </script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    </div>
+  </footer>
+  <!-- Footer Section exit -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
-        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
-        integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        new WOW().init();
-    </script>
-    <script>
-        let lastScrollTop = 0;
-        const header = document.querySelector('.header');
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-
-            if (currentScroll > lastScrollTop) {
-                // Scroll Down
-                header.classList.add('hidden');
-            } else {
-                // Scroll Up
-                header.classList.remove('hidden');
-            }
-
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-        });
-        const headerSocial = document.querySelector('.header-social');
-
-        // استماع لحدث التمرير
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > headerSocial.offsetHeight) {
-                // إضافة كلاس عندما يتم التمرير
-                document.body.classList.add('scrolled');
-            } else {
-                // إزالة الكلاس عندما نعود للأعلى
-                document.body.classList.remove('scrolled');
-            }
-        });
+    <script type="text/javascript">
+        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
+        
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"
-        integrity="sha512-vKtlh10whXT2NhAshnxhceCdwq/bMyMrfeZ3p2IaF89qGCwbC94ATb7Qyg8cFs8EL3Hgz9bJBF++ZWfKn4ligg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/3.0.0-rc3/lazysizes.min.js"
-        integrity="sha512-HMnm5Dp1stoEycrUKuMyGDHIudidstU6uRwRgRxPbl2jNxU9xS2B0XLon7xowk3ZitrjNw7WIbQwXroIwY33sw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
-        integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        var swiper = new Swiper(".service  .mySwiper", {
-            autoplay: {
-                delay: 3000,
-            },
-            loop: true,
-            slidesPerView: 4,
-            spaceBetween: 20,
-            breakpoints: {
-                // when window width is >= 320px
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                // when window width is >= 480px
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                // when window width is >= 640px
-                640: {
-                    slidesPerView: 1,
-                    spaceBetween: 40
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 20
-                }
-            }
-        });
-        var swiper = new Swiper(".blog .mySwiper", {
-            autoplay: {
-                delay: 3000,
-            },
-            loop: true,
-            slidesPerView: 4,
-            spaceBetween: 20,
+  <!-- Bootstrap5 JS CDN Links -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-            breakpoints: {
-                // when window width is >= 320px
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                // when window width is >= 480px
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                // when window width is >= 640px
-                640: {
-                    slidesPerView: 1,
-                    spaceBetween: 40
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 20
-                }
-            }
-        });
-    </script>
+  <!-- custom js file -->
+  <script src="{{ asset('front/dr-heba/') }}/js/main.js"></script>
+  <script src="{{ asset('front/dr-heba/') }}/js/motion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      keyboard: {
+        enabled: true, // Enable keyboard controls
+        onlyInViewport: true, // Only work when Swiper is in the viewport
+      },
+      initialSlide: Math.floor(document.querySelectorAll('.swiper-slide').length / 2),
+
+      // Set initial slide to the middle
+
+    }); 
+    
+     </script>
+ 
 
 
     <script src="{{ asset('build/js/toastr.js') }}"></script>

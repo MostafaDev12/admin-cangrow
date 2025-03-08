@@ -1,0 +1,14 @@
+.box-invisible {
+    opacity: 0;
+    /* Initially hidden */
+    transform: translateY(50px);
+    /* Start below the visible area */
+    transition: all 0.6s ease-in-out;
+    /* Smooth animation */
+}
+.box-visible {
+    opacity: 1;
+    /* Fully visible */
+    transform: translateY(0);
+    /* Move to the original position */
+}
