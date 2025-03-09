@@ -77,7 +77,7 @@
                                               <div class="mb-3">
                                                   <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
                                  
-                                                  <textarea class="form-control ckeditor" name="title_ar"  id="title_ar" rows="3" placeholder="{{ __('translation.title') }}">{{ $data->title_ar }}</textarea>
+                                                  <textarea class="form-control " name="title_ar"  id="title_ar" rows="3" placeholder="{{ __('translation.title') }}">{{ $data->title_ar }}</textarea>
                                               </div>
                                                
                                               <div class="mb-3">
@@ -111,7 +111,7 @@
                                             <div class="mb-3">
                                               <label for="title_en" class="form-label">{{ __('translation.title') }}</label>
                                              
-                                              <textarea class="form-control ckeditor" name="title_en"  id="title_en" rows="3" placeholder="{{ __('translation.title') }}">{{ $data->title_en }}</textarea>
+                                              <textarea class="form-control " name="title_en"  id="title_en" rows="3" placeholder="{{ __('translation.title') }}">{{ $data->title_en }}</textarea>
                                           </div>
                                            
                                           <div class="mb-3">
