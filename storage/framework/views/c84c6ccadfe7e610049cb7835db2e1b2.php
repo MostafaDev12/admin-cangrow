@@ -153,7 +153,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="tel:+2<?php echo e($randomPhone); ?>`">
+                  <a class="nav-link" href="tel:+2<?php echo e($randomPhone); ?>">
                     <i class="fas fa-phone"></i>
                     <span>+<?php echo e($randomPhone); ?></span>
                   </a>
@@ -210,38 +210,34 @@
               <div class="d-flex justify-content-between w-100">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" href="">  <?php echo e(__('مركز علاج الحول والمياه البيضاء')); ?></a>
+                    <a class="nav-link active" href="<?php echo e(route('front.index', $sign)); ?>">  <?php echo e(__('مركز علاج الحول والمياه البيضاء')); ?></a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="services.html" role="" data-bs-toggle=""
+                    <a class="nav-link dropdown-toggle" href="<?php echo e(route('services.index')); ?>" role="" data-bs-toggle=""
                       aria-expanded="false">
                       الخدمات
                     </a>
                     <ul class="dropdown-menu text-end dropdown-home-items">
-                      <li><a class="dropdown-item " href="portfolio2.html">تصحيح الابصار </a></li>
-                      <li><a class="dropdown-item" href="portfolio.html">علاج ازدواجية الرؤية
-                        </a></li>
-                      <li><a class="dropdown-item" href="portfolio.html">المياة البيضاء للكبار والاطفال
-                        </a></li>
-                      <li><a class="dropdown-item" href="portfolio.html">علاج الحول للكبار والاطفال
-                        </a></li>
-                      <li><a class="dropdown-item" href="portfolio.html">علاج كسل العين الوظيفي
-                        </a></li>
-                      <li><a class="dropdown-item" href="portfolio.html">علاج امراض الجهاز الدمعي
-                        </a></li>
+
+
+                        <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><a class="dropdown-item" href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><?php echo e($service->{'title_' . $sign}); ?>  </a></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                     
+
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="articles.html">المقالات</a>
+                    <a class="nav-link" href="<?php echo e(route('blogs.index')); ?>"><?php echo e(__('المقالات')); ?></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="about.html">عن الدكتورة</a>
+                    <a class="nav-link" href="<?php echo e(route('about.index')); ?>"><?php echo e(__('عن الدكتورة')); ?> </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.html">اتصل بنا</a>
+                    <a class="nav-link" href="<?php echo e(route('contact.index')); ?>"> <?php echo e(__('اتصل بنا')); ?>  </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.html#contact-section">01155611453</a>
+                    <a class="nav-link" href="<?php echo e(route('contact.index')); ?>#contact-section"><?php echo e($randomPhone); ?></a>
                   </li>
                 </ul>
                 <!-- Search Container -->
@@ -249,7 +245,11 @@
                   <button id="searchButton" class="btn" type="button">
                     <i class="fas fa-search"></i>
                   </button>
-                  <input id="searchInput" class="form-control search-input" type="text" placeholder="ابحث">
+                  <form>
+
+                   <input id="searchInput" class="form-control search-input" type="text" placeholder="<?php echo e(__('ابحث')); ?>">
+
+                  </form>
                 </div>
               </div>
             </div>
@@ -281,14 +281,16 @@
             </div>
             <div class="offcanvas-body">
               <!-- First Header Content -->
-              <h5 class="offcanvas-title text-end" id="offcanvasNavbarLabel">القائمة</h5>
+              <h5 class="offcanvas-title text-end" id="offcanvasNavbarLabel"><?php echo e(__('القائمة')); ?></h5>
   
               <div class="search-container border-bottom mb-3">
                 <button id="searchButton" class="btn  p-0" type="button">
                   <i class="fas fa-search"></i>
                 </button>
-                <input id="" class="form-control border-0 shadow-none" type="text" placeholder="اضغط للبحث">
-              </div>
+
+                <input id="" class="form-control border-0 shadow-none" type="text" placeholder="<?php echo e(__('ابحث')); ?>">
+            
+            </div>
   
               <ul class="navbar-nav">
                 <li class="nav-item">
