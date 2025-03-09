@@ -26,13 +26,14 @@
             <p >  {{ __('شاهد هذا الفيديو لفهم أنواع المحطات الشمسية المختلفة') }}             </p>
             <div class="row pt-5">
               @foreach($videos as $video)
-                <div class="col-12 col-lg-4 col-md-4 mb-3">
+                <div class="col-12 col-lg-6 col-md-4 mb-3">
                     <div>
                          <iframe width="100%" height="300px" src="{{$video->youtube_url}}"
               title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                       
+                       <h2 class="desc-video">Station Type A: Companies, Factories, Schools, Farms and Hotels</h2>
+                       <p>المحطة نوع أ: الشركات والمصانع والمدارس والمزارع والفنادق</p>
                    </div>
                 </div>
                 @endforeach
