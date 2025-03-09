@@ -32,8 +32,8 @@
               title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                       <h2 class="desc-video">Station Type A: Companies, Factories, Schools, Farms and Hotels</h2>
-                       <p>المحطة نوع أ: الشركات والمصانع والمدارس والمزارع والفنادق</p>
+                       <h2 class="desc-video">{{ $video->{'title_' . $sign} }} </h2>
+                       <p>{!! $video->{'details_' . $sign} !!}</p>
                    </div>
                 </div>
                 @endforeach
