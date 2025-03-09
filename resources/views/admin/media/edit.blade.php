@@ -120,24 +120,7 @@
                                   <div class="row">
 
 
-                        <div class="col-xl-12 col-md-12 d-none">
-                            <div class="card">
-                              
-                 <div class="mb-3">
-                                              <label for="model_category_id" class="form-label">{{ __('translation.model_category') }}</label>
-                                              <select name="model_category_id" id="model_category_id"  class="form-control">
-                                                  <option value="">{{ __('translation.select') }}</option>
-                                                  @foreach($model_categories as $category)
-                                                  <option value="{{$category->id}}" {{ $category->id == $data->model_category_id  ? 'selected' : ''}}>{{$category->title_ar}}</option>
-                                                  @endforeach
-                                              </select>
-                                              
-                                             
-                                          </div>
-                            </div>
-                            <!-- end card -->
-                        </div> <!-- end col -->
-
+                      
 
                     </div>
                             </div><!-- end card-body -->
