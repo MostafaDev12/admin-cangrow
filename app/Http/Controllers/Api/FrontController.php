@@ -840,7 +840,7 @@ class FrontController extends Controller
 
         $lang = request()->header('Accept-Language');
 
-        $datas = Blog::get();
+        $datas = Blog::paginate(10);
 
         foreach ($datas as $k => $dat) {
             $data[$k]['id'] = $dat->id;
@@ -861,7 +861,10 @@ class FrontController extends Controller
             'status' => true,
             'message' => 'success',
             'data' => $data,
-
+            'current_page' => $datas->currentPage(),
+         'last_page' => $datas->lastPage(),
+        'per_page' => $datas->perPage(),
+        'total' => $datas->total()
 
         ], 200);
     }
