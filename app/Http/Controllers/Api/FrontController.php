@@ -856,15 +856,13 @@ class FrontController extends Controller
             $data[$k]['photo'] = $dat->photo;
             $data[$k]['date'] = $dat->blog_date ?? $dat->created_at;
         }
-
+        $paginatedData = $datas->toArray();
+        $paginatedData['data'] = $data;
+        
         return response()->json([
             'status' => true,
             'message' => 'success',
-            'data' => $data,
-            'current_page' => $datas->currentPage(),
-         'last_page' => $datas->lastPage(),
-        'per_page' => $datas->perPage(),
-        'total' => $datas->total()
+            'data' => $paginatedData,
 
         ], 200);
     }
