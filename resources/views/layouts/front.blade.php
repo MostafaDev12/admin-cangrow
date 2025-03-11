@@ -258,7 +258,7 @@
                     </p>
                 </div>
                 <div class="col-lg-2 col-md-6 ">
-                    <h1>{{ __('روابط هامة') }}</h1>
+                    <p class="title-footer">{{ __('روابط هامة') }}</p>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a></li>
                         <li><a href="{{ route('about.index') }}"> {{ __('عن الشركة') }} </a></li>
@@ -269,7 +269,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 ">
-                    <h1> {{ __('الخدمات') }}</h1>
+                    <p  class="title-footer"> {{ __('الخدمات') }}</p>
                     <ul class="list-unstyled">
                       @foreach ($services->shuffle()->take(6) as $service)
                       <li><a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"> {{ $service->{'title_' . $sign} }}  </a></li>
@@ -281,7 +281,7 @@
                 </div>
                 <!-- تواصل معنا -->
                 <div class="col-lg-4 col-md-6 ">
-                    <h1> {{ __('تواصل معنا') }}</h1>
+                    <p  class="title-footer"> {{ __('تواصل معنا') }}</p>
                     <p class="contact-info">
                       @foreach ($phones as $phone)
  

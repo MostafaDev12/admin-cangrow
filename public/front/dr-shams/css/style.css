@@ -173,7 +173,10 @@ body {
     font-weight: bold;
     color: white;
 }
-
+.title-footer {
+    font-size: 25px;
+    font-weight: bold;
+}
 .slider .title-doc {
     color: white;
     font-size: large;
@@ -1014,4 +1017,18 @@ a {
 .btn-video:hover {
     background-color: white;
     color: #314c5b;
+}
+.accordion-item {
+    margin-bottom:25px;
+}
+.accordion-button::after {
+    position: absolute;
+    top: 15px;
+    right: 94%;
+    left: 0;
+    
+}
+.accordion-button {
+    color:#314c5b;
+    font-weight:bold;
 }
