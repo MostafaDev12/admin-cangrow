@@ -35,45 +35,31 @@ $randomPhone = Arr::random($phones);
                         <img class="mb-4" width="100%" src="{{ $blog->photo }}" alt="">
                         
                         <p>   {!! $blog->{'details_' . $sign} !!}   </p>
+                        @if(count($blog->faqs) > 0)
                         <h2 class="mb-3">الاسئله الشائعة</h2>
                         <div class="accordion" id="accordionExample">
-  <div class="accordion-item box">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        ما هى تكلفة عملية المياه الزرقاء في مصر؟
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-          تتراوح تكلفة المياه الزرقاء في مصر بين 10000 جنيه مصر إلى 25000 جنيه مصرى وتختلف تلك التكلفة وفقاً للعديد من العوامل المختلفة أهمها خبرة الطبيب الذي يقوم بإجراء العملية.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item box">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-       كم تكلفة مسح عدسة العين بالليزر؟
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-    تتراوح تكلفة  مسح عدسة العين بالليزر بين 1000 جنيه مصرى إلي 5000 جنيه مصرى ويختلف هذا السعر من مركز إلى آخر ووفقاً للأجهزة الطبية ومدى جودتها ونوع تقنية الليزر المستخدمة في إجراء المسحة وتختلف تكلفة المسحة عن تكلفة عملية المياه البيضاء بالليزر.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item box">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-       هل عملية سحب الماء الابيض من العين مؤلمة؟
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-       لا تعد عملية سحب الكتاركت من العين مؤلمة حيث  أنها تتم تحت تأثير البنج الموضعي من خلال وضع القطرات المخدرة أو من خلال حقنة في العين وهذا يجعل المريض لا يشعر بأي ألم أثناء إجراء العملية. 
-      </div>
-    </div>
-  </div>
-</div>
+
+                            @foreach($blog->faqs as $k=>$faq )
+
+                            <div class="accordion-item box">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button @if($k != 0) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#ss{{$faq->id}}" aria-expanded="true" aria-controls="ss{{$faq->id}}">
+                                    {!! $faq->{'title_' . $sign} !!} 
+                                </button>
+                                </h2>
+                                <div id="ss{{$faq->id}}" class="accordion-collapse collapse  @if($k == 0) show @endif " data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    {!! $faq->{'details_' . $sign} !!}  
+                                </div>
+                                </div>
+                            </div>
+
+                            
+                            @endforeach
+                        
+                        </div>
+
+                        @endif
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-md-6 box">

@@ -59,6 +59,10 @@ class Blog extends Model
     {
         return $this->belongsTo(BlogCategory::class,'category_id');
     }
+    public function faqs()
+    {
+        return $this->hasMany(Faq::class,'blog_id');
+    }   
  
     /**
      * The attributes that should be hidden for serialization.

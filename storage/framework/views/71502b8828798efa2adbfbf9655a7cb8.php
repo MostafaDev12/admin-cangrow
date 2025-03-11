@@ -178,9 +178,26 @@
 
 
                                 <li class="nav-item">
+                                    <a class="nav-link  " href="<?php echo e(route('admin-blog_categories-index')); ?>"
+                                        aria-controls="sidebarmodels_category">
+                                        <span><?php echo app('translator')->get('translation.blog_categories'); ?></span>
+                                    </a>
+                                </li>
+
+                                
+
+                                <li class="nav-item">
                                     <a class="nav-link  " href="<?php echo e(route('admin-blogs-index')); ?>"
                                         aria-controls="sidebarmodels_category">
                                         <span><?php echo app('translator')->get('translation.blogs'); ?></span>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="<?php echo e(route('admin-faqs-index')); ?>"
+                                        aria-controls="sidebarfaqs">
+                                        <span><?php echo app('translator')->get('translation.faqs'); ?></span>
                                     </a>
                                 </li>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="{{ \Session::get('sign') }}" dir="{{ \Session::get('front_language_duraction') }}">
 
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
 
 
 <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-<meta property="og:description" content="Engage teams, schools, and social groups with SABEQ's interactive challenge-based games. Start building your custom game today!">
+<meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
 <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
 <meta property="og:url" content="{{ url('/') }}">
 <meta property="og:type" content="website">

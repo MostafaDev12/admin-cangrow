@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="<?php echo e(\Session::get('sign')); ?>" dir="<?php echo e(\Session::get('front_language_duraction')); ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
 
 
 <meta property="og:title" content="<?php echo e($gs->{'title_' . $sign}); ?>">
-<meta property="og:description" content="Engage teams, schools, and social groups with SABEQ's interactive challenge-based games. Start building your custom game today!">
+<meta property="og:description" content="<?php echo e($gs->{'title_' . $sign}); ?>">
 <meta property="og:image" content="<?php echo e($gs->{'logo_' . $sign}); ?>">
 <meta property="og:url" content="<?php echo e(url('/')); ?>">
 <meta property="og:type" content="website">
@@ -240,7 +240,7 @@
                     </p>
                 </div>
                 <div class="col-lg-2 col-md-6 ">
-                    <h1><?php echo e(__('روابط هامة')); ?></h1>
+                    <p class="title-footer"><?php echo e(__('روابط هامة')); ?></p>
                     <ul class="list-unstyled">
                         <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('الرئيسية')); ?></a></li>
                         <li><a href="<?php echo e(route('about.index')); ?>"> <?php echo e(__('عن الشركة')); ?> </a></li>
@@ -251,7 +251,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 ">
-                    <h1> <?php echo e(__('الخدمات')); ?></h1>
+                    <p  class="title-footer"> <?php echo e(__('الخدمات')); ?></p>
                     <ul class="list-unstyled">
                       <?php $__currentLoopData = $services->shuffle()->take(6); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                       <li><a href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"> <?php echo e($service->{'title_' . $sign}); ?>  </a></li>
@@ -263,7 +263,7 @@
                 </div>
                 <!-- تواصل معنا -->
                 <div class="col-lg-4 col-md-6 ">
-                    <h1> <?php echo e(__('تواصل معنا')); ?></h1>
+                    <p  class="title-footer"> <?php echo e(__('تواصل معنا')); ?></p>
                     <p class="contact-info">
                       <?php $__currentLoopData = $phones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $phone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
  

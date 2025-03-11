@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\FaqController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -127,6 +128,8 @@ Route::prefix('admin')->group(function () {
       Route::post('/models-category/update/{id}', [ModelCategoryController::class, 'update'])->name('admin-models_category-update');
 
       Route::get('/models-category/delete/{id}',  [ModelCategoryController::class, 'destroy'])->name('admin-models_category-delete');
+    
+    
     });
 
 
@@ -215,6 +218,18 @@ Route::prefix('admin')->group(function () {
       Route::post('/blog_categories/update/{id}', [BlogCategoryController::class, 'update'])->name('admin-blog_categories-update');
 
       Route::get('/blog_categories/delete/{id}',  [BlogCategoryController::class, 'destroy'])->name('admin-blog_categories-delete');
+    
+
+      
+
+      Route::get('/faqs/datatables',  [FaqController::class, 'datatables'])->name('admin-faqs-datatables');
+      Route::get('/faqs',  [FaqController::class, 'index'])->name('admin-faqs-index');
+      Route::get('/faqs/create',   [FaqController::class, 'create'])->name('admin-faqs-create');
+      Route::post('/faqs/create',  [FaqController::class, 'store'])->name('admin-faqs-store');
+      Route::get('/faqs/edit/{id}',  [FaqController::class, 'edit'])->name('admin-faqs-edit');
+      Route::post('/faqs/update/{id}', [FaqController::class, 'update'])->name('admin-faqs-update');
+
+      Route::get('/faqs/delete/{id}',  [FaqController::class, 'destroy'])->name('admin-faqs-delete');
     
     
     });

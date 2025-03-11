@@ -202,6 +202,14 @@
                                     </a>
                                 </li>
 
+
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="{{ route('admin-faqs-index') }}"
+                                        aria-controls="sidebarfaqs">
+                                        <span>@lang('translation.faqs')</span>
+                                    </a>
+                                </li>
+
                                 
 
                             </ul>

@@ -36,7 +36,31 @@ $randomPhone = Arr::random($phones);
                         <img class="mb-4" width="100%" src="<?php echo e($blog->photo); ?>" alt="">
                         
                         <p>   <?php echo $blog->{'details_' . $sign}; ?>   </p>
-                     
+                        <?php if(count($blog->faqs) > 0): ?>
+                        <h2 class="mb-3">الاسئله الشائعة</h2>
+                        <div class="accordion" id="accordionExample">
+
+                            <?php $__currentLoopData = $blog->faqs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$faq): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                            <div class="accordion-item box">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button <?php if($k != 0): ?> collapsed <?php endif; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#ss<?php echo e($faq->id); ?>" aria-expanded="true" aria-controls="ss<?php echo e($faq->id); ?>">
+                                    <?php echo $faq->{'title_' . $sign}; ?> 
+                                </button>
+                                </h2>
+                                <div id="ss<?php echo e($faq->id); ?>" class="accordion-collapse collapse  <?php if($k == 0): ?> show <?php endif; ?> " data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <?php echo $faq->{'details_' . $sign}; ?>  
+                                </div>
+                                </div>
+                            </div>
+
+                            
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        
+                        </div>
+
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-md-6 box">
