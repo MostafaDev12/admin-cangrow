@@ -88,7 +88,7 @@ $randomPhone = Arr::random($phones);
                             @endphp
                             <div class="d-flex justify-content-between">
                                 <div class="pt-2">
-                                    <h3> <a href="{{ route('single-blog.index',$blogg->{'slug_' . $sign}) }}"> {{ $blogg->{'title_' . $sign} }} </a> </h3>
+                                    <h3> <a href="{{ route('single-blog.index',$blogg->{'slug_' . $sign}) }}/"> {{ $blogg->{'title_' . $sign} }} </a> </h3>
                                     <span>{{ $blogg->blog_date }}</span>
                                 </div>
                                 <img class="mb-4" src="{{ $blogg->photo }}" alt="">

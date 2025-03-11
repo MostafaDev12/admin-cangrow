@@ -51,7 +51,7 @@ $randomPhone = Arr::random($phones);
                             ?>
                             <div class="d-flex justify-content-between">
                                 <div class="pt-2">
-                                    <h3> <a href="<?php echo e(route('single-blog.index',$blogg->{'slug_' . $sign})); ?>"> <?php echo e($blogg->{'title_' . $sign}); ?> </a> </h3>
+                                    <h3> <a href="<?php echo e(route('single-blog.index',$blogg->{'slug_' . $sign})); ?>/"> <?php echo e($blogg->{'title_' . $sign}); ?> </a> </h3>
                                     <span><?php echo e($blogg->blog_date); ?></span>
                                 </div>
                                 <img class="mb-4" src="<?php echo e($blogg->photo); ?>" alt="">
@@ -61,7 +61,7 @@ $randomPhone = Arr::random($phones);
                               
                         </div>
                         <div class="mb-4">
-                            <a href="">
+                            <a href="https://abdelrhmanshams.com/services/%D8%AC%D9%84%D8%B3%D8%A7%D8%AA-%D8%AC%D9%81%D8%A7%D9%81-%D8%A7%D9%84%D8%B9%D9%8A%D9%86">
                                 <img src="<?php echo e(asset('front/dr-shams/')); ?>/img/asa.webp" width="100%" alt="">
                             </a>
                         </div>

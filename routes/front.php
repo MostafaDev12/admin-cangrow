@@ -58,7 +58,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
     
 
-        Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+        Route::get('/{blog}/', [HomeController::class, 'singleBlog'])->name('single-blog.index');
 
         
 
