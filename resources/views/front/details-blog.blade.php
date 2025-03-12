@@ -42,11 +42,11 @@ $randomPhone = Arr::random($phones);
                             @foreach($blog->faqs as $k=>$faq )
 
                             <div class="accordion-item box">
-                                <h2 class="accordion-header">
+                                <h3 class="accordion-header">
                                 <button class="accordion-button @if($k != 0) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#ss{{$faq->id}}" aria-expanded="true" aria-controls="ss{{$faq->id}}">
                                     {!! $faq->{'title_' . $sign} !!} 
                                 </button>
-                                </h2>
+                                </h3>
                                 <div id="ss{{$faq->id}}" class="accordion-collapse collapse  @if($k == 0) show @endif " data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     {!! $faq->{'details_' . $sign} !!}  
