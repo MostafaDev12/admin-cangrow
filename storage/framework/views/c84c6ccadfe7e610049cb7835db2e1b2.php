@@ -15,8 +15,7 @@
 
 
 
-<meta property="og:title" content="<?php echo e($gs->{'title_' . $sign}); ?>">
-<meta property="og:description" content="<?php echo e($gs->{'title_' . $sign}); ?>">
+
 <meta property="og:image" content="<?php echo e($gs->{'logo_' . $sign}); ?>">
 <meta property="og:url" content="<?php echo e(url('/')); ?>">
 <meta property="og:type" content="website">
@@ -32,11 +31,19 @@
 
 
         </title>
-    <?php elseif(isset($blog->meta_tag) && isset($blog->meta_description)): ?>
-        <meta name="keywords" content="<?php echo e($blog->meta_tag); ?>">
-        <meta name="description" content="<?php echo e($blog->meta_description); ?>">
+    <?php elseif(isset($blog->{'meta_title_' . $sign}) && isset($blog->{'meta_details_' . $sign})): ?>
+        <meta name="keywords" content="<?php echo e($blog->{'meta_title_' . $sign}); ?>">
+        <meta name="description" content="<?php echo e($blog->{'meta_details_' . $sign}); ?>">
+        <meta property="og:title" content="<?php echo e($blog->{'meta_title_' . $sign}); ?>">
+        <meta property="og:description" content="<?php echo e($blog->{'meta_details_' . $sign}); ?>">
+        
+        <title>
+            <?php echo $__env->yieldContent('title'); ?>
+        </title>
     <?php else: ?>
         <meta name="+author" content=" <?php echo e($gs->{'title_' . $sign}); ?>">
+        <meta property="og:title" content="<?php echo e($gs->{'title_' . $sign}); ?>">
+        <meta property="og:description" content="<?php echo e($gs->{'title_' . $sign}); ?>">
         <title>
             <?php echo $__env->yieldContent('title'); ?>
         </title>

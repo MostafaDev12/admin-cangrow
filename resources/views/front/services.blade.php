@@ -32,7 +32,7 @@
                         </div>
                         <div class=" p-5">
                             <h2 class="fw-bold"> {{ $service->{'title_' . $sign} }}   </h2>
-                            <a href="{{ route('single-category-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"><span class="mt-3 d-block"> {{ __('المزيد') }}<i
+                            <a href="{{ route('single-category-service.index',['slug' => $service->{'slug_' . $sign} ]) }}/"><span class="mt-3 d-block"> {{ __('المزيد') }}<i
                                         class="fa-solid fa-angles-left"></i></span></a>
                         </div>
                     </div>

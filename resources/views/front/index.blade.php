@@ -19,7 +19,7 @@
     <div class="title-doc  wow animate__animated animate__fadeInLeft" data-wow-delay="1s" data-wow-duration="1s">
       <h1>   {{ $sliders->{'title_' . $sign}  ?? ''}}  </h1>
       {!! $sliders->{'details_' . $sign}  ?? '' !!}
-      <button  onclick="window.location.href='{{ route('contact.index') }}'"> {{ __('اتصل بنا') }}   </button>
+      <button  onclick="window.location.href='{{ route('contact.index') }}/'"> {{ __('اتصل بنا') }}   </button>
     </div>
   </div>
 
@@ -27,7 +27,7 @@
     <div class="title-doc  wow animate__animated animate__fadeInLeft" data-wow-delay="1s" data-wow-duration="1s" >
       <h1> {{ $sliders->{'title_' . $sign}  ?? ''}} </h1>
       {!! $sliders->{'details_' . $sign}  ?? '' !!}
-      <button  onclick="window.location.href='{{ route('contact.index') }}'"> {{ __('اتصل بنا') }}  </button>
+      <button  onclick="window.location.href='{{ route('contact.index') }}/'"> {{ __('اتصل بنا') }}  </button>
     </div>
   </div>
 
@@ -39,7 +39,7 @@
           <div class="p-5 wow animate__animated animate__fadeInLeft" data-wow-delay="1s" data-wow-duration="1s">
             <p> {{ __('لماذا يعد دكتور عبدالرحمن شمس') }} </p>
             <p> {{ __('افضل دكتور عيون في مصر') }} </p>
-            <button  onclick="window.location.href='{{ route('about.index') }}'"> {{ __('عن الدكتور') }}  </button>
+            <button  onclick="window.location.href='{{ route('about.index') }}/'"> {{ __('عن الدكتور') }}  </button>
           </div>
         </div>
         <div class="col-12 col-lg-8 col-md-6">
@@ -105,7 +105,7 @@
             <div class="card">
               <img class="card-img-top" src="{{ $service->photo }}" alt="Card image cap">
               <div class="card-body">
-                <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">  {{ $service->{'title_' . $sign} }} </a>
+                <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}/">  {{ $service->{'title_' . $sign} }} </a>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@
           <div class="pt-5 mt-4 wow animate__animated animate__fadeInRight" data-wow-delay="1s" data-wow-duration="1s">
             <h1 class="fw-bold fs-3 mb-3">{{ __('احجز الان كشفك اون لاين') }}</h1>
             <p class="fw-bold mb-4">   {{ __('تقدر تحجز كشفك اون لاين مع الدكتور عبدالرحمن املي كل البيانات وهيتم التواصل معاك لتاكيد ميعاد الحجز') }} </p>
-            <button  onclick="window.location.href='{{ route('book.index') }}'">   {{ __('حجز الان') }}</button>
+            <button  onclick="window.location.href='{{ route('book.index') }}/'">   {{ __('حجز الان') }}</button>
           </div>
         </div>
         <div class="col-12 col-lg-6 col-md-6">
@@ -145,7 +145,7 @@
       <div>
         <h1> {{ __('افضل دكتور عيون وليزك في مصر') }} </h1>
         <p>  {{ __('تواصل الان واحجز ميعاد كشفك مع افضل طبيب عيون ف القاهره') }}  </p>
-        <button  onclick="window.location.href='{{ route('contact.index') }}'">  {{ __('اتصل الان') }}   </button>
+        <button  onclick="window.location.href='{{ route('contact.index') }}/'">  {{ __('اتصل الان') }}   </button>
       </div>
       <div class="row">
 
@@ -201,7 +201,7 @@
           <p>  {{ __('هل تريد حجز موعد وسنتواصل معك') }}     </p>
         </div>
         <div class="col-6">
-          <button   onclick="window.location.href='{{ route('book.index') }}'"> {{ __('احجز الان') }}   </button>
+          <button   onclick="window.location.href='{{ route('book.index') }}/'"> {{ __('احجز الان') }}   </button>
         </div>
       </div>
     </div>

@@ -27,8 +27,8 @@ $randomPhone = Arr::random($phones);
                         <h1>{{ __('المقالات') }}</h1>
                         <div>
                             <p> {{ __('Category') }}:  {{ $category->{'title_' . $sign} }}  </p>
-                            <a href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a><span>
-                                << </span><a href="{{ route('front.index') }}">{{ __('الرئيسيه') }}</a>
+                            <a href="{{ route('blogs.index') }}/">{{ __('المقالات') }}</a><span>
+                                << </span><a href="{{ route('front.index') }}/">{{ __('الرئيسيه') }}</a>
                         </div>
                     </div>
                 </div>
