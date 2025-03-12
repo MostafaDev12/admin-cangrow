@@ -35,7 +35,7 @@
         <meta name="description" content="{{ $blog->{'meta_details_' . $sign} }}">
         <meta property="og:title" content="{{ $blog->{'meta_title_' . $sign} }}">
         <meta property="og:description" content="{{ $blog->{'meta_details_' . $sign} }}">
-        
+
         <title>
             @yield('title')
         </title>
@@ -165,7 +165,7 @@
                                 href="{{ route('front.index') }}">{{ __('الرئيسية') }} </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about.index') }}">{{ __('عن الشركة') }}</a>
+                            <a class="nav-link" href="{{ route('about.index') }}/">{{ __('عن الشركة') }}</a>
                         </li>
 
 {{-- 
@@ -194,7 +194,7 @@
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" id="servicesDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}/" id="servicesDropdown" role="button"
                                 aria-expanded="false">
                                 {{ __('الخدمات') }}
                             </a>
@@ -202,13 +202,13 @@
 
                                 @foreach ($categories as $category)
                                 <li class="dropdown">
-                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="{{ route('single-category-service.index',['slug' => $category->{'slug_' . $sign} ]) }}">{{ $category->{'title_' . $sign} }}</a>
+                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="{{ route('single-category-service.index',['slug' => $category->{'slug_' . $sign} ]) }}/">{{ $category->{'title_' . $sign} }}</a>
                                 @if(count($category->services) > 0)
                                 <ul class="dropdown-menu"> 
                                     
                                 
                                     @foreach ($category->services as $service)
-                                    <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
+                                    <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}/">{{ $service->{'title_' . $sign} }}  </a></li>
                                     @endforeach
                                     
                                 </ul>
@@ -219,7 +219,7 @@
 
                                 @foreach ($servicesWithoutCats as $service)
                                 <li class="dropdown">
-                                <a    class="dropdown-item dropdown-toggle" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}</a>
+                                <a    class="dropdown-item dropdown-toggle" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}/">{{ $service->{'title_' . $sign} }}</a>
                               
                                 </li>
                                 @endforeach
@@ -229,16 +229,16 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('videos.index') }}">{{ __('الفيديوهات') }}</a>
+                            <a class="nav-link" href="{{ route('videos.index') }}/">{{ __('الفيديوهات') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
+                            <a class="nav-link" href="{{ route('blogs.index') }}/">{{ __('المقالات') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('book.index') }}"> {{ __('احجز الان') }}  </a>
+                            <a class="nav-link" href="{{ route('book.index') }}/"> {{ __('احجز الان') }}  </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">   {{ __('اتصل بنا') }}</a>
+                            <a class="nav-link" href="{{ route('contact.index') }}/">   {{ __('اتصل بنا') }}</a>
                         </li>
 
                     </ul>
@@ -268,18 +268,18 @@
                     <p class="title-footer">{{ __('روابط هامة') }}</p>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a></li>
-                        <li><a href="{{ route('about.index') }}"> {{ __('عن الشركة') }} </a></li>
-                        <li><a href="{{ route('services.index') }}"> {{ __('الخدمات') }}</a></li>
-                        <li><a href="{{ route('videos.index') }}">{{ __('الفيديوهات') }}</a></li>
-                        <li><a href="{{ route('book.index') }}">{{ __('احجز الان') }}</a></li>
-                        <li><a href="{{ route('contact.index') }}">    {{ __('اتصل بنا') }}</a></li>
+                        <li><a href="{{ route('about.index') }}/"> {{ __('عن الشركة') }} </a></li>
+                        <li><a href="{{ route('services.index') }}/"> {{ __('الخدمات') }}</a></li>
+                        <li><a href="{{ route('videos.index') }}/">{{ __('الفيديوهات') }}</a></li>
+                        <li><a href="{{ route('book.index') }}/">{{ __('احجز الان') }}</a></li>
+                        <li><a href="{{ route('contact.index') }}/">    {{ __('اتصل بنا') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 ">
                     <p  class="title-footer"> {{ __('الخدمات') }}</p>
                     <ul class="list-unstyled">
                       @foreach ($services->shuffle()->take(6) as $service)
-                      <li><a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"> {{ $service->{'title_' . $sign} }}  </a></li>
+                      <li><a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}/"> {{ $service->{'title_' . $sign} }}  </a></li>
                       @endforeach
                      
                        
