@@ -833,14 +833,22 @@ class FrontController extends Controller
     }
 
 
-    public function blogs()
+    public function blogs(Request $request)
     {
 
         $data = [];
 
         $lang = request()->header('Accept-Language');
 
-        $datas = Blog::paginate(10);
+
+
+        $datas = Blog::Query();
+        if($request->date){
+
+            $datas->where('blog_date',$request->date); 
+        }
+        
+        $datas = $datas->paginate(10);
 
         foreach ($datas as $k => $dat) {
             $data[$k]['id'] = $dat->id;
