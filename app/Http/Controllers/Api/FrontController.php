@@ -845,8 +845,8 @@ class FrontController extends Controller
         $datas = Blog::Query();
         if($request->date){
 
-            $datas->where('blog_date',$request->date)
-                  ->orwhere('created_at',$request->date); 
+            $datas->whereDate('blog_date',$request->date)
+                  ->orwhereDate('created_at',$request->date); 
         }
         
         $datas = $datas->paginate(10);
