@@ -39,6 +39,8 @@
                 @endforeach
                 
             </div>
+
+            {{ $videos->links('includes.pagination.custom') }}
         </div>
     </div>
     

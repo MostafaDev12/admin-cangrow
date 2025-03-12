@@ -78,7 +78,7 @@ class HomeController extends Controller
 
     $sign = $this->langSign();
 
-    $videos = Media::get();
+    $videos = Media::paginate(9);
 
     return view('front.videos', compact('sign','videos'));
   }
