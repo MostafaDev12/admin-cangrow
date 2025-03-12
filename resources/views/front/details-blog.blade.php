@@ -22,7 +22,7 @@ $randomPhone = Arr::random($phones);
          
             <h1> {{ $blog->{'title_' . $sign} }}   </h1>
             <br>
-            @if(!empty(optional($blog->category)->{'title_' . $sign} )) <a href="{{ route('blogs-category.index',$blog->category->{'slug_' . $sign}) }}" class="">{{ optional($blog->category)->{'title_' . $sign} }}</a> @endif
+            @if(!empty(optional($blog->category)->{'title_' . $sign} )) <a href="{{ route('blogs-category.index',$blog->category->{'slug_' . $sign}) }}/" class="">{{ optional($blog->category)->{'title_' . $sign} }}</a> @endif
 
         </div>
 
@@ -154,7 +154,7 @@ $randomPhone = Arr::random($phones);
               <p>  {{ __('هل تريد حجز موعد وسنتواصل معك') }}     </p>
             </div>
             <div class="col-6">
-              <button   onclick="window.location.href='{{ route('book.index') }}'"> {{ __('احجز الان') }}   </button>
+              <button   onclick="window.location.href='{{ route('book.index') }}/'"> {{ __('احجز الان') }}   </button>
             </div>
           </div>
         </div>

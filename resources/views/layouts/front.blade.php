@@ -15,8 +15,7 @@
 
 
 
-<meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-<meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
+
 <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
 <meta property="og:url" content="{{ url('/') }}">
 <meta property="og:type" content="website">
@@ -31,11 +30,19 @@
             {{ $gs->{'title_' . $sign} }}
 
         </title>
-    @elseif(isset($blog->meta_tag) && isset($blog->meta_description))
-        <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->meta_description }}">
+    @elseif(isset($blog->{'meta_title_' . $sign}) && isset($blog->{'meta_details_' . $sign}))
+        <meta name="keywords" content="{{ $blog->{'meta_title_' . $sign} }}">
+        <meta name="description" content="{{ $blog->{'meta_details_' . $sign} }}">
+        <meta property="og:title" content="{{ $blog->{'meta_title_' . $sign} }}">
+        <meta property="og:description" content="{{ $blog->{'meta_details_' . $sign} }}">
+        
+        <title>
+            @yield('title')
+        </title>
     @else
         <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
+        <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
+        <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
         <title>
             @yield('title')
         </title>
