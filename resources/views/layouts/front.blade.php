@@ -21,6 +21,7 @@
 <meta property="og:type" content="website">
 
 
+<meta name="google-site-verification" content="jdqb87iJXXXUrCGlimEZq1LLuffzAaAW3tDfKWboVLg" />
 
     @if (isset($page->meta_tag) && isset($page->meta_description))
         <meta name="keywords" content="{{ $page->meta_tag }}">
