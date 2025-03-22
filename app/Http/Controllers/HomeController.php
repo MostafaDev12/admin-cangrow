@@ -140,6 +140,21 @@ class HomeController extends Controller
     return view('front.projects', compact('sign', 'sliders', 'points', 'projects', 'models', 'reviews'));
   }
  
+  public function certificates(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $projects = Project::get();
+    $models = PageModel::get();
+    $reviews = Partner::get();
+
+    return view('front.certificate', compact('sign', 'sliders', 'points', 'projects', 'models', 'reviews'));
+  }
+ 
  public function contact(Request $request)
   {
 

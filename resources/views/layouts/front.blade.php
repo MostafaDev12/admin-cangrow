@@ -101,6 +101,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('front/Rgs/') }}/css/style.css">
+    <link rel="stylesheet" href="{{ asset('front/Rgs/') }}/css/slider.css">
 
 
 

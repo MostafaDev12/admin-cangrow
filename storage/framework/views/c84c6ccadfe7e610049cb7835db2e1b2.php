@@ -102,6 +102,7 @@
 
 
     <link rel="stylesheet" href="<?php echo e(asset('front/Rgs/')); ?>/css/style.css">
+    <link rel="stylesheet" href="<?php echo e(asset('front/Rgs/')); ?>/css/slider.css">
 
 
 

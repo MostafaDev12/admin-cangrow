@@ -1,4 +1,4 @@
-   
+    
 
 
 <?php $__env->startSection('title'); ?>
@@ -15,45 +15,40 @@
 
 <?php $__env->startSection('content'); ?>
 
-    <div class="blog p-5 mt-5">
-        <div class="container-fluid">
+    <div class="blogs text-center mt-5 pt-5">
+        <div class="container pt-5">
             <div class="title_lines">
                 <h1>
-                    <?php echo e(__('مقالات')); ?>
-
+                    <?php echo e(__('مقالات')); ?> 
                 </h1>
             </div>
-            <div class="row">
+            <div class="row pt-5">
 
                 <?php $__currentLoopData = $blogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-12 col-lg-4 col-md-4">
-                    <div class="box blogs-div ">
-                        <div>
-                            <a href="<?php echo e(route('single-blog.index',$blog->{'slug_' . $sign})); ?>" target=""><img src="<?php echo e($blog->photo_url); ?>" alt=""></a>
+                <div class="col-12 col-lg-3 col-md-3 mb-3">
+                    
+                    <div class="position-relative">
+                         <div class="card" style="width: 18rem;">
+                            <span>  <?php echo e(optional($blog->category)->{'title_' . $sign}); ?> </span>
+                        <img class="card-img-top" src="<?php echo e($blog->photo_url); ?>" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title"><?php echo e($blog->{'title_' . $sign}); ?></h5>
+                         <p class="card-text"><?php echo e($blog->{'short_details_' . $sign}); ?>   </p>
+
+                          <a href="<?php echo e(route('single-blog.index',$blog->{'slug_' . $sign})); ?>" class="btn"><?php echo e(__('المزيد')); ?></a>
                         </div>
-                        <div class="p-2">
-                            <h2 class="fw-bold"> <?php echo e($blog->{'title_' . $sign}); ?>  </h2>
-                            <p class="fw-bold">  <?php echo e($blog->{'short_details_' . $sign}); ?>      </p>
-                            <a href="<?php echo e(route('single-blog.index',$blog->{'slug_' . $sign})); ?>"><span class="mt-3 d-block"><?php echo e(__('المزيد')); ?> <i class="fa-solid fa-angles-left"></i></span></a>
-                            <hr>
-                            <p class="date-blogs">  <?php echo e($blog->blog_date); ?></p>
-                        </div>
+                      </div>
                    </div>
                 </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                 
-                
 
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                
+               
+                
             </div>
             <?php echo e($blogs->links('includes.pagination.custom')); ?>
 
         </div>
     </div>
-
-    
-<?php echo $__env->make('includes.contact-form',['classes' => 'p-5'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
- 
-
-<?php $__env->stopSection(); ?>
-    
+     <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\admin-cangrows\resources\views/front/blogs.blade.php ENDPATH**/ ?>

@@ -158,4 +158,7 @@
         </div>
 
 
+
+        @include('includes.contact-form',['classes' => 'p-5'])
+ 
     @stop
