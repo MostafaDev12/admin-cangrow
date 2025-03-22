@@ -1,0 +1,423 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css");
+@font-face {
+    font-family: Ar;
+    src: url("../fonts/AM_Thulth_Regular_0.1.ttf");
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cairo, sans-serif;
+    direction: rtl;
+    overflow-x: hidden;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+.navbar {
+    background-color: rgba(0, 0, 0, 0) !important;
+    transition-property: background-color, color;
+    transition-duration: 0.5s;
+    transition-function: ease-in-out;
+  }
+
+  .navbar-dark {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color:white !important;
+  }
+.navbar-brand img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+.nav-item {
+    margin-left: 50px;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+}
+.navbar-nav {
+    margin: auto;
+}
+.slider .swiper {
+    position: relative;
+    height: 710px;
+}
+.slider .swiper img {
+   width: 100%;
+   object-fit: cover;
+   height: 100%;
+}
+.slider .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.slider .title {
+    color: white;
+    position: absolute;
+    top: 45%;
+    left: 43%;
+}
+.swiper-button-next:after{
+    font-size: 18px;
+    color: white;
+}
+.swiper-button-prev:after {
+    font-size: 18px;
+    color: white;
+}
+.slider .swiper-button-next {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(35, 184, 213);
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 15px !important;
+}
+.slider .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #23b8d5;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 15px !important;
+}
+.title_lines {
+    position: relative;
+    font-size: 35px;
+    font-weight: bold;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+    color: #23b8d5;
+}
+.title_lines:before {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 48%;
+    height: 3px;
+    content: '\a0';
+    background-color: #cccccc;
+    margin-left: 2%;
+}
+.title_lines:after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 48%;
+    height: 3px;
+    content: '\a0';
+    background-color: #cccccc;
+    margin-right: 11%;
+}
+.title_lines:before {
+    margin-right: -59%;
+    text-align: right;
+}
+.about-us {
+    overflow-x: hidden;
+}
+.about-us p {
+    line-height: 40px;
+    color: black;
+}
+.about-us h2 {
+    color: #e46b09;
+}
+.details p {
+    line-height: 40px;
+    color: black;
+}
+.details h2 {
+    color: #e46b09;
+}
+.service .swiper {
+    height: 100%;
+} .card-text {
+    color: gray;
+}
+.form-maintenance {
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+}
+
+.form-maintenance textarea {
+    width: 100%;
+    border: 1px solid #ced4da!important;
+    border-radius: 10px;
+}
+.form-control {
+    padding: 10px;
+    margin-top: 10px;
+}
+.btn-down {
+    border: 1px solid #f15b28;
+    padding: 10px;
+    border-radius: 20px;
+    color: #fff;
+    background-color:#f15b28 ;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    padding: 10px;
+    border: .5px solid rgb(135, 133, 133);
+    margin-bottom: 20px;
+}
+.form-maintenance label {
+    color: #23c9e8;
+    font-size: large;
+    font-weight: 500;
+}
+.form-maintenance button {
+    background-color: #ed660b;
+    color: white;
+    border-color: #ed660b;
+}
+.address .info-item {
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 26px 30px 9px;
+}
+.address img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.contact-info .form-maintenance {
+    box-shadow: rgb(32 61 43) -4px 0px 44px -34px;
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+.info-item h5 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #000000;
+}
+.info-item a , p {
+    color: #23b8d5;
+}
+.info-item i {
+    color: #e46b09;
+}
+.footer i {
+    color: #e46b09;
+}
+.certificate {
+    position: relative;
+}
+
+.certificate img {
+    width: 100%;
+    height: 400px;
+}
+
+.certificate .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+}
+.photo-page {
+    position: relative;
+}
+
+.photo-page  img {
+    width: 100%;
+    height: 300px;
+    border: 5px solid #23b8d5;
+    object-fit: cover;
+}
+.photo-page .photo:hover .overlay {
+   visibility:unset;
+   transition: all 1s ease-in-out;
+}
+.photo-page  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, .5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    visibility: hidden;
+
+}
+.photo-page  .overlay h1 {
+    font-size: 22px;
+}
+.service .btn {
+    width: 100%;
+    background-color: #ed660b;
+    color: white;
+    border-color: #ed660b;
+}
+.service .card-title {
+    color: #23b8d5;
+    font-weight: bold;
+}
+.blog .btn {
+    width: 100%;
+    background-color: #ed660b;
+    color: white;
+    border-color: #ed660b;
+}
+.blog .card-title {
+    font-weight: bold;
+    color: #23b8d5;
+}
+.blogs .btn {
+    width: 100%;
+    background-color: #ed660b;
+    color: white;
+    border-color: #ed660b;
+}
+.blogs .card-title {
+    font-weight: bold;
+}
+.blogs .card span {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    right: 13px;
+    width: 130px;
+    font-size: 12px;
+    padding: 7px 0px;
+    background-color: #23b8d5;
+    color: white;
+    border-color: #23b8d5;
+    border-radius: 10px;
+}
+
+.blog .card-title {
+    font-weight: bold;
+}
+.blog .card span {
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    left: 0px;
+    right: 13px;
+    width: 130px;
+    font-size: 12px;
+    padding: 5px 0px;
+    background-color: #23b8d5;
+    color: white;
+    border-color: #23b8d5;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer-section {
+    background-color: #46B3A5;
+    padding: 40px 20px;
+}
+.footer-section h1 {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: white;
+}
+.footer-section p {
+    margin: 0;
+    line-height: 1.8;
+    color: white;
+}
+.footer-section .contact-info i,
+.footer-section .branch-info i {
+    color: #ed660b;
+    margin-left: 10px;
+}
+.footer-section .logo img {
+    max-width: 120px;
+    border-radius: 50%;
+}
+.footer-section a {
+    color: white;
+    text-decoration: none;
+}
+.footer-section a:hover {
+    text-decoration: underline;
+}
+.list-unstyled li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+.list-unstyled {
+    padding: 0;
+}
+.details img {
+    width: 100%;
+    height: 100%;
+    padding-top:20px;
+}
+.partner img {
+    width: 200px;
+    height: 200px;
+}
+@media only screen and (max-width: 600px) {
+    .slider .title {
+
+        left: 33%;
+    }
+    .blogs .card {
+        margin: auto;
+    }
+    .navbar-collapse {
+        background-color: white;
+      }
+  }
+
+  

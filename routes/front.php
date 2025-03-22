@@ -38,6 +38,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
         Route::get('/projects', [HomeController::class, 'projects'])->name('projects.index');
+        Route::get('/certificates', [HomeController::class, 'certificates'])->name('certificates.index');
 
         Route::get('/services/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
 
