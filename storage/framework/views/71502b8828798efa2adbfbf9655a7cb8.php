@@ -81,6 +81,15 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="<?php echo e(route('admin-partners-index')); ?>"
                             aria-controls="sidebarpartners">
+                            <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.partners'); ?></span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if(Auth::guard('admin')->user()->sectionCheck('certificates')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link  " href="<?php echo e(route('admin-certificates-index')); ?>"
+                            aria-controls="sidebarcertificates">
                             <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.certificates'); ?></span>
                         </a>
                     </li>
@@ -137,12 +146,6 @@
                             <ul class="nav nav-sm flex-column">
 
 
-                                <li class="nav-item">
-                                    <a class="nav-link  " href="<?php echo e(route('admin-models_category-index')); ?>"
-                                        aria-controls="sidebarmodels_category">
-                                        <span><?php echo app('translator')->get('translation.about_models'); ?></span>
-                                    </a>
-                                </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="<?php echo e(route('admin-models-index')); ?>"
@@ -182,13 +185,7 @@
                                     </a>
                                 </li>
 
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link  " href="<?php echo e(route('admin-news-index')); ?>"
-                                        aria-controls="sidebarmodels_category">
-                                        <span><?php echo app('translator')->get('translation.news'); ?></span>
-                                    </a>
-                                </li>
+
 
                                 
 

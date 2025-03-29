@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Certificate;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -150,9 +151,9 @@ class HomeController extends Controller
     $points = AboutPoint::get();
     $projects = Project::get();
     $models = PageModel::get();
-    $reviews = Partner::get();
+    $certificates = Certificate::get();
 
-    return view('front.certificate', compact('sign', 'sliders', 'points', 'projects', 'models', 'reviews'));
+    return view('front.certificate', compact('sign', 'sliders', 'points', 'projects', 'models', 'certificates'));
   }
  
  public function contact(Request $request)

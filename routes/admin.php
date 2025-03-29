@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ProjectController;
@@ -143,6 +144,19 @@ Route::prefix('admin')->group(function () {
       Route::post('/partners/update/{id}', [PartnerController::class, 'update'])->name('admin-partners-update');
 
       Route::get('/partners/delete/{id}',  [PartnerController::class, 'destroy'])->name('admin-partners-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:certificates'], function () {
+
+
+      Route::get('/certificates/datatables',  [CertificateController::class, 'datatables'])->name('admin-certificates-datatables');
+      Route::get('/certificates',  [CertificateController::class, 'index'])->name('admin-certificates-index');
+      Route::get('/certificates/create',   [CertificateController::class, 'create'])->name('admin-certificates-create');
+      Route::post('/certificates/create',  [CertificateController::class, 'store'])->name('admin-certificates-store');
+      Route::get('/certificates/edit/{id}',  [CertificateController::class, 'edit'])->name('admin-certificates-edit');
+      Route::post('/certificates/update/{id}', [CertificateController::class, 'update'])->name('admin-certificates-update');
+
+      Route::get('/certificates/delete/{id}',  [CertificateController::class, 'destroy'])->name('admin-certificates-delete');
     });
 
     Route::group(['middleware' => 'permissions:media'], function () {

@@ -85,6 +85,15 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-partners-index') }}"
                             aria-controls="sidebarpartners">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.partners')</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-certificates-index') }}"
+                            aria-controls="sidebarcertificates">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.certificates')</span>
                         </a>
                     </li>
@@ -164,13 +173,13 @@
                         <div class="collapse menu-dropdown" id="models">
                             <ul class="nav nav-sm flex-column">
 
-
+{{-- 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models_category-index') }}"
                                         aria-controls="sidebarmodels_category">
                                         <span>@lang('translation.about_models')</span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models-index') }}"
@@ -210,13 +219,13 @@
                                     </a>
                                 </li>
 
-                                
+{{--                                 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-news-index') }}"
                                         aria-controls="sidebarmodels_category">
                                         <span>@lang('translation.news')</span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 
 

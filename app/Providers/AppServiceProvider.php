@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*',function($settings){
             $settings->with('gs', Generalsetting::first());
             $settings->with('ps', Pagesetting::first());
-            $settings->with('services', Service::get());
+            $settings->with('services', Service::orderByDesc('id')->get());
             $settings->with('categories', Category::get());
             $settings->with('servicesWithoutCats', Service::whereNull('category_id')->get());
             $settings->with('languages', Language::get());

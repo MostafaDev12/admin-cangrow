@@ -109,6 +109,7 @@
                                             <tr>
                                               <th><?php echo e(__('translation.photo')); ?></th>
                                               <th><?php echo e(__('translation.title')); ?></th>
+                                              <th><?php echo e(__('translation.category')); ?></th>
                                           
                                           <th><?php echo e(__('translation.actions')); ?></th>
                                             </tr>
@@ -213,7 +214,8 @@
                ajax: '<?php echo e(route('admin-blogs-datatables')); ?>',
                columns: [
                         { data: 'photo', name: 'photo' },
-                        { data: 'title', name: 'title' },
+                        { data: 'title_ar', name: 'title_ar' },
+                        { data: 'category', name: 'category' , searchable: false, orderable: false },
                          
                         { data: 'action', searchable: false, orderable: false }
 

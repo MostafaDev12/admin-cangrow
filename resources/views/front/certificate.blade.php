@@ -24,17 +24,19 @@
             <div class="row pt-5">
 
 
-
-                <div class="col-12 col-lg-3 col-md-3 mb-3">
+                @foreach ($certificates as  $certificate)
+                    <div class="col-12 col-lg-3 col-md-3 mb-3">
                     
                     <div class="position-relative">
                         <div class="overlay">
                             
                         </div>
-                        <img src="img/certificate.jpeg" alt="">
+                        <img src="{{ $certificate->photo_url }}" alt="">
                    </div>
                 </div>
-
+  
+                @endforeach
+              
 
                 
 

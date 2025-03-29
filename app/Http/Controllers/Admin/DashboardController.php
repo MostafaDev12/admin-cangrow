@@ -122,7 +122,7 @@ class DashboardController extends Controller
     $referralData = $topSix->map(function ($item) use ($totalReferrals) {
         return [
             'referral' => $item->referral,
-            'percentage' => round(($item->total_count / $totalReferrals) * 100, 2)
+            'percentage' => $item->total_count != 0 ?round(($item->total_count / $totalReferrals) * 100, 2) : 0
         ];
     });
 
