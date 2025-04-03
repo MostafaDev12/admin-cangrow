@@ -162,7 +162,7 @@ class FrontController extends Controller
         foreach ($datas as $k => $dat) {
             $data[$k]['id'] = $dat->id;
             $data[$k]['title'] = $dat->{'title_' . $lang};
-            $data[$k]['details'] =  $dat->{'details_' . $lang};
+            $data[$k]['details'] =  strip_tags($dat->{'details_' . $lang});
             $data[$k]['meta_title'] =  $dat->{'meta_title_' . $lang};
             $data[$k]['meta_details'] = $dat->{'meta_details_' . $lang};
             $data[$k]['slug'] = $dat->{'slug_' . $lang};
@@ -196,7 +196,7 @@ class FrontController extends Controller
             $lang = request()->header('Accept-Language');
             $data['id'] = $dat->id;
             $data['title'] = $dat->{'title_' . $lang};
-            $data['details'] =  $dat->{'details_' . $lang};
+            $data['details'] =  strip_tags($dat->{'details_' . $lang});
             $data['meta_title'] =  $dat->{'meta_title_' . $lang};
             $data['meta_details'] = $dat->{'meta_details_' . $lang};
             $data['slug'] = $dat->{'slug_' . $lang};
