@@ -8,7 +8,7 @@ class Visitor extends Model
 {
     protected $table = 'visitors';
 
-    protected $fillable = ['ip_address', 'country', 'city', 'country_code'];
+    protected $fillable = ['ip_address', 'country', 'city', 'country_code', 'latitude', 'longitude'];
 
    // public $timestamps = false;
 }

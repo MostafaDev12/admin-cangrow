@@ -15,16 +15,22 @@ class Service extends Model
      */
     protected $table ='services';
     
-     protected $appends = ['photo'];
+    protected $appends = ['photo','details_photo_url'];
 
 
     public function getPhotoAttribute()
     {
         return url('/') . '/assets/images/services/' . $this->attributes['photo'];
     }
+
+    public function getDetailsPhotoUrlAttribute()
+    {
+        return url('/') . '/assets/images/services/' . $this->attributes['details_photo'];
+    }
     protected $fillable = [
         
         'photo',
+        'details_photo',
         'title_ar',
         'title_en',
         'title_fr',
@@ -43,7 +49,12 @@ class Service extends Model
         'slug_fr',
         'tags',
         'category_id',
-      
+
+        'table_titles_ar',
+        'table_details_ar',
+       
+      'table_titles_en',
+      'table_details_en',
     ];
 
     

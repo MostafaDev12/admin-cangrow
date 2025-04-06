@@ -186,7 +186,9 @@ class FrontController extends Controller
 
 
 
-        $dat = Service::where('slug_ar', 'like', '%' . $id . '%')->orwhere('slug_en', 'like', '%' . $id . '%')->orwhere('slug_fr', 'like', '%' . $id . '%')->first();
+        $dat = Service::where('slug_ar', 'like', '%' . $id . '%')
+        ->orwhere('slug_en', 'like', '%' . $id . '%')
+        ->orwhere('slug_fr', 'like', '%' . $id . '%')->first();
 
 
 
@@ -202,6 +204,23 @@ class FrontController extends Controller
             $data['slug'] = $dat->{'slug_' . $lang};
             $data['tags'] = $dat->tags;
             $data['photo'] = $dat->photo;
+            $data['details_photo'] = $dat->details_photo_url;
+            $data['galleries'] = $dat->galleries;
+            $data['table_details'] = [];
+
+            if (!empty($dat->{'table_titles_' . $lang})){
+               
+                $table_titles = json_decode($dat->{'table_titles_' . $lang});
+                $table_details = json_decode($dat->{'table_details_' . $lang});
+               
+                foreach ($table_titles as $key => $data1){
+                    $data['table_details'][$key]['title'] = $table_titles[$key];
+                    $data['table_details'][$key]['details'] = $table_details[$key];
+                }
+ 
+            }
+            
+
         }
 
         return response()->json([

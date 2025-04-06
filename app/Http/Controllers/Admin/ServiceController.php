@@ -86,6 +86,14 @@ class ServiceController extends Controller
                     
         $input['photo'] = $name;
         } 
+         
+        if ($file = $request->file('details_photo')) 
+        {              
+            $name = time().$file->getClientOriginalName();
+            $file->move('assets/images/services/',$name);
+                    
+        $input['details_photo'] = $name;
+        } 
         
          $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
          $input['slug_en'] = str_replace(' ','-',$request->slug_en);
@@ -140,6 +148,19 @@ class ServiceController extends Controller
                 }
             }            
         $input['photo'] = $name;
+        } 
+        
+        if ($file = $request->file('details_photo')) 
+        {              
+            $name = time().$file->getClientOriginalName();
+            $file->move('assets/images/services/',$name);
+            if($data->details_photo != null)
+            {
+                if (file_exists(public_path().'/assets/images/services/'.$data->details_photo)) {
+                    unlink(public_path().'/assets/images/services/'.$data->details_photo);
+                }
+            }            
+        $input['details_photo'] = $name;
         } 
         
          $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);

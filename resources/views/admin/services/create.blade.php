@@ -15,6 +15,87 @@
     @endcomponent
 
 
+    <style>
+        .featured-keyword-area {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .heading-area {
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            color: #495057;
+        }
+
+        .feature-tag-top-filds {
+            margin-bottom: 20px;
+        }
+
+        .feature-area {
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .remove {
+            cursor: pointer;
+            color: #dc3545;
+            float: right;
+            font-size: 1.2rem;
+        }
+
+        .remove:hover {
+            color: #bd2130;
+        }
+
+        .row {
+            margin-bottom: 15px;
+        }
+
+        .col-lg-12 {
+            width: 100%;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: #007bff;
+        }
+
+        .add-fild-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .add-fild-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .icofont-plus {
+            margin-right: 5px;
+        }
+    </style>
+
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
@@ -184,6 +265,55 @@
                                     </select>
                                 </div>  
                             </div>
+
+
+                            <div class="col-lg-12">
+                                <div class="featured-keyword-area">
+                                    <div class="heading-area">
+                                        <h4 class="title">{{ __('العناوين') }}</h4>
+                                    </div>
+
+                                    <div class="feature-tag-top-filds" id="feature-section">
+
+                                            <div class="feature-area">
+                                                <span class="remove feature-remove"><i
+                                                        class="las la-times"></i></span>
+                                                <div class="row">
+                                                  <div class="col-lg-6">
+                                                            <input type="text" name="table_titles_ar[]"
+                                                                class="input-field" placeholder="{{ __('arabic') }}"
+                                                                value="">
+                                                        </div>
+                                                          <div class="col-lg-6">
+                                                            <input type="text" name="table_titles_en[]"
+                                                                class="input-field" placeholder="{{ __('english') }}"
+                                                                value="">
+                                                        </div>
+                                                          <div class="col-lg-6">
+                                                            <input type="text" name="table_details_ar[]"
+                                                                class="input-field" placeholder="{{ __('details arabic') }}"
+                                                                value="">
+                                                        </div>
+                                                         
+                                                          <div class="col-lg-6">
+                                                            <input type="text" name="table_details_en[]"
+                                                                class="input-field" placeholder="{{ __('details english') }}"
+                                                                value="">
+                                                        </div>
+                                                         
+
+                                                </div>
+
+                                            </div>
+                                       
+                                    </div>
+
+                                    <a href="javascript:;" id="feature-btn" class="add-fild-btn"><i
+                                            class="icofont-plus"></i> {{ __('اضافه حقول اخرى') }}</a>
+                                </div>
+                            </div>
+
+
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -200,6 +330,34 @@
                                         </div>
                                         <div class="avatar-xl mx-auto">
                                             <input type="file" class="filepond filepond-input-circle" name="photo"
+                                                accept="image/png, image/jpeg, image/gif, image/webp" />
+                                        </div>
+
+
+                                    </div>
+                                    <!-- end card body -->
+
+
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+
+                            <div class="col-xl-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title mb-0"> {{ __('translation.details_photo') }}</h4>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <p class="text-muted">FilePond is a JavaScript library with profile picture-shaped
+                                            file
+                                            upload variation.</p>
+                                        <div class="currrent-logo" style="text-align: center;">
+                                            <img style="width: 171px;" src="{{ asset('assets/images/noimage.png') }}"
+                                                alt="">
+                                        </div>
+                                        <div class="avatar-xl mx-auto">
+                                            <input type="file" class="filepond filepond-input-circle" name="details_photo"
                                                 accept="image/png, image/jpeg, image/gif, image/webp" />
                                         </div>
 
@@ -235,4 +393,72 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('script')
+
+<script>
+         $("#feature-btn").on('click', function() {
+
+            $("#feature-section").append('' +
+                '<div class="feature-area">' +
+                '<span class="remove feature-remove"><i class="las la-times"></i></span>' +
+                '<div  class="row">' +
+                '<div class="col-lg-6">' +
+                '<input type="text" name="table_titles_ar[]" class="input-field" placeholder="arabic">' +
+                '</div>' +
+                '<div class="col-lg-6">' +
+                '<input type="text" name="table_titles_en[]" class="input-field" placeholder="english">' +
+                '</div>'+
+                '<div class="col-lg-6">' +
+                '<input type="text" name="table_details_ar[]" class="input-field" placeholder="details arabic">' +
+                '</div>' +
+                '<div class="col-lg-6">' +
+                '<input type="text" name="table_details_en[]" class="input-field" placeholder="details english">' +
+                '</div>' +
+
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '');
+
+        });
+        $(document).on('click', '.feature-remove', function() {
+
+            $(this.parentNode).remove();
+            if (isEmpty($('#feature-section'))) {
+
+                $("#feature-section").append('' +
+                    '<div class="feature-area">' +
+                    '<span class="remove feature-remove"><i class="las la-times"></i></span>' +
+                    '<div  class="row">' +
+                        '<div class="col-lg-6">' +
+                        '<input type="text" name="table_titles_ar[]" class="input-field" placeholder="arabic">' +
+                        '</div>' +
+                        '<div class="col-lg-6">' +
+                        '<input type="text" name="table_titles_en[]" class="input-field" placeholder="english">' +
+                        '</div>'+
+                        '<div class="col-lg-6">' +
+                        '<input type="text" name="table_details_ar[]" class="input-field" placeholder="details arabic">' +
+                        '</div>' +
+                        '<div class="col-lg-6">' +
+                        '<input type="text" name="table_details_en[]" class="input-field" placeholder="details english">' +
+                        '</div>' +
+
+
+                    '</div>' +
+
+                    '</div>' +
+                    '</div>' +
+                    '');
+                
+            }
+
+        });
+
+
+
+    </script>
 @endsection
