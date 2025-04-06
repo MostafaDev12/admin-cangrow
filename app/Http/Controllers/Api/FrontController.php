@@ -204,7 +204,7 @@ class FrontController extends Controller
             $data['slug'] = $dat->{'slug_' . $lang};
             $data['tags'] = $dat->tags;
             $data['photo'] = $dat->photo;
-            $data['details_photo'] = $dat->details_photo_url;
+            $data['details_photo'] = $dat->details_photo ? $dat->details_photo_url : '';
             $data['galleries'] = $dat->galleries;
             $data['table_details'] = [];
 
