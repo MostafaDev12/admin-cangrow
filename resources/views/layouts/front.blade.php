@@ -133,9 +133,9 @@
             <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('projects.index') }}">{{ __('مشاريعنا') }}</a>
             </li>
-            {{-- <li class="nav-item">
+            {{-- --}} <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('services.index') }}">{{ __('الخدمات') }}</a>
-            </li> --}}
+            </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('videos.index') }}">{{ __('ما الافضل بالنسبة لي') }}</a>
             </li>
@@ -191,7 +191,7 @@
               <div class="logo">
                 <img src="{{ $gs->{'logo_' . $sign} }}" alt="">
               </div>
-              <h2>{{ __('عناوين فروعنا') }}</h2>
+              <h1>{{ __('عناوين فروعنا') }}</h1>
               <p class="branch-info">
                 @foreach ($addresses as $address)
                 <i class="fas fa-map-marker-alt"></i> <a href="#">   {{ $address }}   </a>
@@ -200,7 +200,7 @@
             
             </div>
             <div class="col-lg-3 col-md-6 ">
-              <h2> {{ __('روابط هامه') }} </h2>
+              <h1> {{ __('روابط هامه') }} </h1>
               <ul class="list-unstyled">
                 <li><a href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a></li>
                 <li><a href="{{ route('about.index') }}"> {{ __('عن الشركة') }} </a></li>
@@ -213,7 +213,7 @@
             </div>
             <!-- تواصل معنا -->
             <div class="col-lg-3 col-md-6 ">
-              <h2> {{ __('تواصل معنا') }}  </h2>
+              <h1> {{ __('تواصل معنا') }}  </h1>
               <p class="contact-info">
                 @foreach ($phones as $phone)
                 @if($phone)
