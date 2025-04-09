@@ -11,9 +11,9 @@
 <div class="contact-info {{ $classes ?? ''}}">
     <div class="container pt-5">
         <div class="title_lines">
-            <h1>
+            <h2>
                    {{ __('للتواصل معنا') }} 
-            </h1>
+            </h2>
         </div>
         <div class="row">
             <div class="col-12 col-lg-12 col-md-6">

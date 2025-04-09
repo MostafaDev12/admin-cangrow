@@ -50,6 +50,7 @@
           <div class="  wow animate__animated animate__fadeInRight" data-wow-delay="1s" data-wow-duration="1s">
             <h2> {{ $ps->{'portfolio_title_' . $sign}  ?? ''}}   </h2>
             <p >  {!! $ps->{'portfolio_details_' . $sign}  ?? '' !!}  </p>
+                          <a href="" class="btn px-4 py-2 mt-2">     {{ __('المزيد') }}  </a>
           </div>
         </div>
         <div class="col-12 col-lg-6 col-md-6">
@@ -65,9 +66,9 @@
   <div class="service  p-5">
     <div class="container-fluid">
       <div class="title_lines">
-        <h1>
+        <h2>
             {{ __('خدمتنا') }}
-        </h1>
+        </h2>
       </div>
       <div class="row">
 
@@ -92,9 +93,9 @@
   <div class="blog p-5">
     <div class="container-fluid">
       <div class="title_lines">
-        <h1>
+        <h2>
             {{ __('مقالات') }}
-        </h1>
+        </h2>
       </div>
       <div class="row">
         @foreach($blogs->take(6) as $blog)
@@ -120,9 +121,9 @@
   <div class="videos p-5">
     <div class="container-fluid">
       <div class="title_lines">
-        <h1>
+        <h2>
           {{ __('فيديوهاتنا') }}
-        </h1>
+        </h2>
       </div>
       <div class="row">
 
@@ -145,9 +146,9 @@
   <div class="certificate p-5 ">
     <div class="container-fluid">
         <div class="title_lines">
-            <h1>
+            <h2>
                  {{ __('شهاداتنا') }}
-            </h1>
+            </h2>
         </div>
         <div class="row pt-5">
 

@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="">
                     <div class="text-center animate__animated animate__fadeInRight" data-wow-delay="1s" data-wow-duration="1s">
-                        <img width="100%" height="400px" class="m-auto" src="{{ $ps->about_photo }}" alt="">
+                        <img width="100%" class="m-auto" src="{{ $ps->about_photo }}" alt="">
                     </div>
                 </div>
                 <div class="">
@@ -74,7 +74,7 @@
           <div class="col-12 col-lg-4 col-md-6">
             <div class="div-team">
               <img src="{{ $team->photo_url }}" alt="">
-              <h1>{{ $team->{'title_' . $sign}  ?? ''}}</h1>
+              <h2>{{ $team->{'title_' . $sign}  ?? ''}}</h2>
              
               <p>    {!! $team->{'details_' . $sign}  ?? ''!!}  </p>
             </div>

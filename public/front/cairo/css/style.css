@@ -73,6 +73,12 @@ body {
 .nav-link:hover {
     color: #007bff !important;
 }
+.about-us .btn {
+    color: #ea572d;
+    border: 1px solid;
+    border-color:#ea572d ;
+
+}
 .dropdown-menu {
     border-radius: 8px;
     border: none;
@@ -98,9 +104,10 @@ body {
     text-align: center;
     color: #fff;
     z-index: 2;
+    width: 100%;
   }
   .slide-content h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 0;
     padding: 10px;
   }
@@ -112,7 +119,7 @@ body {
   .slider .swiper-slide img {
     width: 100%;
     height: 100vh;
-    object-fit: cover;
+    /* object-fit: cover; */
   }
   
   /* Swiper navigation buttons */
@@ -486,7 +493,7 @@ a {
     background-color: #393939;
     padding: 40px 20px;
 }
-.footer-section h1 {
+.footer-section h2 {
     font-size: 35px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -685,9 +692,10 @@ a {
     margin-bottom: 20px;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    border-bottom:5px solid #ea572d ;
+    border-bottom:5px solid #ea572d;
+    height: 500px;
 }
-.team .div-team h1 {
+.team .div-team h2 {
     margin-top: 20px;
     font-size: 22px;
     font-weight: bold;

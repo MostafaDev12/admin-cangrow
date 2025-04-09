@@ -191,7 +191,7 @@
               <div class="logo">
                 <img src="{{ $gs->{'logo_' . $sign} }}" alt="">
               </div>
-              <h1>{{ __('عناوين فروعنا') }}</h1>
+              <h2>{{ __('عناوين فروعنا') }}</h2>
               <p class="branch-info">
                 @foreach ($addresses as $address)
                 <i class="fas fa-map-marker-alt"></i> <a href="#">   {{ $address }}   </a>
@@ -200,7 +200,7 @@
             
             </div>
             <div class="col-lg-3 col-md-6 ">
-              <h1> {{ __('روابط هامه') }} </h1>
+              <h2> {{ __('روابط هامه') }} </h2>
               <ul class="list-unstyled">
                 <li><a href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a></li>
                 <li><a href="{{ route('about.index') }}"> {{ __('عن الشركة') }} </a></li>
@@ -213,7 +213,7 @@
             </div>
             <!-- تواصل معنا -->
             <div class="col-lg-3 col-md-6 ">
-              <h1> {{ __('تواصل معنا') }}  </h1>
+              <h2> {{ __('تواصل معنا') }}  </h2>
               <p class="contact-info">
                 @foreach ($phones as $phone)
                 @if($phone)
