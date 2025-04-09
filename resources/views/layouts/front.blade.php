@@ -133,9 +133,9 @@
             <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('projects.index') }}">{{ __('مشاريعنا') }}</a>
             </li>
-            {{-- <li class="nav-item">
+            {{----}} <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('services.index') }}">{{ __('الخدمات') }}</a>
-            </li> --}}
+            </li> 
             <li class="nav-item">
               <a class="nav-link fw-bold" href="{{ route('videos.index') }}">{{ __('ما الافضل بالنسبة لي') }}</a>
             </li>
