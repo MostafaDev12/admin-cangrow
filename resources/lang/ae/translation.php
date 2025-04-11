@@ -233,7 +233,8 @@ return [
     "services" => "services",
     "add_service" => "add service",
     "edit_service" => "edit service",
-    "models" => "models",
+    "models" => "teams",
+    "teams" => "teams",
     "add_model" => "add model",
     "edit_models" => "edit model",
        "logo" => "logo",
@@ -254,6 +255,10 @@ return [
        "social_settings" => "social settings",
        "social_media_links" => "social media links",
        "models_category" => "models category",
+       "certificates" => "الشهادات",
+       "blogs" => "المقالات",
+       "language" => "اللغات",
+       "blog_categories" => "فئات المقالات",
    
 ];
 ?>
