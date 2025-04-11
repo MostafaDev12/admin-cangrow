@@ -513,9 +513,9 @@ class HomeController extends Controller
 
        $wordCount = count(preg_split('/\s+/u', trim($plainTextContent), -1, PREG_SPLIT_NO_EMPTY));
 
-      //  if ($wordCount < 50) {
-      //      continue; // Skip this item if it has less than 50 words
-      //  }
+       if ($wordCount < 50) {
+           continue; // Skip this item if it has less than 50 words
+       }
     // Extract first 100 words while maintaining sentence structure
     $wordsArray = preg_split('/\s+/', trim($plainTextContent)); // Split into words
     $shortContent = implode(' ', array_slice($wordsArray, 0, 50));
@@ -539,17 +539,18 @@ class HomeController extends Controller
                    $imageName = null; // Set to null if download fails
                }
            }
-       }else{
-
-        continue;
-
        }
+      //  else{
+
+      //   continue;
+
+      //  }
        
-       if(empty($imageName)){
+      //  if(empty($imageName)){
 
-         continue;
+      //    continue;
 
-       }
+      //  }
 
       // Insert into the database
    

@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title'); ?>
    
 <?php echo e($blog->{'title_' . $sign}); ?>   -  <?php echo e($gs->{'title_' . $sign}); ?>
@@ -55,15 +57,18 @@ $randomPhone = Arr::random($phones);
 
                   <?php $__currentLoopData = App\Models\Blog::orderBy('blog_date', 'desc')->where('id','!=',$blog->id)->limit(6)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=> $blogg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <?php
+                   $date = \Carbon\Carbon::parse($blog->blog_date);
+ 
                   $k++
                   ?>
+                     
                   <div class="swiper-slide">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<?php echo e($blogg->photo_url); ?>" alt="Card image cap">
                         <div class="card-body">
                           <h5 class="card-title"><?php echo e($blogg->{'title_' . $sign}); ?> </h5>
                     
-                          <a href="<?php echo e(route('single-blog.index',$blogg->{'slug_' . $sign})); ?>" class="btn"><?php echo e(__('المزيد')); ?></a>
+                          <a href="<?php echo e(route('single-blog.index',['year'=> $date->year,'month'=> $date->month,'day'=> $date->day,'blog' => $blogg->{'slug_' . $sign}])); ?>" class="btn"><?php echo e(__('المزيد')); ?></a>
                         </div>
                       </div>
                   </div>

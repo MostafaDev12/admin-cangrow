@@ -25,7 +25,10 @@
 
                 @foreach($blogs as $blog)
                 <div class="col-12 col-lg-3 col-md-3 mb-3">
-                    
+                    @php
+                    $date = \Carbon\Carbon::parse($blog->blog_date);
+
+                @endphp
                     <div class="position-relative">
                          <div class="card" style="width: 18rem;">
                             <span>  {{ optional($blog->category)->{'title_' . $sign}  }} </span>

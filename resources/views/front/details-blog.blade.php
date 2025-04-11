@@ -55,15 +55,18 @@ $randomPhone = Arr::random($phones);
 
                   @foreach (App\Models\Blog::orderBy('blog_date', 'desc')->where('id','!=',$blog->id)->limit(6)->get() as $k=> $blogg)
                   @php
+                   $date = \Carbon\Carbon::parse($blog->blog_date);
+ 
                   $k++
                   @endphp
+                     
                   <div class="swiper-slide">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="{{ $blogg->photo_url }}" alt="Card image cap">
                         <div class="card-body">
                           <h5 class="card-title">{{ $blogg->{'title_' . $sign} }} </h5>
                     
-                          <a href="{{ route('single-blog.index',$blogg->{'slug_' . $sign}) }}" class="btn">{{ __('المزيد') }}</a>
+                          <a href="{{ route('single-blog.index',['year'=> $date->year,'month'=> $date->month,'day'=> $date->day,'blog' => $blogg->{'slug_' . $sign}]) }}" class="btn">{{ __('المزيد') }}</a>
                         </div>
                       </div>
                   </div>
