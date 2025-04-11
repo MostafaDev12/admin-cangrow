@@ -35,20 +35,20 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
 
         Route::get('/', [HomeController::class, 'index'])->name('front.index');
-        Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
+        Route::get('/عن-الشركة', [HomeController::class, 'about'])->name('about.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
-        Route::get('/projects', [HomeController::class, 'projects'])->name('projects.index');
-        Route::get('/certificates', [HomeController::class, 'certificates'])->name('certificates.index');
+        Route::get('/معرض-الصور', [HomeController::class, 'projects'])->name('projects.index');
+        Route::get('/الشهادات', [HomeController::class, 'certificates'])->name('certificates.index');
 
         Route::get('/services/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
 
         Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
-        Route::get('/videos', [HomeController::class, 'videos'])->name('videos.index');
+        Route::get('/الفيديوهات', [HomeController::class, 'videos'])->name('videos.index');
         Route::get('/news', [HomeController::class, 'news'])->name('news.index');    
-        Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs.index');    
+        Route::get('/المقالات', [HomeController::class, 'blogs'])->name('blogs.index');    
         
-        Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');
+        Route::get('/اتصل-بنا', [HomeController::class, 'contact'])->name('contact.index');
         Route::post('/contact-submit', [HomeController::class, 'contactemail'])->name('front.contact.submit');
         Route::get('/احجز-الان', [HomeController::class, 'BookNow'])->name('book.index');
 
@@ -59,7 +59,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
     
 
         Route::get('news/{new}', [HomeController::class, 'singleNews'])->name('single-news.index');
-        Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+        Route::get('/{year?}/{month?}/{day?}/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
 
         
         Route::get('/languages/change/{id}', [HomeController::class, 'change'])->name('front.lang-change');

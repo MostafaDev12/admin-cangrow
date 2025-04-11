@@ -34,7 +34,7 @@
                           <h5 class="card-title">{{ $blog->{'title_' . $sign} }}</h5>
                          <p class="card-text">{{ $blog->{'short_details_' . $sign} }}   </p>
 
-                          <a href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}" class="btn">{{ __('المزيد') }}</a>
+                          <a href="{{ route('single-blog.index',['year'=> $date->year,'month'=> $date->month,'day'=> $date->day,'blog' => $blog->{'slug_' . $sign}]) }}" class="btn">{{ __('المزيد') }}</a>
                         </div>
                       </div>
                    </div>

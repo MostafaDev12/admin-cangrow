@@ -109,6 +109,10 @@
                     <div class="swiper-wrapper">
 
                         @foreach ($blogs->take(6) as $blog)
+                        @php
+                            $date = \Carbon\Carbon::parse($blog->blog_date);
+
+                        @endphp
                             <div class="swiper-slide">
                                 <div class="card" style="width: 18rem;">
                                     @if (optional($blog->category)->{'title_' . $sign})
@@ -119,7 +123,7 @@
                                         <h5 class="card-title">{{ $blog->{'title_' . $sign} }}</h5>
                                         <p class="card-text"> {{ $blog->{'short_details_' . $sign} }} </p>
 
-                                        <a href="{{ route('single-blog.index', $blog->{'slug_' . $sign}) }}"
+                                        <a href="{{ route('single-blog.index', ['year'=> $date->year,'month'=> $date->month,'day'=> $date->day,'blog' => $blog->{'slug_' . $sign}]) }}"
                                             class="btn">{{ __('المزيد') }}</a>
                                     </div>
                                 </div>

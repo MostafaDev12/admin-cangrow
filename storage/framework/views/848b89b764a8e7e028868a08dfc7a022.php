@@ -113,6 +113,10 @@
                     <div class="swiper-wrapper">
 
                         <?php $__currentLoopData = $blogs->take(6); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php
+                            $date = \Carbon\Carbon::parse($blog->blog_date);
+
+                        ?>
                             <div class="swiper-slide">
                                 <div class="card" style="width: 18rem;">
                                     <?php if(optional($blog->category)->{'title_' . $sign}): ?>
@@ -123,7 +127,7 @@
                                         <h5 class="card-title"><?php echo e($blog->{'title_' . $sign}); ?></h5>
                                         <p class="card-text"> <?php echo e($blog->{'short_details_' . $sign}); ?> </p>
 
-                                        <a href="<?php echo e(route('single-blog.index', $blog->{'slug_' . $sign})); ?>"
+                                        <a href="<?php echo e(route('single-blog.index', ['year'=> $date->year,'month'=> $date->month,'day'=> $date->day,'blog' => $blog->{'slug_' . $sign}])); ?>"
                                             class="btn"><?php echo e(__('المزيد')); ?></a>
                                     </div>
                                 </div>
