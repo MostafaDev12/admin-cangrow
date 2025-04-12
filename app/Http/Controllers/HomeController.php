@@ -94,7 +94,7 @@ class HomeController extends Controller
     $sign = $this->langSign();
 
  
-    $blogs = Blog::where('type','blogs')->paginate(9);
+    $blogs = Blog::where('type','blogs')->paginate(8);
 
     return view('front.blogs', compact('sign', 'blogs'));
   }
@@ -106,7 +106,7 @@ class HomeController extends Controller
     $sign = $this->langSign();
 
  
-    $blogs = Blog::where('type','news')->paginate(9);
+    $blogs = Blog::where('type','news')->paginate(8);
 
     return view('front.news', compact('sign', 'blogs'));
   }
