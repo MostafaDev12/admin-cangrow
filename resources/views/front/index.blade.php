@@ -73,6 +73,8 @@
       <div class="row">
 
         @foreach ($services as $service)
+        @if ($service->{'slug_' . $sign})
+          
         <div class="col-12 col-lg-4 col-md-4">
           <div class="card wow animate__animated animate__zoomIn shadow-lg">
             <img class="card-img-top" src="{{ $service->photo_url }}" alt="Card image cap">
@@ -82,6 +84,7 @@
             </div>
           </div>
         </div>
+        @endif
         @endforeach
   
       </div>
