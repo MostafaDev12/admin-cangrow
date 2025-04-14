@@ -98,6 +98,14 @@
                     </li>
                 <?php endif; ?>
 
+                <?php if(Auth::guard('admin')->user()->sectionCheck('locations')): ?>
+                    <li class="nav-item">
+                        <a class="nav-link  " href="<?php echo e(route('admin-locations-index')); ?>" aria-controls="sidebarlocations">
+                            <i class="las la-tachometer-alt"></i> <span><?php echo app('translator')->get('translation.locations'); ?></span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+
                 
                 <?php if(Auth::guard('admin')->user()->sectionCheck('services') ||
                         Auth::guard('admin')->user()->sectionCheck('categories') ||

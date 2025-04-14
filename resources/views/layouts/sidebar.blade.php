@@ -98,6 +98,14 @@
                     </li>
                 @endif
 
+                @if (Auth::guard('admin')->user()->sectionCheck('locations'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-locations-index') }}" aria-controls="sidebarlocations">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.locations')</span>
+                        </a>
+                    </li>
+                @endif
+
                 {{--       @if (Auth::guard('admin')->user()->sectionCheck('services'))
          
                      <li class="nav-item">

@@ -131,24 +131,23 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('contact.index') }}#appointments">
                     <i class="fas fa-clock"></i>
-                    <span>السبت - الأربعاء</span>
-                    <small>الاقصر كل اسبوعين</small>
+                    <span>{{ __('السبت - الأربعاء') }}</span>
+                    <small>{{ __('الاقصر كل اسبوعين') }}</small>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('contact.index') }}#locations">
                     <i class="fas fa-map-marker-alt"></i>
+                    @foreach ($locations as $k=>$location)
                     <span>
-                      المهندسين
+                      {{ $location->{'title_' . $sign} }}
                     </span>
+                    @if (!$loop->last)
                     <span>-</span>
-                    <span>
-                      الاقصر
-                    </span>
-                    <span>-</span>
-                    <span>
-                      الشيخ زايد
-                    </span>
+                   @endif
+                    @endforeach
+                 
+                   
                   </a>
                 </li>
                 <li class="nav-item">
@@ -301,17 +300,14 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('contact.index') }}#locations">
                     <i class="fas fa-map-marker-alt"></i>
+                    @foreach ($locations as $k=>$location)
                     <span>
-                      المهندسين
+                      {{ $location->{'title_' . $sign} }}
                     </span>
+                    @if (!$loop->last)
                     <span>-</span>
-                    <span>
-                      الاقصر
-                    </span>
-                    <span>-</span>
-                    <span>
-                      الشيخ زايد
-                    </span>
+                   @endif
+                    @endforeach
                   </a>
                 </li>
                 <li class="nav-item">
@@ -443,15 +439,16 @@
           </div>
           <div class="contact-info ">
             <ul class="list-unstyled ">
-
+              @foreach ($locations as $k=>$location)
               <li>
                 <a href="{{ route('contact.index') }}#locations" class="d-flex gap-1">
                   <i class="fa fa-home">
-                  </i>116 ش محيي الدين ابو العز الدور الاول متفرع من جامعة الدول
-                  المهندسين, القاهرة, مصر
+                  </i>  {{ $location->{'address_' . $sign} }}
                 </a>
               </li>
 
+              @endforeach
+             
 
               <li>
                 <a href="{{ route('contact.index') }}#contact-section" class="d-flex gap-1">
@@ -468,7 +465,7 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-          <h5>الخدمات</h5>
+          <h5>{{ __('الخدمات') }}</h5>
           <ul class="link-widget p-0">
             @foreach ($services as $service)
             <li ><a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>

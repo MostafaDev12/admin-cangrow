@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\LocationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -128,6 +129,18 @@ Route::prefix('admin')->group(function () {
 
       Route::get('/models-category/delete/{id}',  [ModelCategoryController::class, 'destroy'])->name('admin-models_category-delete');
     });
+
+    Route::group(['middleware' => 'permissions:locations'], function () {
+
+      Route::get('/locations/datatables',  [LocationController::class, 'datatables'])->name('admin-locations-datatables');
+      Route::get('/locations',  [LocationController::class, 'index'])->name('admin-locations-index');
+      Route::get('/locations/create',   [LocationController::class, 'create'])->name('admin-locations-create');
+      Route::post('/locations/create',  [LocationController::class, 'store'])->name('admin-locations-store');
+      Route::get('/locations/edit/{id}',  [LocationController::class, 'edit'])->name('admin-locations-edit');
+      Route::post('/locations/update/{id}', [LocationController::class, 'update'])->name('admin-locations-update');
+
+      Route::get('/locations/delete/{id}',  [LocationController::class, 'destroy'])->name('admin-locations-delete');
+  });
 
 
     Route::group(['middleware' => 'permissions:partners'], function () {

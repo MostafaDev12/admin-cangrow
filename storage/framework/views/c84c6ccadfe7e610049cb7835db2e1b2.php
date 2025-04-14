@@ -132,24 +132,24 @@
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo e(route('contact.index')); ?>#appointments">
                     <i class="fas fa-clock"></i>
-                    <span>السبت - الأربعاء</span>
-                    <small>الاقصر كل اسبوعين</small>
+                    <span><?php echo e(__('السبت - الأربعاء')); ?></span>
+                    <small><?php echo e(__('الاقصر كل اسبوعين')); ?></small>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo e(route('contact.index')); ?>#locations">
                     <i class="fas fa-map-marker-alt"></i>
+                    <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <span>
-                      المهندسين
+                      <?php echo e($location->{'title_' . $sign}); ?>
+
                     </span>
+                    <?php if(!$loop->last): ?>
                     <span>-</span>
-                    <span>
-                      الاقصر
-                    </span>
-                    <span>-</span>
-                    <span>
-                      الشيخ زايد
-                    </span>
+                   <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                 
+                   
                   </a>
                 </li>
                 <li class="nav-item">
@@ -215,7 +215,8 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="<?php echo e(route('services.index')); ?>" role="" data-bs-toggle=""
                       aria-expanded="false">
-                      الخدمات
+                      <?php echo e(__('الخدمات')); ?>
+
                     </a>
                     <ul class="dropdown-menu text-end dropdown-home-items">
 
@@ -294,91 +295,96 @@
   
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html#appointments">
+                  <a class="nav-link" href="<?php echo e(route('contact.index')); ?>#appointments">
                     <i class="fas fa-clock"></i>
-                    <span>السبت - الأربعاء</span>
-                    <small>الاقصر كل اسبوعين</small>
+                    <span> <?php echo e(__('السبت - الأربعاء')); ?></span>
+                    <small><?php echo e(__('الاقصر كل اسبوعين')); ?></small>
                   </a>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html#locations">
+                  <a class="nav-link" href="<?php echo e(route('contact.index')); ?>#locations">
                     <i class="fas fa-map-marker-alt"></i>
+                    <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <span>
-                      المهندسين
+                      <?php echo e($location->{'title_' . $sign}); ?>
+
                     </span>
+                    <?php if(!$loop->last): ?>
                     <span>-</span>
-                    <span>
-                      الاقصر
-                    </span>
-                    <span>-</span>
-                    <span>
-                      الشيخ زايد
-                    </span>
+                   <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="tel:01155611453">
+                  <a class="nav-link" href="tel:+2<?php echo e($randomPhone); ?>">
                     <i class="fas fa-phone"></i>
-                    <span>+01155611453</span>
+                    <span><?php echo e($randomPhone); ?></span>
                   </a>
                 </li>
+                <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   
                 <li class="nav-item">
-                  <a class="nav-link" href="https://www.facebook.com/drhebametwally.eyeclinic">
+                  <a class="nav-link" href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>">
                     <i class="fab fa-facebook"></i>
-                    <span>الفيسبوك</span>
+                    <span><?php echo e(__('الفيسبوك')); ?></span>
                   </a>
                 </li>
+                <?php endif; ?>
+                <?php if(App\Models\Socialsetting::find(1)->d_status == 1): ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="https://www.instagram.com/dr.hebametwally/">
+                  <a class="nav-link" href="<?php echo e(App\Models\Socialsetting::find(1)->dribble); ?>">
                     <i class="fab fa-instagram"></i>
-                    <span>انستجرام</span>
+                    <span><?php echo e(__('انستجرام')); ?></span>
                   </a>
                 </li>
+                <?php endif; ?>
+                <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="https://www.youtube.com/channel/UCQ3UstS1JRL46hyNrSawO5w">
+                  <a class="nav-link" href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>">
                     <i class="fab fa-youtube"></i>
-                    <span>يوتيوب</span>
+                    <span><?php echo e(__('يوتيوب')); ?></span>
                   </a>
                 </li>
+                <?php endif; ?>
+                <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?> 
                 <li class="nav-item">
-                  <a class="nav-link" href="https://x.com/i/flow/login?redirect_after_login=%2Fdrhebametwally">
+                  <a class="nav-link" href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>">
                     <i class="fab fa-twitter"></i>
-                    <span>تويتر</span>
+                    <span><?php echo e(__('تويتر')); ?></span>
                   </a>
                 </li>
+                <?php endif; ?>
               </ul>
               <!-- Divider -->
               <hr class="divider">
               <!-- Second Header Content -->
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active" href="">مركز علاج الحول والمياه البيضاء</a>
+                  <a class="nav-link active" href="<?php echo e(route('front.index', $sign)); ?>">   <?php echo e(__('مركز علاج الحول والمياه البيضاء')); ?>    </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fw-bold" href="services.html">
-                    الخدمات
+                  <a class="nav-link fw-bold" href="<?php echo e(route('services.index')); ?>">
+                    <?php echo e(__('الخدمات')); ?>
+
                   </a>
                   <ul class=" border-bottom">
-                    <li class="list-unstyled"><a class="nav-link" href="portfolio2.html">تصحيح الابصار</a></li>
-                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">علاج ازدواجية الرؤية</a></li>
-                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">المياة البيضاء للكبار والاطفال</a>
-                    </li>
-                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">علاج الحول للكبار والاطفال</a>
-                    </li>
-                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">علاج كسل العين الوظيفي</a></li>
-                    <li class="list-unstyled"><a class="nav-link" href="portfolio.html">علاج امراض الجهاز الدمعي</a></li>
+                    
+                    <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="list-unstyled"><a class="nav-link" href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><?php echo e($service->{'title_' . $sign}); ?>  </a></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                 
+                    
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fw-bold" href="articles.html">المقالات</a>
+                  <a class="nav-link fw-bold" href="<?php echo e(route('blogs.index')); ?>"><?php echo e(__('المقالات')); ?></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fw-bold" href="about.html">عن الدكتورة</a>
+                  <a class="nav-link fw-bold" href="<?php echo e(route('about.index')); ?>"> <?php echo e(__('عن الدكتورة')); ?>  </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fw-bold" href="contact.html">اتصل بنا</a>
+                  <a class="nav-link fw-bold" href="<?php echo e(route('contact.index')); ?>">   <?php echo e(__('اتصل بنا')); ?></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fw-bold" href="tel:01155611453">01155611453</a>
+                  <a class="nav-link fw-bold" href="tel:+2<?php echo e($randomPhone); ?>"><?php echo e($randomPhone); ?></a>
                 </li>
               </ul>
               <!-- Search Container -->
@@ -399,78 +405,89 @@
     <div class="container">
       <div class="row justify-content-between">
         <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-          <h5>دكتورة هبه متولي
+          <h5> <?php echo e(__('دكتورة هبه متولي')); ?>
+
           </h5>
           <p>
-            استشاري طب وجراحات العيون وعيون الاطفال والحول وتصحيح الابصار دكتوراه طب وجراحه العيون جامعه
-            القاهره زميل
-            كليه الجراحين الملكيه البريطانية "جلاسجو" زميل المجلس العالمي لطب العيون عضو الجمعيه الاوروبيه
-            لعيون الاطفال
-            و الحول
+            <?php echo $gs->{'footer_' . $sign}; ?>
+
           </p>
           <div class="contact-info">
             <ul class="list-unstyled d-flex gap-3">
+                <?php if(App\Models\Socialsetting::find(1)->f_status == 1): ?>   
               <li>
-                <a href="https://www.facebook.com/drhebametwally.eyeclinic">
+                <a href="<?php echo e(App\Models\Socialsetting::find(1)->facebook); ?>">
                   <i class="fab fa-brands fa-facebook"></i>
                 </a>
               </li>
+              <?php endif; ?>
+              <?php if(App\Models\Socialsetting::find(1)->d_status == 1): ?>
               <li>
-                <a href="https://www.instagram.com/dr.hebametwally/">
+                <a href="<?php echo e(App\Models\Socialsetting::find(1)->dribble); ?>">
                   <i class="fab fa-brands fa-instagram"></i>
                 </a>
               </li>
+              <?php endif; ?>
+              <?php if(App\Models\Socialsetting::find(1)->ystatus == 1): ?>
               <li>
-                <a href="https://www.youtube.com/channel/UCQ3UstS1JRL46hyNrSawO5w">
+                <a href="<?php echo e(App\Models\Socialsetting::find(1)->youtube); ?>">
                   <i class="fab fa-brands fa-youtube"></i>
                 </a>
               </li>
+              <?php endif; ?>
+              <?php if(App\Models\Socialsetting::find(1)->t_status == 1): ?> 
               <li>
-                <a href="https://x.com/i/flow/login?redirect_after_login=%2Fdrhebametwally">
+                <a href="<?php echo e(App\Models\Socialsetting::find(1)->twitter); ?>">
                   <i class="fab fa-brands fa-twitter"></i>
                 </a>
               </li>
+              <?php endif; ?>
             </ul>
           </div>
           <div class="contact-info ">
             <ul class="list-unstyled ">
+              <?php $__currentLoopData = $locations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$location): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <li>
-                <a href="contact.html#locations" class="d-flex gap-1">
+                <a href="<?php echo e(route('contact.index')); ?>#locations" class="d-flex gap-1">
                   <i class="fa fa-home">
-                  </i>116 ش محيي الدين ابو العز الدور الاول متفرع من جامعة الدول
-                  المهندسين, القاهرة, مصر
+                  </i>  <?php echo e($location->{'address_' . $sign}); ?>
+
                 </a>
               </li>
+
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+             
+
               <li>
-                <a href="contact.html#contact-section" class="d-flex gap-1">
+                <a href="<?php echo e(route('contact.index')); ?>#contact-section" class="d-flex gap-1">
                   <i class="fa fa-phone">
-                  </i>+01155611453</a>
+                  </i><?php echo e($randomPhone); ?></a>
               </li>
               <li>
-                <a href="contact.html#appointments" class="d-flex gap-1">
+                <a href="<?php echo e(route('contact.index')); ?>#appointments" class="d-flex gap-1">
                   <i class="fa fa-clock">
-                  </i>السبت - الأربعاء
+                  </i> <?php echo e(__('السبت - الأربعاء')); ?>
+
                 </a>
               </li>
             </ul>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-          <h5>الخدمات</h5>
+          <h5><?php echo e(__('الخدمات')); ?></h5>
           <ul class="link-widget p-0">
-            <li><a href="portfolio.html" target="_blank">تصحيح الابصار</a></li>
-            <li><a href="portfolio.html" target="_blank">علاج ازدواجية الرؤية</a></li>
-            <li><a href="portfolio.html" target="_blank">المياة البيضاء للكبار والاطفال</a></li>
-            <li><a href="portfolio.html" target="_blank">علاج الحول للكبار والاطفال</a></li>
-            <li><a href="portfolio.html" target="_blank">علاج كسل العين الوظيفي</a></li>
-            <li><a href="portfolio.html" target="_blank">علاج امراض الجهاز الدمعي</a></li>
+            <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li ><a href="<?php echo e(route('single-service.index',['slug' => $service->{'slug_' . $sign} ])); ?>"><?php echo e($service->{'title_' . $sign}); ?>  </a></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+         
+
           </ul>
         </div>
       </div>
       <div class="row justify-content-between">
         <div class="col-md-4 col-sm-6 mb-4 box-invisible">
           <p class="p-0">Copyright
-            <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fcangrowonline.com%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAAR3KNukx3qxSbcbTSEXIZ6Rj79xtffAMjPYLa0lbqls0Y83W_99zNC9KLg4_aem_ZEXpIYgzA01ISRxDbXEdag&h=AT2QF-bNAZ95QrxslckRpIAxiulfEj6cYDth-HwHc8YyfO0MCTb7LEFz45rpWZXV9KaA8bddVlDFRLP5l4-tJuSqQhJDrd1iqCLWGwIAVNeCfCCwFxtSsdaX71bBBv8lTK4rEg"
+            <a href="https://cangrowonline.com"
               target="_blank">@CanGrow
               .</a> All Rights Reserved
           </p>
@@ -478,21 +495,24 @@
         <div class="col-md-4 col-sm-6 mb-4 box-invisible">
           <ul id="" class="d-flex flex-column about list-footer">
             <li class="list-unstyled">
-              <a class=" p-0 m-0" href="services.html" target="_blank">
-                الخدمات
+              <a class=" p-0 m-0" href="<?php echo e(route('services.index')); ?>" target="_blank">
+                <?php echo e(__('الخدمات')); ?>
+
               </a>
             </li>
             <li class="list-unstyled">
-              <a class=" p-0 m-0" href="about.html" target="_blank"> عنا
+              <a class=" p-0 m-0" href="<?php echo e(route('about.index')); ?>" target="_blank"> <?php echo e(__('عنا')); ?>
+
               </a>
             </li>
             <li class="list-unstyled">
-              <a class=" p-0 m-0" href="contact.html" target="_blank">
-                اتصل بنا
+              <a class=" p-0 m-0" href="<?php echo e(route('contact.index')); ?>" target="_blank">
+                <?php echo e(__('اتصل بنا')); ?>
+
               </a>
             </li>
             <li class="list-unstyled">
-              <a class=" p-0 m-0" href="tel:01155611453">01155611453</a>
+              <a class=" p-0 m-0" href="tel:+2<?php echo e($randomPhone); ?>"><?php echo e($randomPhone); ?></a>
             </li>
           </ul>
         </div>
