@@ -6,6 +6,7 @@ use App\Models\AboutPoint;
 use App\Models\User;
 use App\Models\Language;
 use App\Models\PageModel;
+use App\Models\ModelCategory;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Partner;
@@ -56,8 +57,9 @@ class HomeController extends Controller
     $services = Service::get();
     $models = PageModel::get();
     $reviews = Partner::get();
+    $blogs = Blog::get()->take(3);
 
-    return view('front.index', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.index', compact('sign', 'sliders', 'points','blogs', 'services', 'models', 'reviews'));
   }
 
   public function about(Request $request)
@@ -68,7 +70,7 @@ class HomeController extends Controller
     $sliders = Slider::first();
     $points = AboutPoint::get();
     $services = Service::get();
-    $models = PageModel::get();
+    $models = ModelCategory::get();
     $reviews = Partner::get();
 
     return view('front.about', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));

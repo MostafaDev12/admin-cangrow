@@ -118,50 +118,22 @@
             </div>
           </div>
           <div class="row">
+            @foreach ($reviews as $review)
             <div class="col-md-4 col-sm-6 mb-4 box-invisible">
               <div class="card-animate">
                 <div class="imgbox">
-                  <img src="./images//drhebametwally/home3.png" alt="" />
+                  <img src="{{ $review->photo }}" alt="" />
                 </div>
-                <p> كسل العين الوظيفي
+                <p>    {{ $review->{'title_' . $sign} }} 
                 </p>
                 <p>
                   عمليه
                 </p>
-                <h6> كسل العين الوظيفي
+                <h6>    {{ $review->{'title_' . $sign} }} 
                 </h6>
               </div>
             </div>
-            <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-              <div class="card-animate">
-                <div class="imgbox">
-                  <img src="./images//drhebametwally/home1.webp" alt="" />
-                </div>
-                <p>
-                  تصحيح الإبصار
-                </p>
-                <p>
-                  عمليه
-                </p>
-                <h6> تصحيح الإبصار
-                </h6>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-              <div class="card-animate">
-                <div class="imgbox">
-                  <img src="./images//drhebametwally/home2.png" alt="" />
-                </div>
-                <p>
-                  المياة البيضاء للكبار والاطفال
-                </p>
-                <p>
-                  عمليه
-                </p>
-                <h6> المياة البيضاء للكبار والاطفال
-                </h6>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -519,68 +491,31 @@
       </div>
       <div class="container">
         <div class="row">
+          @foreach($blogs as $blog)
           <div class="col-md-4 col-sm-6 mb-4 box-invisible">
             <div class="team-img">
-              <img src="images/drhebametwally/new1.webp" class="img-fluid" alt="">
+              <a href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}">
+                 <img src="{{ $blog->photo }}" class="img-fluid" alt="">
+                </a>
             </div>
             <div class="card rounded-3 py-4">
               <div class="">
                 <p>
-                  <span>أكتوبر 26, 2024
+                  <span>  {{ $blog->blog_date }}
                   </span>
                   <i class="fa fa-light fa-clock"></i>
 
                 </p>
-                <h5>افضل دكتور عيون لحول الاطفال في مصر
+                <h5 >
+                  <a href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}">
+                    {{ $blog->{'title_' . $sign} }} 
+                  </a>
+
                 </h5>
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-            <div class="team-img">
-              <img src="images/drhebametwally/new2.webp" class="img-fluid" alt="">
-            </div>
-            <div class="card rounded-3 py-4">
-              <p>
-                <span>أكتوبر 26, 2024
-                </span>
-                <i class="fa fa-light fa-clock"></i>
-
-              </p>
-              <h5>افضل دكتور عيون لحول الاطفال في مصر
-              </h5>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-            <div class="team-img">
-              <img src="images/drhebametwally/new3.webp" class="img-fluid" alt="">
-            </div>
-            <div class="card rounded-3 py-4">
-              <p>
-                <span>أكتوبر 26, 2024
-                </span>
-                <i class="fa fa-light fa-clock"></i>
-
-              </p>
-              <h5>افضل دكتور عيون لحول الاطفال في مصر
-              </h5>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-            <div class="team-img">
-              <img src="images/drhebametwally/new1.webp" class="img-fluid" alt="">
-            </div>
-            <div class="card rounded-3 py-4">
-              <p>
-                <span>أكتوبر 26, 2024
-                </span>
-                <i class="fa fa-light fa-clock"></i>
-
-              </p>
-              <h5>افضل دكتور عيون لحول الاطفال في مصر
-              </h5>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>
@@ -594,30 +529,18 @@
       </div>
       <div class="container">
         <div class="row">
+
+          @foreach ($locations as $k=>$location)
           <div class="col-md-4 col-sm-6 mb-4 box box-invisible">
             <div class="p-0 card rounded-3">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.635530049941!2d31.1991875!3d30.047312499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145841ffa854bc69%3A0xea78e8f314183cbf!2z2K_Zg9iq2YjYsSDYudmK2YjZhiDYoti32YHYp9mEINiv2YPYqtmI2LHYqSDZh9io2Kkg2YXYqtmI2YTZiSDYudmE2KfYrCDYrdmI2YQg2LnZitmI2YYg2KfZhNij2LfZgdin2YQg2Ygg2KfZhNmD2KjYp9ixINmIINi52YTYp9isINin2YTZhdmK2KfZhyDYp9mE2KjZiti22KfYoSDZiCDYrNix2KfYrdin2Kog2LnZitmI2YYg2KfZhNij2LfZgdin2YTigI7igI4!5e0!3m2!1sen!2seg!4v1675092379871!5m2!1sen!2seg"
+                src="{{ $location->map }}"
                 width="100%" height="100%" style="border: 0px; width: 100%;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade" data-gtm-yt-inspected-14="true"></iframe>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 mb-4 box box-invisible">
-            <div class="p-0 card rounded-3">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3595.4428749485355!2d32.6408376!3d25.689756799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x144915cd6209615d%3A0x5ab7388fdc3658e9!2z2K8vINmH2KjZhyDZhdiq2YjZhNmKINi52YTYp9isINin2YTYrdmI2YQg2Ygg2LnZitmI2YYg2KfZhNij2LfZgdin2YQg2Ygg2KfZhNmF2YrYp9mHINin2YTYqNmK2LbYp9ihINio2KfZhNij2YLYtdix!5e0!3m2!1sen!2seg!4v1675092457321!5m2!1sen!2seg"
-                width="100%" height="100%" style="border: 0px; width: 100%;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade" data-gtm-yt-inspected-14="true"></iframe>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 mb-4 box box-invisible">
-            <div class="p-0 card rounded-3">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.2392149539214!2d31.0011485!3d30.0299943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145841f3b5d79b39%3A0x56e93cc98c1bbcfe!2z2K8vINmH2KjYqSDZhdiq2YjZhNmJINi52YTYp9isINit2YjZhCDYudmK2YjZhiDYp9mE2KPYt9mB2KfZhCDZiCDYp9mE2YPYqNin2LEg2Ygg2LnZhNin2Kwg2KfZhNmF2YrYp9mHINin2YTYqNmK2LbYp9ihINmIINis2LHYp9it2KfYqiDYudmK2YjZhiDYp9mE2KPYt9mB2KfZhOKAjg!5e0!3m2!1sen!2seg!4v1675092412295!5m2!1sen!2seg"
-                width="100%" height="100%" style="border: 0px; width: 100%;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade" data-gtm-yt-inspected-14="true"></iframe>
-            </div>
-          </div>
+          @endforeach
+
         </div>
       </div>
     </section>
