@@ -12,11 +12,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.surgeries') }}
+        {{ __('translation.certificates') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.surgeries') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.certificates') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -84,7 +84,7 @@
          ordering: false,
                processing: true,
                serverSide: true,
-               ajax: '{{ route('admin-partners-datatables') }}',
+               ajax: '{{ route('admin-certificates-datatables') }}',
                columns: [
                         { data: 'photo', name: 'photo' },
                          
@@ -98,8 +98,8 @@
 
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
-          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-partners-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_surgery") }}'+
+          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-certificates-create')}}">'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_photo") }}'+
           '</a>'+
           '</div>');
       });

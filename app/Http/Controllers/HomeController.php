@@ -14,6 +14,8 @@ use App\Models\Contact;
 use App\Models\Category;
 use App\Models\Generalsetting;
 use App\Models\Media;
+use App\Models\AfterBefore;
+use App\Models\Certificate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -57,9 +59,12 @@ class HomeController extends Controller
     $services = Service::get();
     $models = PageModel::get();
     $reviews = Partner::get();
+    $medias = Media::get();
+    $after_befores = AfterBefore::get();
+    $certificates = Certificate::get();
     $blogs = Blog::get()->take(3);
 
-    return view('front.index', compact('sign', 'sliders', 'points','blogs', 'services', 'models', 'reviews'));
+    return view('front.index', compact('sign', 'sliders','certificates','after_befores','medias', 'points','blogs', 'services', 'models', 'reviews'));
   }
 
   public function about(Request $request)

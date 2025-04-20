@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutPointController;
+use App\Http\Controllers\Admin\AfterBeforeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\LocationController;
 /*
 |--------------------------------------------------------------------------
@@ -154,6 +156,32 @@ Route::prefix('admin')->group(function () {
       Route::post('/partners/update/{id}', [PartnerController::class, 'update'])->name('admin-partners-update');
 
       Route::get('/partners/delete/{id}',  [PartnerController::class, 'destroy'])->name('admin-partners-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:certificates'], function () {
+
+
+      Route::get('/certificates/datatables',  [CertificateController::class, 'datatables'])->name('admin-certificates-datatables');
+      Route::get('/certificates',  [CertificateController::class, 'index'])->name('admin-certificates-index');
+      Route::get('/certificates/create',   [CertificateController::class, 'create'])->name('admin-certificates-create');
+      Route::post('/certificates/create',  [CertificateController::class, 'store'])->name('admin-certificates-store');
+      Route::get('/certificates/edit/{id}',  [CertificateController::class, 'edit'])->name('admin-certificates-edit');
+      Route::post('/certificates/update/{id}', [CertificateController::class, 'update'])->name('admin-certificates-update');
+
+      Route::get('/certificates/delete/{id}',  [CertificateController::class, 'destroy'])->name('admin-certificates-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:after_befores'], function () {
+
+
+      Route::get('/after_befores/datatables',  [AfterBeforeController::class, 'datatables'])->name('admin-after_befores-datatables');
+      Route::get('/after_befores',  [AfterBeforeController::class, 'index'])->name('admin-after_befores-index');
+      Route::get('/after_befores/create',   [AfterBeforeController::class, 'create'])->name('admin-after_befores-create');
+      Route::post('/after_befores/create',  [AfterBeforeController::class, 'store'])->name('admin-after_befores-store');
+      Route::get('/after_befores/edit/{id}',  [AfterBeforeController::class, 'edit'])->name('admin-after_befores-edit');
+      Route::post('/after_befores/update/{id}', [AfterBeforeController::class, 'update'])->name('admin-after_befores-update');
+
+      Route::get('/after_befores/delete/{id}',  [AfterBeforeController::class, 'destroy'])->name('admin-after_befores-delete');
     });
 
     Route::group(['middleware' => 'permissions:media'], function () {

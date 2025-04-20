@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AboutPoint extends Model
+class AfterBefore extends Model
 {
     
 
@@ -13,20 +13,23 @@ class AboutPoint extends Model
      *
      * @var array<int, string>
      */
-    protected $table ='about_points';
+    protected $table ='after_before';
     
-     
- 
+     protected $appends = ['photo'];
+
+
+    public function getPhotoAttribute()
+    {
+        return url('/') . '/assets/images/after_befores/' . $this->attributes['photo'];
+    }
     protected $fillable = [
         
-        
+        'photo',
         'title_ar',
         'title_en',
         'title_fr',
        
-        'details_ar',
-        'details_en',
-        'details_fr',
+      
     ];
 
     

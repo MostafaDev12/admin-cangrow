@@ -14,10 +14,17 @@
 
 
 @section('content')
+
+@php
+$phones =  explode(',', $gs->phones);
+$emails =   explode(',', $gs->emails);
+ 
+$randomPhone = Arr::random($phones);
+@endphp
   <main>
     <!-- Banner Section -->
     <section id="home" class="home">
-      <div class="banner-wrapper wrapper home-page-background">
+      <div class="banner-wrapper wrapper home-page-background" style="background-image: url('{{ $sliders->{'photo'}  ?? ''}}');">
         <!-- <div class="container">
           <div class="row align-items-center">
             <div class="col-md-6 order-md-1 text-end">
@@ -44,62 +51,23 @@
       <div class="wrapper home-card">
         <div class="container">
           <div class="row">
-            <div class="col-md-4 col-sm-6 mb-4">
-              <div class="card box-invisible">
-                <div class="icon-box feature">
-                  <i class="fa fa-eye"></i>
-                </div>
-                <h4>رؤيتك تهمنا </h4>
-                <p>
-                  لدينا مجموعة من افضل الاطباء المتخصصين في مجال العيون وعلاج الحول والمياة البيضاء
-                </p>
-                <a href="#" class="main-btn">أعرف أكثر</a>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-6 mb-4">
-              <div class="card box-invisible">
-                <div class="icon-box feature">
-                  <i class="fa fa-stethoscope"></i>
 
-                </div>
-                <h4>
-                  اختبار النظر
-                </h4>
-                <p>
-                  فحص العين لأكتشاف مشكلات العين في مرحلة مبكرة وذلك يساعد في العلاج بشكل افضل مع د/ هبة متولي
-                </p>
-                <a href="#" class="main-btn">أعرف أكثر</a>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-6 mb-4">
-              <div class="card box-invisible">
-                <div class="icon-box feature">
-                  <i class="fa fa-glasses"></i>
-                </div>
-                <h4>
-                  علاج الحول لدي الاطفال
-                </h4>
-                <p>
-                  نتمكن من تشخيص الحول في سن مبكر وعلاجة بعدة طرق حسب حالة كل مريض
-                </p>
-                <a href="#" class="main-btn">
-                  أعرف أكثر
-                </a>
-              </div>
-            </div>
+            @foreach ($points as $point)
             <div class="col-md-4 col-sm-6 mb-4">
               <div class="card box-invisible">
                 <div class="icon-box feature">
                   <i class="fa fa-microscope"></i>
                 </div>
-                <h4> علاج ازدواجية الرؤية
-                </h4>
+                <h4>   {{ $point->{'title_' . $sign}  ?? ''}} </h4>
                 <p>
-                  الرؤية المزدوجة هي مشاهدة صورتين متطابقتين لنفس الشيء في نفس الوقت
+                  {{ $point->{'details_' . $sign}  ?? ''}}
+                
                 </p>
                 <a href="#" class="main-btn">أعرف أكثر</a>
               </div>
             </div>
+            @endforeach
+
           </div>
         </div>
       </div>
@@ -113,7 +81,7 @@
             <div class="col-sm-12 text-center mb-5">
               <div class="title-body">
                 <h3>
-                  العمليات </h3>
+                  {{ __(key: 'العمليات') }}	         </h3>
               </div>
             </div>
           </div>
@@ -127,7 +95,7 @@
                 <p>    {{ $review->{'title_' . $sign} }} 
                 </p>
                 <p>
-                  عمليه
+                  {{ __(key: 'عمليه') }}	        
                 </p>
                 <h6>    {{ $review->{'title_' . $sign} }} 
                 </h6>
@@ -146,27 +114,21 @@
           <div class="col-sm-12 text-center mb-5">
             <div class="title-body">
               <h3>
-                الأستوديو
+                  {{ __(key: 'الأستوديو') }}	     
               </h3>
             </div>
           </div>
         </div>
         <div class="row">
+
+         @foreach($medias as $media)
           <div class="col-md-4 col-sm-6 mb-4 box-invisible">
             <figure>
-              <img src="images/drhebametwally/st1.jpg" class="w-100 h-100" alt="st1">
+              <img src="{{ $media->media }}" class="w-100 h-100" alt="st1">
             </figure>
           </div>
-          <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-            <figure>
-              <img src="images/drhebametwally/st2.jpg" class="w-100 h-100" alt="st1">
-            </figure>
-          </div>
-          <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-            <figure>
-              <img src="images/drhebametwally/st3.jpg" class="w-100 h-100" alt="st1">
-            </figure>
-          </div>
+          @endforeach
+
         </div>
       </div>
     </section>
@@ -184,9 +146,12 @@
                   <i class="fas fa-phone"></i>
                 </div>
                 <div>
-                  <h4>01155611453</h4>
+                  <h4>{{ $randomPhone }}</h4>
+                  @foreach ($emails as $email)
                   <p>
-                    official@drhebametwally.com </p>
+                    <a href="mailto:{{ $email }}">{{ $email }}</a>
+                  </p>
+                  @endforeach
                 </div>
               </div>
             </div>
@@ -196,9 +161,11 @@
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <h4>المهندسين, القاهرة, مصر</h4>
+                  <h4>     {{ __(key: 'المهندسين, القاهرة, مصر') }}	   </h4>
                   <p>
-                    116 ش محيي الدين ابو العز الدور الاول متفرع من جامعة الدول </p>
+                    {{ __(key: '116 ش محيي الدين ابو العز الدور الاول متفرع من جامعة الدول') }}	   
+                  
+                  </p>
                 </div>
               </div>
             </div>
@@ -208,9 +175,9 @@
                   <i class="fas fa-clock"></i>
                 </div>
                 <div>
-                  <h4>السبت - الاربعاء</h4>
+                  <h4>      {{ __(key: 'السبت - الاربعاء') }}	   </h4>
                   <p>
-                    الاقصر زياره كل اسبوعين </p>
+                    {{ __(key: 'الاقصر زياره كل اسبوعين') }}	      </p>
                 </div>
               </div>
             </div>
@@ -224,45 +191,46 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 ">
-            <h2>ساعات العمل </h2>
+            <h2>        {{ __(key: 'ساعات العمل') }}	   </h2>
             <p>
-              المهندسين – من السبت إلى الأربعاء
-              زايد – الأحد والأربعاء
-              الأقصر – زياره كل أسبوعين
+              @foreach ($locations as $k=>$location)
+              {{ $location->{'title_' . $sign} }} –  {{ $location->{'date_' . $sign} }}  <br>    
+              @endforeach
+            </p>
             <div class="about-clinic">
               <div class="card box-invisible">
-                <h4>الأحد</h4>
-                <p>8:00 AM 2:30 – PM
+                <h4> {{ __(key: 'الأحد') }}	     </h4>
+                <p>{{ __(key: '8:00 AM 2:30 – PM') }}	 
                 </p>
               </div>
               <div class="card box-invisible">
-                <h4>الإثنين</h4>
-                <p>8:00 AM 7:00 – PM
+                <h4> {{ __(key: 'الإثنين') }}	     </h4>
+                <p>  {{ __(key: '8:00 AM 7:00 – PM') }}	 
                 </p>
               </div>
               <div class="card box-invisible">
-                <h4>الثلاثاء</h4>
-                <p>8:00 AM 7:00 – PM
+                <h4> {{ __(key: 'الثلاثاء') }}	     </h4>
+                <p>{{ __(key: '8:00 AM 7:00 – PM') }}
                 </p>
               </div>
               <div class="card box-invisible">
-                <h4>الأربعاء</h4>
-                <p>8:00 AM 7:00 – PM
+                <h4> {{ __(key: 'الأربعاء') }}	     </h4>
+                <p>{{ __(key: '8:00 AM 7:00 – PM') }}
                 </p>
               </div>
               <div class="card box-invisible">
-                <h4>الخميس</h4>
-                <p>مغلق
+                <h4> {{ __(key: 'الخميس') }}	     </h4>
+                <p> {{ __(key: 'مغلق') }}	     
                 </p>
               </div>
               <div class="card box-invisible">
-                <h4>الجمعة</h4>
-                <p>مغلق
+                <h4> {{ __(key: 'الجمعة') }}	     </h4>
+                <p> {{ __(key: 'مغلق') }}	     
                 </p>
               </div>
               <div class="card box-invisible">
-                <h4>السبت</h4>
-                <p>8:00 AM 7:00 – PM
+                <h4> {{ __(key: 'السبت') }}	     </h4>
+                <p>{{ __(key: '8:00 AM 7:00 – PM') }}
 
                 </p>
               </div>
@@ -270,7 +238,7 @@
           </div>
           <div class="col-md-6 mb-md-0 mb-5">
             <div class="about-box-image">
-              <img src="images/drhebametwally/Png-doctor.png" alt="" class="about-animate">
+              <img src="{{ asset('front/dr-heba/') }}/images/drhebametwally/Png-doctor.png" alt="" class="about-animate">
             </div>
           </div>
 
@@ -286,79 +254,23 @@
           <div class="col-sm-12 text-center mb-5">
             <div class="title-body">
               <h3>
-                قبل وبعد
+                {{ __(key: 'قبل وبعد') }}	      
               </h3>
             </div>
           </div>
         </div>
         <div class="swiper mySwiper box-invisible">
           <div class="swiper-wrapper">
+@foreach ($after_befores as $after_before)
+  
             <div class="swiper-slide">
               <figure>
-                <img src="./images/drhebametwally/before1.jpg" class="d-block w-100" alt="loading">
+                <img src="{{ $after_before->photo }}" class="d-block w-100" alt="loading">
               </figure>
             </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before2.jpg" class="d-block w-100" alt="loading">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before3.jpg" class="d-block w-100" alt="loading">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before1.jpg" class="d-block w-100" alt="loading">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before1.jpg" class="d-block w-100" alt=".loading">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before1.jpg" class="d-block w-100" alt="loading">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before1.jpg" class="d-block w-100"
-                  alt="./images/drhebametwally/before1.jpg">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before2.jpg" class="d-block w-100"
-                  alt="./images/drhebametwally/before1.jpg">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before3.jpg" class="d-block w-100"
-                  alt="./images/drhebametwally/before1.jpg">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before1.jpg" class="d-block w-100"
-                  alt="./images/drhebametwally/before1.jpg">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before1.jpg" class="d-block w-100"
-                  alt="./images/drhebametwally/before1.jpg">
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure>
-                <img src="./images/drhebametwally/before1.jpg" class="d-block w-100"
-                  alt="./images/drhebametwally/before1.jpg">
-              </figure>
-            </div>
+
+@endforeach
+           
           </div>
           <div class="swiper-pagination"></div>
 
@@ -452,32 +364,21 @@
           <div class="col-sm-12 text-center mb-5">
             <div class="title-body">
               <h3>
-                الشهادات
+                {{ __(key: 'الشهادات') }}	     
               </h3>
             </div>
           </div>
         </div>
         <div class="row">
+
+          @foreach ($certificates as $certificate)
           <div class="col-md-4 col-sm-6 mb-4 box-invisible">
             <figure>
-              <img src="images/drhebametwally/cer-1.webp" class="w-100 h-100" alt="">
+              <img src="{{ $certificate->photo }}" class="w-100 h-100" alt="">
             </figure>
           </div>
-          <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-            <figure>
-              <img src="images/drhebametwally/cer-2.png" class="w-100 h-100" alt="">
-            </figure>
-          </div>
-          <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-            <figure>
-              <img src="images/drhebametwally/cer-3.webp" class="w-100 h-100" alt="">
-            </figure>
-          </div>
-          <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-            <figure>
-              <img src="images/drhebametwally/cer-4.png" class="w-100 h-100" alt="">
-            </figure>
-          </div>
+          @endforeach
+          
         </div>
       </div>
     </section>
@@ -485,7 +386,7 @@
     <section id="last-news" class="team-wrapper wrapper last-news">
       <div class="title-body">
         <h3>
-          أحدث الأخبار
+           	{{ __(key: 'أحدث الأخبار') }}	
         </h3>
 
       </div>
@@ -524,7 +425,7 @@
     <section id="locations" class="team-wrapper wrapper locations">
       <div class="title-body">
         <h3>
-          موقعنا </h3>
+        	{{ __(key: 'موقعنا') }}	    </h3>
 
       </div>
       <div class="container">

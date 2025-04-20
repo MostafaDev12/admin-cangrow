@@ -85,7 +85,7 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-partners-index') }}"
                             aria-controls="sidebarpartners">
-                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.reviews')</span>
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.surgeries')</span>
                         </a>
                     </li>
                 @endif
@@ -93,7 +93,7 @@
                 @if (Auth::guard('admin')->user()->sectionCheck('media'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-media-index') }}" aria-controls="sidebarmedia">
-                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.media')</span>
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.gallery')</span>
                         </a>
                     </li>
                 @endif
@@ -102,6 +102,22 @@
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-locations-index') }}" aria-controls="sidebarlocations">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.locations')</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('after_befores'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-after_befores-index') }}" aria-controls="sidebarafter_befores">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.after_befores')</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-certificates-index') }}" aria-controls="sidebarcertificates">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.certificates')</span>
                         </a>
                     </li>
                 @endif

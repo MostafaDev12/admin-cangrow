@@ -53,7 +53,9 @@
                     </div>
                     
                     <div class="row mb-4 box-invisible">
-                        <h4>ما هي تخصصات مركز دكتوره هبه متولي؟
+                        <h4>      
+
+                            {{ __(key: 'ما هي تخصصات مركز دكتوره هبه متولي؟') }}	
                         </h4>
                     </div>
                     <div class="row mb-4 box-invisible">
