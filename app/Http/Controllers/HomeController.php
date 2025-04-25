@@ -62,7 +62,7 @@ class HomeController extends Controller
     $medias = Media::get();
     $after_befores = AfterBefore::get();
     $certificates = Certificate::get();
-    $blogs = Blog::get()->take(3);
+    $blogs = Blog::orderby('id','desc')->get()->take(3);
 
     return view('front.index', compact('sign', 'sliders','certificates','after_befores','medias', 'points','blogs', 'services', 'models', 'reviews'));
   }
