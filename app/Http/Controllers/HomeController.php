@@ -450,9 +450,23 @@ class HomeController extends Controller
   public function import_xml()
   {
  
-    $xmlPath = public_path('build/WordPress.2025-02-04.xml'); // Adjust the path as needed
+    $xmlPath = public_path('build/WordPress.2025-04-24.xml'); // Adjust the path as needed
 
-    $xml = simplexml_load_file($xmlPath, 'SimpleXMLElement', LIBXML_NOCDATA);
+    $content = file_get_contents($xmlPath);
+
+    // إزالة الأحرف غير المسموح بها في XML (زي null characters)
+    $cleanContent = preg_replace('/[^\x09\x0A\x0D\x20-\xFF]/', '', $content);
+
+  //  $xml = simplexml_load_file($cleanContent, 'SimpleXMLElement', LIBXML_NOCDATA);
+
+         
+  $xml = simplexml_load_string($cleanContent, 'SimpleXMLElement', LIBXML_NOCDATA);
+
+  if ($xml === false) {
+      foreach (libxml_get_errors() as $error) {
+          echo "Error: ", $error->message;
+      }
+  }
     $namespaces = $xml->getNamespaces(true);
     $data = [] ;
     foreach ($xml->channel->item as $item) {
@@ -473,10 +487,13 @@ class HomeController extends Controller
 
 
        $wordCount = count(preg_split('/\s+/u', trim($plainTextContent), -1, PREG_SPLIT_NO_EMPTY));
-
+     
+       // 1st step
       //  if ($wordCount < 50) {
       //      continue; // Skip this item if it has less than 50 words
       //  }
+
+
     // Extract first 100 words while maintaining sentence structure
     $wordsArray = preg_split('/\s+/', trim($plainTextContent)); // Split into words
     $shortContent = implode(' ', array_slice($wordsArray, 0, 50));
@@ -500,22 +517,26 @@ class HomeController extends Controller
                    $imageName = null; // Set to null if download fails
                }
            }
-       }else{
+       }
+
+        // 2nd step
+      else{
 
         continue;
 
        }
-       
-      //  if(empty($imageName)){
+ 
+       if(empty($imageName)){
 
-      //    continue;
+         continue;
 
-      //  }
+       }
 
       // Insert into the database
    
+    // 2nd step
 
-      $blog = Blog::where('title_ar', 'LIKE', "%$title%")->first();
+      $blog = Blog::where('title_ar', $title)->first();
 
     if($blog){
 
@@ -532,6 +553,9 @@ class HomeController extends Controller
       $blog->update() ;
 
     }
+
+  // 1st step
+
     //   DB::table('blogs')->insert([
     //     'title_ar' => $title,
     //     'title_en' => $title,
