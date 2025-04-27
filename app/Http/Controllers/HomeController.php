@@ -58,13 +58,15 @@ class HomeController extends Controller
     $points = AboutPoint::get();
     $services = Service::get();
     $models = PageModel::get();
+    $conects = ModelCategory::get();
     $reviews = Partner::get();
     $medias = Media::get();
     $after_befores = AfterBefore::get();
     $certificates = Certificate::get();
+ 
     $blogs = Blog::orderby('id','desc')->get()->take(3);
 
-    return view('front.index', compact('sign', 'sliders','certificates','after_befores','medias', 'points','blogs', 'services', 'models', 'reviews'));
+    return view('front.index', compact('sign', 'sliders','conects','certificates','after_befores','medias', 'points','blogs', 'services', 'models', 'reviews'));
   }
 
   public function about(Request $request)

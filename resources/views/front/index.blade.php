@@ -1,86 +1,52 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+      
+@extends('layouts.front')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زود دخلك مع أوبر في مصر | Uber</title>
-    <meta name="description"
-        content="مكتب خدم الرحاب 01104891929 خدم وشغالات لجميع انواع العمالة المنزلية على مستوى عالي من النظافة والخبرة والأمانة والتدريب ونتميز بخبرة 19 عام فى مجال توريد العمالة المصرية والاجنبية من جميع الجنسيات">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-</head>
+@section('title')
+   
+        {{ $gs->{'title_' . $sign} }}
+     
+@stop
 
-<body class="min-h-screen bg-white w-full">
-    <!-- <Header/> -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container px-4 mx-auto">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="./src/imgs/uber.png" alt="logo" class="w-20 h-20">
-                </div>
+@section('gsearch')
+    <meta property="og:image" content=" {{ $gs->{'logo_' . $sign} }}" />
+@stop
 
-                <!-- Mobile menu button (hidden on desktop) -->
-                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
-                    <i class="fa-solid fa-bars scale-150 text-gray-900"></i>
-                </button>
 
-                <!-- Desktop Navigation (hidden on mobile) -->
-                <nav class="hidden md:flex items-center gap-6">
-                    <a href="#" class="text-gray-900 hover:text-blue-600 transition duration-200">الرئيسية</a>
-                    <a href="#" class="text-gray-900 hover:text-blue-600 transition duration-200">عن أوبر</a>
-                    <a href="#" class="text-gray-900 hover:text-blue-600 transition duration-200">المقالات</a>
-                    <a href="#" class="text-gray-900 hover:text-blue-600 transition duration-200">تواصل معنا</a>
-                </nav>
-            </div>
+@section('content')
 
-            <!-- Mobile Menu (hidden by default) -->
-            <div class="md:hidden hidden pb-4" id="mobile-menu">
-                <div class="flex flex-col space-y-3">
-                    <a href="#"
-                        class="block text-gray-900 hover:text-blue-600 transition duration-200 py-2">الرئيسية</a>
-                    <a href="#" class="block text-gray-900 hover:text-blue-600 transition duration-200 py-2">عن أوبر</a>
-                    <a href="#"
-                        class="block text-gray-900 hover:text-blue-600 transition duration-200 py-2">المقالات</a>
-                    <a href="#" class="block text-gray-900 hover:text-blue-600 transition duration-200 py-2">تواصل
-                        معنا</a>
-                </div>
-            </div>
-        </div>
-    </header>
+@php
+$phones =  explode(',', $gs->phones);
+$emails =   explode(',', $gs->emails);
+ 
+$randomPhone = Arr::random($phones);
+@endphp
     <section class="pt-32 pb-20 px-6 md:px-12 bg-black text-white">
         <div class="container mx-auto flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-12 md:mb-0">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                    تتوفر فرص تحقيق الدخل في أي مكان
+                    {{ $sliders->{'title_' . $sign}  ?? ''}}
+                
                 </h1>
                 <p class="text-xl mb-8 text-gray-300">
-                    حقِّق أقصى استفادة من الوقت الذي تقضيه في القيادة من خلال تقديم الرحلات عبر التطبيق الذي يضم أكبر
-                    عدد من الركاب الذين يطلبون الرحلات باستمرار.
 
+                    {!! $sliders->{'details_' . $sign}  ?? '' !!}
+                
                 </p>
-                <button class="bg-white text-black px-6 py-3 rounded-lg text-lg font-semibold">
-                    سجل للقيادة
+                <button class="bg-white text-black px-6 py-3 rounded-lg text-lg font-semibold"  onclick="window.location.href='{{ route('contact.index') }}'">
+                    {{ __('سجل للقيادة') }}   
                 </button>
 
                 <p class="mt-6 text-sm text-gray-400">
-                    تعرف أكثر عن القيادة والتوصيل
+                    {{ __('تعرف أكثر عن القيادة والتوصيل') }}
                 </p>
             </div>
             <div class="md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                <img src="{{ $sliders->{'photo'}  ?? 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'}}"
                     alt="سائق مع سيارة" class="rounded-lg shadow-2xl" />
             </div>
         </div>
     </section>
+
     <!-- <section class="bg-white">
         <div class="container my-10 mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
@@ -104,42 +70,23 @@
     <section id="benefits" class="py-20 px-6 md:px-12 bg-white">
         <div class="container mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
-                حقِّق الدخل في الوقت الذي يناسبك
+                {{ __('حقِّق الدخل في الوقت الذي يناسبك') }}
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+                @foreach ($points as $point)
                 <div class="flex flex-col items-center text-center">
                     <div class="bg-gray-100 p-6 rounded-full mb-6">
                         <i class="fa-solid fa-calendar-days text-3xl text-black"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">حدّد مواعيد عملك بنفسك </h3>
+                    <h3 class="text-xl font-semibold mb-3"> {{ $point->{'title_' . $sign}  ?? ''}}        </h3>
                     <p class="text-gray-600">
-                        أنت مدير نفسك. يمكنك القيادة باستخدام تطبيق أوبر في أي وقت، ليلاً أو نهاراً. حدّد مواعيد القيادة
-                        بما يتناسب مع نمط حياتك وليس العكس.
+                        {{ $point->{'details_' . $sign}  ?? ''}}
                     </p>
                 </div>
-
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-gray-100 p-6 rounded-full mb-6">
-                        <i class="fa-solid fa-money-bill-trend-up text-3xl text-black"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">حقِّق الدخل وفقاً لشروطك الخاصة </h3>
-                    <p class="text-gray-600">
-                        كلما زاد مُعدَّل القيادة، زاد مقدار دخلك. يمكنك تحقيق المزيد من الدخل حين يكون مُعدَّل الطلب
-                        أعلى من المعتاد.
-                    </p>
-                </div>
-
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-gray-100 p-6 rounded-full mb-6">
-                        <i class="fa-solid fa-user-tie text-3xl text-black"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">دع تطبيق أوبر يتولَّى كل شيء </h3>
-                    <p class="text-gray-600">
-                        كل ما عليك هو الضغط ثم الانطلاق. ستحصل على اتجاهات متتابعة للطرق، والاقتراحات التي تساعدك على
-                        تحقيق المزيد من الدخل، وكذلك خدمات الدعم على مدار الساعة وطوال أيام الأسبوع.
-                    </p>
-                </div>
+                @endforeach
+ 
             </div>
         </div>
     </section>
@@ -151,41 +98,22 @@
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="flex flex-col items-center text-center">
+
+                @foreach ($models as $model)
+                    <div class="flex flex-col items-center text-center">
                     <div class="bg-white p-6 rounded-full mb-6">
                         <i class="fa-solid fa-star text-3xl text-black"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">سجِّل عبر الإنترنت </h3>
+                    <h3 class="text-xl font-semibold mb-3"> {{ $model->{'title_' . $sign}  ?? ''}}     </h3>
                     <p class="text-gray-600">
-                        كل ما عليك هو إبلاغنا بالمدينة التي ترغب في القيادة فيها ونوع الرخصة التي تملكها. وسنرسل إليك
-                        رسالة إلكترونية بالخطوات التالية.
-
+                        {{ $model->{'details_' . $sign}  ?? ''}}
                     </p>
                 </div>
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-white p-6 rounded-full mb-6">
-                        <i class="fa-solid fa-calendar-days text-3xl text-black"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">تحقّق من متطلبات القيادة
-                    </h3>
-                    <p class="text-gray-600">
-                        جميع الأشخاص مؤهلون للقيادة مع أوبر. إليك ما تحتاج إلى معرفته إذا كنت تقود في القاهرة، أو
-                        الإسكندرية، أو المنصورة، أو الزقازيق، أو طنطا، أو دمنهور، أو الغردقة.
 
-                    </p>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-white p-6 rounded-full mb-6">
-                        <i class="fa-regular fa-square-check text-3xl text-black"></i>
 
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">الحصول على سيارة
-                    </h3>
-                    <p class="text-gray-600">
-                        يمكنك التسجيل الآن حتى إن لم تمتلك سيارة تستوفي متطلبات السيارات في مصر في الوقت الحالي.
-
-                    </p>
-                </div>
+                @endforeach
+                
+              
 
             </div>
         </div>
@@ -199,42 +127,19 @@
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                @foreach ($conects as $conect)
                 <div class="flex flex-col items-center text-center">
                     <div class="bg-gray-100 p-6 rounded-full mb-6">
                         <i class="fa-solid fa-headphones text-3xl text-black"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">مساعدة مع كل رحلة
+                    <h3 class="text-xl font-semibold mb-3">   {{ $conect->{'title_' . $sign}  ?? ''}}    
                     </h3>
                     <p class="text-gray-600">
-                        عايزين كل رحلة مع أوبر تكون رحلة ممتعة و سهلة. و من خلال التطبيق هنقدر نوفرلك المساعدة .
+                        {{ $conect->{'details_' . $sign}  ?? ''}}
                     </p>
                 </div>
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-gray-100 p-6 rounded-full mb-6">
-                        <i class="fa-solid fa-comments text-3xl text-black"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3"> تواصل معنا
-
-                    </h3>
-                    <p class="text-gray-600">
-                        لو عندك أي اي اسئلة او محتاج مساعدة ممكن تزورنا في مركز دعم الشريك في القاهرة و الاسكندرية
-
-                    </p>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-white p-6 rounded-full mb-6">
-                        <i class="fa-solid fa-user-shield  text-3xl text-black"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3"> قيادة آمنه
-
-                    </h3>
-                    <p class="text-gray-600">
-                        يتميز التطبيق بخصائص هتساعدك انك تكون تسوق في أمان. ولو احتجت مساعدة، اوبر بتقدملك دعم ٢٤ ساعة
-
-
-                    </p>
-                </div>
-
+             
+                @endforeach
             </div>
         </div>
     </section>
@@ -520,60 +425,7 @@
         </p>
     </section>
     <!-- Sign Up CTA -->
-    <footer class="py-24 mt-10 px-6 md:px-12 bg-black text-white">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-8">
-                جاهز لكسب المال بالقيادة؟
-            </h2>
-            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-                سجّل للقيادة مع أوبر وابدأ في كسب المال. كن مديرًا لنفسك، وحدد جدولك الخاص، واستخدم سيارتك الخاصة.
-            </p>
-            <button class="bg-white text-black px-6 py-3 rounded-lg text-lg font-semibold">
-                سجل للقيادة
-            </button>
+   
 
-            <div class="flex flex-col md:flex-row gap-4 md:gap-0 mt-16 justify-center items-center space-y-6 md:space-y-0
-          md:space-x-12">
-                <div class="flex items-center gap-2">
-                    <div class="bg-gray-800 p-3 rounded-full">
-                        <i class="fas fa-home text-white"></i>
-                    </div>
-                    <span class="text-gray-300">الرئيسية</span>
-                </div>
-
-                <div class="flex items-center gap-2">
-                    <div class="bg-gray-800 p-3 rounded-full">
-                        <i class="fa-solid fa-users text-white"></i>
-                    </div>
-                    <span class="text-gray-300">عنا</span>
-                </div>
-
-                <div class="flex items-center gap-2">
-                    <div class="bg-gray-800 p-3 rounded-full">
-                        <i class="fa-solid fa-comments text-white"></i>
-                    </div>
-                    <span class="text-gray-300">تواصل معنا</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <div class="bg-gray-800 p-3 rounded-full">
-                        <i class="fa-solid fa-blog text-white"></i>
-                    </div>
-                    <span class="text-gray-300">المقالات</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Initialize any scripts here
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize Lucide icons
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        });
-    </script>
-    <script src="./src/scripts.js"></script>
-</body>
-
-</html>
+    
+  @stop
