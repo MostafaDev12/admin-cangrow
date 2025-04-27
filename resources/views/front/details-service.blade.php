@@ -12,12 +12,12 @@
 
 
 @section('content')
-
+{{-- box-invisible --}}
     <main>
         <section class="my-5">
             <div class="about">
                 <div class="container">
-                    <div class="row mb-4 box-invisible">
+                    <div class="row mb-4 ">
                         <div class="col-12 col-md-6">
                             <h2>
                                 {{ $service->{'title_' . $sign} }} 
