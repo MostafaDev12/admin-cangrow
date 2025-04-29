@@ -490,16 +490,10 @@
           </ul>
         </div>
       </div>
-      <div class="row justify-content-between">
+ <div class="row justify-content-between">
+        
         <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-          <p class="p-0">Copyright
-            <a href="https://cangrowonline.com"
-              target="_blank">@CanGrow
-              .</a> All Rights Reserved
-          </p>
-        </div>
-        <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-          <ul id="" class="d-flex flex-column about list-footer">
+          <ul id="" class="d-flex flex-row about list-footer">
             <li class="list-unstyled">
               <a class=" p-0 m-0" href="{{ route('services.index') }}" target="_blank">
                 {{ __('الخدمات') }}
@@ -520,7 +514,15 @@
           </ul>
         </div>
       </div>
-    </div>
+     <div class="row justify-content-center pb-4 align-items-center text-white">
+      <div class="col-auto d-flex align-items-center gap-2 flex-wrap">
+        <span>&copy; <script>document.write(new Date().getFullYear())</script></span>
+        <a href="https://cangrowonline.com" target="_blank" class="text-white text-decoration-underline">
+          @CangrowOnline
+        </a>
+        <span>Developed by ❤ CanGrow Online Digital Marketing Agency</span>
+      </div>
+    </div>    </div>
     </div>
   </footer>
   <!-- Footer Section exit -->

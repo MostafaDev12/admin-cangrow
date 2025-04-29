@@ -19,9 +19,9 @@
                 <div class="container">
                     <div class="row mb-4 ">
                         <div class="col-12 col-md-6">
-                            <h2>
+                            <h1 style="color: #ae9461;">
                                 {{ $service->{'title_' . $sign} }} 
-                            </h2>
+                            </h1>
                             <p>
                                 {!! $service->{'details_' . $sign} !!}
                             </p>
