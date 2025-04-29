@@ -233,16 +233,16 @@
                     <ul class="dropdown-menu text-end dropdown-home-items">
 
 
-                        @foreach ($services as $service)
-                        <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
+                        @foreach ($blogcategories as $category)
+                        <li><a class="dropdown-item" href="{{ route('blogs-category.index',['slug' => $category->{'slug_' . $sign} ]) }}">{{ $category->{'title_' . $sign} }}  </a></li>
                         @endforeach
                      
 
                     </ul>
                   </li>
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                     <a style="color: #121212  !important;" class="nav-link" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
-                  </li>
+                  </li> --}}
                   <li class="nav-item">
                     <a style="color: #121212  !important;" class="nav-link" href="{{ route('about.index') }}">{{ __('عن الدكتورة') }} </a>
                   </li>
