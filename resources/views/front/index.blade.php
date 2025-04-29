@@ -80,8 +80,11 @@ $randomPhone = Arr::random($phones);
           <div class="row">
             <div class="col-sm-12 text-center mb-5">
               <div class="title-body">
-                <h3>
-                  {{ __(key: 'العمليات') }}	         </h3>
+                <h1>
+                  {{ __(key: 'العمليات')
+                  
+                  }}	
+                  </h1>
               </div>
             </div>
           </div>
@@ -113,9 +116,9 @@ $randomPhone = Arr::random($phones);
         <div class="row">
           <div class="col-sm-12 text-center mb-5">
             <div class="title-body">
-              <h3>
+              <h1 style="color: #ae9461;">
                   {{ __(key: 'الأستوديو') }}	     
-              </h3>
+              </h1>
             </div>
           </div>
         </div>
@@ -253,9 +256,9 @@ $randomPhone = Arr::random($phones);
         <div class="row">
           <div class="col-sm-12 text-center mb-5">
             <div class="title-body">
-              <h3>
+              <h1 style="color: #ae9461;">
                 {{ __(key: 'قبل وبعد') }}	      
-              </h3>
+              </h1>
             </div>
           </div>
         </div>
@@ -363,9 +366,9 @@ $randomPhone = Arr::random($phones);
         <div class="row">
           <div class="col-sm-12 text-center mb-5">
             <div class="title-body">
-              <h3>
+              <h1 style="color: #121212  !important;">
                 {{ __(key: 'الشهادات') }}	     
-              </h3>
+              </h1>
             </div>
           </div>
         </div>
@@ -385,9 +388,9 @@ $randomPhone = Arr::random($phones);
     <!-- last news -->
     <section id="last-news" class="team-wrapper wrapper last-news">
       <div class="title-body">
-        <h3>
+        <h1 style="color: #121212  !important;text-align: center;">
            	{{ __(key: 'أحدث الأخبار') }}	
-        </h3>
+        </h1>
 
       </div>
       <div class="container">
@@ -424,8 +427,9 @@ $randomPhone = Arr::random($phones);
     <!-- locations -->
     <section id="locations" class="team-wrapper wrapper locations">
       <div class="title-body">
-        <h3>
-        	{{ __(key: 'موقعنا') }}	    </h3>
+        <h1 style="color: #121212  !important;text-align: center;">
+        	{{ __(key: 'موقعنا') }}	  
+        	<h1>
 
       </div>
       <div class="container">

@@ -325,7 +325,7 @@ p {
 
 .divider {
     margin: 0;
-    border-top: 1px solid #ddd;
+    /* border-top: 1px solid #ddd;*/
 }
 
 .navbar-brand img {

@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-4 box-invisible">
+                    <div class="row mb-4">
                         <div class="col-12 col-md-6">
                             <h4>
                                 {{ $ps->{'portfolio_title_' . $sign}  ?? ''}}

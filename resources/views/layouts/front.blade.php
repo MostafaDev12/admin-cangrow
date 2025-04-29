@@ -208,10 +208,10 @@
               <div class="d-flex justify-content-between w-100">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('front.index', $sign) }}">  {{ __('مركز علاج الحول والمياه البيضاء') }}</a>
+                    <a style="color: #121212  !important;" class="nav-link active" href="{{ route('front.index', $sign) }}">  {{ __('مركز علاج الحول والمياه البيضاء') }}</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" role="" data-bs-toggle=""
+                    <a style="color: #121212  !important;" class="nav-link dropdown-toggle" href="{{ route('services.index') }}" role="" data-bs-toggle=""
                       aria-expanded="false">
                       {{ __('الخدمات') }}
                     </a>
@@ -225,17 +225,32 @@
 
                     </ul>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
+                   <li class="nav-item dropdown">
+                    <a style="color: #121212  !important;" class="nav-link dropdown-toggle" href="{{ route('blogs.index') }}" role="" data-bs-toggle=""
+                      aria-expanded="false">
+                      {{ __('المقالات') }}
+                    </a>
+                    <ul class="dropdown-menu text-end dropdown-home-items">
+
+
+                        @foreach ($services as $service)
+                        <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
+                        @endforeach
+                     
+
+                    </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about.index') }}">{{ __('عن الدكتورة') }} </a>
+                    <a style="color: #121212  !important;" class="nav-link" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.index') }}"> {{ __('اتصل بنا') }}  </a>
+                    <a style="color: #121212  !important;" class="nav-link" href="{{ route('about.index') }}">{{ __('عن الدكتورة') }} </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.index') }}#contact-section">{{ $randomPhone }}</a>
+                    <a  style="color: #121212  !important;"class="nav-link" href="{{ route('contact.index') }}"> {{ __('اتصل بنا') }}  </a>
+                  </li>
+                  <li class="nav-item">
+                    <a style="color: #121212  !important;" class="nav-link" href="{{ route('contact.index') }}#contact-section">{{ $randomPhone }}</a>
                   </li>
                 </ul>
                 <!-- Search Container -->

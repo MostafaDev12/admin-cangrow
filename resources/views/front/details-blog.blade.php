@@ -10,7 +10,14 @@
     <meta property="og:image" content=" {{ $gs->{'logo_' . $sign} }}" />
 @stop
 
-
+    <style>
+          h1,a{
+            color: #ae9461 !important;
+        }
+        img{
+            width: 100% !important;
+        }
+    </style>
 @section('content')
 @php
 $phones =  explode(',', $gs->phones);
@@ -23,9 +30,9 @@ $randomPhone = Arr::random($phones);
                 <div class="container">
                     <div class="row mb-4  ">
                         <div class="col-12 col-md-6">
-                            <h2>
+                            <h1 style="color: #ae9461;">
                                 {{ $blog->{'title_' . $sign} }} 
-                            </h2>
+                            </h1>
                             <p>
                                 {!! $blog->{'details_' . $sign} !!}  
                             </p>
