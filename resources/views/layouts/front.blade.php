@@ -19,7 +19,7 @@
 <meta property="og:url" content="{{ url('/') }}">
 <meta property="og:type" content="website">
 
-
+<meta name="google-site-verification" content="25cBwjBBrSuhTz84wDRtN12h3RqXmc5xvB1FTnosxd8" />
 
     @if (isset($page->meta_tag) && isset($page->meta_description))
         <meta name="keywords" content="{{ $page->meta_tag }}">

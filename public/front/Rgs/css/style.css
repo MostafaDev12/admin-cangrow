@@ -67,7 +67,7 @@ body {
     color: white;
     position: absolute;
     top: 45%;
-    left: 43%;
+    left: 35%;
 }
 .swiper-button-next:after{
     font-size: 18px;
@@ -149,6 +149,12 @@ body {
     height: 100%;
 } .card-text {
     color: gray;
+}
+.service .card img {
+    height:250px;
+}
+.blog .card img {
+    height:250px;
 }
 .form-maintenance {
     padding: 20px;
