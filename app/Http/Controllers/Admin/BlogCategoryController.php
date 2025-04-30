@@ -29,11 +29,11 @@ class BlogCategoryController extends Controller
                             })
                             ->addColumn('action', function(BlogCategory $data) {
                                 return '<div class="action-list">
-                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-categories-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
+                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-blog_categories-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
                              
                                 
                               
-                              <a href="javascript:;" data-href="' . route('admin-categories-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
+                              <a href="javascript:;" data-href="' . route('admin-blog_categories-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
                             ->rawColumns(['photo','action'])
@@ -141,7 +141,7 @@ class BlogCategoryController extends Controller
         //--- Logic Section Ends
 
         //--- Redirect Section
-        $msg = 'Data Updated Successfully.<a href="'.route('admin-categories-index').'">View categories Lists.</a>';
+        $msg = 'Data Updated Successfully.<a href="'.route('admin-blog_categories-index').'">View categories Lists.</a>';
         return response()->json($msg);
         //--- Redirect Section Ends    
 
