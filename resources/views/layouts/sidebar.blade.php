@@ -81,16 +81,16 @@
                     
                 @endif
 
-                @if (Auth::guard('admin')->user()->sectionCheck('partners'))
+                {{-- @if (Auth::guard('admin')->user()->sectionCheck('partners'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-partners-index') }}"
                             aria-controls="sidebarpartners">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.surgeries')</span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
-                @if (Auth::guard('admin')->user()->sectionCheck('media'))
+                {{-- @if (Auth::guard('admin')->user()->sectionCheck('media'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-media-index') }}" aria-controls="sidebarmedia">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.gallery')</span>
@@ -104,23 +104,23 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.locations')</span>
                         </a>
                     </li>
-                @endif
-
+                @endif --}}
+{{-- 
                 @if (Auth::guard('admin')->user()->sectionCheck('after_befores'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-after_befores-index') }}" aria-controls="sidebarafter_befores">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.after_befores')</span>
                         </a>
                     </li>
-                @endif
-
+                @endif --}}
+{{-- 
                 @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-certificates-index') }}" aria-controls="sidebarcertificates">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.certificates')</span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
                 {{--       @if (Auth::guard('admin')->user()->sectionCheck('services'))
          
@@ -131,8 +131,18 @@
                         </a>
                     </li>
                     @endif
- --}}
-                @if (Auth::guard('admin')->user()->sectionCheck('services') ||
+ --}} 
+ 
+                    @if (Auth::guard('admin')->user()->sectionCheck('faqs'))
+         
+                     <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-faqs-index') }}"
+                            aria-controls="sidebarfaqs">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.faqs')</span>
+                        </a>
+                    </li>
+                    @endif
+                {{-- @if (Auth::guard('admin')->user()->sectionCheck('services') ||
                         Auth::guard('admin')->user()->sectionCheck('categories') ||
                         Auth::guard('admin')->user()->sectionCheck('subcategories'))
                     <li class="nav-item">
@@ -171,7 +181,7 @@
                         </div>
                     </li>
 
-                @endif
+                @endif --}}
                 @if (Auth::guard('admin')->user()->sectionCheck('models'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#models" data-bs-toggle="collapse" role="button"
@@ -185,14 +195,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models_category-index') }}"
                                         aria-controls="sidebarmodels_category">
-                                        <span>@lang('translation.models_category')</span>
+                                        <span>@lang('translation.models2')</span>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models-index') }}"
                                         aria-controls="sidebarmodels">
-                                        <span>@lang('translation.models')</span>
+                                        <span>@lang('translation.models3')</span>
                                     </a>
                                 </li>
 

@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Faq;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -63,10 +64,11 @@ class HomeController extends Controller
     $medias = Media::get();
     $after_befores = AfterBefore::get();
     $certificates = Certificate::get();
+    $faqs = Faq::get();
  
     $blogs = Blog::orderby('id','desc')->get()->take(3);
 
-    return view('front.index', compact('sign', 'sliders','conects','certificates','after_befores','medias', 'points','blogs', 'services', 'models', 'reviews'));
+    return view('front.index', compact('sign', 'sliders','faqs','conects','certificates','after_befores','medias', 'points','blogs', 'services', 'models', 'reviews'));
   }
 
   public function about(Request $request)
