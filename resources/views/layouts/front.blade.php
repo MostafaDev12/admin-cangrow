@@ -15,15 +15,15 @@
 
 
 
-<meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-<meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
-<meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
-<meta property="og:url" content="{{ url('/') }}">
-<meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
+    <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
+    <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:type" content="website">
 
 
 
-  @if (isset($page->meta_tag) && isset($page->meta_description))
+    @if (isset($page->meta_tag) && isset($page->meta_description))
         <meta name="keywords" content="{{ $page->meta_tag }}">
         <meta name="description" content="{{ $page->meta_description }}">
         <title>@yield('title') -
@@ -37,7 +37,7 @@
         <meta property="og:description" content="{{ $blog->meta_description }}">
     @else
         <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
-        
+
         <title>
             @yield('title')
         </title>
@@ -75,7 +75,7 @@
   }
 </script>
 
- 
+
     @yield('gsearch')
     <!-- Google Font -->
 
@@ -83,495 +83,262 @@
     <link rel="icon" type="image/x-icon" href="{{ $gs->favicon }}" />
     <!-- bootstrap -->
 
- 
-    
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- Bootstrap5 CDN Link -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <!-- Font Awesome Link -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-  <!-- Custom CSS Files Link -->
-  <link rel="stylesheet" href="{{ asset('front/dr-heba/') }}/css/style.css">
-  <link rel="stylesheet" href="{{ asset('front/dr-heba/') }}/css/reponsive.css">
-  <link rel="stylesheet" href="{{ asset('front/dr-heba/') }}/css/motion.css">
 
     <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/footer.css">
+    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/input.css">
+    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/service.css">
+
 
     @yield('css')
 
 
 </head>
 
-  @php
-  $phones =  explode(',', $gs->phones);
-  $emails =   explode(',', $gs->emails);
-  $addresses =  json_decode($gs->{'addresses_' . $sign});
+@php
+    $phones = explode(',', $gs->phones);
+    $emails = explode(',', $gs->emails);
+    $addresses = json_decode($gs->{'addresses_' . $sign});
 
-  $randomPhone = Arr::random($phones);
-  @endphp
- 
+    $randomPhone = Arr::random($phones);
+@endphp
 
- <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100" class="loading">
-    <!-- Navbar Section -->
-    <header>
-      <nav class="header-desktop">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container">
-            <!-- Brand Logo -->
-            <a class="navbar-brand" href="{{ route('front.index', $sign) }}">
-              <img src="{{ $gs->{'logo_' . $sign} }}" alt="Logo">
-            </a>
-            <!-- Navbar Content -->
-            <div class="collapse navbar-collapse">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('contact.index') }}#appointments">
-                    <i class="fas fa-clock"></i>
-                    <span>{{ __('السبت - الأربعاء') }}</span>
-                    <small>{{ __('الاقصر كل اسبوعين') }}</small>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('contact.index') }}#locations">
-                    <i class="fas fa-map-marker-alt"></i>
-                    @foreach ($locations as $k=>$location)
-                    <span>
-                      {{ $location->{'title_' . $sign} }}
-                    </span>
-                    @if (!$loop->last)
-                    <span>-</span>
-                   @endif
-                    @endforeach
-                 
-                   
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="tel:+2{{ $randomPhone }}">
-                    <i class="fas fa-phone"></i>
-                    <span>+{{ $randomPhone }}</span>
-                  </a>
-                </li>
-            @if(App\Models\Socialsetting::find(1)->f_status == 1)   
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank">
-                    <i class="fab fa-facebook"></i>
-                  </a>
-                </li>
-               @endif
 
-               @if(App\Models\Socialsetting::find(1)->d_status == 1)  
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </li>
-                @endif
-                @if(App\Models\Socialsetting::find(1)->ystatus == 1) 
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                  </a>
-                </li>
-                @endif
-                @if(App\Models\Socialsetting::find(1)->t_status == 1)   
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->twitter }}"
-                    target="_blank">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                </li>
-                @endif
-              </ul>
+<body class="font-cairo" dir="rtl" lang="ar">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav id="mainNav" class="container mx-auto px-4 flex items-center justify-between">
+            <div class="text-xl font-bold">
+                <a href="{{ route('front.index') }}" class="inline-block">
+                    <img src="{{ $gs->{'logo_' . $sign} }}" class="w-20 h-20" alt="Company Logo">
+                </a>
             </div>
-          </div>
-        </nav>
-      </nav>
-  
-      <!-- Divider -->
-      <hr class="divider">
-  
-      <!-- Second Header (Visible on Desktop/Tablet) -->
-      <nav class="header-desktop nav-scroll d-none d-lg-block">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container">
-            <a class="navbar-brand logo-scroll" href="{{ route('front.index', $sign) }}" style="display:none;">
-              <img src="{{ $gs->{'logo_' . $sign} }}" alt="Logo">
-            </a>
-  
-            <!-- Navbar Content -->
-            <div class="collapse navbar-collapse">
-              <div class="d-flex justify-content-between w-100">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a style="color: #121212  !important;" class="nav-link active" href="{{ route('front.index', $sign) }}">  {{ __('مركز علاج الحول والمياه البيضاء') }}</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a style="color: #121212  !important;" class="nav-link dropdown-toggle" href="{{ route('services.index') }}" role="" data-bs-toggle=""
-                      aria-expanded="false">
-                      {{ __('الخدمات') }}
-                    </a>
-                    <ul class="dropdown-menu text-end dropdown-home-items">
 
+            <button id="menuButton" class="lg:hidden p-2 rounded-md hover:bg-gray-100" aria-label="Open menu">
+                <i class="fas fa-bars w-6 h-6"></i>
+            </button>
 
+            <ul id="mobileMenu"
+                class="fixed lg:static -right-full lg:right-auto top-0 pt-16 pb-8 px-6 lg:p-0 bg-white lg:bg-transparent transition-all duration-300 h-full lg:h-auto flex-col lg:flex-row w-4/5 lg:w-auto flex items-start lg:items-center gap-4 z-40 shadow-lg lg:shadow-none">
+                <li>
+                    <a href="{{ route('front.index') }}"
+                        class="font-semibold hover:text-primary uppercase text-sm text-primary py-2 block"> {{ __('الرئيسية') }}</a>
+                </li>
+                <li>
+                    <a href="{{ route('about.index') }}"
+                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">    {{ __('من نحن') }}</a>
+                </li>
+                <li class="relative group">
+                    <button
+                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 flex items-center gap-1 py-2">
+                        {{ __('الخدمات') }}
+                        <i class="fas fa-chevron-down w-4 h-4"></i>
+                    </button>
+                    <ul
+                        class="lg:absolute mt-2 lg:mt-0 hidden group-hover:block bg-white lg:shadow-lg rounded-md p-2 min-w-[200px] z-10">
                         @foreach ($services as $service)
-                        <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
+                       
+                        <li>
+                            <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"
+                                class="block px-4 py-2 hover:bg-gray-100 rounded text-gray-600 text-sm"> {{ $service->{'title_' . $sign} }}  </a>
+                        </li>
                         @endforeach
                      
-
+                      
                     </ul>
-                  </li>
-                   <li class="nav-item dropdown">
-                    <a style="color: #121212  !important;" class="nav-link dropdown-toggle" href="{{ route('blogs.index') }}" role="" data-bs-toggle=""
-                      aria-expanded="false">
-                      {{ __('المقالات') }}
-                    </a>
-                    <ul class="dropdown-menu text-end dropdown-home-items">
-
-
-                        @foreach ($blogcategories as $category)
-                        <li><a class="dropdown-item" href="{{ route('blogs-category.index',['slug' => $category->{'slug_' . $sign} ]) }}">{{ $category->{'title_' . $sign} }}  </a></li>
-                        @endforeach
-                     
-
-                    </ul>
-                  </li>
-                  {{-- <li class="nav-item">
-                    <a style="color: #121212  !important;" class="nav-link" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
-                  </li> --}}
-                  <li class="nav-item">
-                    <a style="color: #121212  !important;" class="nav-link" href="{{ route('about.index') }}">{{ __('عن الدكتورة') }} </a>
-                  </li>
-                  <li class="nav-item">
-                    <a  style="color: #121212  !important;"class="nav-link" href="{{ route('contact.index') }}"> {{ __('اتصل بنا') }}  </a>
-                  </li>
-                  <li class="nav-item">
-                    <a style="color: #121212  !important;" class="nav-link" href="{{ route('contact.index') }}#contact-section">{{ $randomPhone }}</a>
-                  </li>
-                </ul>
-                <!-- Search Container -->
-                <div class="search-container">
-                  <button id="searchButton" class="btn" type="button">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <form>
-
-                   <input id="searchInput" class="form-control search-input" type="text" placeholder="{{ __('ابحث') }}">
-
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </nav>
-  
-      <!-- Offcanvas for Mobile -->
-      <nav class="navbar navbar-light bg-light fixed-top d-lg-none">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Logo">
-          </a>
-  
-          <!-- Offcanvas Toggle Button -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar">
-            <i class="fas fa-bars"></i>
-          </button>
-          <!-- Offcanvas Menu -->
-          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <a class="navbar-brand" href="#">
-                <img src="{{ $gs->{'logo_' . $sign} }}" alt="Logo">
-              </a>
-  
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <!-- First Header Content -->
-              <h5 class="offcanvas-title text-end" id="offcanvasNavbarLabel">{{ __('القائمة') }}</h5>
-  
-              <div class="search-container border-bottom mb-3">
-                <button id="searchButton" class="btn  p-0" type="button">
-                  <i class="fas fa-search"></i>
+                </li>
+                <li>
+                    <a href="{{ route('blogs.index') }}"
+                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">   {{ __('المقالات') }}</a>
+                </li>
+                <li>
+                    <a href="{{ route('contact.index') }}"
+                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">
+                           {{ __('اتصل بنا') }}</a>
+                </li>
+                <button id="closeMenuButton" class="absolute top-4 right-4 lg:hidden p-2 rounded-md hover:bg-gray-100"
+                    aria-label="Close menu">
+                    <i class="fas fa-times w-6 h-6"></i>
                 </button>
-
-                <input id="" class="form-control border-0 shadow-none" type="text" placeholder="{{ __('ابحث') }}">
-            
-            </div>
-  
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('contact.index') }}#appointments">
-                    <i class="fas fa-clock"></i>
-                    <span> {{ __('السبت - الأربعاء') }}</span>
-                    <small>{{ __('الاقصر كل اسبوعين') }}</small>
-                  </a>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('contact.index') }}#locations">
-                    <i class="fas fa-map-marker-alt"></i>
-                    @foreach ($locations as $k=>$location)
-                    <span>
-                      {{ $location->{'title_' . $sign} }}
-                    </span>
-                    @if (!$loop->last)
-                    <span>-</span>
-                   @endif
-                    @endforeach
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="tel:+2{{ $randomPhone }}">
-                    <i class="fas fa-phone"></i>
-                    <span>{{ $randomPhone }}</span>
-                  </a>
-                </li>
-                @if(App\Models\Socialsetting::find(1)->f_status == 1)   
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->facebook }}">
-                    <i class="fab fa-facebook"></i>
-                    <span>{{ __('الفيسبوك') }}</span>
-                  </a>
-                </li>
-                @endif
-                @if(App\Models\Socialsetting::find(1)->d_status == 1)
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->dribble }}">
-                    <i class="fab fa-instagram"></i>
-                    <span>{{ __('انستجرام') }}</span>
-                  </a>
-                </li>
-                @endif
-                @if(App\Models\Socialsetting::find(1)->ystatus == 1)
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->youtube }}">
-                    <i class="fab fa-youtube"></i>
-                    <span>{{ __('يوتيوب') }}</span>
-                  </a>
-                </li>
-                @endif
-                @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ App\Models\Socialsetting::find(1)->twitter }}">
-                    <i class="fab fa-twitter"></i>
-                    <span>{{ __('تويتر') }}</span>
-                  </a>
-                </li>
-                @endif
-              </ul>
-              <!-- Divider -->
-              <hr class="divider">
-              <!-- Second Header Content -->
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="{{ route('front.index', $sign) }}">   {{ __('مركز علاج الحول والمياه البيضاء') }}    </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-bold" href="{{ route('services.index') }}">
-                    {{ __('الخدمات') }}
-                  </a>
-                  <ul class=" border-bottom">
-                    
-                    @foreach ($services as $service)
-                    <li class="list-unstyled"><a class="nav-link" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
-                    @endforeach
-                 
-                    
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-bold" href="{{ route('blogs.index') }}">{{ __('المقالات') }}</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-bold" href="{{ route('about.index') }}"> {{ __('عن الدكتورة') }}  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-bold" href="{{ route('contact.index') }}">   {{ __('اتصل بنا') }}</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-bold" href="tel:+2{{ $randomPhone }}">{{ $randomPhone }}</a>
-                </li>
-              </ul>
-              <!-- Search Container -->
-  
-            </div>
-          </div>
-        </div>
-      </nav>
+            </ul>
+        </nav>
     </header>
-
+    <!--end Header -->
 
 
     @yield('content')
 
 
- <!-- Footer Section -->
- <footer id="footer" class="footer-wrapper wrapper">
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-          <h5> {{ __('دكتورة هبه متولي') }}
-          </h5>
-          <p>
-            {!! $gs->{'footer_' . $sign} !!}
-          </p>
-          <div class="contact-info">
-            <ul class="list-unstyled d-flex gap-3">
-                @if(App\Models\Socialsetting::find(1)->f_status == 1)   
-              <li>
-                <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
-                  <i class="fab fa-brands fa-facebook"></i>
-                </a>
-              </li>
-              @endif
-              @if(App\Models\Socialsetting::find(1)->d_status == 1)
-              <li>
-                <a href="{{ App\Models\Socialsetting::find(1)->dribble }}">
-                  <i class="fab fa-brands fa-instagram"></i>
-                </a>
-              </li>
-              @endif
-              @if(App\Models\Socialsetting::find(1)->ystatus == 1)
-              <li>
-                <a href="{{ App\Models\Socialsetting::find(1)->youtube }}">
-                  <i class="fab fa-brands fa-youtube"></i>
-                </a>
-              </li>
-              @endif
-              @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-              <li>
-                <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
-                  <i class="fab fa-brands fa-twitter"></i>
-                </a>
-              </li>
-              @endif
-            </ul>
-          </div>
-          <div class="contact-info ">
-            <ul class="list-unstyled ">
-              @foreach ($locations as $k=>$location)
-              <li>
-                <a href="{{ route('contact.index') }}#locations" class="d-flex gap-1">
-                  <i class="fa fa-home">
-                  </i>  {{ $location->{'address_' . $sign} }}
-                </a>
-              </li>
 
-              @endforeach
-             
+      <!-- footer -->
+      <footer class="">
+        <div class="footer">
+            <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32">
+                <div class="box">
+                    <div>
+                        <img src="{{ $gs->{'logo_' . $sign} }}" class=" w-20 h-20" alt="">
+                    </div>
+                    <ul class="social groub">
+                      @if(App\Models\Socialsetting::find(1)->t_status == 1) 
+                        <li>
+                            <a target="_blank" class="transition-all duration-500 hover:bg-[#000]"
+                                href="{{ App\Models\Socialsetting::find(1)->twitter }}">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </li>
+                        @endif
+                      
+                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
+                        <li>
+                            <a target="_blank" class="transition-all duration-500 hover:bg-[#FF0000]"
+                                href="{{ App\Models\Socialsetting::find(1)->youtube }}">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </li>
+                          @endif
+                          
+                          @if(App\Models\Socialsetting::find(1)->f_status == 1)  
+                        <li>
+                            <a target="_blank" class="transition-all duration-500 hover:bg-[#1877F2]"
+                                href="{{ App\Models\Socialsetting::find(1)->facebook }}">
+                                <i class="fa-brands fa-facebook-f"></i> </a>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
+                <div class="box">
+                    <ul class="links">
+                        <li class="group"><a
+                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
+                                href="{{ route('front.index') }}"><span
+                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
+                                        <path d="m6 17 5-5-5-5"></path>
+                                        <path d="m13 17 5-5-5-5"></path>
+                                    </svg></span>{{ __('الرئيسية') }}</a></li>
+                        <li class="group"><a
+                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
+                                href="{{ route('blogs.index') }}"><span
+                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
+                                        <path d="m6 17 5-5-5-5"></path>
+                                        <path d="m13 17 5-5-5-5"></path>
+                                    </svg></span> {{ __('المقالات') }}</a></li>
+                        <li class="group"><a
+                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
+                                href="{{ route('about.index') }}"><span
+                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
+                                        <path d="m6 17 5-5-5-5"></path>
+                                        <path d="m13 17 5-5-5-5"></path>
+                                    </svg></span> {{ __('من نحن') }}  </a></li>
+                        <li class="group"><a
+                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
+                                href="{{ route('contact.index') }}"><span
+                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
+                                        <path d="m6 17 5-5-5-5"></path>
+                                        <path d="m13 17 5-5-5-5"></path>
+                                    </svg></span> {{ __('اتصل بنا') }}  </a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="line transition-all duration-500">
+                        <div class="w-6 h-6">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="info"> مصر الجديدة خلف نادي النصر</div>
+                    </div>
+                    <div class="line transition-all duration-500">
+                        <div class="w-6 h-6">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="info"> <!-- -->أوقات العمل: من 10:00 إلى 18:00</div>
+                    </div>
+                    <div class="line transition-all duration-500">
+                        <div class="w-6 h-6">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div class="info"><span>{{ $randomPhone }}</span></div>
+                    </div>
+                    @foreach ($emails as $email)
+                       <div class="line transition-all duration-500">
+                        <div class="w-6 h-6">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="info"><span> {{ $email }}</span></div>
+                    </div
+                    @endforeach
+                   >
 
-              <li>
-                <a href="{{ route('contact.index') }}#contact-section" class="d-flex gap-1">
-                  <i class="fa fa-phone">
-                  </i>{{ $randomPhone }}</a>
-              </li>
-              <li>
-                <a href="{{ route('contact.index') }}#appointments" class="d-flex gap-1">
-                  <i class="fa fa-clock">
-                  </i> {{ __('السبت - الأربعاء') }}
-                </a>
-              </li>
-            </ul>
-          </div>
+                </div>
+            </div>
+            <p
+                class="py-5 text-center flex justify-center items-center text-accent mt-12 border-t border-gray-700 uppercase">
+                <span class="text-accent" id="year-footer">2025<!-- --> </span>© جميع الحقوق محفوظة<a target="_blank"
+                    href="https://www.cangrowonline.com/">
+                    <img src="{{ asset('front/alrehab/') }}/assets/CanGrow logo.png" class=" w-40 h-20" alt="">
+            </p>
         </div>
-        <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-          <h5>{{ __('الخدمات') }}</h5>
-          <ul class="link-widget p-0">
-            @foreach ($services as $service)
-            <li ><a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
-            @endforeach
-         
+    </footer>
+    <ul class="fixed flex gap-4 flex-col right-2 sm:right-10 bottom-2 sm:bottom-10 z-50 rounded">
+       
+      <li
+            style="background-color:#25D366; width:3rem; height:3rem; border-radius:9999px; box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); display:flex; justify-content:center; align-items:center;">
+            <a target="_blank" class="flex justify-center items-center" href="tel:+2{{ $randomPhone }}">
+                <i class="fas fa-phone-volume text-white text-xl"></i>
+            </a>
+        </li>
+        <li
+            style="background-color:#128C7E; width:3rem; height:3rem; border-radius:9999px; box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); display:flex; justify-content:center; align-items:center;">
+            <a target="_blank" class="flex justify-center items-center" href="https://wa.me/+2{{ $randomPhone }}">
+                <i class="fa-brands fa-whatsapp text-white text-xl"></i>
+            </a>
+        </li>
+    </ul>
+    <!-- footer -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-          </ul>
-        </div>
-      </div>
- <div class="row justify-content-between">
-        
-        <div class="col-md-4 col-sm-6 mb-4 box-invisible">
-          <ul id="" class="d-flex flex-row about list-footer">
-            <li class="list-unstyled">
-              <a class=" p-0 m-0" href="{{ route('services.index') }}" target="_blank">
-                {{ __('الخدمات') }}
-              </a>
-            </li>
-            <li class="list-unstyled">
-              <a class=" p-0 m-0" href="{{ route('about.index') }}" target="_blank"> {{ __('عنا') }}
-              </a>
-            </li>
-            <li class="list-unstyled">
-              <a class=" p-0 m-0" href="{{ route('contact.index') }}" target="_blank">
-                {{ __('اتصل بنا') }}
-              </a>
-            </li>
-            <li class="list-unstyled">
-              <a class=" p-0 m-0" href="tel:+2{{ $randomPhone }}">{{ $randomPhone }}</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-     <div class="row justify-content-center pb-4 align-items-center text-white">
-      <div class="col-auto d-flex align-items-center gap-2 flex-wrap">
-        <span>&copy; <script>document.write(new Date().getFullYear())</script></span>
-        <a href="https://cangrowonline.com" target="_blank" class="text-white text-decoration-underline">
-          @CangrowOnline
-        </a>
-        <span>Developed by ❤ CanGrow Online Digital Marketing Agency</span>
-      </div>
-    </div>    </div>
-    </div>
-  </footer>
-  <!-- Footer Section exit -->
+    <!-- Initialize Swiper -->
+    <script src="{{ asset('front/alrehab/') }}/src/script/swiper.js"></script>
+    <script src="{{ asset('front/alrehab/') }}/src/script/scripts.js"></script>
+    <script src="{{ asset('front/alrehab/') }}/src/script/motion.js"></script>
+    <script src="{{ asset('front/alrehab/') }}/src/script/service.js"></script>
+    <script src="{{ asset('front/alrehab/') }}/src/script/tailwind.js"></script>
 
-    <script type="text/javascript">
-        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
-        
-    </script>
 
-  <!-- Bootstrap5 JS CDN Links -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-
-  <!-- custom js file -->
-  <script src="{{ asset('front/dr-heba/') }}/js/main.js"></script>
-  <script src="{{ asset('front/dr-heba/') }}/js/motion.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      },
-      keyboard: {
-        enabled: true, // Enable keyboard controls
-        onlyInViewport: true, // Only work when Swiper is in the viewport
-      },
-      initialSlide: Math.floor(document.querySelectorAll('.swiper-slide').length / 2),
-
-      // Set initial slide to the middle
-
-    }); 
-    
-     </script>
- 
 
 
     <script src="{{ asset('build/js/toastr.js') }}"></script>
+
+   
+    <script type="text/javascript">
+        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
+    </script>
+
+   
 
     <script type="text/javascript">
         var mainurl = "{{ url('/' . $sign) }}";
