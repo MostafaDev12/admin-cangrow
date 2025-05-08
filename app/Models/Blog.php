@@ -15,10 +15,14 @@ class Blog extends Model
      */
     protected $table ='blogs';
     
-     protected $appends = ['photo'];
+     protected $appends = ['photo','photo_url'];
 
 
     public function getPhotoAttribute()
+    {
+        return url('/') . '/assets/images/blogs/' . $this->attributes['photo'];
+    }
+    public function getPhotoUrlAttribute()
     {
         return url('/') . '/assets/images/blogs/' . $this->attributes['photo'];
     }
@@ -41,16 +45,20 @@ class Blog extends Model
         'short_details_ar',
         'short_details_en',
         'short_details_fr',
-        
         'blog_date',
+        
         'slug_ar',
         'slug_en',
         'slug_fr',
         'tags',
+        'category_id',
       
     ];
 
-    
+    public function category()
+    {
+        return $this->belongsTo(BlogCategory::class,'category_id');
+    }
  
     /**
      * The attributes that should be hidden for serialization.

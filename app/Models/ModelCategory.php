@@ -34,7 +34,10 @@ class ModelCategory extends Model
       
     ];
 
-    
+    public function models()
+    {
+        return $this->hasMany(PageModel::class);
+    }  
     /**
      * The attributes that should be hidden for serialization.
      *

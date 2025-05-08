@@ -15,10 +15,14 @@ class Service extends Model
      */
     protected $table ='services';
     
-     protected $appends = ['photo'];
+     protected $appends = ['photo','photo_url'];
 
 
     public function getPhotoAttribute()
+    {
+        return url('/') . '/assets/images/services/' . $this->attributes['photo'];
+    }  
+    public function getPhotoUrlAttribute()
     {
         return url('/') . '/assets/images/services/' . $this->attributes['photo'];
     }
@@ -37,6 +41,10 @@ class Service extends Model
         'meta_details_ar',
         'meta_details_en',
         'meta_details_fr',
+        
+        'short_details_ar',
+        'short_details_en',
+        'short_details_fr',
         
         'slug_ar',
         'slug_en',

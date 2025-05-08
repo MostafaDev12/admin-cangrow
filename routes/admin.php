@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutPointController;
+use App\Http\Controllers\Admin\AfterBeforeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -20,6 +22,10 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\CertificateController;
+use App\Http\Controllers\Admin\LocationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +41,7 @@ use App\Http\Controllers\Admin\SubcategoryController;
 Route::prefix('admin')->group(function () {
 
 
-  Route::middleware('auth.admin')->group(function () {
+  Route::middleware(['auth.admin'])->group(function () {
 
     //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -126,6 +132,18 @@ Route::prefix('admin')->group(function () {
       Route::get('/models-category/delete/{id}',  [ModelCategoryController::class, 'destroy'])->name('admin-models_category-delete');
     });
 
+    Route::group(['middleware' => 'permissions:locations'], function () {
+
+      Route::get('/locations/datatables',  [LocationController::class, 'datatables'])->name('admin-locations-datatables');
+      Route::get('/locations',  [LocationController::class, 'index'])->name('admin-locations-index');
+      Route::get('/locations/create',   [LocationController::class, 'create'])->name('admin-locations-create');
+      Route::post('/locations/create',  [LocationController::class, 'store'])->name('admin-locations-store');
+      Route::get('/locations/edit/{id}',  [LocationController::class, 'edit'])->name('admin-locations-edit');
+      Route::post('/locations/update/{id}', [LocationController::class, 'update'])->name('admin-locations-update');
+
+      Route::get('/locations/delete/{id}',  [LocationController::class, 'destroy'])->name('admin-locations-delete');
+  });
+
 
     Route::group(['middleware' => 'permissions:partners'], function () {
 
@@ -138,6 +156,32 @@ Route::prefix('admin')->group(function () {
       Route::post('/partners/update/{id}', [PartnerController::class, 'update'])->name('admin-partners-update');
 
       Route::get('/partners/delete/{id}',  [PartnerController::class, 'destroy'])->name('admin-partners-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:certificates'], function () {
+
+
+      Route::get('/certificates/datatables',  [CertificateController::class, 'datatables'])->name('admin-certificates-datatables');
+      Route::get('/certificates',  [CertificateController::class, 'index'])->name('admin-certificates-index');
+      Route::get('/certificates/create',   [CertificateController::class, 'create'])->name('admin-certificates-create');
+      Route::post('/certificates/create',  [CertificateController::class, 'store'])->name('admin-certificates-store');
+      Route::get('/certificates/edit/{id}',  [CertificateController::class, 'edit'])->name('admin-certificates-edit');
+      Route::post('/certificates/update/{id}', [CertificateController::class, 'update'])->name('admin-certificates-update');
+
+      Route::get('/certificates/delete/{id}',  [CertificateController::class, 'destroy'])->name('admin-certificates-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:after_befores'], function () {
+
+
+      Route::get('/after_befores/datatables',  [AfterBeforeController::class, 'datatables'])->name('admin-after_befores-datatables');
+      Route::get('/after_befores',  [AfterBeforeController::class, 'index'])->name('admin-after_befores-index');
+      Route::get('/after_befores/create',   [AfterBeforeController::class, 'create'])->name('admin-after_befores-create');
+      Route::post('/after_befores/create',  [AfterBeforeController::class, 'store'])->name('admin-after_befores-store');
+      Route::get('/after_befores/edit/{id}',  [AfterBeforeController::class, 'edit'])->name('admin-after_befores-edit');
+      Route::post('/after_befores/update/{id}', [AfterBeforeController::class, 'update'])->name('admin-after_befores-update');
+
+      Route::get('/after_befores/delete/{id}',  [AfterBeforeController::class, 'destroy'])->name('admin-after_befores-delete');
     });
 
     Route::group(['middleware' => 'permissions:media'], function () {
@@ -172,6 +216,8 @@ Route::prefix('admin')->group(function () {
       Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin-categories-update');
 
       Route::get('/categories/delete/{id}',  [CategoryController::class, 'destroy'])->name('admin-categories-delete');
+    
+    
     });
 
     Route::group(['middleware' => 'permissions:subcategories'], function () {
@@ -199,6 +245,19 @@ Route::prefix('admin')->group(function () {
       Route::post('/blogs/update/{id}', [BlogController::class, 'update'])->name('admin-blogs-update');
 
       Route::get('/blogs/delete/{id}',  [BlogController::class, 'destroy'])->name('admin-blogs-delete');
+
+
+      
+      Route::get('/blog_categories/datatables',  [BlogCategoryController::class, 'datatables'])->name('admin-blog_categories-datatables');
+      Route::get('/blog_categories',  [BlogCategoryController::class, 'index'])->name('admin-blog_categories-index');
+      Route::get('/blog_categories/create',   [BlogCategoryController::class, 'create'])->name('admin-blog_categories-create');
+      Route::post('/blog_categories/create',  [BlogCategoryController::class, 'store'])->name('admin-blog_categories-store');
+      Route::get('/blog_categories/edit/{id}',  [BlogCategoryController::class, 'edit'])->name('admin-blog_categories-edit');
+      Route::post('/blog_categories/update/{id}', [BlogCategoryController::class, 'update'])->name('admin-blog_categories-update');
+
+      Route::get('/blog_categories/delete/{id}',  [BlogCategoryController::class, 'destroy'])->name('admin-blog_categories-delete');
+    
+    
     });
 
 
@@ -244,6 +303,32 @@ Route::prefix('admin')->group(function () {
       Route::get('/social/google',  [SocialSettingController::class, 'google'])->name('admin-social-google');
       Route::get('/social/facebook/{status}', [SocialSettingController::class, 'facebookup'])->name('admin-social-facebookup');
       Route::get('/social/google/{status}', [SocialSettingController::class, 'googleup'])->name('admin-social-googleup');
+    });
+
+
+    Route::group(['middleware' => 'permissions:language'], function () {
+
+      Route::get('/languages', [LanguageController::class, 'index'])->name('admin-flang-index');
+      Route::get('/languages/create', [LanguageController::class, 'create'])->name('admin-flang-create');
+      Route::post('/languages/create', [LanguageController::class, 'store'])->name('admin-flang-store');
+      Route::get('/languages/edit/{id}', [LanguageController::class, 'edit'])->name('admin-flang-edit');
+      Route::post('/languages/update/{id}', [LanguageController::class, 'update'])->name('admin-flang-update');
+      Route::get('/languages/delete/{id}', [LanguageController::class, 'destroy'])->name('admin-flang-delete');
+      Route::get('/languages/statusupdate/{id}/{status}', [LanguageController::class, 'statusupdate'])->name('admin-flang-statusupdate');
+       });
+
+    Route::group(['middleware' => 'permissions:about_points'], function () {
+
+     
+      Route::get('/about_points/datatables',  [AboutPointController::class, 'datatables'])->name('admin-about_points-datatables');
+      Route::get('/about_points',  [AboutPointController::class, 'index'])->name('admin-about_points-index');
+      Route::get('/about_points/create',   [AboutPointController::class, 'create'])->name('admin-about_points-create');
+      Route::post('/about_points/create',  [AboutPointController::class, 'store'])->name('admin-about_points-store');
+      Route::get('/about_points/edit/{id}',  [AboutPointController::class, 'edit'])->name('admin-about_points-edit');
+      Route::post('/about_points/update/{id}', [AboutPointController::class, 'update'])->name('admin-about_points-update');
+
+      Route::get('/about_points/delete/{id}',  [AboutPointController::class, 'destroy'])->name('admin-about_points-delete');
+   
     });
 
     // GALLERY SECTION ------------

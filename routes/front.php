@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Language;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,15 +19,47 @@ use App\Http\Controllers\HomeController;
 */
 
 
-Route::middleware('IpLocation')->group(function () {
-   
+Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
+
     //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
 
- Route::get('/', [HomeController::class, 'index'])->name('front.index');
 
+    // Route::get('/', function () {
+
+    //     $data = Language::where('is_default', '=', '1')->first();
+
+    //     return Redirect::to('/' . $data->sign);
+    // });
+
+    Route::prefix('{lang}')->group(function () {});
+
+
+        Route::get('/', [HomeController::class, 'index'])->name('front.index');
+        Route::get('/عن-الدكتورة', [HomeController::class, 'about'])->name('about.index');
+        Route::get('/الخدمات', [HomeController::class, 'services'])->name('services.index');
+
+     
+        Route::get('/portfolio/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
+        
+          Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
+
+        Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
+
+        Route::get('/فيديوهات', [HomeController::class, 'videos'])->name('videos.index');
+        Route::get('/المقالات', [HomeController::class, 'blogs'])->name('blogs.index');    
+        
+        Route::get('/اتصل-بنا', [HomeController::class, 'contact'])->name('contact.index');
+        Route::post('/contact-submit', [HomeController::class, 'contactemail'])->name('front.contact.submit');
+        Route::get('/احجز-الان', [HomeController::class, 'BookNow'])->name('book.index');
+
+        Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');
+        
+    
+        Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
+    
+
+        Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+
+        
 
 });
-
-
-
- 

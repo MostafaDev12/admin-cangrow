@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DataTables;
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -27,6 +28,12 @@ class BlogController extends Controller
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
+                            
+                            ->addColumn('category', function(Blog $data) {
+                                $category =  optional($data->category)->title_ar ??  optional($data->category)->title_en ;
+                              
+                                return  $category;
+                            })
                             ->addColumn('action', function(Blog $data) {
                                 return '<div class="action-list">
                                 <a class=" btn btn-sm btn-secondary" href="' . route('admin-blogs-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
@@ -36,7 +43,7 @@ class BlogController extends Controller
                               <a href="javascript:;" data-href="' . route('admin-blogs-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
-                            ->rawColumns(['photo','action'])
+                            ->rawColumns(['photo','action','category'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
 
@@ -49,7 +56,8 @@ class BlogController extends Controller
     //*** GET Request
     public function create()
     {
-        return view('admin.blogs.create');
+        $cats = BlogCategory::get();
+        return view('admin.blogs.create',compact('cats'));
     }
 
     //*** POST Request
@@ -99,7 +107,8 @@ class BlogController extends Controller
     public function edit($id)
     {
         $data = Blog::findOrFail($id);
-        return view('admin.blogs.edit',compact('data'));
+        $cats = BlogCategory::get();
+        return view('admin.blogs.edit',compact('data','cats'));
     }
 
     //*** POST Request
