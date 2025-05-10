@@ -60,7 +60,7 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
                         </a>
                     </li> 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-ps-our_team') }}" aria-controls="sidebarour_team">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.our_team_section')</span>
                         </a>
@@ -69,7 +69,7 @@
                         <a class="nav-link  " href="{{ route('admin-ps-after_before') }}" aria-controls="sidebarportfolio">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.after_before')</span>
                         </a>
-                    </li>
+                    </li> --}}
                 @endif
 
                 {{-- @if (Auth::guard('admin')->user()->sectionCheck('partners'))
@@ -80,7 +80,7 @@
                         </a>
                     </li>
                 @endif --}}
-{{-- --}}
+{{--
 
                 @if (Auth::guard('admin')->user()->sectionCheck('media'))
                     <li class="nav-item">
@@ -97,22 +97,22 @@
                         </a>
                     </li>
                 @endif
-
-                @if (Auth::guard('admin')->user()->sectionCheck('after_befores'))
+ --}}
+                {{-- @if (Auth::guard('admin')->user()->sectionCheck('after_befores'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-after_befores-index') }}" aria-controls="sidebarafter_befores">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.after_befores')</span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
-                @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
+                {{-- @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-certificates-index') }}" aria-controls="sidebarcertificates">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.certificates')</span>
                         </a>
                     </li>
-                @endif 
+                @endif  --}}
                 {{--       @if (Auth::guard('admin')->user()->sectionCheck('services'))
          
                      <li class="nav-item">
@@ -163,7 +163,7 @@
                     </li>
 
                 @endif
-                @if (Auth::guard('admin')->user()->sectionCheck('models'))
+                {{-- @if (Auth::guard('admin')->user()->sectionCheck('models'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#models" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="models">
@@ -172,7 +172,7 @@
                         <div class="collapse menu-dropdown" id="models">
                             <ul class="nav nav-sm flex-column">
 
-{{--  --}}
+ 
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models_category-index') }}"
                                         aria-controls="sidebarmodels_category">
@@ -190,7 +190,7 @@
                             </ul>
                         </div>
                     </li> <!-- end Dashboard Menu -->
-                @endif
+                @endif --}}
 
            @if (Auth::guard('admin')->user()->sectionCheck('blogs'))
                 <li class="nav-item">

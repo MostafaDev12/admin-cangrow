@@ -79,10 +79,10 @@
                                                   <input type="text" class="form-control" name="title_ar" value="{{ $data->title_ar }}" id="title_ar" placeholder="{{ __('translation.title') }}">
                                               </div>
                                                
-                                              <div class="mb-3">
+                                              {{-- <div class="mb-3">
                                                   <label for="short_details_ar" class="form-label">{{ __('translation.short_details') }}</label>
                                                   <textarea class="form-control ckeditor" name="short_details_ar"  id="short_details_ar" rows="3" placeholder="{{ __('translation.short_details') }}">{{ $data->short_details_ar }}</textarea>
-                                              </div>
+                                              </div> --}}
                                               <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_ar }}</textarea>
@@ -115,11 +115,11 @@
                                               <input type="text" class="form-control" name="title_en"  value="{{ $data->title_en }}"  id="title_en" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <div class="mb-3">
+                                          {{-- <div class="mb-3">
                                               <label for="short_details_en" class="form-label">{{ __('translation.short_details') }}</label>
                                               <textarea class="form-control ckeditor" name="short_details_en"  id="short_details_en" rows="3" placeholder="{{ __('translation.short_details') }}">{{ $data->short_details_en }}</textarea>
                                           </div>
-                                          
+                                           --}}
                                           <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_en }}</textarea>
