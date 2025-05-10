@@ -35,20 +35,20 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
 
         Route::get('/', [HomeController::class, 'index'])->name('front.index');
-        Route::get('/من-نحن', [HomeController::class, 'about'])->name('about.index');
-        Route::get('/الخدمات', [HomeController::class, 'services'])->name('services.index');
+        Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
+        Route::get('/services', [HomeController::class, 'services'])->name('services.index');
 
      
-        Route::get('/portfolio/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
+        Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
         
           Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
 
         Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
         Route::get('/فيديوهات', [HomeController::class, 'videos'])->name('videos.index');
-        Route::get('/المقالات', [HomeController::class, 'blogs'])->name('blogs.index');    
+        Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs.index');    
         
-        Route::get('/اتصل-بنا', [HomeController::class, 'contact'])->name('contact.index');
+        Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');
         Route::post('/contact-submit', [HomeController::class, 'contactemail'])->name('front.contact.submit');
         Route::get('/احجز-الان', [HomeController::class, 'BookNow'])->name('book.index');
 
