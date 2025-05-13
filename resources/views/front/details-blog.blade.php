@@ -26,7 +26,7 @@ $randomPhone = Arr::random($phones);
         <div class="flex flex-wrap my-10">
             <div class="w-full lg:w-2/3">
                 <h1 class="text-3xl font-bold mb-4">{{ $blog->{'title_' . $sign} }}</h1>
-                <p class="text-gray-600 mb-4">4/9/2025, 7:55:18 PM</p>
+                <p class="text-gray-600 mb-4"> {{ $blog->blog_date }}</p>
                 <div class="text-accent max-w-xl mx-auto">
                     <div id="">
                         <div id="" class="transition-all duration-300">
@@ -40,62 +40,28 @@ $randomPhone = Arr::random($phones);
     
     <!-- Sidebar -->
     <aside class="sticky top-10 left-10 h-screen overflow-y-auto w-full flex flex-col gap-4 lg:w-1/3 md:w-1/2">
-        <h2 class="text-xl font-bold mb-4">اقراء ايضا</h2>
+        <h2 class="text-xl font-bold mb-4"> {{ __('اقراء ايضا') }}</h2>
         <div class="flex flex-col gap-4">
+
+    @foreach (App\Models\Blog::orderBy('blog_date', 'desc')->where('id','!=',$blog->id)->limit(4)->get() as $k=> $blogg)
+                            @php
+                            $k++
+                            @endphp
             <div class="rounded shadow hover:shadow-lg p-4 transition-all duration-500">
-                <a class="block" href="/blog.deatils.html">
-                    <img class="rounded w-full" src="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png" 
-                         srcset="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png 1x, 
-                                 https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_1280.png 2x" 
+                <a class="block" href="{{ route('single-blog.index',$blogg->{'slug_' . $sign}) }}">
+                    <img class="rounded w-full" src="{{ $blogg->photo }}" 
+                         srcset="{{ $blogg->photo }} 1x, 
+                                 {{ $blogg->photo }} 2x" 
                          alt="Free Ai Generated Employee illustration and picture">
-                    <h2 class="text-xl mt-4 font-bold text-white mb-2 line-clamp-2">الرحاب</h2>
+                    <h2 class="text-xl mt-4 font-bold text-white mb-2 line-clamp-2">{{ $blogg->{'title_' . $sign} }}</h2>
                     <p class=" text-ellipsis overflow-hidden whitespace-nowrap max-w-full">
-                        الرحاب لتوريد العمالة توفر بودى جارد، وحراسات خاصة للافراد والاسر والمجموعات السياحية ورجال
-                        الاعمال -- 01104891929"
+                        {{ $blogg->{'short_details_' . $sign} }}
                     </p>
-                    <span class="text-gray-400 text-sm">4/9/2025, 7:55:18 PM</span>
+                    <span class="text-gray-400 text-sm"> {{ $blogg->blog_date }}</span>
                 </a>
             </div>
-             <div class="rounded shadow hover:shadow-lg p-4 transition-all duration-500">
-                <a class="block" href="/blog.deatils.html">
-                    <img class="rounded w-full" src="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png" 
-                         srcset="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png 1x, 
-                                 https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_1280.png 2x" 
-                         alt="Free Ai Generated Employee illustration and picture">
-                    <h2 class="text-xl mt-4 font-bold text-white mb-2 line-clamp-2">الرحاب</h2>
-                    <p class="text-ellipsis overflow-hidden whitespace-nowrap max-w-full">
-                        الرحاب لتوريد العمالة توفر بودى جارد، وحراسات خاصة للافراد والاسر والمجموعات السياحية ورجال
-                        الاعمال -- 01104891929"
-                    </p>
-                    <span class="text-gray-400 text-sm">4/9/2025, 7:55:18 PM</span>
-                </a>
-            </div> <div class="rounded shadow hover:shadow-lg p-4 transition-all duration-500">
-                <a class="block" href="/blog.deatils.html">
-                    <img class="rounded w-full" src="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png" 
-                         srcset="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png 1x, 
-                                 https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_1280.png 2x" 
-                         alt="Free Ai Generated Employee illustration and picture">
-                    <h2 class="text-xl mt-4 font-bold text-white mb-2 line-clamp-2">الرحاب</h2>
-                    <p class=" text-ellipsis overflow-hidden whitespace-nowrap max-w-full">
-                        الرحاب لتوريد العمالة توفر بودى جارد، وحراسات خاصة للافراد والاسر والمجموعات السياحية ورجال
-                        الاعمال -- 01104891929"
-                    </p>
-                    <span class="text-gray-400 text-sm">4/9/2025, 7:55:18 PM</span>
-                </a>
-            </div> <div class="rounded shadow hover:shadow-lg p-4 transition-all duration-500">
-                <a class="block" href="/blog.deatils.html">
-                    <img class="rounded w-full" src="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png" 
-                         srcset="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png 1x, 
-                                 https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_1280.png 2x" 
-                         alt="Free Ai Generated Employee illustration and picture">
-                    <h2 class="text-xl mt-4 font-bold text-white mb-2 line-clamp-2">الرحاب</h2>
-                    <p class=" text-ellipsis overflow-hidden whitespace-nowrap max-w-full">
-                        الرحاب لتوريد العمالة توفر بودى جارد، وحراسات خاصة للافراد والاسر والمجموعات السياحية ورجال
-                        الاعمال -- 01104891929"
-                    </p>
-                    <span class="text-gray-400 text-sm">4/9/2025, 7:55:18 PM</span>
-                </a>
-            </div>
+@endforeach 
+ 
         </div>
     </aside>
 </div>
