@@ -22,7 +22,7 @@
     <meta property="og:type" content="website">
 
 
-<meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
+    <meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
     @if (isset($page->meta_tag) && isset($page->meta_description))
         <meta name="keywords" content="{{ $page->meta_tag }}">
         <meta name="description" content="{{ $page->meta_description }}">
@@ -88,33 +88,16 @@
 
     <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/footer.css">
-    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/input.css">
-    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/service.css">
+
+
+
+    @include('includes.style')
+
 
 
     @yield('css')
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DL8NRCL49R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-DL8NRCL49R');
-</script>
 </head>
 
 @php
@@ -126,227 +109,413 @@
 @endphp
 
 
-<body class="font-cairo" dir="rtl" lang="ar">
-    <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav id="mainNav" class="container mx-auto px-4 flex items-center justify-between">
-            <div class="text-xl font-bold">
-                <a href="{{ route('front.index') }}" class="inline-block">
-                    <img src="{{ $gs->{'logo_' . $sign} }}" class="w-20 h-20" alt="Company Logo">
-                </a>
+<body
+    class="home page-template page-template-tpl-default-elementor page-template-tpl-default-elementor-php page page-id-19 wp-custom-logo wp-embed-responsive tribe-no-js menu-layer elementor-default elementor-kit-7 elementor-page elementor-page-19">
+
+
+
+    <div class="boxed_wrapper ltr">
+
+
+
+
+        <!-- main header -->
+        <header class="main-header">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="auto-container">
+                    <div class="outer-box">
+                        <div class="logo-box">
+                            <figure class="logo"><a href="https://azure-sardine-328383.hostingersite.com/"
+                                    title="azure-sardine-328383.hostingersite.com"><img
+                                        src="https://azure-sardine-328383.hostingersite.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-03-26-at-8.25.46-PM-1-1.png"
+                                        alt="logo" style="" /></a></figure>
+                        </div>
+                        <div class="menu-area">
+                            <!--Mobile Navigation Toggler-->
+                            <div class="mobile-nav-toggler">
+                                <i class="icon-bar"></i>
+                                <i class="icon-bar"></i>
+                                <i class="icon-bar"></i>
+                            </div>
+                            <nav class="main-menu navbar-expand-md navbar-light clearfix">
+                                <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                    <ul class="navigation clearfix">
+                                        <li id="menu-item-2502"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-19 current_page_item menu-item-2502 current">
+                                            <a title="Home" href="https://azure-sardine-328383.hostingersite.com/"
+                                                class="hvr-underline-from-left1" data-scroll
+                                                data-options="easing: easeOutQuart">Home</a></li>
+                                        <li id="menu-item-2504"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2504">
+                                            <a title="About Us"
+                                                href="https://azure-sardine-328383.hostingersite.com/about-us/"
+                                                class="hvr-underline-from-left1" data-scroll
+                                                data-options="easing: easeOutQuart">About Us</a></li>
+                                        <li id="menu-item-2505"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2505 dropdown">
+                                            <a title="Our Department" href="#" data-toggle="dropdown1"
+                                                class="hvr-underline-from-left1" aria-expanded="false" data-scroll
+                                                data-options="easing: easeOutQuart">Our Department</a>
+                                            <ul role="menu" class="submenu">
+                                                <li id="menu-item-2506"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2506">
+                                                    <a title="Emergency"
+                                                        href="https://azure-sardine-328383.hostingersite.com/emergency/">Emergency</a>
+                                                </li>
+                                                <li id="menu-item-2507"
+                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2507 dropdown">
+                                                    <a title="Outpatient Clinics" href="#">Outpatient Clinics</a>
+                                                    <ul role="menu" class="submenu">
+                                                        <li id="menu-item-2508"
+                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2508">
+                                                            <a title="Internal Clinic"
+                                                                href="https://azure-sardine-328383.hostingersite.com/internal-clinic/">Internal
+                                                                Clinic</a></li>
+                                                        <li id="menu-item-2510"
+                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2510">
+                                                            <a title="General Surgery"
+                                                                href="https://azure-sardine-328383.hostingersite.com/general-surgery/">General
+                                                                Surgery</a></li>
+                                                        <li id="menu-item-2511"
+                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2511">
+                                                            <a title="Obstetrics and gynecology"
+                                                                href="https://azure-sardine-328383.hostingersite.com/obstetrics-and-gynecology/">Obstetrics
+                                                                and gynecology</a></li>
+                                                        <li id="menu-item-2512"
+                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2512">
+                                                            <a title="The children"
+                                                                href="https://azure-sardine-328383.hostingersite.com/the-children/">The
+                                                                children</a></li>
+                                                        <li id="menu-item-2513"
+                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2513">
+                                                            <a title="Cosmetology"
+                                                                href="https://azure-sardine-328383.hostingersite.com/cosmetology/">Cosmetology</a>
+                                                        </li>
+                                                        <li id="menu-item-2612"
+                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2612">
+                                                            <a title="Orthopedics and spine surgery"
+                                                                href="https://azure-sardine-328383.hostingersite.com/orthopedics-and-spine-surgery/">Orthopedics
+                                                                and spine surgery</a></li>
+                                                        <li id="menu-item-2610"
+                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2610">
+                                                            <a title="Urologist"
+                                                                href="https://azure-sardine-328383.hostingersite.com/urologist/">Urologist</a>
+                                                        </li>
+                                                        <li id="menu-item-2611"
+                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2611">
+                                                            <a title="Dermatology"
+                                                                href="https://azure-sardine-328383.hostingersite.com/dermatology/">Dermatology</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li id="menu-item-2515"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2515">
+                                                    <a title="Dental"
+                                                        href="https://azure-sardine-328383.hostingersite.com/dental/">Dental</a>
+                                                </li>
+                                                <li id="menu-item-2517"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2517">
+                                                    <a title="Physiotherapy"
+                                                        href="https://azure-sardine-328383.hostingersite.com/physiotherapy/">Physiotherapy</a>
+                                                </li>
+                                                <li id="menu-item-2518"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2518">
+                                                    <a title="The Laboratory"
+                                                        href="https://azure-sardine-328383.hostingersite.com/the-laboratory/">The
+                                                        Laboratory</a></li>
+                                                <li id="menu-item-2519"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2519">
+                                                    <a title="The Radiology"
+                                                        href="https://azure-sardine-328383.hostingersite.com/the-radiology/">The
+                                                        Radiology</a></li>
+                                                <li id="menu-item-2520"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2520">
+                                                    <a title="Cardiology and Catheterization"
+                                                        href="https://azure-sardine-328383.hostingersite.com/cardiology-and-catheterization/">Cardiology
+                                                        and Catheterization</a></li>
+                                                <li id="menu-item-2521"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2521">
+                                                    <a title="Intensive care"
+                                                        href="https://azure-sardine-328383.hostingersite.com/intensive-care/">Intensive
+                                                        care</a></li>
+                                                <li id="menu-item-2522"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2522">
+                                                    <a title="Surgery"
+                                                        href="https://azure-sardine-328383.hostingersite.com/surgery/">Surgery</a>
+                                                </li>
+                                                <li id="menu-item-2523"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2523">
+                                                    <a title="Internal patient accommodation"
+                                                        href="https://azure-sardine-328383.hostingersite.com/internal-patient-accommodation/">Internal
+                                                        patient accommodation</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="menu-item-2533"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2533">
+                                            <a title="Sinaiclinic Nabq"
+                                                href="https://azure-sardine-328383.hostingersite.com/sinaiclinic-nabq/"
+                                                class="hvr-underline-from-left1" data-scroll
+                                                data-options="easing: easeOutQuart">Sinaiclinic Nabq</a></li>
+                                        <li id="menu-item-2534"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2534">
+                                            <a title="Doctors"
+                                                href="https://azure-sardine-328383.hostingersite.com/doctors/"
+                                                class="hvr-underline-from-left1" data-scroll
+                                                data-options="easing: easeOutQuart">Doctors</a></li>
+                                        <li id="menu-item-2535"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2535">
+                                            <a title="Blogs"
+                                                href="https://azure-sardine-328383.hostingersite.com/blogs/"
+                                                class="hvr-underline-from-left1" data-scroll
+                                                data-options="easing: easeOutQuart">Blogs</a></li>
+                                        <li id="menu-item-2536"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2536">
+                                            <a title="Appointments"
+                                                href="https://azure-sardine-328383.hostingersite.com/appointments/"
+                                                class="hvr-underline-from-left1" data-scroll
+                                                data-options="easing: easeOutQuart">Appointments</a></li>
+                                        <li id="menu-item-2537"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2537">
+                                            <a title="Contact Us"
+                                                href="https://azure-sardine-328383.hostingersite.com/contact/"
+                                                class="hvr-underline-from-left1" data-scroll
+                                                data-options="easing: easeOutQuart">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="menu-right-content">
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <button id="menuButton" class="lg:hidden p-2 rounded-md hover:bg-gray-100" aria-label="Open menu">
-                <i class="fas fa-bars w-6 h-6"></i>
-            </button>
-
-            <ul id="mobileMenu"
-                class="fixed lg:static -right-full lg:right-auto top-0 pt-16 pb-8 px-6 lg:p-0 bg-white lg:bg-transparent transition-all duration-300 h-full lg:h-auto flex-col lg:flex-row w-4/5 lg:w-auto flex items-start lg:items-center gap-4 z-40 shadow-lg lg:shadow-none">
-                <li>
-                    <a href="{{ route('front.index') }}"
-                        class="font-semibold hover:text-primary uppercase text-sm text-primary py-2 block"> {{ __('الرئيسية') }}</a>
-                </li>
-                <li>
-                    <a href="{{ route('about.index') }}"
-                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">    {{ __('من نحن') }}</a>
-                </li>
-                <li class="relative group">
-                    <button
-                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 flex items-center gap-1 py-2">
-                        {{ __('الخدمات') }}
-                        <i class="fas fa-chevron-down w-4 h-4"></i>
-                    </button>
-                    <ul
-                        class="lg:absolute mt-2 lg:mt-0 hidden group-hover:block bg-white lg:shadow-lg rounded-md p-2 min-w-[200px] z-10">
-                        @foreach ($services as $service)
-                       
-                        <li>
-                            <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"
-                                class="block px-4 py-2 hover:bg-gray-100 rounded text-gray-600 text-sm"> {{ $service->{'title_' . $sign} }}  </a>
-                        </li>
-                        @endforeach
-                     
-                      
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{ route('blogs.index') }}"
-                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">   {{ __('المقالات') }}</a>
-                </li>
-                <li>
-                    <a href="{{ route('contact.index') }}"
-                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">
-                           {{ __('اتصل بنا') }}</a>
-                </li>
-                <button id="closeMenuButton" class="absolute top-4 right-4 lg:hidden p-2 rounded-md hover:bg-gray-100"
-                    aria-label="Close menu">
-                    <i class="fas fa-times w-6 h-6"></i>
-                </button>
-            </ul>
-        </nav>
-    </header>
-    <!--end Header -->
-
-
-    @yield('content')
-
-
-
-      <!-- footer -->
-      <footer class="">
-        <div class="footer">
-            <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32">
-                <div class="box">
-                    <div>
-                        <img src="{{ $gs->{'logo_' . $sign} }}" class=" w-20 h-20" alt="">
-                    </div>
-                    <ul class="social groub">
-                      @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-                        <li>
-                            <a target="_blank" class="transition-all duration-500 hover:bg-[#000]"
-                                href="{{ App\Models\Socialsetting::find(1)->twitter }}">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-                        </li>
-                        @endif
-                      
-                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
-                        <li>
-                            <a target="_blank" class="transition-all duration-500 hover:bg-[#FF0000]"
-                                href="{{ App\Models\Socialsetting::find(1)->youtube }}">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </li>
-                          @endif
-                          
-                          @if(App\Models\Socialsetting::find(1)->f_status == 1)  
-                        <li>
-                            <a target="_blank" class="transition-all duration-500 hover:bg-[#1877F2]"
-                                href="{{ App\Models\Socialsetting::find(1)->facebook }}">
-                                <i class="fa-brands fa-facebook-f"></i> </a>
-                        </li>
-                        @endif
-                    </ul>
-                </div>
-                <div class="box">
-                    <ul class="links">
-                        <li class="group"><a
-                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
-                                href="{{ route('front.index') }}"><span
-                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
-                                        <path d="m6 17 5-5-5-5"></path>
-                                        <path d="m13 17 5-5-5-5"></path>
-                                    </svg></span>{{ __('الرئيسية') }}</a></li>
-                        <li class="group"><a
-                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
-                                href="{{ route('blogs.index') }}"><span
-                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
-                                        <path d="m6 17 5-5-5-5"></path>
-                                        <path d="m13 17 5-5-5-5"></path>
-                                    </svg></span> {{ __('المقالات') }}</a></li>
-                        <li class="group"><a
-                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
-                                href="{{ route('about.index') }}"><span
-                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
-                                        <path d="m6 17 5-5-5-5"></path>
-                                        <path d="m13 17 5-5-5-5"></path>
-                                    </svg></span> {{ __('من نحن') }}  </a></li>
-                        <li class="group"><a
-                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
-                                href="{{ route('contact.index') }}"><span
-                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
-                                        <path d="m6 17 5-5-5-5"></path>
-                                        <path d="m13 17 5-5-5-5"></path>
-                                    </svg></span> {{ __('اتصل بنا') }}  </a></li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <div class="line transition-all duration-500">
-                        <div class="w-6 h-6">
-                            <i class="fa-solid fa-location-dot"></i>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="auto-container">
+                    <div class="outer-box">
+                        <div class="logo-box">
+                            <figure class="logo"><a href="https://azure-sardine-328383.hostingersite.com/"
+                                    title="azure-sardine-328383.hostingersite.com"><img
+                                        src="https://azure-sardine-328383.hostingersite.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-03-26-at-8.25.46-PM-1-1.png"
+                                        alt="logo" style="" /></a></figure>
                         </div>
-                        <div class="info"> مصر الجديدة خلف نادي النصر</div>
-                    </div>
-                    <div class="line transition-all duration-500">
-                        <div class="w-6 h-6">
-                            <i class="fa-solid fa-clock"></i>
+                        <div class="menu-area">
+                            <nav class="main-menu clearfix">
+                                <!--Keep This Empty / Menu will come through Javascript-->
+                            </nav>
                         </div>
-                        <div class="info"> <!-- -->أوقات العمل: من 10:00 إلى 18:00</div>
-                    </div>
-                    <div class="line transition-all duration-500">
-                        <div class="w-6 h-6">
-                            <i class="fa-solid fa-phone-volume"></i>
+                        <div class="menu-right-content">
                         </div>
-                        <div class="info"><span>{{ $randomPhone }}</span></div>
                     </div>
-                    @foreach ($emails as $email)
-                       <div class="line transition-all duration-500">
-                        <div class="w-6 h-6">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="info"><span> {{ $email }}</span></div>
-                    </div
-                    @endforeach
-                   >
-
                 </div>
             </div>
-            <p
-                class="py-5 text-center flex justify-center items-center text-accent mt-12 border-t border-gray-700 uppercase">
-                <span class="text-accent" id="year-footer">2025<!-- --> </span>© جميع الحقوق محفوظة<a target="_blank"
-                    href="https://www.cangrowonline.com/">
-                    <img src="{{ asset('front/alrehab/') }}/assets/CanGrow logo.png" class=" w-40 h-20" alt="">
-            </p>
+        </header>
+        <!-- main-header end -->
+
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+
+            <nav class="menu-box">
+                <div class="nav-logo">
+                    <a href="https://azure-sardine-328383.hostingersite.com/"
+                        title="azure-sardine-328383.hostingersite.com"><img
+                            src="https://azure-sardine-328383.hostingersite.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-03-26-at-8.25.46-PM-1-1.png"
+                            alt="logo" style="" /></a>
+                </div>
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+
+
+
+            </nav>
         </div>
-    </footer>
-    <ul class="fixed flex gap-4 flex-col right-2 sm:right-10 bottom-2 sm:bottom-10 z-50 rounded">
-       
-      <li
-            style="background-color:#25D366; width:3rem; height:3rem; border-radius:9999px; box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); display:flex; justify-content:center; align-items:center;">
-            <a target="_blank" class="flex justify-center items-center" href="tel:+2{{ $randomPhone }}">
-                <i class="fas fa-phone-volume text-white text-xl"></i>
-            </a>
-        </li>
-        <li
-            style="background-color:#128C7E; width:3rem; height:3rem; border-radius:9999px; box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); display:flex; justify-content:center; align-items:center;">
-            <a target="_blank" class="flex justify-center items-center" href="https://wa.me/+2{{ $randomPhone }}">
-                <i class="fa-brands fa-whatsapp text-white text-xl"></i>
-            </a>
-        </li>
-    </ul>
-    <!-- footer -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script src="{{ asset('front/alrehab/') }}/src/script/swiper.js"></script>
-    <script src="{{ asset('front/alrehab/') }}/src/script/scripts.js"></script>
-    <script src="{{ asset('front/alrehab/') }}/src/script/motion.js"></script>
-    <script src="{{ asset('front/alrehab/') }}/src/script/service.js"></script>
-    <script src="{{ asset('front/alrehab/') }}/src/script/tailwind.js"></script>
+        <!-- End Mobile Menu -->
 
 
 
+
+        @yield('content')
+
+
+
+        <footer class="main-footer">
+            <div class="bg-layer"></div>
+            <div class="auto-container">
+                <div class="widget-section">
+                    <div class="row clearfix">
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div id="labout_about_company-1" class="footer-widget widget_labout_about_company">
+                                <div class="about-widget">
+                                    <div class="widget-title">
+                                        <h3>About</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <p>The Department of Chemical Research Support is a central research resource
+                                            facility of the Institute of Science.</p>
+                                        <ul class="info clearfix">
+                                            <li><a href="mailto:info@example.com">info@example.com</a></li>
+                                            <li><a href="tel:(+91)-120-229-0305">(+91)-120-229-0305</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div id="nav_menu-4" class="footer-widget widget_nav_menu">
+                                <div class="widget-title">
+                                    <h3>Quick Link</h3>
+                                </div>
+                                <div class="menu-quick-link-container">
+                                    <ul id="menu-quick-link" class="menu">
+                                        <li id="menu-item-1165"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1165">
+                                            <a href="https://azure-sardine-328383.hostingersite.com/about-us/">About
+                                                Us</a></li>
+                                        <li id="menu-item-1167"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1167">
+                                            <a href="https://azure-sardine-328383.hostingersite.com/our-events/">Our
+                                                Events</a></li>
+                                        <li id="menu-item-1168"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168">
+                                            <a
+                                                href="https://azure-sardine-328383.hostingersite.com/research/">Research</a>
+                                        </li>
+                                        <li id="menu-item-1169"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1169">
+                                            <a href="https://azure-sardine-328383.hostingersite.com/team-one/">Team
+                                                One</a></li>
+                                        <li id="menu-item-1166"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1166">
+                                            <a
+                                                href="https://azure-sardine-328383.hostingersite.com/contact/">Contact</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div id="nav_menu-5" class="footer-widget widget_nav_menu">
+                                <div class="widget-title">
+                                    <h3>Resources</h3>
+                                </div>
+                                <div class="menu-useful-links-container">
+                                    <ul id="menu-useful-links" class="menu">
+                                        <li id="menu-item-1173"
+                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1173">
+                                            <a
+                                                href="https://azure-sardine-328383.hostingersite.com/research/bio-sciences/">Bio
+                                                Sciences</a></li>
+                                        <li id="menu-item-1172"
+                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1172">
+                                            <a
+                                                href="https://azure-sardine-328383.hostingersite.com/research/chemical-research/">Chemical
+                                                Research</a></li>
+                                        <li id="menu-item-1174"
+                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1174">
+                                            <a
+                                                href="https://azure-sardine-328383.hostingersite.com/research/cooling-treatment/">Cooling
+                                                Treatment</a></li>
+                                        <li id="menu-item-1171"
+                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1171">
+                                            <a
+                                                href="https://azure-sardine-328383.hostingersite.com/research/micro-organs/">Micro
+                                                Organs</a></li>
+                                        <li id="menu-item-1170"
+                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1170">
+                                            <a
+                                                href="https://azure-sardine-328383.hostingersite.com/research/medical-research/">Medical
+                                                Research</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div id="labout_subscribe_us-1" class="footer-widget widget_labout_subscribe_us">
+                                <div class="newsletter-widget">
+                                    <div class="widget-title">
+                                        <h3>Subscribe Newsletter</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <p>To add complexity, this back drop of significant challenges</p>
+                                        <div class="newsletter-form">
+                                            <script>
+                                                (function() {
+                                                    window.mc4wp = window.mc4wp || {
+                                                        listeners: [],
+                                                        forms: {
+                                                            on: function(evt, cb) {
+                                                                window.mc4wp.listeners.push({
+                                                                    event: evt,
+                                                                    callback: cb
+                                                                });
+                                                            }
+                                                        }
+                                                    }
+                                                })();
+                                            </script>
+                                            <!-- Mailchimp for WordPress v4.10.2 - https://wordpress.org/plugins/mailchimp-for-wp/ -->
+                                            <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-18" method="post"
+                                                data-id="18" data-name="">
+                                                <div class="mc4wp-form-fields">
+                                                    <div class="form-group">
+                                                        <div class="icon"><i class="icon-66"></i></div>
+                                                        <input type="email" name="EMAIL"
+                                                            placeholder="Email Address*" required />
+                                                    </div>
+                                                    <div class="form-group message-btn">
+                                                        <button type="submit" class="theme-btn btn-one">Subscribe
+                                                            Now<span></span><span></span><span></span><span></span></button>
+                                                    </div>
+                                                </div><label style="display: none !important;">Leave this field empty
+                                                    if you're human: <input type="text" name="_mc4wp_honeypot"
+                                                        value="" tabindex="-1"
+                                                        autocomplete="off" /></label><input type="hidden"
+                                                    name="_mc4wp_timestamp" value="1746703316" /><input
+                                                    type="hidden" name="_mc4wp_form_id" value="18" /><input
+                                                    type="hidden" name="_mc4wp_form_element_id"
+                                                    value="mc4wp-form-1" />
+                                                <div class="mc4wp-response"></div>
+                                            </form><!-- / Mailchimp for WordPress Plugin -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+
+
+        <!--Scroll to top-->
+        <div class="scroll-to-top">
+            <svg class="scroll-top-inner" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
+        </div>
+
+
+    </div>
+    <!--End Page Wrapper-->
+
+    @include('includes.script')
 
     <script src="{{ asset('build/js/toastr.js') }}"></script>
 
-   
+
     <script type="text/javascript">
         var logo_src = "{{ $gs->{'logo_' . $sign} }}";
     </script>
 
-   
+
 
     <script type="text/javascript">
         var mainurl = "{{ url('/' . $sign) }}";
