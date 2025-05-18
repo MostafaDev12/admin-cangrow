@@ -126,9 +126,9 @@
                 <div class="auto-container">
                     <div class="outer-box">
                         <div class="logo-box">
-                            <figure class="logo"><a href="https://azure-sardine-328383.hostingersite.com/"
+                            <figure class="logo"><a href="{{ route('front.index') }}"
                                     title="azure-sardine-328383.hostingersite.com"><img
-                                        src="https://azure-sardine-328383.hostingersite.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-03-26-at-8.25.46-PM-1-1.png"
+                                        src="{{ $gs->{'logo_' . $sign} }}"
                                         alt="logo" style="" /></a></figure>
                         </div>
                         <div class="menu-area">
@@ -143,13 +143,13 @@
                                     <ul class="navigation clearfix">
                                         <li id="menu-item-2502"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-19 current_page_item menu-item-2502 current">
-                                            <a title="Home" href="https://azure-sardine-328383.hostingersite.com/"
+                                            <a title="Home" href="{{ route('front.index', $sign) }}"
                                                 class="hvr-underline-from-left1" data-scroll
                                                 data-options="easing: easeOutQuart">Home</a></li>
                                         <li id="menu-item-2504"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2504">
                                             <a title="About Us"
-                                                href="https://azure-sardine-328383.hostingersite.com/about-us/"
+                                                href="{{ route('about.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
                                                 data-options="easing: easeOutQuart">About Us</a></li>
                                         <li id="menu-item-2505"
@@ -254,31 +254,31 @@
                                         <li id="menu-item-2533"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2533">
                                             <a title="Sinaiclinic Nabq"
-                                                href="https://azure-sardine-328383.hostingersite.com/sinaiclinic-nabq/"
+                                                href="{{ route('sinaiclinic-nabq.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
                                                 data-options="easing: easeOutQuart">Sinaiclinic Nabq</a></li>
                                         <li id="menu-item-2534"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2534">
                                             <a title="Doctors"
-                                                href="https://azure-sardine-328383.hostingersite.com/doctors/"
+                                                href="{{ route('doctors.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
                                                 data-options="easing: easeOutQuart">Doctors</a></li>
                                         <li id="menu-item-2535"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2535">
                                             <a title="Blogs"
-                                                href="https://azure-sardine-328383.hostingersite.com/blogs/"
+                                                href="{{ route('blogs.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
                                                 data-options="easing: easeOutQuart">Blogs</a></li>
                                         <li id="menu-item-2536"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2536">
                                             <a title="Appointments"
-                                                href="https://azure-sardine-328383.hostingersite.com/appointments/"
+                                                href="{{ route('appointments.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
                                                 data-options="easing: easeOutQuart">Appointments</a></li>
                                         <li id="menu-item-2537"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2537">
                                             <a title="Contact Us"
-                                                href="https://azure-sardine-328383.hostingersite.com/contact/"
+                                                href="{{ route('contact.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
                                                 data-options="easing: easeOutQuart">Contact Us</a></li>
                                     </ul>
@@ -296,9 +296,9 @@
                 <div class="auto-container">
                     <div class="outer-box">
                         <div class="logo-box">
-                            <figure class="logo"><a href="https://azure-sardine-328383.hostingersite.com/"
+                            <figure class="logo"><a href="{{ route('front.index', $sign) }}"
                                     title="azure-sardine-328383.hostingersite.com"><img
-                                        src="https://azure-sardine-328383.hostingersite.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-03-26-at-8.25.46-PM-1-1.png"
+                                        src="{{ $gs->{'logo_' . $sign} }}"
                                         alt="logo" style="" /></a></figure>
                         </div>
                         <div class="menu-area">
@@ -322,9 +322,9 @@
 
             <nav class="menu-box">
                 <div class="nav-logo">
-                    <a href="https://azure-sardine-328383.hostingersite.com/"
+                    <a href="{{ route('front.index', $sign) }}"
                         title="azure-sardine-328383.hostingersite.com"><img
-                            src="https://azure-sardine-328383.hostingersite.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-03-26-at-8.25.46-PM-1-1.png"
+                            src="{{ $gs->{'logo_' . $sign} }}"
                             alt="logo" style="" /></a>
                 </div>
                 <div class="menu-outer">
@@ -355,11 +355,14 @@
                                         <h3>About</h3>
                                     </div>
                                     <div class="widget-content">
-                                        <p>The Department of Chemical Research Support is a central research resource
-                                            facility of the Institute of Science.</p>
+                                        <p>  {{ $gs->{'footer_' . $sign} }}</p>
                                         <ul class="info clearfix">
-                                            <li><a href="mailto:info@example.com">info@example.com</a></li>
-                                            <li><a href="tel:(+91)-120-229-0305">(+91)-120-229-0305</a></li>
+                                            @foreach ($emails as $email)
+                                            <li><a href="mailto:{{  $email }}">{{  $email }}</a></li>
+                                             @endforeach
+                                             @foreach ($phones as $phone)
+                                            <li><a href="tel:{{ $phone }}">{{ $phone }}</a></li>
+                                             @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -375,7 +378,7 @@
                                     <ul id="menu-quick-link" class="menu">
                                         <li id="menu-item-1165"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1165">
-                                            <a href="https://azure-sardine-328383.hostingersite.com/about-us/">About
+                                            <a href="{{ route('about.index') }}">About
                                                 Us</a></li>
                                         <li id="menu-item-1167"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1167">
@@ -393,7 +396,7 @@
                                         <li id="menu-item-1166"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1166">
                                             <a
-                                                href="https://azure-sardine-328383.hostingersite.com/contact/">Contact</a>
+                                                href="{{ route('contact.index') }}">Contact</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -465,7 +468,7 @@
                                                 <div class="mc4wp-form-fields">
                                                     <div class="form-group">
                                                         <div class="icon"><i class="icon-66"></i></div>
-                                                        <input type="email" name="EMAIL"
+                                                        <input type="email" name="email"
                                                             placeholder="Email Address*" required />
                                                     </div>
                                                     <div class="form-group message-btn">

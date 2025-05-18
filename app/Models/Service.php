@@ -54,6 +54,7 @@ class Service extends Model
         'short_details_fr',
         'tags',
         'category_id',
+        'parent_id',
       
     ];
 
@@ -61,6 +62,11 @@ class Service extends Model
     public function galleries()
     {
         return $this->hasMany(Gallery::class);
+    }    
+    
+    public function childs()
+    {
+        return $this->hasMany(Service::class,'parent_id');
     }  
     /**
      * The attributes that should be hidden for serialization.

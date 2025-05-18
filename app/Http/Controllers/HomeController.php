@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutPoint;
 use App\Models\User;
+use App\Models\Doctor;
 use App\Models\Language;
 use App\Models\PageModel;
 use App\Models\ModelCategory;
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Testimonial;
+use App\Models\Timeline;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -54,17 +57,21 @@ class HomeController extends Controller
     // return abort(404);
     $sign = $this->langSign();
 
-    $sliders = Slider::first();
+    $sliders = Slider::get();
     $points = AboutPoint::get();
-    $services = Service::get();
+    $home_services = Service::get()->take(12);
     $models = PageModel::get();
-    $reviews = Partner::get();
+    $features = ModelCategory::get();
+    $partners = Partner::get();
     $medias = Media::get();
     $after_befores = AfterBefore::get();
     $certificates = Certificate::get();
+    $doctors = Doctor::get();
+    $timelines = Timeline::get();
+    $testimonials = Testimonial::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
 
-    return view('front.index', compact('sign', 'sliders','certificates','after_befores','medias', 'points','blogs', 'services', 'models', 'reviews'));
+    return view('front.index', compact('sign', 'sliders','doctors','timelines','testimonials','certificates','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
   }
 
   public function about(Request $request)
@@ -80,6 +87,23 @@ class HomeController extends Controller
 
     return view('front.about', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
+
+  
+  public function sinaiclinic_nabq(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $reviews = Partner::get();
+
+    return view('front.sinaiclinic-nabq', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+  }
+
+
   public function videos(Request $request)
   {
 
