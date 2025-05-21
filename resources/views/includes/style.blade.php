@@ -91,6 +91,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <link rel='stylesheet' id='labout-theme-fonts-css' href='https://fonts.googleapis.com/css?family=Afacad%3A400%2C500%2C600%2C700%7CInter%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-frontend-css' href='{{ asset('front/sinai_clinic/') }}/css/frontend.min.css?ver=3.28.3' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-post-7-css' href='{{ asset('front/sinai_clinic/') }}/css/post-7.css?ver=1744853261' type='text/css' media='all' />
+ @yield('css')
 <link rel='stylesheet' id='widget-heading-css' href='{{ asset('front/sinai_clinic/') }}/css/widget-heading.min.css?ver=3.28.3' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-post-19-css' href='{{ asset('front/sinai_clinic/') }}/css/post-19.css?ver=1745231724' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-gf-local-roboto-css' href='{{ asset('front/sinai_clinic/') }}/css/roboto.css?ver=1744091219' type='text/css' media='all' />

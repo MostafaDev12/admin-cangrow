@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Process;
 use App\Models\Testimonial;
 use App\Models\Timeline;
 use Illuminate\Support\Facades\File;
@@ -65,13 +66,13 @@ class HomeController extends Controller
     $partners = Partner::get();
     $medias = Media::get();
     $after_befores = AfterBefore::get();
-    $certificates = Certificate::get();
+
     $doctors = Doctor::get();
     $timelines = Timeline::get();
     $testimonials = Testimonial::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
 
-    return view('front.index', compact('sign', 'sliders','doctors','timelines','testimonials','certificates','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
+    return view('front.index', compact('sign', 'sliders','doctors','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
   }
 
   public function about(Request $request)
@@ -83,9 +84,13 @@ class HomeController extends Controller
     $points = AboutPoint::get();
     $services = Service::get();
     $models = ModelCategory::get();
-    $reviews = Partner::get();
+    $partners = Partner::get();
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Certificate::get();
 
-    return view('front.about', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
 
   

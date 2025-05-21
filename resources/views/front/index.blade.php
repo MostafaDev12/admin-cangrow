@@ -932,7 +932,7 @@
                          <section class="journey-section">
                              <div class="bg-box">
                                  <div class="bg-layer parallax-bg" data-parallax='{"y": 100}'
-                                     style="background-image: url('https://azure-sardine-328383.hostingersite.com/wp-content/uploads/2024/05/journey-bg.jpg');">
+                                     style="background-image: url('{{ asset('front/sinai_clinic/') }}/img/journey-bg.jpg');">
                                  </div>
                              </div>
                              <div class="auto-container">

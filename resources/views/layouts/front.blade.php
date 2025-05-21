@@ -95,7 +95,7 @@
 
 
 
-    @yield('css')
+
 
 
 </head>
@@ -128,8 +128,8 @@
                         <div class="logo-box">
                             <figure class="logo"><a href="{{ route('front.index') }}"
                                     title="azure-sardine-328383.hostingersite.com"><img
-                                        src="{{ $gs->{'logo_' . $sign} }}"
-                                        alt="logo" style="" /></a></figure>
+                                        src="{{ $gs->{'logo_' . $sign} }}" alt="logo" style="" /></a>
+                            </figure>
                         </div>
                         <div class="menu-area">
                             <!--Mobile Navigation Toggler-->
@@ -145,142 +145,78 @@
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-19 current_page_item menu-item-2502 current">
                                             <a title="Home" href="{{ route('front.index', $sign) }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Home</a></li>
+                                                data-options="easing: easeOutQuart">Home</a>
+                                        </li>
                                         <li id="menu-item-2504"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2504">
-                                            <a title="About Us"
-                                                href="{{ route('about.index') }}"
+                                            <a title="About Us" href="{{ route('about.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">About Us</a></li>
+                                                data-options="easing: easeOutQuart">About Us</a>
+                                        </li>
                                         <li id="menu-item-2505"
                                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2505 dropdown">
                                             <a title="Our Department" href="#" data-toggle="dropdown1"
                                                 class="hvr-underline-from-left1" aria-expanded="false" data-scroll
                                                 data-options="easing: easeOutQuart">Our Department</a>
                                             <ul role="menu" class="submenu">
-                                                <li id="menu-item-2506"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2506">
-                                                    <a title="Emergency"
-                                                        href="https://azure-sardine-328383.hostingersite.com/emergency/">Emergency</a>
-                                                </li>
-                                                <li id="menu-item-2507"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2507 dropdown">
-                                                    <a title="Outpatient Clinics" href="#">Outpatient Clinics</a>
-                                                    <ul role="menu" class="submenu">
-                                                        <li id="menu-item-2508"
-                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2508">
-                                                            <a title="Internal Clinic"
-                                                                href="https://azure-sardine-328383.hostingersite.com/internal-clinic/">Internal
-                                                                Clinic</a></li>
-                                                        <li id="menu-item-2510"
-                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2510">
-                                                            <a title="General Surgery"
-                                                                href="https://azure-sardine-328383.hostingersite.com/general-surgery/">General
-                                                                Surgery</a></li>
-                                                        <li id="menu-item-2511"
-                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2511">
-                                                            <a title="Obstetrics and gynecology"
-                                                                href="https://azure-sardine-328383.hostingersite.com/obstetrics-and-gynecology/">Obstetrics
-                                                                and gynecology</a></li>
-                                                        <li id="menu-item-2512"
-                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2512">
-                                                            <a title="The children"
-                                                                href="https://azure-sardine-328383.hostingersite.com/the-children/">The
-                                                                children</a></li>
-                                                        <li id="menu-item-2513"
-                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2513">
-                                                            <a title="Cosmetology"
-                                                                href="https://azure-sardine-328383.hostingersite.com/cosmetology/">Cosmetology</a>
-                                                        </li>
-                                                        <li id="menu-item-2612"
-                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2612">
-                                                            <a title="Orthopedics and spine surgery"
-                                                                href="https://azure-sardine-328383.hostingersite.com/orthopedics-and-spine-surgery/">Orthopedics
-                                                                and spine surgery</a></li>
-                                                        <li id="menu-item-2610"
-                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2610">
-                                                            <a title="Urologist"
-                                                                href="https://azure-sardine-328383.hostingersite.com/urologist/">Urologist</a>
-                                                        </li>
-                                                        <li id="menu-item-2611"
-                                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2611">
-                                                            <a title="Dermatology"
-                                                                href="https://azure-sardine-328383.hostingersite.com/dermatology/">Dermatology</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-2515"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2515">
-                                                    <a title="Dental"
-                                                        href="https://azure-sardine-328383.hostingersite.com/dental/">Dental</a>
-                                                </li>
-                                                <li id="menu-item-2517"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2517">
-                                                    <a title="Physiotherapy"
-                                                        href="https://azure-sardine-328383.hostingersite.com/physiotherapy/">Physiotherapy</a>
-                                                </li>
-                                                <li id="menu-item-2518"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2518">
-                                                    <a title="The Laboratory"
-                                                        href="https://azure-sardine-328383.hostingersite.com/the-laboratory/">The
-                                                        Laboratory</a></li>
-                                                <li id="menu-item-2519"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2519">
-                                                    <a title="The Radiology"
-                                                        href="https://azure-sardine-328383.hostingersite.com/the-radiology/">The
-                                                        Radiology</a></li>
-                                                <li id="menu-item-2520"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2520">
-                                                    <a title="Cardiology and Catheterization"
-                                                        href="https://azure-sardine-328383.hostingersite.com/cardiology-and-catheterization/">Cardiology
-                                                        and Catheterization</a></li>
-                                                <li id="menu-item-2521"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2521">
-                                                    <a title="Intensive care"
-                                                        href="https://azure-sardine-328383.hostingersite.com/intensive-care/">Intensive
-                                                        care</a></li>
-                                                <li id="menu-item-2522"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2522">
-                                                    <a title="Surgery"
-                                                        href="https://azure-sardine-328383.hostingersite.com/surgery/">Surgery</a>
-                                                </li>
-                                                <li id="menu-item-2523"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2523">
-                                                    <a title="Internal patient accommodation"
-                                                        href="https://azure-sardine-328383.hostingersite.com/internal-patient-accommodation/">Internal
-                                                        patient accommodation</a></li>
+
+
+                                                @foreach ($parentservices as $service)
+                                                    <li id="menu-item-2507"
+                                                        @if (count($service->childs) > 0) class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2507 dropdown"
+                                                    
+                                                     @else
+                                                   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2506" @endif>
+                                                        <a title="Outpatient Clinics"
+                                                            @if (count($service->childs) > 0) href="#"
+                                                     @else
+                                                    href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}" @endif>{{ $service->{'title_' . $sign} }}</a>
+                                                        @if (count($service->childs) > 0)
+                                                            <ul role="menu" class="submenu">
+                                                                @foreach ($service->childs as $child)
+                                                                    <li id="menu-item-2508"
+                                                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2508">
+                                                                        <a title="Internal Clinic"
+                                                                            href="{{ route('single-service.index', ['slug' => $child->{'slug_' . $sign}]) }}">{{ $child->{'title_' . $sign} }}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+
                                             </ul>
                                         </li>
                                         <li id="menu-item-2533"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2533">
-                                            <a title="Sinaiclinic Nabq"
-                                                href="{{ route('sinaiclinic-nabq.index') }}"
+                                            <a title="Sinaiclinic Nabq" href="{{ route('sinaiclinic-nabq.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Sinaiclinic Nabq</a></li>
+                                                data-options="easing: easeOutQuart">Sinaiclinic Nabq</a>
+                                        </li>
                                         <li id="menu-item-2534"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2534">
-                                            <a title="Doctors"
-                                                href="{{ route('doctors.index') }}"
+                                            <a title="Doctors" href="{{ route('doctors.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Doctors</a></li>
+                                                data-options="easing: easeOutQuart">Doctors</a>
+                                        </li>
                                         <li id="menu-item-2535"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2535">
-                                            <a title="Blogs"
-                                                href="{{ route('blogs.index') }}"
+                                            <a title="Blogs" href="{{ route('blogs.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Blogs</a></li>
+                                                data-options="easing: easeOutQuart">Blogs</a>
+                                        </li>
                                         <li id="menu-item-2536"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2536">
-                                            <a title="Appointments"
-                                                href="{{ route('appointments.index') }}"
+                                            <a title="Appointments" href="{{ route('appointments.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Appointments</a></li>
+                                                data-options="easing: easeOutQuart">Appointments</a>
+                                        </li>
                                         <li id="menu-item-2537"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2537">
-                                            <a title="Contact Us"
-                                                href="{{ route('contact.index') }}"
+                                            <a title="Contact Us" href="{{ route('contact.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Contact Us</a></li>
+                                                data-options="easing: easeOutQuart">Contact Us</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>
@@ -298,8 +234,8 @@
                         <div class="logo-box">
                             <figure class="logo"><a href="{{ route('front.index', $sign) }}"
                                     title="azure-sardine-328383.hostingersite.com"><img
-                                        src="{{ $gs->{'logo_' . $sign} }}"
-                                        alt="logo" style="" /></a></figure>
+                                        src="{{ $gs->{'logo_' . $sign} }}" alt="logo" style="" /></a>
+                            </figure>
                         </div>
                         <div class="menu-area">
                             <nav class="main-menu clearfix">
@@ -322,13 +258,12 @@
 
             <nav class="menu-box">
                 <div class="nav-logo">
-                    <a href="{{ route('front.index', $sign) }}"
-                        title="azure-sardine-328383.hostingersite.com"><img
-                            src="{{ $gs->{'logo_' . $sign} }}"
-                            alt="logo" style="" /></a>
+                    <a href="{{ route('front.index', $sign) }}" title="azure-sardine-328383.hostingersite.com"><img
+                            src="{{ $gs->{'logo_' . $sign} }}" alt="logo" style="" /></a>
                 </div>
                 <div class="menu-outer">
-                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
 
 
 
@@ -355,14 +290,14 @@
                                         <h3>About</h3>
                                     </div>
                                     <div class="widget-content">
-                                        <p>  {{ $gs->{'footer_' . $sign} }}</p>
+                                        <p> {{ $gs->{'footer_' . $sign} }}</p>
                                         <ul class="info clearfix">
                                             @foreach ($emails as $email)
-                                            <li><a href="mailto:{{  $email }}">{{  $email }}</a></li>
-                                             @endforeach
-                                             @foreach ($phones as $phone)
-                                            <li><a href="tel:{{ $phone }}">{{ $phone }}</a></li>
-                                             @endforeach
+                                                <li><a href="mailto:{{ $email }}">{{ $email }}</a></li>
+                                            @endforeach
+                                            @foreach ($phones as $phone)
+                                                <li><a href="tel:{{ $phone }}">{{ $phone }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -379,11 +314,13 @@
                                         <li id="menu-item-1165"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1165">
                                             <a href="{{ route('about.index') }}">About
-                                                Us</a></li>
+                                                Us</a>
+                                        </li>
                                         <li id="menu-item-1167"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1167">
                                             <a href="https://azure-sardine-328383.hostingersite.com/our-events/">Our
-                                                Events</a></li>
+                                                Events</a>
+                                        </li>
                                         <li id="menu-item-1168"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168">
                                             <a
@@ -392,11 +329,11 @@
                                         <li id="menu-item-1169"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1169">
                                             <a href="https://azure-sardine-328383.hostingersite.com/team-one/">Team
-                                                One</a></li>
+                                                One</a>
+                                        </li>
                                         <li id="menu-item-1166"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1166">
-                                            <a
-                                                href="{{ route('contact.index') }}">Contact</a>
+                                            <a href="{{ route('contact.index') }}">Contact</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -413,27 +350,32 @@
                                             class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1173">
                                             <a
                                                 href="https://azure-sardine-328383.hostingersite.com/research/bio-sciences/">Bio
-                                                Sciences</a></li>
+                                                Sciences</a>
+                                        </li>
                                         <li id="menu-item-1172"
                                             class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1172">
                                             <a
                                                 href="https://azure-sardine-328383.hostingersite.com/research/chemical-research/">Chemical
-                                                Research</a></li>
+                                                Research</a>
+                                        </li>
                                         <li id="menu-item-1174"
                                             class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1174">
                                             <a
                                                 href="https://azure-sardine-328383.hostingersite.com/research/cooling-treatment/">Cooling
-                                                Treatment</a></li>
+                                                Treatment</a>
+                                        </li>
                                         <li id="menu-item-1171"
                                             class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1171">
                                             <a
                                                 href="https://azure-sardine-328383.hostingersite.com/research/micro-organs/">Micro
-                                                Organs</a></li>
+                                                Organs</a>
+                                        </li>
                                         <li id="menu-item-1170"
                                             class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1170">
                                             <a
                                                 href="https://azure-sardine-328383.hostingersite.com/research/medical-research/">Medical
-                                                Research</a></li>
+                                                Research</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -510,6 +452,8 @@
     <!--End Page Wrapper-->
 
     @include('includes.script')
+
+
 
     <script src="{{ asset('build/js/toastr.js') }}"></script>
 
@@ -713,9 +657,8 @@
             });
         })
     </script>
-
-
     @yield('js')
+
 </body>
 
 </html>

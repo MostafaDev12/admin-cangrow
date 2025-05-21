@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('gs', Generalsetting::first());
             $settings->with('ps', Pagesetting::first());
             $settings->with('services', Service::get());
+            $settings->with('parentservices', Service::where('parent_id',0)->get());
             $settings->with('categories', Category::get());
             $settings->with('blogcategories', BlogCategory::get());
             $settings->with('locations', Location::get());
