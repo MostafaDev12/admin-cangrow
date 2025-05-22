@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    @php
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   @php
 
         $ps = App\Models\Pagesetting::find(1);
 
@@ -87,37 +85,21 @@
 
 
     <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/footer.css">
-    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/input.css">
-    <link rel="stylesheet" href="{{ asset('front/alrehab/') }}/src/service.css">
-
-
-    @yield('css')
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DL8NRCL49R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DL8NRCL49R');
-</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   
+  <link rel="stylesheet" href="{{ asset('front/shtegin/') }}/css/style.css">
+   @yield('css')
 </head>
 
-@php
+<body>
+  @php
     $phones = explode(',', $gs->phones);
     $emails = explode(',', $gs->emails);
     $addresses = json_decode($gs->{'addresses_' . $sign});
@@ -125,228 +107,276 @@
     $randomPhone = Arr::random($phones);
 @endphp
 
-
-<body class="font-cairo" dir="rtl" lang="ar">
-    <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav id="mainNav" class="container mx-auto px-4 flex items-center justify-between">
-            <div class="text-xl font-bold">
-                <a href="{{ route('front.index') }}" class="inline-block">
-                    <img src="{{ $gs->{'logo_' . $sign} }}" class="w-20 h-20" alt="Company Logo">
+   <div class="header">
+        <nav class="navbar navbar-expand-lg bg-white">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ route('front.index') }}">
+                    <img src="{{ $gs->{'logo_' . $sign} }}" alt="shtegin">
                 </a>
-            </div>
-
-            <button id="menuButton" class="lg:hidden p-2 rounded-md hover:bg-gray-100" aria-label="Open menu">
-                <i class="fas fa-bars w-6 h-6"></i>
-            </button>
-
-            <ul id="mobileMenu"
-                class="fixed lg:static -right-full lg:right-auto top-0 pt-16 pb-8 px-6 lg:p-0 bg-white lg:bg-transparent transition-all duration-300 h-full lg:h-auto flex-col lg:flex-row w-4/5 lg:w-auto flex items-start lg:items-center gap-4 z-40 shadow-lg lg:shadow-none">
-                <li>
-                    <a href="{{ route('front.index') }}"
-                        class="font-semibold hover:text-primary uppercase text-sm text-primary py-2 block"> {{ __('الرئيسية') }}</a>
-                </li>
-                <li>
-                    <a href="{{ route('about.index') }}"
-                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">    {{ __('من نحن') }}</a>
-                </li>
-                <li class="relative group">
-                    <button
-                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 flex items-center gap-1 py-2">
-                        {{ __('الخدمات') }}
-                        <i class="fas fa-chevron-down w-4 h-4"></i>
-                    </button>
-                    <ul
-                        class="lg:absolute mt-2 lg:mt-0 hidden group-hover:block bg-white lg:shadow-lg rounded-md p-2 min-w-[200px] z-10">
-                        @foreach ($services as $service)
-                       
-                        <li>
-                            <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}"
-                                class="block px-4 py-2 hover:bg-gray-100 rounded text-gray-600 text-sm"> {{ $service->{'title_' . $sign} }}  </a>
-                        </li>
-                        @endforeach
-                     
-                      
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{ route('blogs.index') }}"
-                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">   {{ __('المقالات') }}</a>
-                </li>
-                <li>
-                    <a href="{{ route('contact.index') }}"
-                        class="font-semibold hover:text-primary uppercase text-sm text-gray-600 py-2 block">
-                           {{ __('اتصل بنا') }}</a>
-                </li>
-                <button id="closeMenuButton" class="absolute top-4 right-4 lg:hidden p-2 rounded-md hover:bg-gray-100"
-                    aria-label="Close menu">
-                    <i class="fas fa-times w-6 h-6"></i>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-            </ul>
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="{{ route('front.index') }}">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('about.index') }}">عن الشركة</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}"
+                                id="servicesDropdown" role="button" aria-expanded="false">
+                                الخدمات
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+
+                                @foreach ($services as $service)
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle"
+                                            href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}">
+                                            {{ $service->{'title_' . $sign} }} </a>
+                                        <!-- <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="details-service.html">تصميم وتركيب</a></li>
+                    <li><a class="dropdown-item" href="details-service.html">صيانة الأنظمة</a></li>
+                  </ul> -->
+                                    </li>
+                                @endforeach
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('blogs.index') }}">المقالات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contact.index') }}">احجز الآن</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contact.index') }}">اتصل بنا</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
         </nav>
-    </header>
-    <!--end Header -->
+    </div>
 
 
     @yield('content')
 
 
 
-      <!-- footer -->
-      <footer class="">
-        <div class="footer">
-            <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32">
-                <div class="box">
-                    <div>
-                        <img src="{{ $gs->{'logo_' . $sign} }}" class=" w-20 h-20" alt="">
-                    </div>
-                    <ul class="social groub">
-                      @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-                        <li>
-                            <a target="_blank" class="transition-all duration-500 hover:bg-[#000]"
-                                href="{{ App\Models\Socialsetting::find(1)->twitter }}">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-                        </li>
-                        @endif
-                      
-                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
-                        <li>
-                            <a target="_blank" class="transition-all duration-500 hover:bg-[#FF0000]"
-                                href="{{ App\Models\Socialsetting::find(1)->youtube }}">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </li>
-                          @endif
-                          
-                          @if(App\Models\Socialsetting::find(1)->f_status == 1)  
-                        <li>
-                            <a target="_blank" class="transition-all duration-500 hover:bg-[#1877F2]"
-                                href="{{ App\Models\Socialsetting::find(1)->facebook }}">
-                                <i class="fa-brands fa-facebook-f"></i> </a>
-                        </li>
-                        @endif
-                    </ul>
-                </div>
-                <div class="box">
-                    <ul class="links">
-                        <li class="group"><a
-                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
-                                href="{{ route('front.index') }}"><span
-                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
-                                        <path d="m6 17 5-5-5-5"></path>
-                                        <path d="m13 17 5-5-5-5"></path>
-                                    </svg></span>{{ __('الرئيسية') }}</a></li>
-                        <li class="group"><a
-                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
-                                href="{{ route('blogs.index') }}"><span
-                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
-                                        <path d="m6 17 5-5-5-5"></path>
-                                        <path d="m13 17 5-5-5-5"></path>
-                                    </svg></span> {{ __('المقالات') }}</a></li>
-                        <li class="group"><a
-                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
-                                href="{{ route('about.index') }}"><span
-                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
-                                        <path d="m6 17 5-5-5-5"></path>
-                                        <path d="m13 17 5-5-5-5"></path>
-                                    </svg></span> {{ __('من نحن') }}  </a></li>
-                        <li class="group"><a
-                                class="uppercase group-hover:text-white group-hover:translate-x-1  text-center flex items-center transition-all duration-700"
-                                href="{{ route('contact.index') }}"><span
-                                    class="group-hover:text-white inline-block text-center  transition-all duration-700 group-hover:translate-x-1"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-chevrons-right">
-                                        <path d="m6 17 5-5-5-5"></path>
-                                        <path d="m13 17 5-5-5-5"></path>
-                                    </svg></span> {{ __('اتصل بنا') }}  </a></li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <div class="line transition-all duration-500">
-                        <div class="w-6 h-6">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="info"> مصر الجديدة خلف نادي النصر</div>
-                    </div>
-                    <div class="line transition-all duration-500">
-                        <div class="w-6 h-6">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <div class="info"> <!-- -->أوقات العمل: من 10:00 إلى 18:00</div>
-                    </div>
-                    <div class="line transition-all duration-500">
-                        <div class="w-6 h-6">
-                            <i class="fa-solid fa-phone-volume"></i>
-                        </div>
-                        <div class="info"><span>{{ $randomPhone }}</span></div>
-                    </div>
-                    @foreach ($emails as $email)
-                       <div class="line transition-all duration-500">
-                        <div class="w-6 h-6">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="info"><span> {{ $email }}</span></div>
-                    </div
-                    @endforeach
-                   >
 
+
+    <section class="footer-section text-center ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 ">
+                    <div class="logo">
+                        <img src="{{ $gs->{'logo_' . $sign} }}" alt="RGS Logo">
+                    </div>
+                    <p class="branch-info fw-bold">
+                        {{ $gs->{'footer_' . $sign} }}
+                    </p>
+                    <div class="d-flex justify-content-center justify-content-space-between align-items-center mt-3">
+
+                        <a href="tel:2{{ $randomPhone }}"><i class="fa-solid fa-phone"></i></a>
+
+                        <a href="https://wa.me/+2{{ $randomPhone }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 ">
+                    <h2>روابط هامة</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('front.index') }}">الرئيسية</a></li>
+                        <li><a href="{{ route('about.index') }}">عن الشركة</a></li>
+                        <li><a href="{{ route('services.index') }}">الخدمات</a></li>
+                        <li><a href="{{ route('blogs.index') }}">المقالات</a></li>
+                        <li><a href="{{ route('contact.index') }}">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="col-lg-3 col-md-6 ">
+                <h2> الخدمات</h2>
+                <ul class="list-unstyled">
+                    <li><a href="#"> دريسنج روم</a></li>
+                    <li><a href="#"> غرف نوم </a></li>
+                    <li><a href="#"> غرف معيشة</a></li>
+                    <li><a href="#"> مطابخ </a></li>
+                    <li><a href="#">وحدات حمامات </a></li>
+                </ul>
+            </div> -->
+                <!-- تواصل معنا -->
+                <div class="col-lg-4 col-md-6 ">
+                    <h2>تواصل معنا</h2>
+                    <p class="contact-info">
+                        @foreach ($phones as $phone)
+                            <i class="fas fa-phone"></i><a href="tel:+2{{ $phone }}">{{ $phone }}</a>
+                            <br>
+                        @endforeach
+                        {{-- <i class="fab fa-whatsapp"></i><a href="tel:+200564853053">0564853053</a><br> --}}
+
+                        @foreach ($emails as $email)
+                            <i class="fas fa-location"></i> <a href="mailto:{{ $email }}">
+                                {{ $email }}
+                            </a> <br>
+                        @endforeach
+                    </p>
                 </div>
             </div>
-            <p
-                class="py-5 text-center flex justify-center items-center text-accent mt-12 border-t border-gray-700 uppercase">
-                <span class="text-accent" id="year-footer">2025<!-- --> </span>© جميع الحقوق محفوظة<a target="_blank"
-                    href="https://www.cangrowonline.com/">
-                    <img src="{{ asset('front/alrehab/') }}/assets/CanGrow logo.png" class=" w-40 h-20" alt="">
-            </p>
+            <hr>
+            <a href="" class="text-center d-block fw-bold">جميع الحقوق محفوظة © {{ date('Y') }}  لصالح   <a target="_blank" href="https://cangrowonline.com">CanGrow Digital Marketing Agency</a>    </a>
         </div>
-    </footer>
-    <ul class="fixed flex gap-4 flex-col right-2 sm:right-10 bottom-2 sm:bottom-10 z-50 rounded">
-       
-      <li
-            style="background-color:#25D366; width:3rem; height:3rem; border-radius:9999px; box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); display:flex; justify-content:center; align-items:center;">
-            <a target="_blank" class="flex justify-center items-center" href="tel:+2{{ $randomPhone }}">
-                <i class="fas fa-phone-volume text-white text-xl"></i>
-            </a>
-        </li>
-        <li
-            style="background-color:#128C7E; width:3rem; height:3rem; border-radius:9999px; box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); display:flex; justify-content:center; align-items:center;">
-            <a target="_blank" class="flex justify-center items-center" href="https://wa.me/+2{{ $randomPhone }}">
-                <i class="fa-brands fa-whatsapp text-white text-xl"></i>
-            </a>
-        </li>
-    </ul>
-    <!-- footer -->
+    </section>
+
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
-    <!-- Initialize Swiper -->
-    <script src="{{ asset('front/alrehab/') }}/src/script/swiper.js"></script>
-    <script src="{{ asset('front/alrehab/') }}/src/script/scripts.js"></script>
-    <script src="{{ asset('front/alrehab/') }}/src/script/motion.js"></script>
-    <script src="{{ asset('front/alrehab/') }}/src/script/service.js"></script>
-    <script src="{{ asset('front/alrehab/') }}/src/script/tailwind.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+        integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        new WOW().init();
+        document.addEventListener("DOMContentLoaded", function() {
+            Fancybox.bind("[data-fancybox]", {
+                Thumbs: {
+                    autoStart: true, // تشغيل الصور المصغرة تلقائيًا
+                },
+                Toolbar: {
+                    display: ["zoom", "download", "close"], // تخصيص أزرار التحكم
+                }
+            });
+        });
+    </script>
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
 
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
 
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            // Start animation immediately (or add intersection observer for scroll)
+            updateCount();
+        });
+    </script>
+
+    <!-- <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > lastScrollTop) {
+                // Scroll Down
+                header.classList.add('hidden');
+            } else {
+                // Scroll Up
+                header.classList.remove('hidden');
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        });
+        const headerSocial = document.querySelector('.header-social');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > headerSocial.offsetHeight) {
+
+                document.body.classList.add('scrolled');
+            } else {
+
+                document.body.classList.remove('scrolled');
+            }
+        });
+    </script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"
+        integrity="sha512-vKtlh10whXT2NhAshnxhceCdwq/bMyMrfeZ3p2IaF89qGCwbC94ATb7Qyg8cFs8EL3Hgz9bJBF++ZWfKn4ligg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/3.0.0-rc3/lazysizes.min.js"
+        integrity="sha512-HMnm5Dp1stoEycrUKuMyGDHIudidstU6uRwRgRxPbl2jNxU9xS2B0XLon7xowk3ZitrjNw7WIbQwXroIwY33sw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+        integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var swiper = new Swiper(".slider .mySwiper", {
+            autoplay: {
+                delay: 3000,
+            },
+            loop: true,
+            effect: "fade",
+            grabCursor: true,
+            keyboard: {
+                enabled: true,
+            },
+            autoplay: {
+                delay: 3000,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 40
+                }
+            }
+        });
+    </script>
 
 
     <script src="{{ asset('build/js/toastr.js') }}"></script>
 
-   
+
     <script type="text/javascript">
         var logo_src = "{{ $gs->{'logo_' . $sign} }}";
     </script>
 
-   
+
 
     <script type="text/javascript">
         var mainurl = "{{ url('/' . $sign) }}";

@@ -54,7 +54,7 @@ class HomeController extends Controller
     // return abort(404);
     $sign = $this->langSign();
 
-    $sliders = Slider::first();
+    $sliders = Slider::get();
     $points = AboutPoint::get();
     $services = Service::get();
     $models = PageModel::get();

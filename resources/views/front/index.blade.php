@@ -1,5 +1,3 @@
- 
-  
      
 @extends('layouts.front')
 
@@ -22,167 +20,297 @@ $emails =   explode(',', $gs->emails);
  
 $randomPhone = Arr::random($phones);
 @endphp
-    <!-- About Section -->
-    <section class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32">
-        <!-- Section Container -->
-        <div class="py-12">
-            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div id="rightToLeft" class="md:py-12">
-                    <h1 class="text-4xl font-semibold  hover:text-primary transition-all duration-700">     
-                        {{ $sliders->{'title_' . $sign}  ?? ''}} </h1>
-                    <p class="text-accent my-4 hover:text-primary transition-all duration-700">  {!! $sliders->{'details_' . $sign}  ?? '' !!}</p>
-                    <div class="flex flex-wrap items-center gap-4">
-                        <div>
-                            <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 rounded-md px-8 space-x-2 !px-4 !rounded-full uppercase"
-                                href="{{ route('contact.index') }}">  {{ __('اطلب استشارتك التسويقيه') }}<span class="rotate-180"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="lucide lucide-circle-arrow-right !w-5 !h-5 animate-bounce">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <path d="M8 12h8"></path>
-                                        <path d="m12 16 4-4-4-4"></path>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                        <div>
-                            <a class="flex gap-2 items-center text-black hover:text-primary duration-200 transition-colors font-semibold"
-                                href="{{ route('about.index') }}"> {{ __('اعرف المزيد') }}
-                                <span class="rotate-180"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="lucide lucide-circle-arrow-right !w-5 !h-5 animate-bounce">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <path d="M8 12h8"></path>
-                                        <path d="m12 16 4-4-4-4"></path>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div id="leftToRight" class="relative hidden md:block">
-                    <img src="{{ $sliders->{'photo'}  ?? ''}}" alt="About us illustration"
-                        class="object-contain w-full h-full animate-hero-img">
-                </div>
+  <div class="slider">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        @foreach ($sliders as $slider)
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <div class="slide-inner">
+            <img src="{{ $slider->{'photo'}  ?? ''}}" loading="lazy" alt="Slide Image">
+            <div class="overlay"></div>
+            <div class="slide-content">
+              <h2>   {{ $slider->{'title_' . $sign}  ?? ''}}</h2>
+              <p> {!! $slider->{'details_' . $sign}  ?? '' !!}</p>
+              <a href="#about">اعرف المزيد</a>
             </div>
+          </div>
         </div>
-
-        <div class="text-center mb-8">
-            <!-- Main Heading -->
-            <div class="mb-4">
-                <p class="text-lg text-gray-600 mt-2">         {{ __('هدفنا ايجاد الحلول المناسبة لك وتلبيه طلبك في اسرع وقت') }}</p>
-                <h1 class="text-4xl font-semibold  hover:text-primary transition-all duration-700"> {{ __('من نحن') }}  
-                </h1>
-            </div>
-        </div>
-        <!-- Section Container -->
-        <div class="py-12">
-            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div id="rightToLeft" class="md:py-12">
-                    <h1 class="text-4xl font-semibold hover:text-primary transition-all duration-700">
-                        {{ $ps->{'about_title_' . $sign}  ?? ''}}
-                    </h1>
-                    <p class="text-gray-600 my-6 hover:text-primary transition-all duration-700">
-                        {!! $ps->{'about_details_' . $sign}  ?? ''!!}
-
-                    </p>
-                    <div class="flex flex-wrap items-center gap-4">
-                        <div>
-                            <a href="{{ route('about.index') }}"
-                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 rounded-md px-8 space-x-2 !px-4 !rounded-full uppercase">
-                                {{ __('اعرف المزيد') }}  
-                                <span class="transform rotate-180">
-                                    <i data-lucide="arrow-right-circle" class="w-5 h-5 animate-bounce"></i>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div id="leftToRight" class="relative hidden md:block">
-                    <img src="{{ $ps->about_photo }}" alt="About us illustration"
-                        class="object-contain w-full h-full animate-hero-img">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section -->
-    <!-- services -->
-    <section class="py-10" style="background-color:#2cb676">
-        <div class="text-center mb-4">
-            <div><span class="uppercase text-accent font-semibold leading-4"></span>
-                <h2 class="text-white font-bold text-4xl italic">خدماتنا</h2>
-            </div>
-        </div>
-        <!-- <div id="servicesSlider" class="w-full h-[600px]">
-    </div> -->
-        <div class="swiper mySwiper hover:h-screen">
-            <div class="swiper-wrapper">
-
-                @foreach ($services as $service)
-                <div class="swiper-slide">
-                    <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}" class="card">
-                        <div class="imgbox overflow-hidden">
-                            <img src="{{ $service->photo }}"
-                                alt="" />
-                        </div>
-                        <div class="content">
-                            <div class="flex justify-center">
-                                <span> {{ $service->{'title_' . $sign} }}   </span>
-                            </div>
-                            <p >{{ $service->{'short_details_' . $sign} }} </p>
-                        </div>
-                        <h2>   {{ $service->{'title_' . $sign} }} </h2>
-                    </a>
-                </div>
-                @endforeach
-                 
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
-    <!-- services -->
-
-    <!-- blogs -->
-    <section class="container mt-10 mx-auto px-4 md:px-8 lg:px-16 xl:px-32">
-        <div class="text-center">
-            <div><span class="uppercase text-accent font-semibold leading-4"></span>
-                <h2 class="text-primary font-bold text-4xl italic">{{ __('المقالات') }}</h2>
-            </div>
-        </div>
-        <div class="flex justify-between my-4">
-            <div><span class="uppercase text-accent font-semibold leading-4">{{ __('المقالات') }}</span>
-                <h2 class="text-primary font-bold text-4xl italic"></h2>
-            </div><a
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 "
-                href="{{ route('blogs.index') }}"> {{ __('اعرف المزيد') }}  </a>
-        </div>
-        <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-           
-            @foreach($blogs as $blog)
-            <div class="rounded shadow hover:shadow-lg p-4 transition-all duration-500">
-                <a class="flex flex-col justify-start" href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}">
-                    <img class="rounded max-w-full h-auto object-cover aspect-video mb-4"
-                        src="{{ $blog->photo }}"
-                        srcset="{{ $blog->photo }} 1x, {{ $blog->photo }} 2x"
-                        alt="Free Ai Generated Employee illustration and picture"
-                        title="Download free HD stock image of Ai Generated Employee">
-                    <h2 class="text-xl mt-2 font-bold text-gray-800 mb-2 line-clamp-2">  {{ $blog->{'title_' . $sign} }}     </h2>
-                    <p class="text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap max-w-full ">
-                        {{ $blog->{'short_details_' . $sign} }}
-                    </p>
-                </a>
-            </div>
-            @endforeach
-            
-            
-        </div>
-    </section>
-    <!-- blogs -->
-    <!-- contact-us -->
- 
-   @include('includes.form')
   
+        @endforeach
+        
+      
   
+      </div>
+  
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  
+  <div id="about" class="about pt-2 pb-5">
+    <div class="container p-lg-5">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="">
+            <h2>نبذة عن شركتنا</h2>
+            <p> بفضل خبرتنا التي تزيد عن 10 سنوات في مجال المصاعد، نتعاون مع أصحاب المشاريع والمحترفين في التصميم لإنشاء مشاريع عالية الجودة. بفضل خبرتنا التي تزيد عن 10 سنوات في مجال المصاعد، نتعاون مع أصحاب المشاريع والمحترفين في التصميم لإنشاء مشاريع عالية الجودة. بفضل خبرتنا التي تزيد عن 10 سنوات في مجال المصاعد، نتعاون مع أصحاب المشاريع والمحترفين في التصميم لإنشاء مشاريع عالية الجودة.</p>
+            <a class="btn-about" href="about.html">اقرأ المزيد</a>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <img src="img/slider.jpg" alt="About Image">
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-12 col-lg-3 col-md-6">
+          <div class="about-box">
+            <img src="img/goals.svg" alt="About Image">
+            <h3>أهدافنا </h3>
+            <p>واحدة من قيمنا الأساسية هي الابتكار. نبقى على اطلاع دائم بأحدث اتجاهات الصناعة والتقدم التكنولوجي...</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6">
+          <div class="about-box">
+            <img src="img/target.svg" alt="About Image">
+            <h3>مهمتنا</h3>
+            <p>يلتزم فريقنا من المصممين والمهندسين ذوي الخبرة العالية بتقديم التميز والرقي في كل مشروع . نح...</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6">
+          <div class="about-box">
+            <img src="img/eye.svg" alt="About Image">
+            <h3>رؤيتنا</h3>
+            <p>نحن نعلم أن المطبخ ليس مكاناً لإعداد الطعام فحسب , وإنما هو قلب المنزل , ومساحة للتجمع والتسلية و...</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 col-md-6">
+          <div class="about-box">
+            <img src="img/specialist.svg" alt="About Image">
+            <h3>مميزاتنا </h3>
+            <p>نحن نعلم أن المطبخ ليس مكاناً لإعداد الطعام فحسب , وإنما هو قلب المنزل , ومساحة للتجمع والتسلية و...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="service">
+    <div class="container p-lg-5">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <h2>خدماتنا</h2>
+          <p>نقدم مجموعة متنوعة من الخدمات التي تلبي احتياجات عملائنا في مجال المصاعد. تشمل خدماتنا تصميم وتركيب وصيانة الأنظمة المختلفة.</p>
+          <a class="btn-service" href="service.html">اقرأ المزيد</a>
+        </div>
+        <div class="col-12 col-lg-6">
+          <img src="img/3961.jpg" alt="Service Image">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="service-box">
+            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
+            <div class="service-box-content">
+              <h3>تصميم وتركيب المصاعد</h3>
+              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
+              <a href="">المزيد</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="service-box">
+            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
+            <div class="service-box-content">
+              <h3>تصميم وتركيب المصاعد</h3>
+              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
+              <a href="">المزيد</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="service-box">
+            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
+            <div class="service-box-content">
+              <h3>تصميم وتركيب المصاعد</h3>
+              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
+              <a href="">المزيد</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="service-box">
+            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
+            <div class="service-box-content">
+              <h3>تصميم وتركيب المصاعد</h3>
+              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
+              <a href="">المزيد</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="service-box">
+            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
+            <div class="service-box-content">
+              <h3>تصميم وتركيب المصاعد</h3>
+              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
+              <a href="">المزيد</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="service-box">
+            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
+            <div class="service-box-content">
+              <h3>تصميم وتركيب المصاعد</h3>
+              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
+              <a href="">المزيد</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="details-features">
+    <div class="container p-lg-5">
+      <div class="text-xl-center mb-4">
+        <h2>عن شتيجن</h2>
+        <P>عندما تم التفكير في شتيجن للمرة الأولى، سعينا إلى بناء نموذج عمل يركز على الجودة والانتباه للتفاصيل. نهج مستوحى لتنفيذ مشاريع سكنية وتجارية عالية الجودة</P>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="box-features">
+            <div class="d-flex">
+              <div>
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+              <div>
+                <h2> جودة وأمان المصاعد</h2>
+                <p>نحن ملتزمون بتقديم مصاعد عالية الجودة ومصممة بأحدث التقنيات لضمان الأمان والأداء الموثوق.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+           <div class="box-features">
+            <div class="d-flex  ">
+              <div>
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div>
+                <h2> خدمة العملاء الممتازة</h2>
+                <p>يعتبر تلبية احتياجات عملائنا وتقديم خدمة عملاء لدعم عملائنا في كل مرحلة من مراحل توريد وصيانة المصاعد.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="box-features">
+            <div class="d-flex  ">
+              <div>
+                <i class="fa-solid fa-bucket"></i>
+              </div>
+              <div>
+                <h2>حلول مخصصة</h2>
+                <p> نقدم حلاً فريدًا لاحتياجات كل عميل، حيث نهتم بتوفير مصاعد تتناسب مع متطلبات المكان والاستخدام الخاصة بهم.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+           <div class="box-features">
+            <div class="d-flex  ">
+              <div>
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <div>
+                <h2>نلتزم بعرض السعر المفصل</h2>
+                <p>العمل مع تقارير مفصلة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+           <div class="box-features">
+            <div class="d-flex  ">
+              <div>
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <div>
+                <h2>  24/7 خدمة علي مدار اليوم</h2>
+                <p>اتصل بنا في كل الايام في اي وقت</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+           <div class="box-features">
+            <div class="d-flex  ">
+              <div>
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <div>
+                <h2>١٢ عاما من الخبرة</h2>
+                <p>ISO 9001 Certification </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        
+        <div class="stat-box">
+          <div class="icon"><i class="fa-solid fa-building-shield"></i></div>
+          <h3 class="counter" data-target="1430">0</h3>
+          <p>مشاريع مكتملة</p>
+        </div>
+  
+        <div class="stat-box">
+          <div class="icon"><i class="fa-solid fa-helmet-safety"></i></div>
+          <h3 class="counter" data-target="43">0</h3>
+          <p>مهندسين محترفين</p>
+        </div>
+  
+        <div class="stat-box">
+          <div class="icon"><i class="fa-solid fa-ruler"></i></div>
+          <h3 class="counter" data-target="747">0</h3>
+          <p>+عقود صيانة</p>
+        </div>
+  
+        <div class="stat-box">
+          <div class="icon"><i class="fa-solid fa-building-circle-check"></i></div>
+          <h3 class="counter" data-target="4">0</h3>
+          <p>+فروع في المملكة</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  <div class="pannar">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <p>  هل تريد حجز موعد وسنتواصل معك     </p>
+        </div>
+        <div class="col-6">
+          <a href=""> احجز الان  </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
  @stop
