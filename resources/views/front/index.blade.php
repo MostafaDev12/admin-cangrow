@@ -53,44 +53,30 @@ $randomPhone = Arr::random($phones);
       <div class="row">
         <div class="col-12 col-lg-6">
           <div class="">
-            <h2>نبذة عن شركتنا</h2>
-            <p> بفضل خبرتنا التي تزيد عن 10 سنوات في مجال المصاعد، نتعاون مع أصحاب المشاريع والمحترفين في التصميم لإنشاء مشاريع عالية الجودة. بفضل خبرتنا التي تزيد عن 10 سنوات في مجال المصاعد، نتعاون مع أصحاب المشاريع والمحترفين في التصميم لإنشاء مشاريع عالية الجودة. بفضل خبرتنا التي تزيد عن 10 سنوات في مجال المصاعد، نتعاون مع أصحاب المشاريع والمحترفين في التصميم لإنشاء مشاريع عالية الجودة.</p>
-            <a class="btn-about" href="about.html">اقرأ المزيد</a>
+            <h2>   {{ $ps->{'portfolio_title_' . $sign}  ?? ''}}    </h2>
+            <p> {!! $ps->{'portfolio_details_' . $sign}  ?? '' !!}</p>
+            <a class="btn-about" href="{{ route('about.index') }}">اقرأ المزيد</a>
           </div>
         </div>
         <div class="col-12 col-lg-6">
-          <img src="img/slider.jpg" alt="About Image">
+          <img src="{{ $ps->portfolio_photo }}" alt="About Image">
         </div>
       </div>
       <div class="row ">
+        @foreach ($models as $model)
+        
         <div class="col-12 col-lg-3 col-md-6">
           <div class="about-box">
-            <img src="img/goals.svg" alt="About Image">
-            <h3>أهدافنا </h3>
-            <p>واحدة من قيمنا الأساسية هي الابتكار. نبقى على اطلاع دائم بأحدث اتجاهات الصناعة والتقدم التكنولوجي...</p>
+            <img src="{{ $model->photo }}" alt="About Image">
+            <h3> {{ $model->{'title_' . $sign} }}  </h3>
+            <p>  {{ $model->{'details_' . $sign}  ?? ''}}</p>
           </div>
         </div>
-        <div class="col-12 col-lg-3 col-md-6">
-          <div class="about-box">
-            <img src="img/target.svg" alt="About Image">
-            <h3>مهمتنا</h3>
-            <p>يلتزم فريقنا من المصممين والمهندسين ذوي الخبرة العالية بتقديم التميز والرقي في كل مشروع . نح...</p>
-          </div>
-        </div>
-        <div class="col-12 col-lg-3 col-md-6">
-          <div class="about-box">
-            <img src="img/eye.svg" alt="About Image">
-            <h3>رؤيتنا</h3>
-            <p>نحن نعلم أن المطبخ ليس مكاناً لإعداد الطعام فحسب , وإنما هو قلب المنزل , ومساحة للتجمع والتسلية و...</p>
-          </div>
-        </div>
-        <div class="col-12 col-lg-3 col-md-6">
-          <div class="about-box">
-            <img src="img/specialist.svg" alt="About Image">
-            <h3>مميزاتنا </h3>
-            <p>نحن نعلم أن المطبخ ليس مكاناً لإعداد الطعام فحسب , وإنما هو قلب المنزل , ومساحة للتجمع والتسلية و...</p>
-          </div>
-        </div>
+
+        @endforeach
+ 
+
+
       </div>
     </div>
   </div>
@@ -102,78 +88,26 @@ $randomPhone = Arr::random($phones);
         <div class="col-12 col-lg-6">
           <h2>خدماتنا</h2>
           <p>نقدم مجموعة متنوعة من الخدمات التي تلبي احتياجات عملائنا في مجال المصاعد. تشمل خدماتنا تصميم وتركيب وصيانة الأنظمة المختلفة.</p>
-          <a class="btn-service" href="service.html">اقرأ المزيد</a>
+          <a class="btn-service" href="{{ route('services.index') }}">اقرأ المزيد</a>
         </div>
         <div class="col-12 col-lg-6">
           <img src="img/3961.jpg" alt="Service Image">
         </div>
       </div>
       <div class="row">
+  @foreach ($services as $service)
         <div class="col-12 col-lg-4 col-md-6">
           <div class="service-box">
-            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
+            <img src="{{ $service->photo }}" alt="Service Image">
             <div class="service-box-content">
-              <h3>تصميم وتركيب المصاعد</h3>
-              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
-              <a href="">المزيد</a>
+              <h3>  {{ $service->{'title_' . $sign} }}     </h3>
+              <p>   {{ $service->{'short_details_' . $sign} }} </p>
+              <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">المزيد</a>
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-4 col-md-6">
-          <div class="service-box">
-            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
-            <div class="service-box-content">
-              <h3>تصميم وتركيب المصاعد</h3>
-              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
-              <a href="">المزيد</a>
-            </div>
-          </div>
+ @endforeach
 
-        </div>
-        <div class="col-12 col-lg-4 col-md-6">
-          <div class="service-box">
-            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
-            <div class="service-box-content">
-              <h3>تصميم وتركيب المصاعد</h3>
-              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
-              <a href="">المزيد</a>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-12 col-lg-4 col-md-6">
-          <div class="service-box">
-            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
-            <div class="service-box-content">
-              <h3>تصميم وتركيب المصاعد</h3>
-              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
-              <a href="">المزيد</a>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-12 col-lg-4 col-md-6">
-          <div class="service-box">
-            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
-            <div class="service-box-content">
-              <h3>تصميم وتركيب المصاعد</h3>
-              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
-              <a href="">المزيد</a>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-12 col-lg-4 col-md-6">
-          <div class="service-box">
-            <img src="img/صيانة-مصاعد-1.webp" alt="Service Image">
-            <div class="service-box-content">
-              <h3>تصميم وتركيب المصاعد</h3>
-              <p>نقدم خدمات تصميم وتركيب المصاعد بأعلى معايير الجودة.</p>
-              <a href="">المزيد</a>
-            </div>
-          </div>
-
-        </div>
       </div>
     </div>
   </div>
@@ -184,84 +118,29 @@ $randomPhone = Arr::random($phones);
         <P>عندما تم التفكير في شتيجن للمرة الأولى، سعينا إلى بناء نموذج عمل يركز على الجودة والانتباه للتفاصيل. نهج مستوحى لتنفيذ مشاريع سكنية وتجارية عالية الجودة</P>
       </div>
       <div class="row">
+        @php
+          $icons = [
+          'fa-lightbulb' , 'fa-user' , 'fa-bucket','fa-circle-check'
+
+          ]
+        @endphp
+         @foreach ($points as $point)
         <div class="col-12 col-lg-4 col-md-6">
           <div class="box-features">
             <div class="d-flex">
               <div>
-                <i class="fa-solid fa-lightbulb"></i>
+                <i class="fa-solid {{ $icons[rand(0,3)] ?? '' }}"></i>
               </div>
               <div>
-                <h2> جودة وأمان المصاعد</h2>
-                <p>نحن ملتزمون بتقديم مصاعد عالية الجودة ومصممة بأحدث التقنيات لضمان الأمان والأداء الموثوق.</p>
+                <h2>  {{ $point->{'title_' . $sign}  ?? ''}}     </h2>
+                <p>  {{ $point->{'details_' . $sign}  ?? ''}}</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-4 col-md-6">
-           <div class="box-features">
-            <div class="d-flex  ">
-              <div>
-                <i class="fa-solid fa-user"></i>
-              </div>
-              <div>
-                <h2> خدمة العملاء الممتازة</h2>
-                <p>يعتبر تلبية احتياجات عملائنا وتقديم خدمة عملاء لدعم عملائنا في كل مرحلة من مراحل توريد وصيانة المصاعد.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 col-md-6">
-          <div class="box-features">
-            <div class="d-flex  ">
-              <div>
-                <i class="fa-solid fa-bucket"></i>
-              </div>
-              <div>
-                <h2>حلول مخصصة</h2>
-                <p> نقدم حلاً فريدًا لاحتياجات كل عميل، حيث نهتم بتوفير مصاعد تتناسب مع متطلبات المكان والاستخدام الخاصة بهم.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 col-md-6">
-           <div class="box-features">
-            <div class="d-flex  ">
-              <div>
-                <i class="fa-solid fa-circle-check"></i>
-              </div>
-              <div>
-                <h2>نلتزم بعرض السعر المفصل</h2>
-                <p>العمل مع تقارير مفصلة</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 col-md-6">
-           <div class="box-features">
-            <div class="d-flex  ">
-              <div>
-                <i class="fa-solid fa-circle-check"></i>
-              </div>
-              <div>
-                <h2>  24/7 خدمة علي مدار اليوم</h2>
-                <p>اتصل بنا في كل الايام في اي وقت</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 col-md-6">
-           <div class="box-features">
-            <div class="d-flex  ">
-              <div>
-                <i class="fa-solid fa-circle-check"></i>
-              </div>
-              <div>
-                <h2>١٢ عاما من الخبرة</h2>
-                <p>ISO 9001 Certification </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach 
+
+
       </div>
     </div>
   </div>
@@ -296,19 +175,7 @@ $randomPhone = Arr::random($phones);
       </div>
     </div>
   </section>
-  
-  <div class="pannar">
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <p>  هل تريد حجز موعد وسنتواصل معك     </p>
-        </div>
-        <div class="col-6">
-          <a href=""> احجز الان  </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  @include('includes.book')
 
 
 
