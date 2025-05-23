@@ -27,12 +27,12 @@ $randomPhone = Arr::random($phones);
         <!-- Slide 1 -->
         <div class="swiper-slide">
           <div class="slide-inner">
-            <img src="{{ $slider->{'photo'}  ?? ''}}" loading="lazy" alt="Slide Image">
+            <img src="{{ $slider->{'photo'}  ?? ''}}" loading="lazy" alt="{{ $slider->{'title_' . $sign}  ?? ''}}">
             <div class="overlay"></div>
             <div class="slide-content">
               <h2>   {{ $slider->{'title_' . $sign}  ?? ''}}</h2>
               <p> {!! $slider->{'details_' . $sign}  ?? '' !!}</p>
-              <a href="#about">اعرف المزيد</a>
+              <a href="#about">  {{ __('اعرف المزيد') }}</a>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ $randomPhone = Arr::random($phones);
           <div class="">
             <h2>   {{ $ps->{'portfolio_title_' . $sign}  ?? ''}}    </h2>
             <p> {!! $ps->{'portfolio_details_' . $sign}  ?? '' !!}</p>
-            <a class="btn-about" href="{{ route('about.index') }}">اقرأ المزيد</a>
+            <a class="btn-about" href="{{ route('about.index') }}"> {{ __('اقرأ المزيد') }}</a>
           </div>
         </div>
         <div class="col-12 col-lg-6">
@@ -67,7 +67,7 @@ $randomPhone = Arr::random($phones);
         
         <div class="col-12 col-lg-3 col-md-6">
           <div class="about-box">
-            <img src="{{ $model->photo }}" alt="About Image">
+            <img src="{{ $model->photo }}" alt="{{ $model->{'title_' . $sign} }} ">
             <h3> {{ $model->{'title_' . $sign} }}  </h3>
             <p>  {{ $model->{'details_' . $sign}  ?? ''}}</p>
           </div>
@@ -86,12 +86,12 @@ $randomPhone = Arr::random($phones);
     <div class="container p-lg-5">
       <div class="row">
         <div class="col-12 col-lg-6">
-          <h2>خدماتنا</h2>
-          <p>نقدم مجموعة متنوعة من الخدمات التي تلبي احتياجات عملائنا في مجال المصاعد. تشمل خدماتنا تصميم وتركيب وصيانة الأنظمة المختلفة.</p>
-          <a class="btn-service" href="{{ route('services.index') }}">اقرأ المزيد</a>
+          <h2>{{ __(key: 'خدماتنا') }}</h2>
+          <p> {{ __(key: 'نقدم مجموعة متنوعة من الخدمات التي تلبي احتياجات عملائنا في مجال المصاعد. تشمل خدماتنا تصميم وتركيب وصيانة الأنظمة المختلفة.') }} </p>
+          <a class="btn-service" href="{{ route('services.index') }}">   {{ __('اقرأ المزيد') }}</a>
         </div>
         <div class="col-12 col-lg-6">
-          <img src="img/3961.jpg" alt="Service Image">
+          <img src="{{ asset('front/shtegin/') }}/img/3961.jpg" alt="Service Image">
         </div>
       </div>
       <div class="row">
@@ -102,7 +102,7 @@ $randomPhone = Arr::random($phones);
             <div class="service-box-content">
               <h3>  {{ $service->{'title_' . $sign} }}     </h3>
               <p>   {{ $service->{'short_details_' . $sign} }} </p>
-              <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">المزيد</a>
+              <a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}">{{ __('المزيد') }}</a>
             </div>
           </div>
         </div>
@@ -114,8 +114,8 @@ $randomPhone = Arr::random($phones);
   <div class="details-features">
     <div class="container p-lg-5">
       <div class="text-xl-center mb-4">
-        <h2>عن شتيجن</h2>
-        <P>عندما تم التفكير في شتيجن للمرة الأولى، سعينا إلى بناء نموذج عمل يركز على الجودة والانتباه للتفاصيل. نهج مستوحى لتنفيذ مشاريع سكنية وتجارية عالية الجودة</P>
+        <h2> {{ __('عن شتيجن') }}</h2>
+        <P>  {{ __('عندما تم التفكير في شتيجن للمرة الأولى، سعينا إلى بناء نموذج عمل يركز على الجودة والانتباه للتفاصيل. نهج مستوحى لتنفيذ مشاريع سكنية وتجارية عالية الجودة') }}   </P>
       </div>
       <div class="row">
         @php
@@ -150,26 +150,26 @@ $randomPhone = Arr::random($phones);
         
         <div class="stat-box">
           <div class="icon"><i class="fa-solid fa-building-shield"></i></div>
-          <h3 class="counter" data-target="1430">0</h3>
-          <p>مشاريع مكتملة</p>
+          <h3 class="counter" data-target="{{ __('1430') }}">0</h3>
+          <p> {{ __(key: 'مشاريع مكتملة') }}</p>
         </div>
   
         <div class="stat-box">
           <div class="icon"><i class="fa-solid fa-helmet-safety"></i></div>
-          <h3 class="counter" data-target="43">0</h3>
-          <p>مهندسين محترفين</p>
+          <h3 class="counter" data-target="{{ __('43') }}">0</h3>
+          <p> {{ __('مهندسين محترفين') }}</p>
         </div>
   
         <div class="stat-box">
           <div class="icon"><i class="fa-solid fa-ruler"></i></div>
-          <h3 class="counter" data-target="747">0</h3>
-          <p>+عقود صيانة</p>
+          <h3 class="counter" data-target="{{ __('747') }}">0</h3>
+          <p>+ {{ __('عقود صيانة') }}</p>
         </div>
   
         <div class="stat-box">
           <div class="icon"><i class="fa-solid fa-building-circle-check"></i></div>
-          <h3 class="counter" data-target="4">0</h3>
-          <p>+فروع في المملكة</p>
+          <h3 class="counter" data-target="{{ __('4') }}">0</h3>
+          <p>+  {{ __('فروع في المملكة') }}</p>
         </div>
   
       </div>

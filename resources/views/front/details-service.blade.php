@@ -47,7 +47,7 @@
                                              class="btn-custom btn-responsive-action">
                                              <div class="icon-container d-flex pt-3">
                                                  <i class="fab fa-whatsapp"></i>
-                                                 <p class="color-white-important"> WhatsApp</p>
+                                                 <p class="color-white-important"> {{ __('WhatsApp') }}</p>
 
                                              </div>
                                          </a>
@@ -57,7 +57,7 @@
                                          <a href="tel:+2c" class="btn-custom btn-responsive-action bg-2">
                                              <div class="icon-container  d-flex pt-3">
                                                  <i class="fas fa-phone-alt"></i>
-                                                 <p class="color-white-important"> Call Us</p>
+                                                 <p class="color-white-important"> {{ __('Call Us') }}</p>
 
                                              </div>
                                          </a>
@@ -76,7 +76,7 @@
          <div class="container">
              <div class="row">
                  <div class="col-12 text-center">
-                     <h3>خدمات اخرى</h3>
+                     <h3> {{ __('خدمات اخرى') }}</h3>
                  </div>
              </div>
              <div class="row">
@@ -92,7 +92,7 @@
                              <div class="service-box-content">
                                  <h3> {{ $serv->{'title_' . $sign} }}    </h3>
                                  <p>  {{ $serv->{'short_details_' . $sign} }}</p>
-                                 <a href="{{ route('single-service.index',['slug' => $serv->{'slug_' . $sign} ]) }}">المزيد</a>
+                                 <a href="{{ route('single-service.index',['slug' => $serv->{'slug_' . $sign} ]) }}">{{ __('المزيد') }}</a>
                              </div>
                          </div>
                      </div>

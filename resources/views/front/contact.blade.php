@@ -24,9 +24,9 @@ $randomPhone = Arr::random($phones);
 <div class="contact">
     <div class="container">
        <div class="title text-center mb-2">
-        <h1 class="fw-bold">حدد موعدًا للمعاينة الان</h1>
-        <p>شتيجن  هي شركة مصاعد كاملة الخدمات تقدم حلاً شاملاً من البداية إلى النهاية. لدينا  خبرة اكثر من ١٠ عشر سنوات.</p>
-        <a class="btn-contact" href="#contact_form">احجز معاينه</a>
+        <h1 class="fw-bold">  {{ __('حدد موعدًا للمعاينة الان') }}  </h1>
+        <p>  {{ __('شتيجن هي شركة مصاعد كاملة الخدمات تقدم حلاً شاملاً من البداية إلى النهاية. لدينا خبرة اكثر من ١٠ عشر سنوات.') }}  </p>
+        <a class="btn-contact" href="#contact_form"> {{ __('احجز معاينه') }}  </a>
        </div>
     
     <div class="row">
@@ -36,7 +36,7 @@ $randomPhone = Arr::random($phones);
                     <i class="fa-solid fa-envelope"></i>
                 </div>
                 <div>
-                    <h2>البريد الالكتروني</h2>
+                    <h2> {{ __('البريد الالكتروني') }}  </h2>
 @foreach ($emails as $email)
 								 <!-- #endregion -->
 									<a href="mailto:{{ $email }}">{{ $email }}</a><br>
@@ -51,7 +51,7 @@ $randomPhone = Arr::random($phones);
                     <i class="fa-solid fa-phone"></i>
                 </div>
                 <div>
-                    <h2> اتصل الان</h2>
+                    <h2>    {{ __(' اتصل الان') }}</h2>
                  	@foreach ($phones as $phone)
 						        <a href="tel:+2{{ $phone }}">{{ $phone }}</a>  <br>
 								@endforeach
@@ -66,38 +66,38 @@ $randomPhone = Arr::random($phones);
                             <div class="form-group w-100">
                               <div class="response w-100"></div>
                             </div>
-                    <h3 class="fw-bold fs-5 mb-4">ادخل تفاصيل الحجز</h3>
+                    <h3 class="fw-bold fs-5 mb-4"> {{ __('ادخل تفاصيل الحجز') }}    </h3>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="name" class="form-label">الاسم الاول</label>
+                            <label for="name" class="form-label"> {{ __('الاسم الاول') }}  </label>
                             <input type="text" id="name"  name="name" class="form-control fname" placeholder=" الاسم الاول" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="age" class="form-label">الاسم الاخير</label>
+                            <label for="age" class="form-label"> {{ __('الاسم الاخير') }}  </label>
                             <input type="text" id="age" name="lname"  class="form-control" placeholder="الاسم  الاخير">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="mobile" class="form-label">الموبايل</label>
+                            <label for="mobile" class="form-label">{{ __('الموبايل') }}</label>
                             <input type="tel" id="mobile"  name="phone" class="form-control text-end" placeholder="ادخل رقم الموبايل">
                         </div>
                         <div class="col-md-6">
-                            <label for="email" class="form-label">البريد الالكتروني</label>
+                            <label for="email" class="form-label"> {{ __('البريد الالكتروني') }}  </label>
                             <input type="email" id="email"  name="email" class="form-control" placeholder="إن وجد">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="bookingDate" class="form-label">تاريخ الحجز</label>
+                        <label for="bookingDate" class="form-label"> {{ __('تاريخ الحجز') }}  </label>
                         <input type="date" id="bookingDate"  name="bookingDate" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="details" class="form-label">التفاصيل</label>
+                        <label for="details" class="form-label">{{ __('التفاصيل') }}</label>
                         <textarea id="details" name="text" class="form-control" rows="4"
                             placeholder="تفاصيل الحجز"></textarea>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-submit w-100 mt-3 px-5"> إرسال <i class="fa-solid fa-envelope"></i> </button>
+                        <button type="submit" class="btn btn-submit w-100 mt-3 px-5"> {{ __('إرسال') }} <i class="fa-solid fa-envelope"></i> </button>
                     </div>
                 </form>
             </div>

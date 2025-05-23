@@ -3,7 +3,7 @@
 
 @section('title')
    
-{{ __('مقالات') }}  -  {{ $gs->{'title_' . $sign} }}
+{{ __('المقالات') }}  -  {{ $gs->{'title_' . $sign} }}
      
 @stop
 
@@ -17,8 +17,8 @@
   <div class="blog ">
     <div class="container p-lg-5">
         <div class="title">
-            <h1 class="text-center">المقالات</h1>
-            <p class="text-center">نقدم لك مقالات متنوعة حول المصاعد، صيانتها، وتركيبها. تابعنا لمزيد من المعلومات.</p>
+            <h1 class="text-center">{{ __('المقالات') }}</h1>
+            <p class="text-center">  {{ __('نقدم لك مقالات متنوعة حول المصاعد، صيانتها، وتركيبها. تابعنا لمزيد من المعلومات.') }}</p>
         </div>
         <div class="row">
            @foreach($blogs as $blog)
@@ -27,7 +27,7 @@
                     <img src="{{ $blog->photo }}" alt="">
                     <h2> {{ $blog->{'title_' . $sign} }}   </h2>
                     <p>  {{ $blog->{'short_details_' . $sign} }}  </p>
-                    <a href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}" class="btn-blog">اقرأ المزيد</a>
+                    <a href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}" class="btn-blog"> {{ __('اقرأ المزيد') }}</a>
                 </div>
 
             </div> 

@@ -123,16 +123,16 @@
                     <ul class="navbar-nav ">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
-                                href="{{ route('front.index') }}">الرئيسية</a>
+                                href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about.index') }}">عن الشركة</a>
+                            <a class="nav-link" href="{{ route('about.index') }}"> {{ __('عن الشركة') }}</a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}"
                                 id="servicesDropdown" role="button" aria-expanded="false">
-                                الخدمات
+                            {{ __('الخدمات') }}    
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
 
@@ -152,13 +152,13 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blogs.index') }}">المقالات</a>
+                            <a class="nav-link" href="{{ route('blogs.index') }}">  {{ __('المقالات') }}   </a>
                         </li>
                         {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact.index') }}">احجز الآن</a>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">اتصل بنا</a>
+                            <a class="nav-link" href="{{ route('contact.index') }}">   {{ __('اتصل بنا') }}  </a>
                         </li>
                     </ul>
 
@@ -192,13 +192,13 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 ">
-                    <h2>روابط هامة</h2>
+                    <h2> {{ __('روابط هامة') }}</h2>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('front.index') }}">الرئيسية</a></li>
-                        <li><a href="{{ route('about.index') }}">عن الشركة</a></li>
-                        <li><a href="{{ route('services.index') }}">الخدمات</a></li>
-                        <li><a href="{{ route('blogs.index') }}">المقالات</a></li>
-                        <li><a href="{{ route('contact.index') }}">اتصل بنا</a></li>
+                        <li><a href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a></li>
+                        <li><a href="{{ route('about.index') }}"> {{ __('عن الشركة') }}  </a></li>
+                        <li><a href="{{ route('services.index') }}"> {{ __('الخدمات') }}  </a></li>
+                        <li><a href="{{ route('blogs.index') }}"> {{ __('المقالات') }}</a></li>
+                        <li><a href="{{ route('contact.index') }}"> {{ __('اتصل بنا') }}  </a></li>
                     </ul>
                 </div>
                 <!-- <div class="col-lg-3 col-md-6 ">
@@ -213,7 +213,7 @@
             </div> -->
                 <!-- تواصل معنا -->
                 <div class="col-lg-4 col-md-6 ">
-                    <h2>تواصل معنا</h2>
+                    <h2> {{ __('تواصل معنا') }}</h2>
                     <p class="contact-info">
                         @foreach ($phones as $phone)
                             <i class="fas fa-phone"></i><a href="tel:+2{{ $phone }}">{{ $phone }}</a>

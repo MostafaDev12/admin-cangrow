@@ -44,7 +44,7 @@ $randomPhone = Arr::random($phones);
                                     <a href="https://wa.me/+2{{ $randomPhone }}" target="_blank" class="btn-custom btn-responsive-action">
                                         <div class="icon-container d-flex pt-3">
                                             <i class="fab fa-whatsapp"></i>
-                                            <p class="color-white-important"> WhatsApp</p>
+                                            <p class="color-white-important"> {{ __('WhatsApp') }}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -53,7 +53,7 @@ $randomPhone = Arr::random($phones);
                                     <a href="tel:+2{{ $randomPhone }}" class="btn-custom btn-responsive-action bg-2">
                                         <div class="icon-container  d-flex pt-3">
                                             <i class="fas fa-phone-alt"></i>
-                                            <p class="color-white-important"> Call Us</p>
+                                            <p class="color-white-important"> {{ __('Call Us') }}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -69,7 +69,7 @@ $randomPhone = Arr::random($phones);
             <div class="col-12 col-lg-4 col-md-6 box">
                 <div class="p-4">
                     <div class="blog-divs">
-                        <h2>أحدث المقالات</h2>
+                        <h2> {{ __('أحدث المقالات') }}</h2>
                         <hr>
  @foreach (App\Models\Blog::orderBy('blog_date', 'desc')->where('id','!=',$blog->id)->limit(6)->get() as $k=> $blogg)
                             @php
@@ -101,21 +101,21 @@ $randomPhone = Arr::random($phones);
                             <div class="form-group w-100">
                               <div class="response w-100"></div>
                             </div>
-                        <h3 class="fw-bold fs-5 mb-4">تواصل معنا</h3>
+                        <h3 class="fw-bold fs-5 mb-4"> {{ __('تواصل معنا') }}</h3>
                         <div class="mb-3">
-                            <label for="name" class="form-label">الاسم</label>
+                            <label for="name" class="form-label">{{ __('الاسم') }}</label>
                             <input type="text" id="name" name="name" class="form-control w-100" placeholder="ادخل اسمك">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">البريد الإلكتروني</label>
+                            <label for="email" class="form-label"> {{ __('البريد الإلكتروني') }}</label>
                             <input type="email" id="email" name="email" class="form-control" placeholder="إن وجد">
                         </div>
                         <div class="mb-3">
-                            <label for="details" class="form-label">الرسالة</label>
+                            <label for="details" class="form-label">{{ __('الرسالة') }}</label>
                             <textarea id="details" name="text" class="form-control" rows="4" placeholder="اكتب الرسالة"></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-submit w-100 mt-3 px-5"> إرسال <i class="fa-solid fa-envelope text-white"></i> </button>
+                            <button type="submit" class="btn btn-submit w-100 mt-3 px-5">  {{ __('إرسال') }}<i class="fa-solid fa-envelope text-white"></i> </button>
                         </div>
                     </form>
 
