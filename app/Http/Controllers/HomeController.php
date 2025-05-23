@@ -314,6 +314,7 @@ class HomeController extends Controller
     $ps = DB::table('pagesettings')->where('id', '=', 1)->first();
 
     $name = $request->name;
+    $lname = $request->lname;
     $phone = $request->phone;
     $reservation = $request->reservation;
     $service = $request->service;
@@ -326,11 +327,11 @@ class HomeController extends Controller
 
       $subject = "Reservation From Of " . $request->name;
       $service = $request->specialty;
-      $msg = "Name: " . $name . 
+      $msg = "Name: " . $name . ' '. $lname.
       "<br>Email: " . $from . 
       "<br>Phone: " . $phone . 
-      "<br>Age: " . $request->age . 
-      "<br>Specialty: " . $request->specialty . 
+      // "<br>Age: " . $request->age . 
+      // "<br>Specialty: " . $request->specialty . 
       "<br>BookingDate: " . $request->bookingDate . 
     
       "<br>Message: " . $message;
@@ -345,13 +346,13 @@ class HomeController extends Controller
         "<br>Message: " . $message;
     } else {
 
-      $subject = "Email From Of " . $request->name;
+      $subject = "Book From " . $request->name;
       $service = $request->specialty;
-      $msg = "Name: " . $name . 
+      $msg = "Name: " . $name . ' '. $lname.
       "<br>Email: " . $from . 
       "<br>Phone: " . $phone . 
-      "<br>Age: " . $request->age . 
-      "<br>Specialty: " . $request->specialty . 
+      // "<br>Age: " . $request->age . 
+      // "<br>Specialty: " . $request->specialty . 
       "<br>BookingDate: " . $request->bookingDate . 
     
       "<br>Message: " . $message;

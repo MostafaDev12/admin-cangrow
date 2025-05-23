@@ -154,9 +154,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('blogs.index') }}">المقالات</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact.index') }}">احجز الآن</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact.index') }}">اتصل بنا</a>
                         </li>

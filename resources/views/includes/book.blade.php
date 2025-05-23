@@ -5,7 +5,7 @@
           <p>  هل تريد حجز موعد وسنتواصل معك     </p>
         </div>
         <div class="col-6">
-          <a href=""> احجز الان  </a>
+          <a href="{{ route('contact.index') }}"> احجز الان  </a>
         </div>
       </div>
     </div>

@@ -1,0 +1,82 @@
+
+---Downloaded files---
+The import files for: Demo Import were successfully downloaded!
+Initial max execution time = 60000
+Files info:
+Site URL = https://shtegin.com
+Data file = /home/shtegin/public_html/wp-content/uploads/2024/02/demo-content-import-file_2024-02-02__23-07-11.xml
+Widget file = /home/shtegin/public_html/wp-content/uploads/2024/02/demo-widgets-import-file_2024-02-02__23-07-11.json
+Customizer file = /home/shtegin/public_html/wp-content/uploads/2024/02/demo-customizer-import-file_2024-02-02__23-07-11.dat
+Redux files:
+not defined!
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+---Importing widgets---
+Sidebar Blog : 
+
+Search - Search - Imported
+Categories - No Title - Imported
+Recent Posts Advanced - Recent Posts - Imported
+Tag Cloud - No Title - Imported
+Text - No Title - Imported
+Mailchimp Sign-Up Form - Newsletter - Imported
+
+Sidebar Footer 1 : 
+
+Text - No Title - Imported
+Socials - No Title - Imported
+
+Sidebar Footer 2 : 
+
+Links - Useful Links - Imported
+
+Sidebar Footer 3 : 
+
+Information - Contact - Imported
+
+Sidebar Footer 4 : 
+
+Mailchimp Sign-Up Form - Newsletter - Imported
+
+
+
+---Importing customizer settings---
+Error: The customizer import file is not suitable for current theme. You can only import customizer settings for the same theme or a child theme.
+
+---ocdi/after_import---
+
