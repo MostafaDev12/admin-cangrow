@@ -75,7 +75,7 @@ class HomeController extends Controller
     $sliders = Slider::first();
     $points = AboutPoint::get();
     $services = Service::get();
-    $models = ModelCategory::get();
+    $models = PageModel::get();
     $reviews = Partner::get();
 
     return view('front.about', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
