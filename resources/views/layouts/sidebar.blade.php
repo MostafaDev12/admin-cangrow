@@ -59,6 +59,11 @@
                         <a class="nav-link  " href="{{ route('admin-ps-portfolio') }}" aria-controls="sidebarportfolio">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
                         </a>
+                    </li>   
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-about_points-index') }}" aria-controls="sidebarportfolio">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_points')</span>
+                        </a>
                     </li> 
                     {{-- <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-ps-our_team') }}" aria-controls="sidebarour_team">
@@ -191,7 +196,15 @@
                         </div>
                     </li> <!-- end Dashboard Menu -->
                 @endif --}}
-
+                
+@if (Auth::guard('admin')->user()->sectionCheck('models'))
+  <li class="nav-item">
+                                    <a class="nav-link  " href="{{ route('admin-models-index') }}"
+                                        aria-controls="sidebarmodels">
+                                        <span>@lang('translation.home_about_section')</span>
+                                    </a>
+                                </li>
+ @endif
            @if (Auth::guard('admin')->user()->sectionCheck('blogs'))
                 <li class="nav-item">
                     <a class="nav-link  " href="{{ route('admin-blogs-index') }}" aria-controls="sidebarblogs">
