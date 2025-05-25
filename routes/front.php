@@ -50,6 +50,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         
         Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');
         Route::post('/contact-submit', [HomeController::class, 'contactemail'])->name('front.contact.submit');
+        Route::post('/subscripe-submit', [HomeController::class, 'subscribe'])->name('front.subscripe.submit');
         Route::get('/appointments', [HomeController::class, 'BookNow'])->name('appointments.index');
         Route::get('/doctors', [HomeController::class, 'doctors'])->name('doctors.index');
         Route::get('/sinaiclinic-nabq', [HomeController::class, 'sinaiclinic_nabq'])->name('sinaiclinic-nabq.index');

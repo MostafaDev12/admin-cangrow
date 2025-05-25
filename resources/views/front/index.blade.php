@@ -38,13 +38,13 @@
                                          </div>
                                          <div class="auto-container">
                                              <div class="content-box p_relative d_block z_5">
-                                                 <span class="sub-title">SinaiClinic Hospital</span>
-                                                 <h2>At Sinai Clinic
-                                                     <span> Hospital</span>
+                                                 <span class="sub-title">{{ __('SinaiClinic Hospital') }}</span>
+                                                 <h2>{{ __('At Sinai Clinic') }}
+                                                     <span> {{ __('Hospital') }}</span>
                                                  </h2>
                                                  <p>{!! $slider->{'details_' . $sign} ?? '' !!}</p>
                                                  <div class="btn-box">
-                                                     <a href="{{ route('about.index') }}" class="theme-btn">About Us
+                                                     <a href="{{ route('about.index') }}" class="theme-btn">{{ __('About Us') }}
                                                          <span></span><span></span><span></span><span></span></a>
                                                  </div>
                                              </div>
@@ -176,8 +176,8 @@
                                                          style="background-image: url({{ asset('front/sinai_clinic/') }}/img/ChatGPT-Image-Apr-9-2025-02_35_05-AM-1.webp);">
                                                      </div>
                                                      <div class="inner p_relative">
-                                                         <h2>10</h2>
-                                                         <h4>Years of <br />expericence</h4>
+                                                         <h2>{{ __('10') }}</h2>
+                                                         <h4> {{ __('Years of') }}<br />{{ __('expericence') }}</h4>
                                                      </div>
                                                  </div>
                                              </div>
@@ -187,7 +187,7 @@
                                          <div class="content_block_one">
                                              <div class="content-box ml_30 sec-title-animation animation-style2">
                                                  <div class="sec-title mb_25">
-                                                     <span class="sub-title mb_20 title-animation">About Us</span>
+                                                     <span class="sub-title mb_20 title-animation">{{ __('About Us') }}</span>
                                                      <h2 class="title-animation">
                                                          {{ $ps->{'portfolio_title_' . $sign} ?? '' }} </h2>
                                                  </div>
@@ -202,8 +202,7 @@
                                                      </ul>
                                                  </div>
                                                  <div class="btn-box">
-                                                     <a href="{{ route('contact.index') }}" class="theme-btn">Get
-                                                         more<span></span><span></span><span></span><span></span></a>
+                                                     <a href="{{ route('contact.index') }}" class="theme-btn">{{ __('Get more') }}<span></span><span></span><span></span><span></span></a>
                                                  </div>
                                              </div>
                                          </div>
@@ -231,8 +230,8 @@
                              </div>
                              <div class="auto-container">
                                  <div class="sec-title light mb_60 sec-title-animation animation-style2">
-                                     <span class="sub-title mb_20 title-animation">About Us</span>
-                                     <h2 class="title-animation">Our Mission</h2>
+                                     <span class="sub-title mb_20 title-animation">{{ __('About Us') }}</span>
+                                     <h2 class="title-animation">{{ __('Our Mission') }}</h2>
                                  </div>
                                  <div class="inner-container p_relative">
                                      <div class="row clearfix">
@@ -436,10 +435,8 @@
                              </div>
                              <div class="auto-container">
                                  <div class="sec-title centred mb_70 sec-title-animation animation-style2">
-                                     <span class="sub-title mb_20 title-animation">OUR DEPARTMENT</span>
-                                     <h2 class="title-animation">In order to meet the diverse medical needs of patients,
-                                         sinaiclinic provides some important departments that ensure the provision of the
-                                         necessary health care according to world standards
+                                     <span class="sub-title mb_20 title-animation">{{ __('OUR DEPARTMENT') }}</span>
+                                     <h2 class="title-animation">{{ __('In order to meet the diverse medical needs of patients, sinaiclinic provides some important departments that ensure the provision of the necessary health care according to world standards') }}
 
                                      </h2>
                                  </div>
@@ -464,8 +461,7 @@
                                                      <p>{{ $home_service->{'short_details_' . $sign} }}</p>
                                                      <div class="link"><a
                                                              href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}"
-                                                             target=&quot;_blank&quot; rel=&quot;nofollow&quot;>Discover
-                                                             More <i class="fal fa-angle-right"></i></a></div>
+                                                             target=&quot;_blank&quot; rel=&quot;nofollow&quot;>{{ __('Discover More') }} <i class="fal fa-angle-right"></i></a></div>
                                                  </div>
                                              </div>
                                          </div>
@@ -487,7 +483,7 @@
                          <div class="elementor-button-wrapper">
                              <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
                                  <span class="elementor-button-content-wrapper">
-                                     <span class="elementor-button-text">Our Partners</span>
+                                     <span class="elementor-button-text">{{ __('Our Partners') }}</span>
                                  </span>
                              </a>
                          </div>
@@ -496,7 +492,7 @@
                  <div class="elementor-element elementor-element-f428ee0 elementor-widget elementor-widget-heading"
                      data-id="f428ee0" data-element_type="widget" data-widget_type="heading.default">
                      <div class="elementor-widget-container">
-                         <h2 class="elementor-heading-title elementor-size-default">COMPANIES CONTRACTING WITH SINAICLINIC
+                         <h2 class="elementor-heading-title elementor-size-default">{{ __('COMPANIES CONTRACTING WITH SINAICLINIC') }}
                          </h2>
                      </div>
                  </div>
@@ -544,10 +540,8 @@
                              </div>
                              <div class="auto-container">
                                  <div class="sec-title light mb_70 sec-title-animation animation-style2">
-                                     <span class="sub-title mb_20 title-animation">Sinaiclinic is characterized by
-                                         high-quality </span>
-                                     <h2 class="title-animation">services and many features that make it one of the leading
-                                         hospitals in the Middle East</h2>
+                                     <span class="sub-title mb_20 title-animation"> {{ __('Sinaiclinic is characterized by high-quality') }}</span>
+                                     <h2 class="title-animation">{{ __('services and many features that make it one of the leading hospitals in the Middle East') }}</h2>
                                  </div>
                                  <div class="row clearfix">
 
@@ -715,8 +709,8 @@
                              </div>
                              <div class="auto-container">
                                  <div class="sec-title mb_70 sec-title-animation animation-style2">
-                                     <span class="sub-title mb_20 title-animation">Team Members</span>
-                                     <h2 class="title-animation">Our Doctors</h2>
+                                     <span class="sub-title mb_20 title-animation">{{ __('Team Members') }}</span>
+                                     <h2 class="title-animation">{{ __('Our Doctors') }}</h2>
                                  </div>
                                  <div class="row clearfix">
 
@@ -938,8 +932,8 @@
                              <div class="auto-container">
                                  <div class="inner-container pt_120 pb_120">
                                      <div class="sec-title light mb_70 sec-title-animation animation-style2">
-                                         <span class="sub-title mb_20 title-animation">Our Timeline</span>
-                                         <h2 class="title-animation">Our Journey Map</h2>
+                                         <span class="sub-title mb_20 title-animation">{{ __('Our Timeline') }}</span>
+                                         <h2 class="title-animation">{{ __('Our Journey Map') }}</h2>
                                      </div>
                                      <div class="slider-content p_relative">
                                          <div class="border-line"></div>
@@ -987,8 +981,8 @@
                          <section class="testimonial-section pt_120 pb_120">
                              <div class="auto-container">
                                  <div class="sec-title centred mb_70 sec-title-animation animation-style2">
-                                     <span class="sub-title mb_20 title-animation">Testimonials</span>
-                                     <h2 class="title-animation">Love from Clients</h2>
+                                     <span class="sub-title mb_20 title-animation">{{ __('Testimonials') }}</span>
+                                     <h2 class="title-animation">{{ __('Love from Clients') }}</h2>
                                  </div>
                                  <div class="two-item-carousel owl-carousel owl-theme dots-style-one owl-nav-none">
                                     @foreach ($testimonials as $testimonial)
@@ -1065,22 +1059,22 @@
                                  <section class="contact-section pt_120 pb_180">
                                      <div class="auto-container">
                                          <div class="sec-title mb_70 centred sec-title-animation animation-style2">
-                                             <span class="sub-title mb_20 title-animation">Send Message</span>
-                                             <h2 class="title-animation">Get in Touch</h2>
+                                             <span class="sub-title mb_20 title-animation">{{ __('Send Message') }}</span>
+                                             <h2 class="title-animation">{{ __('Get in Touch') }}</h2>
                                          </div>
                                          <div class="form-inner">
                                              <div id="contact-form">
 
-                                                 <div class="wpcf7 no-js" id="wpcf7-f934-p19-o1" lang="en-US"
-                                                     dir="ltr" data-wpcf7-id="934">
+                                                 <div class=" no-js" id="-f934-p19-o1" lang="en-US"
+                                                     dir="ltr" data--id="934">
                                                      <div class="screen-reader-response">
                                                          <p role="status" aria-live="polite" aria-atomic="true"></p>
                                                          <ul></ul>
                                                      </div>
-                                                     {{-- <form action="/#wpcf7-f934-p19-o1" method="post"
-                                                         class="wpcf7-form init" aria-label="Contact form"
+                                                     {{-- <form action="/#-f934-p19-o1" method="post"
+                                                         class="-form init" aria-label="Contact form"
                                                          novalidate="novalidate" data-status="init"> --}}
-<form action="{{route('front.contact.submit')}}" name="appointment" id="email-form" method="POST" autocomplete="off" class="cons-contact-form wpcf7-form init">
+<form action="{{route('front.contact.submit')}}" name="appointment" id="email-form" method="POST" autocomplete="off" class="cons-contact-form -form init">
                             {{csrf_field()}}
                             <div class="form-group w-100">
                               <div class="response w-100"></div>
@@ -1088,63 +1082,62 @@
                                                          
                                                          <div class="row clearfix">
                                                              <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                                                 <p><span class="wpcf7-form-control-wrap"
+                                                                 <p><span class="-form-control-wrap"
                                                                          data-name="text-178"><input size="40"
                                                                              maxlength="400"
-                                                                             class="fname wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                             aria-required="true" aria-invalid="false"
-                                                                             placeholder="Your name" name="name" value=""
-                                                                             type="text" name="text-178" /></span>
+                                                                             class="fname -form-control -text -validates-as-required"
+                                                                             aria-required="true" aria-invalid="false" required
+                                                                             placeholder="{{ __('Your name') }}" name="name" value=""
+                                                                             type="text"   /></span>
                                                                  </p>
                                                              </div>
                                                              <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                                                 <p><span class="wpcf7-form-control-wrap"
+                                                                 <p><span class="-form-control-wrap"
                                                                          data-name="email-979"><input size="40"
                                                                              maxlength="400"
-                                                                             class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
+                                                                             class="-form-control -email -validates-as-required -text -validates-as-email"
                                                                              aria-required="true" name="email"  aria-invalid="false"
-                                                                             placeholder="Your email" value=""
-                                                                             type="email" name="email-979" /></span>
+                                                                             placeholder="{{ __('Your email') }}" value="" 
+                                                                             type="email"   /></span>
                                                                  </p>
                                                              </div>
                                                              <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                                                 <p><span class="wpcf7-form-control-wrap"
+                                                                 <p><span class="-form-control-wrap"
                                                                          data-name="text-179"><input size="40"
                                                                              maxlength="400"
-                                                                             class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                             aria-required="true" aria-invalid="false"
-                                                                             placeholder="Phone"  name="phone"   value=""
-                                                                             type="text" name="text-179" /></span>
+                                                                             class="-form-control -text -validates-as-required"
+                                                                             aria-required="true" aria-invalid="false" required
+                                                                             placeholder="{{ __('Phone') }}"  name="phone"   value=""
+                                                                             type="text"   /></span>
                                                                  </p>
                                                              </div>
                                                              <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                                                 <p><span class="wpcf7-form-control-wrap"
+                                                                 <p><span class="-form-control-wrap"
                                                                          data-name="text-180"><input size="40"
                                                                              maxlength="400"
-                                                                             class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                                                             class="-form-control -text -validates-as-required"
                                                                              aria-required="true" aria-invalid="false"
-                                                                             placeholder="Subject"   name="subject"   value=""
-                                                                             type="text" name="text-180" /></span>
+                                                                             placeholder="{{ __('Subject') }}"   name="subject"   value=""
+                                                                             type="text"   /></span>
                                                                  </p>
                                                              </div>
                                                              <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                                                 <p><span class="wpcf7-form-control-wrap"
+                                                                 <p><span class="-form-control-wrap"
                                                                          data-name="textarea-481">
                                                                          <textarea cols="40" rows="10" maxlength="2000"
-                                                                             class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false"
-                                                                             placeholder="Type message" name="text"></textarea>
+                                                                             class="-form-control -textarea -validates-as-required" aria-required="true" aria-invalid="false"
+                                                                             placeholder="{{ __('Type message') }}" name="text"></textarea>
                                                                      </span>
                                                                  </p>
                                                              </div>
                                                              <div
                                                                  class="col-lg-12 col-md-12 col-sm-12 form-group message-btn centred">
                                                                  <p><button type="submit" class="theme-btn"
-                                                                         name="submit-form">Ask
-                                                                         Question<span></span><span></span><span></span><span></span></button>
+                                                                         name="submit-form">{{ __('Ask Question') }}<span></span><span></span><span></span><span></span></button>
                                                                  </p>
                                                              </div>
                                                          </div>
-                                                         <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                                         <div class="-response-output" aria-hidden="true"></div>
                                                      </form>
                                                  </div>
                                              </div>

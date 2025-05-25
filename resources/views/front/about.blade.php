@@ -2,7 +2,7 @@
 
 @section('title')
    
-{{ __('من نحن') }}  -  {{ $gs->{'title_' . $sign} }}
+{{ __('About Us') }} -  {{ $gs->{'title_' . $sign} }}
      
 @stop
 
@@ -31,10 +31,10 @@
         </div>
         <div class="auto-container">
             <div class="content-box">
-                <h2>About Us</h2>
+                <h2>{{ __('About Us') }}</h2>
                 <ul class="bread-crumb">
-                    <li class="breadcrumb-item"><a href="{{ route('front.index') }}">Home</a></li>
-                    <li class="breadcrumb-item">About Us</li>
+                    <li class="breadcrumb-item"><a href="{{ route('front.index') }}">{{ __('Home') }}</a></li>
+                    <li class="breadcrumb-item">{{ __('About Us') }}</li>
                 </ul>
             </div>
         </div>
@@ -65,7 +65,7 @@
                                     <div class="content_block_one">
                                         <div class="content-box mt_25 mr_70 sec-title-animation animation-style2">
                                             <div class="sec-title mb_25">
-                                                <span class="sub-title mb_20 title-animation">About Us</span>
+                                                <span class="sub-title mb_20 title-animation">{{ __('About Us') }}</span>
                                                 <h2 class="title-animation">  {{ $ps->{'about_title_' . $sign} ?? '' }} </h2>
                                             </div>
                                             <div class="text-box mb_45 title-animation">
@@ -73,8 +73,7 @@
                                             </div>
                                             <div class="btn-box">
                                                 <a href="{{ route('contact.index') }}"
-                                                    class="theme-btn">Contact
-                                                    Us<span></span><span></span><span></span><span></span></a>
+                                                    class="theme-btn">{{ __('Contact Us') }}<span></span><span></span><span></span><span></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -100,8 +99,8 @@
                                                                 alt="azure-sardine-328383.hostingersite.com"></figure>
                                                         <div class="experience-box bounce-slide">
                                                             <div class="inner p_relative pt_5 pb_5">
-                                                                <h2>10<span>Years</span></h2>
-                                                                <h3>Of Experience in the Finance Service</h3>
+                                                                <h2>{{ __('10') }}<span>{{ __('Years') }}</span></h2>
+                                                                <h3>{{ __('Of Experience in the Finance Service') }}</h3>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -153,9 +152,9 @@
                                                 <i class=" icon-8"></i>
                                             </div>
                                             <div class="count-outer count-box" style="display: block;">
-                                                <span class="odometer" data-count="320">00</span><span>+</span>
+                                                <span class="odometer" data-count="{{ __('320') }}">00</span><span>+</span>
                                             </div>
-                                            <p>Patient safety</p>
+                                            <p>{{ __('Patient safety') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -166,9 +165,9 @@
                                                 <i class=" icon-9"></i>
                                             </div>
                                             <div class="count-outer count-box" style="display: block;">
-                                                <span class="odometer" data-count="94">00</span><span>k+</span>
+                                                <span class="odometer" data-count="{{ __('94') }}">00</span><span>k+</span>
                                             </div>
-                                            <p>Tasks Completed</p>
+                                            <p>{{ __('Tasks Completed') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -179,9 +178,9 @@
                                                 <i class=" icon-10"></i>
                                             </div>
                                             <div class="count-outer count-box" style="display: block;">
-                                                <span class="odometer" data-count="50">00</span><span>k+</span>
+                                                <span class="odometer" data-count="{{ __('50') }}">00</span><span>k+</span>
                                             </div>
-                                            <p>Worldwide Users</p>
+                                            <p>{{ __('Worldwide Users') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -192,9 +191,9 @@
                                                 <i class=" icon-11"></i>
                                             </div>
                                             <div class="count-outer count-box" style="display: block;">
-                                                <span class="odometer" data-count="45">00</span><span>k+</span>
+                                                <span class="odometer" data-count="{{ __('45') }}">00</span><span>k+</span>
                                             </div>
-                                            <p>Projects Completed</p>
+                                            <p>{{ __('Projects Completed') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -217,8 +216,8 @@
                     <section class="working-style-two about-page centred pt_120 pb_110">
                         <div class="auto-container">
                             <div class="sec-title mb_70 sec-title-animation animation-style2">
-                                <span class="sub-title mb_20 title-animation">Our Process</span>
-                                <h2 class="title-animation">How We Work</h2>
+                                <span class="sub-title mb_20 title-animation">{{ __('Our Process') }}</span>
+                                <h2 class="title-animation">{{ __('How We Work') }}</h2>
                             </div>
                             <div class="lower-content">
                                 <div class="row clearfix">
@@ -366,7 +365,7 @@
                         <div class="auto-container">
                             <div class="sec-title centred mb_70 sec-title-animation animation-style2">
                              @if ($k == 0)
-                                  <span class="sub-title mb_20 title-animation">History</span>
+                                  <span class="sub-title mb_20 title-animation">{{ __('History') }}</span>
                              @endif  
                                 <h2 class="title-animation">{{ $timeline->year }}: {{ $timeline->{'title_' . $sign}  ?? ''}}</h2>
                             </div>
@@ -403,7 +402,7 @@
                     <div class="elementor-button-wrapper">
                         <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
                             <span class="elementor-button-content-wrapper">
-                                <span class="elementor-button-text">Our Reviews</span>
+                                <span class="elementor-button-text">{{ __('Our Reviews') }}</span>
                             </span>
                         </a>
                     </div>
@@ -412,7 +411,7 @@
             <div class="elementor-element elementor-element-309f638 elementor-widget elementor-widget-heading"
                 data-id="309f638" data-element_type="widget" data-widget_type="heading.default">
                 <div class="elementor-widget-container">
-                    <h2 class="elementor-heading-title elementor-size-default">FROM INSIDE SINAICLINIC
+                    <h2 class="elementor-heading-title elementor-size-default">{{ __('FROM INSIDE SINAICLINIC') }}
                     </h2>
                 </div>
             </div>
@@ -448,7 +447,7 @@
                     <div class="elementor-button-wrapper">
                         <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
                             <span class="elementor-button-content-wrapper">
-                                <span class="elementor-button-text">Our Partners</span>
+                                <span class="elementor-button-text">{{ __('Our Partners') }}</span>
                             </span>
                         </a>
                     </div>
@@ -457,7 +456,7 @@
             <div class="elementor-element elementor-element-e4af9a7 elementor-widget elementor-widget-heading"
                 data-id="e4af9a7" data-element_type="widget" data-widget_type="heading.default">
                 <div class="elementor-widget-container">
-                    <h2 class="elementor-heading-title elementor-size-default">COMPANIES CONTRACTING WITH SINAICLINIC
+                    <h2 class="elementor-heading-title elementor-size-default">{{ __('COMPANIES CONTRACTING WITH SINAICLINIC') }}
                     </h2>
                 </div>
             </div>
@@ -501,8 +500,8 @@
                     <section class="testimonial-section pt_120 pb_120">
                         <div class="auto-container">
                             <div class="sec-title centred mb_70 sec-title-animation animation-style2">
-                                <span class="sub-title mb_20 title-animation">Testimonials</span>
-                                <h2 class="title-animation">Love from Clients</h2>
+                                <span class="sub-title mb_20 title-animation">{{ __('Testimonials') }}</span>
+                                <h2 class="title-animation">{{ __('Love from Clients') }}</h2>
                             </div>
                             <div class="two-item-carousel owl-carousel owl-theme dots-style-one owl-nav-none">
                                

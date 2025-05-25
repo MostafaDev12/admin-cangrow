@@ -27,6 +27,7 @@ use App\Classes\GeniusMailer;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Process;
+use App\Models\Subscribe;
 use App\Models\Testimonial;
 use App\Models\Timeline;
 use Illuminate\Support\Facades\File;
@@ -101,11 +102,26 @@ class HomeController extends Controller
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
-    $services = Service::get();
+    $services = Service::where('parent_id','!=',0)->get();
     $models = ModelCategory::get();
     $reviews = Partner::get();
 
     return view('front.sinaiclinic-nabq', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+  }
+
+ 
+  public function doctors(Request $request)
+  {
+
+    $sign = $this->langSign();
+ 
+    $points = AboutPoint::get();
+    $services = Service::where('parent_id','!=',0)->get();
+    $models = ModelCategory::get();
+    $reviews = Partner::get();
+    $doctors = Doctor::get();
+
+    return view('front.doctors', compact('sign', 'doctors', 'points', 'services', 'models', 'reviews'));
   }
 
 
@@ -429,7 +445,18 @@ class HomeController extends Controller
     // Redirect Section
     return response()->json(__('submit success'));
   }
-
+  
+ public function subscribe(Request $request)
+    {
+        $subs = Subscribe::where('email','=',$request->email)->first();
+        if(isset($subs)){
+        return response()->json(array('errors' => [ 0 =>  'This Email Has Already Been Taken.']));
+        }
+        $subscribe = new Subscribe;
+        $subscribe->fill($request->all());
+        $subscribe->save();
+        return response()->json('You Have Subscribed Successfully.');
+    }
   public function refresh_code()
   {
 

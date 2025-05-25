@@ -75,6 +75,7 @@
                                                               class="attachment-full size-full wp-image-1977" alt=""
                                                               srcset="{{ $service->photo }} 1549w, {{ $service->photo }} 300w, {{ $service->photo }} 1024w, {{ $service->photo }} 768w, {{ $service->photo }} 1536w"
                                                               sizes="(max-width: 1549px) 100vw, 1549px" />
+                                                              
                                                       </div>
                                                   </div>
 
@@ -85,18 +86,18 @@
                                                   data-id="257bef4" data-element_type="container">
                                                   <div class="elementor-element elementor-element-59970d3 e-con-full e-flex e-con e-child"
                                                       data-id="59970d3" data-element_type="container"
-                                                      data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                      data-settings="{'background_background':'classic'}">
                                                       <div class="elementor-element elementor-element-4061cc7 elementor-widget elementor-widget-heading"
                                                           data-id="4061cc7" data-element_type="widget"
                                                           data-widget_type="heading.default">
                                                           <div class="elementor-widget-container">
                                                               <h2 class="elementor-heading-title elementor-size-default">
-                                                                  Our Services</h2>
+                                                                  {{ __('Our Services') }}</h2>
                                                           </div>
                                                       </div>
                                                       <div class="elementor-element elementor-element-612bd0f elementor-button-align-stretch elementor-widget elementor-widget-form"
                                                           data-id="612bd0f" data-element_type="widget"
-                                                          data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}"
+                                                          data-settings="{'step_next_label':'Next','step_previous_label':'Previous','button_width':'100','step_type':'number_text','step_icon_shape':'circle'}"
                                                           data-widget_type="form.default">
                                                           <div class="elementor-widget-container">
 
@@ -118,18 +119,18 @@
                                                                       <div
                                                                           class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
                                                                           <input size="1" type="text"
-                                                                              name="form_fields[name]"
+                                                                              name="name" required
                                                                               id="form-field-name"
-                                                                              class="elementor-field elementor-size-md  elementor-field-textual"
-                                                                              placeholder="Name">
+                                                                              class="elementor-field elementor-size-md  elementor-field-textual fname"
+                                                                              placeholder="{{ __('Name') }}">
                                                                       </div>
                                                                       <div
                                                                           class="elementor-field-type-tel elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required">
                                                                           <input size="1" type="tel"
-                                                                              name="form_fields[email]"
+                                                                              name="phone" required
                                                                               id="form-field-email"
                                                                               class="elementor-field elementor-size-md  elementor-field-textual"
-                                                                              placeholder="Phone" required="required"
+                                                                              placeholder="{{ __('Phone') }}" required="required"
                                                                               pattern="[0-9()#&amp;+*-=.]+"
                                                                               title="Only numbers and phone characters (#, -, *, etc) are accepted.">
 
@@ -137,15 +138,15 @@
                                                                       <div
                                                                           class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-field_a0cf781 elementor-col-100 elementor-field-required">
                                                                           <input size="1" type="email"
-                                                                              name="form_fields[field_a0cf781]"
+                                                                              name="email"
                                                                               id="form-field-field_a0cf781"
                                                                               class="elementor-field elementor-size-md  elementor-field-textual"
-                                                                              placeholder="Email" required="required">
+                                                                              placeholder="{{ __('Email') }}" required="required">
                                                                       </div>
                                                                       <div
                                                                           class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
-                                                                          <textarea class="elementor-field-textual elementor-field  elementor-size-md" name="form_fields[message]"
-                                                                              id="form-field-message" rows="4" placeholder="Message"></textarea>
+                                                                          <textarea class="elementor-field-textual elementor-field  elementor-size-md" name="text"
+                                                                              id="form-field-message" rows="4" placeholder="{{ __('Message') }}"></textarea>
                                                                       </div>
                                                                       <div
                                                                           class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
@@ -155,7 +156,7 @@
                                                                               <span
                                                                                   class="elementor-button-content-wrapper">
                                                                                   <span
-                                                                                      class="elementor-button-text">Send</span>
+                                                                                      class="elementor-button-text">{{ __('Send') }}</span>
                                                                               </span>
                                                                           </button>
                                                                       </div>
@@ -166,13 +167,13 @@
                                                   </div>
                                                   <div class="elementor-element elementor-element-126f766 e-con-full e-flex e-con e-child"
                                                       data-id="126f766" data-element_type="container"
-                                                      data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                      data-settings="{'background_background':'classic'}">
                                                       <div class="elementor-element elementor-element-2c1d5ab elementor-widget elementor-widget-heading"
                                                           data-id="2c1d5ab" data-element_type="widget"
                                                           data-widget_type="heading.default">
                                                           <div class="elementor-widget-container">
                                                               <h2 class="elementor-heading-title elementor-size-default">
-                                                                  Location</h2>
+                                                                  {{ __('Location') }}</h2>
                                                           </div>
                                                       </div>
                                                       <div class="elementor-element elementor-element-d209ddd elementor-widget elementor-widget-html"

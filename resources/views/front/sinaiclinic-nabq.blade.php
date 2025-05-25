@@ -2,7 +2,7 @@
 
   @section('title')
 
-      {{ __('من نحن') }} - {{ $gs->{'title_' . $sign} }}
+      {{ __('Sinaiclinic Nabq') }} - {{ $gs->{'title_' . $sign} }}
 
   @stop
 
@@ -26,11 +26,11 @@
               <div class="bg-layer"></div>
               <div class="auto-container">
                   <div class="content-box">
-                      <h2>Sinaiclinic Nabq</h2>
+                      <h2>   {{ __('Sinaiclinic Nabq') }} </h2>
                       <ul class="bread-crumb">
-                          <li class="breadcrumb-item"><a href="https://azure-sardine-328383.hostingersite.com/">Home</a>
+                          <li class="breadcrumb-item"><a href="{{ route('front.index') }}">Home</a>
                           </li>
-                          <li class="breadcrumb-item">Sinaiclinic Nabq</li>
+                          <li class="breadcrumb-item"> {{ __('Sinaiclinic Nabq') }}   </li>
                       </ul>
                   </div>
               </div>
@@ -61,12 +61,12 @@
                                                   <section class="chooseus-section pt_120 pb_90 centred">
                                                       <div class="auto-container">
                                                           <div class="sec-title mb_70 sec-title-animation animation-style2">
-                                                              <span class="sub-title mb_20 title-animation">Our
-                                                                  Services</span>
-                                                              <h2 class="title-animation">We Provide Reliable Services</h2>
+                                                              <span class="sub-title mb_20 title-animation">{{ __('Our Services') }}</span>
+                                                              <h2 class="title-animation">{{ __('We Provide Reliable Services') }}</h2>
                                                           </div>
                                                           <div class="row clearfix">
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
+                                                                @foreach ($services as $service)
+                                                                 <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
                                                                   <div
                                                                       class="chooseus-block-one p_relative z_1 title-animation">
                                                                       <div class="inner-box">
@@ -79,272 +79,25 @@
                                                                                   <i class="icon-mail"></i>
                                                                               </div>
                                                                           </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Medical
-                                                                                  Research</a></h3>
-                                                                          <p>Compliance with environmental regulations and
-                                                                              standards is crucial for waste</p>
+                                                                          <h3><a href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}" target="_blank"
+                                                                                  rel="nofollow"> {{ $service->{'title_' . $sign} }}
+                                                                                   </a></h3>
+                                                                          <p>{{ $service->{'short_details_' . $sign} }}</p>
                                                                           <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
+                                                                              <div class="link-icon"><a href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}"
+                                                                                      target="_blank"
+                                                                                      rel="nofollow"><i
                                                                                           class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
+                                                                              <div class="link-text"><a href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}"
+                                                                                      target="_blank"
+                                                                                      rel="nofollow">{{ __('Get Service') }}</a></div>
                                                                           </div>
                                                                       </div>
                                                                   </div>
                                                               </div>
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
-                                                                  <div
-                                                                      class="chooseus-block-one p_relative z_1 title-animation">
-                                                                      <div class="inner-box">
-                                                                          <div class="bg-layer"></div>
-                                                                          <div class="icon-box">
-                                                                              <div class="r-hex">
-                                                                                  <div class="r-hex-inner"></div>
-                                                                              </div>
-                                                                              <div class="icon">
-                                                                                  <i class="icon-mail"></i>
-                                                                              </div>
-                                                                          </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Medical
-                                                                                  Research</a></h3>
-                                                                          <p>Compliance with environmental regulations and
-                                                                              standards is crucial for waste</p>
-                                                                          <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
-                                                                                          class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
-                                                                  <div
-                                                                      class="chooseus-block-one p_relative z_1 title-animation">
-                                                                      <div class="inner-box">
-                                                                          <div class="bg-layer"></div>
-                                                                          <div class="icon-box">
-                                                                              <div class="r-hex">
-                                                                                  <div class="r-hex-inner"></div>
-                                                                              </div>
-                                                                              <div class="icon">
-                                                                                  <i class="icon-mail"></i>
-                                                                              </div>
-                                                                          </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Medical
-                                                                                  Research</a></h3>
-                                                                          <p>Compliance with environmental regulations and
-                                                                              standards is crucial for waste</p>
-                                                                          <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
-                                                                                          class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
-                                                                  <div
-                                                                      class="chooseus-block-one p_relative z_1 title-animation">
-                                                                      <div class="inner-box">
-                                                                          <div class="bg-layer"></div>
-                                                                          <div class="icon-box">
-                                                                              <div class="r-hex">
-                                                                                  <div class="r-hex-inner"></div>
-                                                                              </div>
-                                                                              <div class="icon">
-                                                                                  <i class="icon-mail"></i>
-                                                                              </div>
-                                                                          </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Medical
-                                                                                  Research</a></h3>
-                                                                          <p>Compliance with environmental regulations and
-                                                                              standards is crucial for waste</p>
-                                                                          <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
-                                                                                          class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
-                                                                  <div
-                                                                      class="chooseus-block-one p_relative z_1 title-animation">
-                                                                      <div class="inner-box">
-                                                                          <div class="bg-layer"></div>
-                                                                          <div class="icon-box">
-                                                                              <div class="r-hex">
-                                                                                  <div class="r-hex-inner"></div>
-                                                                              </div>
-                                                                              <div class="icon">
-                                                                                  <i class="icon-mail"></i>
-                                                                              </div>
-                                                                          </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Medical
-                                                                                  Research</a></h3>
-                                                                          <p>Compliance with environmental regulations and
-                                                                              standards is crucial for waste</p>
-                                                                          <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
-                                                                                          class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
-                                                                  <div
-                                                                      class="chooseus-block-one p_relative z_1 title-animation">
-                                                                      <div class="inner-box">
-                                                                          <div class="bg-layer"></div>
-                                                                          <div class="icon-box">
-                                                                              <div class="r-hex">
-                                                                                  <div class="r-hex-inner"></div>
-                                                                              </div>
-                                                                              <div class="icon">
-                                                                                  <i class="icon-mail"></i>
-                                                                              </div>
-                                                                          </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Blood
-                                                                                  Resources</a></h3>
-                                                                          <p>Effective potable water and waste management
-                                                                              are integral the components</p>
-                                                                          <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
-                                                                                          class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
-                                                                  <div
-                                                                      class="chooseus-block-one p_relative z_1 title-animation">
-                                                                      <div class="inner-box">
-                                                                          <div class="bg-layer"></div>
-                                                                          <div class="icon-box">
-                                                                              <div class="r-hex">
-                                                                                  <div class="r-hex-inner"></div>
-                                                                              </div>
-                                                                              <div class="icon">
-                                                                                  <i class="icon-mail"></i>
-                                                                              </div>
-                                                                          </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Extramural
-                                                                                  Funding</a></h3>
-                                                                          <p>For non-recyclable and non-compostable waste,
-                                                                              effective landfill research</p>
-                                                                          <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
-                                                                                          class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
-                                                                  <div
-                                                                      class="chooseus-block-one p_relative z_1 title-animation">
-                                                                      <div class="inner-box">
-                                                                          <div class="bg-layer"></div>
-                                                                          <div class="icon-box">
-                                                                              <div class="r-hex">
-                                                                                  <div class="r-hex-inner"></div>
-                                                                              </div>
-                                                                              <div class="icon">
-                                                                                  <i class="icon-mail"></i>
-                                                                              </div>
-                                                                          </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Health
-                                                                                  Science</a></h3>
-                                                                          <p>Proper treatment of different types of waste,
-                                                                              including sewage and industrial</p>
-                                                                          <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
-                                                                                          class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
-                                                                  <div
-                                                                      class="chooseus-block-one p_relative z_1 title-animation">
-                                                                      <div class="inner-box">
-                                                                          <div class="bg-layer"></div>
-                                                                          <div class="icon-box">
-                                                                              <div class="r-hex">
-                                                                                  <div class="r-hex-inner"></div>
-                                                                              </div>
-                                                                              <div class="icon">
-                                                                                  <i class="icon-mail"></i>
-                                                                              </div>
-                                                                          </div>
-                                                                          <h3><a href="" target=&quot;_blank&quot;
-                                                                                  rel=&quot;nofollow&quot;>Health
-                                                                                  Science</a></h3>
-                                                                          <p>Proper treatment of different types of waste,
-                                                                              including sewage and industrial</p>
-                                                                          <div class="btn-box p_relative">
-                                                                              <div class="link-icon"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;><i
-                                                                                          class="icon-23"></i></a></div>
-                                                                              <div class="link-text"><a href=""
-                                                                                      target=&quot;_blank&quot;
-                                                                                      rel=&quot;nofollow&quot;>Get
-                                                                                      Service</a></div>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
+                                                           
+                                                                @endforeach
+                                                             
                                                           </div>
                                                       </div>
                                                   </section>

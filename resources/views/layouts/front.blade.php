@@ -145,19 +145,19 @@
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-19 current_page_item menu-item-2502 current">
                                             <a title="Home" href="{{ route('front.index', $sign) }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Home</a>
+                                                data-options="easing: easeOutQuart">{{ __('Home') }}</a>
                                         </li>
                                         <li id="menu-item-2504"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2504">
                                             <a title="About Us" href="{{ route('about.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">About Us</a>
+                                                data-options="easing: easeOutQuart">{{ __('About Us') }}</a>
                                         </li>
                                         <li id="menu-item-2505"
                                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2505 dropdown">
                                             <a title="Our Department" href="#" data-toggle="dropdown1"
                                                 class="hvr-underline-from-left1" aria-expanded="false" data-scroll
-                                                data-options="easing: easeOutQuart">Our Department</a>
+                                                data-options="easing: easeOutQuart">{{ __('Our Department') }}</a>
                                             <ul role="menu" class="submenu">
 
 
@@ -191,31 +191,31 @@
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2533">
                                             <a title="Sinaiclinic Nabq" href="{{ route('sinaiclinic-nabq.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Sinaiclinic Nabq</a>
+                                                data-options="easing: easeOutQuart">{{ __('Sinaiclinic Nabq') }}</a>
                                         </li>
                                         <li id="menu-item-2534"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2534">
                                             <a title="Doctors" href="{{ route('doctors.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Doctors</a>
+                                                data-options="easing: easeOutQuart">{{ __('Doctors') }}</a>
                                         </li>
                                         <li id="menu-item-2535"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2535">
                                             <a title="Blogs" href="{{ route('blogs.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Blogs</a>
+                                                data-options="easing: easeOutQuart">{{ __('Blogs') }}</a>
                                         </li>
-                                        <li id="menu-item-2536"
+                                        {{-- <li id="menu-item-2536"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2536">
                                             <a title="Appointments" href="{{ route('appointments.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
                                                 data-options="easing: easeOutQuart">Appointments</a>
-                                        </li>
+                                        </li> --}}
                                         <li id="menu-item-2537"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2537">
                                             <a title="Contact Us" href="{{ route('contact.index') }}"
                                                 class="hvr-underline-from-left1" data-scroll
-                                                data-options="easing: easeOutQuart">Contact Us</a>
+                                                data-options="easing: easeOutQuart">{{ __('Contact Us') }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -287,7 +287,7 @@
                             <div id="labout_about_company-1" class="footer-widget widget_labout_about_company">
                                 <div class="about-widget">
                                     <div class="widget-title">
-                                        <h3>About</h3>
+                                        <h3>{{ __('About') }}</h3>
                                     </div>
                                     <div class="widget-content">
                                         <p> {{ $gs->{'footer_' . $sign} }}</p>
@@ -307,29 +307,25 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div id="nav_menu-4" class="footer-widget widget_nav_menu">
                                 <div class="widget-title">
-                                    <h3>Quick Link</h3>
+                                    <h3>{{ __('Quick Link') }}</h3>
                                 </div>
                                 <div class="menu-quick-link-container">
                                     <ul id="menu-quick-link" class="menu">
                                         <li id="menu-item-1165"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1165">
-                                            <a href="{{ route('about.index') }}">About
-                                                Us</a>
+                                            <a href="{{ route('about.index') }}">{{ __('About Us') }}</a>
                                         </li>
-                                        <li id="menu-item-1167"
+                                        {{-- <li id="menu-item-1167"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1167">
-                                            <a href="https://azure-sardine-328383.hostingersite.com/our-events/">Our
-                                                Events</a>
-                                        </li>
+                                            <a href="https://azure-sardine-328383.hostingersite.com/our-events/">Our Events</a>
+                                        </li> --}}
                                         <li id="menu-item-1168"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168">
-                                            <a
-                                                href="https://azure-sardine-328383.hostingersite.com/research/">Research</a>
+                                            <a href="{{ route('blogs.index') }}">{{ __('Blogs') }}</a>
                                         </li>
                                         <li id="menu-item-1169"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1169">
-                                            <a href="https://azure-sardine-328383.hostingersite.com/team-one/">Team
-                                                One</a>
+                                            <a href="{{ route('doctors.index') }}">{{ __('Doctors') }}</a>
                                         </li>
                                         <li id="menu-item-1166"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1166">
@@ -384,10 +380,10 @@
                             <div id="labout_subscribe_us-1" class="footer-widget widget_labout_subscribe_us">
                                 <div class="newsletter-widget">
                                     <div class="widget-title">
-                                        <h3>Subscribe Newsletter</h3>
+                                        <h3>{{ __('Subscribe Newsletter') }}</h3>
                                     </div>
                                     <div class="widget-content">
-                                        <p>To add complexity, this back drop of significant challenges</p>
+                                        <p>{{ __('To add complexity, this back drop of significant challenges') }}</p>
                                         <div class="newsletter-form">
                                             <script>
                                                 (function() {
@@ -405,26 +401,27 @@
                                                 })();
                                             </script>
                                             <!-- Mailchimp for WordPress v4.10.2 - https://wordpress.org/plugins/mailchimp-for-wp/ -->
-                                            <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-18" method="post"
-                                                data-id="18" data-name="">
+                                            <form action="{{ route('front.subscripe.submit') }}" name="appointment"
+                                                id="subscribeform" aria-label="subscripe form" data-status="init"
+                                                method="POST" autocomplete="off">
+                                                {{ csrf_field() }}
+                                                <div style="width: 81%;">
+                                                        @include('includes.admin.form-both')
+                                                    </div>
+
+
                                                 <div class="mc4wp-form-fields">
                                                     <div class="form-group">
                                                         <div class="icon"><i class="icon-66"></i></div>
                                                         <input type="email" name="email"
-                                                            placeholder="Email Address*" required />
+                                                            placeholder="{{ __('Email Address') }}*" required />
                                                     </div>
                                                     <div class="form-group message-btn">
-                                                        <button type="submit" class="theme-btn btn-one">Subscribe
-                                                            Now<span></span><span></span><span></span><span></span></button>
+                                                        <button type="submit"
+                                                            class="theme-btn btn-one">{{ __('Subscribe Now') }}<span></span><span></span><span></span><span></span></button>
                                                     </div>
-                                                </div><label style="display: none !important;">Leave this field empty
-                                                    if you're human: <input type="text" name="_mc4wp_honeypot"
-                                                        value="" tabindex="-1"
-                                                        autocomplete="off" /></label><input type="hidden"
-                                                    name="_mc4wp_timestamp" value="1746703316" /><input
-                                                    type="hidden" name="_mc4wp_form_id" value="18" /><input
-                                                    type="hidden" name="_mc4wp_form_element_id"
-                                                    value="mc4wp-form-1" />
+                                                </div>
+
                                                 <div class="mc4wp-response"></div>
                                             </form><!-- / Mailchimp for WordPress Plugin -->
                                         </div>
@@ -451,31 +448,8 @@
     </div>
     <!--End Page Wrapper-->
 
-    @include('includes.script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-
-    <script src="{{ asset('build/js/toastr.js') }}"></script>
-
-
-    <script type="text/javascript">
-        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
-    </script>
-
-
-
-    <script type="text/javascript">
-        var mainurl = "{{ url('/' . $sign) }}";
-        var mainurl2 = "{{ url('/') }}";
-        var gs = {!! json_encode($gs) !!};
-        var langg = {!! json_encode($sign) !!};
-        var mainurl2 = "{{ url('/') }}";
-
-        $(".selectors").on('change', function() {
-            var url = $(this).val();
-            window.location = url;
-        });
-    </script>
     <Script>
         $(document).on('submit', '#subscribeform', function(e) {
             e.preventDefault();
@@ -516,10 +490,8 @@
             });
 
         });
-    </script>
 
 
-    <script>
         $(document).on('submit', '#email-form', function(e) {
             e.preventDefault();
             $('.gocover').show();
@@ -583,8 +555,36 @@
             });
 
         });
+    </script>
 
 
+    @include('includes.script')
+
+
+
+    <script src="{{ asset('build/js/toastr.js') }}"></script>
+
+
+    <script type="text/javascript">
+        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
+    </script>
+
+
+
+    <script type="text/javascript">
+        var mainurl = "{{ url('/' . $sign) }}";
+        var mainurl2 = "{{ url('/') }}";
+        var gs = {!! json_encode($gs) !!};
+        var langg = {!! json_encode($sign) !!};
+        var mainurl2 = "{{ url('/') }}";
+
+        $(".selectors").on('change', function() {
+            var url = $(this).val();
+            window.location = url;
+        });
+    </script>
+
+    <script>
         $(document).on('submit', '#appointment-form', function(e) {
             e.preventDefault();
             $('.gocover').show();
