@@ -8,16 +8,18 @@
                 <img src="{{ URL::asset('build/images/logo-sm.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ URL::asset('build/images/cangrow.png') }}" alt="" height="60">
+                <img src="{{ $gs->logo_en }}" alt="" height="60">
             </span>
         </a>
+
+        {{-- {{ URL::asset('build/images/cangrow.png') }} --}}
         <!-- Light Logo-->
         <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ URL::asset('build/images/logo-sm.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ URL::asset('build/images/cangrow.png') }}" alt="" height="60">
+                <img src="{{ $gs->logo_en }}" alt="" height="60">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -50,7 +52,16 @@
                     </li>
                 @endif
                 @if (Auth::guard('admin')->user()->sectionCheck('page_settings'))
-                    <li class="nav-item">
+
+                <li class="nav-item">
+                        <a class="nav-link menu-link" href="#models" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="models">
+                            <i class="las la-cog"></i> <span data-key="t-General_Settings"> @lang('translation.about_us_sections')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="models">
+                            <ul class="nav nav-sm flex-column">
+
+                  <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-ps-about_us') }}" aria-controls="sidebarabout_us">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_us')</span>
                         </a>
@@ -60,6 +71,17 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
                         </a>
                     </li> 
+                       <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-about_points-index') }}" aria-controls="sidebarportfolio">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_points')</span>
+                        </a>
+                    </li> 
+                              <!-- #region -->
+                            </ul>
+                        </div>
+                    </li> 
+                 
+            
                     {{-- <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-ps-our_team') }}" aria-controls="sidebarour_team">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.our_team_section')</span>
@@ -70,16 +92,53 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.after_before')</span>
                         </a>
                     </li> --}}
-                @endif
-
-                {{-- @if (Auth::guard('admin')->user()->sectionCheck('partners'))
+                @endif 
+                
+                @if (Auth::guard('admin')->user()->sectionCheck('models'))
+                <li class="nav-item">
+                    <a class="nav-link  " href="{{ route('admin-models-index') }}" aria-controls="sidebarblogs">
+                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.our_mission')</span>
+                    </a>
+                </li>
+            @endif
+                @if (Auth::guard('admin')->user()->sectionCheck('partners'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-partners-index') }}"
                             aria-controls="sidebarpartners">
-                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.surgeries')</span>
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.partners')</span>
                         </a>
                     </li>
-                @endif --}}
+                @endif
+                
+                @if (Auth::guard('admin')->user()->sectionCheck('models'))
+                <li class="nav-item">
+                    <a class="nav-link  " href="{{ route('admin-models_category-index') }}" aria-controls="sidebarblogs">
+                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.features')</span>
+                    </a>
+                </li>
+            @endif
+                @if (Auth::guard('admin')->user()->sectionCheck('doctors'))
+                <li class="nav-item">
+                    <a class="nav-link  " href="{{ route('admin-doctors-index') }}" aria-controls="sidebarblogs">
+                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.doctors')</span>
+                    </a>
+                </li>
+            @endif
+              @if (Auth::guard('admin')->user()->sectionCheck('timelines'))
+                <li class="nav-item">
+                    <a class="nav-link  " href="{{ route('admin-timelines-index') }}" aria-controls="sidebarblogs">
+                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.timelines')</span>
+                    </a>
+                </li>
+            @endif
+              @if (Auth::guard('admin')->user()->sectionCheck('testimonials'))
+                <li class="nav-item">
+                    <a class="nav-link  " href="{{ route('admin-testimonials-index') }}" aria-controls="sidebarblogs">
+                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.testimonials')</span>
+                    </a>
+                </li>
+            @endif
+                {{--  --}}
 {{--
 
                 @if (Auth::guard('admin')->user()->sectionCheck('media'))
@@ -192,6 +251,7 @@
                     </li> <!-- end Dashboard Menu -->
                 @endif --}}
 
+         
            @if (Auth::guard('admin')->user()->sectionCheck('blogs'))
                 <li class="nav-item">
                     <a class="nav-link  " href="{{ route('admin-blogs-index') }}" aria-controls="sidebarblogs">
@@ -214,12 +274,12 @@
                                         @lang('translation.logo')
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('admin-gs-home_video') }}" class="nav-link"
                                         data-key="t-home_video">
                                         @lang('translation.home_video')
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="nav-item">
                                     <a href="{{ route('admin-gs-contents') }}" class="nav-link"

@@ -8,10 +8,10 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ URL::asset('build/images/cangrow.png')}}">
+    <link rel="shortcut icon" href="{{ $gs->logo_en }}">
     @include('layouts.head-css')
 </head>
-
+{{-- {{ URL::asset('build/images/cangrow.png')}} --}}
 @section('body')
     @include('layouts.body')
 @show

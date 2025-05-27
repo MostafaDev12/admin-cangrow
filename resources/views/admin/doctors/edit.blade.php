@@ -73,7 +73,12 @@
                                         <div class="tab-pane {{$gs->lang_arabic == 1 ? 'active' : '' }}" id="base-justified-home" role="tabpanel">
                                             <h6 style="text-align: center;">   {{ __('translation.arabic') }}</h6>
                                             
-                                      
+                                       <div class="mb-3">
+                                                <label for="name_ar"
+                                                    class="form-label">{{ __('translation.name') }}</label>
+                                                <input type="text" class="form-control" name="name_ar" id="name_ar"   value="{{ $data->name_ar }}"
+                                                    placeholder="{{ __('translation.name') }}">
+                                            </div>
                                               <div class="mb-3">
                                                   <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
                                                   <input type="text" class="form-control" name="title_ar" value="{{ $data->title_ar }}" id="title_ar" placeholder="{{ __('translation.title') }}">
@@ -83,21 +88,18 @@
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_ar }}</textarea>
                                               </div>
-                                              <div class="mb-3">
-                                                <label for="address_ar" class="form-label">{{ __('translation.address') }}</label>
-                                                <textarea class="form-control" name="address_ar"  id="address_ar" rows="3" placeholder="{{ __('translation.address') }}">{{ $data->address_ar }}</textarea>
-                                            </div>
-                                            
-                                            <div class="mb-3">
-                                                <label for="date_ar" class="form-label">{{ __('translation.date') }}</label>
-                                                <textarea class="form-control" name="date_ar"  id="date_ar" rows="3" placeholder="{{ __('translation.date') }}">{{ $data->date_ar }}</textarea>
-                                            </div>
+                                           
                                             
                                               
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
-                                           
+                                              <div class="mb-3">
+                                                <label for="name_en"
+                                                    class="form-label">{{ __('translation.name') }}</label>
+                                                <input type="text" class="form-control" name="name_en" id="name_en"   value="{{ $data->name_en }}"
+                                                    placeholder="{{ __('translation.name') }}">
+                                            </div>
                                             <div class="mb-3">
                                               <label for="title_en" class="form-label">{{ __('translation.title') }}</label>
                                               <input type="text" class="form-control" name="title_en"  value="{{ $data->title_en }}"  id="title_en" placeholder="{{ __('translation.title') }}">
@@ -109,15 +111,7 @@
                                           </div>
                                           
                                           
-                                        <div class="mb-3">
-                                          <label for="address_en" class="form-label">{{ __('translation.address') }}</label>
-                                          <textarea class="form-control" name="address_en"  id="address_en" rows="3" placeholder="{{ __('translation.address') }}">{{ $data->address_en }}</textarea>
-                                      </div>
-                                            
-                                        <div class="mb-3">
-                                            <label for="date_en" class="form-label">{{ __('translation.date') }}</label>
-                                            <textarea class="form-control" name="date_en"  id="date_en" rows="3" placeholder="{{ __('translation.date') }}">{{ $data->date_en }}</textarea>
-                                        </div>
+                                        
                                         
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
@@ -134,16 +128,7 @@
                                               <textarea class="form-control" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_fr }}</textarea>
                                           </div>
 
-                                           
-                                          <div class="mb-3">
-                                            <label for="address_fr" class="form-label">{{ __('translation.address') }}</label>
-                                            <textarea class="form-control" name="address_fr"  id="address_fr" rows="3" placeholder="{{ __('translation.address') }}">{{ $data->address_fr }}</textarea>
-                                        </div>
-                                        
-                                        <div class="mb-3">
-                                            <label for="date_fr" class="form-label">{{ __('translation.date') }}</label>
-                                            <textarea class="form-control" name="date_fr"  id="date_fr" rows="3" placeholder="{{ __('translation.date') }}">{{ $data->date_fr }}</textarea>
-                                        </div>
+                                         
                                         </div>
 
                                     </div>
@@ -151,19 +136,62 @@
                                     
                                       <div class="row">
 
+ 
+                                        <div class="col-xl-12 col-md-12">
+                                            <div class="card">
 
-                            <div class="col-xl-12 col-md-12">
-                                <div class="card">
-                                  
-                                    <div class="mb-3">
-                                        <label for="map" class="form-label">{{ __('translation.map') }}</label>
-                                        <textarea class="form-control" name="map"  id="map" rows="3" placeholder="{{ __('translation.map') }}">{{ $data->map }}</textarea>
-                                    </div>
-                                </div>
-                                <!-- end card -->
-                            </div> <!-- end col -->
+                                                <div class="mb-3">
+                                                    <label for="facebook"
+                                                        class="form-label">{{ __('translation.facebook') }}</label>
+                                                    <input type="text" class="form-control" name="facebook"   value="{{ $data->facebook }}"
+                                                        id="facebook" placeholder="{{ __('translation.facebook') }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="twitter"
+                                                        class="form-label">{{ __('translation.twitter') }}</label>
+                                                    <input type="text" class="form-control" name="twitter"   value="{{ $data->twitter }}"
+                                                        id="twitter" placeholder="{{ __('translation.twitter') }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="linkedin"
+                                                        class="form-label">{{ __('translation.linkedin') }}</label>
+                                                    <input type="text" class="form-control" name="linkedin"   value="{{ $data->linkedin }}"
+                                                        id="linkedin" placeholder="{{ __('translation.linkedin') }}">
+                                                </div>
+                                            </div>
+                                            <!-- end card -->
+                                        </div> <!-- end col -->
+
+                                        <div class="col-xl-12 col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>
+                                                </div><!-- end card header -->
+
+                                                <div class="card-body">
+                                                    <p class="text-muted">FilePond is a JavaScript library with profile
+                                                        picture-shaped
+                                                        file
+                                                        upload variation.</p>
+                                                    <div class="currrent-logo" style="text-align: center;">
+                                                        <img style="width: 171px;"
+                                                            src="{{  $data->photo ? $data->photo_url  :   asset('assets/images/noimage.png') }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="avatar-xl mx-auto">
+                                                        <input type="file" class="filepond filepond-input-circle"
+                                                            name="photo"
+                                                            accept="image/png, image/jpeg, image/gif, image/webp" />
+                                                    </div>
 
 
+                                                </div>
+                                                <!-- end card body -->
+
+
+                                            </div>
+                                            <!-- end card -->
+                                        </div> <!-- end col -->
                         </div>
                                 </div><!-- end card-body -->
                             </div><!-- end card -->

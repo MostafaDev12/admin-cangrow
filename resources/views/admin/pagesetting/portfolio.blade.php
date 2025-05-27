@@ -53,13 +53,13 @@
                                                 {{ __('translation.english') }}
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link" data-bs-toggle="tab" href="#base-justified-messages"
                                                 role="tab" aria-selected="false">
                                                 <img style="width: 35px;" src="{{ asset('assets/images/fr.png') }}">
                                                 {{ __('translation.france') }}
                                             </a>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                     <!-- Tab panes -->

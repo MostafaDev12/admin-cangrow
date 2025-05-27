@@ -65,7 +65,7 @@
                                                               <h2 class="title-animation">{{ __('We Provide Reliable Services') }}</h2>
                                                           </div>
                                                           <div class="row clearfix">
-                                                                @foreach ($services as $service)
+                                                                @foreach ($child_services as $service)
                                                                  <div class="col-lg-3 col-md-6 col-sm-12 chooseus-block">
                                                                   <div
                                                                       class="chooseus-block-one p_relative z_1 title-animation">

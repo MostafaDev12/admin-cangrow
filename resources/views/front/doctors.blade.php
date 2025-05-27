@@ -72,12 +72,18 @@
                                                          class="attachment-labout_300x340 size-labout_300x340 wp-post-image"
                                                          alt="" /></figure>
                                                  <ul class="social-links">
-                                                     <li><a href="{{ $doctor->facebook }}"><i
-                                                                 class="fab  fa-facebook-f"></i></a></li>
-                                                     <li><a href="{{ $doctor->twitter }}"><i
-                                                                 class="fab  fa-twitter"></i></a></li>
-                                                     <li><a href="{{ $doctor->linkedin }}"><i
-                                                                 class="fab  fa-linked-in"></i></a></li>
+                                                     @if ($doctor->facebook)
+                                                                 <li><a href="{{ $doctor->facebook }}"><i
+                                                                             class="fab  fa-facebook-f"></i></a></li>
+                                                             @endif
+                                                             @if ($doctor->twitter)
+                                                                 <li><a href="{{ $doctor->twitter }}"><i
+                                                                             class="fab  fa-twitter"></i></a></li>
+                                                             @endif
+                                                             @if ($doctor->linkedin)
+                                                                 <li><a href="{{ $doctor->linkedin }}"><i
+                                                                             class="fab  fa-linkedin"></i></a></li>
+                                                             @endif
                                                  </ul>
                                              </div>
                                              <div class="lower-content">

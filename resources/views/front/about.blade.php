@@ -506,6 +506,10 @@
                             <div class="two-item-carousel owl-carousel owl-theme dots-style-one owl-nav-none">
                                
                               @foreach ($testimonials as $testimonial)
+                                 @php
+                                                           $photo = $testimonial->photo ? $testimonial->photo_url : asset('assets/images/noimage.png');
+                                                          
+                                                        @endphp
                                       <div class="testimonial-block-one">
                                          <div class="inner-box">
                                              <div class="icon-box">
@@ -514,20 +518,20 @@
                                                  </div>
                                                  <div class="icon"><i class="icon-35"></i></div>
                                              </div>
-                                             <p > {{ $timeline->{'details_' . $sign}  ?? ''}}     </p>
+                                             <p > {{ $testimonial->{'details_' . $sign}  ?? ''}}     </p>
                                              <div class="lower-box">
                                                  <div class="author-box">
                                                      <figure class="thumb-box">
                                                          <img loading="lazy" decoding="async" width="70"
                                                              height="70"
-                                                             src="{{ $testimonial->photo_url }}"
+                                                             src="{{ $photo }}"
                                                              class="attachment-labout_70x70 size-labout_70x70 wp-post-image"
-                                                             alt="{{ $timeline->{'name_' . $sign}  ?? ''}}"
-                                                             srcset="{{ $testimonial->photo_url }} 70w, {{ $testimonial->photo_url }} 90w, {{ $testimonial->photo_url }} 97w, {{ $testimonial->photo_url }} 120w"
+                                                             alt="{{ $testimonial->{'name_' . $sign}  ?? ''}}"
+                                                             srcset="{{ $photo }} 70w, {{ $photo }} 90w, {{ $photo }} 97w, {{ $photo }} 120w"
                                                              sizes="(max-width: 70px) 100vw, 70px" />
                                                      </figure>
-                                                     <h3>{{ $timeline->{'name_' . $sign}  ?? ''}}</h3>
-                                                     <span class="designation">{{ $timeline->{'job_' . $sign}  ?? ''}}</span>
+                                                     <h3>{{ $testimonial->{'name_' . $sign}  ?? ''}}</h3>
+                                                     <span class="designation">{{ $testimonial->{'job_' . $sign}  ?? ''}}</span>
                                                  </div>
                                                  <ul class="rating">
                                                      <li><i class="fas fa-star"></i></li>

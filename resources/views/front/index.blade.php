@@ -44,7 +44,8 @@
                                                  </h2>
                                                  <p>{!! $slider->{'details_' . $sign} ?? '' !!}</p>
                                                  <div class="btn-box">
-                                                     <a href="{{ route('about.index') }}" class="theme-btn">{{ __('About Us') }}
+                                                     <a href="{{ route('about.index') }}"
+                                                         class="theme-btn">{{ __('About Us') }}
                                                          <span></span><span></span><span></span><span></span></a>
                                                  </div>
                                              </div>
@@ -187,7 +188,8 @@
                                          <div class="content_block_one">
                                              <div class="content-box ml_30 sec-title-animation animation-style2">
                                                  <div class="sec-title mb_25">
-                                                     <span class="sub-title mb_20 title-animation">{{ __('About Us') }}</span>
+                                                     <span
+                                                         class="sub-title mb_20 title-animation">{{ __('About Us') }}</span>
                                                      <h2 class="title-animation">
                                                          {{ $ps->{'portfolio_title_' . $sign} ?? '' }} </h2>
                                                  </div>
@@ -202,7 +204,8 @@
                                                      </ul>
                                                  </div>
                                                  <div class="btn-box">
-                                                     <a href="{{ route('contact.index') }}" class="theme-btn">{{ __('Get more') }}<span></span><span></span><span></span><span></span></a>
+                                                     <a href="{{ route('contact.index') }}"
+                                                         class="theme-btn">{{ __('Get more') }}<span></span><span></span><span></span><span></span></a>
                                                  </div>
                                              </div>
                                          </div>
@@ -236,7 +239,7 @@
                                  <div class="inner-container p_relative">
                                      <div class="row clearfix">
                                          @foreach ($models as $k => $model)
-                                             <div class="col-lg-3 col-md-6 col-sm-12 working-block">
+                                             <div class="col-lg-4 col-md-6 col-sm-12 working-block">
                                                  <div class="working-block-one">
                                                      <div class="inner-box">
                                                          <div class="count-box">
@@ -436,35 +439,40 @@
                              <div class="auto-container">
                                  <div class="sec-title centred mb_70 sec-title-animation animation-style2">
                                      <span class="sub-title mb_20 title-animation">{{ __('OUR DEPARTMENT') }}</span>
-                                     <h2 class="title-animation">{{ __('In order to meet the diverse medical needs of patients, sinaiclinic provides some important departments that ensure the provision of the necessary health care according to world standards') }}
+                                     <h2 class="title-animation">
+                                         {{ __('In order to meet the diverse medical needs of patients, sinaiclinic provides some important departments that ensure the provision of the necessary health care according to world standards') }}
 
                                      </h2>
                                  </div>
                                  <div class="row clearfix">
                                      @foreach ($home_services as $k => $home_service)
-                                         <div class="col-lg-4 col-md-6 col-sm-12 service-block">
-                                             <div class="service-block-one">
-                                                 <div class="inner-box">
-                                                     <div class="icon-box">
-                                                         <div class='r-hex'>
-                                                             <div class='r-hex-inner'></div>
+                                         @if (count($home_service->childs) == 0)
+                                             <div class="col-lg-4 col-md-6 col-sm-12 service-block">
+                                                 <div class="service-block-one">
+                                                     <div class="inner-box">
+                                                         <div class="icon-box">
+                                                             <div class='r-hex'>
+                                                                 <div class='r-hex-inner'></div>
+                                                             </div>
+                                                             <div class="icon">
+                                                                 <i class=" icon-{{ rand(10, 25) }}"></i>
+                                                             </div>
                                                          </div>
-                                                         <div class="icon">
-                                                             <i class=" icon-{{ rand(10, 25) }}"></i>
-                                                         </div>
+                                                         <h3><a href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}"
+                                                                 target=&quot;_blank&quot;
+                                                                 rel=&quot;nofollow&quot;>{{ $home_service->{'title_' . $sign} }}
+                                                             </a>
+                                                         </h3>
+                                                         <p>{{ $home_service->{'short_details_' . $sign} }}</p>
+                                                         <div class="link"><a
+                                                                 href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}"
+                                                                 target=&quot;_blank&quot;
+                                                                 rel=&quot;nofollow&quot;>{{ __('Discover More') }} <i
+                                                                     class="fal fa-angle-right"></i></a></div>
                                                      </div>
-                                                     <h3><a href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}"
-                                                             target=&quot;_blank&quot;
-                                                             rel=&quot;nofollow&quot;>{{ $home_service->{'title_' . $sign} }}
-                                                         </a>
-                                                     </h3>
-                                                     <p>{{ $home_service->{'short_details_' . $sign} }}</p>
-                                                     <div class="link"><a
-                                                             href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}"
-                                                             target=&quot;_blank&quot; rel=&quot;nofollow&quot;>{{ __('Discover More') }} <i class="fal fa-angle-right"></i></a></div>
                                                  </div>
                                              </div>
-                                         </div>
+                                         @endif
                                      @endforeach
                                  </div>
                              </div>
@@ -492,7 +500,8 @@
                  <div class="elementor-element elementor-element-f428ee0 elementor-widget elementor-widget-heading"
                      data-id="f428ee0" data-element_type="widget" data-widget_type="heading.default">
                      <div class="elementor-widget-container">
-                         <h2 class="elementor-heading-title elementor-size-default">{{ __('COMPANIES CONTRACTING WITH SINAICLINIC') }}
+                         <h2 class="elementor-heading-title elementor-size-default">
+                             {{ __('COMPANIES CONTRACTING WITH SINAICLINIC') }}
                          </h2>
                      </div>
                  </div>
@@ -540,8 +549,11 @@
                              </div>
                              <div class="auto-container">
                                  <div class="sec-title light mb_70 sec-title-animation animation-style2">
-                                     <span class="sub-title mb_20 title-animation"> {{ __('Sinaiclinic is characterized by high-quality') }}</span>
-                                     <h2 class="title-animation">{{ __('services and many features that make it one of the leading hospitals in the Middle East') }}</h2>
+                                     <span class="sub-title mb_20 title-animation">
+                                         {{ __('Sinaiclinic is characterized by high-quality') }}</span>
+                                     <h2 class="title-animation">
+                                         {{ __('services and many features that make it one of the leading hospitals in the Middle East') }}
+                                     </h2>
                                  </div>
                                  <div class="row clearfix">
 
@@ -676,13 +688,13 @@
                                                      <div class="count-outer count-box">
                                                          <span class="odometer" data-count="">00</span><span></span>
                                                      </div>
-                                                     <p>{{ $feature->{'title_' . $sign}  ?? ''}} </p>
-                                                     <p>{{ $feature->{'details_' . $sign}  ?? ''}} </p>
+                                                     <p>{{ $feature->{'title_' . $sign} ?? '' }} </p>
+                                                     <p>{{ $feature->{'details_' . $sign} ?? '' }} </p>
                                                  </div>
                                              </div>
                                          </div>
                                      @endforeach
-                                     
+
                                  </div>
                              </div>
                          </section>
@@ -690,8 +702,8 @@
 
                      </div>
                  </div>
-             </div> 
-             
+             </div>
+
              <div class="elementor-element elementor-element-9f07c58 e-con-full e-flex e-con e-parent" data-id="9f07c58"
                  data-element_type="container">
                  <div class="elementor-element elementor-element-108080a elementor-widget elementor-widget-labout_team_grid"
@@ -714,37 +726,41 @@
                                  </div>
                                  <div class="row clearfix">
 
-                                    @foreach ($doctors as $doctor)
-                                        
-                                     <div class="col-lg-3 col-md-6 col-sm-12 team-block">
-                                         <div class="team-block-one wow fadeInUp animated" data-wow-delay="00ms"
-                                             data-wow-duration="1500ms">
-                                             <div class="inner-box">
-                                                 <div class="image-box">
-                                                     <figure class="image"><img decoding="async" width="280"
-                                                             height="340"
-                                                             src="{{ $doctor->photo_url }}"
-                                                             class="attachment-labout_300x340 size-labout_300x340 wp-post-image"
-                                                             alt="" /></figure>
-                                                     <ul class="social-links">
-                                                         <li><a href="{{ $doctor->facebook }}"><i
-                                                                     class="fab  fa-facebook-f"></i></a></li>
-                                                         <li><a href="{{ $doctor->twitter }}"><i
-                                                                     class="fab  fa-twitter"></i></a></li>
-                                                         <li><a href="{{ $doctor->linkedin }}"><i
-                                                                     class="fab  fa-linked-in"></i></a></li>
-                                                     </ul>
-                                                 </div>
-                                                 <div class="lower-content">
-                                                     <h3><a
-                                                             href="#">{{ $doctor->{'name_' . $sign}  ?? ''}}</a></h3>
-                                                     <span class="designation">{{ $doctor->{'title_' . $sign}  ?? ''}}</span>
+                                     @foreach ($doctors as $doctor)
+                                         <div class="col-lg-3 col-md-6 col-sm-12 team-block">
+                                             <div class="team-block-one wow fadeInUp animated" data-wow-delay="00ms"
+                                                 data-wow-duration="1500ms">
+                                                 <div class="inner-box">
+                                                     <div class="image-box">
+                                                         <figure class="image"><img decoding="async" width="280"
+                                                                 height="340" src="{{ $doctor->photo_url }}"
+                                                                 class="attachment-labout_300x340 size-labout_300x340 wp-post-image"
+                                                                 alt="" /></figure>
+                                                         <ul class="social-links">
+                                                             @if ($doctor->facebook)
+                                                                 <li><a href="{{ $doctor->facebook }}"><i
+                                                                             class="fab  fa-facebook-f"></i></a></li>
+                                                             @endif
+                                                             @if ($doctor->twitter)
+                                                                 <li><a href="{{ $doctor->twitter }}"><i
+                                                                             class="fab  fa-twitter"></i></a></li>
+                                                             @endif
+                                                             @if ($doctor->linkedin)
+                                                                 <li><a href="{{ $doctor->linkedin }}"><i
+                                                                             class="fab  fa-linkedin"></i></a></li>
+                                                             @endif
+                                                         </ul>
+                                                     </div>
+                                                     <div class="lower-content">
+                                                         <h3><a href="#">{{ $doctor->{'name_' . $sign} ?? '' }}</a>
+                                                         </h3>
+                                                         <span
+                                                             class="designation">{{ $doctor->{'title_' . $sign} ?? '' }}</span>
+                                                     </div>
                                                  </div>
                                              </div>
                                          </div>
-                                     </div>
- 
-                                    @endforeach
+                                     @endforeach
                                  </div>
                              </div>
                          </section>
@@ -753,7 +769,7 @@
                      </div>
                  </div>
              </div>
-{{-- 
+             {{-- 
              <div class="elementor-element elementor-element-8e5d3ca e-con-full e-flex e-con e-parent" data-id="8e5d3ca"
                  data-element_type="container">
                  <div class="elementor-element elementor-element-a1c0e71 elementor-widget elementor-widget-labout_events_grid_view"
@@ -938,24 +954,23 @@
                                      <div class="slider-content p_relative">
                                          <div class="border-line"></div>
                                          <div class="journey-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
-                                            
-                                            @foreach ($timelines as $timeline)
-                                                
-                                            <div class="journey-block-one">
-                                                 <div class="inner-box">
-                                                     <span class="year">{{ $timeline->year }}</span>
-                                                     <span class="decore"></span>
-                                                     <figure class="image-box"><img decoding="async"
-                                                             src="{{ $timeline->photo_url }}"
-                                                             alt="azure-sardine-328383.hostingersite.com"></figure>
-                                                     <h3><a
-                                                             href="#">{{ $timeline->{'title_' . $sign}  ?? ''}}</a></h3>
-                                                     <p>{{ $timeline->{'details_' . $sign}  ?? ''}}</p>
-                                                 </div>
-                                             </div>
 
-                                            @endforeach
- 
+                                             @foreach ($timelines as $timeline)
+                                                 <div class="journey-block-one">
+                                                     <div class="inner-box">
+                                                         <span class="year">{{ $timeline->year }}</span>
+                                                         <span class="decore"></span>
+                                                         <figure class="image-box"><img decoding="async"
+                                                                 src="{{ $timeline->photo_url }}"
+                                                                 alt="azure-sardine-328383.hostingersite.com"></figure>
+                                                         <h3><a
+                                                                 href="#">{{ $timeline->{'title_' . $sign} ?? '' }}</a>
+                                                         </h3>
+                                                         <p>{{ $timeline->{'details_' . $sign} ?? '' }}</p>
+                                                     </div>
+                                                 </div>
+                                             @endforeach
+
                                          </div>
                                      </div>
                                  </div>
@@ -967,7 +982,7 @@
                      </div>
                  </div>
              </div>
-         
+
              <div class="elementor-element elementor-element-b6f0510 e-con-full e-flex e-con e-parent" data-id="b6f0510"
                  data-element_type="container">
                  <div class="elementor-element elementor-element-6a9f3e2 elementor-widget elementor-widget-labout_testimonials_carousel"
@@ -985,43 +1000,46 @@
                                      <h2 class="title-animation">{{ __('Love from Clients') }}</h2>
                                  </div>
                                  <div class="two-item-carousel owl-carousel owl-theme dots-style-one owl-nav-none">
-                                    @foreach ($testimonials as $testimonial)
-                                      <div class="testimonial-block-one">
-                                         <div class="inner-box">
-                                             <div class="icon-box">
-                                                 <div class="r-hex">
-                                                     <div class="r-hex-inner"></div>
+                                     @foreach ($testimonials as $testimonial)
+                                         <div class="testimonial-block-one">
+                                             <div class="inner-box">
+                                                 <div class="icon-box">
+                                                     <div class="r-hex">
+                                                         <div class="r-hex-inner"></div>
+                                                     </div>
+                                                     <div class="icon"><i class="icon-35"></i></div>
                                                  </div>
-                                                 <div class="icon"><i class="icon-35"></i></div>
-                                             </div>
-                                             <p > {{ $timeline->{'details_' . $sign}  ?? ''}}     </p>
-                                             <div class="lower-box">
-                                                 <div class="author-box">
-                                                     <figure class="thumb-box">
-                                                         <img loading="lazy" decoding="async" width="70"
-                                                             height="70"
-                                                             src="{{ $testimonial->photo_url }}"
-                                                             class="attachment-labout_70x70 size-labout_70x70 wp-post-image"
-                                                             alt="{{ $timeline->{'name_' . $sign}  ?? ''}}"
-                                                             srcset="{{ $testimonial->photo_url }} 70w, {{ $testimonial->photo_url }} 90w, {{ $testimonial->photo_url }} 97w, {{ $testimonial->photo_url }} 120w"
-                                                             sizes="(max-width: 70px) 100vw, 70px" />
-                                                     </figure>
-                                                     <h3>{{ $timeline->{'name_' . $sign}  ?? ''}}</h3>
-                                                     <span class="designation">{{ $timeline->{'job_' . $sign}  ?? ''}}</span>
+                                                 <p> {{ $testimonial->{'details_' . $sign} ?? '' }} </p>
+                                                 <div class="lower-box">
+                                                     <div class="author-box">
+                                                        @php
+                                                           $photo = $testimonial->photo ? $testimonial->photo_url : asset('assets/images/noimage.png');
+                                                          
+                                                        @endphp
+                                                        <figure class="thumb-box">
+                                                             <img loading="lazy" decoding="async" width="70"
+                                                                 height="70" src="{{ $photo }}"
+                                                                 class="attachment-labout_70x70 size-labout_70x70 wp-post-image"
+                                                                 alt="{{ $testimonial->{'name_' . $sign} ?? '' }}"
+                                                                 srcset="{{ $photo }} 70w, {{ $photo }} 90w, {{ $photo }} 97w, {{ $photo }} 120w"
+                                                                 sizes="(max-width: 70px) 100vw, 70px" />
+                                                         </figure>
+                                                         <h3>{{ $testimonial->{'name_' . $sign} ?? '' }}</h3>
+                                                         <span
+                                                             class="designation">{{ $testimonial->{'job_' . $sign} ?? '' }}</span>
+                                                     </div>
+                                                     <ul class="rating">
+                                                         <li><i class="fas fa-star"></i></li>
+                                                         <li><i class="fas fa-star"></i></li>
+                                                         <li><i class="fas fa-star"></i></li>
+                                                         <li><i class="fas fa-star"></i></li>
+                                                         <li><i class="fas fa-star"></i></li>
+                                                     </ul>
                                                  </div>
-                                                 <ul class="rating">
-                                                     <li><i class="fas fa-star"></i></li>
-                                                     <li><i class="fas fa-star"></i></li>
-                                                     <li><i class="fas fa-star"></i></li>
-                                                     <li><i class="fas fa-star"></i></li>
-                                                     <li><i class="fas fa-star"></i></li>
-                                                 </ul>
                                              </div>
                                          </div>
-                                     </div>
-                                    
-                                    @endforeach
-                                    
+                                     @endforeach
+
                                  </div>
                              </div>
                          </section>
@@ -1044,7 +1062,7 @@
                                      width="600" height="650" style="border:0;" allowfullscreen="" loading="lazy"
                                      referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
 
-                                     {!! $ps->map !!}
+                                 {!! $gs->map !!}
                              </div>
                          </div>
                      </div>
@@ -1065,8 +1083,8 @@
                                          <div class="form-inner">
                                              <div id="contact-form">
 
-                                                 <div class=" no-js" id="-f934-p19-o1" lang="en-US"
-                                                     dir="ltr" data--id="934">
+                                                 <div class=" no-js" id="-f934-p19-o1" lang="en-US" dir="ltr"
+                                                     data--id="934">
                                                      <div class="screen-reader-response">
                                                          <p role="status" aria-live="polite" aria-atomic="true"></p>
                                                          <ul></ul>
@@ -1074,21 +1092,24 @@
                                                      {{-- <form action="/#-f934-p19-o1" method="post"
                                                          class="-form init" aria-label="Contact form"
                                                          novalidate="novalidate" data-status="init"> --}}
-<form action="{{route('front.contact.submit')}}" name="appointment" id="email-form" method="POST" autocomplete="off" class="cons-contact-form -form init">
-                            {{csrf_field()}}
-                            <div class="form-group w-100">
-                              <div class="response w-100"></div>
-                            </div>
-                                                         
+                                                     <form action="{{ route('front.contact.submit') }}"
+                                                         name="appointment" id="email-form" method="POST"
+                                                         autocomplete="off" class="cons-contact-form -form init">
+                                                         {{ csrf_field() }}
+                                                         <div class="form-group w-100">
+                                                             <div class="response w-100"></div>
+                                                         </div>
+
                                                          <div class="row clearfix">
                                                              <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                                                  <p><span class="-form-control-wrap"
                                                                          data-name="text-178"><input size="40"
                                                                              maxlength="400"
                                                                              class="fname -form-control -text -validates-as-required"
-                                                                             aria-required="true" aria-invalid="false" required
-                                                                             placeholder="{{ __('Your name') }}" name="name" value=""
-                                                                             type="text"   /></span>
+                                                                             aria-required="true" aria-invalid="false"
+                                                                             required placeholder="{{ __('Your name') }}"
+                                                                             name="name" value=""
+                                                                             type="text" /></span>
                                                                  </p>
                                                              </div>
                                                              <div class="col-lg-6 col-md-6 col-sm-12 form-group">
@@ -1096,9 +1117,10 @@
                                                                          data-name="email-979"><input size="40"
                                                                              maxlength="400"
                                                                              class="-form-control -email -validates-as-required -text -validates-as-email"
-                                                                             aria-required="true" name="email"  aria-invalid="false"
-                                                                             placeholder="{{ __('Your email') }}" value="" 
-                                                                             type="email"   /></span>
+                                                                             aria-required="true" name="email"
+                                                                             aria-invalid="false"
+                                                                             placeholder="{{ __('Your email') }}"
+                                                                             value="" type="email" /></span>
                                                                  </p>
                                                              </div>
                                                              <div class="col-lg-6 col-md-6 col-sm-12 form-group">
@@ -1106,9 +1128,10 @@
                                                                          data-name="text-179"><input size="40"
                                                                              maxlength="400"
                                                                              class="-form-control -text -validates-as-required"
-                                                                             aria-required="true" aria-invalid="false" required
-                                                                             placeholder="{{ __('Phone') }}"  name="phone"   value=""
-                                                                             type="text"   /></span>
+                                                                             aria-required="true" aria-invalid="false"
+                                                                             required placeholder="{{ __('Phone') }}"
+                                                                             name="phone" value=""
+                                                                             type="text" /></span>
                                                                  </p>
                                                              </div>
                                                              <div class="col-lg-6 col-md-6 col-sm-12 form-group">
@@ -1117,16 +1140,16 @@
                                                                              maxlength="400"
                                                                              class="-form-control -text -validates-as-required"
                                                                              aria-required="true" aria-invalid="false"
-                                                                             placeholder="{{ __('Subject') }}"   name="subject"   value=""
-                                                                             type="text"   /></span>
+                                                                             placeholder="{{ __('Subject') }}"
+                                                                             name="subject" value=""
+                                                                             type="text" /></span>
                                                                  </p>
                                                              </div>
                                                              <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                                                  <p><span class="-form-control-wrap"
                                                                          data-name="textarea-481">
-                                                                         <textarea cols="40" rows="10" maxlength="2000"
-                                                                             class="-form-control -textarea -validates-as-required" aria-required="true" aria-invalid="false"
-                                                                             placeholder="{{ __('Type message') }}" name="text"></textarea>
+                                                                         <textarea cols="40" rows="10" maxlength="2000" class="-form-control -textarea -validates-as-required"
+                                                                             aria-required="true" aria-invalid="false" placeholder="{{ __('Type message') }}" name="text"></textarea>
                                                                      </span>
                                                                  </p>
                                                              </div>

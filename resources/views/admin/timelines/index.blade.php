@@ -12,11 +12,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.locations') }}
+        {{ __('translation.timelines') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.locations') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.timelines') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -85,7 +85,7 @@
          ordering: false,
                processing: true,
                serverSide: true,
-               ajax: '{{ route('admin-locations-datatables') }}',
+               ajax: '{{ route('admin-timelines-datatables') }}',
                columns: [
                        
                         { data: 'title_ar', name: 'title_ar' },
@@ -100,8 +100,8 @@
 
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
-          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-locations-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_location") }}'+
+          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-timelines-create')}}">'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_timeline") }}'+
           '</a>'+
           '</div>');
       });

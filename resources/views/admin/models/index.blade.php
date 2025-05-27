@@ -12,11 +12,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.models') }}
+        {{ __('translation.missions') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.models') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.missions') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -27,7 +27,7 @@
                                     <table id="geniustable" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                              <th>{{ __('translation.photo') }}</th>
+                                              {{-- <th>{{ __('translation.photo') }}</th> --}}
                                               <th>{{ __('translation.title') }}</th>
                                               {{-- <th>{{ __('translation.category') }}</th> --}}
                                           
@@ -88,7 +88,7 @@
                serverSide: true,
                ajax: '{{ route('admin-models-datatables') }}',
                columns: [
-                        { data: 'photo', name: 'photo' },
+                        // { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
                     //    { data: 'category', name: 'category' },
                          
@@ -103,7 +103,7 @@
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
           '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-models-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_model") }}'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_mission") }}'+
           '</a>'+
           '</div>');
       });

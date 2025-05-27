@@ -23,10 +23,10 @@
                     <div class="text-center mt-sm-5 mb-4 text-white-50">
                         <div>
                             <a href="index" class="d-inline-block auth-logo">
-                                <img src="{{ URL::asset('build/images/cangrow.png')}}" alt="" height="70">
+                                <img src="{{ $gs->logo_en }}" alt="" height="70">
                             </a>
 {{-- {{ URL::asset('build/images/logo-light.png')}} --}}
-
+{{-- {{ URL::asset('build/images/cangrow.png')}} --}}
                         </div>
                         <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard</p>
                     </div>
@@ -49,7 +49,7 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', 'admin@themesbrand.com') }}" id="username" name="email" placeholder="Enter username">
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', '') }}" id="username" name="email" placeholder="Enter username">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -63,7 +63,7 @@
                                         </div>
                                         <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
                                         <div class="position-relative auth-pass-inputgroup mb-3">
-                                            <input type="password" class="form-control pe-5 password-input @error('password') is-invalid @enderror" name="password" placeholder="Enter password" id="password-input" value="12345678">
+                                            <input type="password" class="form-control pe-5 password-input @error('password') is-invalid @enderror" name="password" placeholder="Enter password" id="password-input" value="">
                                             <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">

@@ -25,7 +25,11 @@ use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\CertificateController;
+use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\TimelineController;
+use App\Http\Controllers\Admin\TestimonialController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -328,6 +332,47 @@ Route::prefix('admin')->group(function () {
       Route::post('/about_points/update/{id}', [AboutPointController::class, 'update'])->name('admin-about_points-update');
 
       Route::get('/about_points/delete/{id}',  [AboutPointController::class, 'destroy'])->name('admin-about_points-delete');
+   
+    });
+
+    Route::group(['middleware' => 'permissions:doctors'], function () {
+
+     
+      Route::get('/doctors/datatables',  [DoctorController::class, 'datatables'])->name('admin-doctors-datatables');
+      Route::get('/doctors',  [DoctorController::class, 'index'])->name('admin-doctors-index');
+      Route::get('/doctors/create',   [DoctorController::class, 'create'])->name('admin-doctors-create');
+      Route::post('/doctors/create',  [DoctorController::class, 'store'])->name('admin-doctors-store');
+      Route::get('/doctors/edit/{id}',  [DoctorController::class, 'edit'])->name('admin-doctors-edit');
+      Route::post('/doctors/update/{id}', [DoctorController::class, 'update'])->name('admin-doctors-update');
+
+      Route::get('/doctors/delete/{id}',  [DoctorController::class, 'destroy'])->name('admin-doctors-delete');
+   
+    });
+    Route::group(['middleware' => 'permissions:timelines'], function () {
+
+     
+      Route::get('/timelines/datatables',  [TimelineController::class, 'datatables'])->name('admin-timelines-datatables');
+      Route::get('/timelines',  [TimelineController::class, 'index'])->name('admin-timelines-index');
+      Route::get('/timelines/create',   [TimelineController::class, 'create'])->name('admin-timelines-create');
+      Route::post('/timelines/create',  [TimelineController::class, 'store'])->name('admin-timelines-store');
+      Route::get('/timelines/edit/{id}',  [TimelineController::class, 'edit'])->name('admin-timelines-edit');
+      Route::post('/timelines/update/{id}', [TimelineController::class, 'update'])->name('admin-timelines-update');
+
+      Route::get('/timelines/delete/{id}',  [TimelineController::class, 'destroy'])->name('admin-timelines-delete');
+   
+    });
+
+    Route::group(['middleware' => 'permissions:testimonials'], function () {
+
+     
+      Route::get('/testimonials/datatables',  [TestimonialController::class, 'datatables'])->name('admin-testimonials-datatables');
+      Route::get('/testimonials',  [TestimonialController::class, 'index'])->name('admin-testimonials-index');
+      Route::get('/testimonials/create',   [TestimonialController::class, 'create'])->name('admin-testimonials-create');
+      Route::post('/testimonials/create',  [TestimonialController::class, 'store'])->name('admin-testimonials-store');
+      Route::get('/testimonials/edit/{id}',  [TestimonialController::class, 'edit'])->name('admin-testimonials-edit');
+      Route::post('/testimonials/update/{id}', [TestimonialController::class, 'update'])->name('admin-testimonials-update');
+
+      Route::get('/testimonials/delete/{id}',  [TestimonialController::class, 'destroy'])->name('admin-testimonials-delete');
    
     });
 

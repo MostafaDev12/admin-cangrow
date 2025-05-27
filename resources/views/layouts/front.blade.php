@@ -338,40 +338,21 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div id="nav_menu-5" class="footer-widget widget_nav_menu">
                                 <div class="widget-title">
-                                    <h3>Resources</h3>
+                                    <h3>{{ __('Departments') }}</h3>
                                 </div>
                                 <div class="menu-useful-links-container">
                                     <ul id="menu-useful-links" class="menu">
+                                        @foreach ($parentservices as $service)
+                                            @if(count($service->childs) == 0)
+
                                         <li id="menu-item-1173"
                                             class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1173">
                                             <a
-                                                href="https://azure-sardine-328383.hostingersite.com/research/bio-sciences/">Bio
-                                                Sciences</a>
+                                                href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}">{{ $service->{'title_' . $sign} }}</a>
                                         </li>
-                                        <li id="menu-item-1172"
-                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1172">
-                                            <a
-                                                href="https://azure-sardine-328383.hostingersite.com/research/chemical-research/">Chemical
-                                                Research</a>
-                                        </li>
-                                        <li id="menu-item-1174"
-                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1174">
-                                            <a
-                                                href="https://azure-sardine-328383.hostingersite.com/research/cooling-treatment/">Cooling
-                                                Treatment</a>
-                                        </li>
-                                        <li id="menu-item-1171"
-                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1171">
-                                            <a
-                                                href="https://azure-sardine-328383.hostingersite.com/research/micro-organs/">Micro
-                                                Organs</a>
-                                        </li>
-                                        <li id="menu-item-1170"
-                                            class="menu-item menu-item-type-post_type menu-item-object-research menu-item-1170">
-                                            <a
-                                                href="https://azure-sardine-328383.hostingersite.com/research/medical-research/">Medical
-                                                Research</a>
-                                        </li>
+                                        @endif
+                                        @endforeach
+                                     
                                     </ul>
                                 </div>
                             </div>

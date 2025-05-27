@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __("translation.edit_location") }}
+        {{ __("translation.edit_timeline") }}
         @endslot
     @endcomponent
 
@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-body">
-              <form id="geniusform" action="{{route('admin-locations-update',$data->id)}}" method="POST" enctype="multipart/form-data">
+              <form id="geniusform" action="{{route('admin-timelines-update',$data->id)}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 @include('includes.admin.form-both')
 
@@ -83,15 +83,7 @@
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_ar }}</textarea>
                                               </div>
-                                              <div class="mb-3">
-                                                <label for="address_ar" class="form-label">{{ __('translation.address') }}</label>
-                                                <textarea class="form-control" name="address_ar"  id="address_ar" rows="3" placeholder="{{ __('translation.address') }}">{{ $data->address_ar }}</textarea>
-                                            </div>
-                                            
-                                            <div class="mb-3">
-                                                <label for="date_ar" class="form-label">{{ __('translation.date') }}</label>
-                                                <textarea class="form-control" name="date_ar"  id="date_ar" rows="3" placeholder="{{ __('translation.date') }}">{{ $data->date_ar }}</textarea>
-                                            </div>
+                                           
                                             
                                               
                                         </div>
@@ -108,17 +100,7 @@
                                               <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_en }}</textarea>
                                           </div>
                                           
-                                          
-                                        <div class="mb-3">
-                                          <label for="address_en" class="form-label">{{ __('translation.address') }}</label>
-                                          <textarea class="form-control" name="address_en"  id="address_en" rows="3" placeholder="{{ __('translation.address') }}">{{ $data->address_en }}</textarea>
-                                      </div>
-                                            
-                                        <div class="mb-3">
-                                            <label for="date_en" class="form-label">{{ __('translation.date') }}</label>
-                                            <textarea class="form-control" name="date_en"  id="date_en" rows="3" placeholder="{{ __('translation.date') }}">{{ $data->date_en }}</textarea>
-                                        </div>
-                                        
+                                         
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
                                             <h6 style="text-align: center;">{{ __('translation.france') }}</h6>
@@ -134,16 +116,7 @@
                                               <textarea class="form-control" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_fr }}</textarea>
                                           </div>
 
-                                           
-                                          <div class="mb-3">
-                                            <label for="address_fr" class="form-label">{{ __('translation.address') }}</label>
-                                            <textarea class="form-control" name="address_fr"  id="address_fr" rows="3" placeholder="{{ __('translation.address') }}">{{ $data->address_fr }}</textarea>
-                                        </div>
                                         
-                                        <div class="mb-3">
-                                            <label for="date_fr" class="form-label">{{ __('translation.date') }}</label>
-                                            <textarea class="form-control" name="date_fr"  id="date_fr" rows="3" placeholder="{{ __('translation.date') }}">{{ $data->date_fr }}</textarea>
-                                        </div>
                                         </div>
 
                                     </div>
@@ -156,13 +129,43 @@
                                 <div class="card">
                                   
                                     <div class="mb-3">
-                                        <label for="map" class="form-label">{{ __('translation.map') }}</label>
-                                        <textarea class="form-control" name="map"  id="map" rows="3" placeholder="{{ __('translation.map') }}">{{ $data->map }}</textarea>
+                                        <label for="year" class="form-label">{{ __('translation.year') }}</label>
+                                       <input type="text" class="form-control" name="year" id="year"   value="{{ $data->year }}"  placeholder="{{ __('translation.year') }}">
                                     </div>
                                 </div>
                                 <!-- end card -->
                             </div> <!-- end col -->
 
+                                        <div class="col-xl-12 col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>
+                                                </div><!-- end card header -->
+
+                                                <div class="card-body">
+                                                    <p class="text-muted">FilePond is a JavaScript library with profile
+                                                        picture-shaped
+                                                        file
+                                                        upload variation.</p>
+                                                    <div class="currrent-logo" style="text-align: center;">
+                                                        <img style="width: 171px;"
+                                                            src="{{  $data->photo ? $data->photo_url  :   asset('assets/images/noimage.png') }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="avatar-xl mx-auto">
+                                                        <input type="file" class="filepond filepond-input-circle"
+                                                            name="photo"
+                                                            accept="image/png, image/jpeg, image/gif, image/webp" />
+                                                    </div>
+
+
+                                                </div>
+                                                <!-- end card body -->
+
+
+                                            </div>
+                                            <!-- end card -->
+                                        </div> <!-- end col -->
 
                         </div>
                                 </div><!-- end card-body -->

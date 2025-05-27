@@ -28,6 +28,7 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Process;
 use App\Models\Subscribe;
+use App\Models\Subscription;
 use App\Models\Testimonial;
 use App\Models\Timeline;
 use Illuminate\Support\Facades\File;
@@ -61,14 +62,14 @@ class HomeController extends Controller
 
     $sliders = Slider::get();
     $points = AboutPoint::get();
-    $home_services = Service::get()->take(12);
+    $home_services = Service::get()->take(10);
     $models = PageModel::get();
     $features = ModelCategory::get();
     $partners = Partner::get();
     $medias = Media::get();
     $after_befores = AfterBefore::get();
 
-    $doctors = Doctor::get();
+    $doctors = Doctor::get()->take(8);
     $timelines = Timeline::get();
     $testimonials = Testimonial::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
@@ -102,11 +103,11 @@ class HomeController extends Controller
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
-    $services = Service::where('parent_id','!=',0)->get();
+    $child_services = Service::where('parent_id','!=',0)->get();
     $models = ModelCategory::get();
     $reviews = Partner::get();
 
-    return view('front.sinaiclinic-nabq', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.sinaiclinic-nabq', compact('sign', 'sliders', 'points', 'child_services', 'models', 'reviews'));
   }
 
  
@@ -448,11 +449,11 @@ class HomeController extends Controller
   
  public function subscribe(Request $request)
     {
-        $subs = Subscribe::where('email','=',$request->email)->first();
+        $subs = Subscription::where('email','=',$request->email)->first();
         if(isset($subs)){
         return response()->json(array('errors' => [ 0 =>  'This Email Has Already Been Taken.']));
         }
-        $subscribe = new Subscribe;
+        $subscribe = new Subscription;
         $subscribe->fill($request->all());
         $subscribe->save();
         return response()->json('You Have Subscribed Successfully.');
