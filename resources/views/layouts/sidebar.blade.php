@@ -76,6 +76,21 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_points')</span>
                         </a>
                     </li> 
+
+                      @if (Auth::guard('admin')->user()->sectionCheck('processes'))
+                <li class="nav-item">
+                    <a class="nav-link  " href="{{ route('admin-processes-index') }}" aria-controls="sidebarblogs">
+                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.processes')</span>
+                    </a>
+                </li>
+            @endif
+                      @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
+                <li class="nav-item">
+                    <a class="nav-link  " href="{{ route('admin-certificates-index') }}" aria-controls="sidebarblogs">
+                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.sinai_clinic_gallery')</span>
+                    </a>
+                </li>
+            @endif
                               <!-- #region -->
                             </ul>
                         </div>
@@ -138,6 +153,7 @@
                     </a>
                 </li>
             @endif
+            
                 {{--  --}}
 {{--
 

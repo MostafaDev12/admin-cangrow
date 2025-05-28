@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\ProcessController;
 use App\Http\Controllers\Admin\TimelineController;
 use App\Http\Controllers\Admin\TestimonialController;
 
@@ -373,6 +374,20 @@ Route::prefix('admin')->group(function () {
       Route::post('/testimonials/update/{id}', [TestimonialController::class, 'update'])->name('admin-testimonials-update');
 
       Route::get('/testimonials/delete/{id}',  [TestimonialController::class, 'destroy'])->name('admin-testimonials-delete');
+   
+    });
+
+    Route::group(['middleware' => 'permissions:processes'], function () {
+
+     
+      Route::get('/processes/datatables',  [ProcessController::class, 'datatables'])->name('admin-processes-datatables');
+      Route::get('/processes',  [ProcessController::class, 'index'])->name('admin-processes-index');
+      Route::get('/processes/create',   [ProcessController::class, 'create'])->name('admin-processes-create');
+      Route::post('/processes/create',  [ProcessController::class, 'store'])->name('admin-processes-store');
+      Route::get('/processes/edit/{id}',  [ProcessController::class, 'edit'])->name('admin-processes-edit');
+      Route::post('/processes/update/{id}', [ProcessController::class, 'update'])->name('admin-processes-update');
+
+      Route::get('/processes/delete/{id}',  [ProcessController::class, 'destroy'])->name('admin-processes-delete');
    
     });
 

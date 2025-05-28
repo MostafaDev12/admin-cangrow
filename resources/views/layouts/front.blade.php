@@ -321,6 +321,10 @@
                                         </li> --}}
                                         <li id="menu-item-1168"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168">
+                                            <a href="{{ route('sinaiclinic-nabq.index') }}">{{ __('Sinaiclinic Nabq') }}</a>
+                                        </li>   
+                                         <li id="menu-item-1168"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168">
                                             <a href="{{ route('blogs.index') }}">{{ __('Blogs') }}</a>
                                         </li>
                                         <li id="menu-item-1169"
@@ -329,7 +333,7 @@
                                         </li>
                                         <li id="menu-item-1166"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1166">
-                                            <a href="{{ route('contact.index') }}">Contact</a>
+                                            <a href="{{ route('contact.index') }}">{{ __('Contact') }}</a>
                                         </li>
                                     </ul>
                                 </div>
