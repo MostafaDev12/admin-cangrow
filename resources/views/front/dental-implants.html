@@ -1,113 +1,23 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    @php
-
-        $ps = App\Models\Pagesetting::find(1);
-
-    @endphp
-
-
-
-
-    <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-    <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
-    <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
-    <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:type" content="website">
-
-
-    <meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
-    @if (isset($page->meta_tag) && isset($page->meta_description))
-        <meta name="keywords" content="{{ $page->meta_tag }}">
-        <meta name="description" content="{{ $page->meta_description }}">
-        <title>@yield('title') -
-
-            {{ $gs->{'title_' . $sign} }}
-
-        </title>
-    @elseif(isset($blog->meta_tag) && isset($blog->meta_description))
-        <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->meta_description }}">
-        <meta property="og:description" content="{{ $blog->meta_description }}">
-    @else
-        <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
-
-        <title>
-            @yield('title')
-        </title>
-    @endif
-
-
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "{{url('/')}}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}"
-    }
-    </script>
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ $gs->{'title_' . $sign} }}",
-    "url": "{{url('/')}}",
-    "description": "",
-    "image": "{{ $gs->{'logo_' . $sign} }}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}",
-      "sameAs": ["{{ App\Models\Socialsetting::find(1)->facebook }}", "{{ App\Models\Socialsetting::find(1)->twitter }}", "{{ App\Models\Socialsetting::find(1)->instagram }}"],
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "",
-      "addressRegion": "Cairo",
-      "postalCode": "11341",
-      "addressCountry": "Egypt"
-    }
-  }
-</script>
-
-
-    @yield('gsearch')
-    <!-- Google Font -->
-
-    <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ $gs->favicon }}" />
-    <!-- bootstrap -->
-
-
-
-
-    <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
-
-
-
-
-    @include('includes.style')
-
-
-
-
-
+    <title>Los Angeles Dentist | Cosmetic, Implant & Family Dentistry | LA Dental Clinic</title>
+    <meta name="description"
+        content="Los Angeles Cosmetic Dentist - Expert Dentist! 35 Years of Experience. LA Dental provides the highest quality dental care in a State of the Art Office.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </head>
-
-@php
-    $phones = explode(',', $gs->phones);
-    $emails = explode(',', $gs->emails);
-    $addresses = json_decode($gs->{'addresses_' . $sign});
-
-    $randomPhone = Arr::random($phones);
-@endphp
-
 
 <body class="bg-[#f5f5f5] font-cairo">
     <!-- start header -->
@@ -391,13 +301,481 @@
         </nav>
     </header>
     <!-- end header -->
+    <!-- end header -->
+    <section class="py-16 bg-gray-50" style="background-image: url(https://ladentalclinic.com/wp-content/uploads/2021/05/female-smiling-home-blue-wave-1440x600_x1.5.jpg);
+    background-position: bottom center;
+    background-size: cover;">
+        <div class="container mx-auto px-4">
+            <!-- Flex Container for Two Columns -->
+            <div class="flex flex-wrap">
+                <!-- Left Column (Text Content) -->
+                <div class="w-full md:w-1/2 p-4">
+                    <div class="mb-6">
+                        <!-- Certification Badges -->
+                        <p class="text-sm font-medium text-gray-600 mb-4">
+                            Hybridge Certified | 98% Success Rate | Lifetime Comfort Adjustments
+                        </p>
 
+                        <!-- Main Heading -->
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                            1 Tooth or Full Dental Implants in Los Angeles, CA
+                        </h1>
 
+                        <!-- Subheading -->
+                        <h4 class="text-xl font-medium text-gray-700">
+                            For stability. For comfort. For the feeling of loving your smile again.
+                        </h4>
+                    </div>
+                </div>
 
-        @yield('content')
+                <!-- Right Column (Empty in Original) -->
+                <div class="w-full md:w-1/2 p-4">
+                    <!-- Add content here if needed -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <!-- Flex Container -->
+            <div class="flex flex-wrap items-center">
 
+                <!-- Left Column (Image) -->
+                <div class="w-full md:w-1/2 p-4">
+                    <div class="relative overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://ladentalclinic.com/wp-content/uploads/2021/10/dr-azy-and-arezo-1024x769.jpeg"
+                            alt="Dr. Azy and Arezo" class="w-full h-auto" loading="lazy" decoding="async">
+                    </div>
+                </div>
 
- 
+                <!-- Right Column (Text Content) -->
+                <div class="w-full md:w-1/2 p-4">
+                    <div class="space-y-6">
+                        <!-- Main Headline -->
+                        <h3 class="text-3xl font-semibold text-gray-900">
+                            You’re not you without your smile.
+                        </h3>
+
+                        <!-- Body Text -->
+                        <p class="text-gray-700">
+                            And when you’re missing teeth, or struggling with loose dentures, it can feel like your
+                            smile isn’t yours anymore.
+                        </p>
+
+                        <p class="text-gray-700">
+                            Your grin goes away, you can’t eat what you want – you even speak differently. It’s just not
+                            the same.
+                        </p>
+
+                        <!-- Callout Heading -->
+                        <h2 class="text-4xl font-bold text-gray-900">
+                            The answer?
+                            <strong class="text-blue-600">Dental implants.</strong>
+                        </h2>
+
+                        <!-- Subtext -->
+                        <h6 class="text-xl text-gray-800 font-medium">
+                            Comfortable and natural-looking, they make your smile yours again, whether you need one or
+                            two teeth, or a whole new smile.
+                        </h6>
+
+                        <!-- CTA Button -->
+                        <a href="#"
+                            class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
+                            Schedule Consultation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <!-- Main Heading -->
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                    How Does It Work?
+                </h2>
+
+                <!-- Optional Divider (for visual separation) -->
+                <div class="w-16 h-1 bg-blue-600 mx-auto my-6"></div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 bg-white relative">
+        <div class="container mx-auto px-4">
+            <!-- Relative container for absolute positioning -->
+            <div class="relative h-40 flex items-center justify-center">
+                <!-- Absolutely positioned heading -->
+                <h3
+                    class="text-3xl font-bold text-gray-900 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    Smiles Made Whole
+                </h3>
+            </div>
+        </div>
+    </section>
+    <section class="py-12 bg-[#0069D1]">
+        <div class="container mx-auto px-4">
+            <!-- Centered Content -->
+            <div class="text-center max-w-3xl mx-auto">
+                <!-- Subheading -->
+                <h4 class="text-xl font-medium  text-white mb-6">
+                    Don’t know which one is right for you? We can help you decide – and save too!
+                </h4>
+
+                <!-- Primary CTA Button -->
+                <div class="inline-block">
+                    <a href="https://mychart.myoryx.com/patient/#/auth/onlineschedule?realm=ladental&amp;univers=com"
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-block px-6 py-3 bg-white text-[#0069D1] font-medium text-sm rounded hover:bg-white-700 transition duration-300">
+                        Book A Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-12 bg-[#3EB7D5]">
+        <div class="container mx-auto px-4">
+            <!-- Centered Content -->
+            <div class="text-center max-w-xl mx-auto">
+                <!-- Phone Number -->
+                <h4 class="text-xl font-medium text-white mb-6">
+                    Call us at <a href="tel:2133859710" class="text-blue-600 hover:underline">213-385-9710</a>
+                </h4>
+
+                <!-- Primary CTA Button -->
+                <div class="inline-block">
+                    <a href="tel:2133859710" target="_blank" rel="noopener noreferrer"
+                        class="inline-block px-6 py-3 bg-white text-[#3EB7D5] font-medium text-sm rounded hover:bg-white-700 transition duration-300">
+                        CALL US TODAY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main Section -->
+    <section class="py-16 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-12">
+
+            <!-- Left Column: Features -->
+            <div class="md:w-1/2">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10">What makes LA Dental Clinic the place to get dental
+                    implants in LA?</h2>
+
+                <!-- Feature 1: Experience -->
+                <div class="flex items-start gap-4 mb-8">
+                    <div class="text-blue-600 mt-1">
+                        <i class="fas fa-history fa-lg"></i> <!-- Matches "since 2007" SVG -->
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-xl mb-2">Us and dental implants? We go way back.</h5>
+                        <p class="text-gray-600">We’ve been placing implants since 2007 and have successfully restored
+                            hundreds of smiles.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Success Rate -->
+                <div class="flex items-start gap-4 mb-8">
+                    <div class="text-blue-600 mt-1">
+                        <i class="fas fa-shield-alt fa-lg"></i> <!-- Matches "shield" SVG -->
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-xl mb-2">Nobody’s perfect. But our track record is pretty darn
+                            close.</h5>
+                        <p class="text-gray-600">We take care to get things right the first time, and our 98% success
+                            rate is proof of that.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Certification -->
+                <div class="flex items-start gap-4">
+                    <div class="text-blue-600 mt-1">
+                        <i class="fas fa-award fa-lg"></i> <!-- Matches "trophy" SVG -->
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-xl mb-2">We’ve earned our stripes. And Hybridge Certification too.
+                        </h5>
+                        <p class="text-gray-600">We’ve gone through strict training to prove that we’re among the
+                            nation’s top implant doctors.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Dentists -->
+            <div class="md:w-1/2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+
+                    <!-- Dentist 1 -->
+                    <div class="text-center">
+                        <img src="https://ladentalclinic.com/wp-content/uploads/2020/03/dr-arezoo-nasiry-e1618266986327.jpg"
+                            alt="Dr. Arezoo Nasiry" class="w-48 h-60 object-cover mx-auto rounded-lg shadow-md mb-4">
+                        <figcaption class="text-lg font-medium">Dr. Arezoo Nasiry</figcaption>
+                    </div>
+
+                    <!-- Dentist 2 -->
+                    <div class="text-center">
+                        <img src="https://ladentalclinic.com/wp-content/uploads/2020/04/dr-azy-nasiry-e1618266967675.jpg"
+                            alt="Dr. Azy Nasiry" class="w-48 h-60 object-cover mx-auto rounded-lg shadow-md mb-4">
+                        <figcaption class="text-lg font-medium">Dr. Azy Nasiry</figcaption>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Full-Width Guarantee Section -->
+    <section class="w-full py-16 px-6 md:px-12 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <!-- Responsive Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+                <!-- Left Column: Guarantee Text -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">A Smile You’ll Love. Guaranteed.</h2>
+                    <p class="text-lg text-gray-600">
+                        Your implants come with up to 5 years of material coverage, and as long as you follow our
+                        recommendations for taking care of them, we’ll always be happy to help you with any fit and
+                        comfort adjustments you need.
+                    </p>
+                </div>
+
+                <!-- Right Column: Spacer Simulation -->
+                <div
+                    class=" w-full h-60 rounded shadow bg-[url('https://ladentalclinic.com/wp-content/uploads/2021/05/dr-nasirys-smiling-600x262_x1.5.jpg')] bg-center bg-no-repeat bg-cover">
+                    <!-- Empty column acts as a visual spacer on desktop -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <!-- Inner Container -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                <!-- Testimonial Content -->
+                <div class="text-left max-w-3xl mx-auto">
+                    <!-- Heading -->
+                    <h2 class="text-3xl font-bold mb-6">What Our Patients Say</h2>
+
+                    <!-- Quote Icon (Optional) -->
+                    <div class="mb-4 text-blue-600">
+                        <i class="fas fa-quote-left text-2xl"></i>
+                    </div>
+
+                    <!-- Testimonial Text -->
+                    <p class="text-lg text-gray-600 mb-6 italic">
+                        Dr. Nasiry is extremely pleasant, professional and informative. Her procedure explanations put
+                        me at ease.
+                        I had my first implant done on a molar and was scared beyond recognition. The procedure went
+                        smoothly,
+                        my mouth healed wonderfully and I completely entrust the doctor and her staff to take care of my
+                        future procedures!
+                    </p>
+
+                    <!-- Author Attribution -->
+                    <h6 class="text-gray-600 font-medium">– Mechelle V.</h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Section -->
+    <section class="py-16 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <!-- Dual Review Platforms -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+                <!-- Google Reviews -->
+                <div class="border rounded-lg p-6 shadow-sm">
+                    <img src="https://ladentalclinic.com/wp-content/uploads/2021/03/logo-google.png" alt="Google Logo"
+                        class="w-48 h-auto mb-4" loading="lazy" srcset="https://ladentalclinic.com/wp-content/uploads/2021/03/logo-google.png 471w, 
+                       https://ladentalclinic.com/wp-content/uploads/2021/03/logo-google-300x99.png 300w"
+                        sizes="(max-width: 471px) 100vw, 471px">
+
+                    <h3 class="text-xl font-semibold mb-6">4.8/5 with 171 reviews</h3>
+
+                    <!-- Testimonials -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Testimonial 1 -->
+                        <div class="bg-gray-50 p-4 rounded-md">
+                            <h5 class="font-medium text-gray-800">Elan</h5>
+                            <p class="text-gray-600 italic text-sm mt-2">
+                                Was not paid to do this. I am a real patient of LA dental and I had to congratulate them
+                                on how easy going yet professional the whole experience was.
+                            </p>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="bg-gray-50 p-4 rounded-md">
+                            <h5 class="font-medium text-gray-800">Amorvincitomnia</h5>
+                            <p class="text-gray-600 italic text-sm mt-2">
+                                Yay! I’m done with the Invisalign treatment, now just waiting for the retainers! I
+                                highly recommend LA DENTAL.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yelp Reviews -->
+                <div class="border rounded-lg p-6 shadow-sm">
+                    <img src="https://ladentalclinic.com/wp-content/uploads/2021/03/logo-yelp.png" alt="Yelp Logo"
+                        class="w-48 h-auto mb-4" loading="lazy" srcset="https://ladentalclinic.com/wp-content/uploads/2021/03/logo-yelp.png 462w, 
+                       https://ladentalclinic.com/wp-content/uploads/2021/03/logo-yelp-300x134.png 300w"
+                        sizes="(max-width: 462px) 100vw, 462px">
+
+                    <h3 class="text-xl font-semibold mb-6">4/5 with 146 reviews</h3>
+
+                    <!-- Testimonial -->
+                    <div class="bg-gray-50 p-4 rounded-md">
+                        <h5 class="font-medium text-gray-800">Matthew A.</h5>
+                        <p class="text-gray-600 italic text-sm mt-2">
+                            Dr. Azy and Arezoo Nasiry are the dentists with the most integrity, which is very hard to
+                            find nowadays. I have been taken care of throughout my Invisalign treatment.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <!-- Title -->
+        <h2 class="text-3xl font-bold text-center mb-6">
+            What Do You Want To Know About Dental Implants?
+        </h2>
+
+        <!-- Divider -->
+        <hr class="border-t border-gray-300 my-6" />
+
+        <!-- Accordion -->
+        <div class="space-y-4">
+            <!-- Accordion Item 1 -->
+            <details class="group border rounded-lg bg-white shadow-sm">
+                <summary
+                    class="flex justify-between items-center p-4 cursor-pointer text-lg font-medium text-gray-800 list-none">
+                    <span>Are dental implants right for me?</span>
+                    <i
+                        class="fas fa-chevron-right text-gray-500 transition-transform duration-300 group-open:rotate-90"></i>
+                </summary>
+                <div class="p-4 pt-0 text-gray-600">
+                    <p>If you’re missing one or more teeth, but otherwise have healthy gums and overall good oral
+                        health, you’re probably a good candidate for dental implants.</p>
+                    <p class="mt-2">A dental implant and a crown can replace a missing tooth in a very natural way. If
+                        you’re missing several teeth, you may want to consider dental implants with a bridge as a way to
+                        hold loose dentures in place more securely.</p>
+                    <p class="mt-2">Even if you’re already wearing dentures, adding two or four dental implants can make
+                        the dentures (especially lower dentures) substantially tighter so that they won’t move around
+                        while you’re eating or speaking.</p>
+                </div>
+            </details>
+
+            <!-- Accordion Item 2 -->
+            <details class="group border rounded-lg bg-white shadow-sm">
+                <summary
+                    class="flex justify-between items-center p-4 cursor-pointer text-lg font-medium text-gray-800 list-none">
+                    <span>I have a medical condition/need to take medication. Can I still get dental implants?</span>
+                    <i
+                        class="fas fa-chevron-right text-gray-500 transition-transform duration-300 group-open:rotate-90"></i>
+                </summary>
+                <div class="p-4 pt-0 text-gray-600">
+                    <p>Even if you have a medical condition or need to take medication, you can usually still get
+                        implants. However, there are still some things to keep in mind, such as:</p>
+                    <h6 class="font-semibold mt-3">Gum Health</h6>
+                    <p>Gum disease must be treated before implants. Severe cases may require bone augmentation.</p>
+                    <h6 class="font-semibold mt-3">Immune System</h6>
+                    <p>Those with weakened immune systems (e.g., HIV or immunosuppressants) may face higher infection
+                        risks.</p>
+                    <h6 class="font-semibold mt-3">Lifestyle</h6>
+                    <p>Heavy smoking or alcohol use can slow healing.</p>
+                    <h6 class="font-semibold mt-3">Medications</h6>
+                    <p>Anticoagulants (e.g., for strokes/blood pressure) affect bleeding control. Inform your dentist.
+                    </p>
+                    <h6 class="font-semibold mt-3">Bleeding Tendencies</h6>
+                    <p>Hypertension or hemophilia patients may need emergency-ready facilities.</p>
+                </div>
+            </details>
+
+            <!-- Accordion Item 3 -->
+            <details class="group border rounded-lg bg-white shadow-sm">
+                <summary
+                    class="flex justify-between items-center p-4 cursor-pointer text-lg font-medium text-gray-800 list-none">
+                    <span>How long does it take to recover after getting dental implants?</span>
+                    <i
+                        class="fas fa-chevron-right text-gray-500 transition-transform duration-300 group-open:rotate-90"></i>
+                </summary>
+                <div class="p-4 pt-0 text-gray-600">
+                    <p>Healing time varies, but most practitioners allow 2–6 months for full integration. At LA Dental,
+                        we prioritize caution and allow ample healing time before placing restorations.</p>
+                </div>
+            </details>
+
+            <!-- Accordion Item 4 -->
+            <details class="group border rounded-lg bg-white shadow-sm">
+                <summary
+                    class="flex justify-between items-center p-4 cursor-pointer text-lg font-medium text-gray-800 list-none">
+                    <span>Are all dental implants the same?</span>
+                    <i
+                        class="fas fa-chevron-right text-gray-500 transition-transform duration-300 group-open:rotate-90"></i>
+                </summary>
+                <div class="p-4 pt-0 text-gray-600">
+                    <p>No! Implants vary by design (one-piece vs. two-piece) and material (metal vs. ceramic). We’ll
+                        explain options during your consultation.</p>
+                </div>
+            </details>
+
+            <!-- Accordion Item 5 -->
+            <details class="group border rounded-lg bg-white shadow-sm">
+                <summary
+                    class="flex justify-between items-center p-4 cursor-pointer text-lg font-medium text-gray-800 list-none">
+                    <span>What’s the difference between a crown and an implant?</span>
+                    <i
+                        class="fas fa-chevron-right text-gray-500 transition-transform duration-300 group-open:rotate-90"></i>
+                </summary>
+                <div class="p-4 pt-0 text-gray-600">
+                    <p>The "implant" refers to the screw anchored into the jaw. The "crown" is the visible tooth-like
+                        restoration attached to the implant. They are separate components.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Gallery of Images</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Image Card 1 -->
+                <div
+                    class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                    <img src="./assets/imgs/Dental implant - زراعة الأسنان/e11.JPG " alt="Image 1"
+                        class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
+                </div>
+
+                <!-- Image Card 2 -->
+                <div
+                    class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                    <img src="./assets/imgs/Dental implant - زراعة الأسنان/e2.JPG " alt="Image 2"
+                        class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
+                </div>
+
+                <!-- Image Card 3 -->
+                <div
+                    class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                    <img src="./assets/imgs/Dental implant - زراعة الأسنان/f14.JPG " alt="Image 3"
+                        class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
+                </div>
+                <div
+                    class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                    <img src="./assets/imgs/Dental implant - زراعة الأسنان/Nasrah Mohamed Hassan.jpg " alt="Image 3"
+                        class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
+                </div>
+
+            </div>
+        </div>
+    </section>
     <footer class="bg-gray-50  w-full">
         <!-- Locations Section -->
         <section class="py-12 px-4 md:px-0">
@@ -561,218 +939,9 @@
         </a>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <Script>
-        $(document).on('submit', '#subscribeform', function(e) {
-            e.preventDefault();
-            console.log(12);
-            $('#sub-btn').prop('disabled', true);
-            console.log(13);
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function(data) {
-                    console.log(14);
-                    if ((data.errors)) {
-                        console.log(15);
-                        $('.alert-danger').show();
-                        $('.alert-danger ul').html('');
-                        for (var error in data.errors) {
-                            $('.alert-danger ul').append('<li>' + data.errors[error] + '</li>');
-                        }
-
-                    } else {
-                        console.log(16);
-                        toastr.success(langg.subscribe_success);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success p').html(langg.subscribe_success);
-
-                    }
-
-                    $('#sub-btn').prop('disabled', false);
-
-
-                }
-
-            });
-
-        });
-
-
-        $(document).on('submit', '#email-form', function(e) {
-            e.preventDefault();
-            $('.gocover').show();
-            $('.submit-btn').prop('disabled', true);
-            var name = $('.fname').val();
-
-
-
-            if (name == '') {
-                $('#email-form .response').html(
-                    '<div class="failed alert alert-warning">Please fill the required fields.</div>');
-                $('button.submit-btn').prop('disabled', false);
-                return false;
-            }
-
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#email-form .response').html(
-                        '<div class="text-info">Loading...</div>'
-                    );
-                    console.log(1);
-                },
-                success: function(data) {
-                    console.log(2);
-                    if ((data.errors)) {
-                        console.log(3);
-                        $('.alert-success').hide();
-                        $('.alert-danger').show();
-                        $('#email-form .response').html('');
-                        for (var error in data.errors) {
-                            console.log(4);
-                            $('#email-form .response').append('<li>' + data.errors[error] + '</li>')
-                        }
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .eq(0).focus();
-                        $('#email-form .refresh_code').trigger('click');
-
-                    } else {
-                        console.log(5);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('#email-form .response').html(data);
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .eq(0).focus();
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .val('');
-                        $('#email-form .refresh_code').trigger('click');
-
-                    }
-                    console.log(6);
-                    $('.gocover').hide();
-                    $('button.submit-btn').prop('disabled', false);
-                }
-
-            });
-
-        });
-    </script>
-
-
-    @include('includes.script')
-
-
-
-    <script src="{{ asset('build/js/toastr.js') }}"></script>
-
-
-    <script type="text/javascript">
-        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
-    </script>
-
-
-
-    <script type="text/javascript">
-        var mainurl = "{{ url('/' . $sign) }}";
-        var mainurl2 = "{{ url('/') }}";
-        var gs = {!! json_encode($gs) !!};
-        var langg = {!! json_encode($sign) !!};
-        var mainurl2 = "{{ url('/') }}";
-
-        $(".selectors").on('change', function() {
-            var url = $(this).val();
-            window.location = url;
-        });
-    </script>
-
-    <script>
-        $(document).on('submit', '#appointment-form', function(e) {
-            e.preventDefault();
-            $('.gocover').show();
-            $('.submit-btn').prop('disabled', true);
-            var name = $('.fname').val();
-
-
-
-            if (name == '') {
-                $('#appointment-form .response').html(
-                    '<div class="failed alert alert-warning">Please fill the required fields.</div>');
-                $('button.submit-btn').prop('disabled', false);
-                return false;
-            }
-
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#appointment-form .response').html(
-                        '<div class="text-info"><img src="{{ asset('assets/images/preloader.gif') }}"> Loading...</div>'
-                    );
-                    console.log(1);
-                },
-                success: function(data) {
-                    console.log(2);
-                    if ((data.errors)) {
-                        console.log(3);
-                        $('.alert-success').hide();
-                        $('.alert-danger').show();
-                        $('#appointment-form .response').html('');
-                        for (var error in data.errors) {
-                            console.log(4);
-                            $('#appointment-form .response').append('<li>' + data.errors[error] +
-                                '</li>')
-                        }
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .eq(0).focus();
-                        $('#appointment-form .refresh_code').trigger('click');
-
-                    } else {
-                        console.log(5);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('#appointment-form .response').html(data);
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .eq(0).focus();
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .val('');
-                        $('#appointment-form .refresh_code').trigger('click');
-
-                    }
-                    console.log(6);
-                    $('.gocover').hide();
-                    $('button.submit-btn').prop('disabled', false);
-                }
-
-            });
-
-        });
-
-        $('.refresh_code').on("click", function() {
-            $.get(mainurl2 + '/contact/refresh_code', function(data, status) {
-                $('.codeimg1').attr("src", mainurl2 + "/assets/images/capcha_code.png?time=" + Math
-                    .random());
-            });
-        })
-    </script>
-    @yield('js')
-
+    <script src="./assets/scripts/tailwind.js"></script>
+    <script src="./assets/scripts/header.js"></script>
+    <script src="./assets/scripts/swiper.js"></script>
 </body>
 
 </html>

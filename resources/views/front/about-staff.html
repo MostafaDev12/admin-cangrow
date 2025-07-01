@@ -1,113 +1,23 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    @php
-
-        $ps = App\Models\Pagesetting::find(1);
-
-    @endphp
-
-
-
-
-    <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-    <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
-    <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
-    <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:type" content="website">
-
-
-    <meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
-    @if (isset($page->meta_tag) && isset($page->meta_description))
-        <meta name="keywords" content="{{ $page->meta_tag }}">
-        <meta name="description" content="{{ $page->meta_description }}">
-        <title>@yield('title') -
-
-            {{ $gs->{'title_' . $sign} }}
-
-        </title>
-    @elseif(isset($blog->meta_tag) && isset($blog->meta_description))
-        <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->meta_description }}">
-        <meta property="og:description" content="{{ $blog->meta_description }}">
-    @else
-        <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
-
-        <title>
-            @yield('title')
-        </title>
-    @endif
-
-
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "{{url('/')}}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}"
-    }
-    </script>
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ $gs->{'title_' . $sign} }}",
-    "url": "{{url('/')}}",
-    "description": "",
-    "image": "{{ $gs->{'logo_' . $sign} }}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}",
-      "sameAs": ["{{ App\Models\Socialsetting::find(1)->facebook }}", "{{ App\Models\Socialsetting::find(1)->twitter }}", "{{ App\Models\Socialsetting::find(1)->instagram }}"],
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "",
-      "addressRegion": "Cairo",
-      "postalCode": "11341",
-      "addressCountry": "Egypt"
-    }
-  }
-</script>
-
-
-    @yield('gsearch')
-    <!-- Google Font -->
-
-    <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ $gs->favicon }}" />
-    <!-- bootstrap -->
-
-
-
-
-    <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
-
-
-
-
-    @include('includes.style')
-
-
-
-
-
+    <title>Los Angeles Dentist | Cosmetic, Implant & Family Dentistry | LA Dental Clinic</title>
+    <meta name="description"
+        content="Los Angeles Cosmetic Dentist - Expert Dentist! 35 Years of Experience. LA Dental provides the highest quality dental care in a State of the Art Office.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </head>
-
-@php
-    $phones = explode(',', $gs->phones);
-    $emails = explode(',', $gs->emails);
-    $addresses = json_decode($gs->{'addresses_' . $sign});
-
-    $randomPhone = Arr::random($phones);
-@endphp
-
 
 <body class="bg-[#f5f5f5] font-cairo">
     <!-- start header -->
@@ -391,13 +301,82 @@
         </nav>
     </header>
     <!-- end header -->
+    <!-- Meet Our Team -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <!-- Heading -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl font-bold text-gray-800">Meet Our Team</h2>
+                <p class="text-gray-600 mt-2">Friendly, professional, and dedicated to your smile.</p>
+            </div>
 
+            <!-- Team Grid -->
+            <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-8">
+                <!-- Team Member 1 -->
+                <div class="text-center">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://ladentalclinic.com/wp-content/uploads/2023/04/LA_Dental__204-300x296.jpg"
+                            alt="Dr. Azy Nasiry"
+                            class="w-full h-auto transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <h5 class="font-semibold text-gray-800">Dr. Azy Nasiry</h5>
+                    <p class="text-gray-600 text-sm">Dentist</p>
+                </div>
 
+                <!-- Team Member 2 -->
+                <div class="text-center">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://ladentalclinic.com/wp-content/uploads/2023/04/LA_Dental__131-297x300.jpg"
+                            alt="Diana" class="w-full h-auto transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <h5 class="font-semibold text-gray-800">Diana</h5>
+                    <p class="text-gray-600 text-sm">Dental Assistant</p>
+                </div>
 
-        @yield('content')
+                <!-- Team Member 3 -->
+                <div class="text-center">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://ladentalclinic.com/wp-content/uploads/2023/04/LA_Dental__88-300x295.jpg"
+                            alt="Gloria" class="w-full h-auto transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <h5 class="font-semibold text-gray-800">Gloria</h5>
+                    <p class="text-gray-600 text-sm">Dental Assistant</p>
+                </div>
 
+                <!-- Team Member 4 -->
+                <div class="text-center">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://ladentalclinic.com/wp-content/uploads/2023/04/LA_Dental__121-296x300.jpg"
+                            alt="Monica" class="w-full h-auto transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <h5 class="font-semibold text-gray-800">Monica</h5>
+                    <p class="text-gray-600 text-sm">Dental Hygienist</p>
+                </div>
 
- 
+                <!-- New Team Member (from latest upload) -->
+                <div class="text-center">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="https://ladentalclinic.com/wp-content/uploads/2024/07/Victoria-283x300.jpg"
+                            alt="Victoria" class="w-full h-auto transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <h5 class="font-semibold text-gray-800">Victoria</h5>
+                    <p class="text-gray-600 text-sm">Dental Assistant</p>
+                </div>
+            </div>
+
+            <!-- Hiring CTA -->
+            <div
+                class="mt-12 bg-gradient-to-r from-blue-50 to-teal-50 p-8 rounded-lg shadow-sm text-center max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">We're Hiring!</h3>
+                <p class="text-gray-600 mb-4">Join our team of passionate dental professionals.</p>
+                <a href="https://ladentalclinic.com/employment/"
+                    class="inline-block bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-full transition">
+                    Explore Careers
+                </a>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-gray-50  w-full">
         <!-- Locations Section -->
         <section class="py-12 px-4 md:px-0">
@@ -561,218 +540,9 @@
         </a>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <Script>
-        $(document).on('submit', '#subscribeform', function(e) {
-            e.preventDefault();
-            console.log(12);
-            $('#sub-btn').prop('disabled', true);
-            console.log(13);
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function(data) {
-                    console.log(14);
-                    if ((data.errors)) {
-                        console.log(15);
-                        $('.alert-danger').show();
-                        $('.alert-danger ul').html('');
-                        for (var error in data.errors) {
-                            $('.alert-danger ul').append('<li>' + data.errors[error] + '</li>');
-                        }
-
-                    } else {
-                        console.log(16);
-                        toastr.success(langg.subscribe_success);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success p').html(langg.subscribe_success);
-
-                    }
-
-                    $('#sub-btn').prop('disabled', false);
-
-
-                }
-
-            });
-
-        });
-
-
-        $(document).on('submit', '#email-form', function(e) {
-            e.preventDefault();
-            $('.gocover').show();
-            $('.submit-btn').prop('disabled', true);
-            var name = $('.fname').val();
-
-
-
-            if (name == '') {
-                $('#email-form .response').html(
-                    '<div class="failed alert alert-warning">Please fill the required fields.</div>');
-                $('button.submit-btn').prop('disabled', false);
-                return false;
-            }
-
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#email-form .response').html(
-                        '<div class="text-info">Loading...</div>'
-                    );
-                    console.log(1);
-                },
-                success: function(data) {
-                    console.log(2);
-                    if ((data.errors)) {
-                        console.log(3);
-                        $('.alert-success').hide();
-                        $('.alert-danger').show();
-                        $('#email-form .response').html('');
-                        for (var error in data.errors) {
-                            console.log(4);
-                            $('#email-form .response').append('<li>' + data.errors[error] + '</li>')
-                        }
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .eq(0).focus();
-                        $('#email-form .refresh_code').trigger('click');
-
-                    } else {
-                        console.log(5);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('#email-form .response').html(data);
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .eq(0).focus();
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .val('');
-                        $('#email-form .refresh_code').trigger('click');
-
-                    }
-                    console.log(6);
-                    $('.gocover').hide();
-                    $('button.submit-btn').prop('disabled', false);
-                }
-
-            });
-
-        });
-    </script>
-
-
-    @include('includes.script')
-
-
-
-    <script src="{{ asset('build/js/toastr.js') }}"></script>
-
-
-    <script type="text/javascript">
-        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
-    </script>
-
-
-
-    <script type="text/javascript">
-        var mainurl = "{{ url('/' . $sign) }}";
-        var mainurl2 = "{{ url('/') }}";
-        var gs = {!! json_encode($gs) !!};
-        var langg = {!! json_encode($sign) !!};
-        var mainurl2 = "{{ url('/') }}";
-
-        $(".selectors").on('change', function() {
-            var url = $(this).val();
-            window.location = url;
-        });
-    </script>
-
-    <script>
-        $(document).on('submit', '#appointment-form', function(e) {
-            e.preventDefault();
-            $('.gocover').show();
-            $('.submit-btn').prop('disabled', true);
-            var name = $('.fname').val();
-
-
-
-            if (name == '') {
-                $('#appointment-form .response').html(
-                    '<div class="failed alert alert-warning">Please fill the required fields.</div>');
-                $('button.submit-btn').prop('disabled', false);
-                return false;
-            }
-
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#appointment-form .response').html(
-                        '<div class="text-info"><img src="{{ asset('assets/images/preloader.gif') }}"> Loading...</div>'
-                    );
-                    console.log(1);
-                },
-                success: function(data) {
-                    console.log(2);
-                    if ((data.errors)) {
-                        console.log(3);
-                        $('.alert-success').hide();
-                        $('.alert-danger').show();
-                        $('#appointment-form .response').html('');
-                        for (var error in data.errors) {
-                            console.log(4);
-                            $('#appointment-form .response').append('<li>' + data.errors[error] +
-                                '</li>')
-                        }
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .eq(0).focus();
-                        $('#appointment-form .refresh_code').trigger('click');
-
-                    } else {
-                        console.log(5);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('#appointment-form .response').html(data);
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .eq(0).focus();
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .val('');
-                        $('#appointment-form .refresh_code').trigger('click');
-
-                    }
-                    console.log(6);
-                    $('.gocover').hide();
-                    $('button.submit-btn').prop('disabled', false);
-                }
-
-            });
-
-        });
-
-        $('.refresh_code').on("click", function() {
-            $.get(mainurl2 + '/contact/refresh_code', function(data, status) {
-                $('.codeimg1').attr("src", mainurl2 + "/assets/images/capcha_code.png?time=" + Math
-                    .random());
-            });
-        })
-    </script>
-    @yield('js')
-
+    <script src="./assets/scripts/tailwind.js"></script>
+    <script src="./assets/scripts/header.js"></script>
+    <script src="./assets/scripts/swiper.js"></script>
 </body>
 
 </html>

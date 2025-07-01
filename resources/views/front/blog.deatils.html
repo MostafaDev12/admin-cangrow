@@ -1,113 +1,23 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    @php
-
-        $ps = App\Models\Pagesetting::find(1);
-
-    @endphp
-
-
-
-
-    <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-    <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
-    <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
-    <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:type" content="website">
-
-
-    <meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
-    @if (isset($page->meta_tag) && isset($page->meta_description))
-        <meta name="keywords" content="{{ $page->meta_tag }}">
-        <meta name="description" content="{{ $page->meta_description }}">
-        <title>@yield('title') -
-
-            {{ $gs->{'title_' . $sign} }}
-
-        </title>
-    @elseif(isset($blog->meta_tag) && isset($blog->meta_description))
-        <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->meta_description }}">
-        <meta property="og:description" content="{{ $blog->meta_description }}">
-    @else
-        <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
-
-        <title>
-            @yield('title')
-        </title>
-    @endif
-
-
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "{{url('/')}}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}"
-    }
-    </script>
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ $gs->{'title_' . $sign} }}",
-    "url": "{{url('/')}}",
-    "description": "",
-    "image": "{{ $gs->{'logo_' . $sign} }}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}",
-      "sameAs": ["{{ App\Models\Socialsetting::find(1)->facebook }}", "{{ App\Models\Socialsetting::find(1)->twitter }}", "{{ App\Models\Socialsetting::find(1)->instagram }}"],
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "",
-      "addressRegion": "Cairo",
-      "postalCode": "11341",
-      "addressCountry": "Egypt"
-    }
-  }
-</script>
-
-
-    @yield('gsearch')
-    <!-- Google Font -->
-
-    <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ $gs->favicon }}" />
-    <!-- bootstrap -->
-
-
-
-
-    <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
-
-
-
-
-    @include('includes.style')
-
-
-
-
-
+    <title>Los Angeles Dentist | Cosmetic, Implant & Family Dentistry | LA Dental Clinic</title>
+    <meta name="description"
+        content="Los Angeles Cosmetic Dentist - Expert Dentist! 35 Years of Experience. LA Dental provides the highest quality dental care in a State of the Art Office.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </head>
-
-@php
-    $phones = explode(',', $gs->phones);
-    $emails = explode(',', $gs->emails);
-    $addresses = json_decode($gs->{'addresses_' . $sign});
-
-    $randomPhone = Arr::random($phones);
-@endphp
-
 
 <body class="bg-[#f5f5f5] font-cairo">
     <!-- start header -->
@@ -391,13 +301,116 @@
         </nav>
     </header>
     <!-- end header -->
+    <!-- blogs -->
+    <section class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32 min-h-screen my-10">
+        <div><span class="uppercase text-accent font-semibold leading-4">المقالات</span>
+            <h2 class="text-primary font-bold text-4xl italic">المقالات</h2>
+        </div>
+        <div class="flex flex-wrap my-10">
+            <div class="w-full lg:w-2/3 my-10 md:w-1/2 p-4">
+                <img class="rounded" src="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png"
+                    srcset="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png 1x, https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_1280.png 2x"
+                    alt="Free Ai Generated Employee illustration and picture"
+                    title="Download free HD stock image of Ai Generated Employee">
+                <div class="">
+                    <h1 class="text-3xl font-bold my-4">الرحاب</h1>
+                    <p class="text-gray-600">4/9/2025, 7:55:18 PM</p>
+                    <p class="text-gray my-4">
+                        شركة
+                        الرحاب لتوريد العمالة تُعد من الشركات الرائدة في مجال تقديم خدمات الحراسة والأمن، حيث توفر
+                        فريقًا متخصصًا من البودي جاردات والحراسات الخاصة لتأمين الأفراد، العائلات، المجموعات
+                        السياحية،
+                        ورجال الأعمال على أعلى مستوى من الاحترافية والكفاءة. تتميز الشركة بانتقاء أفراد أمن مدربين
+                        على
+                        أعلى مستوى من اللياقة واليقظة، ويتمتعون بخبرة واسعة في التعامل مع مختلف المواقف الأمنية.
 
+                        سواء كنت بحاجة إلى حراسة شخصية خلال تنقلك، أو تأمين عائلتك في المناسبات والرحلات، أو حماية
+                        مجموعة سياحية أثناء زيارتها لمناطق مختلفة، فإن "الرحاب لتوريد العمالة" تضمن لك راحة البال
+                        والحماية الكاملة. كما تقدم الشركة خدماتها لرجال الأعمال الذين يحتاجون إلى حماية أثناء
+                        الاجتماعات
+                        أو التنقلات داخل وخارج البلاد.
 
+                        يتم تخصيص خطط تأمين حسب احتياجات كل عميل، مع مراعاة أقصى درجات السرية والدقة. فريق "الرحاب"
+                        مدرب
+                        على استخدام أحدث وسائل الاتصال والتنسيق الأمني، لضمان تنفيذ المهام بسلاسة وكفاءة عالية.
 
-        @yield('content')
+                        للاستفسار والحجز، يُرجى الاتصال على الرقم: 01104891929.
+                        الرحاب لتوريد العمالة… الأمان الذي تستحقه.</p>
+                    <!-- <button id="toggleBtn" class="mt-2 text-primary hover:text-blue-800 text-sm font-medium">
+                            إقرأ المزيد
+                        </button> -->
+                </div>
+                <img class="rounded" src="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png"
+                    srcset="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png 1x, https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_1280.png 2x"
+                    alt="Free Ai Generated Employee illustration and picture"
+                    title="Download free HD stock image of Ai Generated Employee">
+                <p class="text-gray my-10">
+                    شركة
+                    الرحاب لتوريد العمالة تُعد من الشركات الرائدة في مجال تقديم خدمات الحراسة والأمن، حيث توفر
+                    فريقًا متخصصًا من البودي جاردات والحراسات الخاصة لتأمين الأفراد، العائلات، المجموعات
+                    السياحية،
+                    ورجال الأعمال على أعلى مستوى من الاحترافية والكفاءة. تتميز الشركة بانتقاء أفراد أمن مدربين
+                    على
+                    أعلى مستوى من اللياقة واليقظة، ويتمتعون بخبرة واسعة في التعامل مع مختلف المواقف الأمنية.
 
+                    سواء كنت بحاجة إلى حراسة شخصية خلال تنقلك، أو تأمين عائلتك في المناسبات والرحلات، أو حماية
+                    مجموعة سياحية أثناء زيارتها لمناطق مختلفة، فإن "الرحاب لتوريد العمالة" تضمن لك راحة البال
+                    والحماية الكاملة. كما تقدم الشركة خدماتها لرجال الأعمال الذين يحتاجون إلى حماية أثناء
+                    الاجتماعات
+                    أو التنقلات داخل وخارج البلاد.
 
- 
+                    يتم تخصيص خطط تأمين حسب احتياجات كل عميل، مع مراعاة أقصى درجات السرية والدقة. فريق "الرحاب"
+                    مدرب
+                    على استخدام أحدث وسائل الاتصال والتنسيق الأمني، لضمان تنفيذ المهام بسلاسة وكفاءة عالية.
+
+                    للاستفسار والحجز، يُرجى الاتصال على الرقم: 01104891929.
+                    الرحاب لتوريد العمالة… الأمان الذي تستحقه.</p>
+
+            </div>
+            <div class="w-full flex flex-col gap-4 lg:w-1/3 md:w-1/2 p-4">
+                <div class="rounded shadow hover:shadow-lg p-4 transition-all duration-500">
+                    <a class="" href="/blog.deatils.html">
+                        <img class="rounded"
+                            src="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png"
+                            srcset="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png 1x, https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_1280.png 2x"
+                            alt="Free Ai Generated Employee illustration and picture"
+                            title="Download free HD stock image of Ai Generated Employee">
+                        <h2 class="text-xl mt-4 font-bold text-gray-800 mb-2 line-clamp-2">الرحاب
+
+                        </h2>
+
+                        <p class="text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap max-w-full ">
+                            الرحاب لتوريد العمالة توفر بودى جارد، وحراسات خاصة للافراد والاسر والمجموعات السياحية ورجال
+                            الاعمال -- 01104891929"
+                        </p>
+                        <span class="text-gray-600 text-sm">4/9/2025, 7:55:18 PM</span>
+
+                    </a>
+                </div>
+                <div class="rounded shadow hover:shadow-lg p-4 transition-all duration-500">
+                    <a class="" href="/blog.deatils.html">
+                        <img class="rounded"
+                            src="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png"
+                            srcset="https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_640.png 1x, https://cdn.pixabay.com/photo/2024/02/21/14/53/ai-generated-8587845_1280.png 2x"
+                            alt="Free Ai Generated Employee illustration and picture"
+                            title="Download free HD stock image of Ai Generated Employee">
+                        <h2 class="text-xl mt-4 font-bold text-gray-800 mb-2 line-clamp-2">الرحاب
+
+                        </h2>
+
+                        <p class="text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap max-w-full ">
+                            الرحاب لتوريد العمالة توفر بودى جارد، وحراسات خاصة للافراد والاسر والمجموعات السياحية ورجال
+                            الاعمال -- 01104891929"
+                        </p>
+                        <span class="text-gray-600 text-sm">4/9/2025, 7:55:18 PM</span>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blogs -->
+
     <footer class="bg-gray-50  w-full">
         <!-- Locations Section -->
         <section class="py-12 px-4 md:px-0">
@@ -561,218 +574,9 @@
         </a>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <Script>
-        $(document).on('submit', '#subscribeform', function(e) {
-            e.preventDefault();
-            console.log(12);
-            $('#sub-btn').prop('disabled', true);
-            console.log(13);
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function(data) {
-                    console.log(14);
-                    if ((data.errors)) {
-                        console.log(15);
-                        $('.alert-danger').show();
-                        $('.alert-danger ul').html('');
-                        for (var error in data.errors) {
-                            $('.alert-danger ul').append('<li>' + data.errors[error] + '</li>');
-                        }
-
-                    } else {
-                        console.log(16);
-                        toastr.success(langg.subscribe_success);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success p').html(langg.subscribe_success);
-
-                    }
-
-                    $('#sub-btn').prop('disabled', false);
-
-
-                }
-
-            });
-
-        });
-
-
-        $(document).on('submit', '#email-form', function(e) {
-            e.preventDefault();
-            $('.gocover').show();
-            $('.submit-btn').prop('disabled', true);
-            var name = $('.fname').val();
-
-
-
-            if (name == '') {
-                $('#email-form .response').html(
-                    '<div class="failed alert alert-warning">Please fill the required fields.</div>');
-                $('button.submit-btn').prop('disabled', false);
-                return false;
-            }
-
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#email-form .response').html(
-                        '<div class="text-info">Loading...</div>'
-                    );
-                    console.log(1);
-                },
-                success: function(data) {
-                    console.log(2);
-                    if ((data.errors)) {
-                        console.log(3);
-                        $('.alert-success').hide();
-                        $('.alert-danger').show();
-                        $('#email-form .response').html('');
-                        for (var error in data.errors) {
-                            console.log(4);
-                            $('#email-form .response').append('<li>' + data.errors[error] + '</li>')
-                        }
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .eq(0).focus();
-                        $('#email-form .refresh_code').trigger('click');
-
-                    } else {
-                        console.log(5);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('#email-form .response').html(data);
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .eq(0).focus();
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .val('');
-                        $('#email-form .refresh_code').trigger('click');
-
-                    }
-                    console.log(6);
-                    $('.gocover').hide();
-                    $('button.submit-btn').prop('disabled', false);
-                }
-
-            });
-
-        });
-    </script>
-
-
-    @include('includes.script')
-
-
-
-    <script src="{{ asset('build/js/toastr.js') }}"></script>
-
-
-    <script type="text/javascript">
-        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
-    </script>
-
-
-
-    <script type="text/javascript">
-        var mainurl = "{{ url('/' . $sign) }}";
-        var mainurl2 = "{{ url('/') }}";
-        var gs = {!! json_encode($gs) !!};
-        var langg = {!! json_encode($sign) !!};
-        var mainurl2 = "{{ url('/') }}";
-
-        $(".selectors").on('change', function() {
-            var url = $(this).val();
-            window.location = url;
-        });
-    </script>
-
-    <script>
-        $(document).on('submit', '#appointment-form', function(e) {
-            e.preventDefault();
-            $('.gocover').show();
-            $('.submit-btn').prop('disabled', true);
-            var name = $('.fname').val();
-
-
-
-            if (name == '') {
-                $('#appointment-form .response').html(
-                    '<div class="failed alert alert-warning">Please fill the required fields.</div>');
-                $('button.submit-btn').prop('disabled', false);
-                return false;
-            }
-
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#appointment-form .response').html(
-                        '<div class="text-info"><img src="{{ asset('assets/images/preloader.gif') }}"> Loading...</div>'
-                    );
-                    console.log(1);
-                },
-                success: function(data) {
-                    console.log(2);
-                    if ((data.errors)) {
-                        console.log(3);
-                        $('.alert-success').hide();
-                        $('.alert-danger').show();
-                        $('#appointment-form .response').html('');
-                        for (var error in data.errors) {
-                            console.log(4);
-                            $('#appointment-form .response').append('<li>' + data.errors[error] +
-                                '</li>')
-                        }
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .eq(0).focus();
-                        $('#appointment-form .refresh_code').trigger('click');
-
-                    } else {
-                        console.log(5);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('#appointment-form .response').html(data);
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .eq(0).focus();
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .val('');
-                        $('#appointment-form .refresh_code').trigger('click');
-
-                    }
-                    console.log(6);
-                    $('.gocover').hide();
-                    $('button.submit-btn').prop('disabled', false);
-                }
-
-            });
-
-        });
-
-        $('.refresh_code').on("click", function() {
-            $.get(mainurl2 + '/contact/refresh_code', function(data, status) {
-                $('.codeimg1').attr("src", mainurl2 + "/assets/images/capcha_code.png?time=" + Math
-                    .random());
-            });
-        })
-    </script>
-    @yield('js')
-
+    <script src="./assets/scripts/tailwind.js"></script>
+    <script src="./assets/scripts/header.js"></script>
+    <script src="./assets/scripts/swiper.js"></script>
 </body>
 
 </html>
