@@ -451,7 +451,7 @@ class HomeController extends Controller
   public function import_xml()
   {
  
-    $xmlPath = public_path('build/WordPress.2025-04-24.xml'); // Adjust the path as needed
+    $xmlPath = public_path('build/WordPress.2025-06-10.xml'); // Adjust the path as needed
 
     $content = file_get_contents($xmlPath);
 
@@ -490,9 +490,9 @@ class HomeController extends Controller
        $wordCount = count(preg_split('/\s+/u', trim($plainTextContent), -1, PREG_SPLIT_NO_EMPTY));
      
        // 1st step
-      //  if ($wordCount < 50) {
-      //      continue; // Skip this item if it has less than 50 words
-      //  }
+        if ($wordCount < 50) {
+            continue; // Skip this item if it has less than 50 words
+        }
 
 
     // Extract first 100 words while maintaining sentence structure
@@ -521,58 +521,58 @@ class HomeController extends Controller
        }
 
         // 2nd step
-      else{
+    //   else{
 
-        continue;
+    //     continue;
 
-       }
+    //   }
  
-       if(empty($imageName)){
+    //   if(empty($imageName)){
 
-         continue;
+    //      continue;
 
-       }
+    //   }
 
       // Insert into the database
    
     // 2nd step
 
-      $blog = Blog::where('title_ar', $title)->first();
+//       $blog = Blog::where('title_ar', $title)->first();
 
-    if($blog){
+//     if($blog){
 
-   $data[] = [
-          'title' => $title,
-          'content' => $content,
-          'slug' => $slug,
-          'published_at' => $dateToInsert, // Adjust column name if necessary
-          'created_at' => now(),
-          'updated_at' => now(),
-      ];
+//   $data[] = [
+//           'title' => $title,
+//           'content' => $content,
+//           'slug' => $slug,
+//           'published_at' => $dateToInsert, // Adjust column name if necessary
+//           'created_at' => now(),
+//           'updated_at' => now(),
+//       ];
       
-      $blog->photo = $imageName ;
-      $blog->update() ;
+//       $blog->photo = $imageName ;
+//       $blog->update() ;
 
-    }
+//     }
 
   // 1st step
 
-    //   DB::table('blogs')->insert([
-    //     'title_ar' => $title,
-    //     'title_en' => $title,
-    //     'meta_title_ar' => $title,
-    //     'meta_title_en' => $title,
-    //     'details_ar' => $content,
-    //     'details_en' => $content,
-    //     'slug_ar' => $slug,
-    //     'slug_en' => $slug,
-    //     'photo' => $imageName,
-    //     'short_details_ar' => $shortContent, // Ensure your blogs table has a 'content' column
-    //     'short_details_en' => $shortContent, // Ensure your blogs table has a 'content' column
-    //     'meta_details_ar' => $shortContent, // Ensure your blogs table has a 'content' column
-    //     'meta_details_en' => $shortContent, // Ensure your blogs table has a 'content' column
-    //     'blog_date' => $dateToInsert
-    // ]);
+      DB::table('blogs')->insert([
+        'title_ar' => $title,
+        'title_en' => $title,
+        'meta_title_ar' => $title,
+        'meta_title_en' => $title,
+        'details_ar' => $content,
+        'details_en' => $content,
+        'slug_ar' => $slug,
+        'slug_en' => $slug,
+        'photo' => $imageName,
+        'short_details_ar' => $shortContent, // Ensure your blogs table has a 'content' column
+        'short_details_en' => $shortContent, // Ensure your blogs table has a 'content' column
+        'meta_details_ar' => $shortContent, // Ensure your blogs table has a 'content' column
+        'meta_details_en' => $shortContent, // Ensure your blogs table has a 'content' column
+        'blog_date' => $dateToInsert
+    ]);
 
 
     

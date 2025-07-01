@@ -106,67 +106,162 @@
 
     $randomPhone = Arr::random($phones);
 @endphp
-
-   <div class="header">
-        <nav class="navbar navbar-expand-lg bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ route('front.index') }}">
-                    <img src="{{ $gs->{'logo_' . $sign} }}" alt="shtegin">
+<header class="header">
+    <div class="bg-light d-none d-md-block py-2">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-3 me-md-auto mb-2 mb-md-0">
+                <a href="tel:+20564853053" class="text-decoration-none text-dark d-flex align-items-center me-3 hover-red">
+                    <i class="fas fa-phone me-2 text-danger"></i> <span class="small">0564853053</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav ">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about.index') }}"> {{ __('عن الشركة') }}</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}"
-                                id="servicesDropdown" role="button" aria-expanded="false">
-                            {{ __('الخدمات') }}    
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-
-                                @foreach ($services as $service)
-                                    <li class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle"
-                                            href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}">
-                                            {{ $service->{'title_' . $sign} }} </a>
-                                        <!-- <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="details-service.html">تصميم وتركيب</a></li>
-                    <li><a class="dropdown-item" href="details-service.html">صيانة الأنظمة</a></li>
-                  </ul> -->
-                                    </li>
-                                @endforeach
-
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blogs.index') }}">  {{ __('المقالات') }}   </a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">احجز الآن</a>
-                        </li> --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">   {{ __('اتصل بنا') }}  </a>
-                        </li>
-                    </ul>
-
-                </div>
+                <a href="mailto:project@shtegin.com" class="text-decoration-none text-dark d-flex align-items-center me-3 hover-red">
+                    <i class="fas fa-envelope me-2 text-danger"></i> <span class="small">project@shtegin.com</span>
+                </a>
+                <a href="https://maps.google.com/?q=المملكة العربية السعودية الرياض" target="_blank" class="text-decoration-none text-dark d-flex align-items-center hover-red">
+                    <i class="fa-solid fa-location-dot me-2 text-danger"></i> <span class="small">المملكة العربية السعودية الرياض</span>
+                </a>
             </div>
-        </nav>
+
+            <div class="d-flex gap-3 mx-2">
+                <a href="https://wa.me/+20564853053" target="_blank" class="text-danger fs-5 hover-scale" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="tel:20564853053" class="text-danger fs-5 hover-scale" aria-label="Call us"> <i class="fa-solid fa-phone"></i>
+                </a>
+                 </div>
+        </div>
     </div>
 
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('front.index') }}">
+                <img src="{{ $gs->{'logo_' . $sign} }}" alt="shtegin logo" class="img-fluid" style="max-height: 60px;">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('about.index') }}"> {{ __('عن الشركة') }}</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}"
+                            id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ __('الخدمات') }}
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="servicesDropdown">
+                            @foreach ($services as $service)
+                                <li class="dropdown-item-hover-red"> <a class="dropdown-item"
+                                        href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}">
+                                        {{ $service->{'title_' . $sign} }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('blogs.index') }}"> {{ __('المقالات') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('contact.index') }}"> {{ __('اتصل بنا') }} </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<style>
+    /* Custom styles for enhancements */
+    /* Define a CSS variable for the red color for easy modification */
+    :root {
+        --bs-red-custom: #dc3545; /* Using Bootstrap's default danger color as a base */
+    }
+
+    .header .hover-red:hover {
+        color: var(--bs-red-custom) !important;
+    }
+
+    .header .hover-scale:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .navbar-nav .nav-link {
+        font-weight: 500;
+        color: #343a40;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: var(--bs-red-custom); /* Red color on hover */
+    }
+
+    .navbar-nav .nav-link.active {
+        color: var(--bs-red-custom) !important; /* Ensure active link is red */
+    }
+
+    .dropdown-menu .dropdown-item-hover-red:hover .dropdown-item {
+        background-color: var(--bs-red-custom);
+        color: white;
+    }
+    .dropdown-menu .dropdown-item:hover {
+        background-color: var(--bs-red-custom); /* Ensures regular dropdown items also get the red hover */
+        color: white;
+    }
+</style>
+<style>
+    /* Custom styles for enhancements */
+    .header .hover-primary:hover {
+        color: #8d2218 !important; /* Bootstrap primary color */
+    }
+
+    .header .hover-scale:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .navbar-nav .nav-link {
+        font-weight: 500; /* Slightly bolder nav links */
+        color: #8d2218; /* Darker text color */
+        padding: 0.5rem 1rem; /* Adjust padding */
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #8d2218; /* Primary color on hover */
+    }
+
+    .navbar-nav .nav-link.active {
+        color: #8d2218 !important; /* Ensure active link is primary */
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #8d2218;
+        color: white;
+    }
+
+    /* For nested dropdowns (if you uncomment the commented section in the future) */
+    /* .dropdown-menu .dropdown-submenu {
+        position: relative;
+    }
+    .dropdown-menu .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+    }
+    .dropdown-menu .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+    } */
+</style>
 
     @yield('content')
 
