@@ -37,6 +37,7 @@ class Location extends Model
         'details_fr',
 
         'map',
+        'book_link',
        
       
     ];

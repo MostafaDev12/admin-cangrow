@@ -392,7 +392,7 @@
                                                 {{ csrf_field() }}
                                                 <div style="width: 81%;">
                                                         @include('includes.admin.form-both')
-                                                    </div>
+                                                   </div>
 
 
                                                 <div class="mc4wp-form-fields">

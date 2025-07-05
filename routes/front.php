@@ -53,7 +53,11 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::post('/subscripe-submit', [HomeController::class, 'subscribe'])->name('front.subscripe.submit');
         Route::get('/appointments', [HomeController::class, 'BookNow'])->name('appointments.index');
         Route::get('/doctors', [HomeController::class, 'doctors'])->name('doctors.index');
-        Route::get('/sinaiclinic-nabq', [HomeController::class, 'sinaiclinic_nabq'])->name('sinaiclinic-nabq.index');
+      
+        Route::get('/dentistry', [HomeController::class, 'dentistry'])->name('dentistry.index');
+        Route::get('/invisalign', [HomeController::class, 'invisalign'])->name('invisalign.index');
+        Route::get('/veneers', [HomeController::class, 'veneers'])->name('veneers.index');
+        Route::get('/dental-implants', [HomeController::class, 'dental_implants'])->name('dental-implants.index');
 
         Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');
         

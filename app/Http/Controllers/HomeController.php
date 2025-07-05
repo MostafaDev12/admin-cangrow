@@ -73,8 +73,8 @@ class HomeController extends Controller
     $timelines = Timeline::get();
     $testimonials = Testimonial::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
-
-    return view('front.index', compact('sign', 'sliders','doctors','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
+  $certificates = Certificate::get();
+    return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
   }
 
   public function about(Request $request)
@@ -96,7 +96,7 @@ class HomeController extends Controller
   }
 
   
-  public function sinaiclinic_nabq(Request $request)
+  public function dentistry(Request $request)
   {
 
     $sign = $this->langSign();
@@ -107,7 +107,51 @@ class HomeController extends Controller
     $models = ModelCategory::get();
     $reviews = Partner::get();
 
-    return view('front.sinaiclinic-nabq', compact('sign', 'sliders', 'points', 'child_services', 'models', 'reviews'));
+    return view('front.dentistry', compact('sign', 'sliders', 'points', 'child_services', 'models', 'reviews'));
+  }
+
+  
+  public function invisalign(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $child_services = Service::where('parent_id','!=',0)->get();
+    $models = ModelCategory::get();
+    $reviews = Partner::get();
+ $after_befores = AfterBefore::get();
+    return view('front.invisalign', compact('sign', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
+  }
+
+  public function dental_implants(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $child_services = Service::where('parent_id','!=',0)->get();
+    $models = ModelCategory::get();
+    $reviews = Partner::get();
+ $after_befores = AfterBefore::get();
+    return view('front.dental-implants', compact('sign', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
+  }
+
+ 
+  public function veneers(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $child_services = Service::where('parent_id','!=',0)->get();
+    $models = ModelCategory::get();
+    $reviews = Partner::get();
+ $after_befores = AfterBefore::get();
+    return view('front.veneers', compact('sign', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
   }
 
  

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -89,10 +89,10 @@
     <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
 
 
-
-
     @include('includes.style')
 
+
+   @yield(section: 'css')
 
 
 
@@ -114,26 +114,26 @@
     <header class="sticky bg-white z-50 left-0 top-0 w-full shadow">
         <nav class="container px-6">
             <div class="flex items-center justify-between text-white">
-                <a href="">
-                    <img src=" ./assets/clear-logo-2.png" class="h-20" alt="">
+                <a href="{{ route('front.index') }}">
+                    <img src="{{ $gs->{'logo_' . $sign} }}" class="h-20" alt="">
                 </a>
 
                 <div class="p-2 flex flex-wrap align-center justify-center text-[#333133] bold  gap-1 md:gap-4">
                     <div class="flex items-center justify-between gap-2 md:gap-4">
-                        <a href="https://ladentalclinic.com/emergency/">Emergency Info</a>
+                        <a href="#">{{ __('Emergency Info') }}</a>
 
                         <a href="tel:213-385-9710" class="flex items-center gap-1">
                             <span class="elementor-icon-list-icon">
                                 <i aria-hidden="true" class="fas fa-phone-square"></i> </span>
                             <span class=" hidden md:block">
-                                213.385.9710</span>
+                                {{ $randomPhone }}</span>
                         </a>
                     </div>
                     <div class="hidden md:flex items-center justify-between gap-2 md:gap-4">
                         <div
                             class="group relative hover:bg-[#3e3c3f] hover:text-white transition-all duration-700 px-4 py-3 rounded-md w-full md:w-auto">
                             <div class="flex items-center justify-between cursor-pointer">
-                                <span class="font-semibold"> Book An Appointment</span>
+                                <span class="font-semibold"> {{ __('Book An Appointment') }}</span>
                                 <i
                                     class="fa-solid fa-caret-down h-4 w-4 transition-transform group-hover:rotate-180 ml-2"></i>
                             </div>
@@ -141,18 +141,20 @@
                             <!-- Dropdown Menu -->
                             <ul
                                 class="absolute left-0 text-[#3e3c3f] mt-2 w-full bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 rounded-md">
-                                <!-- Egypt New Location -->
-                                <li class="border-b border-gray-200">
-                                    <a href="https://calendar.app.google/h4mt1C2YnV7wpJ6CA "
-                                        class="flex items-center px-6 py-2 hover:bg-gray-100 text-sm">
-                                        <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
-                                        <span>مصر الجديدة - Heliopolis</span>
-                                    </a>
+                                {{-- https://calendar.app.google/h4mt1C2YnV7wpJ6CA --}}
+                                @foreach ($locations as $location)
+                                    <!-- Egypt New Location -->
+                                    <li class="border-b border-gray-200">
+                                        <a href="{{ $location->book_link }}"
+                                            class="flex items-center px-6 py-2 hover:bg-gray-100 text-sm">
+                                            <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
+                                            <span> {{ $location->title_ar . ' - ' . $location->title_en }} </span>
+                                        </a>
 
-                                </li>
-
+                                    </li>
+                                @endforeach
                                 <!-- Madinaty Location -->
-                                <li class="border-b border-gray-200">
+                                {{-- <li class="border-b border-gray-200">
                                     <a href="https://calendar.app.google/qA4jtcStpPtXeGpN7 "
                                         class="flex items-center px-6 py-2 hover:bg-gray-100 text-sm">
                                         <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
@@ -169,12 +171,12 @@
                                         <span>التجمع - New Cairo</span>
                                     </a>
 
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                         <a class="text-xs text-center bg-[#333133] rounded-full p-2 md:p-4 text-white text-center whitespace-nowrap flex items-center justify-center flex-nowrap"
-                            href="https://surveyheart.com/form/659f1393fe62f1133c8debfd" target="_blank">
-                            Book A Virtual Consultation
+                            href="{{ route('contact.index') }}" target="_blank">
+                            {{ __('Book A Virtual Consultation') }}
                         </a>
 
                     </div>
@@ -187,52 +189,37 @@
             <ul id="mobile-menu" class="hidden md:flex text-[#3e3c3f]  uppercase text-xs justify-center items-center">
                 <!-- {/* Dentistry */} -->
                 <li class="relative">
-                    <a href="/dentistry.html"
+                    <a href="{{ route('dentistry.index') }}"
                         class="flex items-center px-4 py-3 hover:bg-[#3e3c3f] hover:text-white transition-all duration-700 ">
-                        <span class="font-medium">Dentistry</span>
+                        <span class="font-medium">{{ __('Dentistry') }}</span>
                     </a>
                 </li>
 
                 <!-- {/* Invisalign */} -->
                 <li class=" relative">
-                    <a href="/invisalign.html"
+                    <a href="{{ route('invisalign.index') }}"
                         class="flex items-center px-4 py-3  hover:bg-[#3e3c3f] hover:text-white  transition-all duration-700">
-                        <span class="font-medium">Invisalign</span>
+                        <span class="font-medium">{{ __('Invisalign') }}</span>
                     </a>
                 </li>
 
                 <!-- {/* Dental Implants */} -->
                 <li class=" relative">
-                    <a href="dental-implants.html"
+                    <a href="{{ route('dental-implants.index') }}"
                         class="flex items-center px-4 py-3  hover:bg-[#3e3c3f] hover:text-white  transition-all duration-700">
-                        <span class="font-medium">Dental Implants</span>
+                        <span class="font-medium">{{ __('dental implants') }}</span>
                     </a>
                 </li>
 
                 <!-- {/* Veneers */} -->
                 <li class=" relative">
-                    <a href="veneers.html"
+                    <a href="{{ route('veneers.index') }}"
                         class="flex items-center px-4 py-3  hover:bg-[#3e3c3f] hover:text-white  transition-all duration-700">
-                        <span class="font-medium">Veneers</span>
+                        <span class="font-medium">{{ __('Veneers') }}</span>
                     </a>
                 </li>
 
-                <!-- {/* Wisdom Teeth (with dropdown) */} -->
-                <li class="group relative  hover:bg-[#3e3c3f] hover:text-white  transition-all duration-700">
-                    <a href="wisdom-tooth.html" class="flex items-center px-4 py-3 cursor-pointer">
-                        <span class="font-medium mr-1">Wisdom Teeth</span>
-
-                        <i class="fa-solid fa-caret-down h-4 w-4 transition-transform group-hover:rotate-180"></i>
-                    </a>
-                    <ul
-                        class="absolute left-0 text-[#3e3c3f] mt-0 w-48 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                        <li>
-                            <a href="/book-wisdom-tooth-woes" class="block px-4 py-2 hover:bg-gray-100">
-                                Books
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                
 
                 <!-- {/* Smile Sisters Podcast */} -->
                 <!-- <li class=" relative">
@@ -245,39 +232,35 @@
                 <!-- {/* About Us (with dropdown) */} -->
                 <li class="group relative  hover:bg-[#3e3c3f] hover:text-white  transition-all duration-700">
                     <div class="flex items-center px-4 py-3 cursor-pointer">
-                        <span class="font-medium mr-1">About Us</span>
+                        <span class="font-medium mr-1">{{ __(key: 'About Us') }}</span>
                         <i class="fa-solid fa-caret-down h-4 w-4 transition-transform group-hover:rotate-180"></i>
                     </div>
                     <ul
                         class="absolute left-0 mt-0 w-48 text-[#3e3c3f] bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
                         <li>
-                            <a href="/about-staff.html" class="block px-4 py-2 hover:bg-gray-100">
-                                Staff
+                            <a href="{{ route('doctors.index') }}" class="block px-4 py-2 hover:bg-gray-100">
+                              {{ __(key: 'Staff') }}  
                             </a>
                         </li>
+                         
                         <li>
-                            <a href="/reviews" class="block px-4 py-2 hover:bg-gray-100">
-                                Reviews
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/contact.html" class="block px-4 py-2 hover:bg-gray-100">
-                                Contact
+                            <a href="{{ route('contact.index') }}" class="block px-4 py-2 hover:bg-gray-100">
+                                {{ __(key: 'Contact') }}
                             </a>
                         </li>
 
                     </ul>
                 </li>
                 <li class=" relative">
-                    <a href="blogs.html"
+                    <a href="{{ route('blogs.index') }}"
                         class="flex items-center px-4 py-3  hover:bg-[#3e3c3f] hover:text-white  transition-all duration-700">
-                        <span class="font-medium">blogs</span>
+                        <span class="font-medium">{{ __(key: 'blogs') }}</span>
                     </a>
                 </li>
                 <li class=" relative">
-                    <a href="services.html"
+                    <a href="{{ route('services.index') }}"
                         class="flex items-center px-4 py-3  hover:bg-[#3e3c3f] hover:text-white  transition-all duration-700">
-                        <span class="font-medium">Services</span>
+                        <span class="font-medium">{{ __(key: 'Services') }}</span>
                     </a>
                 </li>
                 <!-- {/* FYI (with mega dropdown) */} -->
@@ -342,7 +325,7 @@
                     <div
                         class="group relative hover:bg-[#3e3c3f] hover:text-white transition-all duration-700 px-4 py-3 rounded-md w-full md:w-auto">
                         <div class="flex items-center justify-between cursor-pointer">
-                            <span class="font-semibold"> Book An Appointment</span>
+                            <span class="font-semibold"> {{ __('Book An Appointment') }}</span>
                             <i
                                 class="fa-solid fa-caret-down h-4 w-4 transition-transform group-hover:rotate-180 ml-2"></i>
                         </div>
@@ -350,17 +333,18 @@
                         <!-- Dropdown Menu -->
                         <ul
                             class="absolute left-0 text-[#3e3c3f] mt-2 w-full bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 rounded-md">
-                            <!-- Egypt New Location -->
-                            <li class="border-b border-gray-200">
-                                <a href="https://calendar.app.google/h4mt1C2YnV7wpJ6CA "
-                                    class="flex items-center px-6 py-2 hover:bg-gray-100 text-sm">
-                                    <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
-                                    <span>مصر الجديدة - Heliopolis</span>
-                                </a>
+                            @foreach ($locations as $location)
+                                <!-- Egypt New Location -->
+                                <li class="border-b border-gray-200">
+                                    <a href="{{ $location->book_link }}"
+                                        class="flex items-center px-6 py-2 hover:bg-gray-100 text-sm">
+                                        <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
+                                        <span>{{ $location->title_ar . ' - ' . $location->title_en }}</span>
+                                    </a>
 
-                            </li>
-
-                            <!-- Madinaty Location -->
+                                </li>
+                            @endforeach
+                            {{-- <!-- Madinaty Location -->
                             <li class="border-b border-gray-200">
                                 <a href="https://calendar.app.google/qA4jtcStpPtXeGpN7 "
                                     class="flex items-center px-6 py-2 hover:bg-gray-100 text-sm">
@@ -378,12 +362,12 @@
                                     <span>التجمع - New Cairo</span>
                                 </a>
 
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <a class="text-xs text-center bg-[#333133] rounded-full p-2 md:p-4 text-white text-center whitespace-nowrap flex items-center justify-center flex-nowrap"
-                        href="https://surveyheart.com/form/659f1393fe62f1133c8debfd" target="_blank">
-                        Book A Virtual Consultation
+                        href="{{ route('contact.index') }}" target="_blank">
+                        {{ __('Book A Virtual Consultation') }}
                     </a>
 
                 </div>
@@ -394,10 +378,10 @@
 
 
 
-        @yield('content')
+    @yield('content')
 
 
- 
+
     <footer class="bg-gray-50  w-full">
         <!-- Locations Section -->
         <section class="py-12 px-4 md:px-0">
@@ -405,30 +389,34 @@
                 <!-- Address Column -->
                 <div class="w-full md:w-1/2">
                     <div class="prose">
-                        <h4 class="text-lg font-bold mb-4">Connect</h4>
+                        <h4 class="text-lg font-bold mb-4">{{ __('Connect') }}</h4>
                     </div>
                     <div class="flex flex-col md:flex-row gap-8 mt-4">
                         <div class="w-full md:w-1/2">
                             <div class="prose">
-                                <p><strong>LA Dental Clinic</strong></p>
-                                <p>3377 Wilshire Blvd #202</p>
-                                <p>Los Angeles, CA, 90010</p>
+                                <p><strong> {{ $gs->{'title_' . $sign} }}</strong></p>
+                                 @foreach ($addresses as $address)
+                                <p>{{ $address }}</p>
+                                 @endforeach
                             </div>
                         </div>
                         <div class="w-full md:w-1/2">
                             <ul class="space-y-3">
                                 <li class="flex items-center">
-                                    <a href="tel:213-385-9710" class="flex items-center text-blue-600 hover:underline">
+                                    <a href="tel:213-385-9710"
+                                        class="flex items-center text-blue-600 hover:underline">
                                         <i class="fas fa-phone mr-2 w-4 text-center"></i>
-                                        <span>213.385.9710</span>
+                                        <span>{{ $randomPhone }}</span>
                                     </a>
                                 </li>
                                 <li class="flex items-center">
-                                    <a href="mailto:smile@ladentalclinic.com"
-                                        class="flex items-center text-blue-600 hover:underline">
-                                        <i class="fas fa-envelope mr-2 w-4 text-center"></i>
-                                        <span>smile@ladentalclinic.com</span>
-                                    </a>
+                                    @foreach ($emails as $email)
+                                        <a class="flex items-center text-blue-600 hover:underline"
+                                            href="mailto:{{ $email }}">
+                                            <i class="fas fa-envelope mr-2 w-4 text-center"></i>
+                                            <span>{{ $email }}</span></a>
+                                    @endforeach
+
                                 </li>
                             </ul>
                         </div>
@@ -440,27 +428,34 @@
                     <div class="flex flex-col md:flex-row gap-8">
                         <div class="w-full md:w-1/2">
                             <div class="flex space-x-4">
-                                <a href="https://www.tiktok.com/@dr.mohamed.atef?_t=ZS-8weFNKWRBay&_r=1" target="_blank"
-                                    class="bg-black text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-800">
-                                    <i class="fab fa-tiktok"></i>
-                                </a>
-                                <a href="https://www.facebook.com/share/1AZLVt2oCj/" target="_blank"
-                                    class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-blue-700">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="https://youtube.com/@dentomaze?si=sfs98iGR2ZmNpmgk" target="_blank"
-                                    class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-700">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                                <a href="https://www.instagram.com/dr.mohamed.atef?igsh=emQ5OXJoZm9hMzhu"
-                                    target="_blank"
-                                    class="bg-pink-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-pink-700">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
 
+                                @if (App\Models\Socialsetting::find(1)->d_status == 1)
+                                    <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank"
+                                        class="bg-black text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-800">
+                                        <i class="fab fa-tiktok"></i>
+                                    </a>
+                                @endif
+                                @if (App\Models\Socialsetting::find(1)->f_status == 1)
+                                    <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"
+                                        class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-blue-700">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                @endif
+                                @if (App\Models\Socialsetting::find(1)->ystatus == 1)
+                                    <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"
+                                        class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-700">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                @endif
+                                @if (App\Models\Socialsetting::find(1)->t_status == 1)
+                                    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank"
+                                        class="bg-pink-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-pink-700">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                @endif
                             </div>
                         </div>
-                        <div class="w-full md:w-1/2">
+                        {{-- <div class="w-full md:w-1/2">
                             <form name="PrePage" method="post"
                                 action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx">
                                 <input type="hidden" name="LinkId" value="dcf1a658-065f-48ba-a25a-d65eef2040d2">
@@ -469,32 +464,35 @@
                                     Make A Payment
                                 </button>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
         </section>
         <section class="container mx-auto px-4 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
-                <!-- Heliopolis -->
-                <div class="text-center md:text-left w-full md:w-auto">
-                    <h4 class="font-semibold text-gray-800 mb-2">مصر الجديدة - Heliopolis</h4>
-                    <div class="flex justify-center md:justify-start space-x-6">
-                        <a href="https://calendar.app.google/h4mt1C2YnV7wpJ6CA"
-                            class="text-blue-600 hover:text-blue-800 transition-colors flex items-center">
-                            <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
-                            <span>Book</span>
-                        </a>
-                        <a href="https://maps.app.goo.gl/5WtiF6Xdp9mRCx1Z7"
-                            class="text-green-600 hover:text-green-800 transition-colors flex items-center">
-                            <i class="fas fa-map-marker-alt mr-2 text-green-500"></i>
-                            <span>Map</span>
-                        </a>
-                    </div>
-                </div>
 
+                @foreach ($locations as $location)
+                    <!-- Heliopolis -->
+                    <div class="text-center md:text-left w-full md:w-auto">
+                        <h4 class="font-semibold text-gray-800 mb-2">
+                            {{ $location->title_ar . ' - ' . $location->title_en }}</h4>
+                        <div class="flex justify-center md:justify-start space-x-6">
+                            <a href="{{ $location->book_link }}"
+                                class="text-blue-600 hover:text-blue-800 transition-colors flex items-center">
+                                <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
+                                <span>{{ __('Book') }}</span>
+                            </a>
+                            <a href="{{ $location->map }}"
+                                class="text-green-600 hover:text-green-800 transition-colors flex items-center">
+                                <i class="fas fa-map-marker-alt mr-2 text-green-500"></i>
+                                <span>{{ __('Map') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
                 <!-- Madinaty -->
-                <div class="text-center md:text-left w-full md:w-auto">
+                {{-- <div class="text-center md:text-left w-full md:w-auto">
                     <h4 class="font-semibold text-gray-800 mb-2">مدينتي - Madinaty</h4>
                     <div class="flex justify-center md:justify-start space-x-6">
                         <a href="https://calendar.app.google/qA4jtcStpPtXeGpN7"
@@ -525,15 +523,16 @@
                             <span>Map</span>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
 
         <section class="border-t py-6">
             <p class=" text-center flex-wrap flex justify-center items-center text-accent  uppercase">
-                <span class="text-accent" id="year-footer">2025<!-- --> </span>© جميع الحقوق محفوظة<a target="_blank"
-                    href="https://www.cangrowonline.com/">
-                    <img src="https://alrehab-eg.com/front/alrehab/assets/CanGrow logo.png" class=" w-40 h-20" alt="">
+                <span class="text-accent" id="year-footer">{{ date('Y') }}<!-- --> </span>© جميع الحقوق محفوظة<a
+                    target="_blank" href="https://www.cangrowonline.com/">
+                    <img src="https://alrehab-eg.com/front/alrehab/assets/CanGrow logo.png" class=" w-40 h-20"
+                        alt="">
                 </a>
             </p>
         </section>
@@ -543,22 +542,32 @@
 
     <!-- Fixed Social Icons -->
     <div class="fixed bottom-10 right-0  flex flex-col space-y-2 z-50 mr-2">
-        <a href="https://www.tiktok.com/@dr.mohamed.atef?_t=ZS-8weFNKWRBay&_r=1" target="_blank"
-            class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-800">
-            <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://www.facebook.com/share/1AZLVt2oCj/" target="_blank"
-            class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-700">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://youtube.com/@dentomaze?si=sfs98iGR2ZmNpmgk" target="_blank"
-            class="bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-red-700">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://www.instagram.com/dr.mohamed.atef?igsh=emQ5OXJoZm9hMzhu" target="_blank"
-            class="bg-pink-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-pink-700">
-            <i class="fab fa-instagram"></i>
-        </a>
+
+        @if (App\Models\Socialsetting::find(1)->d_status == 1)
+            <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank"
+                class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-800">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        @endif
+        @if (App\Models\Socialsetting::find(1)->f_status == 1)
+            <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"
+                class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-700">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        @endif
+        @if (App\Models\Socialsetting::find(1)->ystatus == 1)
+            <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"
+                class="bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-red-700">
+                <i class="fab fa-youtube"></i>
+            </a>
+        @endif
+        @if (App\Models\Socialsetting::find(1)->t_status == 1)
+            <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank"
+                class="bg-pink-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-pink-700">
+                <i class="fab fa-instagram"></i>
+            </a>
+        @endif
+
     </div>
 
 
@@ -697,7 +706,7 @@
             window.location = url;
         });
     </script>
-
+   @yield('js')
     <script>
         $(document).on('submit', '#appointment-form', function(e) {
             e.preventDefault();
@@ -771,7 +780,7 @@
             });
         })
     </script>
-    @yield('js')
+ 
 
 </body>
 

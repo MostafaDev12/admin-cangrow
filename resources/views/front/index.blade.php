@@ -19,7 +19,7 @@
         <!-- Background Video -->
         <div class="absolute inset-0 z-0">
             <video class="w-full h-full object-cover" autoplay muted playsinline loop
-                src="https://ladentalclinic.com/wp-content/uploads/2024/05/ladentalbannervideo.mp4"></video>
+                src="{{ $gs->home_video }}"></video>
             <div class="absolute inset-0 bg-black bg-opacity-30"></div>
         </div>
 
@@ -28,25 +28,24 @@
             <div class="w-full text-center">
                 <!-- Heading -->
                 <div class="mb-8">
-                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">LA's Best Deal On Invisalign, Implants
-                        and Veneers</h1>
-                    <h4 class="text-xl md:text-2xl text-white">Accepting New Patients</h4>
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{{ __("LA's Best Deal On Invisalign, Implants and Veneers") }}</h1>
+                    <h4 class="text-xl md:text-2xl text-white">{{ __('Accepting New Patients') }}</h4>
                 </div>
 
                 <!-- Button -->
                 <div class="mb-8">
-                    <a href="#deals" target="_blank"
+                    <a href="#deals" 
                         class="inline-block roounded-full hover:bg-transparent hover:border border-blue-600 bg-blue-600 hover:border-blue-600 border-4 text-white font-medium py-2 px-6 rounded transition duration-300">
-                        Check out our deals
+                        {{ __('Check out our deals') }}
                     </a>
                 </div>
 
                 <!-- Link -->
-                <div>
+                {{-- <div>
                     <p class="text-white">
                         <a href="/new-patients-info/" class="hover:underline">New Patients Information &gt;</a>
                     </p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -55,7 +54,7 @@
     <section class="px-6 py-20">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
 
-            <!-- Invisalign Card -->
+         {{--   <!-- Invisalign Card -->
             <div onclick="window.location='/orthodontics/invisalign/'"
                 class="cursor-pointer p-6 shadow-lg rounded-lg hover:shadow-2xl transition">
                 <div id="deals"></div>
@@ -81,7 +80,7 @@
             </div>
 
             <!-- Dental Implants Card -->
-            <div onclick="window.location='/restorative-dentistry/dental-implants/'"
+             <div onclick="window.location='/restorative-dentistry/dental-implants/'"
                 class="cursor-pointer p-6 shadow-lg rounded-lg hover:shadow-2xl transition">
                 <img src="https://ladentalclinic.com/wp-content/uploads/2021/10/icon-teeth.svg" alt="icon-teeth"
                     class="w-20 h-20 mx-auto mb-4">
@@ -98,24 +97,27 @@
                     <img src="https://ladentalclinic.com/wp-content/uploads/2021/10/logo-hybridge_x2.png"
                         alt="Hybridge Logo" class="h-12">
                 </div>
-            </div>
-
+            </div> --}}
+ @foreach ($timelines as $timeline)
             <!-- Veneers Card -->
             <div onclick="window.location='/cosmetic-dentistry/veneers/'"
                 class="cursor-pointer p-6 shadow-lg rounded-lg hover:shadow-2xl transition">
-                <img src="https://ladentalclinic.com/wp-content/uploads/2021/10/icon-placed-veneers.svg"
+                <img src="{{ $timeline->photo_url }}"
                     alt="icon-placed-veneers" class="w-20 h-20 mx-auto mb-4">
-                <h3 class="text-xl font-bold text-center mb-2">Veneers</h3>
-                <h6 class="text-center text-gray-600 mb-4">Make your smile absolutely flawless. From size to shape to
-                    shade.</h6>
+                <h3 class="text-xl font-bold text-center mb-2">{{ $timeline->{'title_' . $sign} ?? '' }}</h3>
+                <h6 class="text-center text-gray-600 mb-4">{{ $timeline->{'details_' . $sign} ?? '' }}</h6>
+               @if($timeline->year)
                 <div class="text-center mb-4">
-                    <a href="/cosmetic-dentistry/veneers/"
+                    <a href="{{ $timeline->year }}"
                         class="inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">
-                        Save on Veneers →
+                         {{ __('Save on') }} {{ $timeline->{'title_' . $sign} ?? '' }} →
                     </a>
                 </div>
-                <p class="text-center text-sm text-gray-500">Pricing options for 2 – 10 veneers</p>
+               @endif
+                
             </div>
+@endforeach
+
 
         </div>
     </section>
@@ -125,7 +127,7 @@
             <!-- Heading -->
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    When you're happy and you know it, your smile will surely show it
+                    {{ __("When you're happy and you know it, your smile will surely show it") }}
                 </h2>
             </div>
 
@@ -134,100 +136,35 @@
                 <!-- Swiper Container -->
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
+
+                        @foreach ($certificates as $image)
+                            
                         <!-- Slide 1 -->
                         <div class="swiper-slide">
                             <figure class="p-2">
                                 <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/kimberly-smile-240x360_x1.5-q23tfjad5285lj50mxhg21sbbahfghbevfejhcwu7k.jpg"
+                                    src="{{ $image->photo_url }}"
                                     alt="kimberly-smile" width="280" height="280">
                             </figure>
                         </div>
 
-                        <!-- Slide 2 -->
-                        <div class="swiper-slide">
-                            <figure class="p-2">
-                                <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/williams-scaled-q23tfjad5285lj50mxhg21sbbahfghbevfejhcwu7k.jpg"
-                                    alt="williams" width="280" height="280">
-                            </figure>
-                        </div>
-
-                        <!-- Slide 3 -->
-                        <div class="swiper-slide">
-                            <figure class="p-2">
-                                <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/danelle-smile-240x360_x1.5-q23tfjad5285lj50mxhg21sbbahfghbevfejhcwu7k.jpg"
-                                    alt="danelle-smile" width="280" height="280">
-                            </figure>
-                        </div>
-
-                        <!-- Slide 4 -->
-                        <div class="swiper-slide">
-                            <figure class="p-2">
-                                <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/denise-q23tfjad5285lj50mxhg21sbbahfghbevfejhcwu7k.jpg"
-                                    alt="denise" width="280" height="280">
-                            </figure>
-                        </div>
-
-                        <!-- Slide 5 -->
-                        <div class="swiper-slide">
-                            <figure class="p-2">
-                                <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/Sana-scaled-q23tfjad5285lj50mxhg21sbbahfghbevfejhcwu7k.jpg"
-                                    alt="Sana" width="280" height="280">
-                            </figure>
-                        </div>
-
-                        <!-- Slide 6 -->
-                        <div class="swiper-slide">
-                            <figure class="p-2">
-                                <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/patino-scaled-q23tfjad5285lj50mxhg21sbbahfghbevfejhcwu7k.jpg"
-                                    alt="patino" width="280" height="280">
-                            </figure>
-                        </div>
-
-                        <!-- Slide 7 -->
-                        <div class="swiper-slide">
-                            <figure class="p-2">
-                                <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/anujin-q23tfjad5285lj50mxhg21sbbahfghbevfejhcwu7k.jpg"
-                                    alt="anujin" width="280" height="280">
-                            </figure>
-                        </div>
-
-                        <!-- Slide 8 -->
-                        <div class="swiper-slide">
-                            <figure class="p-2">
-                                <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/alex-scaled-q23tfjad5285lj50mxhg21sbbahfghbevfejhcwu7k.jpg"
-                                    alt="alex" width="280" height="280">
-                            </figure>
-                        </div>
-
-                        <!-- Slide 9 -->
-                        <div class="swiper-slide">
-                            <figure class="p-2">
-                                <img class="w-full h-auto rounded-lg"
-                                    src="https://ladentalclinic.com/wp-content/uploads/elementor/thumbs/11764203_Gillespie_Cravon_Smile-q23tfheore5kyb7qxwo6x29e4iqp133y763kiszmk0.jpeg"
-                                    alt="Gillespie Cravon Smile" width="280" height="280">
-                            </figure>
-                        </div>
+                        @endforeach
+                         
+ 
                     </div>
                 </div>
             </div>
 
             <!-- Button -->
-            <div class="text-center mb-12">
+            {{-- <div class="text-center mb-12">
                 <a href="https://ladentalclinic.com/before-afters/" target="_blank"
                     class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded transition duration-300">
                     Visit Our Smile Gallery &gt;
                 </a>
-            </div>
+            </div> --}}
 
             <!-- Reviews Section -->
-            <section class="bg-gray-50 rounded-lg p-6 mb-12">
+            {{-- <section class="bg-gray-50 rounded-lg p-6 mb-12">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Google Review -->
                     <div class="text-center">
@@ -256,221 +193,88 @@
                         <h3 class="text-lg font-medium text-gray-900">5/5 with 185+ reviews</h3>
                     </div>
                 </div>
-            </section>
+            </section> --}}
         </div>
     </section>
+
+
     <div class="px-4 py-12 max-w-7xl mx-auto overflow-hidden">
         <div class="text-center">
-            <h2 class="text-3xl font-bold">Your Friendly Dental Clinic In Los Angeles</h2>
-            <h4 class="text-xl text-gray-600">Experienced And Personable Dental Service</h4>
+            <h2 class="text-3xl font-bold">{{ __('Your Friendly Dental Clinic In Los Angeles') }}</h2>
+            <h4 class="text-xl text-gray-600">{{ __('Experienced And Personable Dental Service') }}</h4>
         </div>
 
         <section class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
             <div class="text-center space-y-4">
-                <img src="https://ladentalclinic.com/wp-content/uploads/2021/10/Dr.Arezoo.jpg" alt="Dr.Arezoo"
+                <img src="{{ $ps->portfolio_photo }}" alt="Dr"
                     class="mx-auto rounded-lg shadow-md">
-                <p class="text-lg font-medium">Dr. Arezoo Nasiry</p>
+                <p class="text-lg font-medium">{{ __('Dr. Arezoo Nasiry') }}</p>
             </div>
 
             <div class="text-center space-y-4">
-                <img src="https://ladentalclinic.com/wp-content/uploads/2021/10/Dr.Azy_.jpg" alt="Dr.Azy"
+                <img src="{{ $ps->about_photo }}" alt="Dr"
                     class="mx-auto rounded-lg shadow-md">
-                <p class="text-lg font-medium">Dr. Azy Nasiry</p>
+                <p class="text-lg font-medium">{{ __('Dr. Azy Nasiry') }}</p>
             </div>
 
             <div class="md:col-span-2 space-y-4">
                 <p class="text-gray-700">
-                    Dr. Azy and Dr. Arezoo Nasiry are two sisters who manage LA Dental Clinic. Together they own the
-                    practice and are both actively working as Dentists in the clinic. The Nasiry sisters bring over 30
-                    years of combined professional experience and education to the dental industry in Los Angeles.
+                        {!! $ps->{'about_details_' . $sign}  ?? '' !!}
                 </p>
                 <p class="text-gray-700">
-                    Dr. Arezoo Nasiry founded the clinic in 2008 and was joined by her sister in 2016. The two host
-                    several unique programs for aspiring dentists, as well as women in the dental industry. They are
-                    committed to providing an outstanding service and are well known for their expert skills and gentle
-                    &amp; caring demeanor.
+                    {!! $ps->{'portfolio_details_' . $sign}  ?? '' !!} 
                 </p>
             </div>
         </section>
 
         <section class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start mt-12">
+          
+        @foreach ($features as $k => $feature)
             <div class="space-y-4">
                 <hr class="border-gray-300">
-                <h4 class="text-lg font-semibold">Family Owned And Operated By The Nasiry Sisters</h4>
+                <h4 class="text-lg font-semibold">{{ $feature->{'title_' . $sign} ?? '' }} </h4>
                 <p class="text-gray-600">
-                    Being family-owned means you get treated like family. Dr. Arezoo and Dr. Azy are beloved by the
-                    community for the way they treat their patients.
-                </p>
-                <a href="/staff/"
-                    class="inline-block px-6 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-500 hover:text-white transition">
-                    Meet Our Team
-                </a>
-            </div>
-
-            <div class="space-y-4">
-                <hr class="border-gray-300">
-                <h4 class="text-lg font-semibold">Over 30 Years Of Combined Experience</h4>
-                <p class="text-gray-600">
-                    The two sister dentists have over 30 years of combined experience.
+                    {{ $feature->{'details_' . $sign} ?? '' }}
                 </p>
             </div>
-
-            <div class="space-y-4">
-                <hr class="border-gray-300">
-                <h4 class="text-lg font-semibold">Faculty Members At UCLA</h4>
-                <p class="text-gray-600">
-                    As UCLA Faculty Members, Dr. Azy and Dr. Arezoo are always up-to-date on the latest dental practices
-                    and technological advancements.
-                </p>
-            </div>
-
-            <div class="space-y-4">
-                <hr class="border-gray-300">
-                <h4 class="text-lg font-semibold">We Practice And Teach Dentistry</h4>
-                <p class="text-gray-600">
-                    We help aspiring dentists and dental hygienists to pass their Western Regional Examination Boards
-                    (WREB) Exam in order to practice in the U.S.
-                </p>
-                <a href="https://www.wrebsuccess.com" target="_blank"
-                    class="inline-block px-6 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-500 hover:text-white transition">
-                    More About WREB Success
-                </a>
-            </div>
+         @endforeach
+             
         </section>
-
-        <section class="hidden">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <script defer src="https://birdeye.com/embed/v4/148464948868411/7/3755804531"></script>
-                    <div id="bf-revz-widget-3755804531"></div>
-                </div>
-                <div class="md:col-span-2 space-y-4">
-                    <h4 class="text-lg font-semibold">Hundreds Of Happy Clients!</h4>
-                    <p class="text-gray-600">
-                        We are rated one of the highest-rated dental clinics in Koreatown, Los Angeles. Click on the
-                        banner to view reviews from our happy clients!
-                    </p>
-                </div>
-            </div>
-        </section>
+ 
     </div>
+
+
     <section class="bg-white py-12 px-4 max-w-7xl mx-auto overflow-hidden">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4">Service Is Our #1 Priority.</h2>
+            <h2 class="text-3xl font-bold mb-4">{{ __('Service Is Our #1 Priority.') }}</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">
-                We want to ensure that your visit to the dentist is as pleasant as possible. LA Dental Clinic uses
-                the most advanced and proven technology to help you maintain that beautiful smile and to ensure that
-                your next visit is an enjoyable one!
+                {{ __('We want to ensure that your visit to the dentist is as pleasant as possible. Innova Dental uses the most advanced and proven technology to help you maintain that beautiful smile and to ensure that your next visit is an enjoyable one!') }}
             </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <!-- General Dentistry -->
+          {{-- https://ladentalclinic.com/wp-content/uploads/2018/12/icon-general-dentistry-e1553197622402.png --}}
+           @foreach ($home_services as $k => $home_service)
             <div class="text-center">
-                <a href="/general-dentistry/">
-                    <img src="https://ladentalclinic.com/wp-content/uploads/2018/12/icon-general-dentistry-e1553197622402.png"
+                <a href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}">
+                    <img src="{{ $home_service->photo_url }}"
                         alt="General Dentistry" class="mx-auto mb-4 w-24 h-24 object-contain">
                 </a>
                 <h4 class="text-xl font-semibold mb-2">
-                    <a href="/general-dentistry/" class="hover:text-blue-500">General Dentistry</a>
+                    <a href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}" class="hover:text-blue-500">{{ $home_service->{'title_' . $sign} }}</a>
                 </h4>
                 <p class="text-gray-600">
-                    <a href="/general-dentistry/">At LA Dental Clinic, we seek to cater to all of your dental needs.
-                        We provide dental services specialized to you.</a>
+                    <a href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}">{{ $home_service->{'short_details_' . $sign} }}</a>
                 </p>
             </div>
+   @endforeach
+            
 
-            <!-- Cosmetic Dentistry -->
-            <div class="text-center">
-                <a href="/cosmetic-dentistry/">
-                    <img src="https://ladentalclinic.com/wp-content/uploads/2018/12/icon-cosmetic-dentistry-e1553197590777.png"
-                        alt="Cosmetic Dentistry" class="mx-auto mb-4 w-24 h-24 object-contain">
-                </a>
-                <h4 class="text-xl font-semibold mb-2">
-                    <a href="/cosmetic-dentistry/" class="hover:text-blue-500">Cosmetic Dentistry</a>
-                </h4>
-                <p class="text-gray-600">
-                    <a href="/cosmetic-dentistry/">Everyone deserves a beautiful smile! Cosmetic dental treatments
-                        can dramatically improve yours. Start to smile with confidence!</a>
-                </p>
-            </div>
 
-            <!-- Restorative Dentistry -->
-            <div class="text-center">
-                <a href="/restorative-dentistry/">
-                    <img src="https://ladentalclinic.com/wp-content/uploads/2018/12/icon-restorative-dentistry-e1553197602347.png"
-                        alt="Restorative Dentistry" class="mx-auto mb-4 w-24 h-24 object-contain">
-                </a>
-                <h4 class="text-xl font-semibold mb-2">
-                    <a href="/restorative-dentistry/" class="hover:text-blue-500">Restorative Dentistry</a>
-                </h4>
-                <p class="text-gray-600">
-                    <a href="/restorative-dentistry/">We provide comprehensive treatments for restorative dental
-                        procedures. We perform implants and full dental reconstruction.</a>
-                </p>
-            </div>
-
-            <!-- Orthodontics -->
-            <div class="text-center">
-                <a href="/orthodontics/">
-                    <img src="https://ladentalclinic.com/wp-content/uploads/2018/12/icon-orthodontics-e1553197520149.png"
-                        alt="Orthodontics" class="mx-auto mb-4 w-24 h-24 object-contain">
-                </a>
-                <h4 class="text-xl font-semibold mb-2">
-                    <a href="/orthodontics/" class="hover:text-blue-500">Orthodontics</a>
-                </h4>
-                <p class="text-gray-600">
-                    <a href="/orthodontics/">Orthodontic treatments are all designed to align the teeth and jaws. We
-                        can address all of your orthodontic needs.</a>
-                </p>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Sedation Dentistry -->
-            <div class="text-center">
-                <a href="/sedation-dentistry-services/">
-                    <img src="https://ladentalclinic.com/wp-content/uploads/2018/12/icon-sedation-dentistry-e1553197611364.png"
-                        alt="Sedation Dentistry" class="mx-auto mb-4 w-24 h-24 object-contain">
-                </a>
-                <h4 class="text-xl font-semibold mb-2">
-                    <a href="/sedation-dentistry-services/" class="hover:text-blue-500">Sedation Dentistry</a>
-                </h4>
-                <p class="text-gray-600">
-                    <a href="/sedation-dentistry-services/">Whether you are undergoing an extensive procedure or get
-                        anxiety at the dentist, sedation can help maximize personal comfort.</a>
-                </p>
-            </div>
-
-            <!-- Dental Implants -->
-            <div class="text-center">
-                <a href="/dental-implants/">
-                    <img src="https://ladentalclinic.com/wp-content/uploads/2018/12/icon-dental-implants-e1553197506496.png"
-                        alt="Dental Implants" class="mx-auto mb-4 w-24 h-24 object-contain">
-                </a>
-                <h4 class="text-xl font-semibold mb-2">
-                    <a href="/dental-implants/" class="hover:text-blue-500">Dental Implants</a>
-                </h4>
-                <p class="text-gray-600">
-                    <a href="/dental-implants/">If you have missing teeth or want to stabilize your dentures, dental
-                        implants are the closest things to permanent and natural teeth.</a>
-                </p>
-            </div>
-
-            <!-- Oral Surgery -->
-            <div class="text-center">
-                <a href="/oral-surgery/">
-                    <img src="https://ladentalclinic.com/wp-content/uploads/2018/12/icon-oral-surgery-e1553200101910.png"
-                        alt="Oral Surgery" class="mx-auto mb-4 w-24 h-24 object-contain">
-                </a>
-                <h4 class="text-xl font-semibold mb-2">
-                    <a href="/oral-surgery/" class="hover:text-blue-500">Oral Surgery</a>
-                </h4>
-                <p class="text-gray-600">
-                    <a href="/oral-surgery/">We practice full scope oral surgery. If you need teeth...</a>
-                </p>
-            </div>
-        </div>
+        </div> 
     </section>
-    <section class="px-4 py-8 bg-white">
+{{-- 
+   <section class="px-4 py-8 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="w-full">
                 <div class="space-y-8">
@@ -485,18 +289,18 @@
                                         allowfullscreen=""
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         referrerpolicy="strict-origin-when-cross-origin"
-                                        title="New Downtown Los Angeles Office Tour – Visit Us! | LA Dental Clinic"
+                                        title="New Downtown Los Angeles Office Tour – Visit Us! | Innova Dental"
                                         width="640" height="360"
                                         src="https://www.youtube.com/embed/_6L8JMgyVLI?controls=1&amp;rel=0&amp;playsinline=0&amp;cc_load_policy=0&amp;autoplay=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fladentalclinic.com&amp;widgetid=1&amp;forigin=https%3A%2F%2Fladentalclinic.com%2F&amp;aoriginsup=1&amp;vf=2"
                                         id="widget2" data-gtm-yt-inspected-18="true"></iframe>
                                 </div>
                             </div>
-                            <p class="text-lg font-semibold text-center">Video walkthrough of the LA Dental Clinic with
+                            <p class="text-lg font-semibold text-center">Video walkthrough of the Innova Dental with
                                 Dr. Arezoo Nasiry</p>
                         </div>
                         <div class="space-y-4">
                             <p class="text-base text-gray-700">
-                                LA Dental Clinic is located in the heart of Koreatown, part of central Los Angeles. We
+                                Innova Dental is located in the heart of Koreatown, part of central Los Angeles. We
                                 are easily accessible by both transit as well as by car. Street parking is available
                                 directly outside of the clinic. We also have underground parking available in the
                                 building. Please note that if you are undergoing a dental procedure that requires
@@ -547,62 +351,72 @@
             </div>
         </div>
     </section>
+    
+    --}}
     <!-- Newsletter Section -->
     <section id="newsletter" class="bg-blue-600  py-20 px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <h3 class="text-5xl font-extrabold capitalize  text-white tracking-tight leading-tight drop-shadow-lg">
-                The Latest Dental Deals and Tips.
+                {{ __('The Latest Dental Deals and Tips.') }}
             </h3>
-            <form class="flex gap-4 items-center w-full justify-between flex-col gap-4">
-                <div class="w-full">
+            
+                      <form class="flex gap-4 items-center w-full justify-between flex-col gap-4" action="{{ route('front.subscripe.submit') }}" name="appointment"
+                                                id="subscribeform" aria-label="subscripe form" data-status="init"
+                                                method="POST" autocomplete="off">
+                                                {{ csrf_field() }}
+                                                <div style="width: 81%;">
+                                                        @include('includes.admin.form-both')
+                                                   </div>
+                {{-- <div class="w-full">
                     <label class="block text-sm font-medium text-white mb-1" for="input_1a">
                         First Name<span class="text-red-500">*</span>
                     </label>
                     <input type="text" name="input_1" placeholder="First Name"
                         class="medium w-full px-3 py-2 border outline-none border-gray-300 rounded-md shadow-sm">
-                </div>
+                </div> --}}
                 <div class="w-full">
                     <label class="block text-sm font-medium text-white mb-1" for="input_2">
-                        Email<span class="text-red-500">*</span>
+                        {{ __('Email') }}<span class="text-red-500">*</span>
                     </label>
-                    <input type="email" placeholder="Email" name="input_2"
+                    <input type="email" placeholder="Email" name="email"
                         class="medium w-full px-3 py-2 border outline-none border-gray-300 rounded-md shadow-sm">
                 </div>
                 <button type="submit"
                     class="w-full text-blue-600  hover:bg-gray-200 bg-white font-bold py-2 px-3 rounded">
-                    I'm in!
+                    {{ __("I'm in!") }}
                 </button>
             </form>
         </div>
     </section>
 
+  
     <!-- Services & Hours Section -->
     <section class="bg-white py-12 px-4 md:px-0">
         <div class="container mx-auto flex flex-col md:flex-row gap-8">
             <!-- Services Column -->
             <div class="w-full md:w-1/2">
                 <div class="prose">
-                    <h4 class="text-lg font-bold mb-4">Our Services</h4>
+                    <h4 class="text-lg font-bold mb-4"> {{ __("Our Services") }}</h4>
                 </div>
                 <div class="flex flex-col md:flex-row gap-8 mt-4">
                     <div class="w-full md:w-1/2">
                         <ul class="space-y-2">
-                            <li><a href="/general-dentistry/" class="text-blue-600 hover:underline">General
-                                    Dentistry</a></li>
-                            <li><a href="/cosmetic-dentistry/" class="text-blue-600 hover:underline">Cosmetic
-                                    Dentistry</a></li>
-                            <li><a href="/restorative-dentistry/" class="text-blue-600 hover:underline">Restorative
-                                    Dentistry</a></li>
-                            <li><a href="/orthodontics/" class="text-blue-600 hover:underline">Orthodontics</a></li>
+ @foreach ($home_services->take(4) as $k => $home_service)
+                            <li><a href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}"
+                                    class="text-blue-600 hover:underline">{{ $home_service->{'title_' . $sign} }}</a>
+                          
+
+                @endforeach                
                         </ul>
                     </div>
                     <div class="w-full md:w-1/2">
                         <ul class="space-y-2">
-                            <li><a href="/sedation-dentistry-services/" class="text-blue-600 hover:underline">Sedation
-                                    Dentistry</a></li>
-                            <li><a href="/restorative-dentistry/dental-implants/"
-                                    class="text-blue-600 hover:underline">Dental Implants</a></li>
-                            <li><a href="/oral-surgery/" class="text-blue-600 hover:underline">Oral Surgery</a></li>
+                       @foreach ($home_services->skip(4)->take(3) as $k => $home_service)
+                            <li><a href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}"
+                                    class="text-blue-600 hover:underline">{{ $home_service->{'title_' . $sign} }}</a>
+                          
+
+                @endforeach
                         </ul>
                     </div>
                 </div>
@@ -611,22 +425,22 @@
             <!-- Hours Column -->
             <div class="w-full md:w-1/2">
                 <div class="prose">
-                    <h4 class="text-lg font-bold mb-4">Hours</h4>
+                    <h4 class="text-lg font-bold mb-4"> {{ __("Hours") }}</h4>
                 </div>
                 <div class="flex flex-col md:flex-row gap-8 mt-4">
                     <div class="w-full md:w-1/2">
                         <ul class="space-y-2">
-                            <li><strong>MON:</strong> 9:00 AM – 6:00 PM</li>
-                            <li><strong>TUE:</strong> 9:00 AM – 6:00 PM</li>
-                            <li><strong>WED:</strong> 9:00 AM – 6:00 PM</li>
-                            <li><strong>THU:</strong> 9:00 AM – 6:00 PM</li>
+                            <li><strong> {{ __("MON:") }}</strong> {{ __("9:00 AM – 6:00 PM") }} </li>
+                            <li><strong> {{ __("TUE:") }}</strong> {{ __("9:00 AM – 6:00 PM") }} </li>
+                            <li><strong> {{ __("WED:") }}</strong> {{ __("9:00 AM – 6:00 PM") }} </li>
+                            <li><strong> {{ __("THU:") }}</strong> {{ __("9:00 AM – 6:00 PM") }} </li>
                         </ul>
                     </div>
                     <div class="w-full md:w-1/2">
                         <ul class="space-y-2">
-                            <li><strong>FRI:</strong> 8:30 AM – 5:00 PM</li>
-                            <li><strong>SAT:</strong> Closed</li>
-                            <li><strong>SUN:</strong> Closed</li>
+                            <li><strong> {{ __("FRI:") }}</strong> {{ __("8:30 AM – 5:00 PM") }} </li>
+                            <li><strong> {{ __("SAT:") }}</strong> {{ __("Closed") }} </li>
+                            <li><strong> {{ __("SUN:") }}</strong> {{ __("Closed") }} </li>
                         </ul>
                     </div>
                 </div>

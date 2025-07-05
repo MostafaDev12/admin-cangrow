@@ -155,7 +155,7 @@
             @endif
             
                 {{--  --}}
-{{--
+
 
                 @if (Auth::guard('admin')->user()->sectionCheck('media'))
                     <li class="nav-item">
@@ -172,22 +172,22 @@
                         </a>
                     </li>
                 @endif
- --}}
-                {{-- @if (Auth::guard('admin')->user()->sectionCheck('after_befores'))
+ {{----}}
+                @if (Auth::guard('admin')->user()->sectionCheck('after_befores'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-after_befores-index') }}" aria-controls="sidebarafter_befores">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.after_befores')</span>
                         </a>
                     </li>
-                @endif --}}
+                @endif {{-- --}}
 
-                {{-- @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
+                @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-certificates-index') }}" aria-controls="sidebarcertificates">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.certificates')</span>
                         </a>
                     </li>
-                @endif  --}}
+                @endif   {{----}}
                 {{--       @if (Auth::guard('admin')->user()->sectionCheck('services'))
          
                      <li class="nav-item">
@@ -290,12 +290,12 @@
                                         @lang('translation.logo')
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
+                                {{-- --}}<li class="nav-item">
                                     <a href="{{ route('admin-gs-home_video') }}" class="nav-link"
                                         data-key="t-home_video">
                                         @lang('translation.home_video')
                                     </a>
-                                </li> --}}
+                                </li> 
 
                                 <li class="nav-item">
                                     <a href="{{ route('admin-gs-contents') }}" class="nav-link"
