@@ -69,9 +69,9 @@
                <div class="flex flex-wrap gap-4 py-3 overflow-x-auto scrollbar-hide">
                    @foreach ($child_services as $service)
                        <!-- Dental Implants -->
-                       <a href="{{ route('single-service.index', ['slug' => $home_service->{'slug_' . $sign}]) }}"
+                       <a href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}"
                            class="text-sm text-gray-700 hover:text-blue-500 hover:underline whitespace-nowrap">
-                           {{ $home_service->{'title_' . $sign} }}
+                           {{ $service->{'title_' . $sign} }}
                        </a>
                    @endforeach
 
