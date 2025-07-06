@@ -28,15 +28,15 @@
             <div class="w-full text-center">
                 <!-- Heading -->
                 <div class="mb-8">
-                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{{ __("LA's Best Deal On Invisalign, Implants and Veneers") }}</h1>
-                    <h4 class="text-xl md:text-2xl text-white">{{ __('Accepting New Patients') }}</h4>
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{{ __("Glamour, Gags, and Great Teeth – That’s Innova Style") }}</h1>
+                    {{-- <h4 class="text-xl md:text-2xl text-white">{{ __('Accepting New Patients') }}</h4> --}}
                 </div>
 
                 <!-- Button -->
                 <div class="mb-8">
-                    <a href="#deals" 
+                    <a href="https://surveyheart.com/form/659f1393fe62f1133c8debfd" 
                         class="inline-block roounded-full hover:bg-transparent hover:border border-blue-600 bg-blue-600 hover:border-blue-600 border-4 text-white font-medium py-2 px-6 rounded transition duration-300">
-                        {{ __('Check out our deals') }}
+                        {{ __('Book A Virtual Consultation') }}
                     </a>
                 </div>
 
@@ -143,7 +143,7 @@
                         <div class="swiper-slide">
                             <figure class="p-2">
                                 <img class="w-full h-auto rounded-lg"
-                                    src="{{ $image->photo_url }}"
+                                    src="{{ $image->photo }}"
                                     alt="kimberly-smile" width="280" height="280">
                             </figure>
                         </div>
@@ -200,7 +200,7 @@
 
     <div class="px-4 py-12 max-w-7xl mx-auto overflow-hidden">
         <div class="text-center">
-            <h2 class="text-3xl font-bold">{{ __('Your Friendly Dental Clinic In Los Angeles') }}</h2>
+            <h2 class="text-3xl font-bold">{{ __('Your Friendly Dental Clinic') }}</h2>
             <h4 class="text-xl text-gray-600">{{ __('Experienced And Personable Dental Service') }}</h4>
         </div>
 
@@ -208,13 +208,13 @@
             <div class="text-center space-y-4">
                 <img src="{{ $ps->portfolio_photo }}" alt="Dr"
                     class="mx-auto rounded-lg shadow-md">
-                <p class="text-lg font-medium">{{ __('Dr. Arezoo Nasiry') }}</p>
+                {{-- <p class="text-lg font-medium">{{ __('Dr. Arezoo Nasiry') }}</p> --}}
             </div>
 
             <div class="text-center space-y-4">
                 <img src="{{ $ps->about_photo }}" alt="Dr"
                     class="mx-auto rounded-lg shadow-md">
-                <p class="text-lg font-medium">{{ __('Dr. Azy Nasiry') }}</p>
+                {{-- <p class="text-lg font-medium">{{ __('Dr. Azy Nasiry') }}</p> --}}
             </div>
 
             <div class="md:col-span-2 space-y-4">

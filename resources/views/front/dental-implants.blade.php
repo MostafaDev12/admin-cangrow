@@ -100,7 +100,7 @@
                      </h6>
 
                      <!-- CTA Button -->
-                     <a href="{{ route('contact.index') }}"
+                     <a href="https://surveyheart.com/form/659f1393fe62f1133c8debfd"
                          class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
                          {{ __('Schedule Consultation') }}
                      </a>

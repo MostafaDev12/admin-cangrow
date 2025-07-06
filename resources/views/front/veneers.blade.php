@@ -37,29 +37,16 @@
             <h2 class="text-3xl font-bold text-center mb-10">{{ __('Veneers Before & After') }}</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
+                @foreach ($after_befores as $after_before)
+                    
                 <!-- Image Card 1 -->
                 <div class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-                    <img src="./assets/imgs/Botox and filler/b.jpg " alt="Image 1"
+                    <img src="{{ $after_before->photo }} " alt="{{ $after_before->title_ar }}"
                         class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
                 </div>
 
-                <!-- Image Card 2 -->
-                <div class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-                    <img src="./assets/imgs/Dental implant - زراعة الأسنان/e2.JPG " alt="Image 2"
-                        class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
-                </div>
-
-                <!-- Image Card 3 -->
-                <div class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-                    <img src="./assets/imgs/Dental implant - زراعة الأسنان/f14.JPG " alt="Image 3"
-                        class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
-                </div>
-                <div class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-                    <img src="./assets/imgs/Dental implant - زراعة الأسنان/Nasrah Mohamed Hassan.jpg " alt="Image 3"
-                        class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
-                </div>
-
+                @endforeach
+               
             </div>
         </div>
     </section>
@@ -162,41 +149,19 @@
 
             <!-- Benefits Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+             
+             @foreach ($processes as $process)
                 <!-- Benefit 1 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition text-center">
                     <div class="text-primary mb-4 flex justify-center">
                         <i class="fas fa-tooth fa-2x"></i> <!-- Replace with relevant icon -->
                     </div>
-                    <h5 class="font-semibold text-gray-800 mb-2">{{ __('Patching Chips or Cracks') }}</h5>
-                    <p class="text-gray-600 text-sm">{{ __('Leave the distressed look to your jeans.') }}</p>
+                    <h5 class="font-semibold text-gray-800 mb-2">{{  $process->{'title_' . $sign} }}</h5>
+                    <p class="text-gray-600 text-sm"> {{  $process->{'details_' . $sign} }}</p>
                 </div>
+                @endforeach
 
-                <!-- Benefit 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition text-center">
-                    <div class="text-primary mb-4 flex justify-center">
-                        <i class="fas fa-paint-roller fa-2x"></i> <!-- Replace with relevant icon -->
-                    </div>
-                    <h5 class="font-semibold text-gray-800 mb-2">{{ __('Covering Up Stains') }}</h5>
-                    <p class="text-gray-600 text-sm">{{ __('Stains from coffee or smoking? Gone.') }}</p>
-                </div>
-
-                <!-- Benefit 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition text-center">
-                    <div class="text-primary mb-4 flex justify-center">
-                        <i class="fas fa-minus-circle fa-2x"></i> <!-- Replace with relevant icon -->
-                    </div>
-                    <h5 class="font-semibold text-gray-800 mb-2">{{ __('Closing Gaps') }}</h5>
-                    <p class="text-gray-600 text-sm">{{ __('No more spaces between your teeth.') }}</p>
-                </div>
-
-                <!-- Benefit 4 -->
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition text-center">
-                    <div class="text-primary mb-4 flex justify-center">
-                        <i class="fas fa-align-center fa-2x"></i> <!-- Replace with relevant icon -->
-                    </div>
-                    <h5 class="font-semibold text-gray-800 mb-2">{{ __('Fixing Misalignment') }}</h5>
-                    <p class="text-gray-600 text-sm">{{ __('Straighten your smile without braces.') }}</p>
-                </div>
+                 
             </div>
         </div>
     </section>

@@ -37,7 +37,9 @@
 
                     </h2>
                     <p class="text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap ">
-                         {{ $blog->{'short_details_' . $sign} }}
+                     
+                        {{ $blog->{'short_details_' . $sign} }}
+                  
                     </p>
                 </a>
             </div>

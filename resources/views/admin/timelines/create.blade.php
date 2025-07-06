@@ -145,9 +145,9 @@
 
                                                 <div class="mb-3">
                                                     <label for="year"
-                                                        class="form-label">{{ __('translation.year') }}</label>
+                                                        class="form-label">{{ __('translation.button_link') }}</label>
                                                     <input type="text" class="form-control" name="year"
-                                                        id="year" placeholder="{{ __('translation.year') }}">
+                                                        id="year" placeholder="{{ __('translation.button_link') }}">
                                                 </div>
                                             </div>
                                             <!-- end card -->

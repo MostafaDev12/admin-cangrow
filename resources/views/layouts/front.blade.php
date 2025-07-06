@@ -122,7 +122,7 @@
                     <div class="flex items-center justify-between gap-2 md:gap-4">
                         <a href="#">{{ __('Emergency Info') }}</a>
 
-                        <a href="tel:213-385-9710" class="flex items-center gap-1">
+                        <a href="tel:{{ $randomPhone }}" class="flex items-center gap-1">
                             <span class="elementor-icon-list-icon">
                                 <i aria-hidden="true" class="fas fa-phone-square"></i> </span>
                             <span class=" hidden md:block">
@@ -148,7 +148,7 @@
                                         <a href="{{ $location->book_link }}"
                                             class="flex items-center px-6 py-2 hover:bg-gray-100 text-sm">
                                             <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
-                                            <span> {{ $location->title_ar . ' - ' . $location->title_en }} </span>
+                                            <span> {{ $location->{'title_' . $sign} }} </span>
                                         </a>
 
                                     </li>
@@ -175,7 +175,7 @@
                             </ul>
                         </div>
                         <a class="text-xs text-center bg-[#333133] rounded-full p-2 md:p-4 text-white text-center whitespace-nowrap flex items-center justify-center flex-nowrap"
-                            href="{{ route('contact.index') }}" target="_blank">
+                            href="https://surveyheart.com/form/659f1393fe62f1133c8debfd" target="_blank">
                             {{ __('Book A Virtual Consultation') }}
                         </a>
 
@@ -339,7 +339,7 @@
                                     <a href="{{ $location->book_link }}"
                                         class="flex items-center px-6 py-2 hover:bg-gray-100 text-sm">
                                         <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
-                                        <span>{{ $location->title_ar . ' - ' . $location->title_en }}</span>
+                                        <span>{{ $location->{'title_' . $sign} }}</span>
                                     </a>
 
                                 </li>
@@ -476,14 +476,14 @@
                     <!-- Heliopolis -->
                     <div class="text-center md:text-left w-full md:w-auto">
                         <h4 class="font-semibold text-gray-800 mb-2">
-                            {{ $location->title_ar . ' - ' . $location->title_en }}</h4>
+                            {{ $location->{'title_' . $sign} }}</h4>
                         <div class="flex justify-center md:justify-start space-x-6">
                             <a href="{{ $location->book_link }}"
                                 class="text-blue-600 hover:text-blue-800 transition-colors flex items-center">
                                 <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
                                 <span>{{ __('Book') }}</span>
                             </a>
-                            <a href="{{ $location->map }}"
+                            <a href="{{ $location->address_ar }}"
                                 class="text-green-600 hover:text-green-800 transition-colors flex items-center">
                                 <i class="fas fa-map-marker-alt mr-2 text-green-500"></i>
                                 <span>{{ __('Map') }}</span>

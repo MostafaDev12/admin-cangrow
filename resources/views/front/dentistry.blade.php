@@ -57,7 +57,7 @@
 
            <!-- CTA Button -->
            <div class="text-center mt-12">
-               <a href="{{ route('contact.index') }}" target="_blank" rel="noopener"
+               <a href="https://surveyheart.com/form/659f1393fe62f1133c8debfd" target="_blank" rel="noopener"
                    class="inline-block bg-white hover:bg-white-700 text-[#0069D1] px-8 py-3 rounded-md transition-colors">
                    {{ __('Schedule A Consultation') }} >
                </a>

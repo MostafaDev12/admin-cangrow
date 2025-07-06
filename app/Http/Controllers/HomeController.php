@@ -150,8 +150,10 @@ class HomeController extends Controller
     $child_services = Service::where('parent_id','!=',0)->get();
     $models = ModelCategory::get();
     $reviews = Partner::get();
- $after_befores = AfterBefore::get();
-    return view('front.veneers', compact('sign', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
+ 
+  $processes = Process::get();
+   $after_befores = PageModel::get();
+    return view('front.veneers', compact('sign', 'processes', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
   }
 
  
