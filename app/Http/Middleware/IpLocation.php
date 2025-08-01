@@ -59,6 +59,8 @@ class IpLocation
                                 "continent"      => @$continents[strtoupper($ipdat->geoplugin_continentCode)],
                                 "continent_code" => @$ipdat->geoplugin_continentCode,
                                 "ip"             => @$ipdat->geoplugin_request,
+                                "longitude"             => @$ipdat->geoplugin_longitude,
+                                "latitude"             => @$ipdat->geoplugin_latitude,
                                 "currency_code"  => @$ipdat->geoplugin_currencyCode
                             );
                             break;
@@ -100,6 +102,8 @@ class IpLocation
                         'country' => $output['country'],
                         'country_code' => $output['country_code'],
                         'city' => $output['city'],
+                        'latitude' => $output['latitude'],
+                        'longitude' => $output['longitude'],
     
                     ]);
 
