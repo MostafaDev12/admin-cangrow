@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيادة الأسنان</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-50" dir="rtl" lang="ar">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-full z-50 py-4 sticky top-0">
+        <div class="container mx-auto  flex items-center justify-between">
+            <!-- Logo -->
+            <div>
+                <a href="/">
+                    <img alt="Tooth Guard Logo" class="w-40  h-30" src="./images/logo-w.png">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-6">
+                <a href="./index.html"
+                    class="text-white text-lg hover:font-semibold transition duration-300">الرئيسية</a>
+                <a href="./about.html" class="text-white text-lg hover:font-semibold transition duration-300">معلومات
+                    عنا</a>
+                <a href="./services.html"
+                    class="text-white text-lg hover:font-semibold transition duration-300">الخدمات</a>
+                <a href="./blogs.html"
+                    class="text-white text-lg hover:font-semibold transition duration-300">المقالات</a>
+                <a href="./videos.html"
+                    class="text-white text-lg hover:font-semibold transition duration-300">فيديوهات</a>
+                <a href="./contact.html" class="text-white text-lg hover:font-semibold transition duration-300">تواصل
+                    معنا</a>
+            </nav>
+
+            <!-- Social Icons and Language Selector (Desktop) -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a target="_blank" href="https://www.facebook.com/guardtooth">
+                    <i
+                        class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://www.instagram.com/tooth_guard_dental_clinic">
+                    <i
+                        class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="tel:+201555004694">
+                    <i
+                        class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://wa.me/+201555004694">
+                    <i
+                        class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://youtube.com/@toothguard-be3le?si=bt-dU0y2VjucpM4s">
+                    <i
+                        class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <select
+                    class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300">
+                    <option class="bg-gray-600" value="en">English</option>
+                    <option class="bg-gray-600" value="ar" selected>العربية</option>
+                </select>
+            </div>
+
+            <!-- Mobile Hamburger Menu -->
+            <div class="lg:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <i class="fa-solid fa-bars w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu"
+            class="lg:hidden bg-gradient-to-r from-blue-500 to-green-600 text-white fixed inset-0 z-50 flex flex-col items-center justify-center">
+            <button id="close-menu" class="absolute top-4 right-4 text-white focus:outline-none">
+                <i class="fa-solid fa-times w-8 h-8"></i>
+            </button>
+            <nav class="flex flex-col items-center gap-6 text-lg">
+                <a href="/" class="hover:font-semibold transition duration-300">الرئيسية</a>
+                <a href="/about" class="hover:font-semibold transition duration-300">معلومات عنا</a>
+                <a href="/services" class="hover:font-semibold transition duration-300">الخدمات</a>
+                <a href="/blogs" class="hover:font-semibold transition duration-300">المقالات</a>
+                <a href="/videos" class="hover:font-semibold transition duration-300">فيديوهات</a>
+                <a href="/contact-us" class="hover:font-semibold transition duration-300">تواصل معنا</a>
+                <div class="flex items-center gap-4 mt-6">
+                    <a target="_blank" href="https://www.facebook.com/guardtooth">
+                        <i
+                            class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/tooth_guard_dental_clinic">
+                        <i
+                            class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="tel:+201555004694">
+                        <i
+                            class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://wa.me/+201555004694">
+                        <i
+                            class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://youtube.com/@toothguard-be3le?si=bt-dU0y2VjucpM4s">
+                        <i
+                            class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                </div>
+                <select
+                    class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300 mt-6">
+                    <option class="bg-gray-600" value="en">English</option>
+                    <option class="bg-gray-600" value="ar" selected>العربية</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+    <section class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="md:w-1/2 text-center md:text-right">
+                <img src="./images/logo-w.png" alt="Tooth Guard Clinic" class="w-64 sm:w-80 mx-auto md:mx-0 mb-8">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">تأتي ابتسامتك أولاً</h1>
+                <p class="text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
+                    في عيادات Tooth Guard، نقدم رعاية أسنان من الدرجة الأولى تعمل على تغيير ابتسامتك في كل مرة. فريقنا
+                    ذو الخبرة موجود هنا لتقديم خدمة استثنائية، سواء كنت هنا لإجراء فحص روتيني أو لطب الأسنان التجميلي
+                    المتقدم.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4 space-x-reverse">
+                    <a href="/about"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">
+                        معلومات عنا
+                    </a>
+                    <a href="#appointment"
+                        class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-500 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">
+                        احجز موعدك
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
+                <img src="https://api.tooth-guard.com/assets/images/slider/1730644491asxsa.jpg" alt="Tooth Guard Clinic"
+                    class="rounded-lg shadow-lg w-full max-w-md h-auto object-cover">
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div
+                    class="text-center p-8 hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300 bg-gradient-to-br from-blue-50 to-white rounded-lg">
+                    <div class="space-y-6">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                            <i data-lucide="shield" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-800">خبراء بإمكانك الوثوق بهم</h3>
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            جميع أطبائنا لديهم خبرة تزيد عن 20 عام ويحملون شهادات معتمدة
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div
+                    class="text-center p-8 hover:shadow-2xl transition-all duration-300 border-2 border-green-100 hover:border-green-300 bg-gradient-to-br from-green-50 to-white rounded-lg">
+                    <div class="space-y-6">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                            <i data-lucide="stethoscope" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-800">خدمات شاملة</h3>
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            من الرعاية الوقائية إلى زراعة الأسنان، نحن نقدم خدمات شاملة لصحة أسنانك
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div
+                    class="text-center p-8 hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300 bg-gradient-to-br from-blue-50 to-white rounded-lg">
+                    <div class="space-y-6">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                            <i data-lucide="users" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-800">تجربة تتمحور حول المريض</h3>
+                        <p class="text-gray-700 leading-relaxed text-lg">نحن نركز على راحتك وتقديم تجربة علاجية مميزة
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sm:py-16 py-10">
+        <div class="sm:px-32 px-10 mx-auto text-center">
+            <h2 class="sm:text-4xl text-lg font-bold text-blue-800 mb-12">
+                طب الأسنان الشامل <br> لكل حاجة
+            </h2>
+            <div class="swiper mySwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">زراعة الأسنان</h3>
+                            <p class="text-sm">زراعة الأسنان اليوم من الإجراءات الشائعة التي يلجأ إليها الكثير من
+                                الأشخاص لحل مشكلات تتعلق بالحشو</p>
+                            <div class="my-10">
+                                <a href="/services/زراعة-الأسنان"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">علاج اللثه</h3>
+                            <p class="text-sm">أصبح علاج اللثه وتفتيح لونها باستخدام الليزر الخيار الأفضل للطبيب
+                                والمريض، مما يغني عن الجراحات التقليدية</p>
+                            <div class="my-10">
+                                <a href="/services/علاج-اللثه"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">تقويم الأسنان</h3>
+                            <p class="text-sm">تقويم الأسنان إجراء تجميلي وعلاجي في الوقت ذاته؛ إذ يساهم في تصحيح مشاكل
+                                عدم انتظام الأسنان</p>
+                            <div class="my-10">
+                                <a href="/services/تقويم-الأسنان"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">طب أسنان الأطفال</h3>
+                            <p class="text-sm">نحن نهتم بابتسامة طفلك مثلما تهتم بها نقدم خدمات متكاملة لصحة أسنان
+                                الأطفال</p>
+                            <div class="my-10">
+                                <a href="/services/طب-أسنان-الأطفال"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">تبيض الاسنان</h3>
+                            <p class="text-sm">تبيض الاسنان للحصول على ابتسامة مشرقة تجعل يومك أفضل</p>
+                            <div class="my-10">
+                                <a href="/services/تبيض-الاسنان"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">هوليود سمايل</h3>
+                            <p class="text-sm">مع ابتسامة هوليود التي يقدمها دكتور محمد حجاب، تحصل على تحول شامل
+                                لابتسامتك</p>
+                            <div class="my-10">
+                                <a href="/services/هوليود-سمايل"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">حشو الاسنان</h3>
+                            <p class="text-sm">حشو الاسنان التجميلية التي تعيد للأسنان وظيفتها الطبيعية مع الحفاظ على
+                                مظهرها الجمالي</p>
+                            <div class="my-10">
+                                <a href="/services/حشو-الاسنان"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">علاج الجذور</h3>
+                            <p class="text-sm">علاج جذور الأسنان هو الحل المثالي لك، يعتبر علاج الجذور إجراء فعال يهدف
+                                إلى إنقاذ الأسنان المتضررة من التسوس أو العدوى في عيادتنا</p>
+                            <div class="my-10">
+                                <a href="/services/علاج-الجذور"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
+                            <img src="./images/logo-w.png" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">الحشوات التجميلية</h3>
+                            <p class="text-sm">الحشوات التجميلية هي الحل الأمثل لك، تعتبر هذه الحشوات من أحدث تقنيات
+                                علاج الأسنان، حيث تمنحك مظهر طبيعي وجذاب، دون التأثير على جمال ابتسامتك</p>
+                            <div class="my-10">
+                                <a href="/services/الحشوات-التجميلية"
+                                    class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
+                                    أقرأ المزيد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8">
+                <a href="/services"
+                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full shadow-md transition duration-300">
+                    اكتشف المزيد من خدماتنا
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="sm:px-16 px-4 py-10 sm:py-16 bg-gray-100">
+        <div class="sm:px-16 px-10 mx-auto text-center">
+            <h2 class="sm:text-4xl text-lg font-bold text-blue-800 mb-6">
+                ابق على اطلاع بأفكارنا<br>المتعلقة بطب الأسنان
+            </h2>
+            <p class="text-gray-500 text-base sm:text-lg mb-8">
+                تفضل بزيارة مدونة Tooth Guard Clinics للحصول على أحدث النصائح والاتجاهات والرؤى المتعلقة بصحة الأسنان.
+                تغطي مقالاتنا كل ما تحتاج إلى معرفته للحفاظ على ابتسامة مشرقة وصحية
+            </p>
+            <div class="swiper mySwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-md rounded-lg overflow-hidden mt-4 mb-4 transform transition duration-300 hover:scale-105">
+                            <img src="https://api.tooth-guard.com/assets/images/blogs/173321928965662b9e53.jpg"
+                                alt="سعر تقويم الاسنان في مصر 2025" class="w-full h-60 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-blue-800 mb-2">سعر تقويم الاسنان في مصر 2025</h3>
+                                <div class="text-gray-600 text-sm"></div>
+                                <div class="group mt-7 mb-4">
+                                    <a href="/blogs/سعر-تقويم-الاسنان-في-مصر"
+                                        class="text-sm sm:text-md border border-blue-800 text-blue-800 p-2 rounded-sm shadow-md hover:bg-blue-800 hover:text-white transition duration-300">
+                                        أقرأ المزيد
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-md rounded-lg overflow-hidden mt-4 mb-4 transform transition duration-300 hover:scale-105">
+                            <img src="https://api.tooth-guard.com/assets/images/blogs/1733396057سعر زراعة الاسنان في مصر.jpg"
+                                alt="سعر زراعة الاسنان فى مصر 2025" class="w-full h-60 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-blue-800 mb-2">سعر زراعة الاسنان فى مصر 2025</h3>
+                                <div class="text-gray-600 text-sm"></div>
+                                <div class="group mt-7 mb-4">
+                                    <a href="/blogs/سعر-زراعة-الاسنان-فى-مصر"
+                                        class="text-sm sm:text-md border border-blue-800 text-blue-800 p-2 rounded-sm shadow-md hover:bg-blue-800 hover:text-white transition duration-300">
+                                        أقرأ المزيد
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-md rounded-lg overflow-hidden mt-4 mb-4 transform transition duration-300 hover:scale-105">
+                            <img src="https://api.tooth-guard.com/assets/images/blogs/1734521303سعر تقويم الاسنان الشفاف الثابت.jpg"
+                                alt="سعر تقويم الاسنان الشفاف فى مصر" class="w-full h-60 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-blue-800 mb-2">سعر تقويم الاسنان الشفاف فى مصر</h3>
+                                <div class="text-gray-600 text-sm"></div>
+                                <div class="group mt-7 mb-4">
+                                    <a href="/blogs/سعر-تقويم-الاسنان-الشفاف-فى-مصر"
+                                        class="text-sm sm:text-md border border-blue-800 text-blue-800 p-2 rounded-sm shadow-md hover:bg-blue-800 hover:text-white transition duration-300">
+                                        أقرأ المزيد
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-md rounded-lg overflow-hidden mt-4 mb-4 transform transition duration-300 hover:scale-105">
+                            <img src="https://api.tooth-guard.com/assets/images/blogs/1734525484هوليود سمايل ..jpg"
+                                alt="سعر هوليود سمايل 2025" class="w-full h-60 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-blue-800 mb-2">سعر هوليود سمايل 2025</h3>
+                                <div class="text-gray-600 text-sm"></div>
+                                <div class="group mt-7 mb-4">
+                                    <a href="/blogs/سعر-هوليود-سمايل"
+                                        class="text-sm sm:text-md border border-blue-800 text-blue-800 p-2 rounded-sm shadow-md hover:bg-blue-800 hover:text-white transition duration-300">
+                                        أقرأ المزيد
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-md rounded-lg overflow-hidden mt-4 mb-4 transform transition duration-300 hover:scale--105">
+                            <img src="https://api.tooth-guard.com/assets/images/blogs/1735562457تركيب الزيركون للاسنان.jpg"
+                                alt="اسعار تركيب الاسنان الزيركون في مصر" class="w-full h-60 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-blue-800 mb-2">اسعار تركيب الاسنان الزيركون في مصر
+                                </h3>
+                                <div class="text-gray-600 text-sm"></div>
+                                <div class="group mt-7 mb-4">
+                                    <a href="/blogs/تركيب-الزيركون-للاسنان"
+                                        class="text-sm sm:text-md border border-blue-800 text-blue-800 p-2 rounded-sm shadow-md hover:bg-blue-800 hover:text-white transition duration-300">
+                                        أقرأ المزيد
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-md rounded-lg overflow-hidden mt-4 mb-4 transform transition duration-300 hover:scale-105">
+                            <img src="https://api.tooth-guard.com/assets/images/blogs/1734600922زراعة عظم الفك.jpg"
+                                alt="تكلفة عملية زراعة عظم الفك في مصر" class="w-full h-60 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-blue-800 mb-2">تكلفة عملية زراعة عظم الفك في مصر</h3>
+                                <div class="text-gray-600 text-sm"></div>
+                                <div class="group mt-7 mb-4">
+                                    <a href="/blogs/عملية-زراعة-عظم-الفك"
+                                        class="text-sm sm:text-md border border-blue-800 text-blue-800 p-2 rounded-sm shadow-md hover:bg-blue-800 hover:text-white transition duration-300">
+                                        أقرأ المزيد
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Additional slides can be added here following the same structure -->
+                </div>
+            </div>
+            <div class="mt-8">
+                <a href="/blogs"
+                    class="bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-full shadow-md transition duration-300">
+                    اكتشف المزيد من المقالات
+                </a>
+            </div>
+        </div>
+    </section>
+    <section
+        class="bg-gradient-to-r from-blue-500 to-green-400 text-white h-[350px] flex flex-col items-center justify-center sm:mt-0 mt-10">
+        <div class="text-center px-4">
+            <h1 class="sm:text-4xl text-xl font-bold mb-4">
+                تواصل معنا اليوم لبدء رحلتك إلى ابتسامة أكثر صحة
+            </h1>
+            <p class="text-sm lg:text-lg mb-8 max-w-2xl mx-auto">
+                فريقنا جاهز للمساعدة في المواعيد والإجابة على أسئلتك وإرشادك نحو تحقيق ابتسامتك المثالية
+            </p>
+            <div class="flex space-x-4 space-x-reverse justify-center items-center">
+                <a href="/contact-us"
+                    class="bg-green-500 hover:bg-green-600 text-white font-semibold lg:font-bold text-sm lg:text-lg py-2 px-4 sm:px-6 rounded-full transition duration-300">
+                    تواصل معنا
+                </a>
+                <span class="text-white text-xl lg:mt-2 pr-3">أو</span>
+                <a href="https://wa.me/+201555004694" target="_blank"
+                    class="text-white font-semibold text-sm lg:text-lg py-2 px-4 sm:px-6 rounded-full border-2 border-white hover:bg-white hover:text-blue-500 transition duration-300">
+                    احجز موعدك
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Video Testimonials Section -->
+    <section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <h2
+                class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-800 to-green-600 bg-clip-text text-transparent text-center mb-16">
+                فيديوهات عن الدكتور
+            </h2>
+            <div class="max-w-5xl mx-auto">
+                <div
+                    class="bg-gradient-to-br from-blue-900 to-green-900 rounded-2xl overflow-hidden aspect-video relative shadow-2xl border-4 border-blue-200">
+                    <img src="https://via.placeholder.com/800x400" alt="Video testimonial"
+                        class="object-cover w-full h-full">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-900/60 to-green-900/60 flex items-center justify-center">
+                        <button
+                            class="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white border-2 border-white rounded-full p-6 shadow-2xl hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-110">
+                            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <div class="flex items-center gap-3 bg-blue-600/80 backdrop-blur-sm rounded-full px-4 py-2">
+                            <div
+                                class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center">
+                                <i data-lucide="users" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <span class="font-semibold">reviews</span>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-6 right-6 text-white">
+                        <div class="bg-green-600/80 backdrop-blur-sm rounded-full px-4 py-2 font-semibold">Share</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- <footer class="bg-gradient-to-r from-blue-900 via-blue-800 to-green-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">معلومات الاتصال</h3>
+                    <div class="space-y-4">
+                        <p class="flex items-center gap-3 text-blue-100 hover:text-green-300 transition-colors">
+                            <i data-lucide="phone" class="w-5 h-5 text-green-400"></i>
+                            +966 XX XXX XXXX
+                        </p>
+                        <p class="flex items-center gap-3 text-blue-100 hover:text-green-300 transition-colors">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i>
+                            واتساب
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">خدماتنا</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                زراعة الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                تقويم الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                تجميل الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                علاج الجذور
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">روابط مفيدة</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                عن العيادة
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                الأطباء
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                المواعيد
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                اتصل بنا
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">تابعنا</h3>
+                    <div class="flex gap-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="facebook" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="instagram" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="youtube" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-600 mt-12 pt-8 text-center">
+                <p class="text-blue-200 text-lg">&copy; 2024 عيادة الأسنان. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer> -->
+    <footer
+        class="bg-gradient-to-r from-blue-900 via-blue-800 to-green-800 text-white py-16 w-full  px-5 lg:px-10 lg:py-12">
+        <div class="max-w-7xl mx-auto">
+            <!-- Footer Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 text-center lg:text-right">
+                <!-- Contact Us -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-color_2 text-xl font-semibold uppercase mb-5">تواصل معنا</h3>
+                    <div class="space-y-4">
+                        <a href="mailto:guardtooth@gmail.com" target="_blank"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">
+                            guardtooth@gmail.com
+                        </a>
+                        <a href="tel:+201555004694" target="_blank"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">
+                            +201555004694
+                        </a>
+                        <p class="text-color_1 font-semibold text-sm">
+                            17 ش مكرم عبيد، مدينة نصر، القاهرة، مصر
+                        </p>
+                    </div>
+                </div>
+                <!-- Links -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-color_2 text-xl font-semibold uppercase mb-5">الروابط</h3>
+                    <div class="space-y-4">
+                        <a href="/"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">الرئيسية</a>
+                        <a href="/about"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">معلومات
+                            عنا</a>
+                        <a href="/services"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">الخدمات</a>
+                        <a href="/blogs"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">المقالات</a>
+                        <a href="/videos"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">فيديوهات</a>
+                        <a href="/contact-us"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">تواصل
+                            معنا</a>
+                    </div>
+                </div>
+                <!-- Social Media -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-color_2 text-xl font-semibold uppercase mb-5">وسائل التواصل</h3>
+                    <div class="flex justify-center lg:justify-end items-center gap-4">
+                        <a href="https://www.facebook.com/guardtooth" target="_blank"
+                            class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
+                            <i class="fab fa-facebook-f text-color_1 text-lg hover:text-primary_Color_Light"></i>
+                        </a>
+                        <a href="https://www.instagram.com/tooth_guard_dental_clinic" target="_blank"
+                            class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
+                            <i class="fab fa-instagram text-color_1 text-lg hover:text-primary_Color_Light"></i>
+                        </a>
+                        <a href="tel:+201555004694" target="_blank"
+                            class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
+                            <i class="fas fa-phone text-color_1 text-lg hover:text-primary_Color_Light"></i>
+                        </a>
+                        <a href="https://wa.me/+201555004694" target="_blank"
+                            class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
+                            <i class="fab fa-whatsapp text-color_1 text-lg hover:text-primary_Color_Light"></i>
+                        </a>
+                        <a href="https://youtube.com/@toothguard-be3le?si=bt-dU0y2VjucpM4s" target="_blank"
+                            class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
+                            <i class="fab fa-youtube text-color_1 text-lg hover:text-primary_Color_Light"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Logo -->
+                <div class="lg:col-span-1">
+                    <img alt="Tooth Guard Logo" class="w-48 lg:w-52 mx-auto lg:mx-0" src="./images/logo-w.png">
+                </div>
+            </div>
+            <!-- Footer Bottom -->
+            <div class="mt-10">
+                <div class="border-t border-color_1 opacity-40 w-full"></div>
+                <a href="https://cangrowonline.com/en" target="_blank"
+                    class="flex justify-center items-center mt-5 text-color_1 text-[9px] lg:text-sm">
+                    © 2025 All Rights Reserved | Tooth Guard Clinics Made by ❤️ CanGrow Digital Marketing Agency
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/script.js"></script>
+    <script src="./js/swiper.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>

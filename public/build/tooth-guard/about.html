@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيادة الأسنان</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-50" dir="rtl" lang="ar">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-full z-50 py-4 sticky top-0">
+        <div class="container mx-auto  flex items-center justify-between">
+            <!-- Logo -->
+            <div>
+                <a href="/">
+                    <img alt="Tooth Guard Logo" class="w-40  h-30" src="./images/logo.webp">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-6">
+                <a href="/" class="text-white text-lg hover:font-semibold transition duration-300">الرئيسية</a>
+                <a href="/about" class="text-white text-lg hover:font-semibold transition duration-300">معلومات عنا</a>
+                <a href="/services" class="text-white text-lg hover:font-semibold transition duration-300">الخدمات</a>
+                <a href="/blogs" class="text-white text-lg hover:font-semibold transition duration-300">المقالات</a>
+                <a href="/videos" class="text-white text-lg hover:font-semibold transition duration-300">فيديوهات</a>
+                <a href="/contact-us" class="text-white text-lg hover:font-semibold transition duration-300">تواصل
+                    معنا</a>
+            </nav>
+
+            <!-- Social Icons and Language Selector (Desktop) -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a target="_blank" href="https://www.facebook.com/guardtooth">
+                    <i
+                        class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://www.instagram.com/tooth_guard_dental_clinic">
+                    <i
+                        class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="tel:+201555004694">
+                    <i
+                        class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://wa.me/+201555004694">
+                    <i
+                        class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://youtube.com/@toothguard-be3le?si=bt-dU0y2VjucpM4s">
+                    <i
+                        class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <select
+                    class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300">
+                    <option class="bg-gray-600" value="en">English</option>
+                    <option class="bg-gray-600" value="ar" selected>العربية</option>
+                </select>
+            </div>
+
+            <!-- Mobile Hamburger Menu -->
+            <div class="lg:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <i class="fa-solid fa-bars w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu"
+            class="lg:hidden hidden bg-gradient-to-r from-blue-500 to-green-600 text-white fixed inset-0 z-50 flex flex-col items-center justify-center">
+            <button id="close-menu" class="absolute top-4 right-4 text-white focus:outline-none">
+                <i class="fa-solid fa-times w-8 h-8"></i>
+            </button>
+            <nav class="flex flex-col items-center gap-6 text-lg">
+                <a href="/" class="hover:font-semibold transition duration-300">الرئيسية</a>
+                <a href="/about" class="hover:font-semibold transition duration-300">معلومات عنا</a>
+                <a href="/services" class="hover:font-semibold transition duration-300">الخدمات</a>
+                <a href="/blogs" class="hover:font-semibold transition duration-300">المقالات</a>
+                <a href="/videos" class="hover:font-semibold transition duration-300">فيديوهات</a>
+                <a href="/contact-us" class="hover:font-semibold transition duration-300">تواصل معنا</a>
+                <div class="flex items-center gap-4 mt-6">
+                    <a target="_blank" href="https://www.facebook.com/guardtooth">
+                        <i
+                            class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/tooth_guard_dental_clinic">
+                        <i
+                            class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="tel:+201555004694">
+                        <i
+                            class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://wa.me/+201555004694">
+                        <i
+                            class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://youtube.com/@toothguard-be3le?si=bt-dU0y2VjucpM4s">
+                        <i
+                            class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                </div>
+                <select
+                    class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300 mt-6">
+                    <option class="bg-gray-600" value="en">English</option>
+                    <option class="bg-gray-600" value="ar" selected>العربية</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">
+        <div class="text-center px-4">
+            <h1 class="sm:text-5xl text-2xl font-bold mb-4">معلومات عنا</h1>
+        </div>
+    </section>
+
+    <!-- About Tooth Guard -->
+    <section class="sm:py-10 py-5 flex flex-col items-center justify-center text-center">
+        <h2 class="sm:text-5xl text-2xl text-blue-700 font-bold mb-2">معلومات عن TOOTH GUARD</h2>
+        <p class="sm:text-2xl text-lg text-green-500 font-bold mb-4">شركائك في صحة الأسنان</p>
+        <p class="w-11/12 sm:w-3/4 text-gray-500 text-sm sm:text-base">
+            في عيادات Tooth Guard، نؤمن بأن العناية بالأسنان يجب أن تكون تجربة شخصية ومتميزة. يضم فريقنا نخبة من الخبراء
+            البارزين وقادة المجال، بما في ذلك أعضاء هيئة التدريس من أرقى الجامعات المصرية. نحن ملتزمون بالابتكار المستمر
+            في طب الأسنان، لضمان تقديم أعلى مستوى من الرعاية لابتسامتك.
+        </p>
+    </section>
+
+    <!-- Team Section -->
+    <section class="sm:py-10 py-5 flex flex-col items-center justify-center text-center">
+        <h2 class="sm:text-5xl text-2xl text-blue-700 font-bold mb-2">فريقنا</h2>
+        <p class="sm:text-2xl text-lg text-green-500 font-bold mb-4">خبراء شغوفون ملتزمون بابتسامتك</p>
+        <p class="w-11/12 sm:w-3/4 text-gray-500 text-sm sm:text-base">
+            يتكون فريقنا في Tooth Guard Clinics من متخصصين ذوي مهارات عالية لتقديم رعاية أسنان متميزة. يجلب كل عضو في
+            الفريق خبرة فريدة والتزامًا بالتميز.
+        </p>
+    </section>
+
+    <!-- Doctor Profile -->
+    <section class="bg-green-500 sm:py-16 py-10">
+        <div class="container mx-auto sm:px-32 px-6">
+            <div class="bg-white rounded-lg flex flex-col md:flex-row shadow-lg">
+                <div class="md:w-1/2">
+                    <img src="https://api.tooth-guard.com/assets/images/1730689833asxsa.webp" alt="Dr. Mohamed Hegab"
+                        class="object-cover w-full h-64 md:h-full rounded-t-lg md:rounded-t-none md:rounded-r-lg">
+                </div>
+                <div class="md:w-1/2 p-6 flex flex-col justify-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-blue-700 mb-4">دكتور محمد حجاب</h2>
+                    <p class="text-gray-600 text-sm sm:text-base">
+                        الدكتور محمد حجاب، الذي يتمتع بخبرة 15 عامًا، هو أحد أطباء الأسنان الرائدين لدينا المشهورين
+                        برعايته الدقيقة ونهجه المبتكر. متخصص في إجراءات طب الأسنان الروتينية والمتقدمة، الدكتور حجاب
+                        شغوف بتغيير الابتسامة وتعزيز ثقة المريض.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="bg-gradient-to-r from-blue-600 to-green-400 py-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-white px-6">
+            <div class="flex flex-col items-center md:items-start text-center md:text-right">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2">عقود من الخبرة</h3>
+                <p class="text-sm sm:text-base">مع علاج الآلاف من المرضى كل عام، فإن خبرتنا لا مثيل لها.</p>
+            </div>
+            <div class="flex flex-col items-center md:items-start text-center md:text-right">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2">التقنيات المبتكرة</h3>
+                <p class="text-sm sm:text-base">نحن نستخدم أحدث التطورات في تكنولوجيا طب الأسنان لتقديم العلاجات
+                    المتطورة.</p>
+            </div>
+            <div class="flex flex-col items-center md:items-start text-center md:text-right">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2">الرعاية الشاملة</h3>
+                <p class="text-sm sm:text-base">نحن نركز على رفاهيتك بشكل عام، مما يضمن أن تجربتك معنا مريحة ومجزية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before and After Slider -->
+    <section class="py-10 sm:py-20 bg-blue-100 px-5 lg:px-28">
+        <div class="text-center">
+            <h3 class="text-xl sm:text-4xl font-bold text-blue-800 mb-4">التحولات في طب الأسنان</h3>
+            <p class="text-blue-800 sm:text-lg lg:w-3/4 mx-auto mb-8">
+                شاهد النتائج المذهلة التي حققها فريقنا الماهر في عيادات توث جارد. يعرض معرضنا قبل وبعد القوة التحويلية
+                لعلاجات الأسنان لدينا، من التحسينات التجميلية إلى الحلول الترميمية.
+            </p>
+        </div>
+        <div class="w-full relative py-10">
+            <div class="relative w-full max-w-[700px] aspect-[70/45] mx-auto overflow-hidden select-none">
+                <img class="w-full h-full object-cover" alt="Before" draggable="false"
+                    src="https://api.tooth-guard.com/assets/images/1730731712before.webp">
+                <div class="absolute top-0 left-0 right-0 w-full max-w-[700px] aspect-[70/45] mx-auto overflow-hidden select-none"
+                    style="clip-path: inset(0 50% 0 0);">
+                    <img class="w-full h-full object-cover" draggable="false" alt="After"
+                        src="https://api.tooth-guard.com/assets/images/1730731712after.webp">
+                </div>
+                <div id="slider" class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
+                    style="left: calc(50% - 1px);">
+                    <div class="bg-white absolute rounded-full h-3 w-3 -left-1 top-[calc(50%-6px)]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Call-to-Action -->
+    <section
+        class="bg-gradient-to-r from-blue-500 to-green-400 text-white h-[350px] flex flex-col items-center justify-center sm:mt-0 mt-10">
+        <div class="text-center px-4">
+            <h1 class="sm:text-4xl text-xl font-bold mb-4">
+                تواصل معنا اليوم لبدء رحلتك إلى ابتسامة أكثر صحة
+            </h1>
+            <p class="text-sm sm:text-lg mb-8 max-w-2xl mx-auto">
+                فريقنا جاهز للمساعدة في المواعيد والإجابة على أسئلتك وإرشادك نحو تحقيق ابتسامتك المثالية
+            </p>
+            <div class="flex space-x-4 space-x-reverse justify-center items-center">
+                <a href="/contact-us"
+                    class="bg-green-500 hover:bg-green-600 text-white font-semibold sm:font-bold text-sm sm:text-lg py-2 px-4 sm:px-6 rounded-full transition duration-300">
+                    تواصل معنا
+                </a>
+                <span class="text-white text-xl sm:mt-2 pr-3">أو</span>
+                <a href="https://wa.me/+201555004694" target="_blank"
+                    class="text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-6 rounded-full border-2 border-white hover:bg-white hover:text-blue-500 transition duration-300">
+                    احجز موعدك
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Before and After Slider Functionality
+        const slider = document.getElementById('slider');
+        const afterImage = slider.parentElement;
+        let isDragging = false;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const container = afterImage.parentElement;
+            const rect = container.getBoundingClientRect();
+            let newX = e.clientX - rect.left;
+            if (newX < 0) newX = 0;
+            if (newX > rect.width) newX = rect.width;
+            afterImage.style.clipPath = `inset(0 ${rect.width - newX}px 0 0)`;
+            slider.style.left = `${newX - 1}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+
+        // Touch Support for Mobile
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const container = afterImage.parentElement;
+            const rect = container.getBoundingClientRect();
+            let newX = e.touches[0].clientX - rect.left;
+            if (newX < 0) newX = 0;
+            if (newX > rect.width) newX = rect.width;
+            afterImage.style.clipPath = `inset(0 ${rect.width - newX}px 0 0)`;
+            slider.style.left = `${newX - 1}px`;
+        });
+
+        document.addEventListener('touchend', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+    </script>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-blue-900 via-blue-800 to-green-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">معلومات الاتصال</h3>
+                    <div class="space-y-4">
+                        <p class="flex items-center gap-3 text-blue-100 hover:text-green-300 transition-colors">
+                            <i data-lucide="phone" class="w-5 h-5 text-green-400"></i>
+                            +966 XX XXX XXXX
+                        </p>
+                        <p class="flex items-center gap-3 text-blue-100 hover:text-green-300 transition-colors">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i>
+                            واتساب
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">خدماتنا</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                زراعة الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                تقويم الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                تجميل الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                علاج الجذور
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">روابط مفيدة</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                عن العيادة
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                الأطباء
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                المواعيد
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                اتصل بنا
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">تابعنا</h3>
+                    <div class="flex gap-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="facebook" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="instagram" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="youtube" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-600 mt-12 pt-8 text-center">
+                <p class="text-blue-200 text-lg">&copy; 2024 عيادة الأسنان. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/swiper.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>
