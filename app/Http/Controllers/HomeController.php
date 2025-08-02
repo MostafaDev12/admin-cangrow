@@ -60,21 +60,21 @@ class HomeController extends Controller
     // return abort(404);
     $sign = $this->langSign();
 
-    $sliders = Slider::get();
-    $points = AboutPoint::get();
+    $slider = Slider::first();
+    
     $home_services = Service::get()->take(10);
     $models = PageModel::get();
     $features = ModelCategory::get();
     $partners = Partner::get();
     $medias = Media::get();
-    $after_befores = AfterBefore::get();
-
-    $doctors = Doctor::get()->take(8);
-    $timelines = Timeline::get();
-    $testimonials = Testimonial::get();
+  
+    
     $blogs = Blog::orderby('id','desc')->get()->take(3);
-  $certificates = Certificate::get();
-    return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
+  
+ //   return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
+    
+    return view('front.index', compact('sign', 'slider', 'home_services', 'models', 'features', 'partners', 'medias', 'blogs'));
+  
   }
 
   public function about(Request $request)

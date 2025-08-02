@@ -8,6 +8,7 @@ use App\Models\Pagesetting;
 use App\Models\Service;
 use App\Models\Location;
 use App\Models\BlogCategory;
+use App\Models\Language;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
@@ -29,10 +30,8 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('gs', Generalsetting::first());
             $settings->with('ps', Pagesetting::first());
             $settings->with('services', Service::get());
-            $settings->with('parentservices', Service::where('parent_id',0)->get());
-            $settings->with('categories', Category::get());
-            $settings->with('blogcategories', BlogCategory::get());
-            $settings->with('locations', Location::get());
+           $settings->with('categories', Category::get());
+          $settings->with('languages', Language::get());
             $settings->with('servicesWithoutCats', Service::whereNull('category_id')->get());
         });
 

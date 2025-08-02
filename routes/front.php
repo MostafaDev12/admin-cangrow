@@ -68,5 +68,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
 
         
+        
+        Route::get('/languages/change/{id}', [HomeController::class, 'change'])->name('front.lang-change');
 
 });

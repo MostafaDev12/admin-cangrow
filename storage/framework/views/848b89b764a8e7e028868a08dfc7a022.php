@@ -1,47 +1,50 @@
       
-@extends('layouts.front')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
    
-        {{ $gs->{'title_' . $sign} }}
+        <?php echo e($gs->{'title_' . $sign}); ?>
+
      
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('gsearch')
-    <meta property="og:image" content=" {{ $gs->{'logo_' . $sign} }}" />
-@stop
+<?php $__env->startSection('gsearch'); ?>
+    <meta property="og:image" content=" <?php echo e($gs->{'logo_' . $sign}); ?>" />
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-@php
+<?php
 $phones =  explode(',', $gs->phones);
 $emails =   explode(',', $gs->emails);
  
 $randomPhone = Arr::random($phones);
-@endphp
+?>
 
     <section class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="md:w-1/2 text-center md:text-right">
-                <img src="{{ $gs->{'logo_' . $sign} }}" alt="Tooth Guard Clinic" class="w-64 sm:w-80 mx-auto md:mx-0 mb-8">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"> {{ $slider->{'title_' . $sign}  ?? ''}}    </h1>
+                <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Tooth Guard Clinic" class="w-64 sm:w-80 mx-auto md:mx-0 mb-8">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"> <?php echo e($slider->{'title_' . $sign}  ?? ''); ?>    </h1>
                 <p class="text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
-                    {!! $slider->{'details_' . $sign}  ?? '' !!}
+                    <?php echo $slider->{'details_' . $sign}  ?? ''; ?>
+
                 </p>
                 <div class="flex justify-center md:justify-start space-x-4 space-x-reverse">
-                    <a href="{{ route('about.index') }}"
+                    <a href="<?php echo e(route('about.index')); ?>"
                         class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">
-                       {{ __('معلومات عنا') }}    
+                       <?php echo e(__('معلومات عنا')); ?>    
                     </a>
-                    <a href="{{ route('contact.index') }}"
+                    <a href="<?php echo e(route('contact.index')); ?>"
                         class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-500 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">
-                           {{ __('احجز موعدك') }}
+                           <?php echo e(__('احجز موعدك')); ?>
+
                     </a>
                 </div>
             </div>
             <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-                <img src="{{ $slider->{'photo'}  ?? ''}}" alt="Tooth Guard Clinic"
+                <img src="<?php echo e($slider->{'photo'}  ?? ''); ?>" alt="Tooth Guard Clinic"
                     class="rounded-lg shadow-lg w-full max-w-md h-auto object-cover">
             </div>
         </div>
@@ -106,7 +109,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">زراعة الأسنان</h3>
                             <p class="text-sm">زراعة الأسنان اليوم من الإجراءات الشائعة التي يلجأ إليها الكثير من
                                 الأشخاص لحل مشكلات تتعلق بالحشو</p>
@@ -121,7 +124,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">علاج اللثه</h3>
                             <p class="text-sm">أصبح علاج اللثه وتفتيح لونها باستخدام الليزر الخيار الأفضل للطبيب
                                 والمريض، مما يغني عن الجراحات التقليدية</p>
@@ -136,7 +139,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">تقويم الأسنان</h3>
                             <p class="text-sm">تقويم الأسنان إجراء تجميلي وعلاجي في الوقت ذاته؛ إذ يساهم في تصحيح مشاكل
                                 عدم انتظام الأسنان</p>
@@ -151,7 +154,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">طب أسنان الأطفال</h3>
                             <p class="text-sm">نحن نهتم بابتسامة طفلك مثلما تهتم بها نقدم خدمات متكاملة لصحة أسنان
                                 الأطفال</p>
@@ -166,7 +169,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">تبيض الاسنان</h3>
                             <p class="text-sm">تبيض الاسنان للحصول على ابتسامة مشرقة تجعل يومك أفضل</p>
                             <div class="my-10">
@@ -180,7 +183,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">هوليود سمايل</h3>
                             <p class="text-sm">مع ابتسامة هوليود التي يقدمها دكتور محمد حجاب، تحصل على تحول شامل
                                 لابتسامتك</p>
@@ -195,7 +198,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">حشو الاسنان</h3>
                             <p class="text-sm">حشو الاسنان التجميلية التي تعيد للأسنان وظيفتها الطبيعية مع الحفاظ على
                                 مظهرها الجمالي</p>
@@ -210,7 +213,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">علاج الجذور</h3>
                             <p class="text-sm">علاج جذور الأسنان هو الحل المثالي لك، يعتبر علاج الجذور إجراء فعال يهدف
                                 إلى إنقاذ الأسنان المتضررة من التسوس أو العدوى في عيادتنا</p>
@@ -225,7 +228,7 @@ $randomPhone = Arr::random($phones);
                     <div class="swiper-slide">
                         <div
                             class="h-80 w-full bg-gradient-to-b from-blue-700 to-green-500 text-white p-6 sm:p-10 rounded-lg shadow-lg">
-                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
+                            <img src="<?php echo e($gs->{'logo_' . $sign}); ?>" alt="Cosmetic Fillings" class="mx-auto w-20  mb-4">
                             <h3 class="text-xl sm:text-2xl font-bold mb-2">الحشوات التجميلية</h3>
                             <p class="text-sm">الحشوات التجميلية هي الحل الأمثل لك، تعتبر هذه الحشوات من أحدث تقنيات
                                 علاج الأسنان، حيث تمنحك مظهر طبيعي وجذاب، دون التأثير على جمال ابتسامتك</p>
@@ -434,4 +437,5 @@ $randomPhone = Arr::random($phones);
         </div>
     </section>
 
- @stop
+ <?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\admin-cangrows\resources\views/front/index.blade.php ENDPATH**/ ?>

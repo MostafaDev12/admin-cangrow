@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيادة الأسنان</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-50" dir="rtl" lang="ar">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-full z-50 py-4 sticky top-0">
+        <div class="container mx-auto  flex items-center justify-between">
+            <!-- Logo -->
+            <div>
+                <a href="/">
+                    <img alt="Tooth Guard Logo" class="w-40  h-30" src="./images/logo.webp">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-6">
+                <a href="/" class="text-white text-lg hover:font-semibold transition duration-300">الرئيسية</a>
+                <a href="/about" class="text-white text-lg hover:font-semibold transition duration-300">معلومات عنا</a>
+                <a href="/services" class="text-white text-lg hover:font-semibold transition duration-300">الخدمات</a>
+                <a href="/blogs" class="text-white text-lg hover:font-semibold transition duration-300">المقالات</a>
+                <a href="/videos" class="text-white text-lg hover:font-semibold transition duration-300">فيديوهات</a>
+                <a href="/contact-us" class="text-white text-lg hover:font-semibold transition duration-300">تواصل
+                    معنا</a>
+            </nav>
+
+            <!-- Social Icons and Language Selector (Desktop) -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a target="_blank" href="https://www.facebook.com/guardtooth">
+                    <i
+                        class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://www.instagram.com/tooth_guard_dental_clinic">
+                    <i
+                        class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="tel:+201555004694">
+                    <i
+                        class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://wa.me/+201555004694">
+                    <i
+                        class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <a target="_blank" href="https://youtube.com/@toothguard-be3le?si=bt-dU0y2VjucpM4s">
+                    <i
+                        class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+                <select
+                    class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300">
+                    <option class="bg-gray-600" value="en">English</option>
+                    <option class="bg-gray-600" value="ar" selected>العربية</option>
+                </select>
+            </div>
+
+            <!-- Mobile Hamburger Menu -->
+            <div class="lg:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <i class="fa-solid fa-bars w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu"
+            class="lg:hidden hidden bg-gradient-to-r from-blue-500 to-green-600 text-white fixed inset-0 z-50 flex flex-col items-center justify-center">
+            <button id="close-menu" class="absolute top-4 right-4 text-white focus:outline-none">
+                <i class="fa-solid fa-times w-8 h-8"></i>
+            </button>
+            <nav class="flex flex-col items-center gap-6 text-lg">
+                <a href="/" class="hover:font-semibold transition duration-300">الرئيسية</a>
+                <a href="/about" class="hover:font-semibold transition duration-300">معلومات عنا</a>
+                <a href="/services" class="hover:font-semibold transition duration-300">الخدمات</a>
+                <a href="/blogs" class="hover:font-semibold transition duration-300">المقالات</a>
+                <a href="/videos" class="hover:font-semibold transition duration-300">فيديوهات</a>
+                <a href="/contact-us" class="hover:font-semibold transition duration-300">تواصل معنا</a>
+                <div class="flex items-center gap-4 mt-6">
+                    <a target="_blank" href="https://www.facebook.com/guardtooth">
+                        <i
+                            class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/tooth_guard_dental_clinic">
+                        <i
+                            class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="tel:+201555004694">
+                        <i
+                            class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://wa.me/+201555004694">
+                        <i
+                            class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                    <a target="_blank" href="https://youtube.com/@toothguard-be3le?si=bt-dU0y2VjucpM4s">
+                        <i
+                            class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    </a>
+                </div>
+                <select
+                    class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300 mt-6">
+                    <option class="bg-gray-600" value="en">English</option>
+                    <option class="bg-gray-600" value="ar" selected>العربية</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Banner -->
+    <section class="py-10 sm:py-20">
+        <!-- Header -->
+        <div class="text-center pt-10 sm:pt-20 px-4">
+            <h1 class="text-xl sm:text-5xl font-semibold text-blue-800">
+                خدمات TOOTH <span class="text-green-500">GUARD</span>
+            </h1>
+            <h4 class="text-green-500 font-semibold text-lg sm:text-2xl my-4">شركائك في صحة الأسنان</h4>
+            <p class="text-blue-800 font-light text-sm sm:text-base py-4 max-w-3xl mx-auto">
+                في عيادات <span class="font-semibold">Tooth</span> <span
+                    class="text-green-500 font-semibold">Guard</span>، نقدم مجموعة واسعة من الخدمات لتلبية جميع احتياجات
+                أسنانك:
+            </p>
+        </div>
+
+        <!-- Services and Image -->
+        <div class="flex flex-col lg:flex-row gap-5 items-center justify-center mt-10 sm:mt-20 px-4 sm:px-6">
+            <!-- Image with Circular Background -->
+            <div class="relative z-0 w-72 sm:w-80 lg:w-[20%]">
+                <div class="absolute top-7 left-0 w-72 h-72 sm:w-80 sm:h-80 bg-blue-800 rounded-full z-10"></div>
+                <img class="w-72 sm:w-80 z-50 relative" src="/assets/photoDr.png" alt="Doctor">
+            </div>
+
+            <!-- Services List -->
+            <div class="w-full lg:w-[50%] py-10">
+                <div class="space-y-4">
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">زراعة الأسنان</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            زراعة الأسنان هي حل متطور لاستبدال الأسنان المفقودة، باستخدام أحدث التقنيات لضمان الراحة
+                            والمتانة.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">علاج اللثة</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            علاجات مخصصة لصحة اللثة، تهدف إلى الوقاية من أمراض اللثة وتحسين صحة الفم العامة.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">تقويم الأسنان</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            تقويم الأسنان لتحسين محاذاة الأسنان، بما في ذلك التقويم الشفاف والتقليدي.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">طب أسنان الأطفال</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            رعاية أسنان مخصصة للأطفال لضمان تجربة مريحة وصحة فموية مثالية.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">تبييض الأسنان</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            إجراءات تبييض الأسنان الآمنة والفعالة للحصول على ابتسامة مشرقة.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">هوليود سمايل</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            تصميم ابتسامة مثالية باستخدام القشور التجميلية للحصول على مظهر هوليودي.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">حشو الأسنان</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8- personally-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            حشوات متينة وجمالية لإصلاح التسوس واستعادة وظيفة الأسنان.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">علاج الجذور</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            علاج دقيق للجذور لإنقاذ الأسنان التالفة وتخفيف الألم.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button
+                            class="flex justify-between items-center w-full text-right gap-4 sm:gap-10 py-3 focus:outline-none">
+                            <div class="flex items-center gap-4 sm:gap-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 fill-green-500"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z">
+                                    </path>
+                                </svg>
+                                <p class="text-blue-800 text-base sm:text-xl cursor-pointer">الحشوات التجميلية</p>
+                            </div>
+                            <svg width="16" class="fill-blue-800 transition-transform group-[.active]:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="hidden group-[.active]:block text-gray-600 text-sm sm:text-base px-6 sm:px-10">
+                            حشوات تجميلية لتحسين مظهر الأسنان مع الحفاظ على وظيفتها.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Before and After Slider -->
+        <section class="py-10 sm:py-20 bg-blue-100 px-5 lg:px-28">
+            <div class="text-center">
+                <h3 class="text-xl sm:text-4xl font-bold text-blue-800 mb-4">التحولات في طب الأسنان</h3>
+                <p class="text-blue-800 sm:text-lg lg:w-3/4 mx-auto mb-8">
+                    شاهد النتائج المذهلة التي حققها فريقنا الماهر في عيادات توث جارد. يعرض معرضنا قبل وبعد القوة
+                    التحويلية لعلاجات الأسنان لدينا، من التحسينات التجميلية إلى الحلول الترميمية.
+                </p>
+            </div>
+            <div class="w-full relative py-10">
+                <div class="relative w-full max-w-[700px] aspect-[70/45] mx-auto overflow-hidden select-none">
+                    <img class="w-full h-full object-cover" alt="Before" draggable="false"
+                        src="https://api.tooth-guard.com/assets/images/1730731712before.webp">
+                    <div class="absolute top-0 left-0 right-0 w-full max-w-[700px] aspect-[70/45] mx-auto overflow-hidden select-none"
+                        style="clip-path: inset(0 50% 0 0);">
+                        <img class="w-full h-full object-cover" draggable="false" alt="After"
+                            src="https://api.tooth-guard.com/assets/images/1730731712after.webp">
+                    </div>
+                    <div id="slider" class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
+                        style="left: calc(50% - 1px);">
+                        <div class="bg-white absolute rounded-full h-3 w-3 -left-1 top-[calc(50%-6px)]"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Call-to-Action -->
+        <section
+            class="bg-gradient-to-r from-blue-500 to-green-400 text-white h-[350px] flex flex-col items-center justify-center sm:mt-0 mt-10">
+            <div class="text-center px-4">
+                <h1 class="sm:text-4xl text-xl font-bold mb-4">
+                    تواصل معنا اليوم لبدء رحلتك إلى ابتسامة أكثر صحة
+                </h1>
+                <p class="text-sm sm:text-lg mb-8 max-w-2xl mx-auto">
+                    فريقنا جاهز للمساعدة في المواعيد والإجابة على أسئلتك وإرشادك نحو تحقيق ابتسامتك المثالية
+                </p>
+                <div class="flex space-x-4 space-x-reverse justify-center items-center">
+                    <a href="/contact-us"
+                        class="bg-green-500 hover:bg-green-600 text-white font-semibold sm:font-bold text-sm sm:text-lg py-2 px-4 sm:px-6 rounded-full transition duration-300">
+                        تواصل معنا
+                    </a>
+                    <span class="text-white text-xl sm:mt-2 pr-3">أو</span>
+                    <a href="https://wa.me/+201555004694" target="_blank"
+                        class="text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-6 rounded-full border-2 border-white hover:bg-white hover:text-blue-500 transition duration-300">
+                        احجز موعدك
+                    </a>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        // Accordion Functionality
+        document.querySelectorAll('.group button').forEach(button => {
+            button.addEventListener('click', () => {
+                const group = button.parentElement;
+                const isActive = group.classList.contains('active');
+                document.querySelectorAll('.group').forEach(g => g.classList.remove('active'));
+                if (!isActive) {
+                    group.classList.add('active');
+                }
+            });
+        });
+
+        // Before and After Slider Functionality
+        const slider = document.getElementById('slider');
+        const afterImage = slider.parentElement;
+        let isDragging = false;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const container = afterImage.parentElement;
+            const rect = container.getBoundingClientRect();
+            let newX = e.clientX - rect.left;
+            if (newX < 0) newX = 0;
+            if (newX > rect.width) newX = rect.width;
+            afterImage.style.clipPath = `inset(0 ${rect.width - newX}px 0 0)`;
+            slider.style.left = `${newX - 1}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+
+        // Touch Support for Mobile
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const container = afterImage.parentElement;
+            const rect = container.getBoundingClientRect();
+            let newX = e.touches[0].clientX - rect.left;
+            if (newX < 0) newX = 0;
+            if (newX > rect.width) newX = rect.width;
+            afterImage.style.clipPath = `inset(0 ${rect.width - newX}px 0 0)`;
+            slider.style.left = `${newX - 1}px`;
+        });
+
+        document.addEventListener('touchend', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+    </script>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-blue-900 via-blue-800 to-green-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">معلومات الاتصال</h3>
+                    <div class="space-y-4">
+                        <p class="flex items-center gap-3 text-blue-100 hover:text-green-300 transition-colors">
+                            <i data-lucide="phone" class="w-5 h-5 text-green-400"></i>
+                            +966 XX XXX XXXX
+                        </p>
+                        <p class="flex items-center gap-3 text-blue-100 hover:text-green-300 transition-colors">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i>
+                            واتساب
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">خدماتنا</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                زراعة الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                تقويم الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                تجميل الأسنان
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                علاج الجذور
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">روابط مفيدة</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                عن العيادة
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                الأطباء
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                المواعيد
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-blue-100 hover:text-green-300 transition-colors text-lg">
+                                اتصل بنا
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-green-300">تابعنا</h3>
+                    <div class="flex gap-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="facebook" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="instagram" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="youtube" class="w-6 h-6"></i>
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:from-green-500 hover:to-green-600 transition-all duration-300 cursor-pointer">
+                            <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-600 mt-12 pt-8 text-center">
+                <p class="text-blue-200 text-lg">&copy; 2024 عيادة الأسنان. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/swiper.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>
