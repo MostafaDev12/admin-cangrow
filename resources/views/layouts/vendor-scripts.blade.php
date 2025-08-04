@@ -25,6 +25,7 @@
 var admin_loader = 0;
 </script>
 <script src="{{ URL::asset('build/js/pages/datatables.init.js') }}"></script>
+<script src="{{ URL::asset('build/js/pages/sweetalert2.min.js') }}"></script>
 <script src="{{ URL::asset('build/js/myscript.js') }}"></script>
 <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
 <script src="{{ URL::asset('build/libs/filepond/filepond.min.js') }}"></script>

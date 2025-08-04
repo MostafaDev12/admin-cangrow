@@ -10,6 +10,7 @@
 <!-- custom Css-->
 <link href="{{ URL::asset('build/css/custom.min.css') }}"  rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('build/css/toastr.css') }}"  rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('build/css/sweetalert2.min.css') }}"  rel="stylesheet" type="text/css" />
 {{-- @yield('css') --}}
 <!--datatable css-->
 

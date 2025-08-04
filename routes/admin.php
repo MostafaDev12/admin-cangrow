@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\LanguageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -261,6 +262,17 @@ Route::prefix('admin')->group(function () {
       Route::get('/social/google/{status}', [SocialSettingController::class, 'googleup'])->name('admin-social-googleup');
     });
 
+
+    Route::group(['middleware' => 'permissions:language'], function () {
+
+      Route::get('/languages', [LanguageController::class, 'index'])->name('admin-flang-index');
+      Route::get('/languages/create', [LanguageController::class, 'create'])->name('admin-flang-create');
+      Route::post('/languages/create', [LanguageController::class, 'store'])->name('admin-flang-store');
+      Route::get('/languages/edit/{id}', [LanguageController::class, 'edit'])->name('admin-flang-edit');
+      Route::post('/languages/update/{id}', [LanguageController::class, 'update'])->name('admin-flang-update');
+      Route::get('/languages/delete/{id}', [LanguageController::class, 'destroy'])->name('admin-flang-delete');
+      Route::get('/languages/statusupdate/{id}/{status}', [LanguageController::class, 'statusupdate'])->name('admin-flang-statusupdate');
+       });
     // GALLERY SECTION ------------
 
     Route::get('/gallery/show', [GalleryController::class, 'show'])->name('admin-gallery-show');

@@ -178,7 +178,7 @@ class LanguageController extends Controller
             $data = Language::findOrFail($id1);
             $data->is_default = '1';
             $data->update();
-            $data = Language::where('_id','!=',$id1)->update(['is_default' => '0']);
+            $data = Language::where('id','!=',$id1)->update(['is_default' => '0']);
             //--- Redirect Section     
            
                $msg = trans('Update Success');

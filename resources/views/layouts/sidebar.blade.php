@@ -243,6 +243,14 @@
                                             data-key="t-Manage_Stauff"> @lang('translation.staff_mangment') </a>
                                     </li>
                                 @endif
+                                
+                                @if (Auth::guard('admin')->user()->sectionCheck('language'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin-flang-index') }}" class="nav-link"
+                                            data-key="t-Manage_Roles"> @lang('translation.language') </a>
+                                    </li>
+                                @endif
+
                             </ul>
                         </div>
                     </li> <!-- end Dashboard Menu -->
