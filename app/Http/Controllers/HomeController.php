@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutPoint;
+use App\Models\Faq;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Language;
@@ -83,78 +84,18 @@ class HomeController extends Controller
     $sign = $this->langSign();
 
     $sliders = Slider::first();
-    $points = AboutPoint::get();
+     
     $services = Service::get();
     $models = ModelCategory::get();
     $partners = Partner::get();
-    $processes = Process::get();
-       $timelines = Timeline::get();
-        $testimonials = Testimonial::get();
-            $certificates = Certificate::get();
+     
 
-    return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+   // return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+
+    return view('front.about', compact('sign', 'sliders', 'services', 'models', 'partners'));
   }
 
-  
-  public function dentistry(Request $request)
-  {
-
-    $sign = $this->langSign();
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $child_services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
-
-    return view('front.dentistry', compact('sign', 'sliders', 'points', 'child_services', 'models', 'reviews'));
-  }
-
-  
-  public function invisalign(Request $request)
-  {
-
-    $sign = $this->langSign();
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $child_services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
- $after_befores = AfterBefore::get();
-    return view('front.invisalign', compact('sign', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
-  }
-
-  public function dental_implants(Request $request)
-  {
-
-    $sign = $this->langSign();
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $child_services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
- $after_befores = AfterBefore::get();
-    return view('front.dental-implants', compact('sign', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
-  }
-
- 
-  public function veneers(Request $request)
-  {
-
-    $sign = $this->langSign();
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $child_services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
- 
-  $processes = Process::get();
-   $after_befores = PageModel::get();
-    return view('front.veneers', compact('sign', 'processes', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
-  }
+   
 
  
   public function doctors(Request $request)
@@ -200,12 +141,12 @@ class HomeController extends Controller
 
 
     $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $services = Service::get();
+    
+    $servicess = Service::paginate(9);
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.services', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.services', compact('sign', 'sliders',  'servicess', 'models', 'reviews'));
   }
   public function BookNow(Request $request)
   {
@@ -214,12 +155,12 @@ class HomeController extends Controller
 
 
     $sliders = Slider::first();
-    $points = AboutPoint::get();
+     
     $services = Service::get();
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.reservation', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.reservation', compact('sign', 'sliders',   'services', 'models', 'reviews'));
   }
  public function contact(Request $request)
   {
@@ -228,12 +169,12 @@ class HomeController extends Controller
 
 
     $sliders = Slider::first();
-    $points = AboutPoint::get();
+    
     $services = Service::get();
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.contact', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.contact', compact('sign', 'sliders',   'services', 'models', 'reviews'));
   }
 
   public function singleBlog(Request $request, $slug)
@@ -249,7 +190,9 @@ class HomeController extends Controller
       abort(404);
     }
 
-    return view('front.details-blog', compact('sign', 'blog'));
+    $blogs = Blog::orderBy('blog_date', 'desc')->take(18)->inRandomOrder()->paginate(6);
+
+    return view('front.details-blog', compact('sign', 'blog','blogs'));
   }
 
   public function singleService(Request $request, $slug)
@@ -263,7 +206,9 @@ class HomeController extends Controller
 
       abort(404);
     }
-    return view('front.details-service', compact('sign', 'service'));
+    $faqs = Faq::where('service_id', $service->id)->get();
+
+    return view('front.details-service', compact('sign', 'service','faqs'));
   }
 
   public function singleCategoryService(Request $request, $slug)

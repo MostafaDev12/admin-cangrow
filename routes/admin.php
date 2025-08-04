@@ -127,6 +127,21 @@ Route::prefix('admin')->group(function () {
     });
 
 
+    Route::group(['middleware' => 'permissions:faqs'], function () {
+
+      Route::get('/faqs/datatables',  [FaqController::class, 'datatables'])->name('admin-faqs-datatables');
+      Route::get('/faqs',  [FaqController::class, 'index'])->name('admin-faqs-index');
+      Route::get('/faqs/create',   [FaqController::class, 'create'])->name('admin-faqs-create');
+      Route::post('/faqs/create',  [FaqController::class, 'store'])->name('admin-faqs-store');
+      Route::get('/faqs/edit/{id}',  [FaqController::class, 'edit'])->name('admin-faqs-edit');
+      Route::post('/faqs/update/{id}', [FaqController::class, 'update'])->name('admin-faqs-update');
+
+      Route::get('/faqs/delete/{id}',  [FaqController::class, 'destroy'])->name('admin-faqs-delete');
+
+ 
+    });
+
+
     Route::group(['middleware' => 'permissions:partners'], function () {
 
 

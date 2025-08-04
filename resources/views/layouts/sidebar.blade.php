@@ -59,14 +59,15 @@
                         <a class="nav-link  " href="{{ route('admin-ps-portfolio') }}" aria-controls="sidebarportfolio">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
                         </a>
-                    </li> 
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-ps-our_team') }}" aria-controls="sidebarour_team">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.our_team_section')</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  " href="{{ route('admin-ps-after_before') }}" aria-controls="sidebarportfolio">
+                        <a class="nav-link  " href="{{ route('admin-ps-after_before') }}"
+                            aria-controls="sidebarportfolio">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.after_before')</span>
                         </a>
                     </li>
@@ -80,7 +81,7 @@
                         </a>
                     </li>
                 @endif --}}
-{{-- --}}
+                {{-- --}}
 
                 @if (Auth::guard('admin')->user()->sectionCheck('media'))
                     <li class="nav-item">
@@ -88,7 +89,7 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.media')</span>
                         </a>
                     </li>
-                @endif 
+                @endif
                 {{--       @if (Auth::guard('admin')->user()->sectionCheck('services'))
          
                      <li class="nav-item">
@@ -109,7 +110,7 @@
                         </a>
                         <div class="collapse menu-dropdown" id="services">
                             <ul class="nav nav-sm flex-column">
-{{-- 
+                                {{-- 
                                 @if (Auth::guard('admin')->user()->sectionCheck('categories'))
                                     <li class="nav-item">
                                         <a class="nav-link  " href="{{ route('admin-categories-index') }}"
@@ -134,6 +135,15 @@
                                         </a>
                                     </li>
                                 @endif
+
+                                @if (Auth::guard('admin')->user()->sectionCheck('faqs'))
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="{{ route('admin-faqs-index') }}"
+                                            aria-controls="sidebarmedia">
+                                            <span>@lang('translation.faqs')</span>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </li>
@@ -148,7 +158,7 @@
                         <div class="collapse menu-dropdown" id="models">
                             <ul class="nav nav-sm flex-column">
 
-{{--  --}}
+                                {{--  --}}
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models_category-index') }}"
                                         aria-controls="sidebarmodels_category">
@@ -168,13 +178,13 @@
                     </li> <!-- end Dashboard Menu -->
                 @endif
 
-           @if (Auth::guard('admin')->user()->sectionCheck('blogs'))
-                <li class="nav-item">
-                    <a class="nav-link  " href="{{ route('admin-blogs-index') }}" aria-controls="sidebarblogs">
-                        <i class="las la-tachometer-alt"></i> <span>@lang('translation.blogs')</span>
-                    </a>
-                </li>
-            @endif
+                @if (Auth::guard('admin')->user()->sectionCheck('blogs'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-blogs-index') }}" aria-controls="sidebarblogs">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.blogs')</span>
+                        </a>
+                    </li>
+                @endif
 
                 @if (Auth::guard('admin')->user()->sectionCheck('general_settings'))
                     <li class="nav-item">

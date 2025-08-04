@@ -39,13 +39,13 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
 
      
-        Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
+        Route::get('/services/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
         
           Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
 
         Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
-        Route::get('/فيديوهات', [HomeController::class, 'videos'])->name('videos.index');
+        Route::get('/videos', [HomeController::class, 'videos'])->name('videos.index');
         Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs.index');    
         
         Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');
@@ -65,7 +65,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
     
 
-        Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+        Route::get('/blogs/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
 
         
         

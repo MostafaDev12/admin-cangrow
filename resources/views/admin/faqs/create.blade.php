@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __("translation.add_blog") }}
+        {{ __("translation.add_model") }}
         @endslot
     @endcomponent
 
@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-body">
-                <form id="geniusform" action="{{ route('admin-blogs-create') }}" method="POST" enctype="multipart/form-data">
+                <form id="geniusform" action="{{ route('admin-faqs-create') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @include('includes.admin.form-both')
 
@@ -66,7 +66,6 @@
                                             </a>
                                         </li>
                                         @endif
-
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content  text-muted">
@@ -76,70 +75,27 @@
                                       
                                               <div class="mb-3">
                                                   <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
-                                                 
-                                                    <textarea class="form-control  " name="title_ar"  id="title_ar" rows="3" placeholder="{{ __('translation.title') }}"></textarea>
+                                                  <input type="text" class="form-control" name="title_ar" id="title_ar" placeholder="{{ __('translation.title') }}">
                                               </div>
                                                
                                               <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
-                                                  <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                                  <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                               </div>
                                               
-                                              <div class="mb-3">
-                                                <label for="short_details_ar" class="form-label">{{ __('translation.short_details') }}</label>
-                                                <textarea class="form-control  " name="short_details_ar"  id="short_details_ar" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
-                                            </div>
-                                             <div class="mb-3">
-                                                  <label for="slug_ar" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar"  placeholder="{{ __('translation.slug') }}">
-                                              </div>
-                                               
-                                           <hr>
-                                            <div class="mb-3">
-                                                  <label for="meta_title_ar" class="form-label">{{ __('translation.meta_title') }}</label>
-                                                  <input type="text" class="form-control" name="meta_title_ar" id="meta_title_ar" placeholder="{{ __('translation.meta_title') }}">
-                                              </div>
-                                               
-                                              <div class="mb-3">
-                                                  <label for="meta_details_ar" class="form-label">{{ __('translation.meta_details') }}</label>
-                                                  <textarea class="form-control" name="meta_details_ar"  id="meta_details_ar" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
                                            
                                             <div class="mb-3">
                                               <label for="title_en" class="form-label">{{ __('translation.title') }}</label>
-                                         
-                                              <textarea class="form-control  " name="title_en"  id="title_en" rows="3" placeholder="{{ __('translation.title') }}"></textarea>
+                                              <input type="text" class="form-control" name="title_en" id="title_en" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
                                           <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
-                                              <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                              <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                           </div>
-                                          
-                                          
-                                          <div class="mb-3">
-                                            <label for="short_details_en" class="form-label">{{ __('translation.short_details') }}</label>
-                                            <textarea class="form-control  " name="short_details_en"  id="short_details_en" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
-                                        </div>
-                                        
-                                           <div class="mb-3">
-                                                  <label for="slug_en" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_en" id="slug_en"   placeholder="{{ __('translation.slug') }}">
-                                              </div>
-                                               
-                                           <hr>
-                                            <div class="mb-3">
-                                                  <label for="meta_title_en" class="form-label">{{ __('translation.meta_title') }}</label>
-                                                  <input type="text" class="form-control" name="meta_title_en" id="meta_title_en" placeholder="{{ __('translation.meta_title') }}">
-                                              </div>
-                                               
-                                              <div class="mb-3">
-                                                  <label for="meta_details_en" class="form-label">{{ __('translation.meta_details') }}</label>
-                                                  <textarea class="form-control" name="meta_details_en"  id="meta_details_en" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
                                           
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
@@ -153,46 +109,44 @@
                                            
                                           <div class="mb-3">
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
-                                              <textarea class="form-control ckeditor" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
+                                              <textarea class="form-control" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                           </div>
-                                          
-                                          
-                                          <div class="mb-3">
-                                            <label for="short_details_fr" class="form-label">{{ __('translation.short_details') }}</label>
-                                            <textarea class="form-control  " name="short_details_fr"  id="short_details_fr" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
-                                        </div>
-                                        
-                                           <div class="mb-3">
-                                                  <label for="slug_fr" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_fr" id="slug_fr" placeholder="{{ __('translation.slug') }}">
-                                              </div>
-                                               
-                                           <hr>
-                                            <div class="mb-3">
-                                                  <label for="meta_title_fr" class="form-label">{{ __('translation.meta_title') }}</label>
-                                                  <input type="text" class="form-control" name="meta_title_fr" id="meta_title_fr" placeholder="{{ __('translation.meta_title') }}">
-                                              </div>
-                                               
-                                              <div class="mb-3">
-                                                  <label for="meta_details_fr" class="form-label">{{ __('translation.meta_details') }}</label>
-                                                  <textarea class="form-control" name="meta_details_fr"  id="meta_details_fr" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
                                         </div>
 
                                     </div>
+                                    
+                                    
+                                       <div class="row">
+
+{{--  --}}
+                            <div class="col-xl-12 col-md-12">
+                                <div class="card">
+                                  
+                     <div class="mb-3">
+                                                  <label for="model_category_id" class="form-label">{{ __('translation.services') }}</label>
+                                                  <select name="service_id" id="model_category_id"  class="form-control" required>
+                                                      <option value="">{{ __('translation.select') }}</option>
+                                                      @foreach($model_categories as $category)
+                                                      <option value="{{$category->id}}">{{$category->title_ar}}</option>
+                                                      @endforeach
+                                                  </select>
+                                                  
+                                                 
+                                              </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+
+
+                        </div>
                                 </div><!-- end card-body -->
                             </div><!-- end card -->
                         </div>
                     </div>
-  
+{{--   
                         <div class="row">
 
-                            <div class="col-xl-12 col-md-12">
-                                <div class="mb-3">
-                                    <label for="blog_date" class="form-label">{{ __('translation.blog_date') }}</label>
-                                    <input type="date" class="form-control" name="blog_date" id="blog_date" placeholder="{{ __('translation.blog_date') }}">
-                                </div>
-                            </div>
+
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -222,7 +176,7 @@
                             </div> <!-- end col -->
 
 
-                        </div>
+                        </div> --}}
 
 
 
