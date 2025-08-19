@@ -18,7 +18,7 @@ $randomPhone = Arr::random($phones);
                 {{ __('فريقنا جاهز للمساعدة في المواعيد والإجابة على أسئلتك وإرشادك نحو تحقيق ابتسامتك المثالية') }}
             </p>
             <div class="flex space-x-4 space-x-reverse justify-center items-center">
-                <a href="{{ route('contact.index') }}"
+                <a href="{{ route('contact.index'.$lang,$lang) }}"
                     class="bg-green-500 hover:bg-green-600 text-white font-semibold lg:font-bold text-sm lg:text-lg py-2 px-4 sm:px-6 rounded-full transition duration-300">
                        {{ __('تواصل معنا') }}
                 </a>

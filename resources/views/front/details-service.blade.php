@@ -145,7 +145,7 @@
                           <ul class="space-y-3">
                               @foreach ($services as $servic)
                                   <li>
-                                      <a href="{{ route('single-service.index', ['slug' => $servic->{'slug_' . $sign}]) }}"
+                                      <a href="{{ route('single-service.index'.$lang, ['slug' => $servic->{'slug_' . $sign} ,'lang'=> $lang]) }}"
                                           class="flex items-center text-gray-700 hover:text-blue-700 transition-all duration-300 transform hover:translate-x-1">
                                           <i class="fas fa-angle-left text-blue-500 text-sm ml-2"></i>
                                           {{ $servic->{'title_' . $sign} }}
@@ -195,7 +195,7 @@
                                       <img src="{{ $blogg->photo }}" alt="صورة مقالة"
                                           class="w-24 h-24 object-cover rounded-lg shadow-sm ml-4 flex-shrink-0" />
                                       <div>
-                                          <a href="{{ route('single-blog.index', $blogg->{'slug_' . $sign}) }}"
+                                          <a href="{{ route('single-blog.index'.$lang, ['blog' =>$blogg->{'slug_' . $sign} ,'lang'=> $lang ]) }}"
                                               class="font-bold text-gray-800 hover:text-blue-700 text-lg leading-snug">
                                               {{ strip_tags($blogg->{'title_' . $sign} ) }}
                                           </a>

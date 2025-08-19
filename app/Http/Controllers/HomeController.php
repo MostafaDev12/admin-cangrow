@@ -53,13 +53,15 @@ class HomeController extends Controller
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
-  public function index(Request $request)
+  public function index(Request $request,$lang = 'ar')
   {
     // if (view()->exists($request->path())) {
     //     return view($request->path());
     // }
     // return abort(404);
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+
+    $lang =  $sign == 'en' ? 'en' : null;
 
     $slider = Slider::first();
     
@@ -74,14 +76,15 @@ class HomeController extends Controller
   
  //   return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
     
-    return view('front.index', compact('sign', 'slider', 'home_services', 'models', 'features', 'partners', 'medias', 'blogs'));
+    return view('front.index', compact('sign', 'slider','lang', 'home_services', 'models', 'features', 'partners', 'medias', 'blogs'));
   
   }
 
-  public function about(Request $request)
+  public function about(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+  $lang =  $sign == 'en' ? 'en' : null;
 
     $sliders = Slider::first();
      
@@ -92,16 +95,16 @@ class HomeController extends Controller
 
    // return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
 
-    return view('front.about', compact('sign', 'sliders', 'services', 'models', 'partners'));
+    return view('front.about', compact('sign', 'sliders','lang', 'services', 'models', 'partners'));
   }
 
    
 
  
-  public function doctors(Request $request)
+  public function doctors(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
  
     $points = AboutPoint::get();
     $services = Service::where('parent_id','!=',0)->get();
@@ -113,32 +116,35 @@ class HomeController extends Controller
   }
 
 
-  public function videos(Request $request)
+  public function videos(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+  $lang =  $sign == 'en' ? 'en' : null;
 
     $videos = Media::get();
 
-    return view('front.videos', compact('sign','videos'));
+    return view('front.videos', compact('sign','videos','lang'));
   }
 
-  public function blogs(Request $request)
+  public function blogs(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+  $lang =  $sign == 'en' ? 'en' : null;
 
  
     $blogs = Blog::orderby('blog_date','desc')->paginate(9);
 
-    return view('front.blogs', compact('sign', 'blogs'));
+    return view('front.blogs', compact('sign', 'blogs', 'lang'));
   }
 
-  public function services(Request $request)
+  public function services(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
+  $lang =  $sign == 'en' ? 'en' : null;
 
     $sliders = Slider::first();
     
@@ -146,7 +152,7 @@ class HomeController extends Controller
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.services', compact('sign', 'sliders',  'servicess', 'models', 'reviews'));
+    return view('front.services', compact('sign', 'sliders', 'lang',   'servicess', 'models', 'reviews'));
   }
   public function BookNow(Request $request)
   {
@@ -162,10 +168,11 @@ class HomeController extends Controller
 
     return view('front.reservation', compact('sign', 'sliders',   'services', 'models', 'reviews'));
   }
- public function contact(Request $request)
+ public function contact(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+  $lang =  $sign == 'en' ? 'en' : null;
 
 
     $sliders = Slider::first();
@@ -174,14 +181,15 @@ class HomeController extends Controller
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.contact', compact('sign', 'sliders',   'services', 'models', 'reviews'));
+    return view('front.contact', compact('sign', 'sliders',   'services', 'lang', 'models', 'reviews'));
   }
 
-  public function singleBlog(Request $request, $slug)
+  public function singleBlog(Request $request, $slug,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
+  $lang =  $sign == 'en' ? 'en' : null;
 
     $blog = Blog::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
 
@@ -192,14 +200,34 @@ class HomeController extends Controller
 
     $blogs = Blog::orderBy('blog_date', 'desc')->take(18)->inRandomOrder()->paginate(6);
 
-    return view('front.details-blog', compact('sign', 'blog','blogs'));
+    return view('front.details-blog', compact('sign', 'blog','blogs','lang'));
   }
 
-  public function singleService(Request $request, $slug)
+  public function singleBlogen(Request $request,$lang = 'ar', $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
+  $lang =  $sign == 'en' ? 'en' : null;
+
+    $blog = Blog::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+
+    if(!$blog){
+
+      abort(404);
+    }
+
+    $blogs = Blog::orderBy('blog_date', 'desc')->take(18)->inRandomOrder()->paginate(6);
+
+    return view('front.details-blog', compact('sign', 'blog','blogs','lang'));
+  }
+
+  public function singleService(Request $request,$slug,$lang = 'ar')
+  {
+   // dd($slug,$lang);
+    $sign = $this->langSign($lang);
+
+  $lang =  $sign == 'en' ? 'en' : null;
 
     $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
     if(!$service){
@@ -208,21 +236,38 @@ class HomeController extends Controller
     }
     $faqs = Faq::where('service_id', $service->id)->get();
 
-    return view('front.details-service', compact('sign', 'service','faqs'));
+    return view('front.details-service', compact('sign', 'service','faqs','lang'));
+  }
+  public function singleServiceen(Request $request,$lang = 'ar',$slug)
+  {
+   // dd($slug,$lang);
+    $sign = $this->langSign($lang);
+
+  $lang =  $sign == 'en' ? 'en' : null;
+
+    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    if(!$service){
+
+      abort(404);
+    }
+    $faqs = Faq::where('service_id', $service->id)->get();
+
+    return view('front.details-service', compact('sign', 'service','faqs','lang'));
   }
 
-  public function singleCategoryService(Request $request, $slug)
+  public function singleCategoryService(Request $request, $slug,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
     $category = Category::where('slug_ar', $slug)->orwhere('slug_en',$slug)
      ->orwhere('slug_fr',$slug)->first();
+  $lang =  $sign == 'en' ? 'en' : null;
 
     if(!$category){
 
       abort(404);
     }
-    return view('front.category', compact('sign', 'category'));
+    return view('front.category', compact('sign', 'category', 'lang'));
   }
 
   public function root()
@@ -255,6 +300,8 @@ class HomeController extends Controller
 
         $lang =  Language::where('is_default', '=', 1)->first();
 
+        
+      
         session(['front_language' => $lang->name]);
         session(['front_language_photo' => $lang->photo]);
         $language_duraction = $lang->rtl == 1 ? 'rtl' :  'ltr';
@@ -263,6 +310,24 @@ class HomeController extends Controller
         App::setlocale($lang->name);
 
         $sign = $lang->sign;
+      }else{
+        $lang = Language::where('sign', '=', $sign)->first();
+
+        if ($lang) {
+          session(['front_language' => $lang->name]);
+          session(['front_language_photo' => $lang->photo]);
+          $language_duraction = $lang->rtl == 1 ? 'rtl' :  'ltr';
+          session(['front_language_duraction' => $language_duraction]);
+          App::setlocale($lang->name);
+        } else {
+          $data = Language::where('is_default', '=', '1')->first();
+          session(['front_language' => $data->name]);
+          session(['front_language_photo' => $data->photo]);
+          session(['sign' => $data->sign]);
+          App::setlocale($data->name);
+        }
+
+
       }
 
       return $sign;
@@ -321,14 +386,40 @@ class HomeController extends Controller
     $u =  url()->previous();
 
 
-    $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
+  //  $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
 
 
     // echo $x;
 
     //  return redirect($x);
 
-    return redirect()->back();
+   // return redirect()->back();
+
+   $sign = $data->sign;
+
+// نفك الرابط لأجزاء
+$parsed = parse_url($u);
+$scheme = $parsed['scheme'] ?? 'http';
+$host   = $parsed['host'] ?? '';
+$path   = $parsed['path'] ?? '';
+$query  = isset($parsed['query']) ? '?' . $parsed['query'] : '';
+
+// معالجة حسب اللغة
+if ($sign === 'ar') {
+    // إزالة /en من بداية المسار لو موجود
+    $path = preg_replace('#^/en(/|$)#', '/', $path);
+} elseif ($sign === 'en') {
+    // إضافة /en لو مش موجودة
+    if (!preg_match('#^/en(/|$)#', $path)) {
+        $path = '/en' . $path;
+    }
+}
+
+// بناء الرابط النهائي
+$newUrl = $scheme . '://' . $host . $path . $query;
+
+// التحويل مباشرة
+return redirect()->to($newUrl);
   }
 
 

@@ -118,25 +118,25 @@
         <div class="container mx-auto  flex items-center justify-between">
             <!-- Logo -->
             <div>
-                <a href="{{ route('front.index') }}">
+                <a href="{{ route('front.index'.$lang,$lang) }}">
                     <img alt="Tooth Guard Logo" class="w-40  h-30" src="{{ $gs->{'logo_' . $sign} }}">
                 </a>
             </div>
 
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-6">
-                <a href="{{ route('front.index') }}"
+                <a href="{{ route('front.index'.$lang,$lang) }}"
                     class="text-white text-lg hover:font-semibold transition duration-300">{{ __('الرئيسية') }}</a>
-                <a href="{{ route('about.index') }}"
+                <a href="{{ route('about.index'.$lang,$lang) }}"
                     class="text-white text-lg hover:font-semibold transition duration-300">
                     {{ __('معلومات عنا') }}</a>
-                <a href="{{ route('services.index') }}"
+                <a href="{{ route('services.index'.$lang,$lang) }}"
                     class="text-white text-lg hover:font-semibold transition duration-300">{{ __('الخدمات') }}</a>
-                <a href="{{ route('blogs.index') }}"
+                <a href="{{ route('blogs.index'.$lang,$lang) }}"
                     class="text-white text-lg hover:font-semibold transition duration-300">{{ __('المقالات') }}</a>
-                <a href="{{ route('videos.index') }}"
+                <a href="{{ route('videos.index'.$lang,$lang) }}"
                     class="text-white text-lg hover:font-semibold transition duration-300">{{ __('فيديوهات') }}</a>
-                <a href="{{ route('contact.index') }}"
+                <a href="{{ route('contact.index'.$lang,$lang) }}"
                     class="text-white text-lg hover:font-semibold transition duration-300"> {{ __('تواصل معنا') }}
                 </a>
             </nav>
@@ -197,17 +197,17 @@
                 <i class="fa-solid fa-times w-8 h-8"></i>
             </button>
             <nav class="flex flex-col items-center gap-6 text-lg">
-                <a href="{{ route('front.index') }}"
+                <a href="{{ route('front.index'.$lang,$lang) }}"
                     class="hover:font-semibold transition duration-300">{{ __('الرئيسية') }}</a>
-                <a href="{{ route('about.index') }}" class="hover:font-semibold transition duration-300">
+                <a href="{{ route('about.index'.$lang,$lang) }}" class="hover:font-semibold transition duration-300">
                     {{ __('معلومات عنا') }}</a>
-                <a href="{{ route('services.index') }}"
+                <a href="{{ route('services.index'.$lang,$lang) }}"
                     class="hover:font-semibold transition duration-300">{{ __('الخدمات') }}</a>
-                <a href="{{ route('blogs.index') }}"
+                <a href="{{ route('blogs.index'.$lang,$lang) }}"
                     class="hover:font-semibold transition duration-300">{{ __('المقالات') }}</a>
-                <a href="{{ route('videos.index') }}"
+                <a href="{{ route('videos.index'.$lang,$lang) }}"
                     class="hover:font-semibold transition duration-300">{{ __('فيديوهات') }}</a>
-                <a href="{{ route('contact.index') }}" class="hover:font-semibold transition duration-300">
+                <a href="{{ route('contact.index'.$lang,$lang) }}" class="hover:font-semibold transition duration-300">
                     {{ __('تواصل معنا') }}</a>
                 <div class="flex items-center gap-4 mt-6">
                     @if (App\Models\Socialsetting::find(1)->f_status == 1)
@@ -406,19 +406,19 @@
                 <div class="lg:col-span-1">
                     <h3 class="text-color_2 text-xl font-semibold uppercase mb-5">{{ __('الروابط') }}</h3>
                     <div class="space-y-4">
-                        <a href="{{ route('front.index') }}"
+                        <a href="{{ route('front.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('الرئيسية') }}</a>
-                        <a href="{{ route('about.index') }}"
+                        <a href="{{ route('about.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">
                             {{ __('معلومات عنا') }}</a>
-                        <a href="{{ route('services.index') }}"
+                        <a href="{{ route('services.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('الخدمات') }}
                         </a>
-                        <a href="{{ route('blogs.index') }}"
+                        <a href="{{ route('blogs.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('المقالات') }}</a>
-                        <a href="{{ route('videos.index') }}"
+                        <a href="{{ route('videos.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('فيديوهات') }}</a>
-                        <a href="{{ route('contact.index') }}"
+                        <a href="{{ route('contact.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">
                             {{ __('تواصل معنا') }}</a>
                     </div>

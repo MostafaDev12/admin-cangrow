@@ -31,11 +31,11 @@
                           {!! $slider->{'details_' . $sign} ?? '' !!}
                       </p>
                       <div class="flex justify-center md:justify-start space-x-4 space-x-reverse">
-                          <a href="{{ route('about.index') }}"
+                          <a href="{{ route('about.index'.$lang,$lang) }}"
                               class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">
                               {{ __('معلومات عنا') }}
                           </a>
-                          <a href="{{ route('contact.index') }}"
+                          <a href="{{ route('contact.index'.$lang,$lang) }}"
                               class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-500 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">
                               {{ __('احجز موعدك') }}
                           </a>
@@ -86,6 +86,7 @@
                   </h2>
                   <div class="swiper mySwiper overflow-hidden">
                       <div class="swiper-wrapper">
+                       
                           @foreach ($services as $k => $service)
                               <div class="swiper-slide">
                                   <div
@@ -96,7 +97,7 @@
                                           {{ $service->{'title_' . $sign} ?? '' }} </h3>
                                       <p class="text-sm"> {!! $service->{'short_details_' . $sign} ?? '' !!} </p>
                                       <div class="my-10">
-                                          <a href="{{ route('single-service.index', ['slug' => $service->{'slug_' . $sign}]) }}"
+                                          <a href="{{ route('single-service.index'.$lang, ['slug' => $service->{'slug_' . $sign} ,'lang'=> $lang]) }}"
                                               class="text-sm sm:text-md border border-gray-200 border-opacity-30 p-2 rounded-sm shadow-lg transform transition duration-500 ease-in-out hover:scale-125">
                                               {{ __('أقرأ المزيد') }}
                                           </a>
@@ -110,7 +111,7 @@
                       </div>
                   </div>
                   <div class="mt-8">
-                      <a href="{{ route('services.index') }}"
+                      <a href="{{ route('services.index'.$lang,$lang) }}"
                           class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full shadow-md transition duration-300">
 
                           {{ __('اكتشف المزيد من خدماتنا') }}
@@ -145,7 +146,7 @@
                                           </h3>
                                           <div class="text-gray-600 text-sm"></div>
                                           <div class="group mt-7 mb-4">
-                                              <a href="{{ route('single-blog.index', $blog->{'slug_' . $sign}) }}"
+                                              <a href="{{ route('single-blog.index'.$lang, ['blog' =>$blog->{'slug_' . $sign} ,'lang'=> $lang ]) }}"
                                                   class="text-sm sm:text-md border border-blue-800 text-blue-800 p-2 rounded-sm shadow-md hover:bg-blue-800 hover:text-white transition duration-300">
                                                   {{ __('أقرأ المزيد') }}
                                               </a>
@@ -160,7 +161,7 @@
                       </div>
                   </div>
                   <div class="mt-8">
-                      <a href="{{ route('blogs.index') }}"
+                      <a href="{{ route('blogs.index'.$lang,$lang) }}"
                           class="bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-full shadow-md transition duration-300">
                           {{ __('اكتشف المزيد من المقالات') }}
                       </a>

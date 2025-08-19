@@ -52,7 +52,7 @@
                         </p>
                         <div class="mt-7 mb-4">
                             <a class="text-sm border border-blue-800 text-blue-800 px-4 py-2 rounded-md shadow-md hover:bg-blue-800 hover:text-white transition duration-300"
-                                href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}"> {{ __('اعرف المزيد') }}</a>
+                                href="{{ route('single-blog.index'.$lang,['blog' =>$blog->{'slug_' . $sign} ,'lang'=> $lang ]) }}"> {{ __('اعرف المزيد') }}</a>
                         </div>
                     </div>
                 </div>
