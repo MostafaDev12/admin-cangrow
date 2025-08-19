@@ -139,10 +139,11 @@
                               <div class="swiper-slide">
                                   <div
                                       class="bg-white shadow-md rounded-lg overflow-hidden mt-4 mb-4 transform transition duration-300 hover:scale-105">
-                                      <img src="{{ $blog->photo }}" alt="{{ $blog->{'title_' . $sign} }}"
+                                      <img src="{{ $blog->photo }}" alt="{{ strip_tags($blog->{'title_' . $sign} ) }}"
                                           class="w-full h-60 object-cover">
                                       <div class="p-4">
-                                          <h3 class="text-lg font-bold text-blue-800 mb-2"> {{ $blog->{'title_' . $sign} }}
+                                          <h3 class="text-lg font-bold text-blue-800 mb-2">  
+                                            {{ strip_tags($blog->{'title_' . $sign} ) }}
                                           </h3>
                                           <div class="text-gray-600 text-sm"></div>
                                           <div class="group mt-7 mb-4">
