@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Marking & Coating Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body class="bg-black">
+
+    <header class="bg-black shadow-md py-4 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="w-1/6 animate-fade-in-left" style="animation-delay: 0.2s">
+                    <a href="index.php" class="block">
+                        <div class="text-2xl font-bold text-yellow-500">
+                            <!-- MWM <span class="text-yellow-400">Gulddal</span> -->
+                            <img src="assets/images/mainLogo.svg" alt="MWM Gulddal Systems Logo" class="h-20">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="w-5/6 flex flex-col">
+                    <div class="flex justify-end items-center text-sm text-primary mb-2 animate-fade-in-down"
+                        style="animation-delay: 0.2s">
+                        <span class="mr-2">Follow us</span>
+                        <a href="https://www.facebook.com/mwmgulddalsystems" target="_blank" rel="noopener noreferrer"
+                            class="text-primary hover:text-yellow-500 mx-1">
+                            <i class="fab fa-facebook-f h-4 w-4"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mwmgulddalsystems" target="_blank" rel="noopener noreferrer"
+                            class="text-primary hover:text-yellow-500 mx-1">
+                            <i class="fab fa-instagram h-4 w-4"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/mwm-gulddal-systems" target="_blank"
+                            rel="noopener noreferrer" class="text-primary hover:text-yellow-500 mx-1">
+                            <i class="fab fa-linkedin-in h-4 w-4"></i>
+                        </a>
+                        <span class="mx-2">|</span>
+                        <a href="ar/index.php" class="text-primary hover:text-yellow-500 tracking-normal">
+                            عـربــي
+                        </a>
+                    </div>
+
+                    <nav class="jetmenu-wrapper">
+                        <ul class="hidden lg:flex justify-end space-x-6 text-yellow-400 font-semibold">
+                            <li>
+                                <a href="#home" class="hover:text-yellow-500">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#about" class="hover:text-yellow-500">
+                                    About us
+                                </a>
+                            </li>
+
+                            <li class="relative group">
+                                <a href="#products" class="hover:text-yellow-500 flex items-center">
+                                    products
+                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                    </span>
+                                </a>
+                                <ul
+                                    class="absolute hidden group-hover:block bg-black border border-yellow-500 shadow-lg py-2 rounded-md w-64 z-50">
+                                    <li class="relative group">
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                            Road Marking
+                                            <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
+                                        <ul
+                                            class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-48 z-50">
+                                            <li class="relative group">
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                                    SBP SYSTEMS
+                                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-40 z-50">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            SBP 480
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            SBP 369
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            SBP 258
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            SBP 147
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="relative group">
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                                    MMA SYSTEMS
+                                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-40 z-50">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            MMA Primer
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU MMA 2K
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU MMA 3K
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            MMA Skid Resistance
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            MMA Spray
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            MMA Roller
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            MMA Surface Repair
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="relative group">
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                                    MethaTherm EHA
+                                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-40 z-50">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            MethaTherm EHA Spray
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            MethaTherm EHA Extrusion
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="relative group">
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                                    Safety Materials Systems
+                                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-40 z-50">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Vertical Traffic Signs
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Road Studs
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Paints
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="relative group">
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                            Ground Coatings
+                                            <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
+                                        <ul
+                                            class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-48 z-50">
+                                            <li class="relative group">
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                                    GU-Floor AR System
+                                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-40 z-50">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Floor Putty AR
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Floor AR
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="relative group">
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                                    GF-Repair System
+                                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-40 z-50">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GF-Primer
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GF-Filler
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="relative group">
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                            Protective and Marine Coatings
+                                            <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
+                                        <ul
+                                            class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-48 z-50">
+                                            <li class="relative group">
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                                    Protective Systems
+                                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-40 z-50">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Alkprimer IO
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Alkprimer ZR
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Alkprimer ZP
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Alkcoat FG
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Alkcoat FM
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Coat Z1
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Coat ZR2
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            GU-Coat ZP
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="relative group">
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                                    Marine System
+                                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                                <ul
+                                                    class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-40 z-50">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Deck Alkprimer
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Deck Alkpaint Enamel
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Deck Alkpaint
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Epoxy Tie Coat
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Antifouling CE 1
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                            Antifouling CE 2
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="relative group">
+                                <a href="#solutions" class="hover:text-yellow-500 flex items-center">
+                                    Solutions
+                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                    </span>
+                                </a>
+                                <ul
+                                    class="absolute hidden group-hover:block bg-black border border-yellow-500 shadow-lg py-2 rounded-md w-64 z-50">
+                                    <li class="relative group">
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                            Road Marking
+                                            <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
+                                        <ul
+                                            class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-64 z-50">
+                                            <li>
+                                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                    Anti Slippery PRETHERM
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                    Road Repair
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="relative group">
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                            Ground coating and Decorative Floor
+                                            <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
+                                        <ul
+                                            class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-64 z-50">
+                                            <li>
+                                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                    Ground Coating
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="relative group">
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 flex items-center justify-between">
+                                            Protective and Marine coatings
+                                            <span class="ml-1 transition-transform group-hover:rotate-180">
+                                                <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
+                                        <ul
+                                            class="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg py-2 rounded-md w-64 z-50">
+                                            <li>
+                                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                                    Protective and Marine coatings
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="relative group">
+                                <a href="#references" class="hover:text-yellow-500 flex items-center">
+                                    References
+                                    <span class="ml-1 transition-transform group-hover:rotate-180">
+                                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                                    </span>
+                                </a>
+                                <ul
+                                    class="absolute hidden group-hover:block bg-black border border-yellow-500 shadow-lg py-2 rounded-md w-40 z-50">
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                            Blogs
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                            Europe
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                            Africa
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                            Middle East
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                            Gulf
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                            Worldwide
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                                            Asia
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#careers" class="hover:text-yellow-500">
+                                    careers
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact" class="hover:text-yellow-500">
+                                    contact us
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <!-- Mobile menu button -->
+                    <div class="lg:hidden">
+                        <button id="mobile-menu-button" class="text-yellow-400 hover:text-yellow-500 p-2">
+                            <i id="menu-icon" class="fas fa-bars h-6 w-6"></i>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Navigation -->
+                    <div id="mobile-menu" class="hidden lg:hidden">
+                        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black border-t border-yellow-500">
+                            <a href="#home" class="block px-3 py-2 text-yellow-400 hover:text-yellow-500">
+                                Home
+                            </a>
+                            <a href="#about" class="block px-3 py-2 text-yellow-400 hover:text-yellow-500">
+                                About us
+                            </a>
+                            <a href="#products" class="block px-3 py-2 text-yellow-400 hover:text-yellow-500">
+                                Products
+                            </a>
+                            <a href="#solutions" class="block px-3 py-2 text-yellow-400 hover:text-yellow-500">
+                                Solutions
+                            </a>
+                            <a href="#references" class="block px-3 py-2 text-yellow-400 hover:text-yellow-500">
+                                References
+                            </a>
+                            <a href="#careers" class="block px-3 py-2 text-yellow-400 hover:text-yellow-500">
+                                Careers
+                            </a>
+                            <a href="#contact" class="block px-3 py-2 text-yellow-400 hover:text-yellow-500">
+                                Contact us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="contact" class="py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Header Section -->
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                    Connect with MWM Gulddal Systems
+                </h2>
+                <p class="text-base md:text-xl text-gray-300 max-w-3xl mx-auto">
+                    Have questions or need a tailored solution? Reach out to our experts through the contact form, or
+                    find the nearest office details below.
+                    We're here to help!
+                </p>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-2 gap-10 md:gap-16">
+
+                <!-- Contact Info & Regional Offices -->
+                <div class="space-y-10 md:space-y-12">
+
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-yellow-400">Contact Information</h3>
+                        <div class="space-y-6">
+                            <!-- Phone -->
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-yellow-600 p-3 rounded-lg text-white">
+                                    <i data-lucide="phone" class="h-6 w-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1 text-white">Main Contact</h4>
+                                    <p class="text-gray-200">Tell: +2022733403</p>
+                                    <p class="text-gray-200">+201222243351</p>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-yellow-600 p-3 rounded-lg text-white">
+                                    <i data-lucide="mail" class="h-6 w-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1 text-white">Email</h4>
+                                    <p class="text-gray-200">info@gulddalsystems.com</p>
+                                    <p class="text-gray-200">sales@gulddal-systems.com</p>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-yellow-600 p-3 rounded-lg text-white">
+                                    <i data-lucide="map-pin" class="h-6 w-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1 text-white">Middle East & Africa Office</h4>
+                                    <p class="text-gray-200">35 Hassan Elsherif St.</p>
+                                    <p class="text-gray-200">Naser City, Cairo, Egypt</p>
+                                </div>
+                            </div>
+
+                            <!-- Hours -->
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-yellow-600 p-3 rounded-lg text-white">
+                                    <i data-lucide="clock" class="h-6 w-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1 text-white">Service Hours</h4>
+                                    <p class="text-gray-200">Mon - Fri: 9:00 AM - 5:00 PM EEST</p>
+                                    <p class="text-gray-200">Emergency Support: 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regional Offices -->
+                    <div class="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-800">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-400">Our Global Presence</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Egypt -->
+                            <div
+                                class="flex items-center space-x-3 border-b border-gray-700 pb-3 last:border-b-0 last:pb-0">
+                                <img src="/images/flags/3.png" alt="Egypt Flag"
+                                    class="w-8 h-6 object-cover rounded-sm shadow-md" />
+                                <div>
+                                    <h4 class="font-semibold text-lg text-primary">Egypt</h4>
+                                    <p class="text-sm text-gray-300">35 Hassan Elsherif St., Nasr City, Cairo, Egypt</p>
+                                </div>
+                            </div>
+                            <!-- Czech Republic -->
+                            <div
+                                class="flex items-center space-x-3 border-b border-gray-700 pb-3 last:border-b-0 last:pb-0">
+                                <img src="/images/flags/1.jpg" alt="Czech Republic Flag"
+                                    class="w-8 h-6 object-cover rounded-sm shadow-md" />
+                                <div>
+                                    <h4 class="font-semibold text-lg text-primary">Czech Republic</h4>
+                                    <p class="text-sm text-gray-300">Jaurisova 515/4, Michle (Praha 4), 140 00 Praha</p>
+                                </div>
+                            </div>
+                            <!-- Germany -->
+                            <div
+                                class="flex items-center space-x-3 border-b border-gray-700 pb-3 last:border-b-0 last:pb-0">
+                                <img src="/images/flags/2.svg" alt="Germany Flag"
+                                    class="w-8 h-6 object-cover rounded-sm shadow-md" />
+                                <div>
+                                    <h4 class="font-semibold text-lg text-primary">Germany</h4>
+                                    <p class="text-sm text-gray-300">An Der Nesselburg 37A, 53179 Bonn</p>
+                                </div>
+                            </div>
+                            <!-- Iraq -->
+                            <div
+                                class="flex items-center space-x-3 border-b border-gray-700 pb-3 last:border-b-0 last:pb-0">
+                                <img src="/images/flags/4.png" alt="Iraq Flag"
+                                    class="w-8 h-6 object-cover rounded-sm shadow-md" />
+                                <div>
+                                    <h4 class="font-semibold text-lg text-primary">Iraq</h4>
+                                    <p class="text-sm text-gray-300">Flat 22 Block A Dreamland city Awbara, Sulimaniya
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Tunisia -->
+                            <div
+                                class="flex items-center space-x-3 border-b border-gray-700 pb-3 last:border-b-0 last:pb-0">
+                                <img src="/images/flags/5.png" alt="Tunisia Flag"
+                                    class="w-8 h-6 object-cover rounded-sm shadow-md" />
+                                <div>
+                                    <h4 class="font-semibold text-lg text-primary">Tunisia</h4>
+                                    <p class="text-sm text-gray-300">9, Avenue Haramaine Cherifaine, El Mouriuj -
+                                        Tunisia</p>
+                                </div>
+                            </div>
+                            <!-- Kenya -->
+                            <div
+                                class="flex items-center space-x-3 border-b border-gray-700 pb-3 last:border-b-0 last:pb-0">
+                                <img src="/images/flags/6.png" alt="Kenya Flag"
+                                    class="w-8 h-6 object-cover rounded-sm shadow-md" />
+                                <div>
+                                    <h4 class="font-semibold text-lg text-primary">Kenya</h4>
+                                    <p class="text-sm text-gray-300">Standard Building - Standard Street, 6th floor -
+                                        Nairobi-Kenya</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-gray-900 p-6 md:p-8 rounded-xl shadow-lg border border-gray-800">
+                    <h3 class="text-2xl font-bold mb-6 text-yellow-400">Send Us a Message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <!-- Name & Email -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-gray-50 text-sm font-medium mb-1">Name <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="name" name="name" required placeholder="Your Full Name"
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none text-gray-50" />
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-50 text-sm font-medium mb-1">Email Address
+                                    <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" required
+                                    placeholder="your.email@example.com"
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none text-gray-50" />
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div>
+                            <label for="phone" class="block text-gray-50 text-sm font-medium mb-1">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+20 123 456 7890"
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none text-gray-50" />
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label for="message" class="block text-gray-50 text-sm font-medium mb-1">Your Message <span
+                                    class="text-red-500">*</span></label>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Tell us about your project or inquiry..."
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none text-gray-50"></textarea>
+                        </div>
+
+                        <!-- Project Type -->
+                        <div>
+                            <label for="project-type" class="block text-gray-50 text-sm font-medium mb-1">Project
+                                Type</label>
+                            <select id="project-type" name="project-type"
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none text-gray-50">
+                                <option value="">Select project type...</option>
+                                <option value="new-installation">New Installation</option>
+                                <option value="upgrade">System Upgrade</option>
+                                <option value="maintenance">Maintenance Contract</option>
+                                <option value="consulting">Consulting Services</option>
+                                <option value="emergency">Emergency Support</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors shadow-md">
+                            Send Message
+                        </button>
+
+                        <p class="text-xs text-gray-400 text-center">
+                            * Required fields. We typically respond within 1-2 business days.
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Google Map -->
+            <div class="mt-16 md:mt-20">
+                <h3 class="text-2xl font-bold mb-6 text-yellow-400 text-center">Find Us on the Map</h3>
+                <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-800"
+                    style="height: 400px;">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.64531853472!2d31.332306375647565!3d30.04692737492163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fc003d0d611%3A0xc3b8a6a6f1b1b1f1!2s35%20Hassan%20El%20Sherif%20St%2C%20Al%20Manteqah%20Al%20Oula%2C%20Nasr%20City%2C%20Cairo%20Governorate%204450250%2C%20Egypt!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                        width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="MWM Gulddal Systems Cairo Office Map">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-black text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+                <!-- Company Info -->
+                <div class="mb-8 md:mb-0">
+                    <a href="index.php" class="block mb-4">
+                        <img src="./images/mainLogo.svg" alt="Company Logo" class="h-16 mx-auto md:mx-0" />
+                    </a>
+                    <p class="text-sm text-gray-300">
+                        GULDDAL SYSTEMS is a leading worldwide supplier of industrial protective coatings, safety
+                        materials and road markings.
+                    </p>
+
+                    <!-- Social Icons -->
+                    <div class="flex mt-4 space-x-2 text-primary">
+                        <a href="https://www.facebook.com/mwmgulddalsystems" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-yellow-500">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mwmgulddalsystems" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-yellow-500">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/mwm-gulddal-systems" target="_blank"
+                            rel="noopener noreferrer" class="hover:text-yellow-500">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="mb-8 md:mb-0">
+                    <h4 class="text-lg font-bold text-yellow-400 mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.php" class="hover:text-yellow-500 transition duration-200">Home</a></li>
+                        <li><a href="about.php" class="hover:text-yellow-500 transition duration-200">About us</a></li>
+                        <li><a href="products.php" class="hover:text-yellow-500 transition duration-200">Products</a>
+                        </li>
+                        <li><a href="solutions.php" class="hover:text-yellow-500 transition duration-200">Solutions</a>
+                        </li>
+                        <li><a href="references.php"
+                                class="hover:text-yellow-500 transition duration-200">References</a></li>
+                        <li><a href="careers.php" class="hover:text-yellow-500 transition duration-200">Careers</a></li>
+                        <li><a href="contacts.php" class="hover:text-yellow-500 transition duration-200">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Products -->
+                <div class="mb-8 md:mb-0">
+                    <h4 class="text-lg font-bold text-yellow-400 mb-4">Our Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="productsD1.php?level=120"
+                                class="hover:text-yellow-500 transition duration-200">Road Marking</a></li>
+                        <li><a href="productsD1.php?level=121"
+                                class="hover:text-yellow-500 transition duration-200">Ground Coatings</a></li>
+                        <li><a href="productsD1.php?level=119"
+                                class="hover:text-yellow-500 transition duration-200">Protective & Marine Coatings</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="">
+                    <h4 class="text-lg font-bold text-yellow-400 mb-4">Contact Us</h4>
+                    <address class="not-italic text-sm text-gray-300 mb-4">
+                        <p class="mb-1"><strong>Middle East & Africa office</strong></p>
+                        <p>35 Hassan Elsherif St. - Naser City, Cairo, Egypt</p>
+                        <p class="mt-2">Tel: +2022733403</p>
+                        <p>Mobile: +201222243351</p>
+                    </address>
+
+                    <!-- Social Media -->
+                    <div class="flex justify-center md:justify-start space-x-4 mt-6">
+                        <a href="https://www.facebook.com/mwmgulddalsystems" target="_blank"
+                            class="text-yellow-400 hover:text-yellow-500 transition duration-200">
+                            <i class="fab fa-facebook-f text-2xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mwmgulddalsystems" target="_blank"
+                            class="text-yellow-400 hover:text-yellow-500 transition duration-200">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/mwm-gulddal-systems" target="_blank"
+                            class="text-yellow-400 hover:text-yellow-500 transition duration-200">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Divider -->
+            <hr class="border-gray-700 my-8" />
+
+            <!-- Copyright -->
+            <div class="text-center text-xs text-gray-500">
+                © <span id="current-year"></span> - ALL RIGHTS RESERVED
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="scripts/index.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

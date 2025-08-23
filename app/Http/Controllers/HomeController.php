@@ -71,10 +71,10 @@ class HomeController extends Controller
 
     $doctors = Doctor::get()->take(8);
     $timelines = Timeline::get();
-    $testimonials = Testimonial::get();
+     
     $blogs = Blog::orderby('id','desc')->get()->take(3);
   $certificates = Certificate::get();
-    return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
+    return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
   }
 
   public function about(Request $request)

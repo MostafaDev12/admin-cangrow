@@ -1,129 +1,42 @@
 <!DOCTYPE html>
-<html lang="{{ $sign }}">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Marking & Coating Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Noto+Kufi+Arabic:wght@100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
 
-
-    @php
-
-        $ps = App\Models\Pagesetting::find(1);
-
-    @endphp
-
-
-
-
-    <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-    <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
-    <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
-    <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:type" content="website">
-
-
-    <meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
-    @if (isset($page->meta_tag) && isset($page->meta_description))
-        <meta name="keywords" content="{{ $page->meta_tag }}">
-        <meta name="description" content="{{ $page->meta_description }}">
-        <title>@yield('title') -
-
-            {{ $gs->{'title_' . $sign} }}
-
-        </title>
-    @elseif(isset($blog->{'meta_details_' . $sign} ))
-        <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->{'meta_details_' . $sign} }}">
-        <meta property="og:description" content="{{ $blog->{'meta_details_' . $sign} }}">
-    @else
-        <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
-
-        <title>
-            @yield('title')
-        </title>
-    @endif
-
-
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "{{url('/')}}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}"
-    }
-    </script>
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ $gs->{'title_' . $sign} }}",
-    "url": "{{url('/')}}",
-    "description": "",
-    "image": "{{ $gs->{'logo_' . $sign} }}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}",
-      "sameAs": ["{{ App\Models\Socialsetting::find(1)->facebook }}", "{{ App\Models\Socialsetting::find(1)->twitter }}", "{{ App\Models\Socialsetting::find(1)->instagram }}"],
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "",
-      "addressRegion": "Cairo",
-      "postalCode": "11341",
-      "addressCountry": "Egypt"
-    }
-  }
-</script>
-
-
-    @yield('gsearch')
-    <!-- Google Font -->
-
-    <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ $gs->favicon }}" />
-    <!-- bootstrap -->
-
-
-
-
-    <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
-
-
-    @include('includes.style')
-
-
-   @yield(section: 'css')
-
-
-
-
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="./fonts/Cairo-Regular.ttf">
+    <script src="scripts/tailwind.js"></script>
 
 </head>
 
-@php
-    $phones = explode(',', $gs->phones);
-    $emails = explode(',', $gs->emails);
-    $addresses = json_decode($gs->{'addresses_' . $sign});
-
-    $randomPhone = Arr::random($phones);
-@endphp
-
-
 <body class="bg-black" dir="rtl" lang="ar">
-
-    <header class="bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat sticky top-0 z-[1000] text-primary hidden lg:block">
+    <header class="bg-[url('./images/headerBack.png')]  bg-repeat sticky top-0 z-[1000] text-primary hidden lg:block">
         <div class="container mx-auto px-4 py-4">
-            <div dir="ltr" class="flex items-cneter relative justify-between">
+            <div class="flex items-cneter relative justify-start gap-10">
                 <!-- Logo Section -->
-                <div class=" animate-slideInLeft" style="animation-delay: 0.2s;">
+                <div class=" animate-slideInLeft absolute  bottom-50 left-20" style="animation-delay: 0.2s;">
                     <a href="./index.html" class="">
-                        <img src="{{ $gs->{'logo_' . $sign} }}" alt="MWM Gulddal Systems Logo"
+                        <img src="./images/logo.png" alt="MWM Gulddal Systems Logo"
                             class="logo h-40 scale-150 transition-transform duration-300">
                     </a>
 
                 </div>
                 <!-- Menu and Social Links -->
-                <div dir="rtl" class="">
+                <div class="text-right">
                     <!-- Social Links and Language -->
                     <div class="w-full animate-slideInDown" style="animation-delay: 0.2s;">
                         <a href="../index.php" class="text-[#bbac7d]  hover:text-gray-800">English</a>
@@ -159,7 +72,7 @@
                                     <i class="fa fa-chevron-down mr-1 text-xs"></i>
                                 </a>
                                 <ul
-                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-72 right-0 z-20">
+                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-72 right-0 z-20">
                                     <li class="relative group">
                                         <a href="./products.html"
                                             class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
@@ -167,12 +80,12 @@
                                             <i class="fa fa-chevron-left mr-1 text-xs"></i>
                                         </a>
                                         <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0 z-30">
+                                            class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0 z-30">
                                             <li class="relative group">
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">أنظمة SBP</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">SBP 480</a></li>
                                                     <li><a href="./products.html"
@@ -187,7 +100,7 @@
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">أنظمة MMA</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">برايمر MMA</a>
                                                     </li>
@@ -212,7 +125,7 @@
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">MethaTherm EHA</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">رذاذ MethaTherm
                                                             EHA</a></li>
@@ -225,7 +138,7 @@
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">أنظمة مواد السلامة</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">لافتات مرور
                                                             عمودية</a></li>
@@ -246,12 +159,12 @@
                                             <i class="fa fa-chevron-left mr-1 text-xs"></i>
                                         </a>
                                         <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
+                                            class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
                                             <li class="relative group">
                                                 <a href="./products.html" class="block px-4 py-2 hover:bg-gray-100">نظام
                                                     GU-Floor AR</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">معجون GU-Floor
                                                             AR</a></li>
@@ -264,7 +177,7 @@
                                                 <a href="./products.html" class="block px-4 py-2 hover:bg-gray-100">نظام
                                                     GF-Repair</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">برايمر GF</a></li>
                                                     <li><a href="./products.html"
@@ -280,12 +193,12 @@
                                             <i class="fa fa-chevron-left mr-1 text-xs"></i>
                                         </a>
                                         <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
+                                            class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
                                             <li class="relative group">
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">أنظمة الحماية</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">GU-Alkprimer
                                                             IO</a></li>
@@ -337,7 +250,7 @@
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">النظام البحري</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">غير متوفر</a></li>
                                                     <li><a href="./products.html"
@@ -387,7 +300,7 @@
                                     <i class="fa fa-chevron-down mr-1 text-xs"></i>
                                 </a>
                                 <ul
-                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-72 right-0 z-20">
+                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-72 right-0 z-20">
                                     <li class="relative group">
                                         <a href="./products.html"
                                             class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
@@ -395,12 +308,12 @@
                                             <i class="fa fa-chevron-left mr-1 text-xs"></i>
                                         </a>
                                         <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0 z-30">
+                                            class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0 z-30">
                                             <li class="relative group">
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">أنظمة SBP</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">SBP 480</a></li>
                                                     <li><a href="./products.html"
@@ -415,7 +328,7 @@
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">أنظمة MMA</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">برايمر MMA</a>
                                                     </li>
@@ -440,7 +353,7 @@
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">MethaTherm EHA</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">رذاذ MethaTherm
                                                             EHA</a></li>
@@ -453,7 +366,7 @@
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">أنظمة مواد السلامة</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">لافتات مرور
                                                             عمودية</a></li>
@@ -474,12 +387,12 @@
                                             <i class="fa fa-chevron-left mr-1 text-xs"></i>
                                         </a>
                                         <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
+                                            class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
                                             <li class="relative group">
                                                 <a href="./products.html" class="block px-4 py-2 hover:bg-gray-100">نظام
                                                     GU-Floor AR</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">معجون GU-Floor
                                                             AR</a></li>
@@ -492,7 +405,7 @@
                                                 <a href="./products.html" class="block px-4 py-2 hover:bg-gray-100">نظام
                                                     GF-Repair</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">برايمر GF</a></li>
                                                     <li><a href="./products.html"
@@ -508,12 +421,12 @@
                                             <i class="fa fa-chevron-left mr-1 text-xs"></i>
                                         </a>
                                         <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
+                                            class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
                                             <li class="relative group">
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">أنظمة الحماية</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">GU-Alkprimer
                                                             IO</a></li>
@@ -565,7 +478,7 @@
                                                 <a href="./products.html"
                                                     class="block px-4 py-2 hover:bg-gray-100">النظام البحري</a>
                                                 <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+                                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
                                                     <li><a href="./products.html"
                                                             class="block px-4 py-2 hover:bg-gray-100">غير متوفر</a></li>
                                                     <li><a href="./products.html"
@@ -615,7 +528,7 @@
                                     <i class="fa fa-chevron-down mr-1 text-xs"></i>
                                 </a>
                                 <ul
-                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-40 right-0 z-20">
+                                    class="dropdown absolute bg-[url('./images/headerBack.png')]  bg-repeat text-primary shadow-lg w-40 right-0 z-20">
                                     <li><a href="./blog.html" class="block px-4 py-2 hover:bg-gray-100">المدونات</a>
                                     </li>
                                     <li><a href="./references.html" class="block px-4 py-2 hover:bg-gray-100">أوروبا</a>
@@ -642,16 +555,15 @@
             </div>
         </div>
     </header>
-
     <!-- Mobile Menu -->
-    <header class="bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat sticky top-0 z-[1000] text-primary lg:hidden">
+    <header class="bg-[url('./images/headerBack.png')]  bg-repeat sticky top-0 z-[1000] text-primary lg:hidden">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
 
 
                     <a href="./index.html">
-                        <img src="{{ $gs->{'logo_' . $sign} }}" alt="MWM Gulddal Systems Logo" class="scale-150 h-16">
+                        <img src="./images/logo.png" alt="MWM Gulddal Systems Logo" class="scale-150 h-16">
                     </a>
 
                 </div>
@@ -965,10 +877,91 @@
     </header>
 
 
-    @yield('content')
 
+    <section id="services" class="py-20" dir="rtl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-yellow-500 mb-4">
+                    خدمات الأتمتة الشاملة
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    من التصميم الأولي إلى الصيانة المستمرة، نقدم حلول أتمتة متكاملة مخصصة لمتطلبات صناعتك ومعايير
+                    السلامة.
+                </p>
+            </div>
 
-   
+            <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- عنصر الخدمة -->
+                <div
+                    class="bg-gray-900 rounded-xl p-8 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-yellow-600 p-3 rounded-lg group-hover:bg-yellow-700 transition-colors">
+                            <i data-lucide="settings"
+                                class="h-8 w-8 text-black group-hover:text-gray-950 transition-colors"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">برمجة وتكوين PLC</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        برمجة احترافية لـ Siemens S7 وAllen-Bradley وSchneider Electric مع تكامل شامل مع HMI.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-200">
+                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
+                            برمجة TIA Portal
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200">
+                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
+                            RSLogix 5000 / Studio 5000
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200">
+                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
+                            Unity Pro / EcoStruxure
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200">
+                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
+                            Ladder Logic و Structured Text
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- SCADA وأنظمة التحكم -->
+                <div
+                    class="bg-gray-900 rounded-xl p-8 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-yellow-600 p-3 rounded-lg group-hover:bg-yellow-700 transition-colors">
+                            <i data-lucide="cpu"
+                                class="h-8 w-8 text-black group-hover:text-gray-950 transition-colors"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">SCADA وأنظمة التحكم</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        أنظمة تحكم إشرافية متقدمة مع مراقبة لحظية، وإنذارات، وتسجيل بيانات تاريخية.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-200">
+                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
+                            WinCC Professional
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200">
+                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
+                            FactoryTalk View
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200">
+                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
+                            Wonderware InTouch
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200">
+                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
+                            منصة Ignition
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- يمكنك إضافة باقي البطاقات بنفس التنسيق -->
+
+            </div>
+        </div>
+    </section>
     <div class="fixed bottom-3 md:bottom-6 right-3 md:right-6 z-50">
         <a href="https://wa.me/+201288867154" target="_blank" rel="noopener noreferrer"
             class="flex items-center justify-center bg-primary text-white p-3
@@ -978,18 +971,18 @@
     </div>
     <footer class="bg-black text-white py-10" dir="rtl">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
 
                 <!-- معلومات الشركة -->
                 <div class="mb-8 md:mb-0">
-                    <a href="./index.html" class="text-center flex items-center justify-center mb-4">
-                        <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-40 scale-150" />
+                    <a href="./index.html" class="block mb-4">
+                        <img src="./images/logo.png" alt="شعار الشركة" class="h-40 scale-150 mx-auto md:mx-0" />
                     </a>
-                    <p class="text-sm text-center text-gray-300">
+                    <p class="text-sm text-gray-300">
                         أم دابليو أم جولدال سيستمز مورد عاملي رائد في الدهانات الصناعية المتخصصة </p>
 
                     <!-- أيقونات التواصل الاجتماعي -->
-                    <div class="flex text-center my-2 justify-center items-center gap-2">
+                    <div class="flex justify-center md:justify-start space-x-reverse space-x-4 mt-6">
                         <a href="https://www.facebook.com/mwmgulddalsystems" target="_blank"
                             class="text-primary hover:text-primary transition duration-200">
                             <i class="fab fa-facebook-f text-2xl"></i>
@@ -1071,7 +1064,7 @@
             <div class="text-center text-xs text-gray-500">
                 <p
                     class="py-5 text-center flex justify-center items-center text-accent mt-12 border-t border-gray-700 uppercase">
-                    <span class="text-accent" id="year-footer">{{ date('Y') }}<!-- --> </span>© جميع الحقوق محفوظة<a
+                    <span class="text-accent" id="year-footer">2025<!-- --> </span>© جميع الحقوق محفوظة<a
                         target="_blank" href="https://www.cangrowonline.com/">
                         <img src="https://alrehab-eg.com/front/alrehab/assets/CanGrow logo.png" class=" w-40 h-20"
                             alt="">
@@ -1082,223 +1075,11 @@
         </div>
     </footer>
 
-  
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <Script>
-        $(document).on('submit', '#subscribeform', function(e) {
-            e.preventDefault();
-            console.log(12);
-            $('#sub-btn').prop('disabled', true);
-            console.log(13);
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function(data) {
-                    console.log(14);
-                    if ((data.errors)) {
-                        console.log(15);
-                        $('.alert-danger').show();
-                        $('.alert-danger ul').html('');
-                        for (var error in data.errors) {
-                            $('.alert-danger ul').append('<li>' + data.errors[error] + '</li>');
-                        }
-
-                    } else {
-                        console.log(16);
-                        toastr.success(langg.subscribe_success);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success p').html(langg.subscribe_success);
-
-                    }
-
-                    $('#sub-btn').prop('disabled', false);
-
-
-                }
-
-            });
-
-        });
-
-
-        $(document).on('submit', '#email-form', function(e) {
-            e.preventDefault();
-            $('.gocover').show();
-            $('.submit-btn').prop('disabled', true);
-            var name = $('.fname').val();
-
-
-
-            if (name == '') {
-                $('#email-form .response').html(
-                    '<div class="failed alert alert-warning">Please fill the required fields.</div>');
-                $('button.submit-btn').prop('disabled', false);
-                return false;
-            }
-
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#email-form .response').html(
-                        '<div class="text-info">Loading...</div>'
-                    );
-                    console.log(1);
-                },
-                success: function(data) {
-                    console.log(2);
-                    if ((data.errors)) {
-                        console.log(3);
-                        $('.alert-success').hide();
-                        $('.alert-danger').show();
-                        $('#email-form .response').html('');
-                        for (var error in data.errors) {
-                            console.log(4);
-                            $('#email-form .response').append('<li>' + data.errors[error] + '</li>')
-                        }
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .eq(0).focus();
-                        $('#email-form .refresh_code').trigger('click');
-
-                    } else {
-                        console.log(5);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('#email-form .response').html(data);
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .eq(0).focus();
-                        $('#email-form input[type=text], #email-form input[type=email], #email-form textarea')
-                            .val('');
-                        $('#email-form .refresh_code').trigger('click');
-
-                    }
-                    console.log(6);
-                    $('.gocover').hide();
-                    $('button.submit-btn').prop('disabled', false);
-                }
-
-            });
-
-        });
-    </script>
-
-    <script src="{{ asset('front/gulddal/') }}/scripts/index.js"></script>
+    <script src="scripts/index.js"></script>
 
     <script>
         lucide.createIcons();
     </script>
-    @include('includes.script')
-
-
-
-    <script src="{{ asset('build/js/toastr.js') }}"></script>
-
-
-    <script type="text/javascript">
-        var logo_src = "{{ $gs->{'logo_' . $sign} }}";
-    </script>
-
-
-
-    <script type="text/javascript">
-        var mainurl = "{{ url('/' . $sign) }}";
-        var mainurl2 = "{{ url('/') }}";
-        var gs = {!! json_encode($gs) !!};
-        var langg = {!! json_encode($sign) !!};
-        var mainurl2 = "{{ url('/') }}";
-
-        $(".selectors").on('change', function() {
-            var url = $(this).val();
-            window.location = url;
-        });
-    </script>
-   @yield('js')
-    <script>
-        $(document).on('submit', '#appointment-form', function(e) {
-            e.preventDefault();
-            $('.gocover').show();
-            $('.submit-btn').prop('disabled', true);
-            var name = $('.fname').val();
-
-
-
-            if (name == '') {
-                $('#appointment-form .response').html(
-                    '<div class="failed alert alert-warning">Please fill the required fields.</div>');
-                $('button.submit-btn').prop('disabled', false);
-                return false;
-            }
-
-            $.ajax({
-                method: "POST",
-                url: $(this).prop('action'),
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#appointment-form .response').html(
-                        '<div class="text-info"><img src="{{ asset('assets/images/preloader.gif') }}"> Loading...</div>'
-                    );
-                    console.log(1);
-                },
-                success: function(data) {
-                    console.log(2);
-                    if ((data.errors)) {
-                        console.log(3);
-                        $('.alert-success').hide();
-                        $('.alert-danger').show();
-                        $('#appointment-form .response').html('');
-                        for (var error in data.errors) {
-                            console.log(4);
-                            $('#appointment-form .response').append('<li>' + data.errors[error] +
-                                '</li>')
-                        }
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .eq(0).focus();
-                        $('#appointment-form .refresh_code').trigger('click');
-
-                    } else {
-                        console.log(5);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('#appointment-form .response').html(data);
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .eq(0).focus();
-                        $('#appointment-form input[type=text], #appointment-form input[type=email], #appointment-form textarea')
-                            .val('');
-                        $('#appointment-form .refresh_code').trigger('click');
-
-                    }
-                    console.log(6);
-                    $('.gocover').hide();
-                    $('button.submit-btn').prop('disabled', false);
-                }
-
-            });
-
-        });
-
-        $('.refresh_code').on("click", function() {
-            $.get(mainurl2 + '/contact/refresh_code', function(data, status) {
-                $('.codeimg1').attr("src", mainurl2 + "/assets/images/capcha_code.png?time=" + Math
-                    .random());
-            });
-        })
-    </script>
- 
-
 </body>
 
 </html>
