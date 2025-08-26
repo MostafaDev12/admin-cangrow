@@ -50,6 +50,10 @@ class Category extends Model
     {
         return $this->hasMany(Service::class);
     }   
+    public function parentServices()
+    {
+        return $this->hasMany(Service::class)->where('parent_id','=',0);
+    }   
     public function subcategories()
     {
         return $this->hasMany(Subcategory::class);

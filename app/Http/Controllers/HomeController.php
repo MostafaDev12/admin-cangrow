@@ -52,13 +52,13 @@ class HomeController extends Controller
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
-  public function index(Request $request)
+  public function index(Request $request,$lang)
   {
     // if (view()->exists($request->path())) {
     //     return view($request->path());
     // }
     // return abort(404);
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
     $sliders = Slider::get();
     $points = AboutPoint::get();
@@ -77,10 +77,13 @@ class HomeController extends Controller
     return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
   }
 
-  public function about(Request $request)
+
+
+
+  public function about(Request $request,$lang)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
@@ -172,20 +175,20 @@ class HomeController extends Controller
   }
 
 
-  public function videos(Request $request)
+  public function careers(Request $request,$lang)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
     $videos = Media::get();
 
-    return view('front.videos', compact('sign','videos'));
+    return view('front.careers', compact('sign','videos'));
   }
 
-  public function blogs(Request $request)
+  public function blogs(Request $request,$lang)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
  
     $blogs = Blog::orderby('blog_date','desc')->paginate(9);
@@ -221,10 +224,10 @@ class HomeController extends Controller
 
     return view('front.reservation', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
- public function contact(Request $request)
+ public function contact(Request $request,$lang)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
 
     $sliders = Slider::first();
@@ -236,10 +239,10 @@ class HomeController extends Controller
     return view('front.contact', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
 
-  public function singleBlog(Request $request, $slug)
+  public function singleBlog(Request $request,$lang, $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
 
     $blog = Blog::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
@@ -252,10 +255,10 @@ class HomeController extends Controller
     return view('front.details-blog', compact('sign', 'blog'));
   }
 
-  public function singleService(Request $request, $slug)
+  public function singleService(Request $request,$lang, $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
 
     $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
@@ -265,11 +268,52 @@ class HomeController extends Controller
     }
     return view('front.details-service', compact('sign', 'service'));
   }
-
-  public function singleCategoryService(Request $request, $slug)
+  public function singleCategory(Request $request,$lang, $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+
+
+    $service = Category::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    if(!$service){
+
+      abort(404);
+    }
+    return view('front.services', compact('sign', 'service'));
+  }  
+  
+  public function singleModelCategory(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $service = ModelCategory::where('id', $slug)->first();
+    if(!$service){
+
+      abort(404);
+    }
+    return view('front.references', compact('sign', 'service'));
+  }
+  public function gallery(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+   
+    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    if(!$service){
+
+      abort(404);
+    }
+
+    return view('front.gallery', compact('sign','service'));
+  }
+
+  public function singleCategoryService(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
     $category = Category::where('slug_ar', $slug)->orwhere('slug_en',$slug)
      ->orwhere('slug_fr',$slug)->first();
 

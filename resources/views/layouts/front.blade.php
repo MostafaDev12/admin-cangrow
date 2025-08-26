@@ -31,7 +31,7 @@
             {{ $gs->{'title_' . $sign} }}
 
         </title>
-    @elseif(isset($blog->{'meta_details_' . $sign} ))
+    @elseif(isset($blog->{'meta_details_' . $sign}))
         <meta name="keywords" content="{{ $blog->meta_tag }}">
         <meta name="description" content="{{ $blog->{'meta_details_' . $sign} }}">
         <meta property="og:description" content="{{ $blog->{'meta_details_' . $sign} }}">
@@ -92,7 +92,7 @@
     @include('includes.style')
 
 
-   @yield(section: 'css')
+    @yield(section: 'css')
 
 
 
@@ -109,27 +109,35 @@
 @endphp
 
 
-<body class="bg-black" dir="rtl" lang="ar">
+<body class="bg-black" dir="{{ session::get('front_language_duraction') }}" lang="{{ $sign }}">
 
-    <header class="bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat sticky top-0 z-[1000] text-primary hidden lg:block">
+    <header
+        class="bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat sticky top-0 z-[1000] text-primary hidden lg:block">
         <div class="container mx-auto px-4 py-4">
-            <div dir="ltr" class="flex items-cneter relative justify-between">
+            <div dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"
+                class="flex items-cneter relative justify-between">
                 <!-- Logo Section -->
                 <div class=" animate-slideInLeft" style="animation-delay: 0.2s;">
-                    <a href="./index.html" class="">
+                    <a href="{{ route('front.index', $sign) }}" class="">
                         <img src="{{ $gs->{'logo_' . $sign} }}" alt="MWM Gulddal Systems Logo"
                             class="logo h-40 scale-150 transition-transform duration-300">
                     </a>
 
                 </div>
+                @php
+                    $lang = App\Models\Language::where('sign', '!=', $sign)->first();
+                @endphp
                 <!-- Menu and Social Links -->
-                <div dir="rtl" class="">
+                <div dir="{{ session::get('front_language_duraction') }}" class="">
                     <!-- Social Links and Language -->
                     <div class="w-full animate-slideInDown" style="animation-delay: 0.2s;">
-                        <a href="../index.php" class="text-[#bbac7d]  hover:text-gray-800">English</a>
+                        @if ($lang)
+                            <a href="{{ route('change-lang.index', $lang->id) }}"
+                                class="text-[#bbac7d]  hover:text-gray-800">{{ $lang->language }}</a>
+                        @endif
                         <span class="mx-2 text-primary ">|</span>
 
-                        <span class="text-[#bbac7d]  ml-2">تابعنا</span>
+                        <span class="text-[#bbac7d]  ml-2">{{ __('تابعنا') }}</span>
                         <a href="https://www.facebook.com/mwmgulddalsystems" target="_blank"
                             class="text-[#bbac7d]  mx-1 hover:text-primary ">
                             <i class="fab fa-facebook-f"></i>
@@ -146,496 +154,120 @@
                     <!-- Main Menu -->
                     <nav id="menu-main" class="w-full mt-10 transition-all animate-slideInLeft">
                         <ul class="flex items-center text-gray-700 ">
-                            <li><a href="./index.html"
-                                    class="text-primary hover:bg-primary hover:text-white p-4">الرئيسية</a>
+                            <li><a href="{{ route('front.index', $sign) }}"
+                                    class="text-primary hover:bg-primary hover:text-white p-4">{{ __('الرئيسية') }}</a>
                             </li>
-                            <li><a href="./about.html" class="text-primary hover:bg-primary hover:text-white p-4 ">عن
-                                    الشركة</a></li>
+                            <li><a href="{{ route('about.index', $sign) }}"
+                                    class="text-primary hover:bg-primary hover:text-white p-4 ">
+                                    {{ __('عن الشركة') }}</a></li>
                             <!-- Products Dropdown -->
                             <li class="relative group">
-                                <a href="./products.html"
+                                <a href="#"
                                     class="text-primary hover:bg-primary hover:text-white p-4  flex items-center">
-                                    المنتجات
+                                    {{ __('المنتجات') }}
                                     <i class="fa fa-chevron-down mr-1 text-xs"></i>
                                 </a>
                                 <ul
                                     class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-72 right-0 z-20">
-                                    <li class="relative group">
-                                        <a href="./products.html"
-                                            class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
-                                            دهانات تخطيط الطرق
-                                            <i class="fa fa-chevron-left mr-1 text-xs"></i>
-                                        </a>
-                                        <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0 z-30">
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">أنظمة SBP</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">SBP 480</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">SBP 369</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">SBP 258</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">SBP 147</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">أنظمة MMA</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">برايمر MMA</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU MMA 2K</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU MMA 3K</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">مقاومة الانزلاق
-                                                            MMA</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">رذاذ MMA</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">أسطوانة MMA</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">إصلاح سطح MMA</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">MethaTherm EHA</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">رذاذ MethaTherm
-                                                            EHA</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">بثق MethaTherm
-                                                            EHA</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">أنظمة مواد السلامة</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">لافتات مرور
-                                                            عمودية</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">مسامير الطريق</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">دهانات</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="relative group">
-                                        <a href="./products.html"
-                                            class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
-                                            دهانات الأرضيات
 
-                                            <i class="fa fa-chevron-left mr-1 text-xs"></i>
-                                        </a>
-                                        <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
-                                            <li class="relative group">
-                                                <a href="./products.html" class="block px-4 py-2 hover:bg-gray-100">نظام
-                                                    GU-Floor AR</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">معجون GU-Floor
-                                                            AR</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Floor AR</a>
+                                    @foreach ($categories as $category)
+                                        <li class="relative group">
+                                            <a href="#" class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
+                                                {!! $category->{'title_' . $sign} ?? '' !!}
+                                                <i class="fa fa-chevron-left mr-1 text-xs"></i>
+                                            </a>
+                                            <ul
+                                                class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0 z-30">
+
+                                                @foreach ($category->parentServices as $parentServices)
+                                                    <li class="relative group">
+                                                        <a href="{{ route('single-service.index', ['lang' => $sign, 'slug' => $parentServices->{'slug_' . $sign}]) }}"
+                                                            class="block px-4 py-2 hover:bg-gray-100"> أنظمة SBP </a>
+                                                        <ul
+                                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+
+                                                            @foreach ($parentServices->childs as $service)
+                                                                <li><a href="{{ route('single-service.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
+                                                                        class="block px-4 py-2 hover:bg-gray-100">
+                                                                        {!! $service->{'title_' . $sign} ?? '' !!}</a></li>
+                                                            @endforeach
+                                                        </ul>
                                                     </li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html" class="block px-4 py-2 hover:bg-gray-100">نظام
-                                                    GF-Repair</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">برايمر GF</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">حشو GF</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="relative group">
-                                        <a href="./products.html"
-                                            class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
-                                            دهانات الحماية
-                                            <i class="fa fa-chevron-left mr-1 text-xs"></i>
-                                        </a>
-                                        <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">أنظمة الحماية</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkprimer
-                                                            IO</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkprimer
-                                                            ZR</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkprimer
-                                                            ZP</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkcoat FG</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkcoat FM</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkcoat FHG</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat Z1</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat ZR2</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat ZP</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat AL</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat INT</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat SF</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Proof E-Tar</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat SB</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat PU</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">النظام البحري</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">غير متوفر</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Deck Alkprimer</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Deck Alkpaint
-                                                            Enamel</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Deck Alkpaint</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Epoxy Tie Coat</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Vinyl Tie Coat</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Antifouling CE
-                                                            1</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Antifouling CE
-                                                            2</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Antifouling
-                                                            LSV</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Antifouling
-                                                            HSV</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Epoxy Resin SF</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Balance Tanks
-                                                            Epoxy Paint</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <!-- Solutions Dropdown -->
+                           
                             <li class="relative group">
-                                <a href="./services.html"
+                                <a href="#"
                                     class="text-primary hover:bg-primary hover:text-white p-4  flex items-center">
-                                    معرض الصور
+                                    {{ __('معرض الصور') }}
                                     <i class="fa fa-chevron-down mr-1 text-xs"></i>
                                 </a>
                                 <ul
                                     class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-72 right-0 z-20">
-                                    <li class="relative group">
-                                        <a href="./products.html"
-                                            class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
-                                            دهانات تخطيط الطرق
-                                            <i class="fa fa-chevron-left mr-1 text-xs"></i>
-                                        </a>
-                                        <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0 z-30">
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">أنظمة SBP</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">SBP 480</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">SBP 369</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">SBP 258</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">SBP 147</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">أنظمة MMA</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">برايمر MMA</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU MMA 2K</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU MMA 3K</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">مقاومة الانزلاق
-                                                            MMA</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">رذاذ MMA</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">أسطوانة MMA</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">إصلاح سطح MMA</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">MethaTherm EHA</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">رذاذ MethaTherm
-                                                            EHA</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">بثق MethaTherm
-                                                            EHA</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">أنظمة مواد السلامة</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">لافتات مرور
-                                                            عمودية</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">مسامير الطريق</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">دهانات</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="relative group">
-                                        <a href="./products.html"
-                                            class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
-                                            دهانات الأرضيات
 
-                                            <i class="fa fa-chevron-left mr-1 text-xs"></i>
-                                        </a>
-                                        <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
-                                            <li class="relative group">
-                                                <a href="./products.html" class="block px-4 py-2 hover:bg-gray-100">نظام
-                                                    GU-Floor AR</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">معجون GU-Floor
-                                                            AR</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Floor AR</a>
+                                    @foreach ($categories as $category)
+                                        <li class="relative group">
+                                            <a href="#" class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
+                                                {!! $category->{'title_' . $sign} ?? '' !!}
+                                                <i class="fa fa-chevron-left mr-1 text-xs"></i>
+                                            </a>
+                                            <ul
+                                                class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0 z-30">
+
+                                                @foreach ($category->parentServices as $parentServices)
+                                                    <li class="relative group">
+                                                        <a href="{{ route('gallery.index', ['lang' => $sign, 'slug' => $parentServices->{'slug_' . $sign}]) }}"
+                                                            class="block px-4 py-2 hover:bg-gray-100"> أنظمة SBP </a>
+                                                        <ul
+                                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
+
+                                                            @foreach ($parentServices->childs as $service)
+                                                                <li><a href="{{ route('gallery.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
+                                                                        class="block px-4 py-2 hover:bg-gray-100">
+                                                                        {!! $service->{'title_' . $sign} ?? '' !!}</a></li>
+                                                            @endforeach
+                                                        </ul>
                                                     </li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html" class="block px-4 py-2 hover:bg-gray-100">نظام
-                                                    GF-Repair</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">برايمر GF</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">حشو GF</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="relative group">
-                                        <a href="./products.html"
-                                            class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
-                                            دهانات الحماية
-                                            <i class="fa fa-chevron-left mr-1 text-xs"></i>
-                                        </a>
-                                        <ul
-                                            class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-56 right-full top-0">
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">أنظمة الحماية</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkprimer
-                                                            IO</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkprimer
-                                                            ZR</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkprimer
-                                                            ZP</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkcoat FG</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkcoat FM</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Alkcoat FHG</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat Z1</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat ZR2</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat ZP</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat AL</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat INT</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat SF</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Proof E-Tar</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat SB</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">GU-Coat PU</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="relative group">
-                                                <a href="./products.html"
-                                                    class="block px-4 py-2 hover:bg-gray-100">النظام البحري</a>
-                                                <ul
-                                                    class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">غير متوفر</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Deck Alkprimer</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Deck Alkpaint
-                                                            Enamel</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Deck Alkpaint</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Epoxy Tie Coat</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Vinyl Tie Coat</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Antifouling CE
-                                                            1</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Antifouling CE
-                                                            2</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Antifouling
-                                                            LSV</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Antifouling
-                                                            HSV</a></li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Epoxy Resin SF</a>
-                                                    </li>
-                                                    <li><a href="./products.html"
-                                                            class="block px-4 py-2 hover:bg-gray-100">Balance Tanks
-                                                            Epoxy Paint</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <!-- References Dropdown -->
                             <li class="relative group">
-                                <a href="./references.html"
+                                <a href="#"
                                     class="text-primary hover:bg-primary hover:text-white p-4  flex items-center">
-                                    المراجع
+                                    {{ __('المراجع') }}
                                     <i class="fa fa-chevron-down mr-1 text-xs"></i>
                                 </a>
                                 <ul
                                     class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-40 right-0 z-20">
-                                    <li><a href="./blog.html" class="block px-4 py-2 hover:bg-gray-100">المدونات</a>
+                                    <li><a href="{{ route('blogs.index', $sign) }}"
+                                            class="block px-4 py-2 hover:bg-gray-100"> {{ __('المدونات') }}</a>
                                     </li>
-                                    <li><a href="./references.html" class="block px-4 py-2 hover:bg-gray-100">أوروبا</a>
+ @foreach ($references as $reference)
+                                    <li><a href="{{ route('single-model-category.index', ['lang' => $sign, 'id' => $reference->id]) }}?ref={!! $reference->{'title_' . $sign} ?? '' !!}"
+                                            class="block px-4 py-2 hover:bg-gray-100">
+                                            {!! $reference->{'title_' . $sign} ?? '' !!}</a>
                                     </li>
-                                    <li><a href="./references.html"
-                                            class="block px-4 py-2 hover:bg-gray-100">إفريقيا</a></li>
-                                    <li><a href="./references.html" class="block px-4 py-2 hover:bg-gray-100">الشرق
-                                            الأوسط</a></li>
-                                    <li><a href="./references.html" class="block px-4 py-2 hover:bg-gray-100">الخليج</a>
-                                    </li>
-                                    <li><a href="./references.html"
-                                            class="block px-4 py-2 hover:bg-gray-100">عالميًا</a></li>
-                                    <li><a href="./references.html" class="block px-4 py-2 hover:bg-gray-100">آسيا</a>
-                                    </li>
+                                  
+                               @endforeach
+                                    
+                                    
                                 </ul>
                             </li>
-                            <li><a href="./careers.html"
-                                    class="text-primary hover:bg-primary hover:text-white p-4 ">الوظائف</a></li>
-                            <li><a href="./contact.html"
-                                    class="text-primary hover:bg-primary hover:text-white p-4 ">اتصل بنا</a></li>
+                            <li><a href="{{ route('careers.index', $sign) }}"
+                                    class="text-primary hover:bg-primary hover:text-white p-4 ">{{ __('الوظائف') }}</a>
+                            </li>
+                            <li><a href="{{ route('contact.index', $sign) }}"
+                                    class="text-primary hover:bg-primary hover:text-white p-4 ">
+                                    {{ __('اتصل بنا') }}</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -644,14 +276,16 @@
     </header>
 
     <!-- Mobile Menu -->
-    <header class="bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat sticky top-0 z-[1000] text-primary lg:hidden">
+    <header
+        class="bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat sticky top-0 z-[1000] text-primary lg:hidden">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
 
 
-                    <a href="./index.html">
-                        <img src="{{ $gs->{'logo_' . $sign} }}" alt="MWM Gulddal Systems Logo" class="scale-150 h-16">
+                    <a href="{{ route('front.index', $sign) }}">
+                        <img src="{{ $gs->{'logo_' . $sign} }}" alt="MWM Gulddal Systems Logo"
+                            class="scale-150 h-16">
                     </a>
 
                 </div>
@@ -663,7 +297,7 @@
                 <div class="pt-2 pb-4 h-screen overflow-y-scroll space-y-1">
                     <!-- Social Links and Language -->
                     <div class="py-2 border-b">
-                        <span class="text-primary  ml-2">تابعنا</span>
+                        <span class="text-primary  ml-2">{{ __('تابعنا') }}</span>
                         <a href="https://www.facebook.com/mwmgulddalsystems" target="_blank"
                             class="text-primary  mx-1 hover:text-primary ">
                             <i class="fab fa-facebook-f"></i>
@@ -677,23 +311,30 @@
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                         <span class="mx-2 text-primary ">|</span>
-                        <a href="../index.php" class="text-primary  hover:text-gray-800">English</a>
+                        @if ($lang)
+                            <a href="{{ route('change-lang.index', $lang->id) }}"
+                                class="text-primary  hover:text-gray-800">{{ $lang->language }}</a>
+                        @endif
                     </div>
                     <!-- Menu Items -->
                     <div class="relative">
-                        <a href="./index.html" class="block px-3 py-2 hover:bg-gray-100">الرئيسية</a>
+                        <a href="{{ route('front.index', $sign) }}"
+                            class="block px-3 py-2 hover:bg-gray-100">{{ __(key: 'الرئيسية') }}</a>
                     </div>
                     <div class="relative">
-                        <a href="./index.html" class="block px-3 py-2 hover:bg-gray-100">عن الشركه</a>
+                        <a href="{{ route('about.index', $sign) }}" class="block px-3 py-2 hover:bg-gray-100">
+                            {{ __('عن الشركه') }}</a>
                     </div>
                     <!-- Products -->
                     <div class="relative">
                         <button onclick="toggleSubmenu(this)"
                             class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                            <span>المنتجات</span>
+                            <span>{{ __('المنتجات') }}</span>
                             <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
                         </button>
                         <div class="submenu hidden pl-4">
+
+
                             <div class="relative">
                                 <button onclick="toggleSubmenu(this)"
                                     class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
@@ -701,6 +342,8 @@
                                     <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
                                 </button>
                                 <div class="submenu hidden pl-4">
+
+
                                     <div class="relative">
                                         <button onclick="toggleSubmenu(this)"
                                             class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
@@ -708,256 +351,49 @@
                                             <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
                                         </button>
                                         <div class="submenu hidden pl-4">
+
                                             <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">SBP
                                                 480</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">SBP
-                                                369</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">SBP
-                                                258</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">SBP
-                                                147</a>
+
                                         </div>
                                     </div>
-                                    <div class="relative">
-                                        <button onclick="toggleSubmenu(this)"
-                                            class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                            <span>أنظمة MMA</span>
-                                            <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                        </button>
-                                        <div class="submenu hidden pl-4">
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">برايمر
-                                                MMA</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU MMA
-                                                2K</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU MMA
-                                                3K</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">مقاومة
-                                                الانزلاق MMA</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">رذاذ
-                                                MMA</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">أسطوانة
-                                                MMA</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">إصلاح
-                                                سطح MMA</a>
-                                        </div>
-                                    </div>
-                                    <div class="relative">
-                                        <button onclick="toggleSubmenu(this)"
-                                            class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                            <span>MethaTherm EHA</span>
-                                            <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                        </button>
-                                        <div class="submenu hidden pl-4">
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">رذاذ
-                                                MethaTherm EHA</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">بثق
-                                                MethaTherm EHA</a>
-                                        </div>
-                                    </div>
-                                    <div class="relative">
-                                        <button onclick="toggleSubmenu(this)"
-                                            class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                            <span>أنظمة مواد السلامة</span>
-                                            <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                        </button>
-                                        <div class="submenu hidden pl-4">
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">لافتات
-                                                مرور عمودية</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">مسامير
-                                                الطريق</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">دهانات</a>
-                                        </div>
-                                    </div>
+
+
                                 </div>
                             </div>
-                            <div class="relative">
-                                <button onclick="toggleSubmenu(this)"
-                                    class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                    <span>دهاناتات الأرضيات</span>
-                                    <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                </button>
-                                <div class="submenu hidden pl-4">
-                                    <div class="relative">
-                                        <button onclick="toggleSubmenu(this)"
-                                            class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                            <span>نظام GU-Floor AR</span>
-                                            <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                        </button>
-                                        <div class="submenu hidden pl-4">
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">معجون
-                                                GU-Floor AR</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Floor
-                                                AR</a>
-                                        </div>
-                                    </div>
-                                    <div class="relative">
-                                        <button onclick="toggleSubmenu(this)"
-                                            class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                            <span>نظام GF-Repair</span>
-                                            <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                        </button>
-                                        <div class="submenu hidden pl-4">
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">برايمر
-                                                GF</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">حشو
-                                                GF</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="relative">
-                                <button onclick="toggleSubmenu(this)"
-                                    class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                    <span>الدهاناتات الواقية والبحرية</span>
-                                    <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                </button>
-                                <div class="submenu hidden pl-4">
-                                    <div class="relative">
-                                        <button onclick="toggleSubmenu(this)"
-                                            class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                            <span>أنظمة الحماية</span>
-                                            <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                        </button>
-                                        <div class="submenu hidden pl-4">
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">GU-Alkprimer IO</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">GU-Alkprimer ZR</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">GU-Alkprimer ZP</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">GU-Alkcoat FG</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">GU-Alkcoat FM</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">GU-Alkcoat FHG</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Coat
-                                                Z1</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Coat
-                                                ZR2</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Coat
-                                                ZP</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Coat
-                                                AL</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Coat
-                                                INT</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Coat
-                                                SF</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Proof
-                                                E-Tar</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Coat
-                                                SB</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">GU-Coat
-                                                PU</a>
-                                        </div>
-                                    </div>
-                                    <div class="relative">
-                                        <button onclick="toggleSubmenu(this)"
-                                            class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                            <span>النظام البحري</span>
-                                            <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                        </button>
-                                        <div class="submenu hidden pl-4">
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">غير
-                                                متوفر</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">Deck
-                                                Alkprimer</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">Deck
-                                                Alkpaint Enamel</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">Deck
-                                                Alkpaint</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">Epoxy
-                                                Tie Coat</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">Vinyl
-                                                Tie Coat</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">Antifouling CE 1</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">Antifouling CE 2</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">Antifouling LSV</a>
-                                            <a href="./products.html"
-                                                class="block px-3 py-2 hover:bg-gray-100">Antifouling HSV</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">Epoxy
-                                                Resin SF</a>
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">Balance
-                                                Tanks Epoxy Paint</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+
 
 
                         </div>
                         <!-- Solutions -->
-                        <div class="relative">
-                            <button onclick="toggleSubmenu(this)"
-                                class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                <span>معرض الصور</span>
-                                <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                            </button>
-                            <div class="submenu hidden pl-4">
-                                <div class="relative">
-                                    <button onclick="toggleSubmenu(this)"
-                                        class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                        <span>علامات الطرق</span>
-                                        <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                    </button>
-                                    <div class="submenu hidden pl-4">
-                                        <a href="./solutions.html" class="block px-3 py-2 hover:bg-gray-100">Anti
-                                            Slippery PRETHERM</a>
-                                        <a href="./solutions.html" class="block px-3 py-2 hover:bg-gray-100">إصلاح
-                                            الطرق</a>
-                                    </div>
-                                </div>
-                                <div class="relative">
-                                    <button onclick="toggleSubmenu(this)"
-                                        class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                        <span>دهانات الأرضيات والأرضيات الزخرفية</span>
-                                        <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                    </button>
-                                    <div class="submenu hidden pl-4">
-                                        <a href="./solutions.html" class="block px-3 py-2 hover:bg-gray-100">دهانات
-                                            الأرضيات</a>
-                                    </div>
-                                </div>
-                                <div class="relative">
-                                    <button onclick="toggleSubmenu(this)"
-                                        class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                        <span>الدهاناتات الواقية والبحرية</span>
-                                        <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                    </button>
-                                    <div class="submenu hidden pl-4">
-                                        <a href="./solutions.html" class="block px-3 py-2 hover:bg-gray-100">الدهاناتات
-                                            الواقية والبحرية</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                        {{-- <div class="relative">
+                            <a href="{{ route('gallery.index', $sign) }}"
+                                class="block px-3 py-2 hover:bg-gray-100">{{ __('معرض الصور') }}</a>
+                        </div> --}}
                         <!-- References -->
                         <div class="relative">
                             <button onclick="toggleSubmenu(this)"
                                 class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                <span>المراجع</span>
+                                <span>{{ __('المراجع') }}</span>
                                 <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
                             </button>
                             <div class="submenu hidden pl-4">
-                                <a href="./blog.html" class="block px-3 py-2 hover:bg-gray-100">المدونات</a>
-                                <a href="./references.html" class="block px-3 py-2 hover:bg-gray-100">أوروبا</a>
-                                <a href="./references.html" class="block px-3 py-2 hover:bg-gray-100">إفريقيا</a>
-                                <a href="./references.html" class="block px-3 py-2 hover:bg-gray-100">الشرق
-                                    الأوسط</a>
-                                <a href="./references.html" class="block px-3 py-2 hover:bg-gray-100">الخليج</a>
-                                <a href="./references.html" class="block px-3 py-2 hover:bg-gray-100">عالميًا</a>
-                                <a href="./references.html" class="block px-3 py-2 hover:bg-gray-100">آسيا</a>
+                                <a href="{{ route('blogs.index', $sign) }}"
+                                    class="block px-3 py-2 hover:bg-gray-100">{{ __('المدونات') }}</a>
+                               @foreach ($references as $reference)
+                                    <a href="{{ route('single-model-category.index', ['lang' => $sign, 'id' => $reference->id]) }}?ref={!! $reference->{'title_' . $sign} ?? '' !!}"
+                                        class="block px-3 py-2 hover:bg-gray-100">
+                                        {!! $reference->{'title_' . $sign} ?? '' !!}</a>
+                                   
+                               @endforeach
+                                   
                             </div>
                         </div>
                         <div class="relative">
-                            <a href="./careers.html" class="block px-3 py-2 hover:bg-gray-100">الوظائف</a>
-                        </div>
-                        <div class="relative">
-                            <a href="./contact.html" class="block px-3 py-2 hover:bg-gray-100">اتصل بنا</a>
+                            <a href="{{ route('contact.index', $sign) }}" class="block px-3 py-2 hover:bg-gray-100">
+                                {{ __('اتصل بنا') }}</a>
                         </div>
                     </div>
                 </div>
@@ -968,7 +404,7 @@
     @yield('content')
 
 
-   
+
     <div class="fixed bottom-3 md:bottom-6 right-3 md:right-6 z-50">
         <a href="https://wa.me/+201288867154" target="_blank" rel="noopener noreferrer"
             class="flex items-center justify-center bg-primary text-white p-3
@@ -976,17 +412,18 @@
             <i class="fab fa-whatsapp md:fa-2x"></i>
         </a>
     </div>
-    <footer class="bg-black text-white py-10" dir="rtl">
+    <footer class="bg-black text-white py-10" dir="{{ session::get('front_language_duraction') }}">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
 
                 <!-- معلومات الشركة -->
                 <div class="mb-8 md:mb-0">
-                    <a href="./index.html" class="text-center flex items-center justify-center mb-4">
+                    <a href="{{ route('front.index', $sign) }}"
+                        class="text-center flex items-center justify-center mb-4">
                         <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-40 scale-150" />
                     </a>
                     <p class="text-sm text-center text-gray-300">
-                        أم دابليو أم جولدال سيستمز مورد عاملي رائد في الدهانات الصناعية المتخصصة </p>
+                        {{ $gs->{'footer_' . $sign} }} </p>
 
                     <!-- أيقونات التواصل الاجتماعي -->
                     <div class="flex text-center my-2 justify-center items-center gap-2">
@@ -1007,33 +444,36 @@
 
                 <!-- روابط سريعة -->
                 <div class="mb-8 md:mb-0">
-                    <h4 class="text-lg font-bold text-primary mb-4">روابط سريعة</h4>
+                    <h4 class="text-lg font-bold text-primary mb-4"> {{ __('روابط سريعة') }}</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="./index.html" class="hover:text-primary transition duration-200">الرئيسية</a>
+                        <li><a href="{{ route('front.index', $sign) }}"
+                                class="hover:text-primary transition duration-200">{{ __('الرئيسية') }}</a>
                         </li>
-                        <li><a href="./about.html" class="hover:text-primary transition duration-200">عن الشركه</a></li>
-                        <li><a href="./products.html" class="hover:text-primary transition duration-200">المنتجات</a>
+                        <li><a href="{{ route('about.index', $sign) }}"
+                                class="hover:text-primary transition duration-200"> {{ __('عن الشركه') }} </a></li>
+                        <li><a href="{{ route('blogs.index', $sign) }}"
+                                class="hover:text-primary transition duration-200">{{ __('المدونات') }}</a>
                         </li>
-                        <li><a href="./services.html" class="hover:text-primary transition duration-200">الحلول</a>
+
+                        <li><a href="{{ route('careers.index', $sign) }}"
+                                class="hover:text-primary transition duration-200">{{ __('الوظائف') }}</a>
                         </li>
-                        <li><a href="./references.html" class="hover:text-primary transition duration-200">المرجعيات</a>
-                        </li>
-                        <li><a href="./careers.html" class="hover:text-primary transition duration-200">الوظائف</a>
-                        </li>
-                        <li><a href="./contact.html" class="hover:text-primary transition duration-200">اتصل بنا</a>
+                        <li><a href="{{ route('contact.index', $sign) }}"
+                                class="hover:text-primary transition duration-200"> {{ __('اتصل بنا') }} </a>
                         </li>
                     </ul>
                 </div>
 
                 <!-- المنتجات -->
                 <div class="mb-8 md:mb-0">
-                    <h4 class="text-lg font-bold text-primary mb-4">منتجاتنا</h4>
+                    <h4 class="text-lg font-bold text-primary mb-4">{{ __('منتجاتنا') }}</h4>
                     <ul class="space-y-2 text-sm">
                         <li><a href="./products.html" class="hover:text-primary transition duration-200">دهانات تخطيط
                                 الطرق
 
                             </a></li>
-                        <li><a href="./products.html" class="hover:text-primary transition duration-200">دهانات الأرضيات
+                        <li><a href="./products.html" class="hover:text-primary transition duration-200">دهانات
+                                الأرضيات
 
                             </a></li>
                         <li><a href="./products.html" class="hover:text-primary transition duration-200">
@@ -1043,23 +483,31 @@
 
                 <!-- معلومات التواصل -->
                 <div>
-                    <h4 class="text-lg font-bold text-primary mb-4">اتصل بنا</h4>
+                    <h4 class="text-lg font-bold text-primary mb-4"> {{ __('اتصل بنا') }}</h4>
                     <address class="not-italic text-sm text-gray-300 mb-4">
-                        <p class="mb-1"><strong>مكتب الشرق الأوسط وأفريقيا</strong></p>
-                        <p>٣٥ شارع حسن الشريف - مدينة نصر، القاهرة، مصر</p>
+                        <p class="mb-1"><strong> {{ __('مكتب الشرق الأوسط وأفريقيا') }}</strong></p>
+                        <p> {{ __('٣٥ شارع حسن الشريف - مدينة نصر، القاهرة، مصر') }} </p>
                         <a href="mailto:info@gulddalsystems.com" class="block">
                             info@gulddalsystems.com
                         </a>
-                        <p class="mt-2 flex items-center gap-2">
-                            <i class="fas fa-phone-alt"></i>
-                            <span>هاتف</span>
-                            <span dir="ltr">+2022733403</span>
-                        </p>
-                        <p class="flex items-center gap-2 mt-2">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>جوال</span>
-                            <span dir="ltr">+201222243351</span>
-                        </p>
+                        @foreach ($phones as $phone)
+                            @if (Str::startsWith($phone, '02') || Str::startsWith($phone, '+202') || Str::startsWith($phone, '202'))
+                                <p class="mt-2 flex items-center gap-2">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>{{ __('هاتف') }}</span>
+                                    <span
+                                        dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">{{ $phone }}</span>
+                                </p>
+                            @else
+                                <p class="flex items-center gap-2 mt-2">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>{{ __('جوال') }}</span>
+                                    <span
+                                        dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">{{ $phone }}</span>
+                                </p>
+                            @endif
+                        @endforeach
+
                     </address>
 
 
@@ -1071,8 +519,8 @@
             <div class="text-center text-xs text-gray-500">
                 <p
                     class="py-5 text-center flex justify-center items-center text-accent mt-12 border-t border-gray-700 uppercase">
-                    <span class="text-accent" id="year-footer">{{ date('Y') }}<!-- --> </span>© جميع الحقوق محفوظة<a
-                        target="_blank" href="https://www.cangrowonline.com/">
+                    <span class="text-accent" id="year-footer">{{ date('Y') }}<!-- --> </span> ©
+                    {{ __('جميع الحقوق محفوظة') }}<a target="_blank" href="https://www.cangrowonline.com/">
                         <img src="https://alrehab-eg.com/front/alrehab/assets/CanGrow logo.png" class=" w-40 h-20"
                             alt="">
                     </a>
@@ -1082,7 +530,7 @@
         </div>
     </footer>
 
-  
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -1223,7 +671,7 @@
             window.location = url;
         });
     </script>
-   @yield('js')
+    @yield('js')
     <script>
         $(document).on('submit', '#appointment-form', function(e) {
             e.preventDefault();
@@ -1297,7 +745,7 @@
             });
         })
     </script>
- 
+
 
 </body>
 

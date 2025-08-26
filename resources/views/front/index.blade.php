@@ -12,7 +12,14 @@
 
 
  @section('content')
+@php
+    $phones = explode(',', $gs->phones);
+    $emails = explode(',', $gs->emails);
+    $addresses = json_decode($gs->{'addresses_' . $sign});
 
+    $randomPhone = Arr::random($phones);
+    $randomEmail = Arr::random($emails);
+@endphp
     <section class="relative overflow-hidden group" id="homeSlider">
         <!-- Carousel container -->
         <div class="relative h-screen w-full">
@@ -40,7 +47,7 @@
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
-                <span class="sr-only">Previous</span>
+                <span class="sr-only">{{ __('Previous') }}</span>
             </button>
 
             <button
@@ -50,7 +57,7 @@
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
-                <span class="sr-only">Next</span>
+                <span class="sr-only">{{ __('Next') }}</span>
             </button>
 
             <!-- Indicators -->
@@ -68,13 +75,14 @@
         </div>
     </section>
 
-    <section id="" class="py-20 bg-black text-white" dir="rtl">
+    <section id="" class="py-20 bg-black text-white" dir="{{ session::get('front_language_duraction') }}">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="space-y-8">
                 <div>
                     <h2 class="text-4xl font-bold text-primary mb-6">
-                        عن انظمة أم دابليو أم جولدال سيستمز
+                        
+                        {{ __('عن انظمة أم دابليو أم جولدال سيستمز') }}
                     </h2>
 
                 </div>
@@ -83,22 +91,22 @@
                     <div
                         class="text-center bg-gray-900 rounded-xl p-8 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800">
                         <div class="text-3xl font-bold text-primary mb-2">300+</div>
-                        <div class="text-gray-300">المشاريع المنجزة</div>
+                        <div class="text-gray-300">    {{ __('المشاريع المنجزة') }}</div>
                     </div>
                     <div
                         class="text-center bg-gray-900 rounded-xl p-8 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800">
                         <div class="text-3xl font-bold text-primary mb-2">99.8%</div>
-                        <div class="text-gray-300">معايير الجودة</div>
+                        <div class="text-gray-300">   {{ __('معايير الجودة') }}</div>
                     </div>
                     <div
                         class="text-center bg-gray-900 rounded-xl p-8 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800">
                         <div class="text-3xl font-bold text-primary mb-2">12+</div>
-                        <div class="text-gray-300">وكيل و موزع معتمد</div>
+                        <div class="text-gray-300">    {{ __('وكيل و موزع معتمد') }}</div>
                     </div>
                     <div
                         class="text-center bg-gray-900 rounded-xl p-8 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800">
                         <div class="text-3xl font-bold text-primary mb-2">24/7</div>
-                        <div class="text-gray-300">دعم فنى دائم</div>
+                        <div class="text-gray-300">    {{ __('دعم فنى دائم') }}</div>
                     </div>
                 </div>
 
@@ -110,31 +118,31 @@
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-black text-white" dir="rtl">
+    <section id="about" class="py-20 bg-black text-white" dir="{{ session::get('front_language_duraction') }}">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="">
 
                 <div class="space-y-8">
                     <div class="bg-gray-900 p-6 rounded-lg border border-gray-800">
                         <h3 class="text-lg font-semibold text-primary mb-4">
-                            شهادات الصناعة و الإعتمادات
+                            {{ __('شهادات الصناعة و الإعتمادات') }}
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                             <div class="flex items-center text-sm text-gray-200">
                                 <div class="w-2 h-2 bg-primary rounded-full ml-3"></div>
-                                عضو إتحاد الصناعات المصريه
+                                {{ __('عضو إتحاد الصناعات المصريه') }}
                             </div>
                             <div class="flex items-center text-sm text-gray-200">
                                 <div class="w-2 h-2 bg-primary rounded-full ml-3"></div>
-                                عضو بالإتحاد الأفريقي للتشييد و البناء
+                                {{ __('عضو بالإتحاد الأفريقي للتشييد و البناء') }}
                             </div>
                             <div class="flex items-center text-sm text-gray-200">
                                 <div class="w-2 h-2 bg-primary rounded-full ml-3"></div>
-                                إعتمادات من مكاتب إستشاريه محليه و دوليه
+                                {{ __('إعتمادات من مكاتب إستشاريه محليه و دوليه') }}
                             </div>
                             <div class="flex items-center text-sm text-gray-200">
                                 <div class="w-2 h-2 bg-primary rounded-full ml-3"></div>
-                                إعتمادات من معامل إختبارات معتمدة محليه و دوليه
+                                {{ __('إعتمادات من معامل إختبارات معتمدة محليه و دوليه') }}
                             </div>
                         </div>
                     </div>
@@ -147,7 +155,7 @@
                             <i data-lucide="award" class="h-6 w-6"></i>
                         </div>
                         <div class="">
-                            <h3 class="text-lg font-semibold text-primary mb-2"> شهادات الجوده</h3>
+                            <h3 class="text-lg font-semibold text-primary mb-2"> {{ __('شهادات الجوده') }}</h3>
                             <p class="text-gray-200">
                                 ISO 45001:2018
                                 -
@@ -159,42 +167,41 @@
                     </div>
 
                     <div class="flex gap-4 items-start space-x-4 p-6 rounded-lg bg-gray-900 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800"
-                        dir="rtl">
+                        dir="{{ session::get('front_language_duraction') }}">
                         <div class="bg-primary p-3 rounded-lg flex-shrink-0 text-white">
                             <i data-lucide="target" class="h-6 w-6"></i>
                         </div>
                         <div class="">
-                            <h3 class="text-lg font-semibold text-primary mb-2"> تكنولوجيا متطورة</h3>
+                            <h3 class="text-lg font-semibold text-primary mb-2"> {{ __('تكنولوجيا متطورة') }}</h3>
                             <p class="text-gray-200">
-                                تقديم افضل انظمة الدهانات المتطوره للمسطحات الاسفلتية والخرصانية والمعدنية
+                                {{ __('تقديم افضل انظمة الدهانات المتطوره للمسطحات الاسفلتية والخرصانية والمعدنية') }}
                             </p>
                         </div>
                     </div>
 
                     <div class="flex gap-4 items-start space-x-4 p-6 rounded-lg bg-gray-900 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800"
-                        dir="rtl">
+                        dir="{{ session::get('front_language_duraction') }}">
                         <div class="bg-primary p-3 rounded-lg flex-shrink-0 text-white">
                             <i data-lucide="users" class="h-6 w-6"></i>
                         </div>
                         <div class="">
-                            <h3 class="text-lg font-semibold text-primary mb-2"> شراكة استراتيجية</h3>
+                            <h3 class="text-lg font-semibold text-primary mb-2"> {{ __('شراكة استراتيجية') }}</h3>
                             <p class="text-gray-200">
-                                علاقات طويلة الامد مع عملاء وموزعين معتمدين محليا ودوليا
+                                {{ __('علاقات طويلة الامد مع عملاء وموزعين معتمدين محليا ودوليا') }}
                             </p>
                         </div>
                     </div>
 
                     <div class="flex gap-4 items-start space-x-4 p-6 rounded-lg bg-gray-900 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800"
-                        dir="rtl">
+                        dir="{{ session::get('front_language_duraction') }}">
                         <div class="bg-primary p-3 rounded-lg flex-shrink-0 text-white">
                             <i data-lucide="lightbulb" class="h-6 w-6"></i>
                         </div>
                         <div class="">
-                            <h3 class="text-lg font-semibold text-primary mb-2"> رياده الابتكار</h3>
+                            <h3 class="text-lg font-semibold text-primary mb-2"> {{ __('رياده الابتكار') }}</h3>
                             <p class="text-gray-200">
-                                الرياده في تطبيق احدث التكنولوجيا المتطوره في صناعه الدهانات المتخصصه للتقديم احدث
-                                الحلول الاقتصادية والمستدامة
-
+                                
+{{ __('الرياده في تطبيق احدث التكنولوجيا المتطوره في صناعه الدهانات المتخصصه للتقديم احدث الحلول الاقتصادية والمستدامة') }}
                             </p>
                         </div>
                     </div>
@@ -203,27 +210,25 @@
         </div>
     </section>
 
-    <section id="contact" class="py-16 md:py-20" dir="rtl">
+    <section id="contact" class="py-16 md:py-20" dir="{{ session::get('front_language_duraction') }}">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Header Section -->
             <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
-                    عن انظمة أم دابليو أم جولدال سيستمز
+                    {{ __('عن انظمة أم دابليو أم جولدال سيستمز') }}
 
                 </h2>
                 <p class="text-base md:text-xl text-gray-300 max-w-3xl mx-auto">
-
-                    في حاله وجود اي استفسار بالرجاء التواصل مع احد خبرائنا من خلال نموذج الاتصال او التواصل مع اقرب مكتب
-                    اقليمي تابع لك
-                    فنحن هنا لمساعدتك
+ 
+                    {{ __('في حاله وجود اي استفسار بالرجاء التواصل مع احد خبرائنا من خلال نموذج الاتصال او التواصل مع اقرب مكتب اقليمي تابع لك فنحن هنا لمساعدتك') }}
                 </p>
             </div>
 
 
             <!-- Contact Info -->
             <div>
-                <h3 class="text-2xl font-bold mb-6 text-yellow-400">معلومات الاتصال</h3>
+                <h3 class="text-2xl font-bold mb-6 text-yellow-400">  {{ __('معلومات الاتصال') }}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                     <!-- Phone -->
                     <a href="tel:+201222243351" class="block">
@@ -233,10 +238,10 @@
                                 <i data-lucide="phone" class="h-6 w-6"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-lg mb-1 text-white">الاتصال الرئيسي</h4>
+                                <h4 class="font-semibold text-lg mb-1 text-white">  {{ __('الاتصال الرئيسي') }}</h4>
                                 <span class="text-gray-200">هاتف:</span>
-                                <span dir="ltr" class="text-gray-200">+2022733403</span>
-                                <span dir="ltr" class="text-gray-200">+201222243351</span>
+                                <span dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}" class="text-gray-200">+2022733403</span>
+                                <span dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}" class="text-gray-200">+201222243351</span>
                             </div>
                         </div>
                     </a>
@@ -249,7 +254,7 @@
                                 <i data-lucide="mail" class="h-6 w-6"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-lg mb-1 text-white">البريد الإلكتروني</h4>
+                                <h4 class="font-semibold text-lg mb-1 text-white">   {{ __('البريد الإلكتروني') }}</h4>
                                 <p class="text-gray-200 text-xs md:text-lg">info@mwmgulddalsystems.com</p>
 
                                 <!-- <p class="text-gray-200">sales@gulddal-systems.com</p> -->
@@ -265,9 +270,10 @@
                             <i data-lucide="map-pin" class="h-6 w-6"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-lg mb-1 text-white"> المكتب الرئيسي </h4>
-                            <p class="text-gray-200">35 شارع حسن الشريف</p>
-                            <p class="text-gray-200">مدينة نصر، القاهرة، مصر</p>
+                            <h4 class="font-semibold text-lg mb-1 text-white"> {{ __('المكتب الرئيسي') }}</h4>
+
+                            <p class="text-gray-200">  {{ __('35 شارع حسن الشريف') }}</p>
+                            <p class="text-gray-200">    {{ __('مدينة نصر، القاهرة، مصر') }}</p>
                         </div>
                     </div>
 
@@ -278,9 +284,10 @@
                             <i data-lucide="clock" class="h-6 w-6"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-lg mb-1 text-white">ساعات العمل</h4>
+                            <h4 class="font-semibold text-lg mb-1 text-white">   {{ __('ساعات العمل') }}</h4>
                             <p class="text-gray-200">
-                                من الاحد إلى الخميس من الساعه 9:00 صباحاً الي 5:00 مساءً بتوقيت القاهره
+                                
+                                {{ __('من الاحد إلى الخميس من الساعه 9:00 صباحاً الي 5:00 مساءً بتوقيت القاهره') }}
                             </p>
                             <!-- <p class="text-gray-200">الدعم الطارئ: 24/7</p> -->
                         </div>
