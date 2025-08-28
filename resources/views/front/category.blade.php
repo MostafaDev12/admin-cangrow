@@ -1,4 +1,5 @@
-
+ 
+ 
 
  @extends('layouts.front')
 
@@ -14,88 +15,61 @@
 
 
 @section('content')
-    <section id="services" class="py-20" dir="rtl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-yellow-500 mb-4">
-                    خدمات الأتمتة الشاملة
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    من التصميم الأولي إلى الصيانة المستمرة، نقدم حلول أتمتة متكاملة مخصصة لمتطلبات صناعتك ومعايير
-                    السلامة.
-                </p>
+    <section class="relative h-screen w-full">
+
+
+        <div class="relative h-screen w-full  bg-[url('{{ asset('front/gulddal/') }}/images/bannerContacts.jpg')] md:bg-cover bg-center">
+            <div class="flex flex-column items-center w-full h-full justify-center" data-carousel-item>
+
+
+                <div class="text-center text-white bg-black/50 w-full py-10  mb-16">
+                    <h2 class="text-4xl font-bold mb-4">
+                             {!! $category->{'title_' . $sign} ?? '' !!}</h2>
+                    <p class="text-lg max-w-2xl mx-auto">   {!! $category->{'details_' . $sign} ?? '' !!}     </p>
+
+                </div>
             </div>
+    </section>
 
-            <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- عنصر الخدمة -->
+
+    <!-- <section class="py-12 md:py-16 text-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-yellow-500 mb-4">منتجات SBP SYSTEMS</h1>
+            <p class="text-primary text-lg max-w-2xl mx-auto">اكتشف مجموعتنا المتخصصة من دهانات علامات الطرق عالية
+                الأداء، المصممة لتلبية أعلى معايير الجودة والاستدامة.</p>
+        </div>
+    </section>
+ -->
+    <section class="pb-12 md:pb-16 -mt-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+
+                 @foreach ($category->services as $parentServices)
                 <div
-                    class="bg-gray-900 rounded-xl p-8 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800">
-                    <div class="flex items-center mb-6">
-                        <div class="bg-yellow-600 p-3 rounded-lg group-hover:bg-yellow-700 transition-colors">
-                            <i data-lucide="settings"
-                                class="h-8 w-8 text-black group-hover:text-gray-950 transition-colors"></i>
-                        </div>
+                    class="bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative h-48 w-full overflow-hidden">
+                        <img src="{!! $parentServices->photo !!} "
+                            alt="{!! $parentServices->{'title_' . $sign} ?? '' !!} "
+                            class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
                     </div>
-                    <h3 class="text-xl font-bold text-yellow-400 mb-3">برمجة وتكوين PLC</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        برمجة احترافية لـ Siemens S7 وAllen-Bradley وSchneider Electric مع تكامل شامل مع HMI.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm text-gray-200">
-                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
-                            برمجة TIA Portal
-                        </li>
-                        <li class="flex items-center text-sm text-gray-200">
-                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
-                            RSLogix 5000 / Studio 5000
-                        </li>
-                        <li class="flex items-center text-sm text-gray-200">
-                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
-                            Unity Pro / EcoStruxure
-                        </li>
-                        <li class="flex items-center text-sm text-gray-200">
-                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
-                            Ladder Logic و Structured Text
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- SCADA وأنظمة التحكم -->
-                <div
-                    class="bg-gray-900 rounded-xl p-8 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-yellow-500/30 transition-all group hover:-translate-y-2 duration-300 border border-gray-800">
-                    <div class="flex items-center mb-6">
-                        <div class="bg-yellow-600 p-3 rounded-lg group-hover:bg-yellow-700 transition-colors">
-                            <i data-lucide="cpu"
-                                class="h-8 w-8 text-black group-hover:text-gray-950 transition-colors"></i>
+                    <div class="p-6 flex-grow flex flex-col justify-between text-right">
+                        <div>
+                            <h3 class="text-2xl font-bold text-yellow-500 mb-2">   {!! $parentServices->{'title_' . $sign} ?? '' !!} </h3>
+                            <p class="text-primary text-sm mb-4 line-clamp-3">
+                              {!! $parentServices->{'short_details_' . $sign} ?? '' !!} 
+                            </p>
                         </div>
+                        <a href="{{ route('single-service.index', ['lang' => $sign, 'slug' => $parentServices->{'slug_' . $sign}]) }}"
+                            class="inline-flex items-center text-accent-blue font-medium hover:text-accent-green transition-colors duration-200 mt-4 flex-row-reverse">
+                            {{ __('المزيد') }}
+                            <i class="fa-solid fa-arrow-left h-4 w-4 mr-1"></i>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-bold text-yellow-400 mb-3">SCADA وأنظمة التحكم</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        أنظمة تحكم إشرافية متقدمة مع مراقبة لحظية، وإنذارات، وتسجيل بيانات تاريخية.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm text-gray-200">
-                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
-                            WinCC Professional
-                        </li>
-                        <li class="flex items-center text-sm text-gray-200">
-                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
-                            FactoryTalk View
-                        </li>
-                        <li class="flex items-center text-sm text-gray-200">
-                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
-                            Wonderware InTouch
-                        </li>
-                        <li class="flex items-center text-sm text-gray-200">
-                            <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full ml-3"></div>
-                            منصة Ignition
-                        </li>
-                    </ul>
                 </div>
-
-                <!-- يمكنك إضافة باقي البطاقات بنفس التنسيق -->
+                @endforeach
+                
 
             </div>
         </div>
     </section>
- @stop
+   @stop

@@ -24,7 +24,7 @@
                 
             <!-- Image 1 -->
             <div class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105">
-                <img src="{{ $image->photo }}" alt="Nature" class="w-full h-64 object-cover">
+                <img src="{{ $image->photo_url }}" alt="{{ $service->{'title_' . $sign} }}" class="w-full h-64 object-cover">
             </div>
 
             @endforeach

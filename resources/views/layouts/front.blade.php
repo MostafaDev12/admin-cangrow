@@ -172,7 +172,7 @@
 
                                     @foreach ($categories as $category)
                                         <li class="relative group">
-                                            <a href="#" class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
+                                            <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => $category->{'slug_' . $sign}]) }}" class=" px-4 py-2 hover:bg-gray-100 flex justify-between">
                                                 {!! $category->{'title_' . $sign} ?? '' !!}
                                                 <i class="fa fa-chevron-left mr-1 text-xs"></i>
                                             </a>
@@ -182,7 +182,7 @@
                                                 @foreach ($category->parentServices as $parentServices)
                                                     <li class="relative group">
                                                         <a href="{{ route('single-service.index', ['lang' => $sign, 'slug' => $parentServices->{'slug_' . $sign}]) }}"
-                                                            class="block px-4 py-2 hover:bg-gray-100"> أنظمة SBP </a>
+                                                            class="block px-4 py-2 hover:bg-gray-100">    {!! $parentServices->{'title_' . $sign} ?? '' !!}  </a>
                                                         <ul
                                                             class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
 
@@ -222,7 +222,7 @@
                                                 @foreach ($category->parentServices as $parentServices)
                                                     <li class="relative group">
                                                         <a href="{{ route('gallery.index', ['lang' => $sign, 'slug' => $parentServices->{'slug_' . $sign}]) }}"
-                                                            class="block px-4 py-2 hover:bg-gray-100"> أنظمة SBP </a>
+                                                            class="block px-4 py-2 hover:bg-gray-100"> {!! $parentServices->{'title_' . $sign} ?? '' !!}    </a>
                                                         <ul
                                                             class="dropdown absolute bg-[url('{{ asset('front/gulddal/') }}/images/headerBack.png')]  bg-repeat text-primary shadow-lg w-48 right-full top-0">
 
@@ -334,34 +334,23 @@
                         </button>
                         <div class="submenu hidden pl-4">
 
-
+  @foreach ($categories as $category)
                             <div class="relative">
                                 <button onclick="toggleSubmenu(this)"
                                     class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                    <span>علامات الطرق</span>
+                                    <span>   {!! $category->{'title_' . $sign} ?? '' !!}</span>
                                     <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
                                 </button>
                                 <div class="submenu hidden pl-4">
 
-
-                                    <div class="relative">
-                                        <button onclick="toggleSubmenu(this)"
-                                            class="w-full  px-3 py-2 hover:bg-gray-100 flex justify-between items-center">
-                                            <span>أنظمة SBP</span>
-                                            <i class="fas fa-chevron-down text-xs transform transition-transform"></i>
-                                        </button>
-                                        <div class="submenu hidden pl-4">
-
-                                            <a href="./products.html" class="block px-3 py-2 hover:bg-gray-100">SBP
-                                                480</a>
-
-                                        </div>
-                                    </div>
-
-
+@foreach ($category->services as $parentServices)
+                                            <a href="{{ route('single-service.index', ['lang' => $sign, 'slug' => $parentServices->{'slug_' . $sign}]) }}" class="block px-3 py-2 hover:bg-gray-100"> 
+                                               {!! $parentServices->{'title_' . $sign} ?? '' !!}   </a>
+ 
+@endforeach
                                 </div>
                             </div>
-
+                        @endforeach
 
 
 
@@ -468,16 +457,14 @@
                 <div class="mb-8 md:mb-0">
                     <h4 class="text-lg font-bold text-primary mb-4">{{ __('منتجاتنا') }}</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="./products.html" class="hover:text-primary transition duration-200">دهانات تخطيط
-                                الطرق
+  @foreach ($categories as $category)
+                        <li><a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => $category->{'slug_' . $sign}]) }}" class="hover:text-primary transition duration-200">   
+                                {!! $category->{'title_' . $sign} ?? '' !!}
 
                             </a></li>
-                        <li><a href="./products.html" class="hover:text-primary transition duration-200">دهانات
-                                الأرضيات
+@endforeach
 
-                            </a></li>
-                        <li><a href="./products.html" class="hover:text-primary transition duration-200">
-                                دهانات الحماية</a></li>
+                      
                     </ul>
                 </div>
 

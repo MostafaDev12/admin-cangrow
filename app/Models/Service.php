@@ -78,6 +78,11 @@ class Service extends Model
      public function category()
      {
          return $this->belongsTo(Category::class,'category_id');
+     }  
+     
+     public function parent()
+     {
+         return $this->belongsTo(Service::class,'parent_id');
      }
     /**
      * The attributes that should be cast.

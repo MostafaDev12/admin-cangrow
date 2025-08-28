@@ -109,7 +109,7 @@
                                               <th>{{ __('translation.photo') }}</th>
                                               <th>{{ __('translation.title_ar') }}</th>
                                               <th>{{ __('translation.title_en') }}</th>
-                                          
+                                          <th>{{ __('translation.category') }}</th> 
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
                                         </thead>
@@ -214,7 +214,7 @@
                         { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
                         { data: 'title_en', name: 'title_en' },
-                         
+                          { data: 'category', name: 'category' },
                         { data: 'action', searchable: false, orderable: false }
 
                      ],
