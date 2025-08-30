@@ -200,6 +200,20 @@
   
                         <div class="row">
 
+   <div class="col-xl-12 col-md-12">
+
+                                <div class="mb-3">
+                                    <label for="parent_id" class="form-label">{{ __('translation.parent_service') }}</label>
+                                    <select class="form-control" name="parent_id" id="parent_id"> 
+                                        <option value="0">{{ __('translation.select') }}</option>
+                                        @foreach ($parentservices as $cat)
+                                            <option  value="{{ $cat->id }}" {{ $cat->id == $data->parent_id ? 'selected' : '' }}> {{ $cat->title_ar ??  $cat->title_en }}</option>
+ 
+                                        @endforeach
+                                       
+                                    </select>
+                                </div>  
+                            </div>
 
                             <div class="col-xl-12 col-md-12">
 
