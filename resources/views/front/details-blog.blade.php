@@ -1,5 +1,4 @@
- 
-  @extends('layouts.front')
+   @extends('layouts.front')
 
   @section('title')
       {{ $blog->{'title_' . $sign} }} - {{ $gs->{'title_' . $sign} }}
@@ -9,7 +8,7 @@
       <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}" />
   @stop
   @section('css')
-
+ <link rel="stylesheet" href="{{ asset('front/highline/') }}/css/articles.css">
 
   @stop
 
@@ -20,84 +19,110 @@
           $phones = explode(',', $gs->phones);
           $randomPhone = Arr::random($phones);
       @endphp
-    <section class="relative py-12 md:py-20 bg-gray-900 text-yellow-400 overflow-hidden">
-        <!-- <div class="absolute inset-0">
-            <img src="{{ $blog->photo }}" alt="Hero Background"
-                class="w-full h-full object-cover opacity-20">
-        </div> -->
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h1 class="text-3xl md:text-5xl font-bold text-yellow-500 mb-4">{{ $blog->{'title_' . $sign} }}</h1>
-            <p class="text-primary text-lg md:text-xl mb-6">  {{ optional($blog)->{'short_details_' . $sign} }}</p>
-            <div class="flex items-center justify-center text-sm text-primary space-x-4 rtl:space-x-reverse">
-                <span class="flex items-center">
-                    <i class="fa-solid fa-calendar-days h-4 w-4 ml-1 text-gray-400"></i>
-                    {{ \Carbon\Carbon::parse($blog->blog_date)->format('d M, Y') }}
-                </span>
-                {{-- <span class="flex items-center">
-                    <i class="fa-solid fa-user h-4 w-4 ml-1 text-gray-400"></i>
-                    فريق التطوير
-                </span> --}}
-                <span class="flex items-center">
-                    <i class="fa-solid fa-tag h-4 w-4 ml-1 text-gray-400"></i>
-                    {{ optional($blog->category)->{'title_' . $sign} }}
-                </span>
-            </div>
-        </div>
-    </section>
+        <section class="header-title ">
+    <div class="overlay d-flex justify-content-center align-items-center">
+      <h1> {{ $blog->{'title_' . $sign} }}</h1>
+    </div>
 
-    <section class="py-12 md:py-16 bg-gray-900 text-yellow-400">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-2 bg-gray-800 rounded-xl shadow-lg p-6 md:p-8">
-                <div class="prose prose-invert max-w-none text-primary text-right">
-                    <p class="mb-4">
-                        {!! $blog->{'details_' . $sign} !!}
-                    </p>
+  </section>
+    <!-- Blog Details Section -->
+    <section class="blog-details py-5">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- Main Blog Content -->
+                <div class="col-lg-8">
+                    <article class="blog-post shadow-sm p-4 rounded bg-white">
+                        <div class="post-header text-center mb-4">
+                            <img src="{{ $blog->photo }}" alt="{{ $blog->{'title_' . $sign} }}" class="img-fluid rounded mb-3 w-100">
+                            <h2 class="post-title">  {{ $blog->{'title_' . $sign} }}   </h2>
+                            <ul class="list-inline small text-muted">
+                                 
+                                <li class="list-inline-item"><i class="fas fa-calendar me-1"></i> {{ \Carbon\Carbon::parse($blog->blog_date)->format('d M, Y') }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="post-content">
+                            <p>
+                                {!! $blog->{'details_' . $sign} !!}
+                            </p>
+                        </div>
+
+
+                        <!-- Share Buttons -->
+                        <div class="post-share mt-4 pt-4 border-top d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">{{ __('شارك') }}:</span>
+                            <div>
+                                <a href="#" class="text-decoration-none text-dark me-2"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-decoration-none text-dark me-2"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-decoration-none text-dark me-2"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="text-decoration-none text-dark"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-            </div>
 
-            <aside class="lg:col-span-1">
-                <div class="bg-gray-800 rounded-xl shadow-lg p-6 mb-8">
-                    <h3 class="text-xl font-bold text-yellow-500 mb-4 text-right">مقالات حديثة</h3>
-                    <ul class="space-y-4">
-                        @foreach (App\Models\Blog::orderBy('blog_date', 'desc')->where('id', '!=', $blog->id)->limit(3)->get() as $k => $blogg)
+                <!-- Sidebar / Aside -->
+                <div class="col-lg-4">
+                    <aside class="sidebar">
+
+                        <!-- Search Bar -->
+                        <div class="mb-4">
+                            <form class="input-group">
+                                <input type="text" class="form-control" placeholder="ابحث هنا...">
+                                <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+
+                        <!-- Recent Blogs -->
+                        <div class="mb-4">
+                            <h5 class=" text-white px-3 py-2 rounded"> {{ __('مقالات حديثة') }}</h5>
+                            <ul class="list-unstyled">
+                                @foreach (App\Models\Blog::orderBy('blog_date', 'desc')->where('id', '!=', $blog->id)->limit(4)->get() as $k => $blogg)
                       @php
                           $k++;
                       @endphp
-                        <li>
-                            <a href="{{ route('single-blog.index',['lang'=> $sign , 'blog' => $blogg->{'slug_' . $sign} ]) }}"
-                                class="block text-primary hover:text-yellow-100 transition-colors duration-200 text-right">
-                                <span class="block font-medium"> {{ $blogg->{'title_' . $sign} }}  </span>
-                                <span class="text-sm text-gray-400 flex items-center justify-end mt-1">
-                                    <i class="fa-solid fa-calendar-days h-3 w-3 mr-1"></i>    {{ \Carbon\Carbon::parse($blogg->blog_date)->format('d M, Y') }}
-                                </span>
-                            </a>
-                        </li>
+                                <li class="d-flex align-items-start mb-3">
+                                    <img src="{{ $blogg->photo }}" alt="Post" class="rounded me-3"
+                                        style="width: 70px; height: 70px;">
+                                    <div class="mx-2">
+                                        <a href="{{ route('single-blog.index',['lang'=> $sign , 'blog' =>$blogg->{'slug_' . $sign} ]) }}" class="text-decoration-none text-dark fw-bold">{{ $blogg->{'title_' . $sign} }}    </a>
+                                        <small class="d-block text-muted">{{ \Carbon\Carbon::parse($blogg->blog_date)->format('d M, Y') }}</small>
+                                    </div>
+                                </li>
+                                @endforeach
 
-                         @endforeach
-                     
-                    </ul>
+                                
+                            </ul>
+                        </div>
+
+                        {{-- <!-- Categories -->
+                        <div class="mb-4">
+                            <h5 class=" text-white px-3 py-2 rounded">التصنيفات</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-decoration-none text-dark d-block py-1">تصميم داخلي</a></li>
+                                <li><a href="#" class="text-decoration-none text-dark d-block py-1">أفكار مطابخ</a></li>
+                                <li><a href="#" class="text-decoration-none text-dark d-block py-1">ديكورات</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="mb-4">
+                            <h5 class=" text-white px-3 py-2 rounded">الكلمات المفتاحية</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-light text-dark">#تصميم</span>
+                                <span class="badge bg-light text-dark">#ديكور</span>
+                                <span class="badge bg-light text-dark">#مطبخ</span>
+                                <span class="badge bg-light text-dark">#غرف نوم</span>
+                            </div>
+                        </div> --}}
+
+                    </aside>
                 </div>
-
-                {{-- <div class="bg-gray-800 rounded-xl shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-yellow-500 mb-4 text-right">وسوم شائعة</h3>
-                    <div class="flex flex-wrap gap-2 justify-end">
-                        <a href="#"
-                            class="bg-gray-700 text-primary px-4 py-2 rounded-full text-sm hover:bg-accent-blue hover:text-white transition-colors duration-200">الاستدامة</a>
-                        <a href="#"
-                            class="bg-gray-700 text-primary px-4 py-2 rounded-full text-sm hover:bg-accent-blue hover:text-white transition-colors duration-200">الشراكة</a>
-                        <a href="#"
-                            class="bg-gray-700 text-primary px-4 py-2 rounded-full text-sm hover:bg-accent-blue hover:text-white transition-colors duration-200">الابتكار</a>
-                        <a href="#"
-                            class="bg-gray-700 text-primary px-4 py-2 rounded-full text-sm hover:bg-accent-blue hover:text-white transition-colors duration-200">القيادة</a>
-                        <a href="#"
-                            class="bg-gray-700 text-primary px-4 py-2 rounded-full text-sm hover:bg-accent-blue hover:text-white transition-colors duration-200">الدهانات</a>
-                        <a href="#"
-                            class="bg-gray-700 text-primary px-4 py-2 rounded-full text-sm hover:bg-accent-blue hover:text-white transition-colors duration-200">الأداء</a>
-                    </div>
-                </div> --}}
-            </aside>
+            </div>
         </div>
     </section>
-
-
-    @stop
+   @stop

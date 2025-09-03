@@ -35,19 +35,23 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
  Route::get('/', [HomeController::class, 'index'])->name('front.index');
         Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
+        Route::get('/products', [HomeController::class, 'products'])->name('products.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
 
      
-        Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
+        Route::get('/product/{slug}', [HomeController::class, 'singleProduct'])->name('single-service.index');
          Route::get('/gallery/{slug}', [HomeController::class, 'gallery'])->name('gallery.index');
           Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
+         
+          Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service-service.index');
 
         Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
         Route::get('/فيديوهات', [HomeController::class, 'videos'])->name('videos.index');
+        Route::get('/locations', [HomeController::class, 'locations'])->name('locations.index');
        
         Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs.index');    
-        Route::get('/careers', [HomeController::class, 'careers'])->name('careers.index');    
+        Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews.index');    
         
         Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');
       Route::get('/appointments', [HomeController::class, 'BookNow'])->name('appointments.index');

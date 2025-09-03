@@ -26,7 +26,9 @@ use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Location;
 use App\Models\Process;
+use App\Models\Subcategory;
 use App\Models\Subscribe;
 use App\Models\Subscription;
 use App\Models\Testimonial;
@@ -66,15 +68,16 @@ class HomeController extends Controller
     $models = PageModel::get();
     $features = ModelCategory::get();
     $partners = Partner::get();
-    $medias = Media::get();
+    $medias = Media::get()->take(3);
     $after_befores = AfterBefore::get();
-
+$processes = Process::get();
     $doctors = Doctor::get()->take(8);
     $timelines = Timeline::get();
-     
+          $testimonials = Testimonial::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
   $certificates = Certificate::get();
-    return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
+  $servicess = Subcategory::get()->take(3);
+    return view('front.index', compact('sign', 'sliders','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
   }
 
 
@@ -98,91 +101,17 @@ class HomeController extends Controller
     return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
 
-  
-  public function dentistry(Request $request)
-  {
-
-    $sign = $this->langSign();
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $child_services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
-
-    return view('front.dentistry', compact('sign', 'sliders', 'points', 'child_services', 'models', 'reviews'));
-  }
-
-  
-  public function invisalign(Request $request)
-  {
-
-    $sign = $this->langSign();
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $child_services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
- $after_befores = AfterBefore::get();
-    return view('front.invisalign', compact('sign', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
-  }
-
-  public function dental_implants(Request $request)
-  {
-
-    $sign = $this->langSign();
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $child_services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
- $after_befores = AfterBefore::get();
-    return view('front.dental-implants', compact('sign', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
-  }
-
+   
  
-  public function veneers(Request $request)
-  {
 
-    $sign = $this->langSign();
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $child_services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
- 
-  $processes = Process::get();
-   $after_befores = PageModel::get();
-    return view('front.veneers', compact('sign', 'processes', 'after_befores', 'sliders', 'points', 'child_services', 'models', 'reviews'));
-  }
-
- 
-  public function doctors(Request $request)
-  {
-
-    $sign = $this->langSign();
- 
-    $points = AboutPoint::get();
-    $services = Service::where('parent_id','!=',0)->get();
-    $models = ModelCategory::get();
-    $reviews = Partner::get();
-    $doctors = Doctor::get();
-
-    return view('front.doctors', compact('sign', 'doctors', 'points', 'services', 'models', 'reviews'));
-  }
-
-
-  public function careers(Request $request,$lang)
+  public function reviews(Request $request,$lang)
   {
 
     $sign = $this->langSign($lang);
-
+   $testimonials = Testimonial::get();
     $videos = Media::get();
 
-    return view('front.careers', compact('sign','videos'));
+    return view('front.review', compact('sign','videos','testimonials'));
   }
 
   public function blogs(Request $request,$lang)
@@ -191,12 +120,12 @@ class HomeController extends Controller
     $sign = $this->langSign($lang);
 
  
-    $blogs = Blog::orderby('blog_date','desc')->paginate(9);
+    $blogs = Blog::orderby('blog_date','desc')->paginate(8);
 
     return view('front.blogs', compact('sign', 'blogs'));
   }
 
-  public function services(Request $request)
+  public function products(Request $request)
   {
 
     $sign = $this->langSign();
@@ -208,7 +137,38 @@ class HomeController extends Controller
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.services', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.products', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+  }  
+  
+  public function services(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Subcategory::paginate(8);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+
+    return view('front.services', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+  
+  public function locations(Request $request)
+  {
+
+    $sign = $this->langSign();
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $services = Service::get();
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.locations', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
   public function BookNow(Request $request)
   {
@@ -255,13 +215,27 @@ class HomeController extends Controller
     return view('front.details-blog', compact('sign', 'blog'));
   }
 
-  public function singleService(Request $request,$lang, $slug)
+  public function singleProduct(Request $request,$lang, $slug)
   {
 
     $sign = $this->langSign($lang);
 
 
     $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    if(!$service){
+
+      abort(404);
+    }
+    return view('front.details-product', compact('sign', 'service'));
+  } 
+  
+  public function singleService(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $service = Subcategory::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
     if(!$service){
 
       abort(404);
@@ -317,11 +291,13 @@ class HomeController extends Controller
     $category = Category::where('slug_ar', $slug)->orwhere('slug_en',$slug)
      ->orwhere('slug_fr',$slug)->first();
 
+    
     if(!$category){
 
       abort(404);
     }
-    return view('front.category', compact('sign', 'category'));
+     $servicess  = $category->parentServices()->paginate(8);
+    return view('front.category', compact('sign', 'category','servicess'));
   }
 
   public function root()
@@ -420,14 +396,37 @@ class HomeController extends Controller
     $u =  url()->previous();
 
 
-    $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
+   // $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
 
 
     // echo $x;
 
     //  return redirect($x);
 
-    return redirect()->back();
+   // return redirect()->back();
+
+// Parse the URL
+$parsedUrl = parse_url($u);
+$path = $parsedUrl['path'] ?? '/';
+
+// Split path into segments
+$segments = explode('/', trim($path, '/'));
+
+// Replace the first segment if it matches old language sign
+if (!empty($segments[0]) && $segments[0] === $lang->sign) {
+    $segments[0] = $data->sign;
+} else {
+    // If no language in URL, just prepend new one
+    array_unshift($segments, $data->sign);
+}
+
+// Build new URL
+$newPath = implode('/', $segments);
+$newUrl = url($newPath);
+
+// Redirect
+return redirect($newUrl);
+
   }
 
 
