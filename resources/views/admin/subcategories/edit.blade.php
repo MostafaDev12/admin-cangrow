@@ -171,7 +171,7 @@
                         <div class="row">
 
 
-                            <div class="col-xl-12 col-md-12">
+                       {{--      <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">
                                     <label for="category_id" class="form-label">{{ __('translation.categories') }}</label>
@@ -184,7 +184,7 @@
                                        
                                     </select>
                                 </div>  
-                            </div> {{-- --}}
+                            </div> --}}
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">

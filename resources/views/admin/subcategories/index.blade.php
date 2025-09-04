@@ -91,11 +91,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.subcategories') }}
+        {{ __('translation.services') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.subcategories') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.services') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -108,7 +108,7 @@
                                             <tr>
                                               <th>{{ __('translation.photo') }}</th>
                                               <th>{{ __('translation.title') }}</th>
-                                              <th>{{ __('translation.category') }}</th>
+                                              {{-- <th>{{ __('translation.category') }}</th> --}}
                                           
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
@@ -213,7 +213,7 @@
                columns: [
                         { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
-                        { data: 'category', name: 'category' },
+                      //  { data: 'category', name: 'category' },
                          
                         { data: 'action', searchable: false, orderable: false }
 
@@ -226,7 +226,7 @@
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
           '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-subcategories-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_subcategory") }}'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_service") }}'+
           '</a>'+
           '</div>');
       });

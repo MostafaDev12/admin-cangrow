@@ -29,11 +29,11 @@
       <div class="row">
         <div class="col-12 col-lg-6 col-md-6">
           <div>
-            {{-- <iframe
+            {{----}} <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.1318316120887!2d31.335668224937944!3d30.061755417751158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583e684ed3305d%3A0xcd985afc51324715!2z2KfZhNio2LfYsdin2YjZitiMINin2YTZhdmG2LfZgtipINin2YTYo9mI2YTZidiMINmF2K_ZitmG2Kkg2YbYtdix2Iwg2YXYrdin2YHYuNipINin2YTZgtin2YfYsdip4oCs!5e0!3m2!1sar!2seg!4v1742731586978!5m2!1sar!2seg"
               width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
-                {!! $gs->map !!}
+              referrerpolicy="no-referrer-when-downgrade"></iframe> 
+                
           </div>
           <div class="row">
             <div class="col-12 col-lg-6 col-md-6">

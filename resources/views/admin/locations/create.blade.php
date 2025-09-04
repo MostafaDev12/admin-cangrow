@@ -82,7 +82,10 @@
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                               </div>
-                                              
+                                              <div class="mb-3">
+                                        <label for="address_ar" class="form-label">{{ __('translation.address') }}</label>
+                                        <textarea class="form-control" name="address_ar"  id="address_ar" rows="3" placeholder="{{ __('translation.address') }}"></textarea>
+                                    </div>
                                             
                                               
                                         </div>
@@ -99,7 +102,10 @@
                                               <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                           </div>
                                           
-                                         
+                                         <div class="mb-3">
+                                        <label for="address_ar" class="form-label">{{ __('translation.address') }}</label>
+                                        <textarea class="form-control" name="address_en"  id="address_en" rows="3" placeholder="{{ __('translation.address') }}"></textarea>
+                                    </div>
                                         
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
@@ -137,24 +143,14 @@
                                 <!-- end card -->
                             </div> <!-- end col -->
 
+ 
 
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                   
                                     <div class="mb-3">
-                                        <label for="address_ar" class="form-label">{{ __('translation.map_link') }}</label>
-                                        <textarea class="form-control" name="address_ar"  id="address_ar" rows="3" placeholder="{{ __('translation.map_link') }}"></textarea>
-                                    </div>
-                                </div>
-                                <!-- end card -->
-                            </div> <!-- end col -->
-
-                            <div class="col-xl-12 col-md-12">
-                                <div class="card">
-                                  
-                                    <div class="mb-3">
-                                        <label for="book_link" class="form-label">{{ __('translation.book_link') }}</label>
-                                        <textarea class="form-control" name="book_link"  id="book_link" rows="1" placeholder="{{ __('translation.book_link') }}"></textarea>
+                                        <label for="book_link" class="form-label">{{ __('translation.phone') }}</label>
+                                        <textarea class="form-control" name="book_link"  id="book_link" rows="1" placeholder="{{ __('translation.phone') }}"></textarea>
                                     </div>
                                 </div>
                                 <!-- end card -->
