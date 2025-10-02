@@ -25,8 +25,9 @@
         <div class="relative h-screen w-full  bg-[url('{{ asset('front/gulddal/') }}/images/bannerContacts.jpg')] md:bg-cover bg-center">
             <div class="flex items-center w-full h-full justify-center" data-carousel-item>
 
-                <div class="text-center text-white bg-black/50 w-full py-10  mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">  {{ __('الإتصـــال بنـــا') }}</h2>
+               
+ <div class="text-center text-white bg-black/50 w-full py-10  mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">  {{ __('الإتصـــال بنـــا') }}</h1>
 
                 </div>
             </div>

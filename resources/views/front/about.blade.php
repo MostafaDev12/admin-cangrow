@@ -20,8 +20,8 @@
         <div class="relative h-screen w-full  bg-[url('{{ asset('front/gulddal/') }}/images/about.jpg')] md:bg-cover bg-center">
             <div class="flex flex-column items-center w-full h-full justify-center" data-carousel-item>
                 <div class="text-center text-white bg-black/50 w-full py-10  mb-16">
-                    <h2 class="text-4xl font-bold mb-4">
-                        {{ __('أم دابليو أم جولدال سيستمز') }}</h2>
+                    <h1 class="text-4xl font-bold mb-4">
+                        {{ __('أم دابليو أم جولدال سيستمز') }}</h1>
 
                 </div>
             </div>

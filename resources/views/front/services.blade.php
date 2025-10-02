@@ -26,7 +26,7 @@
                     
 
 <h1 class="text-4xl font-bold mb-4">
-                             {!! $category->{'title_' . $sign} ?? '' !!}</h1>
+                            {{ __('services') }}</h1>
                     <p class="text-lg max-w-2xl mx-auto">   {!! $category->{'details_' . $sign} ?? '' !!}     </p>
 
                 </div>
@@ -46,7 +46,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
 
-                 @foreach ($category->services as $parentServices)
+                 @foreach ($services as $parentServices)
                 <div
                     class="bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300">
                     <div class="relative h-48 w-full overflow-hidden">

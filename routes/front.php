@@ -24,6 +24,20 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
     //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
 
 
+
+        Route::get('change/{id}', [HomeController::class, 'change'])->name('change-lang.index');
+        
+ Route::post('/subscripe-submit', [HomeController::class, 'subscribe'])->name('front.subscripe.submit');
+       
+
+           Route::post('/contact-submit', [HomeController::class, 'contactemail'])->name('front.contact.submit');
+      
+        Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');
+        
+
+        Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
+    
+
     Route::get('/', function () {
 
         $data = Language::where('is_default', '=', '1')->first();
@@ -35,12 +49,12 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
  Route::get('/', [HomeController::class, 'index'])->name('front.index');
         Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
-        Route::get('/services', [HomeController::class, 'services'])->name('services.index');
+        Route::get('/service', [HomeController::class, 'services'])->name('services.index');
 
      
-        Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service.index');
-         Route::get('/gallery/{slug}', [HomeController::class, 'gallery'])->name('gallery.index');
-          Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
+        Route::get('/service/{slug?}', [HomeController::class, 'singleService'])->name('single-service.index');
+         Route::get('/gallery/{slug?}', [HomeController::class, 'gallery'])->name('gallery.index');
+          Route::get('/services-category/{slug?}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
 
         Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
@@ -59,25 +73,12 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/dental-implants', [HomeController::class, 'dental_implants'])->name('dental-implants.index');
 
     
+        Route::get('/references/{id?}', [HomeController::class, 'singleModelCategory'])->name('single-model-category.index');
+    
 
         Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
 
-        Route::get('/references/{id}', [HomeController::class, 'singleModelCategory'])->name('single-model-category.index');
-    
     });
- Route::post('/subscripe-submit', [HomeController::class, 'subscribe'])->name('front.subscripe.submit');
-       
-
-           Route::post('/contact-submit', [HomeController::class, 'contactemail'])->name('front.contact.submit');
-      
-        Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');
-        
-
-        Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
-    
-
-
-        Route::get('change/{id}', [HomeController::class, 'change'])->name('change-lang.index');
 
         
    });

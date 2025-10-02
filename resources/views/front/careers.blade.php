@@ -21,7 +21,7 @@
         <div class="relative h-screen w-full  bg-[url('{{ asset('front/gulddal/') }}/images/careers.jpg')] md:bg-cover bg-center">
             <div class="flex flex-column items-center w-full h-full justify-center" data-carousel-item>
                 <div class="text-center text-white bg-black/50 w-full py-10  mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">{{ __('التوظيــف') }}</h2>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ __('التوظيــف') }}</h1>
                     <p class=" text-lg max-w-2xl mx-auto">
                         
                         {{ __('إذا كنت تعتقد أن لديك ما يلزم للانضمام إلى فريق MWM Gulddal Systems الديناميكي والإبداعي ، فاملأ النموذج أدناه وأخبرنا!') }}

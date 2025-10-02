@@ -17,15 +17,15 @@
 
 <section class="bg-gray-800 py-3 border-b border-gray-700">
      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-sm text-primary text-right">
-         <a href="products.html" class="hover:text-yellow-100">{{ __('المنتجات') }}</a>
+         <a href="{{ route('single-category-service.index', ['lang' => $sign]) }}" class="hover:text-yellow-100">{{ __('المنتجات') }}</a>
         
          <span class="mx-2">/</span>
-         <a href="#" class="hover:text-yellow-100"> {{ optional($service->category)->{'title_' . $sign} }}  </a>
+         <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => optional($service->category)->{'slug_' . $sign} ]) }}" class="hover:text-yellow-100"> {{ optional($service->category)->{'title_' . $sign} }}  </a>
         
          <span class="mx-2">/</span>
-          @if($service->parent)
-         <a href="#" class="hover:text-yellow-100"> {{ optional($service->parent)->{'title_' . $sign} }}  </a>
-         <span class="mx-2">/</span>
+          @if($service->parent) 
+         <a href="{{ route('single-service.index', ['lang' => $sign, 'slug' => optional($service->parent)->{'slug_' . $sign} ]) }}" class="hover:text-yellow-100"> {{ optional($service->parent)->{'title_' . $sign} }}  </a>
+        <span class="mx-2">/</span>
         @endif
 
          <span class="font-bold text-yellow-500">{{ $service->{'title_' . $sign} }}</span>

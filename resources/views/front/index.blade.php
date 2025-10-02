@@ -29,11 +29,15 @@
                 <!-- Slide 1 -->
                 <div class="absolute inset-0 flex items-center justify-center bg-[url('{{ $slider->{'photo'} ?? '' }}')] bg-cover bg-center transition-opacity duration-500 opacity-0"
                     data-carousel-item>
-                    <div class="text-center px-4">
-                        <div class="text-white text-4xl font-bold mb-4 animate-fadeInDown">   {!! $slider->{'title_' . $sign} ?? '' !!}</div>
-                        <div class="text-white text-xl animate-fadeInUp animate-delay-200">    
-                                {!! $slider->{'details_' . $sign} ?? '' !!}   </div>
-                    </div>
+                   <div class="text-center px-4">
+  <h1 class="text-4xl font-bold mb-4 text-white animate-fadeInDown">
+    {{ $slider->{'title_' . $sign} ?? '' }}
+  </h1>
+  <p class="text-xl text-white animate-fadeInUp animate-delay-200">
+    {{ $slider->{'details_' . $sign} ?? '' }}
+  </p>
+</div>
+
                 </div>
  @endforeach
                  

@@ -120,7 +120,9 @@
                 <div class=" animate-slideInLeft" style="animation-delay: 0.2s;">
                     <a href="{{ route('front.index', $sign) }}" class="">
                         <img src="{{ $gs->{'logo_' . $sign} }}" alt="MWM Gulddal Systems Logo"
-                            class="logo h-40 scale-150 transition-transform duration-300">
+                            src="/logo.png"
+  class="logo h-28 5xl:h-40 scale-150 duration-300 
+    {{ session::get('front_language_duraction') == 'rtl' ? 'translate-x-5' : '-translate-x-5' }}">
                     </a>
 
                 </div>

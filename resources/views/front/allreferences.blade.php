@@ -21,12 +21,10 @@
             <div class="flex flex-column items-center w-full h-full justify-center" data-carousel-item>
                 <div class="text-center text-white bg-black/50 w-full py-10  mb-16">
                     <h1 class="text-4xl font-bold mb-4">
-                        {!! $service->{'title_' . $sign} ?? '' !!}
+                       {{ __('المراجع') }}
 
                     </h1>
-                    <p class="text-xl max-w-3xl mx-auto">
-                        {!! $service->{'details_' . $sign} ?? '' !!}
-                    </p>
+                    
                 </div>
             </div>
     </section>
@@ -36,7 +34,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                @foreach ($service->models as $model)
+                @foreach ($references as $model)
                     
                 <!-- Poland -->
                 <div class="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-800">

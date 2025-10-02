@@ -255,7 +255,7 @@ class HomeController extends Controller
     return view('front.details-blog', compact('sign', 'blog'));
   }
 
-  public function singleService(Request $request,$lang, $slug)
+  public function singleService(Request $request,$lang, $slug = null)
   {
 
     $sign = $this->langSign($lang);
@@ -268,7 +268,7 @@ class HomeController extends Controller
     }
     return view('front.details-service', compact('sign', 'service'));
   }
-  public function singleCategory(Request $request,$lang, $slug)
+  public function singleCategory(Request $request,$lang, $slug = null)
   {
 
     $sign = $this->langSign($lang);
@@ -277,12 +277,13 @@ class HomeController extends Controller
     $service = Category::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
     if(!$service){
 
-      abort(404);
+     // abort(404);
+       return view('front.services', compact('sign'));
     }
     return view('front.services', compact('sign', 'service'));
   }  
   
-  public function singleModelCategory(Request $request,$lang, $slug)
+  public function singleModelCategory(Request $request,$lang, $slug= null)
   {
 
     $sign = $this->langSign($lang);
@@ -291,11 +292,12 @@ class HomeController extends Controller
     $service = ModelCategory::where('id', $slug)->first();
     if(!$service){
 
-      abort(404);
+         return view('front.allreferences', compact('sign', 'service'));
+    //  abort(404);
     }
     return view('front.references', compact('sign', 'service'));
   }
-  public function gallery(Request $request,$lang, $slug)
+  public function gallery(Request $request,$lang, $slug = null)
   {
 
     $sign = $this->langSign($lang);
@@ -304,13 +306,14 @@ class HomeController extends Controller
     $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
     if(!$service){
 
-      abort(404);
+    //  abort(404);
+      return view('front.services', compact('sign'));
     }
 
     return view('front.gallery', compact('sign','service'));
   }
 
-  public function singleCategoryService(Request $request,$lang, $slug)
+  public function singleCategoryService(Request $request,$lang, $slug = null)
   {
 
     $sign = $this->langSign($lang);
@@ -319,7 +322,8 @@ class HomeController extends Controller
 
     if(!$category){
 
-      abort(404);
+   //   abort(404);
+     return view('front.services', compact('sign', 'category'));
     }
     return view('front.category', compact('sign', 'category'));
   }
@@ -420,14 +424,35 @@ class HomeController extends Controller
     $u =  url()->previous();
 
 
-    $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
+    // $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
 
 
-    // echo $x;
+    // // echo $x;
 
-    //  return redirect($x);
+    // //  return redirect($x);
 
-    return redirect()->back();
+    // return redirect()->back();
+    
+    $parsedUrl = parse_url($u);
+$path = $parsedUrl['path'] ?? '/';
+
+// Split path into segments
+$segments = explode('/', trim($path, '/'));
+
+// Replace the first segment if it matches old language sign
+if (!empty($segments[0]) && $segments[0] === $lang->sign) {
+    $segments[0] = $data->sign;
+} else {
+    // If no language in URL, just prepend new one
+    array_unshift($segments, $data->sign);
+}
+
+// Build new URL
+$newPath = implode('/', $segments);
+$newUrl = url($newPath);
+
+// Redirect
+return redirect($newUrl);
   }
 
 
