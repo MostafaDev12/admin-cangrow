@@ -28,6 +28,7 @@
                                         <thead>
                                             <tr>
                                             
+                                              <th>{{ __('translation.name') }}</th>
                                               <th>{{ __('translation.title') }}</th>
                                               
                                           <th>{{ __('translation.actions') }}</th>
@@ -88,6 +89,7 @@
                ajax: '{{ route('admin-doctors-datatables') }}',
                columns: [
                        
+                        { data: 'name_ar', name: 'name_ar' },
                         { data: 'title_ar', name: 'title_ar' },
                         
                         { data: 'action', searchable: false, orderable: false }

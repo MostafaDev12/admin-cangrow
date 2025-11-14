@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __("translation.edit_location") }}
+        {{ __("translation.edit_doctor") }}
         @endslot
     @endcomponent
 
@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-body">
-              <form id="geniusform" action="{{route('admin-locations-update',$data->id)}}" method="POST" enctype="multipart/form-data">
+              <form id="geniusform" action="{{route('admin-doctors-update',$data->id)}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 @include('includes.admin.form-both')
 
