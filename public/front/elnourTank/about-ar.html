@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Marking & Coating Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body class="bg-black" dir="rtl" lang="ar">
+
+
+    <header
+        class="desktopHeader fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 text-gray-800 hidden lg:block transition-all duration-300 shadow-sm">
+
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center w-full">
+
+            <div class="flex items-center animate-slideInRight" style="animation-delay: 0.2s;">
+                <a href="index.html">
+                    <img src="./images/logo2.png" alt="شعار الشركة" class="h-16">
+                </a>
+            </div>
+
+            <nav class="animate-slideInRight" style="animation-delay: 0.4s;">
+                <ul class="flex items-center gap-6 text-lg font-medium">
+                    <li><a href="index.html" class="hover:text-primary transition">الرئيسية</a></li>
+                    <li><a href="about.html" class="hover:text-primary transition">من نحن</a></li>
+
+                    <li class="relative group">
+                        <a href="#" class="hover:text-primary transition flex items-center gap-1">
+                            الخدمات
+                            <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <ul
+                            class="absolute right-0 mt-2 w-56 bg-white text-gray-700 rounded-lg shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300">
+                            <li><a href="#" class="block px-4 py-2 hover:text-primary hover:bg-gray-50">خزانات البولي
+                                    إيثيلين</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:text-primary hover:bg-gray-50">خزانات الفيبر
+                                    جلاس</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:text-primary hover:bg-gray-50">خزانات الاستانلس
+                                    ستيل</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:text-primary hover:bg-gray-50">أكشاك وحمامات
+                                    متنقلة</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="articles.html" class="hover:text-primary transition">المقالات</a></li>
+                    <li><a href="gallery.html" class="hover:text-primary transition">المعرض</a></li>
+                    <li><a href="contacts.html" class="hover:text-primary transition">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <header
+        class="mobileHeader fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 text-gray-800 lg:hidden transition-all duration-300 shadow-sm">
+
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html">
+                <img src="./images/logo2.png" alt="شعار الشركة" class="h-14">
+            </a>
+
+            <button id="menu-btn" class="focus:outline-none text-gray-800 text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- القائمة الجانبية -->
+        <div id="mobile-menu"
+            class="fixed top-0 right-0 w-full !bg-white text-gray-800 shadow-lg transform translate-x-full transition-transform duration-300 z-[9999]">
+            <div class="flex justify-between items-center p-4 border-b border-gray-200">
+                <span class="font-bold text-lg">القائمة</span>
+                <button id="close-btn" class="focus:outline-none text-primary text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <ul class="flex flex-col gap-4 p-4 text-lg">
+                <li><a href="index.html" class="hover:text-primary transition">الرئيسية</a></li>
+                <li><a href="about.html" class="hover:text-primary transition">من نحن</a></li>
+
+                <li>
+                    <button class="flex justify-between items-center w-full focus:outline-none submenu-btn">
+                        <span>الخدمات</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <ul class="submenu hidden flex flex-col pr-4 mt-2 gap-2 text-base text-gray-600">
+                        <li><a href="#" class="hover:text-primary">خزانات البولي إيثيلين</a></li>
+                        <li><a href="#" class="hover:text-primary">خزانات الفيبر جلاس</a></li>
+                        <li><a href="#" class="hover:text-primary">خزانات الاستانلس ستيل</a></li>
+                        <li><a href="#" class="hover:text-primary">أكشاك وحمامات متنقلة</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="articles.html" class="hover:text-primary transition">المقالات</a></li>
+                <li><a href="gallery.html" class="hover:text-primary transition">المعرض</a></li>
+                <li><a href="contacts.html" class="hover:text-primary transition">اتصل بنا</a></li>
+            </ul>
+        </div>
+
+        <!-- خلفية شفافة تغلق القائمة -->
+        <!-- <div id="overlay" class="fixed inset-0 bg-black/30 hidden opacity-0 transition-opacity duration-300 z-[9998]">
+        </div> -->
+    </header>
+
+    <footer class="bg-black text-white py-10" dir="rtl">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+                <!-- معلومات الشركة -->
+                <div class="mb-8 md:mb-0">
+                    <a href="index.php" class="block mb-4">
+                        <img src="./images/mainLogo.svg" alt="شعار الشركة" class="h-16 mx-auto md:mx-0" />
+                    </a>
+                    <p class="text-sm text-gray-300">
+                        جولدال سيستمز هي مورد عالمي رائد للطلاءات الصناعية الواقية، ومواد السلامة، وتخطيط الطرق.
+                    </p>
+
+                    <!-- أيقونات التواصل الاجتماعي -->
+                    <div class="flex mt-4 space-x-reverse space-x-2 text-yellow-300 justify-end md:justify-start">
+                        <a href="https://www.facebook.com/mwmgulddalsystems" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-yellow-500">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mwmgulddalsystems" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-yellow-500">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/mwm-gulddal-systems" target="_blank"
+                            rel="noopener noreferrer" class="hover:text-yellow-500">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- روابط سريعة -->
+                <div class="mb-8 md:mb-0">
+                    <h4 class="text-lg font-bold text-yellow-400 mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.php" class="hover:text-yellow-500 transition duration-200">الرئيسية</a></li>
+                        <li><a href="about.php" class="hover:text-yellow-500 transition duration-200">من نحن</a></li>
+                        <li><a href="products.php" class="hover:text-yellow-500 transition duration-200">المنتجات</a>
+                        </li>
+                        <li><a href="solutions.php" class="hover:text-yellow-500 transition duration-200">الحلول</a>
+                        </li>
+                        <li><a href="references.php" class="hover:text-yellow-500 transition duration-200">المرجعيات</a>
+                        </li>
+                        <li><a href="careers.php" class="hover:text-yellow-500 transition duration-200">الوظائف</a></li>
+                        <li><a href="contacts.php" class="hover:text-yellow-500 transition duration-200">اتصل بنا</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- المنتجات -->
+                <div class="mb-8 md:mb-0">
+                    <h4 class="text-lg font-bold text-yellow-400 mb-4">منتجاتنا</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="productsD1.php?level=120"
+                                class="hover:text-yellow-500 transition duration-200">تخطيط الطرق</a></li>
+                        <li><a href="productsD1.php?level=121"
+                                class="hover:text-yellow-500 transition duration-200">طلاءات الأرضيات</a></li>
+                        <li><a href="productsD1.php?level=119"
+                                class="hover:text-yellow-500 transition duration-200">الطلاءات الواقية والبحرية</a></li>
+                    </ul>
+                </div>
+
+                <!-- معلومات التواصل -->
+                <div>
+                    <h4 class="text-lg font-bold text-yellow-400 mb-4">اتصل بنا</h4>
+                    <address class="not-italic text-sm text-gray-300 mb-4">
+                        <p class="mb-1"><strong>مكتب الشرق الأوسط وأفريقيا</strong></p>
+                        <p>٣٥ شارع حسن الشريف - مدينة نصر، القاهرة، مصر</p>
+                        <p class="mt-2">هاتف: +2022733403</p>
+                        <p>جوال: +201222243351</p>
+                    </address>
+
+                    <div class="flex justify-center md:justify-start space-x-reverse space-x-4 mt-6">
+                        <a href="https://www.facebook.com/mwmgulddalsystems" target="_blank"
+                            class="text-yellow-400 hover:text-yellow-500 transition duration-200">
+                            <i class="fab fa-facebook-f text-2xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mwmgulddalsystems" target="_blank"
+                            class="text-yellow-400 hover:text-yellow-500 transition duration-200">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/mwm-gulddal-systems" target="_blank"
+                            class="text-yellow-400 hover:text-yellow-500 transition duration-200">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- فاصل -->
+            <hr class="border-gray-700 my-8" />
+
+            <!-- حقوق النشر -->
+            <div class="text-center text-xs text-gray-500">
+                © <span id="current-year"></span> - جميع الحقوق محفوظة
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script src="scripts/index.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

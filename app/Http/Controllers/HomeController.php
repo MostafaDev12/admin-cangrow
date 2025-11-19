@@ -212,6 +212,31 @@ $processes = Process::get();
       abort(404);
     }
 
+
+     switch ($sign) {
+        case 'en':
+            $correctSlug = $blog->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $blog->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $blog->slug_fr;
+            break;
+        default:
+            $correctSlug = $blog->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
     return view('front.details-blog', compact('sign', 'blog'));
   }
 
@@ -226,6 +251,8 @@ $processes = Process::get();
 
       abort(404);
     }
+
+
     return view('front.details-product', compact('sign', 'service'));
   } 
   
@@ -240,6 +267,33 @@ $processes = Process::get();
 
       abort(404);
     }
+
+         switch ($sign) {
+        case 'en':
+            $correctSlug = $service->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $service->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $service->slug_fr;
+            break;
+        default:
+            $correctSlug = $service->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
+
+
     return view('front.details-service', compact('sign', 'service'));
   }
   public function singleCategory(Request $request,$lang, $slug)
