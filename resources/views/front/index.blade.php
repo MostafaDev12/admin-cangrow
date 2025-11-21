@@ -40,11 +40,11 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button
+                        <a href=" {{ route('contact.index', ['lang' => $sign]) }}"
                             class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center shadow-lg transition duration-300">
-                            اطلب الآن
+                               {{ __('اطلب الآن') }}
                             <i class="fas fa-arrow-right mr-3"></i>
-                        </button>
+                    </a>
                         
                     </div>
 
