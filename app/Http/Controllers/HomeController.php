@@ -531,11 +531,11 @@ return redirect($newUrl);
       $subject = "Email From Of " . $request->name;
       $service = $request->specialty;
       $msg = "Name: " . $name . 
-      "<br>Email: " . $from . 
+    //  "<br>Email: " . $from . 
       "<br>Phone: " . $phone . 
-      "<br>Age: " . $request->age . 
-      "<br>Specialty: " . $request->specialty . 
-      "<br>BookingDate: " . $request->bookingDate . 
+      // "<br>Age: " . $request->age . 
+      // "<br>Specialty: " . $request->specialty . 
+      // "<br>BookingDate: " . $request->bookingDate . 
     
       "<br>Message: " . $message;
 
