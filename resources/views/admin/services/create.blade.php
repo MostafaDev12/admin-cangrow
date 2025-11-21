@@ -199,7 +199,7 @@
                     </div>
   
                         <div class="row">
-                                <div class="col-xl-12 col-md-12">
+                         {{--            <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">
                                     <label for="parent_id" class="form-label">{{ __('translation.parent_service') }}</label>
@@ -228,7 +228,7 @@
                                     </select>
                                 </div>  
                             </div>
-                   {{--          
+                        
                           <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">

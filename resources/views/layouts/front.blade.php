@@ -108,246 +108,159 @@
     $randomPhone = Arr::random($phones);
 @endphp
 
-
-<body dir="{{ session::get('front_language_duraction') }}" lang="{{ $sign }}">
  
-  <header id="mainHeader" class="sticky-top">
-    <nav class="navbar navbar-expand-md container">
-      <div
-        class="d-flex flex-wrap w-100  align-items-center justify-content-between justify-content-md-center flex-md-nowrap">
-        <!-- Logo -->
-        <a class="navbar-brand" href="{{ route('front.index', $sign) }}">
-          <img src="{{ $gs->{'logo_' . $sign} }}" alt="{{ $gs->{'title_' . $sign} }}" />
-        </a>
+ 
+ 
+<body class="bg-gray-50 text-gray-800 font-tajawal" dir="{{ session::get('front_language_duraction') }}" lang="{{ $sign }}">
+    <header
+        class="desktopHeader fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 text-gray-800 hidden lg:block transition-all duration-300 shadow-sm">
 
-        <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-          aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <!-- <span class="navbar-toggler-icon"></span> -->
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center w-full">
 
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav d-flex align-content-center">
-            <li class="nav-item">
-              <a class="nav-link active" href="{{ route('front.index', $sign) }}">{{ __('الرئيسية') }}</a>
-            </li>
-  @foreach ($categories as $category)
+            <div class="flex items-center animate-slideInRight" style="animation-delay: 0.2s;">
+                <a href="{{ route('front.index',$sign) }}">
+                    <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-16">
+                </a>
+            </div>
 
-            @if ($category->parentServices()->count() > 0)
-              
-            <!-- المطابخ -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => $category->{'slug_' . $sign}]) }}" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                 {!! $category->{'title_' . $sign} ?? '' !!}
-              </a>
+            <nav class="animate-slideInRight" style="animation-delay: 0.4s;">
+                <ul class="flex items-center gap-6 text-lg font-medium">
+                    <li><a href="{{ route('front.index',$sign) }}" class="hover:text-primary transition">{{ __('الرئيسية') }}</a></li>
+                    <li><a href="{{ route('about.index',$sign) }}" class="hover:text-primary transition">    {{ __('من نحن') }}</a></li>
 
-              <ul class="dropdown-menu dropdown-menu-end">
+                    <li class="relative group">
+                        <a href="#" class="hover:text-primary transition flex items-center gap-1">
+                            {{ __('الخدمات') }}
+                            <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <ul
+                            class="absolute right-0 mt-2 w-56 bg-white text-gray-700 rounded-lg shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300">
+                            @foreach ($services as $service)
+                            <li><a href="{{ route('single-service-service.index',['lang' => $sign,'slug' => $service->{'slug_' . $sign} ]) }}" class="block px-4 py-2 hover:text-primary hover:bg-gray-50">   
+                                     {{ $service->{'title_' . $sign} }}</a></li>
+                          @endforeach
+                        </ul>
+                    </li>
 
-                @foreach ($category->parentServices as $service)
-                  
-                @if ($service->childs()->count() > 0)
-                  
-                <!-- Nested dropdown -->
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item dropdown-toggle d-flex align-items-center justify-content-between" href="#"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span>  {!! $service->{'title_' . $sign} ?? '' !!}  </span>
-                    <!-- <i class="dropdown-toggle-arrow"></i> -->
-                    <i class="fa-solid fa-caret-left"></i> </a>
-                  <ul class="dropdown-menu dropdown-submenu">
+                    <li><a href="{{ route('blogs.index',$sign) }}" class="hover:text-primary transition">{{ __('المقالات') }}</a></li>
+                    <li><a href="{{ route('gallery.index',$sign) }}" class="hover:text-primary transition">{{ __('المعرض') }}</a></li>
+                    <li><a href="{{ route('contact.index',$sign) }}" class="hover:text-primary transition"> {{ __('اتصل بنا') }}  </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-                    @foreach ($service->childs as $child)
-                      
-                    <li><a class="dropdown-item" href="{{ route('single-service.index', ['lang' => $sign, 'slug' => $child->{'slug_' . $sign}]) }}"> {!! $child->{'title_' . $sign} ?? '' !!} </a></li>
+    <header
+        class="mobileHeader fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 text-gray-800 lg:hidden transition-all duration-300 shadow-sm">
 
-                    @endforeach
-                     
-                  </ul>
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="{{ route('front.index',$sign) }}">
+                <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-14">
+            </a>
+
+            <button id="menu-btn" class="focus:outline-none text-gray-800 text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- القائمة الجانبية -->
+        <div id="mobile-menu"
+            class="fixed top-0 right-0 w-full !bg-white text-gray-800 shadow-lg transform translate-x-full transition-transform duration-300 z-[9999]">
+            <div class="flex justify-between items-center p-4 border-b border-gray-200">
+                <span class="font-bold text-lg">{{ __('القائمة') }}</span>
+                <button id="close-btn" class="focus:outline-none text-primary text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <ul class="flex flex-col gap-4 p-4 text-lg">
+                <li><a href="{{ route('front.index',$sign) }}" class="hover:text-primary transition">{{ __('الرئيسية') }}</a></li>
+                <li><a href="{{ route('about.index',$sign) }}" class="hover:text-primary transition"> {{ __('من نحن') }}  </a></li>
+
+                <li>
+                    <button class="flex justify-between items-center w-full focus:outline-none submenu-btn">
+                        <span>{{ __('الخدمات') }}</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <ul class="submenu hidden  flex-col pr-4 mt-2 gap-2 text-base text-gray-600">
+                      @foreach ($services as $service)
+                      <li><a href="{{ route('single-service-service.index',['lang' => $sign,'slug' => $service->{'slug_' . $sign} ]) }}" class="hover:text-primary">    {{ $service->{'title_' . $sign} }}  </a></li>
+                         @endforeach  
+                    </ul>
                 </li>
 
-                @else
-                  
-                <li><a class="dropdown-item" href="{{ route('single-service.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"> {!! $service->{'title_' . $sign} ?? '' !!} </a></li>
-
-                @endif
-                @endforeach
- 
-                
-              </ul>
-            </li>
-
-
-            @else
-               
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => $category->{'slug_' . $sign}]) }}"> {!! $category->{'title_' . $sign} ?? '' !!} </a>
-            </li>
-
-            @endif
-
-@endforeach
-
-
-             
-
-            <li class="nav-item"><a class="nav-link" href="{{ route('services.index', $sign) }}"> {{ __('الخدمات') }}</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('blogs.index', $sign) }}"> {{ __('مقالات تهمك') }}</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('locations.index', $sign) }}">{{ __('معارضنا') }}</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('reviews.index', $sign) }}">{{ __('اراء العملاء') }}</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('contact.index', $sign) }}"> {{ __('تواصل معنا') }}</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('about.index', $sign) }}"> {{ __('من نحن') }}</a></li>
-          </ul>
+                <li><a href="{{ route('blogs.index',$sign) }}" class="hover:text-primary transition">{{ __('المقالات') }}</a></li>
+                <li><a href="{{ route('gallery.index',$sign) }}" class="hover:text-primary transition">{{ __('المعرض') }}</a></li>
+                <li><a href="{{ route('contact.index',$sign) }}" class="hover:text-primary transition">   {{ __('اتصل بنا') }}</a></li>
+            </ul>
         </div>
-      </div>
-    </nav>
-  </header>
+
+        <!-- خلفية شفافة تغلق القائمة -->
+        <!-- <div id="overlay" class="fixed inset-0 bg-black/30 hidden opacity-0 transition-opacity duration-300 z-[9998]">
+        </div> -->
+    </header>
 
 
 
     @yield('content')
-
-  
-  <footer class="text-white pt-5 pb-4">
-    <div class="container">
-      <div class="row">
-        <!-- Column 1: About -->
-        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4"> {{ __('من نحن') }}  </h5>
-          <p>
-             {{ $gs->{'footer_' . $sign} }}
-          </p>
-          <div class="social-icons mt-4">
-            <a href="https://www.facebook.com/share/1AJ2LibUus/" class="text-white me-2"><i
-                class="fab fa-facebook-f"></i></a>
-            <!-- <a href="" class="text-white me-2"><i class="fab fa-twitter"></i></a> -->
-            <a href="https://www.instagram.com/highline.furniture?igsh=MTh2aHNlc3l2eDA3ZA==" class="text-white me-2"><i
-                class="fab fa-instagram"></i></a>
-            <!-- WhatsApp -->
-            <a href="https://wa.me/2{{ $randomPhone }}" target="_blank" title="WhatsApp" class="text-white me-2">
-              <i class="fa-brands fa-whatsapp"></i>
-            </a>
-
-            <!-- Phone Call -->
-            <a href="tel:{{ $randomPhone }}" title="Call" class="text-white me-2">
-              <i class="fa-solid fa-phone"></i>
-            </a>
-            <!-- <a href="#" class="text-white me-2"><i class="fab fa-youtube"></i></a> -->
-          </div>
-        </div>
-
-        <!-- Column 2: Quick Links -->
-        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4"> {{ __('روابط سريعة') }}</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="{{ route('front.index', $sign) }}" class="text-white">{{ __('الرئيسية') }}</a></li>
-            <li class="mb-2"><a href="{{ route('about.index', $sign) }}" class="text-white"> {{ __('من نحن') }}  </a></li>
-            <li class="mb-2"><a href="{{ route('blogs.index', $sign) }}" class="text-white"> {{ __('مقالات تهمك') }}</a></li>
-            <li class="mb-2"><a href="{{ route('locations.index', $sign) }}" class="text-white">{{ __('معارضنا') }}</a></li>
-            <li class="mb-2"><a href="{{ route('reviews.index', $sign) }}" class="text-white">{{ __('اراء العملاء') }}</a></li>
-            <li class="mb-2"><a href="{{ route('contact.index', $sign) }}" class="text-white"> {{ __('تواصل معنا') }}</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 3: Products -->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">{{ __('منتجاتنا') }}</h5>
-          <ul class="list-unstyled">
-              @foreach ($categories as $category)
-            <li class="mb-2"><a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => $category->{'slug_' . $sign}]) }}" class="text-white"> {!! $category->{'title_' . $sign} ?? '' !!} </a></li>
-                   @endforeach
-
-          </ul>
-        </div>
-
-        <!-- Column 4: Contact -->
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-uppercase me-4">    {{ __('خدمة العملاء') }}</h5>
-          <ul class="list-unstyled">
-            
-            @foreach($addresses as $address)
-            <li class="flex gap-2 align-items-center">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>
-                {{$address}}
-              </span>
-            </li>
-            @endforeach
-            <li class="my-3">
-              <a href="https://wa.me/2{{ $randomPhone }}" class="text-white flex gap-2 align-items-center" target="_blank"
-                title="WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-                <span dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"> {{ $randomPhone }}</span>
-              </a>
-            </li>
-            <li class="">
-              <a href="tel:{{ $randomPhone }}" class="text-white flex gap-2 align-items-center" title="Call">
-                <i class="fa-solid fa-phone"></i>
-                <span dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"> {{ $randomPhone }}</span>
-
-              </a>
-            </li>
-            <!-- <li class="mb-3">
-              <i class="fas fa-clock me-2"></i>
-              ساعات العمل: 9 ص - 5 م
-            </li> -->
-          </ul>
-        </div>
-      </div>
-
-      <hr class="my-4 bg-light">
-
-      <!-- Copyright -->
-      <div class="row align-items-center">
-        <!-- <div class="col-md-6 text-center"> -->
-        <div class="d-flex gap-2 justify-content-center align-items-center">
-
-          <p class="mb-0 text-white">&copy; هاي لاين. جميع الحقوق محفوظة. <span class="year">{{ date('Y') }}</span></p>
-          <a href="https://www.cangrowonline.com/" target="_blank">
-            <img src="https://alrehab-eg.com/front/alrehab/assets/CanGrow logo.png" alt="CanGrow Logo"
-              style="height: 100px;" class="" /> </a>
-        </div>
-        <!-- </div> -->
-        <!-- <div class="col-md-6 text-center text-md-end">
-          <ul class="list-inline mb-0">
-            <li class="list-inline-item">
-              <a href="#" class="text-white">شروط الخدمة</a>
-            </li>
-            <li class="list-inline-item">
-              <span class="mx-2">|</span>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="text-white">سياسة الخصوصية</a>
-            </li>
-          </ul>
-        </div> -->
-      </div>
-    </div>
-  </footer>
-  <section class="social-icons-fixed">
-    <!-- <a href="#" class=""><i class="fab fa-facebook-f"></i></a> -->
-    <!-- <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a> -->
-    <!-- <a href="#" class=""><i class="fab fa-instagram"></i></a> -->
-    <!-- <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a> -->
-    <a href="https://www.facebook.com/share/1AJ2LibUus/" class=" social-icon facebook"><i
-        class="fab fa-facebook-f"></i></a>
-    <!-- <a href="" class="text-white me-2"><i class="fab fa-twitter"></i></a> -->
-    <a href="https://www.instagram.com/highline.furniture?igsh=MTh2aHNlc3l2eDA3ZA==" class="social-icon instagram"><i
-        class="fab fa-instagram"></i></a>
-    <!-- WhatsApp -->
-    <a href="https://wa.me/2{{ $randomPhone }}" target="_blank" title="WhatsApp" class="social-icon whatsapp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- Phone Call -->
-    <a href="tel:{{ $randomPhone }}" title="Call" class="social-icon call">
-      <i class="fa-solid fa-phone"></i>
-    </a>
-
-  </section>
  
+
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8 mt-12">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
+
+            <div>
+                <a href="{{ route('front.index',$sign) }}">
+                    <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-28 mb-4">
+                </a>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    {{ $gs->{'footer_' . $sign} }}
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">خزانات المياه</h3>
+                <ul class="space-y-2 text-gray-400">
+                      @foreach ($services as $service)
+                  <li><a href="{{ route('single-service-service.index',['lang' => $sign,'slug' => $service->{'slug_' . $sign}  ]) }}" class="hover:text-accent transition">  {{ $service->{'title_' . $sign} }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">الشركة</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="{{ route('about.index',$sign) }}" class="hover:text-accent transition">   {{ __('من نحن') }}</a></li>
+                    
+                    <li><a href="{{ route('blogs.index',$sign) }}" class="hover:text-accent transition">{{ __('المقالات') }}</a></li>
+                    <li><a href="{{ route('gallery.index',$sign) }}" class="hover:text-accent transition">{{ __('المعرض') }}</a></li>
+                    <li><a href="{{ route('contact.index',$sign) }}" class="hover:text-accent transition">   {{ __('اتصل بنا') }}</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">{{ __('تواصل معنا') }}  </h3>
+                <ul class="space-y-3 text-gray-400">
+                    @foreach ($addresses as $address)
+                  <li class="flex items-start gap-2">
+                        <i class="fas fa-map-marker-alt text-accent mt-1"></i>
+                        <span>   {{ $address }}  </span>
+                    </li>
+                     @endforeach
+                      @foreach ($phones as $phone)
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone text-accent"></i>
+                        <a href="tel:+2{{ $phone }}" class="hover:text-accent transition">{{ $phone }}</a>
+                    </li>
+                       @endforeach
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="mt-12 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
+            © {{ date('Y') }}     {{ __('شركة النور لخزانات المياه. جميع الحقوق محفوظة.') }}
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

@@ -40,7 +40,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
      
         Route::get('/product/{slug}', [HomeController::class, 'singleProduct'])->name('single-service.index');
-         Route::get('/gallery/{slug}', [HomeController::class, 'gallery'])->name('gallery.index');
+         Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery.index');
           Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
          
           Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service-service.index');

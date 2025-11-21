@@ -61,29 +61,31 @@
                                         <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_us')</span>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
+                               <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-ps-portfolio') }}"
                                         aria-controls="sidebarportfolio">
                                         <i class="las la-tachometer-alt"></i> <span>@lang('translation.portfolio')</span>
                                     </a>
-                                </li> --}}
+                                </li> {{--  --}}
                             @endif
-                             @if (Auth::guard('admin')->user()->sectionCheck('processes'))
+                            
+{{--                             
+                            @if (Auth::guard('admin')->user()->sectionCheck('processes'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-processes-index') }}"
                             aria-controls="sidebarblogs">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_company')</span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
   @if (Auth::guard('admin')->user()->sectionCheck('media'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-media-index') }}" aria-controls="sidebarmedia">
-                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.videos')</span>
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.media')</span>
                         </a>
                     </li>
                 @endif
-                @if (Auth::guard('admin')->user()->sectionCheck('testimonials'))
+       {{--         @if (Auth::guard('admin')->user()->sectionCheck('testimonials'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-testimonials-index') }}"
                             aria-controls="sidebarblogs">
@@ -111,7 +113,7 @@
                     </li>
                 @endif
 
- {{-- @if (Auth::guard('admin')->user()->sectionCheck('timelines'))
+  @if (Auth::guard('admin')->user()->sectionCheck('timelines'))
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-timelines-index') }}"
                                         aria-controls="sidebarblogs">
@@ -264,7 +266,7 @@
                         </a>
                     </li>
                 @endif  --}}
-                {{--       @if (Auth::guard('admin')->user()->sectionCheck('services'))
+                  @if (Auth::guard('admin')->user()->sectionCheck('services'))
          
                      <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-services-index') }}"
@@ -273,7 +275,7 @@
                         </a>
                     </li>
                     @endif
- --}}
+   {{--  
                 @if (Auth::guard('admin')->user()->sectionCheck('services') ||
                         Auth::guard('admin')->user()->sectionCheck('categories') ||
                         Auth::guard('admin')->user()->sectionCheck('subcategories'))
@@ -293,7 +295,7 @@
                                         </a>
                                     </li>
                                 @endif
-                               {{--    --}}
+                             
                                 @if (Auth::guard('admin')->user()->sectionCheck('services'))
                                     <li class="nav-item">
                                         <a class="nav-link  " href="{{ route('admin-services-index') }}"
@@ -306,7 +308,7 @@
                         </div>
                     </li>
 
-                @endif
+                @endif --}}
                 {{-- @if (Auth::guard('admin')->user()->sectionCheck('models'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#models" data-bs-toggle="collapse" role="button"

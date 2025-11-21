@@ -62,7 +62,7 @@ class HomeController extends Controller
     // return abort(404);
     $sign = $this->langSign($lang);
 
-    $sliders = Slider::get();
+    $slider = Slider::first();
     $points = AboutPoint::get();
     $home_services = Service::get()->take(10);
     $models = PageModel::get();
@@ -76,8 +76,8 @@ $processes = Process::get();
           $testimonials = Testimonial::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
   $certificates = Certificate::get();
-  $servicess = Subcategory::get()->take(3);
-    return view('front.index', compact('sign', 'sliders','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
+  $servicess = Service::get();
+    return view('front.index', compact('sign', 'slider','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
   }
 
 
@@ -262,7 +262,7 @@ $processes = Process::get();
     $sign = $this->langSign($lang);
 
 
-    $service = Subcategory::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
     if(!$service){
 
       abort(404);
@@ -284,11 +284,11 @@ $processes = Process::get();
     if ($slug !== $correctSlug) {
         if($lang){
             
-        return redirect()->to("/$sign/$correctSlug");
+        return redirect()->to("/$sign/service/$correctSlug");
         }else{
             
             
-        return redirect()->to("/$correctSlug");
+        return redirect()->to("/service/$correctSlug");
         }
     }
 
@@ -323,19 +323,13 @@ $processes = Process::get();
     }
     return view('front.references', compact('sign', 'service'));
   }
-  public function gallery(Request $request,$lang, $slug)
+  public function gallery(Request $request,$lang)
   {
 
     $sign = $this->langSign($lang);
-
-   
-    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
-    if(!$service){
-
-      abort(404);
-    }
-
-    return view('front.gallery', compact('sign','service'));
+ 
+  $images = Media::get();
+    return view('front.gallery', compact('sign','images'));
   }
 
   public function singleCategoryService(Request $request,$lang, $slug)
