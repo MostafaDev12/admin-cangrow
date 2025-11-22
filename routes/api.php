@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FrontController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -54,3 +56,9 @@ Route::get('/single-category/{id}',  [FrontController::class, 'singleCategory'])
 Route::get('/after_before',  [FrontController::class, 'after_before']);
 Route::get('/blogs',  [FrontController::class, 'blogs']);
 Route::get('/single-blog/{id}',  [FrontController::class, 'singleBlog']);
+
+
+        Route::get('/home-data', [HomeController::class, 'home_data']);
+        Route::get('/prayer-data', [HomeController::class, 'prayer_data']);
+        Route::get('/weather-data', [HomeController::class, 'weather_data']);
+        Route::get('/quran/{surah}', [HomeController::class, 'getSurah']);

@@ -33,7 +33,9 @@ use App\Models\Subscribe;
 use App\Models\Subscription;
 use App\Models\Testimonial;
 use App\Models\Timeline;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -796,6 +798,140 @@ return redirect($newUrl);
     return view('front.blog_categories', compact('sign', 'category'));
   }
  
+  public function home_data()
+    {
+       $city = request('city', 'Cairo');
+        $country = request('country', 'Egypt');
+      
+        $openWeatherKey = env('OPENWEATHER_KEY');
+
+        return Cache::remember("home_data1_{$city}_{$country}", 3600, function () use ($city, $country, $openWeatherKey) {
+
+            // =======================
+            // 1) مواقيت الصلاة
+            // =======================
+            $prayer = Http::get("https://api.aladhan.com/v1/timingsByCity", [
+                'city' => $city,
+                'country' => $country,
+                'method' => 5
+            ]);
+
+            $prayerData = $prayer->successful() ? $prayer['data']['timings'] : null;
+
+            // =======================
+            // 3) القرآن – سورة الفاتحة
+            // =======================
+            $quran = Http::get("https://api.alquran.cloud/v1/surah/1");
+
+            $quranData = $quran->successful() ? [
+                'surah_name' => $quran['data']['englishName'],
+                'ayahs'      => $quran['data']['ayahs'],
+                'audio'      => "https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/1.mp3"
+            ] : null;
+
+            // =======================
+            // 2) الطقس
+            // =======================
+            
+            // $weather = Http::get("https://api.openweathermap.org/data/2.5/weather", [
+            //     'q' => $city,
+            //     'appid' => $openWeatherKey,
+            //     'units' => 'metric',
+            // ]);
+        
+            $weather = Http::get("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=30.0444&lon=31.2357");
+             
+            $weatherData = $weather->successful() ? [
+               
+                'temp'      => $weather['properties']['timeseries'][0]['data']['instant']['details']['air_temperature'],
+                'humidity'  => $weather['properties']['timeseries'][0]['data']['instant']['details']['relative_humidity'],
+                'wind'      => $weather['properties']['timeseries'][0]['data']['instant']['details']['wind_speed'],
+                'desc'      => $weather['properties']['timeseries'][0]['data']['next_1_hours']['summary']['symbol_code'],
+            ] : null;
+
+            return [
+                'prayer'  => $prayerData,
+                'weather' => $weatherData,
+                'quran'   => $quranData,
+            ];
+        });
+    }
+  public function prayer_data()
+    {
+       $city = request('city', 'Cairo');
+        $country = request('country', 'Egypt');
+      
+        return Cache::remember("prayer_data_{$city}_{$country}", 200, function () use ($city, $country) {
+
+            // =======================
+            // 1) مواقيت الصلاة
+            // =======================
+            $prayer = Http::get("https://api.aladhan.com/v1/timingsByCity", [
+                'city' => $city,
+                'country' => $country,
+                'method' => 5
+            ]);
+ 
+            $prayerData = $prayer->successful() ? $prayer['data']['timings'] : null;
+
+          
+
+            return [
+                'prayer'  => $prayerData,
+              
+            ];
+        });
+    }
 
 
+    // ============================================
+    // سورة حسب اختيار المستخدم (استدعاء عند الضغط)
+    // ============================================
+    public function getSurah($surah, $reciter = 'ar.alafasy')
+    { 
+     
+            return Cache::remember("surah_{$surah}", 86400, function () use ($surah,$reciter) {
+
+            $quran = Http::get("https://api.alquran.cloud/v1/surah/$surah");
+
+            if ($quran->failed()) return ['error' => 'Surah not found'];
+              
+            return [
+                'surah_name' => $quran['data']['name'],
+                'english_name' => $quran['data']['englishName'],
+                'ayahs' => $quran['data']['ayahs'],
+                'audio' => "https://cdn.islamic.network/quran/audio-surah/128/$reciter/$surah.mp3",
+                'ayah_audio_base' => "https://cdn.islamic.network/quran/audio/128/$reciter/"
+            ];
+        });
+    }
+ 
+  public function weather_data()
+    {
+        $city = request('city', 'Cairo');
+        $latitude =  request('latitude', '30.0444');
+        $longitude =  request('longitude', '31.2357');
+ 
+        return Cache::remember("weather_data6_{$city}", 1000, function () use ($city,$latitude,$longitude) {
+
+          $weather = Http::withHeaders([
+              'User-Agent' => 'MyWeatherApp/1.0 (mostafahamdi235@gmail.com)' // ضع اسم تطبيقك وبريدك
+          ])->get("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=$latitude&lon=$longitude");
+
+        //     dd($weather->body());
+            $weatherData = $weather->successful() ? [
+               
+                'temp'      => $weather['properties']['timeseries'][0]['data']['instant']['details']['air_temperature'],
+                'humidity'  => $weather['properties']['timeseries'][0]['data']['instant']['details']['relative_humidity'],
+                'wind'      => $weather['properties']['timeseries'][0]['data']['instant']['details']['wind_speed'],
+                'desc'      => $weather['properties']['timeseries'][0]['data']['next_1_hours']['summary']['symbol_code'],
+            ] : null;
+
+            return [
+                 
+                'weather' => $weatherData,
+              
+            ];
+        });
+    }
 }
