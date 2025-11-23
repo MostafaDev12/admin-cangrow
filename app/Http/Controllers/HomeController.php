@@ -64,7 +64,7 @@ class HomeController extends Controller
     // return abort(404);
     $sign = $this->langSign($lang);
 
-    $slider = Slider::first();
+    $sliders = Slider::get();
     $points = AboutPoint::get();
     $home_services = Service::get()->take(10);
     $models = PageModel::get();
@@ -79,7 +79,7 @@ $processes = Process::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
   $certificates = Certificate::get();
   $servicess = Service::get();
-    return view('front.index', compact('sign', 'slider','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
+    return view('front.index', compact('sign', 'sliders','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
   }
 
 
@@ -90,7 +90,7 @@ $processes = Process::get();
 
     $sign = $this->langSign($lang);
 
-    $sliders = Slider::first();
+    $sliders = Slider::get();
     $points = AboutPoint::get();
     $services = Service::get();
     $models = ModelCategory::get();
@@ -805,7 +805,7 @@ return redirect($newUrl);
       
         $openWeatherKey = env('OPENWEATHER_KEY');
 
-        return Cache::remember("home_data1_{$city}_{$country}", 3600, function () use ($city, $country, $openWeatherKey) {
+        return Cache::remember("home_data4_{$city}_{$country}", 3600, function () use ($city, $country, $openWeatherKey) {
 
             // =======================
             // 1) مواقيت الصلاة
@@ -839,8 +839,10 @@ return redirect($newUrl);
             //     'units' => 'metric',
             // ]);
         
-            $weather = Http::get("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=30.0444&lon=31.2357");
-             
+            $weather = Http::withHeaders([
+                'User-Agent' => 'MyWeatherApp/1.0 (mostafahamdi235@gmail.com)' // ضع اسم تطبيقك وبريدك
+            ])->get("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=30.0444&lon=31.2357");
+
             $weatherData = $weather->successful() ? [
                
                 'temp'      => $weather['properties']['timeseries'][0]['data']['instant']['details']['air_temperature'],
@@ -861,7 +863,7 @@ return redirect($newUrl);
        $city = request('city', 'Cairo');
         $country = request('country', 'Egypt');
       
-        return Cache::remember("prayer_data_{$city}_{$country}", 200, function () use ($city, $country) {
+        return Cache::remember("prayer_data_{$city}_{$country}", 3600, function () use ($city, $country) {
 
             // =======================
             // 1) مواقيت الصلاة
@@ -912,7 +914,7 @@ return redirect($newUrl);
         $latitude =  request('latitude', '30.0444');
         $longitude =  request('longitude', '31.2357');
  
-        return Cache::remember("weather_data6_{$city}", 1000, function () use ($city,$latitude,$longitude) {
+        return Cache::remember("weather_data6_{$city}", 3600, function () use ($city,$latitude,$longitude) {
 
           $weather = Http::withHeaders([
               'User-Agent' => 'MyWeatherApp/1.0 (mostafahamdi235@gmail.com)' // ضع اسم تطبيقك وبريدك

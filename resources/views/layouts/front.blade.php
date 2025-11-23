@@ -475,7 +475,7 @@
 
     <footer class="bg-slate-900 bg-no-repeat bg-cover bg-center text-white"
         style=" background-image:
-            url('./assets/imgs/home/bg-1-3.png')">
+            url('{{ asset('front/dareltawfik/') }}/assets/imgs/home/bg-1-3.png')">
         <div class="container mx-auto px-4 py-16">
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 ">

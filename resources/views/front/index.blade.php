@@ -28,15 +28,14 @@
              <!-- Swiper Slider -->
              <div class="swiper hero-slider h-full">
                  <div class="swiper-wrapper">
+                    @foreach ($sliders as $slider)
+                        
                      <div class="swiper-slide">
-                         <img src="./assets/imgs/banner/banner-1.jpg" alt="صدقة جارية - نخلة بلح"
+                         <img src="{{ $slider->{'photo'} ?? '' }}" alt="صدقة جارية - نخلة بلح"
                              class="absolute inset-0 w-full h-full object-" />
                      </div>
-                     <div class="swiper-slide">
-                         <img src="./assets/imgs/banner/banner-2.jpg" alt="صدقة جارية - نخلة بلح"
-                             class="absolute inset-0 w-full h-full object-" />
-                     </div>
-
+                    @endforeach
+                     
                  </div>
 
                  <!-- Swiper Navigation -->
@@ -50,7 +49,7 @@
                      <!-- Background Pattern -->
                      <div class="absolute inset-0 opacity-20"
                          style="
-          background-image: url('./assets/imgs/banner/bg-lines-transparent.png');
+          background-image: url('{{ asset('front/dareltawfik/') }}/assets/imgs/banner/bg-lines-transparent.png');
           background-size: cover;
           background-position: center bottom;
           background-repeat: no-repeat;
@@ -62,15 +61,15 @@
                          class="relative flex flex-col md:flex-row justify-between items-center text-center md:text-right px-4 sm:px-6 lg:px-8 py-6 md:py-8">
                          <div class="mb-6 md:mb-0">
                              <h2 class="text-2xl md:text-3xl font-bold leading-tight text-white">
-                                 شارك بصدقتك وزكاتك مع دار التوفيق
+                                    {{ __('شارك بصدقتك وزكاتك مع دار التوفيق') }}
                                  <br class="hidden md:block" />
-                                 وفرّح ملايين المستفيدين في كل محافظات مصر.
+                                    {{ __('وفرّح ملايين المستفيدين في كل محافظات مصر.') }}
                              </h2>
                          </div>
 
                          <a href="#"
                              class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-white hover:text-custom-orange transition-all duration-300 ease-in-out flex items-center space-x-2 space-x-reverse">
-                             <span>تبرع الآن</span>
+                             <span>   {{ __('تبرع الآن') }}</span>
                              <i class="fas fa-arrow-left text-sm"></i>
                          </a>
                      </div>
@@ -88,12 +87,12 @@
                  <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24 items-center">
 
                      <div class="lg:col-span-2 relative mt-20 lg:mt-0">
-                         <img src="./assets/imgs/banner/image-1.jpg" alt="أطفال مبتسمون"
+                         <img src="{{ $ps->about_photo }}" alt="أطفال مبتسمون"
                              class="w-full h-auto rounded-lg shadow-xl object-cover">
 
                          <div
                              class="absolute bottom-0 start-0 w-2/3 md:w-3/4  rounded-lg shadow-2xl transform translate-y-1/3 md:translate-x-1/2">
-                             <img src="./assets/imgs/banner/image-2.jpg" alt="Life Makers Logo"
+                             <img src="{{ asset('front/dareltawfik/') }}/assets/imgs/banner/image-2.jpg" alt="Life Makers Logo"
                                  class="w-full h-full rounded-lg object-cover">
                          </div>
                      </div>
@@ -105,12 +104,12 @@
                              <div class="mb-12 max-w-3xl mx-auto">
                                  <div class="relative mb-10">
                                      <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                                         من نحن
+                                            {{ __('من نحن') }}
                                      </h1>
 
                                  </div>
                                  <p class="text-lg text-gray-600 leading-relaxed">
-                                     من نحن
+                                   {{ $ps->{'about_title_' . $sign} ?? '' }}
                                  </p>
                                  <div class="w-20 h-1.5 bg-custom-orange rounded-full"></div>
 
@@ -118,94 +117,7 @@
 
                          </div>
 
-                         <p class="text-lg text-gray-700 leading-relaxed mb-8">
-                             هي مؤسسة أهلية وطنية غير حكومية وغير هادفة للربح (LMF). مؤسسة دار التوفيق مصر أسست عام 2011
-                             ومسجلة مركزياً برقم قيد 839 لسنة 2018 وتعمل طبقاً لقانون الجمعيات والمؤسسات الأهلية المصري.
-                         </p>
-
-                         <div class="space-y-6">
-
-                             <p class="text-base text-gray-700">
-                                 منذ انطلاقتنا عام 1997، كانت رؤيتنا في دار التوفيق واضحة: أن نكون يد العون التي تُمسك
-                                 بمن يحتاج الدعم، وأن نمنح كل فرد الفرصة ليحقق حياة كريمة مليئة بالأمل. وعبر سنوات من
-                                 العطاء والخدمة المجتمعية، واصلنا النموّ خطوة بخطوة، حتى أصبحت دار التوفيق كيانًا خيريًا
-                                 متجدّدًا يخدم مختلف فئات المجتمع باحترافية وإنسانية.
-                             </p>
-                             <p class="text-base text-gray-700">
-                                 وفي سنة 2024، شهدت المؤسسة نقلة نوعية وتطويرًا شاملًا، مواكبةً لاحتياجات المجتمع
-                                 المتزايدة، وتوسّعًا في برامجنا ومشاريعنا، لنصل لأكبر عدد ممكن من المستفيدين، ونصنع أثرًا
-                                 أكثر استدامة.
-                             </p>
-                             <p class="text-base text-gray-700">
-                                 نحن نؤمن بأن الخير ليس مجرّد مساعدة وقتية، بل تمكين حقيقي يُغيّر حياة الناس للأفضل. لذلك
-                                 نقدم في دار التوفيق:
-                             </p>
-
-                             <div class="space-y-6">
-                                 <div class="flex items-start">
-                                     <div class="flex-shrink-0">
-                                         <span
-                                             class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                             <i class="fas fa-check text-white text-sm"></i>
-                                         </span>
-                                     </div>
-                                     <p class="mr-4 text-base text-gray-700">
-                                         برامج الدعم الإنساني والاجتماعي
-                                     </p>
-                                 </div>
-                                 <div class="flex items-start">
-                                     <div class="flex-shrink-0">
-                                         <span
-                                             class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                             <i class="fas fa-check text-white text-sm"></i>
-                                         </span>
-                                     </div>
-                                     <p class="mr-4 text-base text-gray-700">
-                                         مشروعات تمكين المرأة وتنمية المهارات
-                                     </p>
-                                 </div>
-                                 <div class="flex items-start">
-                                     <div class="flex-shrink-0">
-                                         <span
-                                             class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                             <i class="fas fa-check text-white text-sm"></i>
-                                         </span>
-                                     </div>
-                                     <p class="mr-4 text-base text-gray-700">
-                                         المبادرات التعليمية والتدريبية
-                                     </p>
-                                 </div>
-                                 <div class="flex items-start">
-                                     <div class="flex-shrink-0">
-                                         <span
-                                             class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                             <i class="fas fa-check text-white text-sm"></i>
-                                         </span>
-                                     </div>
-                                     <p class="mr-4 text-base text-gray-700">
-                                         رعاية الفئات الأكثر احتياجًا
-                                     </p>
-                                 </div>
-                             </div>
-
-                             <p class="text-base text-gray-700">
-                                 نلتزم بالعمل بروح التكافل والشفافية، ونسعى دومًا إلى تقديم خدمات تُحافظ على كرامة
-                                 الإنسان وتمنحه القدرة للانطلاق نحو مستقبل أفضل. فريقنا يعمل بإخلاص، ومتطوّعونا هم شريك
-                                 النجاح الأول في كل خطوة.
-                             </p>
-                             <p class="text-base text-gray-700">
-                                 نفتح أبوابنا وقلوبنا لكل من يرغب في أن يكون جزءًا من رسالتنا — سواء بالتطوع أو بالمساهمة
-                                 أو حتى بدعم كلمة طيبة. فكل يد تمتد بالخير معنا تُحدث فرقًا حقيقيًا في حياة من يحتاج.
-                             </p>
-                             <p class="text-base text-gray-700">
-                                 في دار التوفيق… نؤمن أن الأمل يبدأ بخطوة، وأن الخير عندما ينتشر يصنع مجتمعًا أقوى،
-                                 وأجمل، وأكثر إنسانية.
-                             </p>
-                             <p class="text-base text-gray-700">
-                                 شكرًا لكل من وضع ثقته بنا، وسنسعى دائماً لنكون عند حسن الظن… منذ 1997 وحتى الغد.
-                             </p>
-
-                         </div>
+                          {!! $ps->{'about_details_' . $sign} ?? '' !!}
                      </div>
 
                  </div>
@@ -219,12 +131,12 @@
              <div class="text-center mb-12 max-w-3xl mx-auto">
                  <div class="relative mb-10">
                      <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                         المشروعات والخدمات
+                            {{ __('المشروعات والخدمات') }}
                      </h1>
 
                  </div>
                  <p class="text-lg text-gray-600 leading-relaxed">
-                     المشروعات والخدمات
+                        {{ __('المشروعات والخدمات') }}
                  </p>
              </div>
 
@@ -360,19 +272,19 @@
          <section class="py-16 md:py-24 bg-gray-50" dir="{{ session::get('front_language_duraction') }}">
              <div class="container mx-auto px-4">
                  <div class="text-center mb-12 max-w-3xl mx-auto">
-                     <h1 class="text-2xl font-extrabold text-slate-800 mb-4">معلومات لحظية</h1>
-                     <p class="text-lg text-gray-600">مواقيت الصلاة، آية/سورة من القرآن، ودرجات الحرارة حسب مدينتك</p>
+                     <h1 class="text-2xl font-extrabold text-slate-800 mb-4">   {{ __('معلومات لحظية') }}</h1>
+                     <p class="text-lg text-gray-600"> {{ __('مواقيت الصلاة، آية/سورة من القرآن، ودرجات الحرارة حسب مدينتك') }} </p>
                  </div>
 
                  <!-- اختيار المدينة العام -->
                  <div class="mb-10 text-center">
-                     <label class="text-gray-700 font-semibold text-sm">اختر مدينتك</label>
+                     <label class="text-gray-700 font-semibold text-sm">   {{ __('اختر مدينتك') }}</label>
                     <select id="global-city" class="px-3 py-2 border rounded-md text-sm">
-                        <option value="cairo" data-value="القاهرة" data-latitude="30.0444" data-longitude="31.2357">القاهرة</option>
-                        <option value="giza" data-value="الجيزة" data-latitude="29.9765" data-longitude="31.1313">الجيزة</option>
-                        <option value="alex" data-value="الإسكندرية" data-latitude="31.2001" data-longitude="29.9187">الإسكندرية</option>
-                        <option value="mansoura" data-value="المنصورة" data-latitude="31.0400" data-longitude="31.3785">المنصورة</option>
-                        <option value="aswan" data-value="أسوان" data-latitude="24.0908" data-longitude="32.8998">أسوان</option>
+                        <option value="cairo" data-value="{{ __('القاهرة') }}" data-latitude="30.0444" data-longitude="31.2357">{{ __('القاهرة') }}</option>
+                        <option value="giza" data-value="{{ __('الجيزة') }}" data-latitude="29.9765" data-longitude="31.1313">{{ __('الجيزة') }}</option>
+                        <option value="alex" data-value="{{ __('الإسكندرية') }}" data-latitude="31.2001" data-longitude="29.9187">{{ __('الإسكندرية') }}</option>
+                        <option value="mansoura" data-value="{{ __('المنصورة') }}" data-latitude="31.0400" data-longitude="31.3785">{{ __('المنصورة') }}</option>
+                        <option value="aswan" data-value="{{ __('أسوان') }}" data-latitude="24.0908" data-longitude="32.8998">{{ __('أسوان') }}</option>
                     </select>
                  </div>
 
@@ -381,39 +293,39 @@
                      <!-- مواقيت الصلاة -->
                      <div class="bg-white rounded-lg shadow-md p-6">
                          <div class="flex items-center justify-between mb-4">
-                             <h3 class="text-lg font-semibold text-slate-800">مواقيت الصلاة</h3>
-                             <button id="refreshPrayer" class="text-sm text-custom-orange hover:underline">تحديث</button>
+                             <h3 class="text-lg font-semibold text-slate-800">   {{ __('مواقيت الصلاة') }}</h3>
+                             <button id="refreshPrayer" class="text-sm text-custom-orange hover:underline">{{ __('تحديث') }}</button>
                          </div>
-                         <div class="text-sm text-gray-600 mb-3">المدينة: <span id="prayer-city"
-                                 class="font-semibold">القاهرة</span></div>
+                         <div class="text-sm text-gray-600 mb-3"> {{ __('المدينة') }} :<span id="prayer-city"
+                                 class="font-semibold">{{ __('القاهرة') }}</span></div>
                          <ul id="prayer-times" class="space-y-2 text-sm text-slate-700">
-                             <li>الفجر: <span class="font-medium">--:--</span></li>
-                             <li>الظهر: <span class="font-medium">--:--</span></li>
-                             <li>العصر: <span class="font-medium">--:--</span></li>
-                             <li>المغرب: <span class="font-medium">--:--</span></li>
-                             <li>العشاء: <span class="font-medium">--:--</span></li>
+                             <li>: {{ __('الفجر') }}<span class="font-medium">--:--</span></li>
+                             <li>: {{ __('الظهر') }}<span class="font-medium">--:--</span></li>
+                             <li>: {{ __('العصر') }}<span class="font-medium">--:--</span></li>
+                             <li>: {{ __('المغرب') }}<span class="font-medium">--:--</span></li>
+                             <li>: {{ __('العشاء') }}<span class="font-medium">--:--</span></li>
                          </ul>
-                         <div class="mt-4 text-xs text-gray-500">المصدر: AlAdhan API</div>
+                         <div class="mt-4 text-xs text-gray-500"> AlAdhan API : {{ __('المصدر') }}</div>
                      </div>
 
                      <!-- القرآن الكريم -->
                      <div class="bg-white rounded-lg shadow-md p-6">
                          <div class="flex items-center justify-between mb-4">
-                             <h3 class="text-lg font-semibold text-slate-800">القرآن الكريم</h3>
+                             <h3 class="text-lg font-semibold text-slate-800">   {{ __('القرآن الكريم') }}</h3>
                              <div class="flex items-center gap-2">
                                  <select id="quran-surah" class="text-sm px-2 py-1 border rounded-md">
-                                     <option value="1">الفاتحة</option>
-                                     <option value="2">البقرة</option>
-                                     <option value="36">يس</option>
-                                     <option value="55">الرحمن</option>
-                                     <option value="112">الإخلاص</option>
+                                     <option value="1">{{ __('الفاتحة') }}</option>
+                                     <option value="2">{{ __('البقرة') }}</option>
+                                     <option value="36">{{ __('يس') }}</option>
+                                     <option value="55">{{ __('الرحمن') }}</option>
+                                     <option value="112">{{ __('الإخلاص') }}</option>
                                  </select>
-                                 <button id="loadQuran" class="text-sm text-custom-orange hover:underline">تحميل</button>
+                                 <button id="loadQuran" class="text-sm text-custom-orange hover:underline">{{ __('تحميل') }}</button>
                              </div>
                          </div>
 
                          <div id="quran-content" class="text-slate-700 text-sm space-y-3" style="font-family: initial;font-size: initial;">
-                             <div id="quran-title" class="font-semibold">سورة الفاتحة</div>
+                             <div id="quran-title" class="font-semibold">   {{ __('سورة الفاتحة') }}</div>
                              <div id="quran-ayah" class="leading-relaxed">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ …</div>
 
                              <!-- إضافة صوت القارئ -->
@@ -431,20 +343,20 @@
                              </audio>
                          </div>
 
-                         <div class="mt-4 text-xs text-gray-500">المصدر: Quran API</div>
+                         <div class="mt-4 text-xs text-gray-500"> Quran API : {{ __('المصدر') }}</div>
                      </div>
 
                      <!-- درجات الحرارة -->
                      <div class="bg-white rounded-lg shadow-md p-6">
                          <div class="flex items-center justify-between mb-4">
-                             <h3 class="text-lg font-semibold text-slate-800">درجة الحرارة</h3>
-                             <button id="refreshWeather" class="text-sm text-custom-orange hover:underline">تحديث</button>
+                             <h3 class="text-lg font-semibold text-slate-800">   {{ __('درجة الحرارة') }}</h3>
+                             <button id="refreshWeather" class="text-sm text-custom-orange hover:underline">{{ __('تحديث') }}</button>
                          </div>
 
                          <div class="flex items-center gap-4">
                              <div>
-                                 <div class="text-xs text-gray-600">المدينة</div>
-                                 <div id="weather-city" class="text-lg font-semibold">القاهرة</div>
+                                 <div class="text-xs text-gray-600">{{ __('المدينة') }}</div>
+                                 <div id="weather-city" class="text-lg font-semibold">{{ __('القاهرة') }}</div>
                              </div>
                              <div class="flex-1 text-right">
                                  <div id="weather-temp" class="text-3xl font-bold text-slate-800">--°C</div>
@@ -453,11 +365,11 @@
                          </div>
 
                          <div class="mt-4 grid grid-cols-2 gap-2 text-sm text-gray-600">
-                             <div>الرطوبة: <span id="weather-humidity">--%</span></div>
-                             <div>الرياح: <span id="weather-wind">-- m/s</span></div>
+                             <div>: {{ __('الرطوبة') }}<span id="weather-humidity">--%</span></div>
+                             <div>: {{ __('الرياح') }}<span id="weather-wind">-- m/s</span></div>
                          </div>
 
-                         <div class="mt-4 text-xs text-gray-500">المصدر: api.met.no</div>
+                         <div class="mt-4 text-xs text-gray-500">api.met.no : {{ __('المصدر') }}</div>
                      </div>
                  </div>
              </div>
@@ -676,7 +588,7 @@
 
          <section class="relative bg-no-repeat bg-cover bg-center py-20 flex items-center justify-center"
              style=" background-image:
-            url('./assets/imgs/home/bg-1-3.png')">
+            url('{{ asset('front/dareltawfik/') }}/assets/imgs/home/bg-1-3.png')">
 
              <!-- <div class="absolute inset-0 bg-blue-900 bg-opacity-80"></div> -->
 
@@ -897,11 +809,11 @@
                      // مواقيت الصلاة
                      const p = data.prayer;
                      document.querySelector("#prayer-times").innerHTML = `
-                <li>الفجر: <span>${p.Fajr}</span></li>
-                <li>الظهر: <span>${p.Dhuhr}</span></li>
-                <li>العصر: <span>${p.Asr}</span></li>
-                <li>المغرب: <span>${p.Maghrib}</span></li>
-                <li>العشاء: <span>${p.Isha}</span></li>
+               <li>{{ __('الفجر') }} : <span>${p.Fajr}</span></li>
+                <li>{{ __('الظهر') }} : <span>${p.Dhuhr}</span></li>
+                <li>{{ __('العصر') }} : <span>${p.Asr}</span></li>
+                <li>{{ __('المغرب') }} : <span>${p.Maghrib}</span></li>
+                <li>{{ __('العشاء') }} : <span>${p.Isha}</span></li>
             `;
 
                      // القرآن
@@ -917,7 +829,7 @@
                      audio.load();
                      // الطقس
                      const w = data.weather;
-                     document.querySelector("#weather-city").textContent = 'القاهره';
+                     document.querySelector("#weather-city").textContent = "{{ __('القاهره') }}";
                      document.querySelector("#weather-temp").textContent = w.temp + "°C";
                      document.querySelector("#weather-humidity").textContent = w.humidity + "%";
                      document.querySelector("#weather-wind").textContent = w.wind + " m/s";
@@ -960,7 +872,7 @@
                 const selectedOption = select.options[select.selectedIndex];
 
             // const city = select.value;
-            const city_ar = selectedOption.dataset.value || "القاهره";
+            const city_ar = selectedOption.dataset.value || "{{ __('القاهره') }}";
             const longitude = selectedOption.dataset.longitude || "31.2357";
             const latitude = selectedOption.dataset.latitude || "30.0444";
 
@@ -996,11 +908,11 @@
                      document.querySelector("#prayer-city").innerHTML = city_ar;
 
                      document.querySelector("#prayer-times").innerHTML = `
-                <li>الفجر: <span>${p.Fajr}</span></li>
-                <li>الظهر: <span>${p.Dhuhr}</span></li>
-                <li>العصر: <span>${p.Asr}</span></li>
-                <li>المغرب: <span>${p.Maghrib}</span></li>
-                <li>العشاء: <span>${p.Isha}</span></li>
+                <li>{{ __('الفجر') }} : <span>${p.Fajr}</span></li>
+                <li>{{ __('الظهر') }} : <span>${p.Dhuhr}</span></li>
+                <li>{{ __('العصر') }} : <span>${p.Asr}</span></li>
+                <li>{{ __('المغرب') }} : <span>${p.Maghrib}</span></li>
+                <li>{{ __('العشاء') }} : <span>${p.Isha}</span></li>
             `;
 
                  });
