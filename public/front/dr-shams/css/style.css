@@ -11,7 +11,6 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: Cairo, sans-serif;
-    direction: rtl;
     overflow-x: hidden;
 }
 .dropdown-menu .dropdown-menu {
@@ -23,6 +22,9 @@ body {
 }
 .dropdown-item {
     text-align: right;
+}
+html[lang="en"] .dropdown-item{
+    text-align: left;
 }
 .dropdown-menu .dropdown-toggle::after {
     display: none;
@@ -89,7 +91,6 @@ body {
     /* لون الخلفية */
     z-index: 1040;
 }
-
 .scrolled .header {
     top: 0;
     /* عند التمرير يصبح أعلى الصفحة */
@@ -187,7 +188,9 @@ body {
     right: 60%;
     top: 30%;
 }
-
+html[lang="en"] .slider .title-doc {
+     left:auto;
+}
 .slider .title-doc p {
     font-size: medium;
     line-height: 40px;
@@ -371,7 +374,7 @@ body {
 .about-us-3 img {
     height: 70vh;
     margin-right: 15%;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 
 .service-2 {
@@ -807,6 +810,8 @@ a {
 }
 
 .content img {
+    width:100% !important;
+    
     border-radius: 20px;
 }
 
@@ -927,13 +932,13 @@ a {
     }
 
     .slider .title-doc {
-        position: absolute;
+       position: absolute;
         left: 0;
-        right: 12%;
-        top: 23%;
-        width: 87%;
+        right: 2%;
+        top: 43%;
+        width: 55%;
     }
-    .slider-phone .title-doc {
+       .slider-phone .title-doc {
         position: absolute;
         left: 0;
         right: 2%;
@@ -962,7 +967,7 @@ a {
     }
 
     .about-us-3 img {
-        margin-right: 0;
+        margin-right: -5%;
     }
 
     .about-us .container {

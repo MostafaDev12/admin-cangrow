@@ -139,7 +139,7 @@
               <p>  {{ __('هل تريد حجز موعد وسنتواصل معك') }}     </p>
             </div>
             <div class="col-6">
-              <button   onclick="window.location.href='{{ route('book.index') }}/'"> {{ __('احجز الان') }}   </button>
+              <button   onclick="window.location.href='{{ route('book.index'.$lang,$lang) }}/'"> {{ __('احجز الان') }}   </button>
             </div>
           </div>
         </div>

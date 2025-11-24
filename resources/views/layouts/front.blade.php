@@ -49,7 +49,7 @@
         </title>
     @endif
 
-
+<link rel="canonical" href="https://abdelrhmanshams.com/%D8%B3%D8%B9%D8%B1-%D8%B9%D9%85%D9%84%D9%8A%D8%A9-%D8%A7%D9%84%D9%84%D9%8A%D8%B2%D9%83-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1/" />
 
     <script type="application/ld+json">
     {
@@ -151,7 +151,7 @@
         <nav class="navbar navbar-expand-lg bg-white">
             <div class="container-fluid">
                 <a class="navbar-brand wow animate__animated animate__fadeInDown" data-wow-delay="1s"
-                    data-wow-duration="1s" href="{{ route('front.index', $sign) }}"><img
+                    data-wow-duration="1s" href="{{ route('front.index'.$lang,$lang) }}"><img
                         src="{{ $gs->{'logo_' . $sign} }}" alt="RGS Logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -163,15 +163,15 @@
                         data-wow-duration="1s">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
-                                href="{{ route('front.index') }}">{{ __('الرئيسية') }} </a>
+                                href="{{ route('front.index'.$lang,$lang) }}">{{ __('الرئيسية') }} </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about.index') }}/">{{ __('عن الشركة') }}</a>
+                            <a class="nav-link" href="{{ route('about.index'.$lang,$lang) }}/">{{ __('عن الشركة') }}</a>
                         </li>
 
 {{-- 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}" role="button"
+                            <a class="nav-link dropdown-toggle" href="{{ route('services.index'.$lang,$lang) }}" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ __('الخدمات') }}
                             </a>
@@ -195,7 +195,7 @@
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index') }}/" id="servicesDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="{{ route('services.index'.$lang,$lang) }}/" id="servicesDropdown" role="button"
                                 aria-expanded="false">
                                 {{ __('الخدمات') }}
                             </a>
@@ -203,13 +203,13 @@
 
                                 @foreach ($categories as $category)
                                 <li class="dropdown">
-                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="{{ route('single-category-service.index',['slug' => $category->{'slug_' . $sign} ]) }}/">{{ $category->{'title_' . $sign} }}</a>
+                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="{{ route('single-category-service.index'.$lang,['slug' => $category->{'slug_' . $sign}  ,'lang'=> $lang ]) }}/">{{ $category->{'title_' . $sign} }}</a>
                                 @if(count($category->services) > 0)
                                 <ul class="dropdown-menu"> 
                                     
                                 
                                     @foreach ($category->services as $service)
-                                    <li><a class="dropdown-item" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}/">{{ $service->{'title_' . $sign} }}  </a></li>
+                                    <li><a class="dropdown-item" href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign}  ,'lang'=> $lang ]) }}/">{{ $service->{'title_' . $sign} }}  </a></li>
                                     @endforeach
                                     
                                 </ul>
@@ -220,7 +220,7 @@
 
                                 @foreach ($servicesWithoutCats as $service)
                                 <li class="dropdown">
-                                <a    class="dropdown-item dropdown-toggle" href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}/">{{ $service->{'title_' . $sign} }}</a>
+                                <a    class="dropdown-item dropdown-toggle" href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign} ,'lang'=> $lang ]) }}/">{{ $service->{'title_' . $sign} }}</a>
                               
                                 </li>
                                 @endforeach
@@ -230,19 +230,31 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('videos.index') }}/">{{ __('الفيديوهات') }}</a>
+                            <a class="nav-link" href="{{ route('videos.index'.$lang,$lang) }}/">{{ __('الفيديوهات') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blogs.index') }}/">{{ __('المقالات') }}</a>
+                            <a class="nav-link" href="{{ route('blogs.index'.$lang,$lang) }}/">{{ __('المقالات') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('book.index') }}/"> {{ __('احجز الان') }}  </a>
+                            <a class="nav-link" href="{{ route('book.index'.$lang,$lang) }}/"> {{ __('احجز الان') }}  </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}/">   {{ __('اتصل بنا') }}</a>
+                            <a class="nav-link" href="{{ route('contact.index'.$lang,$lang) }}/">   {{ __('اتصل بنا') }}</a>
                         </li>
 
                     </ul>
+                  <div class="dropdown">
+                      <button class="btn dropdown-toggle font-bold" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-globe"></i> 
+                        {{ \Session::get('front_language_name') }}
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="langDropdown">
+                       @foreach ($languages as $language)
+                        <li><a class="dropdown-item" href="{{ route('front.lang-change', $language->id) }}"><i class="fa-solid fa-globe"></i> {{ $language->language }}</a></li>
+                       @endforeach
+                      </ul>
+                    </div>
+
                 </div>
             </div>
         </nav>
@@ -268,19 +280,19 @@
                 <div class="col-lg-2 col-md-6 ">
                     <p class="title-footer">{{ __('روابط هامة') }}</p>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('front.index') }}">{{ __('الرئيسية') }}</a></li>
-                        <li><a href="{{ route('about.index') }}/"> {{ __('عن الشركة') }} </a></li>
-                        <li><a href="{{ route('services.index') }}/"> {{ __('الخدمات') }}</a></li>
-                        <li><a href="{{ route('videos.index') }}/">{{ __('الفيديوهات') }}</a></li>
-                        <li><a href="{{ route('book.index') }}/">{{ __('احجز الان') }}</a></li>
-                        <li><a href="{{ route('contact.index') }}/">    {{ __('اتصل بنا') }}</a></li>
+                        <li><a href="{{ route('front.index'.$lang,$lang) }}">{{ __('الرئيسية') }}</a></li>
+                        <li><a href="{{ route('about.index'.$lang,$lang) }}/"> {{ __('عن الشركة') }} </a></li>
+                        <li><a href="{{ route('services.index'.$lang,$lang) }}/"> {{ __('الخدمات') }}</a></li>
+                        <li><a href="{{ route('videos.index'.$lang,$lang) }}/">{{ __('الفيديوهات') }}</a></li>
+                        <li><a href="{{ route('book.index'.$lang,$lang) }}/">{{ __('احجز الان') }}</a></li>
+                        <li><a href="{{ route('contact.index'.$lang,$lang) }}/">    {{ __('اتصل بنا') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 ">
                     <p  class="title-footer"> {{ __('الخدمات') }}</p>
                     <ul class="list-unstyled">
                       @foreach ($services->shuffle()->take(6) as $service)
-                      <li><a href="{{ route('single-service.index',['slug' => $service->{'slug_' . $sign} ]) }}/"> {{ $service->{'title_' . $sign} }}  </a></li>
+                      <li><a href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign}  ,'lang'=> $lang ]) }}/"> {{ $service->{'title_' . $sign} }}  </a></li>
                       @endforeach
                      
                        
@@ -318,6 +330,9 @@
                       @if(App\Models\Socialsetting::find(1)->ystatus == 1)    <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"> <i class="fab fa-youtube"></i></a>  @endif
                       @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank">  <i class="fab fa-instagram"></i></a>  @endif
                       @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank">  <i class="fab fa-tiktok"></i></a>  @endif
+
+                      <a target="_blank" href="http://wa.me/201118886541"><i class="fab fa-whatsapp"></i></a>
+                      <a href="tel:+201118886541"><i class="fas fa-phone"></i> </a>
 
         </ul>
     </div>

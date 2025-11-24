@@ -27,8 +27,8 @@ $randomPhone = Arr::random($phones);
                         <h1>{{ __('المقالات') }}</h1>
                         <div>
                             <p> {{ __('Category') }}:  {{ $category->{'title_' . $sign} }}  </p>
-                            <a href="{{ route('blogs.index') }}/">{{ __('المقالات') }}</a><span>
-                                << </span><a href="{{ route('front.index') }}/">{{ __('الرئيسيه') }}</a>
+                            <a href="{{ route('blogs.index'.$lang,$lang) }}/">{{ __('المقالات') }}</a><span>
+                                << </span><a href="{{ route('front.index'.$lang,$lang) }}/">{{ __('الرئيسيه') }}</a>
                         </div>
                     </div>
                 </div>
@@ -47,15 +47,17 @@ $randomPhone = Arr::random($phones);
               <div class="col-12 col-lg-4 col-md-4 mb-3">
                   <div class="box blogs-div ">
                       <div>
-                          <a href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}/"><img src="{{ $blog->photo }}" alt=""></a>
+                          <a href="{{ route('single-blog.index'.$lang,['blog' =>$blog->{'slug_' . $sign} ,'lang'=> $lang ] ) }}/"><img src="{{ $blog->photo }}" alt=""></a>
                       </div>
                       <div class="p-4">
-                          <h2 class="fw-bold"> <a href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}/"> {{ $blog->{'title_' . $sign} }} </a></h2>
+                          <h2 class="fw-bold"> <a href="{{ route('single-blog.index'.$lang,['blog' =>$blog->{'slug_' . $sign} ,'lang'=> $lang ]) }}/"> {{ $blog->{'title_' . $sign} }} </a></h2>
                           <p class="fw-bold"> {{ $blog->{'short_details_' . $sign} }} </p>
-                          <a href="{{ route('single-blog.index',$blog->{'slug_' . $sign}) }}/"><span class="mt-3 d-block"> {{ __('المزيد') }}<i
+                          <a href="{{ route('single-blog.index'.$lang,['blog' =>$blog->{'slug_' . $sign} ,'lang'=> $lang ]) }}/"><span class="mt-3 d-block"> {{ __('المزيد') }}<i
                                       class="fa-solid fa-angles-left"></i></span></a>
                           <hr>
                           <p class="date-blogs"> {{ $blog->blog_date }} </p>
+
+
                       </div>
                   </div>
               </div>

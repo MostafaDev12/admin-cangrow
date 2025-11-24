@@ -22,7 +22,7 @@ $randomPhone = Arr::random($phones);
          
             <h1> {{ $blog->{'title_' . $sign} }}   </h1>
             <br>
-            @if(!empty(optional($blog->category)->{'title_' . $sign} )) <a href="{{ route('blogs-category.index',$blog->category->{'slug_' . $sign}) }}/" class="">{{ optional($blog->category)->{'title_' . $sign} }}</a> @endif
+            @if(!empty(optional($blog->category)->{'title_' . $sign} )) <a href="{{ route('blogs-category.index'.$lang, ['slug' => $blog->category->{'slug_' . $sign} ,'lang'=> $lang ]) }}/" class="">{{ optional($blog->category)->{'title_' . $sign} }}</a> @endif
 
         </div>
 
@@ -34,7 +34,15 @@ $randomPhone = Arr::random($phones);
                     <div class="fw-bold">
                         <img class="mb-4" width="100%" src="{{ $blog->photo }}" alt="">
                         
-                        <p>   {!! $blog->{'details_' . $sign} !!}   </p>
+                        @php
+                        $WhatsApp = __('WhatsApp');
+                        $Call =     __('Call Us');
+                        
+                        $content =  $blog->{'details_' . $sign};
+                         $content = str_replace(['{{ $randomPhone }}', "{{ __(&#39;WhatsApp&#39;) }}", "{{ __(&#39;Call Us&#39;) }}"], [$randomPhone,$WhatsApp, $Call ], $content);
+
+                        @endphp
+                        <p>   {!! $content !!}   </p>
                         @if(count($blog->faqs) > 0)
                         <h2 class="mb-3">الاسئله الشائعة</h2>
                         <div class="accordion" id="accordionExample">
@@ -56,7 +64,35 @@ $randomPhone = Arr::random($phones);
 
                             
                             @endforeach
-                        
+                                            
+
+   <div class="social-connect">
+    <div class="container">
+        <div class="row px-2">
+            <div class="col-6 col-md-6 col-lg-4 mb-2 mb-lg-0">
+                <a href="http://wa.me/2{{ $randomPhone }}" target="_blank" class="btn-custom btn-responsive-action">
+                    <div class="icon-container d-flex pt-3">
+                        <i class="fab fa-whatsapp"></i>
+                        <p class="color-white-important"> {{ __('WhatsApp') }}</p>
+
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-4 mb-2 mb-lg-0">
+                <a href="tel:+2{{ $randomPhone }}" class="btn-custom btn-responsive-action bg-2">
+                    <div class="icon-container  d-flex pt-3">
+                        <i class="fas fa-phone-alt"></i>
+                        <p class="color-white-important"> {{ __('Call Us') }}</p>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
                         </div>
 
                         @endif
@@ -74,7 +110,7 @@ $randomPhone = Arr::random($phones);
                             @endphp
                             <div class="d-flex justify-content-between">
                                 <div class="pt-2">
-                                    <h3> <a href="{{ route('single-blog.index',$blogg->{'slug_' . $sign}) }}/"> {{ $blogg->{'title_' . $sign} }} </a> </h3>
+                                    <h3> <a href="{{ route('single-blog.index'.$lang, ['blog' =>$blogg->{'slug_' . $sign} ,'lang'=> $lang ]) }}/"> {{ $blogg->{'title_' . $sign} }} </a> </h3>
                                     <span>{{ $blogg->blog_date }}</span>
                                 </div>
                                 <img class="mb-4" src="{{ $blogg->photo }}" alt="">
@@ -154,7 +190,7 @@ $randomPhone = Arr::random($phones);
               <p>  {{ __('هل تريد حجز موعد وسنتواصل معك') }}     </p>
             </div>
             <div class="col-6">
-              <button   onclick="window.location.href='{{ route('book.index') }}/'"> {{ __('احجز الان') }}   </button>
+              <button   onclick="window.location.href='{{ route('book.index'.$lang,$lang) }}/'"> {{ __('احجز الان') }}   </button>
             </div>
           </div>
         </div>

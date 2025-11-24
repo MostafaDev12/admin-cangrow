@@ -9,6 +9,7 @@ use App\Models\Service;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
+use App\Models\Language;
 use URL;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('ps', Pagesetting::first());
             $settings->with('services', Service::get());
             $settings->with('categories', Category::get());
+             $settings->with('languages', Language::get());
             $settings->with('servicesWithoutCats', Service::whereNull('category_id')->get());
         });
 

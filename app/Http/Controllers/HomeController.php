@@ -43,13 +43,14 @@ class HomeController extends Controller
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
-  public function index(Request $request)
+  public function index(Request $request,$lang = 'ar')
   {
     // if (view()->exists($request->path())) {
     //     return view($request->path());
     // }
     // return abort(404);
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
@@ -57,13 +58,14 @@ class HomeController extends Controller
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.index', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.index', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews','lang'));
   }
 
-  public function about(Request $request)
+  public function about(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
@@ -71,33 +73,112 @@ class HomeController extends Controller
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.about', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+       $url = url()->current();
+$slug = urldecode(basename($url));
+     switch ($sign) {
+        case 'en':
+            $correctSlug = 'about-doctor';
+            break;
+        case 'ar':
+            $correctSlug = 'عن-الدكتور';
+            break;
+        
+        default:
+             $correctSlug = 'عن-الدكتور';
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
+
+    return view('front.about', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews','lang'));
   }
-  public function videos(Request $request)
+  public function videos(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
+       $url = url()->current();
+$slug = urldecode(basename($url));
     $videos = Media::paginate(9);
+    
+        
+     switch ($sign) {
+        case 'en':
+            $correctSlug = 'videos';
+            break;
+        case 'ar':
+            $correctSlug = 'فيديوهات';
+            break;
+        
+        default:
+             $correctSlug = 'فيديوهات';
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
 
-    return view('front.videos', compact('sign','videos'));
+
+    return view('front.videos', compact('sign','videos','lang'));
   }
 
-  public function blogs(Request $request)
+  public function blogs(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
  
+       $url = url()->current();
+$slug = urldecode(basename($url));
     $blogs = Blog::orderby('blog_date','desc')->paginate(9);
+    
+     switch ($sign) {
+        case 'en':
+            $correctSlug = 'blogs';
+            break;
+        case 'ar':
+            $correctSlug = 'المقالات';
+            break;
+         
+    }
+    
+  //  dd($correctSlug,$slug);
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
 
-    return view('front.blogs', compact('sign', 'blogs'));
+
+    return view('front.blogs', compact('sign', 'blogs','lang'));
   }
 
-  public function services(Request $request)
+  public function services(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
 
     $sliders = Slider::first();
@@ -106,12 +187,13 @@ class HomeController extends Controller
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.services', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.services', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews','lang'));
   }
-  public function BookNow(Request $request)
+  public function BookNow(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
 
     $sliders = Slider::first();
@@ -120,27 +202,78 @@ class HomeController extends Controller
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.reservation', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+       $url = url()->current();
+$slug = urldecode(basename($url));
+ switch ($sign) {
+        case 'en':
+            $correctSlug = 'book-now';
+            break;
+        case 'ar':
+            $correctSlug = 'احجز-الان';
+            break;
+        
+        default:
+             $correctSlug = 'احجز-الان';
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
+
+    return view('front.reservation', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews','lang'));
   }
- public function contact(Request $request)
+ public function contact(Request $request,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
 
+       $url = url()->current();
+$slug = urldecode(basename($url));
     $sliders = Slider::first();
     $points = AboutPoint::get();
     $services = Service::get();
     $models = PageModel::get();
     $reviews = Partner::get();
+     switch ($sign) {
+        case 'en':
+            $correctSlug = 'contact-us';
+            break;
+        case 'ar':
+            $correctSlug = 'اتصل-بنا';
+            break;
+        
+        default:
+             $correctSlug = 'اتصل-بنا';
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
 
-    return view('front.contact', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+
+    return view('front.contact', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews','lang'));
   }
 
-  public function singleBlog(Request $request, $slug)
+  public function singleBlog(Request $request, $slug,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
 
     $blog = Blog::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
@@ -150,13 +283,78 @@ class HomeController extends Controller
       abort(404);
     }
 
-    return view('front.details-blog', compact('sign', 'blog'));
+     switch ($sign) {
+        case 'en':
+            $correctSlug = $blog->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $blog->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $blog->slug_fr;
+            break;
+        default:
+            $correctSlug = $blog->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+    return view('front.details-blog', compact('sign', 'blog','lang'));
   }
 
-  public function singleService(Request $request, $slug)
+  public function singleBlogen(Request $request,$lang = 'ar', $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
+
+
+    $blog = Blog::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+
+    if(!$blog){
+
+      abort(404);
+    }
+ 
+     switch ($sign) {
+        case 'en':
+            $correctSlug = $blog->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $blog->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $blog->slug_fr;
+            break;
+        default:
+            $correctSlug = $blog->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
+    return view('front.details-blog', compact('sign', 'blog','lang'));
+  }
+
+  public function singleService(Request $request, $slug,$lang = 'ar')
+  {
+
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
 
 
     $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
@@ -164,13 +362,83 @@ class HomeController extends Controller
 
       abort(404);
     }
-    return view('front.details-service', compact('sign', 'service'));
+     
+     switch ($sign) {
+        case 'en':
+            $correctSlug = $service->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $service->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $service->slug_fr;
+            break;
+        default:
+            $correctSlug = $service->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
+    return view('front.details-service', compact('sign', 'service','lang'));
   }
 
-  public function singleCategoryService(Request $request, $slug)
+  public function singleServiceen(Request $request,$lang = 'ar', $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+$lang =  $sign == 'en' ? 'en' : null;
+
+    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+ 
+    if(!$service){
+
+      abort(404);
+    }
+    
+    
+     switch ($sign) {
+        case 'en':
+            $correctSlug = $service->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $service->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $service->slug_fr;
+            break;
+        default:
+            $correctSlug = $service->slug_en;
+    }
+     
+    
+    if ($slug !== $correctSlug) {
+          dd($service);
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
+    return view('front.details-service', compact('sign', 'service','lang'));
+  }
+
+  public function singleCategoryService(Request $request, $slug,$lang = 'ar')
+  {
+
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
     $category = Category::where('slug_ar', $slug)->orwhere('slug_en',$slug)
      ->orwhere('slug_fr',$slug)->first();
 
@@ -178,7 +446,48 @@ class HomeController extends Controller
 
       abort(404);
     }
-    return view('front.category', compact('sign', 'category'));
+    return view('front.category', compact('sign', 'category','lang'));
+  }
+
+  public function singleCategoryServiceen(Request $request,$lang = 'ar', $slug)
+  {
+
+    $sign = $this->langSign($lang);
+    $lang =  $sign == 'en' ? 'en' : null;
+    $category = Category::where('slug_ar', $slug)->orwhere('slug_en',$slug)
+     ->orwhere('slug_fr',$slug)->first();
+
+    if(!$category){
+
+      abort(404);
+    }
+    
+     switch ($sign) {
+        case 'en':
+            $correctSlug = $category->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $category->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $category->slug_fr;
+            break;
+        default:
+            $correctSlug = $category->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
+    
+    return view('front.category', compact('sign', 'category','lang'));
   }
 
   public function root()
@@ -211,6 +520,7 @@ class HomeController extends Controller
 
         $lang =  Language::where('is_default', '=', 1)->first();
 
+        session(['front_language_name' => $lang->language]);
         session(['front_language' => $lang->name]);
         session(['front_language_photo' => $lang->photo]);
         $language_duraction = $lang->rtl == 1 ? 'rtl' :  'ltr';
@@ -228,7 +538,7 @@ class HomeController extends Controller
 
     if ($lang) {
 
-
+   session(['front_language_name' => $lang->language]);
       session(['front_language' => $lang->name]);
       session(['front_language_photo' => $lang->photo]);
       session(['sign' => $lang->sign]);
@@ -241,6 +551,7 @@ class HomeController extends Controller
 
       $lang =  Language::where('is_default', '=', 1)->first();
 
+   session(['front_language_name' => $lang->language]);
       session(['front_language' => $lang->name]);
       session(['front_language_photo' => $lang->photo]);
       $language_duraction = $lang->rtl == 1 ? 'rtl' :  'ltr';
@@ -256,37 +567,105 @@ class HomeController extends Controller
 
 
 
-  public function change($id)
-  {
+//   public function change($id)
+//   {
 
+//     $data = Language::findOrFail($id);
+
+//     App::setlocale($data->name);
+
+
+//     $lang  = Language::where('name', '=', Session::get('front_language'))->first();
+
+
+//     session(['front_language' => $data->name]);
+//     session(['front_language_photo' => $data->photo]);
+//     $language_duraction = $data->rtl == 1 ? 'rtl' :  'ltr';
+//     session(['front_language_duraction' => $language_duraction]);
+
+//     session(['sign' => $data->sign]);
+
+//     $u =  url()->previous();
+
+
+//     $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
+
+
+//     // echo $x;
+
+//     //  return redirect($x);
+
+//     return redirect()->back();
+//   }
+
+public function change($id)
+{
     $data = Language::findOrFail($id);
-
     App::setlocale($data->name);
 
+    session([
+        'front_language' => $data->name,
+        'front_language_photo' => $data->photo,
+        'front_language_duraction' => $data->rtl == 1 ? 'rtl' : 'ltr',
+        'sign' => $data->sign,
+    ]);
 
-    $lang  = Language::where('name', '=', Session::get('front_language'))->first();
+    $u = url()->previous();
+    $sign = $data->sign;
 
+    // خريطة المسارات بين العربي والإنجليزي
+    $slug_map = [
+        '/عن-الدكتور/' => '/about-doctor/',
+        '/فيديوهات/'   => '/videos/',
+        '/المقالات/'   => '/blogs/',
+        '/اتصل-بنا/'   => '/contact-us/',
+        '/احجز-الان/'  => '/book-now/',
+    ];
 
-    session(['front_language' => $data->name]);
-    session(['front_language_photo' => $data->photo]);
-    $language_duraction = $data->rtl == 1 ? 'rtl' :  'ltr';
-    session(['front_language_duraction' => $language_duraction]);
+    // فك الرابط لأجزاء
+    $parsed = parse_url($u);
+    $scheme = $parsed['scheme'] ?? 'http';
+    $host   = $parsed['host'] ?? '';
+    $path   = $parsed['path'] ?? '';
+    $query  = isset($parsed['query']) ? '?' . $parsed['query'] : '';
 
-    session(['sign' => $data->sign]);
+    // معالجة الـ slug حسب اللغة
+    if ($sign === 'ar') {
+        // إزالة /en من البداية
+        $path = preg_replace('#^/en(/|$)#', '/', $path);
+  $path = urldecode($path);
+        // استبدال slug الإنجليزي بالعربي
+        $reverse_map = array_flip($slug_map); 
+        
+       
+        foreach ($reverse_map as $en => $ar) {
+            if (str_contains($path, $en)) {
+                $path = str_replace($en, $ar, $path);
+                break;
+            }
+        }
+    } elseif ($sign === 'en') {
+        // إضافة /en لو مش موجود
+        $path = urldecode($path);
+        if (!preg_match('#^/en(/|$)#', $path)) {
+            
+            $path = '/en' . $path;
+        }
+ 
+        // استبدال slug العربي بالإنجليزي
+        foreach ($slug_map as $ar => $en) {
+            if (str_contains($path, $ar)) {
+                $path = str_replace($ar, $en, $path);
+                break;
+            }
+        }
+    }
 
-    $u =  url()->previous();
+    // بناء الرابط النهائي
+    $newUrl = $scheme . '://' . $host . $path . $query;
 
-
-    $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
-
-
-    // echo $x;
-
-    //  return redirect($x);
-
-    return redirect()->back();
-  }
-
+    return redirect()->to($newUrl);
+}
 
   public function contactemail(Request $request)
   {
@@ -554,10 +933,55 @@ class HomeController extends Controller
 
 
   
-  public function blogsCategory(Request $request, $slug)
+  public function blogsCategory(Request $request, $slug,$lang = 'ar')
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
+
+$lang =  $sign == 'en' ? 'en' : null;
+    $category = BlogCategory::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+
+    if(!$category){
+
+      abort(404);
+    }
+
+ switch ($sign) {
+        case 'en':
+            $correctSlug = $category->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $category->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $category->slug_fr;
+            break;
+        default:
+            $correctSlug = $category->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
+
+
+    return view('front.blog_categories', compact('sign', 'category','lang'));
+  }
+ 
+
+  
+  public function blogsCategoryen(Request $request,$lang = 'ar', $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+  $lang =  $sign == 'en' ? 'en' : null;
 
 
     $category = BlogCategory::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
@@ -566,9 +990,32 @@ class HomeController extends Controller
 
       abort(404);
     }
+ switch ($sign) {
+        case 'en':
+            $correctSlug = $category->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $category->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $category->slug_fr;
+            break;
+        default:
+            $correctSlug = $category->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/$correctSlug");
+        }
+    }
 
 
-    return view('front.blog_categories', compact('sign', 'category'));
+    return view('front.blog_categories', compact('sign', 'category','lang'));
   }
  
 

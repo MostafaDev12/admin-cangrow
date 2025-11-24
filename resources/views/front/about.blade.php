@@ -45,7 +45,8 @@
                     </div>
                 </div>
                 
-                {!! $ps->about_details_ar !!}
+                 
+                {!! $ps->{'about_details_' . $sign} !!}
 
             </div>
         </div>
@@ -57,9 +58,9 @@
                     <div class="col-12 col-lg-6 col-md-6">
                         <div class="pt-5 wow animate__animated animate__fadeInRight" data-wow-delay="1s"
                             data-wow-duration="1s">
-                            <h1> {{ __('يعتبر ايضا دكتور عبد الرحمن شمس هو افضل دكتور عيون في القاهرة ') }}  </h1>
+                            <h1> {{ __('يعتبر ايضا دكتور عبد الرحمن شمس هو افضل دكتور عيون في القاهرة') }}  </h1>
                             <p class="fw-bold" >  {{ __('يعد الدكتور عبد الرحمن شمس اكبر دكتور عيون فى مصر في علاج جفاف العين والمياه البيضاء و تصحيح الابصار والافضل في عمليات الليزك وزرع العدسات في مصر وذلك لأنه يتمتع بخبرة كبيرة في علاج حالات جفاف العين الشديدة حيث قام بالعلاج العديد من الحالات الناجحة بإستخدام أحدث التقنيات بالإضافة إلى أنه حاصل على:') }} </p>
-                            <button   onclick="window.location.href='{{ route('book.index') }}/'"> {{ __('احجز الان') }}  </button>
+                            <button   onclick="window.location.href='{{ route('book.index'.$lang,$lang) }}/'"> {{ __('احجز الان') }}  </button>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 col-md-6">
@@ -112,7 +113,7 @@
             <p>  {{ __('هل تريد حجز موعد وسنتواصل معك') }}     </p>
           </div>
           <div class="col-6">
-            <button   onclick="window.location.href='{{ route('book.index') }}/'"> {{ __('احجز الان') }}   </button>
+            <button   onclick="window.location.href='{{ route('book.index'.$lang,$lang) }}/'"> {{ __('احجز الان') }}   </button>
           </div>
         </div>
       </div>

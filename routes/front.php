@@ -18,8 +18,8 @@ use App\Models\Language;
 |
 */
 
-
-Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
+// 'IpLocation',
+Route::middleware([ 'FrontLanguages'])->group(function () {
 
     //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
 
@@ -32,6 +32,33 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
     // });
 
     Route::prefix('{lang}')->group(function () {});
+ 
+  Route::prefix('{lang}')->where(['lang' => 'en'])->group(function () {
+      
+      
+        Route::get('/', [HomeController::class, 'index'])->name('front.indexen');
+        Route::get('/about-doctor/', [HomeController::class, 'about'])->name('about.indexen');
+        Route::get('/services/', [HomeController::class, 'services'])->name('services.indexen');
+
+     
+        Route::get('/services/{slug}/', [HomeController::class, 'singleServiceen'])->name('single-service.indexen');
+        
+          Route::get('/services-category/{slug}/', [HomeController::class, 'singleCategoryServiceen'])->name('single-category-service.indexen');
+
+        Route::get('/category/{slug}/', [HomeController::class, 'blogsCategoryen'])->name('blogs-category.indexen');
+
+        Route::get('/videos/', [HomeController::class, 'videos'])->name('videos.indexen');
+        Route::get('/blogs/', [HomeController::class, 'blogs'])->name('blogs.indexen');    
+        
+        Route::get('/contact-us/', [HomeController::class, 'contact'])->name('contact.indexen');
+     
+        Route::get('/book-now/', [HomeController::class, 'BookNow'])->name('book.indexen');
+
+ 
+        Route::get('/{blog}/', [HomeController::class, 'singleBlogen'])->name('single-blog.indexen');
+
+  });
+ Route::group([], function () {
 
 
         Route::get('/', [HomeController::class, 'index'])->name('front.index');
@@ -49,17 +76,22 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/المقالات/', [HomeController::class, 'blogs'])->name('blogs.index');    
         
         Route::get('/اتصل-بنا/', [HomeController::class, 'contact'])->name('contact.index');
-        Route::post('/contact-submit/', [HomeController::class, 'contactemail'])->name('front.contact.submit');
+       
         Route::get('/احجز-الان/', [HomeController::class, 'BookNow'])->name('book.index');
 
+        Route::get('/{blog}/', [HomeController::class, 'singleBlog'])->name('single-blog.index');
+
+ });
+
+     Route::post('/contact-submit/', [HomeController::class, 'contactemail'])->name('front.contact.submit');
+  
         Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');
         
     
         Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
     
 
-        Route::get('/{blog}/', [HomeController::class, 'singleBlog'])->name('single-blog.index');
-
-        
+  
+  Route::get('/languages/change/{id}', [HomeController::class, 'change'])->name('front.lang-change');
 
 });
