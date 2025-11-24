@@ -117,7 +117,63 @@
 
                          </div>
 
-                          {!! $ps->{'about_details_' . $sign} ?? '' !!}
+                        
+                          
+                        <div class="space-y-6">
+ 
+                            <div class="space-y-6"> 
+
+                                {!! $ps->{'about_details_' . $sign} ?? '' !!}
+
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <span
+                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
+                                            <i class="fas fa-check text-white text-sm"></i>
+                                        </span>
+                                    </div>
+                                    <p class="mr-4 text-base text-gray-700">
+                                        برامج الدعم الإنساني والاجتماعي
+                                    </p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <span
+                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
+                                            <i class="fas fa-check text-white text-sm"></i>
+                                        </span>
+                                    </div>
+                                    <p class="mr-4 text-base text-gray-700">
+                                        مشروعات تمكين المرأة وتنمية المهارات
+                                    </p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <span
+                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
+                                            <i class="fas fa-check text-white text-sm"></i>
+                                        </span>
+                                    </div>
+                                    <p class="mr-4 text-base text-gray-700">
+                                        المبادرات التعليمية والتدريبية
+                                    </p>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <span
+                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
+                                            <i class="fas fa-check text-white text-sm"></i>
+                                        </span>
+                                    </div>
+                                    <p class="mr-4 text-base text-gray-700">
+                                        رعاية الفئات الأكثر احتياجًا
+                                    </p>
+                                </div>
+                            </div>
+
+                           
+                        </div>
                      </div>
 
                  </div>
