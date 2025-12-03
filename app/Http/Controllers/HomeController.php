@@ -420,7 +420,7 @@ $lang =  $sign == 'en' ? 'en' : null;
      
     
     if ($slug !== $correctSlug) {
-          dd($service);
+         // dd($service);
         if($lang){
             
         return redirect()->to("/$sign/$correctSlug");
