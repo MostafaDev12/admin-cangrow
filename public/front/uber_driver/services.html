@@ -128,78 +128,126 @@
         </div>
     </header>
 
-    <section class="pt-32 pb-20 bg-gradient-to-r from-[#040720] to-blue-800 text-white">
+    <!-- Hero Banner -->
+
+    <section class="pt-32 pb-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">مدونة أوبر درايفر</h1>
-            <p class="text-xl max-w-3xl mx-auto">آخر الأخبار والنصائح للسائقين في مصر</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">خدمات أوبر درايفر</h1>
+            <p class="text-xl max-w-3xl mx-auto">اكتشف مجموعة الخدمات المتنوعة التي يمكنك تقديمها كسائق مع أوبر</p>
         </div>
     </section>
 
-    <section id="contact" class="py-16 bg-white">
+    <!-- محتوى صفحة الخدمات -->
+    <section class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-dark mb-12">اتصل بنا للتسجيل المباشر</h2>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
-                    <div class="bg-primary text-white p-8 rounded-xl mb-8">
-                        <i class="fas fa-phone-alt text-4xl mb-4"></i>
-                        <h3 class="text-2xl font-semibold mb-2">التسجيل عبر الهاتف</h3>
-                        <p class="mb-4">اتصل بنا على الرقم التالي للاستفسار أو بدء عملية التسجيل:</p>
-                        <a href="tel:01226666470"
-                            class="text-3xl font-bold block mb-6 hover:text-secondary transition">01226666470</a>
-                        <p>خدمة العملاء متاحة من الساعة 9 صباحًا حتى 5 مساءً طوال أيام الأسبوع.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- خدمة 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-custom transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-car"></i>
                     </div>
-
-                    <div class="bg-gray-100 p-6 rounded-xl">
-                        <h3 class="text-xl font-semibold mb-4">معلومات إضافية</h3>
-                        <div class="space-y-4">
-                            <div class="flex">
-                                <i class="fas fa-clock text-primary text-xl ml-3 mt-1"></i>
-                                <div>
-                                    <h4 class="font-semibold">أوقات المعالجة</h4>
-                                    <p class="text-gray-600">تستغرق عملية المراجعة والموافقة من يوم إلى أسبوع</p>
-                                </div>
-                            </div>
-                            <div class="flex">
-                                <i class="fas fa-question-circle text-primary text-xl ml-3 mt-1"></i>
-                                <div>
-                                    <h4 class="font-semibold">الدعم</h4>
-                                    <p class="text-gray-600">فريق الدعم متاح للإجابة على جميع استفساراتك</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">أوبر إكس</h3>
+                    <p class="text-gray-600 text-center">الخدمة الأساسية لنقل الركاب بسيارات خاصة مريحة وبأسعار مناسبة.
+                    </p>
+                    <a href="service-details.html"
+                        class="block mt-4 text-blue-600 font-semibold text-center hover:text-blue-800">المزيد من
+                        التفاصيل</a>
                 </div>
 
-                <div>
-                    <div class="bg-gray-100 p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6">أرسل لنا استفسارك</h3>
-                        <form id="contactForm">
-                            <div class="mb-4">
-                                <label for="name" class="block text-gray-700 mb-2">الاسم بالكامل</label>
-                                <input type="text" id="name"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                            </div>
-                            <div class="mb-4">
-                                <label for="phone" class="block text-gray-700 mb-2">رقم الهاتف</label>
-                                <input type="tel" id="phone"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                            </div>
-                            <div class="mb-4">
-                                <label for="message" class="block text-gray-700 mb-2">الاستفسار</label>
-                                <textarea id="message" rows="5"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-                            </div>
-                            <button type="submit"
-                                class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg transition duration-300">
-                                إرسال الاستفسار
-                            </button>
-                        </form>
+                <!-- خدمة 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-custom transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-shuttle-van"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">أوبر سيليكت</h3>
+                    <p class="text-gray-600 text-center">خدمة النقل بسيارات أكبر وأكثر راحة، مناسبة للمجموعات أو الرحلات
+                        الطويلة.</p>
+                    <a href="service-details.html"
+                        class="block mt-4 text-blue-600 font-semibold text-center hover:text-blue-800">المزيد من
+                        التفاصيل</a>
+                </div>
+
+                <!-- خدمة 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-custom transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">أوبر إيتس</h3>
+                    <p class="text-gray-600 text-center">خدمة توصيل الطعام من المطاعم إلى المنازل، فرصة رائعة لزيادة
+                        دخلك.</p>
+                    <a href="service-details.html"
+                        class="block mt-4 text-blue-600 font-semibold text-center hover:text-blue-800">المزيد من
+                        التفاصيل</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        // Accordion Functionality
+        document.querySelectorAll('.group button').forEach(button => {
+            button.addEventListener('click', () => {
+                const group = button.parentElement;
+                const isActive = group.classList.contains('active');
+                document.querySelectorAll('.group').forEach(g => g.classList.remove('active'));
+                if (!isActive) {
+                    group.classList.add('active');
+                }
+            });
+        });
+
+        // Before and After Slider Functionality
+        const slider = document.getElementById('slider');
+        const afterImage = slider.parentElement;
+        let isDragging = false;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const container = afterImage.parentElement;
+            const rect = container.getBoundingClientRect();
+            let newX = e.clientX - rect.left;
+            if (newX < 0) newX = 0;
+            if (newX > rect.width) newX = rect.width;
+            afterImage.style.clipPath = `inset(0 ${rect.width - newX}px 0 0)`;
+            slider.style.left = `${newX - 1}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+
+        // Touch Support for Mobile
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const container = afterImage.parentElement;
+            const rect = container.getBoundingClientRect();
+            let newX = e.touches[0].clientX - rect.left;
+            if (newX < 0) newX = 0;
+            if (newX > rect.width) newX = rect.width;
+            afterImage.style.clipPath = `inset(0 ${rect.width - newX}px 0 0)`;
+            slider.style.left = `${newX - 1}px`;
+        });
+
+        document.addEventListener('touchend', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+    </script>
+
     <!-- Footer -->
     <footer class="bg-gradient-to-r from-primary to-secondary   text-white py-12">
         <div class="container mx-auto px-4">

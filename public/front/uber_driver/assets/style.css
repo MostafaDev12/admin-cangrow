@@ -1,0 +1,292 @@
+.hero-pattern {
+    background-color: #830d26;
+    background-image: linear-gradient(135deg, #f50a0a 0%, #5a0707 100%);
+}
+
+.floating {
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 15px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.card-hover {
+    transition:
+        transform 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 10px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+nav a.active {
+    color: white;
+}
+
+.burger:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 2px;
+    background: white;
+    box-shadow:
+        0 12px 0 0 white,
+        0 6px 0 0 white;
+}
+
+.meta:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    /* left: -55px; */
+    width: 60px;
+    height: 2px;
+    background-color: #fff;
+}
+@media (max-width: 768px) {
+    .meta:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+#pagination button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition:
+        opacity 0.4s ease-in-out,
+        width 0.4s ease-in-out,
+        height 0.4s ease-in-out;
+}
+
+#pagination button.active:before {
+    width: 300%;
+    height: 300%;
+    opacity: 1;
+}
+
+@keyframes loaderAnim {
+    to {
+        opacity: 1;
+        transform: scale3d(0.5, 0.5, 1);
+    }
+}
+
+#slider > img {
+    display: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.move-anim {
+    animation: float 5s ease-in-out infinite;
+}
+
+.faq-answer {
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+@keyframes fadeIn {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 1s ease-out;
+}
+
+.animate-pulse-slow {
+    animation: pulse 3s infinite;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #0519ce 0%, #024a85 50%, #7cd5f8 100%);
+}
+#threejs-container canvas {
+    width: 90% !important;
+    height: auto !important;
+    max-height: 80vh;
+    object-fit: contain;
+}
+#slider-text {
+    animation: fadeInRight 1s ease-out;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#threejs-container {
+    animation: fadeInLeft 1s ease-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* إعدادات لـ Three.js Canvas */
+#threejs-container canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+/* موبايل */
+@media (max-width: 767px) {
+    #slider {
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .grid-rows-2 {
+        grid-template-rows: 60% 40%;
+    }
+
+    #threejs-container {
+        padding-top: 2rem;
+    }
+
+    .slider-content {
+        padding-bottom: 4rem;
+    }
+
+    #pagination {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* تابلت */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #threejs-container canvas {
+        max-height: 60vh;
+    }
+
+    #slider-text {
+        padding: 0 2rem;
+    }
+}
+
+/* ديسكتوب */
+@media (min-width: 1024px) {
+    .grid-cols-2 {
+        grid-template-columns: 50% 50%;
+    }
+
+    #threejs-container {
+        justify-content: flex-start;
+        padding-left: 4rem;
+    }
+
+    .slider-content {
+        justify-content: flex-end;
+        padding-right: 4rem;
+    }
+}

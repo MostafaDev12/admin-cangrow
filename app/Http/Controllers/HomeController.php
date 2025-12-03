@@ -65,6 +65,7 @@ class HomeController extends Controller
     $sign = $this->langSign($lang);
 
     $sliders = Slider::get();
+    $single_slider = Slider::first();
     $points = AboutPoint::get();
     $home_services = Service::get()->take(10);
     $models = PageModel::get();
@@ -79,7 +80,7 @@ $processes = Process::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
   $certificates = Certificate::get();
   $servicess = Service::get();
-    return view('front.index', compact('sign', 'sliders','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
+    return view('front.index', compact('sign', 'sliders','doctors','single_slider','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
   }
 
 
