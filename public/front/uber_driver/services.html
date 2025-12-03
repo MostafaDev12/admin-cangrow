@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اوبر درايفر - زود دخلك مع أوبر في مصر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/tailwind.js"></script>
+
+    <link rel="stylesheet" href="https://use.typekit.net/euz1eqv.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="font-arabic bg-gray-50" dir="rtl" lang="ar">
+    <!-- Header -->
+    <header class="text-white fixed w-full top-0 z-50  transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex-shrink-0 z-10">
+                    <div class=" transition-all duration-300 hover:scale-105">
+                        <img src="./assets/logo.jpg" alt="Uber Captain Logo" class="h-24 w-auto">
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex gap-2 items-center">
+                    <a href="./index.html"
+                        class="nav-link font-semibold text-sm xl:text-base px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        الرئيسية
+                    </a>
+                    <a href="./about.html"
+                        class="nav-link font-semibold text-sm xl:text-base px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        عن أوبر
+                    </a>
+                    <a href="./blogs.html"
+                        class="nav-link font-semibold text-sm xl:text-base px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        المقالات
+                    </a>
+                    <a href="./contact.html"
+                        class="nav-link font-semibold text-sm xl:text-base px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        تواصل معنا
+                    </a>
+                </nav>
+
+                <!-- Social Icons & Phone -->
+                <div class="flex items-center gap-2">
+                    <!-- Social Icons -->
+                    <div class="hidden md:flex items-center gap-2 text-white text-lg">
+                        <a href="#" class="transition-all duration-300 hover:text-primary/40 hover:scale-110">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="transition-all duration-300 hover:text-primary/40 hover:scale-110">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="transition-all duration-300 hover:text-primary/40 hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+
+                    <!-- Phone CTA -->
+                    <a href="#"
+                        class="phone-pulse bg-primary text-white flex font-semibold text-sm px-4 py-2 rounded-full  items-center gap-2 transition-all duration-300 hover:bg-primary/80 hover:shadow-lg">
+                        <i class="fas fa-phone rotate-[-15deg]"></i>
+
+                        <span>01226666470</span>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="header-toggle" class="lg:hidden text-white focus:outline-none">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="lg:hidden bg-brand-blue/95 backdrop-blur-sm px-4 py-6 hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="./index.html"
+                    class="text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10">
+                    الرئيسية
+                </a>
+                <a href="./about.html"
+                    class="text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10">
+                    عن أوبر
+                </a>
+                <a href="./blogs.html"
+                    class="text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10">
+                    المقالات
+                </a>
+                <a href="./contact.html"
+                    class="text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10">
+                    تواصل معنا
+                </a>
+
+                <div class="pt-4 flex justify-center gap-2 text-white text-xl border-t border-white/20">
+                    <a href="#" class="transition-all duration-300 hover:text-amber-400">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="#" class="transition-all duration-300 hover:text-amber-400">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="transition-all duration-300 hover:text-amber-400">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+
+    <section class="pt-32 pb-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">خدمات أوبر درايفر</h1>
+            <p class="text-xl max-w-3xl mx-auto">اكتشف مجموعة الخدمات المتنوعة التي يمكنك تقديمها كسائق مع أوبر</p>
+        </div>
+    </section>
+
+    <!-- محتوى صفحة الخدمات -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- خدمة 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-custom transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">أوبر إكس</h3>
+                    <p class="text-gray-600 text-center">الخدمة الأساسية لنقل الركاب بسيارات خاصة مريحة وبأسعار مناسبة.
+                    </p>
+                    <a href="service-details.html"
+                        class="block mt-4 text-blue-600 font-semibold text-center hover:text-blue-800">المزيد من
+                        التفاصيل</a>
+                </div>
+
+                <!-- خدمة 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-custom transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-shuttle-van"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">أوبر سيليكت</h3>
+                    <p class="text-gray-600 text-center">خدمة النقل بسيارات أكبر وأكثر راحة، مناسبة للمجموعات أو الرحلات
+                        الطويلة.</p>
+                    <a href="service-details.html"
+                        class="block mt-4 text-blue-600 font-semibold text-center hover:text-blue-800">المزيد من
+                        التفاصيل</a>
+                </div>
+
+                <!-- خدمة 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-custom transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">أوبر إيتس</h3>
+                    <p class="text-gray-600 text-center">خدمة توصيل الطعام من المطاعم إلى المنازل، فرصة رائعة لزيادة
+                        دخلك.</p>
+                    <a href="service-details.html"
+                        class="block mt-4 text-blue-600 font-semibold text-center hover:text-blue-800">المزيد من
+                        التفاصيل</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Accordion Functionality
+        document.querySelectorAll('.group button').forEach(button => {
+            button.addEventListener('click', () => {
+                const group = button.parentElement;
+                const isActive = group.classList.contains('active');
+                document.querySelectorAll('.group').forEach(g => g.classList.remove('active'));
+                if (!isActive) {
+                    group.classList.add('active');
+                }
+            });
+        });
+
+        // Before and After Slider Functionality
+        const slider = document.getElementById('slider');
+        const afterImage = slider.parentElement;
+        let isDragging = false;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const container = afterImage.parentElement;
+            const rect = container.getBoundingClientRect();
+            let newX = e.clientX - rect.left;
+            if (newX < 0) newX = 0;
+            if (newX > rect.width) newX = rect.width;
+            afterImage.style.clipPath = `inset(0 ${rect.width - newX}px 0 0)`;
+            slider.style.left = `${newX - 1}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+
+        // Touch Support for Mobile
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const container = afterImage.parentElement;
+            const rect = container.getBoundingClientRect();
+            let newX = e.touches[0].clientX - rect.left;
+            if (newX < 0) newX = 0;
+            if (newX > rect.width) newX = rect.width;
+            afterImage.style.clipPath = `inset(0 ${rect.width - newX}px 0 0)`;
+            slider.style.left = `${newX - 1}px`;
+        });
+
+        document.addEventListener('touchend', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-primary to-secondary   text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="transform -translate-y-2 transition-all duration-300 hover:scale-105">
+                        <img src="./assets/logo.jpg" alt="Uber Captain Logo" class="h-20 w-20 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">درايفر أوبر مصر</h3>
+                    <p>الوجهة الأولى للمساعدة في التسجيل كسائق مع أوبر في مصر. نساعدك في كل خطوة من عملية التسجيل.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">روابط سريعة</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#registration" class="hover:text-secondary transition">التسجيل</a></li>
+                        <li><a href="#requirements" class="hover:text-secondary transition">المتطلبات</a></li>
+                        <li><a href="#benefits" class="hover:text-secondary transition">المميزات</a></li>
+                        <li><a href="#news" class="hover:text-secondary transition">الأخبار</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">اتصل بنا</h3>
+                    <div class="space-y-2">
+                        <p class="flex items-center">
+                            <i class="fas fa-phone-alt ml-2"></i>
+                            <a href="tel:01226666470">01226666470</a>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="far fa-clock ml-2"></i>
+                            من الأحد إلى الخميس: 9 ص - 5 م
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">تابعنا</h3>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-secondary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-secondary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-secondary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>© 2023 درايفر أوبر مصر. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Fixed Icons -->
+    <div class="fixed left-6 bottom-6 flex flex-col gap-4 z-50 animate-fadeIn">
+        <!-- TikTok -->
+        <a href="" target="_blank"
+            class="group relative w-14 h-14 bg-gradient-to-br from-black via-black to-black text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:scale-110 hover:rotate-6 transition-all duration-500 ease-out">
+            <i class="fab fa-tiktok group-hover:animate-pulse"></i>
+            <span
+                class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">TikTok</span>
+        </a>
+
+        <!-- Facebook -->
+        <a href="" target="_blank"
+            class="group relative w-14 h-14 bg-gradient-to-br from-blue-500 via-blue-700 to-blue-900 text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(0,115,255,0.6)] hover:scale-110 hover:-rotate-6 transition-all duration-500 ease-out">
+            <i class="fab fa-facebook-f group-hover:animate-pulse"></i>
+            <span
+                class="absolute -right-24 opacity-0 group-hover:opacity-100 bg-blue-900/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">Facebook</span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="" target="_blank"
+            class="group relative w-14 h-14 bg-gradient-to-r from-pink-500 via-purple-600 to-orange-400 text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(255,105,180,0.6)] hover:scale-110 hover:rotate-6 transition-all duration-500 ease-out">
+            <i class="fab fa-instagram group-hover:animate-pulse"></i>
+            <span
+                class="absolute -right-28 opacity-0 group-hover:opacity-100 bg-pink-700/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">Instagram</span>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:01226666470"
+            class="group relative w-14 h-14 bg-gradient-to-br from-green-400 via-green-600 to-green-800 text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(0,255,100,0.6)] hover:scale-110 hover:-rotate-6 transition-all duration-500 ease-out">
+            <i class="fas fa-phone group-hover:animate-pulse"></i>
+            <span
+                class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-green-700/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">Call</span>
+        </a>
+    </div>
+
+
+    <script src="./assets/script.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="./assets/tailwind.js"></script>
+
+    <script src="./assets/slider.js"></script>
+
+
+
+
+</body>
+
+</html>

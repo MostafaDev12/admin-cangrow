@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اوبر درايفر - زود دخلك مع أوبر في مصر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/tailwind.js"></script>
+
+    <link rel="stylesheet" href="https://use.typekit.net/euz1eqv.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="font-arabic bg-gray-50" dir="rtl" lang="ar">
+    <!-- Header -->
+    <header class="text-white fixed w-full top-0 z-50  transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex-shrink-0 z-10">
+                    <div class=" transition-all duration-300 hover:scale-105">
+                        <img src="./assets/logo.jpg" alt="Uber Captain Logo" class="h-24 w-auto">
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex gap-2 items-center">
+                    <a href="./index.html"
+                        class="nav-link font-semibold text-sm xl:text-base px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        الرئيسية
+                    </a>
+                    <a href="./about.html"
+                        class="nav-link font-semibold text-sm xl:text-base px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        عن أوبر
+                    </a>
+                    <a href="./blogs.html"
+                        class="nav-link font-semibold text-sm xl:text-base px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        المقالات
+                    </a>
+                    <a href="./contact.html"
+                        class="nav-link font-semibold text-sm xl:text-base px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        تواصل معنا
+                    </a>
+                </nav>
+
+                <!-- Social Icons & Phone -->
+                <div class="flex items-center gap-2">
+                    <!-- Social Icons -->
+                    <div class="hidden md:flex items-center gap-2 text-white text-lg">
+                        <a href="#" class="transition-all duration-300 hover:text-primary/40 hover:scale-110">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="transition-all duration-300 hover:text-primary/40 hover:scale-110">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="transition-all duration-300 hover:text-primary/40 hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+
+                    <!-- Phone CTA -->
+                    <a href="#"
+                        class="phone-pulse bg-primary text-white flex font-semibold text-sm px-4 py-2 rounded-full  items-center gap-2 transition-all duration-300 hover:bg-primary/80 hover:shadow-lg">
+                        <i class="fas fa-phone rotate-[-15deg]"></i>
+
+                        <span>01226666470</span>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="header-toggle" class="lg:hidden text-white focus:outline-none">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="lg:hidden bg-brand-blue/95 backdrop-blur-sm px-4 py-6 hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="./index.html"
+                    class="text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10">
+                    الرئيسية
+                </a>
+                <a href="./about.html"
+                    class="text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10">
+                    عن أوبر
+                </a>
+                <a href="./blogs.html"
+                    class="text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10">
+                    المقالات
+                </a>
+                <a href="./contact.html"
+                    class="text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10">
+                    تواصل معنا
+                </a>
+
+                <div class="pt-4 flex justify-center gap-2 text-white text-xl border-t border-white/20">
+                    <a href="#" class="transition-all duration-300 hover:text-amber-400">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="#" class="transition-all duration-300 hover:text-amber-400">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="transition-all duration-300 hover:text-amber-400">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- style="background-image: url('./assets/imgs/testimonials-bg-2-1.jpg')" -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-[#040720] to-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">مدونة أوبر درايفر</h1>
+            <p class="text-xl max-w-3xl mx-auto">آخر الأخبار والنصائح للسائقين في مصر</p>
+        </div>
+    </section>
+    <!-- Benefits Section -->
+    <section class="section py-20 bg-white">
+        <div class="container mx-auto px-5 max-w-6xl">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-center mb-16 relative pb-4 after:absolute after:bottom-0 after:right-1/2 after:translate-x-1/2 after:w-16 after:h-1 after:bg-gradient after:rounded">
+                اكسب دخلًا في الأوقات التي تختارها، وبالطريقة التي تناسب نمط حياتك.</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Benefit Card 1 -->
+                <div
+                    class="relative z-10 bg-white rounded-[15px] p-[30px] shadow-lg text-center overflow-hidden transition-all duration-300 hover:-translate-y-[10px] group">
+                    <div
+                        class="w-[70px] h-[70px] bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-[24px] transition-all duration-300 group-hover:bg-white group-hover:text-indigo-600">
+                        <i class="fas fa-calendar-days"></i>
+                    </div>
+                    <h3 class="text-[1.5rem] font-bold mb-[15px] transition-all duration-300 group-hover:text-white">
+                        كن المتحكم في وقتك... اختر ساعات عملك بما يناسبك
+                    </h3>
+                    <p class="mb-5 text-gray-600 transition-all duration-300 group-hover:text-white">
+                        كن مدير نفسك. قد مع أوبر في أي وقت تشاء، ليلًا أو نهارًا، وحدّد جدولك بما يتماشى مع نمط حياتك،
+                        وليس العكس.
+                    </p>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 h-0 opacity-0 transition-all duration-300 group-hover:h-full group-hover:opacity-100 -z-10">
+                    </div>
+                </div>
+
+                <!-- Benefit Card 2 -->
+                <div
+                    class="relative z-10 bg-white rounded-[15px] p-[30px] shadow-lg text-center overflow-hidden transition-all duration-300 hover:-translate-y-[10px] group">
+                    <div
+                        class="w-[70px] h-[70px] bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-[24px] transition-all duration-300 group-hover:bg-white group-hover:text-green-600">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="text-[1.5rem] font-bold mb-[15px] transition-all duration-300 group-hover:text-white">
+                        حرية التنقل
+                    </h3>
+                    <p class="mb-5 text-gray-600 transition-all duration-300 group-hover:text-white">
+                        استمتع بالمرونة الكاملة واختر متى وأين تقود، حسب راحتك وظروفك الشخصية.
+                    </p>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 h-0 opacity-0 transition-all duration-300 group-hover:h-full group-hover:opacity-100 -z-10">
+                    </div>
+                </div>
+
+                <!-- Benefit Card 3 -->
+                <div
+                    class="relative z-10 bg-white rounded-[15px] p-[30px] shadow-lg text-center overflow-hidden transition-all duration-300 hover:-translate-y-[10px] group">
+                    <div
+                        class="w-[70px] h-[70px] bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-[24px] transition-all duration-300 group-hover:bg-white group-hover:text-pink-600">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="text-[1.5rem] font-bold mb-[15px] transition-all duration-300 group-hover:text-white">
+                        اربح المزيد
+                    </h3>
+                    <p class="mb-5 text-gray-600 transition-all duration-300 group-hover:text-white">
+                        احصل على دخل إضافي من خلال القيادة مع أوبر وقتما تريد وزوّد أرباحك بسهولة.
+                    </p>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500 h-0 opacity-0 transition-all duration-300 group-hover:h-full group-hover:opacity-100 -z-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start With Us Section -->
+    <section class="section py-20 bg-light">
+        <div class="container mx-auto px-5 max-w-6xl">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-center mb-16 relative pb-4 after:absolute after:bottom-0 after:right-1/2 after:translate-x-1/2 after:w-16 after:h-1 after:bg-gradient after:rounded">
+                ابدأ الآن واستفد من الفرص المتاحة أمامك</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="benefit-card bg-white rounded-xl p-8 shadow-custom transition-all duration-300 hover:-translate-y-3 text-center relative overflow-hidden group">
+                    <div
+                        class="benefit-icon w-16 h-16 bg-gradient text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl transition-all duration-300 group-hover:bg-white group-hover:text-primary">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3 class="card-title text-xl font-bold mb-4 transition-all duration-300 group-hover:text-white">
+                        سجّل من خلال الإنترنت</h3>
+                    <p class="card-text text-gray transition-all duration-300 group-hover:text-white">كل ما عليك هو
+                        تحديد المدينة التي ترغب في القيادة بها ونوع الرخصة التي تمتلكها، وسنرسل لك التعليمات عبر البريد
+                        الإلكتروني</p>
+                    <div
+                        class="absolute inset-0 bg-gradient opacity-0 transition-all duration-300 group-hover:opacity-100 -z-10">
+                    </div>
+                </div>
+
+                <div
+                    class="benefit-card bg-white rounded-xl p-8 shadow-custom transition-all duration-300 hover:-translate-y-3 text-center relative overflow-hidden group">
+                    <div
+                        class="benefit-icon w-16 h-16 bg-gradient text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl transition-all duration-300 group-hover:bg-white group-hover:text-primary">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="card-title text-xl font-bold mb-4 transition-all duration-300 group-hover:text-white">
+                        تحقّق من الشروط المطلوبة</h3>
+                    <p class="card-text text-gray transitionall duration-300 group-hover:text-white">جميع الأشخاص مؤهلون
+                        للقيادة مع اوبر درايفر. إليك كل ما يجب أن تعرفه إذا كنت تقود في القاهرة أو الإسكندرية أو
+                        المنصورة
+                        أو الزقازيق أو طنطا أو دمنهور أو الغردقة.</p>
+                    <div
+                        class="absolute inset-0 bg-gradient opacity-0 transition-all duration-300 group-hover:opacity-100 -z-10">
+                    </div>
+                </div>
+
+                <div
+                    class="benefit-card bg-white rounded-xl p-8 shadow-custom transition-all duration-300 hover:-translate-y-3 text-center relative overflow-hidden group">
+                    <div
+                        class="benefit-icon w-16 h-16 bg-gradient text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl transition-all duration-300 group-hover:bg-white group-hover:text-primary">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="card-title text-xl font-bold mb-4 transition-all duration-300 group-hover:text-white">
+                        احصل على سيارتك بسهولة</h3>
+                    <p class="card-text text-gray transition-all duration-300 group-hover:text-white">يمكنك التسجيل الآن
+                        حتى وإن لم تكن تمتلك سيارة تفي بمتطلبات السيارات في مصر في الوقت الحالي.</p>
+                    <div
+                        class="absolute inset-0 bg-gradient opacity-0 transition-all duration-300 group-hover:opacity-100 -z-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-primary to-secondary   text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="transform -translate-y-2 transition-all duration-300 hover:scale-105">
+                        <img src="./assets/logo.jpg" alt="Uber Captain Logo" class="h-20 w-20 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">درايفر أوبر مصر</h3>
+                    <p>الوجهة الأولى للمساعدة في التسجيل كسائق مع أوبر في مصر. نساعدك في كل خطوة من عملية التسجيل.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">روابط سريعة</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#registration" class="hover:text-secondary transition">التسجيل</a></li>
+                        <li><a href="#requirements" class="hover:text-secondary transition">المتطلبات</a></li>
+                        <li><a href="#benefits" class="hover:text-secondary transition">المميزات</a></li>
+                        <li><a href="#news" class="hover:text-secondary transition">الأخبار</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">اتصل بنا</h3>
+                    <div class="space-y-2">
+                        <p class="flex items-center">
+                            <i class="fas fa-phone-alt ml-2"></i>
+                            <a href="tel:01226666470">01226666470</a>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="far fa-clock ml-2"></i>
+                            من الأحد إلى الخميس: 9 ص - 5 م
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">تابعنا</h3>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-secondary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-secondary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-secondary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>© 2023 درايفر أوبر مصر. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Fixed Icons -->
+    <div class="fixed left-6 bottom-6 flex flex-col gap-4 z-50 animate-fadeIn">
+        <!-- TikTok -->
+        <a href="" target="_blank"
+            class="group relative w-14 h-14 bg-gradient-to-br from-black via-black to-black text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:scale-110 hover:rotate-6 transition-all duration-500 ease-out">
+            <i class="fab fa-tiktok group-hover:animate-pulse"></i>
+            <span
+                class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">TikTok</span>
+        </a>
+
+        <!-- Facebook -->
+        <a href="" target="_blank"
+            class="group relative w-14 h-14 bg-gradient-to-br from-blue-500 via-blue-700 to-blue-900 text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(0,115,255,0.6)] hover:scale-110 hover:-rotate-6 transition-all duration-500 ease-out">
+            <i class="fab fa-facebook-f group-hover:animate-pulse"></i>
+            <span
+                class="absolute -right-24 opacity-0 group-hover:opacity-100 bg-blue-900/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">Facebook</span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="" target="_blank"
+            class="group relative w-14 h-14 bg-gradient-to-r from-pink-500 via-purple-600 to-orange-400 text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(255,105,180,0.6)] hover:scale-110 hover:rotate-6 transition-all duration-500 ease-out">
+            <i class="fab fa-instagram group-hover:animate-pulse"></i>
+            <span
+                class="absolute -right-28 opacity-0 group-hover:opacity-100 bg-pink-700/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">Instagram</span>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:01226666470"
+            class="group relative w-14 h-14 bg-gradient-to-br from-green-400 via-green-600 to-green-800 text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(0,255,100,0.6)] hover:scale-110 hover:-rotate-6 transition-all duration-500 ease-out">
+            <i class="fas fa-phone group-hover:animate-pulse"></i>
+            <span
+                class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-green-700/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">Call</span>
+        </a>
+    </div>
+
+
+    <script src="./assets/script.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="./assets/tailwind.js"></script>
+
+    <script src="./assets/slider.js"></script>
+
+
+
+
+</body>
+
+</html>
