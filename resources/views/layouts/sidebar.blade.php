@@ -78,13 +78,13 @@
                         </a>
                     </li>
                 @endif --}}
-  @if (Auth::guard('admin')->user()->sectionCheck('media'))
+  {{-- @if (Auth::guard('admin')->user()->sectionCheck('media'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-media-index') }}" aria-controls="sidebarmedia">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.media')</span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
        {{--         @if (Auth::guard('admin')->user()->sectionCheck('testimonials'))
                     <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-testimonials-index') }}"
@@ -309,11 +309,11 @@
                     </li>
 
                 @endif --}}
-                {{-- @if (Auth::guard('admin')->user()->sectionCheck('models'))
+                @if (Auth::guard('admin')->user()->sectionCheck('models'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#models" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="models">
-                            <i class="las la-cog"></i> <span data-key="t-General_Settings"> @lang('translation.about_us_sections')</span>
+                            <i class="las la-cog"></i> <span data-key="t-General_Settings"> @lang('translation.faqs')</span>
                         </a>
                         <div class="collapse menu-dropdown" id="models">
                             <ul class="nav nav-sm flex-column">
@@ -322,14 +322,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-models-index') }}"
                                         aria-controls="sidebarmodels">
-                                        <span>@lang('translation.home_about_section')</span>
+                                        <span>@lang('translation.faqs')</span>
                                     </a>
                                 </li>
 
                             </ul>
                         </div>
                     </li> <!-- end Dashboard Menu -->
-                @endif --}}
+                @endif {{-- --}}
 
 
                 @if (Auth::guard('admin')->user()->sectionCheck('blogs'))
