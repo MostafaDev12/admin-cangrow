@@ -50,8 +50,8 @@ $randomPhone = Arr::random($phones);
     </div>
     <!-- blogs -->
     <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32 min-h-screen my-10">
-        <div><span class="uppercase text-accent font-semibold leading-4">المقالات</span>
-            <h2 class="text-primary font-bold text-4xl italic">المقالات</h2>
+        <div><span class="uppercase text-accent font-semibold leading-4">{{ __('المقالات') }} </span>
+            <h2 class="text-primary font-bold text-4xl italic">{{ __('المقالات') }} </h2>
         </div>
         <div class="flex flex-wrap my-10">
             <div class="w-full lg:w-2/3 my-10 md:w-1/2 p-4">
