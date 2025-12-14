@@ -356,9 +356,9 @@
         <!-- TikTok -->
         <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank"
             class="group relative w-14 h-14 bg-gradient-to-br from-black via-black to-black text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:scale-110 hover:rotate-6 transition-all duration-500 ease-out">
-            <i class="fab fa-twitter group-hover:animate-pulse"></i>
+            <i class="fab fa-instagram group-hover:animate-pulse"></i>
             <span
-                class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500"> {{ __('Twitter') }}</span>
+                class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500"> {{ __('instagram') }}</span>
         </a>
             @endif
 @if(App\Models\Socialsetting::find(1)->f_status == 1) 
