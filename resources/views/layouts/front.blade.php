@@ -153,7 +153,7 @@
                     <div class="hidden md:flex items-center gap-2 text-white text-lg">
                          @if(App\Models\Socialsetting::find(1)->t_status == 1) 
                         <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" class="transition-all duration-300 hover:text-primary/40 hover:scale-110">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-instagram"></i>
                         </a>
 
                          @endif
@@ -223,7 +223,7 @@
                   
                       @if(App\Models\Socialsetting::find(1)->t_status == 1) 
                         <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" class="transition-all duration-300 hover:text-amber-400">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-instagram"></i>
                         </a>
 
                          @endif
@@ -306,7 +306,7 @@
 
                             @if(App\Models\Socialsetting::find(1)->t_status == 1) 
                         <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-secondary transition">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-instagram"></i>
                         </a>
 
                          @endif
