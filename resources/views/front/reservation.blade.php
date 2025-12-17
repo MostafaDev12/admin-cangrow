@@ -127,6 +127,14 @@
                         <a href="tel:+2{{ $phone }}">{{ $phone }}</a>
                         @endforeach
                     </div>
+                    <div class="text-center contact-div my-3 p-4 wow animate__animated animate__fadeInDown" data-wow-delay="1s" data-wow-duration="1s">
+                       <i class="fab fa-whatsapp"></i>
+                        <h2>واتساب</h2>
+                        <a href="https://wa.me/201001985012" target="_blank">
+                            01001985012
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </div>

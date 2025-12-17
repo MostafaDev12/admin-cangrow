@@ -45,13 +45,21 @@ $randomPhone = Arr::random($phones);
                         @endforeach
                     </div>
                 </div>
-                <div class="col-12 col-lg-3 col-md-4">
+                <div class="col-12 col-lg-3 col-md-4 gap-10">
                     <div class="text-center contact-div p-4 wow animate__animated animate__fadeInDown" data-wow-delay="1s" data-wow-duration="1s">
                         <i class="fas fa-phone"></i>
                         <h2>{{ __('الموبيل') }}</h2>
                         @foreach ($phones as $phone)
-                        <a href="tel:+2{{ $phone }}">{{ $phone }}</a>
+                        <a href="tel:+2{{ $phone }}">{{ $phone }}</a><br>
                         @endforeach
+                    </div>
+                    <div class="text-center contact-div my-3 p-4 wow animate__animated animate__fadeInDown" data-wow-delay="1s" data-wow-duration="1s">
+                       <i class="fab fa-whatsapp"></i>
+                        <h2>واتساب</h2>
+                        <a href="https://wa.me/201001985012" target="_blank">
+                            01001985012
+                        </a>
+
                     </div>
                 </div>
             </div>

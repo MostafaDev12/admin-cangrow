@@ -81,15 +81,7 @@
   }
 </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RJGGYWDV7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8RJGGYWDV7');
-</script>
+ 
 
     @yield('gsearch')
     <!-- Google Font -->
@@ -102,7 +94,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -139,10 +131,10 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <a target="_blank"  href="http://wa.me/2{{ $randomPhone }}"><i class="fab fa-whatsapp"></i> {{ $randomPhone }}</a>
+                    <a target="_blank"  href="http://wa.me/2{{ $phones[1] ?? $randomPhone }}"><i class="fab fa-whatsapp"></i> {{ $phones[1] ?? $randomPhone }}</a>
                 </div>
                 <div class="col-4">
-                    <a href="tel:+2{{ $randomPhone }}"><i class="fas fa-phone"></i> {{ $randomPhone }} </a>
+                    <a href="tel:+2{{ $phones[0] ?? $randomPhone }}"><i class="fas fa-phone"></i> {{ $phones[0] ?? $randomPhone }} </a>
                 </div>
             </div>
         </div>
@@ -308,10 +300,10 @@
                       <i class="fas fa-phone"></i><a href="tel:+2{{ $phone }}">{{ $phone }}</a> <br>
 
                       @endforeach
-                     @foreach ($phones as $phone)
+                     <!--@foreach ($phones as $phone) @endforeach-->
 
-                      <i class="fab fa-whatsapp"></i><a target="_blank"  href="http://wa.me/2{{ $phone }}" target="_blank">{{ $phone }}</a><br>
-                      @endforeach
+                      <i class="fab fa-whatsapp"></i><a target="_blank"  href="http://wa.me/2{{  $phones[1] ?? $randomPhone }}" target="_blank">{{ $phone }}</a><br>
+                     
                       @foreach ($addresses as $address)
                         <i class="fas fa-location"></i> <a href="#">   {{ $address }}   </a>
                         <br>
@@ -331,8 +323,8 @@
                       @if(App\Models\Socialsetting::find(1)->t_status == 1)    <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank">  <i class="fab fa-instagram"></i></a>  @endif
                       @if(App\Models\Socialsetting::find(1)->d_status == 1)     <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank">  <i class="fab fa-tiktok"></i></a>  @endif
 
-                      <a target="_blank" href="http://wa.me/201118886541"><i class="fab fa-whatsapp"></i></a>
-                      <a href="tel:+201118886541"><i class="fas fa-phone"></i> </a>
+                      <a target="_blank" href="http://wa.me/2{{ $phones[1] ?? $randomPhone}}"><i class="fab fa-whatsapp"></i></a>
+                      <a href="tel:+2{{ $phones[0] ?? $randomPhone}}"><i class="fas fa-phone"></i> </a>
 
         </ul>
     </div>
