@@ -235,7 +235,7 @@
                         </li>
 
                     </ul>
-                  <div class="dropdown">
+           <!--       <div class="dropdown">
                       <button class="btn dropdown-toggle font-bold" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-globe"></i> 
                         {{ \Session::get('front_language_name') }}
@@ -246,7 +246,7 @@
                        @endforeach
                       </ul>
                     </div>
-
+-->
                 </div>
             </div>
         </nav>
