@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Aref+Ruqaa&display=swap");
+body {
+    font-family: "Cairo", sans-serif;
+}
+
+.swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Custom Swiper Styles */
+.swiper-pagination {
+    position: absolute !important;
+    bottom: 1rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #d1d5db; /* gray-300 */
+    opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #0a8f4e; /* red-600 */
+}
