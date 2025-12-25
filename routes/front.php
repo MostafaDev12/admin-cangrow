@@ -37,6 +37,12 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
         Route::get('/products', [HomeController::class, 'products'])->name('products.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
+        Route::get('/our-impact', [HomeController::class, 'our_impact'])->name('our-impact.index');
+        Route::get('/associations', [HomeController::class, 'associations'])->name('associations.index');
+        Route::get('/board-trustees', [HomeController::class, 'board_trustees'])->name('board-trustees.index');
+        Route::get('/achievements', [HomeController::class, 'achievements'])->name('achievements.index');
+        Route::get('/certificate', [HomeController::class, 'certificate'])->name('certificate.index');
+        Route::get('/success-volunteers', [HomeController::class, 'success_volunteers'])->name('success-volunteers.index');
 
      
         Route::get('/product/{slug}', [HomeController::class, 'singleProduct'])->name('single-service.index');

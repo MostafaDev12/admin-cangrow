@@ -125,7 +125,8 @@
 
                                 {!! $ps->{'about_details_' . $sign} ?? '' !!}
 
-                                
+                              @foreach ($points as $point)
+                                  
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0">
                                         <span
@@ -134,42 +135,12 @@
                                         </span>
                                     </div>
                                     <p class="mr-4 text-base text-gray-700">
-                                        برامج الدعم الإنساني والاجتماعي
+                                          {!! $point->{'title_' . $sign} ?? '' !!}
                                     </p>
                                 </div>
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0">
-                                        <span
-                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                            <i class="fas fa-check text-white text-sm"></i>
-                                        </span>
-                                    </div>
-                                    <p class="mr-4 text-base text-gray-700">
-                                        مشروعات تمكين المرأة وتنمية المهارات
-                                    </p>
-                                </div>
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0">
-                                        <span
-                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                            <i class="fas fa-check text-white text-sm"></i>
-                                        </span>
-                                    </div>
-                                    <p class="mr-4 text-base text-gray-700">
-                                        المبادرات التعليمية والتدريبية
-                                    </p>
-                                </div>
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0">
-                                        <span
-                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                            <i class="fas fa-check text-white text-sm"></i>
-                                        </span>
-                                    </div>
-                                    <p class="mr-4 text-base text-gray-700">
-                                        رعاية الفئات الأكثر احتياجًا
-                                    </p>
-                                </div>
+
+                              @endforeach  
+ 
                             </div>
 
                            
@@ -197,7 +168,8 @@
              </div>
 
              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
+                @foreach ($projects as $project)
+                    
                  <div
                      class="fade-in-card group relative bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden flex items-start gap-4">
                      <span
@@ -207,121 +179,16 @@
                          class="absolute bottom-0 right-0 w-0 h-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:w-full"></span>
 
                      <div class="flex-shrink-0 text-accent w-12 h-12 flex items-center justify-center">
-                         <i class="fa-solid fa-graduation-cap text-4xl"></i>
+                         <i class="{{ $project->icon }} text-4xl"></i>
                      </div>
                      <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">مجال التعليم</h3>
-                         <p class="text-gray-500">التعليم وتنمية المهارات</p>
+                         <h3 class="text-xl font-bold text-gray-900 mb-1">   {!! $project->{'title_' . $sign} ?? '' !!}  </h3>
+                         <p class="text-gray-500">    {!! $project->{'short_details_' . $sign} ?? '' !!}   </p>
                      </div>
                  </div>
 
-                 <div
-                     class="fade-in-card group relative bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden flex items-start gap-4">
-                     <span
-                         class="absolute bottom-0 right-0 h-0 w-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:h-full"></span>
-
-                     <span
-                         class="absolute bottom-0 right-0 w-0 h-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:w-full"></span>
-
-
-                     <div class="flex-shrink-0 text-accent w-12 h-12 flex items-center justify-center">
-                         <i class="fa-solid fa-stethoscope text-4xl"></i>
-                     </div>
-                     <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">مجال الصحة</h3>
-                         <p class="text-gray-500">العمليات والقوافل الطبية</p>
-                     </div>
-                 </div>
-
-                 <div
-                     class="fade-in-card group relative bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden flex items-start gap-4">
-                     <span
-                         class="absolute bottom-0 right-0 h-0 w-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:h-full"></span>
-
-                     <span
-                         class="absolute bottom-0 right-0 w-0 h-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:w-full"></span>
-
-                     <div class="flex-shrink-0 text-accent w-12 h-12 flex items-center justify-center">
-                         <i class="fa-solid fa-briefcase text-4xl"></i>
-                     </div>
-                     <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">برنامج تحسين سبل المعيشة</h3>
-                         <p class="text-gray-500">المشروعات الصغيرة</p>
-                     </div>
-                 </div>
-
-                 <div
-                     class="fade-in-card group relative bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden flex items-start gap-4">
-                     <span
-                         class="absolute bottom-0 right-0 h-0 w-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:h-full"></span>
-
-                     <span
-                         class="absolute bottom-0 right-0 w-0 h-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:w-full"></span>
-
-
-                     <div class="flex-shrink-0 text-accent w-12 h-12 flex items-center justify-center">
-                         <i class="fa-solid fa-hand-holding-heart text-4xl"></i>
-                     </div>
-                     <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">برنامج الإغاثة والطوارئ</h3>
-                         <p class="text-gray-500">توفير الدفأ وتوزيع الأغذية</p>
-                     </div>
-                 </div>
-
-                 <div
-                     class="fade-in-card group relative bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden flex items-start gap-4">
-                     <span
-                         class="absolute bottom-0 right-0 h-0 w-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:h-full"></span>
-
-                     <span
-                         class="absolute bottom-0 right-0 w-0 h-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:w-full"></span>
-
-
-                     <div class="flex-shrink-0 text-accent w-12 h-12 flex items-center justify-center">
-                         <i class="fa-solid fa-seedling text-4xl"></i>
-                     </div>
-                     <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">برنامج البيئة</h3>
-                         <p class="text-gray-500">الزراعة والتنظيف</p>
-                     </div>
-                 </div>
-
-                 <div
-                     class="fade-in-card group relative bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden flex items-start gap-4">
-                     <span
-                         class="absolute bottom-0 right-0 h-0 w-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:h-full"></span>
-
-                     <span
-                         class="absolute bottom-0 right-0 w-0 h-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:w-full"></span>
-
-
-                     <div class="flex-shrink-0 text-accent w-12 h-12 flex items-center justify-center">
-                         <i class="fa-solid fa-basket-shopping text-4xl"></i>
-                     </div>
-                     <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">برنامج الاحتياجات الأساسية</h3>
-                         <p class="text-gray-500">توفير الغذاء والملابس</p>
-                     </div>
-                 </div>
-
-                 <div
-                     class="fade-in-card group relative bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden flex items-start gap-4">
-                     <span
-                         class="absolute bottom-0 right-0 h-0 w-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:h-full"></span>
-
-                     <span
-                         class="absolute bottom-0 right-0 w-0 h-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:w-full"></span>
-
-
-                     <div class="flex-shrink-0 text-accent w-12 h-12 flex items-center justify-center">
-                         <i class="fa-solid fa-bullseye text-4xl"></i>
-                     </div>
-                     <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">مشروع سفير</h3>
-                         <p class="text-gray-500">مشروع موجه لتحقيق أهداف التنمية المستدامة</p>
-                     </div>
-                 </div>
-
+                @endforeach
+                 
              </div>
          </section>
 
@@ -435,11 +302,12 @@
          <section class="container mx-auto px-4 py-16">
              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
+ @foreach ($servicess as $service)
                  <!-- كارت 1 -->
                  <article
                      class="group bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                      <div class="relative overflow-hidden">
-                         <img src="./assets/imgs/home/ser-1 (1).jpg" alt="كارت الود موصول"
+                         <img src="{!! $service->photo !!}" alt=" {!! $service->{'title_' . $sign} ?? '' !!}"
                              class="w-full h-64 object- transition-transform duration-500 ease-out group-hover:scale-110" />
 
                          <!-- الخط الصاعد -->
@@ -448,188 +316,34 @@
                      </div>
 
                      <div class="p-6 flex-grow flex flex-col">
-                         <h3 class="text-xl font-bold text-gray-900 mb-2">كارت الود موصول</h3>
+                         <h3 class="text-xl font-bold text-gray-900 mb-2">  {!! $service->{'title_' . $sign} ?? '' !!}    </h3>
                          <p class="text-gray-600 text-sm mb-4 flex-grow">
-                             اوصل حبل الود بكل حبايبك و اصحابك بصدقة جارية تخلد اساميهم في السعادة وتدعمك بيهم طول العمر.
+                              {!! $service->{'short_details_' . $sign} ?? '' !!}
                          </p>
                          <div class="flex gap-2">
                              <!-- Outline Button -->
-                             <a href="#"
+                             <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
                                  class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
-                                 قدّم طلبك الآن
+                   {{ __('قدّم طلبك الآن') }}
                              </a>
 
                              <!-- Primary (Filled) Button -->
-                             <a href="#"
+                             <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
                                  class="flex-1 text-white bg-custom-orange border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-white hover:text-custom-orange">
-                                 تبرع الآن
+                                    {{ __('تبرع الآن') }}
                              </a>
                          </div>
                      </div>
                  </article>
-
-                 <!-- كارت 2 -->
-                 <article
-                     class="group bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                     <div class="relative overflow-hidden">
-                         <img src="./assets/imgs/home/ser-1 (2).jpg"
-                             class="w-full h-64 object- transition-transform duration-500 ease-out group-hover:scale-110" />
-                         <span
-                             class="absolute bottom-0 right-0 w-[2px] h-0 bg-custom-orange transition-all duration-500 ease-out group-hover:h-full group-hover:bottom-auto group-hover:top-0"></span>
-                     </div>
-
-                     <div class="p-6 flex-grow flex flex-col">
-                         <h3 class="text-xl font-bold text-gray-900 mb-2">سقف خشبي</h3>
-                         <p class="text-gray-600 text-sm mb-4 flex-grow">
-                             بتبرعك، سقفك خشبي هتحمي أسرة فقيرة من البرد و المطر، وتوفرلهم الستر والدفء والأمان.
-                         </p>
-                         <div class="flex gap-2">
-                             <!-- Outline Button -->
-                             <a href="#"
-                                 class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
-                                 قدّم طلبك الآن
-                             </a>
-
-                             <!-- Primary (Filled) Button -->
-                             <a href="#"
-                                 class="flex-1 text-white bg-custom-orange border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-white hover:text-custom-orange">
-                                 تبرع الآن
-                             </a>
-                         </div>
-                     </div>
-                 </article>
-
-                 <!-- كارت 3 -->
-                 <article
-                     class="group bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                     <div class="relative overflow-hidden">
-                         <img src="./assets/imgs/home/ser-1 (3).jpg"
-                             class="w-full h-64 object- transition-transform duration-500 ease-out group-hover:scale-110" />
-                         <span
-                             class="absolute bottom-0 right-0 w-[2px] h-0 bg-custom-orange transition-all duration-500 ease-out group-hover:h-full group-hover:bottom-auto group-hover:top-0"></span>
-                     </div>
-
-                     <div class="p-6 flex-grow flex flex-col">
-                         <h3 class="text-xl font-bold text-gray-900 mb-2">قافلة إغاثة فلسطين</h3>
-                         <p class="text-gray-600 text-sm mb-4 flex-grow">
-                             كن عوناً لأهل غزة بالدواء و الغذاء في ظل الحصار الكامل وساهم في انقاذ آلاف المصابين.
-                         </p>
-                         <div class="flex gap-2">
-                             <!-- Outline Button -->
-                             <a href="#"
-                                 class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
-                                 قدّم طلبك الآن
-                             </a>
-
-                             <!-- Primary (Filled) Button -->
-                             <a href="#"
-                                 class="flex-1 text-white bg-custom-orange border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-white hover:text-custom-orange">
-                                 تبرع الآن
-                             </a>
-                         </div>
-                     </div>
-                 </article>
-
-                 <!-- كارت 4 -->
-                 <article
-                     class="group bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                     <div class="relative overflow-hidden">
-                         <img src="./assets/imgs/home/ser-1 (6).jpg"
-                             class="w-full h-64 object- transition-transform duration-500 ease-out group-hover:scale-110" />
-                         <span
-                             class="absolute bottom-0 right-0 w-[2px] h-0 bg-custom-orange transition-all duration-500 ease-out group-hover:h-full group-hover:bottom-auto group-hover:top-0"></span>
-                     </div>
-
-                     <div class="p-6 flex-grow flex flex-col">
-                         <h3 class="text-xl font-bold text-gray-900 mb-2">مشروعات صغيرة</h3>
-                         <p class="text-gray-600 text-sm mb-4 flex-grow">
-                             ساعدهم مرة وأسعدهم طول العمر، تبرعك بمشروع صغير هتقدر تحول حياة أسرة فقيرة.
-                         </p>
-                         <div class="flex gap-2">
-                             <!-- Outline Button -->
-                             <a href="#"
-                                 class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
-                                 قدّم طلبك الآن
-                             </a>
-
-                             <!-- Primary (Filled) Button -->
-                             <a href="#"
-                                 class="flex-1 text-white bg-custom-orange border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-white hover:text-custom-orange">
-                                 تبرع الآن
-                             </a>
-                         </div>
-                     </div>
-                 </article>
-
-                 <!-- كارت 5 -->
-                 <article
-                     class="group bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                     <div class="relative overflow-hidden">
-                         <img src="./assets/imgs/home/ser-1 (4).jpg" alt="كرتونة فرحة العيد"
-                             class="w-full h-64 object- transition-transform duration-500 ease-out group-hover:scale-110" />
-                         <span
-                             class="absolute bottom-0 right-0 w-[2px] h-0 bg-custom-orange transition-all duration-500 ease-out group-hover:h-full group-hover:bottom-auto group-hover:top-0"></span>
-                     </div>
-
-                     <div class="p-6 flex-grow flex flex-col">
-                         <h3 class="text-xl font-bold text-gray-900 mb-2">كرتونة فرحة العيد</h3>
-                         <p class="text-gray-600 text-sm mb-4 flex-grow">
-                             ساهم بكرتونة فرحة العيد وفرح آلاف المستحقين في عيد الأضحى المبارك.
-                         </p>
-                         <div class="flex gap-2">
-                             <!-- Outline Button -->
-                             <a href="#"
-                                 class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
-                                 قدّم طلبك الآن
-                             </a>
-
-                             <!-- Primary (Filled) Button -->
-                             <a href="#"
-                                 class="flex-1 text-white bg-custom-orange border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-white hover:text-custom-orange">
-                                 تبرع الآن
-                             </a>
-                         </div>
-                     </div>
-                 </article>
-
-                 <!-- كارت 6 -->
-                 <article
-                     class="group bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                     <div class="relative overflow-hidden">
-                         <img src="./assets/imgs/home/ser-1 (5).jpg"
-                             class="w-full h-64 object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
-                         <span
-                             class="absolute bottom-0 right-0 w-[2px] h-0 bg-custom-orange transition-all duration-500 ease-out group-hover:h-full group-hover:bottom-auto group-hover:top-0"></span>
-                     </div>
-
-                     <div class="p-6 flex-grow flex flex-col">
-                         <h3 class="text-xl font-bold text-gray-900 mb-2">وجبات إطعام</h3>
-                         <p class="text-gray-600 text-sm mb-4 flex-grow">
-                             تبرع بزكاتك وصدقاتك لإطعام أكثر من 100 ألف مستفيد في شتاء هو الأصعب على آلاف الأسر المستحقة.
-                         </p>
-                         <div class="flex gap-2">
-                             <!-- Outline Button -->
-                             <a href="#"
-                                 class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
-                                 قدّم طلبك الآن
-                             </a>
-
-                             <!-- Primary (Filled) Button -->
-                             <a href="#"
-                                 class="flex-1 text-white bg-custom-orange border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-white hover:text-custom-orange">
-                                 تبرع الآن
-                             </a>
-                         </div>
-                     </div>
-                 </article>
-
+  @endforeach
+                  
              </div>
 
              <div class="text-center mt-12">
-                 <a href="#"
+                 <a href="{{ route('services.index',$sign) }}"
                      class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
                      <i class="fa-solid fa-arrow-left-long ml-2"></i>
-                     <span>شاهد الكل</span>
+                     <span>    {{ __('شاهد الكل') }}  </span>
                  </a>
              </div>
          </section>
@@ -651,34 +365,19 @@
              <div class="relative container mx-auto px-4 py-16 md:py-24 text-center">
 
                  <h2 class="text-white text-3xl md:text-4xl font-bold mb-10">
-                     تقرير الاعمال السنوية لمؤسسة دار التوفيق
+                   
+                     {{ __('تقرير الاعمال السنوية لمؤسسة دار التوفيق') }}
                  </h2>
 
                  <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-
-                     <a href="#" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"
+                    @foreach ($timelines as $timeline)
+                        <a href="#" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"
                          class="inline-flex items-center justify-center bg-primary text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-accent hover:shadow-lg hover:-translate-y-0.5">
                          <i class="fa-solid fa-arrow-left mr-2"></i>
-                         <span>تقرير عام 2020</span>
+                         <span>   {{ $timeline->{'title_' . $sign} ?? '' }}  </span>
                      </a>
-
-                     <a href="#" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"
-                         class="inline-flex items-center justify-center bg-primary text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-accent hover:shadow-lg hover:-translate-y-0.5">
-                         <i class="fa-solid fa-arrow-left mr-2"></i>
-                         <span>تقرير عام 2021</span>
-                     </a>
-
-                     <a href="#" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"
-                         class="inline-flex items-center justify-center bg-primary text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-accent hover:shadow-lg hover:-translate-y-0.5">
-                         <i class="fa-solid fa-arrow-left mr-2"></i>
-                         <span>تقرير عام 2022</span>
-                     </a>
-
-                     <a href="#" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"
-                         class="inline-flex items-center justify-center bg-primary text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-accent hover:shadow-lg hover:-translate-y-0.5">
-                         <i class="fa-solid fa-arrow-left mr-2"></i>
-                         <span>تقرير عام 2023</span>
-                     </a>
+@endforeach
+                      
 
                  </div>
 
@@ -690,11 +389,12 @@
                  <div class="text-center mb-12 max-w-3xl mx-auto">
                      <div class="relative mb-10">
                          <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                             شركاء النجاح </h1>
+                          {{ __('شركاء النجاح') }}       </h1>
 
                      </div>
                      <p class="text-lg text-gray-600 leading-relaxed">
-                         شركاء نجاح مؤسسة دار التوفيق
+                         
+                         {{ __('شركاء نجاح مؤسسة دار التوفيق') }}
                      </p>
                  </div>
 
@@ -702,139 +402,15 @@
                  <div class="swiper partners-swiper">
                      <div class="swiper-wrapper">
                          <!-- توليد 19 شريكًا -->
+                         @foreach ($partners as $partner) 
                          <div class="swiper-slide">
                              <div
                                  class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p1.png" alt="Partner 1"
+                                 <img src="{{ $partner->photo }}" alt="Partner 1"
                                      class="max-h-12 w-auto object-contain" />
                              </div>
                          </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p2.png" alt="Partner 2"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p3.png" alt="Partner 3"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p4.png" alt="Partner 4"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p5.png" alt="Partner 5"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p6.png" alt="Partner 6"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p7.png" alt="Partner 7"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p8.png" alt="Partner 8"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p9.png" alt="Partner 9"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p10.png" alt="Partner 10"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p11.png" alt="Partner 11"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p12.png" alt="Partner 12"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p13.png" alt="Partner 13"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p14.png" alt="Partner 14"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p15.png" alt="Partner 15"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p16.png" alt="Partner 16"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p17.png" alt="Partner 17"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p18.png" alt="Partner 18"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="./assets/imgs/home/p19.png" alt="Partner 19"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
+                             @endforeach
                      </div>
 
                      <!-- أزرار التحكم -->

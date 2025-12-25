@@ -24,10 +24,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
+use App\Models\AboutVision;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Location;
 use App\Models\Process;
+use App\Models\Project;
 use App\Models\Subcategory;
 use App\Models\Subscribe;
 use App\Models\Subscription;
@@ -66,6 +68,7 @@ class HomeController extends Controller
 
     $sliders = Slider::get();
     $points = AboutPoint::get();
+    $projects = Project::get();
     $home_services = Service::get()->take(10);
     $models = PageModel::get();
     $features = ModelCategory::get();
@@ -79,7 +82,7 @@ $processes = Process::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
   $certificates = Certificate::get();
   $servicess = Service::get();
-    return view('front.index', compact('sign', 'sliders','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
+    return view('front.index', compact('sign','projects', 'sliders','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
   }
 
 
@@ -92,15 +95,130 @@ $processes = Process::get();
 
     $sliders = Slider::get();
     $points = AboutPoint::get();
+    $about_visions = AboutVision::get();
     $services = Service::get();
     $models = ModelCategory::get();
     $partners = Partner::get();
+    $teams = Doctor::get()->take(4);
     $processes = Process::get();
        $timelines = Timeline::get();
         $testimonials = Testimonial::get();
             $certificates = Certificate::get();
 
-    return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+    return view('front.about', compact('sign', 'sliders', 'teams', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+  }
+
+   
+
+  public function our_impact(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+    $sliders = Slider::get();
+    $points = AboutPoint::get();
+    $about_visions = AboutVision::get();
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $partners = Partner::get();
+    $teams = Doctor::get()->take(4);
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Certificate::get();
+              $locations = Location::get();
+
+    return view('front.our-impact', compact('sign', 'sliders', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+  }
+
+  public function associations(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+    $sliders = Slider::get();
+    $points = AboutPoint::get();
+    $about_visions = AboutVision::get();
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $partners = Partner::get();
+    $teams = Doctor::get()->take(4);
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Certificate::get();
+              $locations = Location::get();
+
+    return view('front.associations', compact('sign', 'sliders', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+  }
+
+   
+  public function board_trustees(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+    $sliders = Slider::get();
+    $points = AboutPoint::get();
+    $about_visions = AboutVision::get();
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $partners = Partner::get();
+    $teams = Doctor::get();
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Certificate::get();
+              $locations = Location::get();
+
+    return view('front.board-trustees', compact('sign', 'teams', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+  }
+
+      
+  public function achievements(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+    $sliders = Slider::get();
+    $points = AboutPoint::get();
+    $about_visions = AboutVision::get();
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $partners = Partner::get();
+    $teams = Doctor::get();
+    $achievements = AfterBefore::get();
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Certificate::get();
+              $locations = Location::get();
+
+    return view('front.achievements', compact('sign','achievements', 'teams', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+  }
+
+   
+      
+  public function certificate(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+    $sliders = Slider::get();
+    $points = AboutPoint::get();
+    $about_visions = AboutVision::get();
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $partners = Partner::get();
+    $teams = Doctor::get();
+    $achievements = AfterBefore::get();
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Certificate::get();
+              $locations = Location::get();
+
+    return view('front.certificate', compact('sign','achievements', 'teams', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
 
    
@@ -150,11 +268,13 @@ $processes = Process::get();
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
-    $servicess = Subcategory::paginate(8);
+   // $servicess = Subcategory::paginate(8);
+    $servicess = Service::paginate(6);
     $models = PageModel::get();
     $reviews = Partner::get();
-
-    return view('front.services', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  $projects = Project::get();
+   $timelines = Timeline::get();
+    return view('front.services', compact('sign','timelines', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
   }  
   
   public function locations(Request $request)
@@ -265,6 +385,7 @@ $processes = Process::get();
 
 
     $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    
     if(!$service){
 
       abort(404);
@@ -330,8 +451,19 @@ $processes = Process::get();
 
     $sign = $this->langSign($lang);
  
-  $images = Media::get();
+  $images = Media::whereNull('youtube_url')->get();
+  $videos = Media::whereNotNull('youtube_url')->get();
     return view('front.gallery', compact('sign','images'));
+  }
+  public function success_volunteers(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+ 
+  $images = Media::whereNull('youtube_url')->get();
+  $videos = Media::whereNotNull('youtube_url')->get();
+
+    return view('front.stories-success-volunteers', compact('sign','images'));
   }
 
   public function singleCategoryService(Request $request,$lang, $slug)

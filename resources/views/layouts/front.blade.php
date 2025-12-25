@@ -193,39 +193,39 @@
                                 <div
                                     class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 w-64 z-10 border border-gray-200">
                                     <div class="py-2">
-                                        <a href="./about.html"
+                                        <a href="{{ route('about.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">من
                                             نحن</a>
-                                        <a href="./our-impact.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">انتشارنا</a>
-                                        <a href="./associations.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">الجمعيات</a>
-                                        <a href="./board-trustees.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">مجلس
-                                            الأمناء</a>
-                                        <a href="./achievements.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">الإنجازات</a>
-                                        <a href="./certificate.html"
+                                        <a href="{{ route('our-impact.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('انتشارنا') }}</a>
+                                        <a href="{{ route('associations.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الجمعيات') }}</a>
+                                        <a href="{{ route('board-trustees.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                             {{ __('مجلس الأمناء') }}</a>
+                                        <a href="{{ route('achievements.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الإنجازات') }}</a>
+                                        <a href="{{ route('certificate.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
 
-
-                                            إنجازاتنا وشهادات التقدير
+{{ __('إنجازاتنا وشهادات التقدير') }}
+                                                
 
                                         </a>
-                                        <a href="./gallery.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">الجاليري</a>
-                                        <a href="./stories-success-volunteers.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">شركاء
-                                            النجاح</a>
+                                        <a href="{{ route('gallery.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الجاليري') }}</a>
+                                        <a href="{{ route('success-volunteers.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                             {{ __('شركاء النجاح') }}</a>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Services -->
-                            <a href="./projectjs.html"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">خدماتنا
-                                و
-                                مشروعاتنا
+                            <a href="{{ route('services.index',$sign) }}"
+                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors"> {{ __('خدماتنا و مشروعاتنا') }}
+                                 
+                                 
                             </a>
                             <li class="relative group">
                                 <a href="./agenda.html"
@@ -343,32 +343,32 @@
                             <i class="fas fa-chevron-down text-xs"></i>
                         </button>
                         <div class="mobile-dropdown-content hidden pl-4">
-                            <a href="#%d9%85%d9%86-%d9%86%d8%ad%d9%86/"
+                            <a href="{{ route('about.index',$sign) }}"
                                 class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">من
                                 نحن</a>
-                            <a href="#%d8%a7%d9%86%d8%aa%d8%b4%d8%a7%d8%b1%d9%86%d8%a7/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">انتشارنا</a>
-                            <a href="#%d8%a7%d9%84%d8%ac%d9%85%d8%b9%d9%8a%d8%a7%d8%aa/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">الجمعيات</a>
-                            <a href="#%d9%85%d8%ac%d9%84%d8%b3-%d8%a7%d9%84%d8%a3%d9%85%d9%86%d8%a7%d8%a1/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">مجلس
-                                الأمناء</a>
-                            <a href="#%d8%a7%d9%84%d8%a5%d9%86%d8%ac%d8%a7%d8%b2%d8%a7%d8%aa/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">الإنجازات</a>
-                            <a href="#%d8%ac%d8%a7%d8%a6%d8%b2%d8%a9-%d8%af%d9%88%d9%82-%d8%a7%d8%af%d9%86%d8%a8%d8%b1%d8%a9/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">جائزة
-                                دوق ادنبرة</a>
-                            <a href="#%d8%a7%d9%84%d8%ac%d8%a7%d9%84%d9%8a%d8%b1%d9%8a/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">الجاليري</a>
-                            <a href="#%d8%b4%d8%b1%d9%83%d8%a7%d8%a1-%d8%a7%d9%84%d9%86%d8%ac%d8%a7%d8%ad/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">شركاء
-                                النجاح</a>
+                            <a href="{{ route('our-impact.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('انتشارنا') }}</a>
+                            <a href="{{ route('associations.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('الجمعيات') }}</a>
+                            <a href="{{ route('board-trustees.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                 {{ __('مجلس الأمناء') }}</a>
+                            <a href="{{ route('achievements.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('الإنجازات') }}</a>
+                            <a href="{{ route('certificate.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                   {{ __('إنجازاتنا وشهادات التقدير') }}</a>
+                            <a href="{{ route('gallery.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('الجاليري') }}</a>
+                            <a href="{{ route('success-volunteers.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                     {{ __('شركاء النجاح') }}</a>
                         </div>
                     </div>
 
-                    <a href="#%d8%ae%d8%af%d9%85%d8%aa%d9%86%d8%a7-%d9%88%d9%85%d8%b4%d8%b1%d9%88%d8%b9%d8%aa%d9%86%d8%a7/"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">خدمتنا
-                        ومشروعتنا</a>
+                    <a href="{{ route('services.index',$sign) }}"
+                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> 
+                        {{ __('خدماتنا و مشروعاتنا') }}</a>
 
                     <!-- Donation Mobile Dropdown -->
                     <div class="relative">
@@ -527,8 +527,8 @@
                 <div>
                     <h5 class="text-xl font-bold text-white mb-6">روابط سريعة</h5>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="hover:text-primary transition-colors">الرئيسية</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">عن نحن</a></li>
+                        <li><a href="{{ route('front.index',$sign) }}" class="hover:text-primary transition-colors">الرئيسية</a></li>
+                        <li><a href="{{ route('about.index',$sign) }}" class="hover:text-primary transition-colors">عن نحن</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">الانجازات</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">جائزة دويق للفترة</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">خدمتنا ومجتمعاتنا</a></li>
@@ -559,7 +559,7 @@
                         <label for="email-subscribe" class="sr-only">البريد الالكتروني</label>
                         <div
                             class="relative flex items-center border border-green-700 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary">
-                            <input id="email-subscribe" type="email" placeholder="البريد الالكتروني"
+                            <input id="email-subscribe" type="email" name="email" placeholder="البريد الالكتروني"
                                 class="w-full bg-transparent py-3 px-4 text-white focus:outline-none placeholder-white">
 
                             <button type="submit" aria-label="Subscribe"
