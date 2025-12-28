@@ -40,7 +40,7 @@
                          <!-- عضو -->
                          <div
                              class="bg-white rounded-lg shadow-lg p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                             <img src="{{ $team->photo }}" alt="{!! $team->{'name_' . $sign} ?? '' !!}"
+                             <img src="{{ $team->photo_url }}" alt="{!! $team->{'name_' . $sign} ?? '' !!}"
                                  class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg mx-auto mb-5">
                              <div>
                                  <h3 class="text-xl font-bold text-slate-800 mb-1">{!! $team->{'name_' . $sign} ?? '' !!} 

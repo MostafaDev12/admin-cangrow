@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Bank extends Model
+{
+    
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $table ='banks';
+     
+    protected $fillable = [
+        
+        'type',
+        'title_ar',
+        'title_en',
+        'location',
+        'currency',
+        'account',
+        'code',
+        'iban',
+        
+    ];
+
+     
+    
+     
+}

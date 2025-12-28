@@ -25,10 +25,16 @@ class Pagesetting extends Model
      'portfolio_photo',
      'after_photo',
      'before_photo',
+     'volunteering_photo',
      'our_team_title_ar',
      'our_team_details_ar',
      'our_team_title_en',
      'our_team_details_en',
+   
+     'volunteering_title_ar',
+     'volunteering_details_ar',
+     'volunteering_title_en',
+     'volunteering_details_en',
    
 ];
 
@@ -45,6 +51,11 @@ class Pagesetting extends Model
     public function getPortfolioPhotoAttribute()
     {
         return !empty($this->attributes['portfolio_photo']) ? url('/') . '/assets/images/' . $this->attributes['portfolio_photo'] : '';
+    }
+
+    public function getVolunteeringPhotoAttribute()
+    {
+        return !empty($this->attributes['volunteering_photo']) ? url('/') . '/assets/images/' . $this->attributes['volunteering_photo'] : '';
     }
 
 

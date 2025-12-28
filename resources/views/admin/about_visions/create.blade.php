@@ -79,10 +79,10 @@
                                                   <input type="text" class="form-control" name="title_ar" id="title_ar" placeholder="{{ __('translation.title') }}">
                                               </div>
                                                
-                                              {{-- <div class="mb-3">
+                                              {{----}} <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
-                                              </div> --}}
+                                              </div> 
                                               
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
@@ -93,10 +93,10 @@
                                               <input type="text" class="form-control" name="title_en" id="title_en" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          {{-- <div class="mb-3">
+                                          {{-- --}}<div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
-                                          </div> --}}
+                                          </div> 
                                           
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
@@ -120,10 +120,166 @@
                         </div>
                     </div>
   
-                        <div class="row d-none">
+@php
+$icons = [
 
+    // ===== PRIMARY (First) =====
+    'fas fa-bolt' => '⚡ Bolt / Energy',
+    'fas fa-headset' => '🎧 Headset / Support',
+    'fas fa-leaf' => '🍃 Leaf / Eco', // ===== ENERGY & POWER =====
+    'fas fa-burn' => '🔥 Fire',
+    'fas fa-solar-panel' => '☀️ Solar Panel',
+    'fas fa-charging-station' => '🔌 Charging Station',
+    'fas fa-battery-full' => '🔋 Battery Full',
+    'fas fa-battery-half' => '🔋 Battery Half',
+    'fas fa-battery-quarter' => '🔋 Battery Low',
+    'fas fa-plug' => '🔌 Plug',
+    'fas fa-lightbulb' => '💡 Lightbulb',
+    'fas fa-gas-pump' => '⛽ Gas',
+    'fas fa-industry' => '🏭 Industry',
 
-                            <div class="col-xl-12 col-md-12">
+    // ===== SUPPORT & COMMUNICATION =====
+    'fas fa-headphones' => '🎧 Headphones',
+    'fas fa-phone' => '📞 Phone',
+    'fas fa-phone-alt' => '📞 Phone Alt',
+    'fas fa-life-ring' => '🛟 Help',
+    'fas fa-hands-helping' => '🤝 Helping Hands',
+    'fas fa-user-headset' => '👨‍💻 User Support',
+    'fas fa-comment' => '💬 Comment',
+    'fas fa-comment-alt' => '💬 Chat',
+    'fas fa-comments' => '💬💬 Comments',
+    'fas fa-envelope' => '✉️ Email',
+    'fas fa-paper-plane' => '📨 Send',
+    'fas fa-inbox' => '📥 Inbox',
+
+    // ===== NATURE & ECO =====
+    'fas fa-seedling' => '🌱 Seedling',
+    'fas fa-tree' => '🌳 Tree',
+    'fas fa-spa' => '🌿 Spa',
+    'fas fa-recycle' => '♻️ Recycle',
+    'fas fa-water' => '💧 Water',
+    'fas fa-wind' => '🌬️ Wind',
+    'fas fa-cloud-sun' => '⛅ Climate',
+    'fas fa-mountain' => '⛰️ Mountain',
+    'fas fa-snowflake' => '❄️ Snow',
+
+    // ===== USERS =====
+    'fas fa-user' => '👤 User',
+    'fas fa-users' => '👥 Users',
+    'fas fa-user-plus' => '➕ Add User',
+    'fas fa-user-minus' => '➖ Remove User',
+    'fas fa-user-tie' => '👔 User Tie',
+    'fas fa-user-cog' => '⚙️ User Settings',
+    'fas fa-user-shield' => '🛡️ User Shield',
+
+    // ===== TRANSPORT =====
+    'fas fa-car' => '🚗 Car',
+    'fas fa-taxi' => '🚕 Taxi',
+    'fas fa-truck' => '🚚 Truck',
+    'fas fa-bus' => '🚌 Bus',
+    'fas fa-motorcycle' => '🏍️ Motorcycle',
+    'fas fa-bicycle' => '🚲 Bicycle',
+    'fas fa-ship' => '🚢 Ship',
+    'fas fa-plane' => '✈️ Plane',
+
+    // ===== SHOPPING =====
+    'fas fa-shopping-cart' => '🛒 Cart',
+    'fas fa-shopping-bag' => '🛍️ Bag',
+    'fas fa-store' => '🏬 Store',
+    'fas fa-store-alt' => '🏪 Store Alt',
+    'fas fa-box' => '📦 Box',
+    'fas fa-box-open' => '📭 Box Open',
+    'fas fa-boxes' => '📦📦 Boxes',
+    'fas fa-receipt' => '🧾 Receipt',
+    'fas fa-tags' => '🏷️ Tags',
+
+    // ===== MONEY =====
+    'fas fa-money-bill' => '💵 Money',
+    'fas fa-wallet' => '👛 Wallet',
+    'fas fa-credit-card' => '💳 Card',
+    'fas fa-coins' => '🪙 Coins',
+    'fas fa-cash-register' => '🏧 Register',
+    'fas fa-percentage' => '％ Percentage',
+
+    // ===== CHARTS =====
+    'fas fa-chart-line' => '📈 Line Chart',
+    'fas fa-chart-bar' => '📊 Bar Chart',
+    'fas fa-chart-pie' => '🥧 Pie Chart',
+    'fas fa-chart-area' => '📉 Area Chart',
+
+    // ===== SETTINGS & TOOLS =====
+    'fas fa-cog' => '⚙️ Settings',
+    'fas fa-tools' => '🛠️ Tools',
+    'fas fa-wrench' => '🔧 Wrench',
+    'fas fa-sliders-h' => '🎚️ Sliders',
+    'fas fa-screwdriver' => '🪛 Screwdriver',
+
+    // ===== SECURITY =====
+    'fas fa-lock' => '🔒 Lock',
+    'fas fa-unlock' => '🔓 Unlock',
+    'fas fa-shield-alt' => '🛡️ Shield',
+    'fas fa-key' => '🔑 Key',
+    'fas fa-fingerprint' => '🆔 Fingerprint',
+
+    // ===== MEDIA =====
+    'fas fa-camera' => '📷 Camera',
+    'fas fa-video' => '🎥 Video',
+    'fas fa-image' => '🖼️ Image',
+    'fas fa-music' => '🎵 Music',
+    'fas fa-microphone' => '🎤 Microphone',
+
+    // ===== TIME =====
+    'fas fa-clock' => '⏰ Clock',
+    'fas fa-calendar' => '📅 Calendar',
+    'fas fa-hourglass' => '⌛ Hourglass',
+
+    // ===== ACTIONS =====
+    'fas fa-search' => '🔍 Search',
+    'fas fa-filter' => '🧹 Filter',
+    'fas fa-upload' => '⬆️ Upload',
+    'fas fa-download' => '⬇️ Download',
+    'fas fa-trash' => '🗑️ Delete',
+    'fas fa-edit' => '✏️ Edit',
+    'fas fa-save' => '💾 Save',
+    'fas fa-plus' => '➕ Add',
+    'fas fa-minus' => '➖ Minus',
+
+    // ===== UI =====
+    'fas fa-bars' => '☰ Menu',
+    'fas fa-ellipsis-h' => '⋯ More',
+    'fas fa-list' => '📋 List',
+    'fas fa-th-large' => '🔲 Grid',
+    'fas fa-eye' => '👁️ View',
+    'fas fa-eye-slash' => '🙈 Hide',
+
+    // ===== SOCIAL =====
+    'fas fa-heart' => '❤️ Heart',
+    'fas fa-star' => '⭐ Star',
+    'fas fa-thumbs-up' => '👍 Like',
+    'fas fa-thumbs-down' => '👎 Dislike',
+    'fas fa-share' => '🔗 Share',
+
+];
+@endphp
+                        <div class="row">
+  <div class="col-xl-12 col-md-12">
+
+                                <div class="mb-3">
+                                    <label for="parent_id" class="form-label">{{ __('translation.icons') }}</label>
+                                    <select class="form-control" name="icon" id="parent_id"> 
+                                        <option value="0">{{ __('translation.select') }}</option>
+                                      @foreach($icons as $value => $label)
+                                  <option value="{{ $value }}"
+                                      >
+                                      {{ $label }}
+                                  </option>
+                              @endforeach
+                                       
+                                    </select>
+                                </div>  
+                            </div>
+
+                            <div class="col-xl-12 col-md-12 d-none">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>

@@ -67,7 +67,7 @@
                              </h2>
                          </div>
 
-                         <a href="#"
+                         <a href="{{ route('donate_campaigns.index', $sign) }}"
                              class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-white hover:text-custom-orange transition-all duration-300 ease-in-out flex items-center space-x-2 space-x-reverse">
                              <span>   {{ __('تبرع الآن') }}</span>
                              <i class="fas fa-arrow-left text-sm"></i>
@@ -148,6 +148,20 @@
                      </div>
 
                  </div>
+                    <div class="text-center mt-12">
+                        <a href="{{ route('events.index',$sign) }}"
+                            class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
+                            <span>           {{ __('مناسبات دائمة خاصة بالمؤسسة') }}  
+                            </span>
+                            <i class="fa-solid fa-arrow-left-long mr-2"></i>
+                        </a>
+                        <a href="{{ route('parties.index',$sign) }}"
+                            class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
+                            <span>      {{ __('الاحتفالات') }}
+                            </span>
+                            <i class="fa-solid fa-arrow-left-long mr-2"></i>
+                        </a>
+                    </div>
              </div>
          </section>
 

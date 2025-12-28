@@ -1,0 +1,289 @@
+        :root {
+            --primary-blue: #0a8f4e;
+            --dark-blue: #0a8f4e;
+            --orange: #0a8f4e;
+            --orange-hover: #35e08d;
+            --light-bg: #f8f9fa;
+            --border-color: #dee2e6;
+            --text-color: #333;
+            --text-light: #777;
+        }
+
+        /* * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #fcfcfc;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        } */
+
+        .container-body {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* المحتوى يأخذ مساحة أكبر من الصندوق الجانبي */
+            gap: 30px;
+            align-items: start;
+              padding: 20px;
+           
+        }
+
+        /* --- تنسيقات القسم الأيمن (المحتوى) --- */
+        .content-section {
+            padding-left: 20px;
+        }
+
+        .breadcrumbs {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumbs span {
+            margin: 0 5px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            color: var(--dark-blue);
+            font-weight: 700;
+        }
+
+        .share-btn {
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .share-btn:hover {
+            background-color: #eef5fa;
+        }
+
+        .main-image-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .progress-bar-container {
+            background-color: #eee;
+            border-radius: 5px;
+            height: 25px;
+            width: 100%;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .progress-fill {
+            background-color: var(--orange);
+            width: 1%; /* كما في الصورة */
+            height: 100%;
+        }
+
+        .progress-text {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .tag {
+            color: var(--orange);
+            font-weight: bold;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .description strong {
+            color: #000;
+        }
+
+        .highlight-box {
+            background-color: #fff;
+            padding: 15px;
+            border-right: 4px solid var(--dark-blue); /* الخط الجانبي الأزرق */
+            margin-bottom: 20px;
+        }
+
+        .cost-text {
+            color: var(--primary-blue);
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 20px;
+            display: block;
+        }
+
+        /* --- تنسيقات القسم الأيسر (صندوق التبرع) --- */
+        .donation-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            /* box-shadow: 0 4px 15px rgba(0,0,0,0.05); */ /* الصورة الأصلية لا يظهر فيها ظل قوي */
+            border: 1px solid #eee;
+            position: sticky;
+            top: 20px;
+        }
+
+        .donation-title {
+            color: var(--primary-blue);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: right; /* في الصورة العنوان يمين */
+        }
+
+        .donation-subtitle {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .label {
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 600;
+        }
+
+        /* أزرار النية والمبلغ */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .option-btn {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            background: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            color: var(--primary-blue);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .option-btn.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .option-btn.outline-active {
+             background-color: #eef6fc;
+             border-color: var(--primary-blue);
+             color: var(--primary-blue);
+        }
+
+        .custom-amount-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            background-color: #fdfdfd;
+        }
+
+        .custom-amount-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-donate {
+            background-color: var(--orange);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-donate:hover {
+            background-color: var(--orange-hover);
+        }
+
+        .btn-cart {
+            background-color: var(--primary-blue);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-cart:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* --- التجاوب مع الموبايل (Responsive) --- */
+        @media (max-width: 768px) {
+            .container-body {
+                grid-template-columns: 1fr; /* عمود واحد */
+            }
+            
+            /* عكس الترتيب ليظهر التبرع أولاً أو المحتوى أولاً حسب الرغبة */
+            /* في الصورة الأصلية الويب العربي اليمين هو الأول، في الموبايل عادة ينزل الأسفل */
+            .donation-card {
+                order: -1; /* لجعل صندوق التبرع يظهر أولاً في الموبايل إذا أردت، أو احذف السطر ليظهر في الأسفل */
+                position: static;
+            }
+        }

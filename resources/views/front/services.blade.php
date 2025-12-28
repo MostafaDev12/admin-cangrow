@@ -105,7 +105,8 @@
                     <i class="fa-solid fa-arrow-left-long ml-2"></i>
                     <span>شاهد الكل</span>
                 </a> --}}
-                 {{ $servicess->links('includes.pagination.custom') }}
+                 {{-- {{ $servicess->links() }} --}}
+                 {{ $servicess->links() }}
             </div>
         </section>
 

@@ -43,8 +43,25 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/achievements', [HomeController::class, 'achievements'])->name('achievements.index');
         Route::get('/certificate', [HomeController::class, 'certificate'])->name('certificate.index');
         Route::get('/success-volunteers', [HomeController::class, 'success_volunteers'])->name('success-volunteers.index');
-
+        Route::get('/agenda', [HomeController::class, 'agenda'])->name('agenda.index');
+        Route::get('/donate-campaigns', [HomeController::class, 'donate_campaigns'])->name('donate_campaigns.index');
      
+        Route::get('/donate-campaign/{slug}', [HomeController::class, 'singleDonate_campaigns'])->name('single-donate_campaigns.index');
+        Route::get('/cross-bank-donation', [HomeController::class, 'cross_bank_donation'])->name('cross-bank-donation.index');
+        Route::get('/contributions-kind', [HomeController::class, 'contributions_kind'])->name('contributions-kind.index');
+        Route::get('/humanitarian-cases', [HomeController::class, 'humanitarian_cases'])->name('humanitarian-cases.index');
+        Route::get('/about-volunteering', [HomeController::class, 'About_volunteering'])->name('About_volunteering.index');
+        Route::get('/be-volunteer', [HomeController::class, 'be_volunteer'])->name('be-volunteer.index');
+        Route::get('/stories-success-volunteers', [HomeController::class, 'stories_success_volunteers'])->name('stories-success-volunteers.index');
+        Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy.index');
+        Route::get('/events', [HomeController::class, 'events'])->name('events.index');
+     
+        Route::get('/event/{slug}', [HomeController::class, 'singleEvent'])->name('single-events.index');
+     
+        Route::get('/parties', [HomeController::class, 'parties'])->name('parties.index');
+     
+        Route::get('/party/{slug}', [HomeController::class, 'singleParty'])->name('single-parties.index');
+
         Route::get('/product/{slug}', [HomeController::class, 'singleProduct'])->name('single-service.index');
          Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery.index');
           Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
@@ -75,6 +92,9 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/references/{id}', [HomeController::class, 'singleModelCategory'])->name('single-model-category.index');
     
     });
+         Route::get('/agenda/events/{date}', [HomeController::class, 'getAgendaEvents'])->name('agenda.events');
+
+     
  Route::post('/subscripe-submit', [HomeController::class, 'subscribe'])->name('front.subscripe.submit');
        
 

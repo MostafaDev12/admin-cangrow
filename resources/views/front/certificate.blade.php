@@ -91,7 +91,7 @@
                             class="bg-white rounded-lg shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 h-full">
                             <div class="relative">
                                 <img src="{{ $certificate->photo }}"
-                                    alt="الصحراء" class="w-full h-56 object-cover" />
+                                    alt="  {!! $certificate->{'title_' . $sign} ?? '' !!}" class="w-full h-56 object-cover" />
                                 {{-- <div
                                     class="absolute bottom-4 left-4 bg-primary text-white rounded-md px-3 py-2 text-center leading-none">
                                     <span class="font-bold text-xl block">03</span>

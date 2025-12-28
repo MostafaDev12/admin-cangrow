@@ -55,6 +55,7 @@ class Project extends Model
         'tags',
         'category_id',
         'parent_id',
+        'icon',
       
     ];
 

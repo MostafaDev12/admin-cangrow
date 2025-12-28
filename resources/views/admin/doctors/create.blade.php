@@ -10,7 +10,7 @@
             Dashboards
         @endslot
         @slot('title')
-            {{ __('translation.add_doctor') }}
+            {{ __('translation.add_team') }}
         @endslot
     @endcomponent
 
@@ -151,7 +151,7 @@
 
 
                                         <div class="col-xl-12 col-md-12">
-                                            <div class="card">
+                                            {{-- <div class="card">
 
                                                 <div class="mb-3">
                                                     <label for="facebook"
@@ -171,7 +171,7 @@
                                                     <input type="text" class="form-control" name="linkedin"
                                                         id="linkedin" placeholder="{{ __('translation.linkedin') }}">
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- end card -->
                                         </div> <!-- end col -->
 

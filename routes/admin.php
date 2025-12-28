@@ -1,7 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutPointController;
+use App\Http\Controllers\Admin\AboutVisionController;
 use App\Http\Controllers\Admin\AfterBeforeController;
+use App\Http\Controllers\Admin\AgendaController;
+use App\Http\Controllers\Admin\DonateCampaignController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\HumanitarianCaseController;
+use App\Http\Controllers\Admin\PartyController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -211,6 +218,53 @@ Route::prefix('admin')->group(function () {
       Route::get('/services/delete/{id}',  [ServiceController::class, 'destroy'])->name('admin-services-delete');
     });
 
+    Route::group(['middleware' => 'permissions:humanitarian_cases'], function () {
+
+      Route::get('/humanitarian_cases/datatables',  [HumanitarianCaseController::class, 'datatables'])->name('admin-humanitarian_cases-datatables');
+      Route::get('/humanitarian_cases',  [HumanitarianCaseController::class, 'index'])->name('admin-humanitarian_cases-index');
+      Route::get('/humanitarian_cases/create',   [HumanitarianCaseController::class, 'create'])->name('admin-humanitarian_cases-create');
+      Route::post('/humanitarian_cases/create',  [HumanitarianCaseController::class, 'store'])->name('admin-humanitarian_cases-store');
+      Route::get('/humanitarian_cases/edit/{id}',  [HumanitarianCaseController::class, 'edit'])->name('admin-humanitarian_cases-edit');
+      Route::post('/humanitarian_cases/update/{id}', [HumanitarianCaseController::class, 'update'])->name('admin-humanitarian_cases-update');
+
+      Route::get('/humanitarian_cases/delete/{id}',  [HumanitarianCaseController::class, 'destroy'])->name('admin-humanitarian_cases-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:events'], function () {
+
+      Route::get('/events/datatables',  [EventController::class, 'datatables'])->name('admin-events-datatables');
+      Route::get('/events',  [EventController::class, 'index'])->name('admin-events-index');
+      Route::get('/events/create',   [EventController::class, 'create'])->name('admin-events-create');
+      Route::post('/events/create',  [EventController::class, 'store'])->name('admin-events-store');
+      Route::get('/events/edit/{id}',  [EventController::class, 'edit'])->name('admin-events-edit');
+      Route::post('/events/update/{id}', [EventController::class, 'update'])->name('admin-events-update');
+
+      Route::get('/events/delete/{id}',  [EventController::class, 'destroy'])->name('admin-events-delete');
+    });
+    Route::group(['middleware' => 'permissions:parties'], function () {
+
+      Route::get('/parties/datatables',  [PartyController::class, 'datatables'])->name('admin-parties-datatables');
+      Route::get('/parties',  [PartyController::class, 'index'])->name('admin-parties-index');
+      Route::get('/parties/create',   [PartyController::class, 'create'])->name('admin-parties-create');
+      Route::post('/parties/create',  [PartyController::class, 'store'])->name('admin-parties-store');
+      Route::get('/parties/edit/{id}',  [PartyController::class, 'edit'])->name('admin-parties-edit');
+      Route::post('/parties/update/{id}', [PartyController::class, 'update'])->name('admin-parties-update');
+
+      Route::get('/parties/delete/{id}',  [PartyController::class, 'destroy'])->name('admin-parties-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:projects'], function () {
+
+      Route::get('/projects/datatables',  [ProjectController::class, 'datatables'])->name('admin-projects-datatables');
+      Route::get('/projects',  [ProjectController::class, 'index'])->name('admin-projects-index');
+      Route::get('/projects/create',   [ProjectController::class, 'create'])->name('admin-projects-create');
+      Route::post('/projects/create',  [ProjectController::class, 'store'])->name('admin-projects-store');
+      Route::get('/projects/edit/{id}',  [ProjectController::class, 'edit'])->name('admin-projects-edit');
+      Route::post('/projects/update/{id}', [ProjectController::class, 'update'])->name('admin-projects-update');
+
+      Route::get('/projects/delete/{id}',  [ProjectController::class, 'destroy'])->name('admin-projects-delete');
+    });
+
     Route::group(['middleware' => 'permissions:categories'], function () {
 
       Route::get('/categories/datatables',  [CategoryController::class, 'datatables'])->name('admin-categories-datatables');
@@ -290,6 +344,7 @@ Route::prefix('admin')->group(function () {
     Route::group(['middleware' => 'permissions:page_settings'], function () {
 
 
+      Route::get('/page-settings/about-volunteering', [PageSettingController::class, 'about_volunteering'])->name('admin-ps-about-volunteering');
       Route::get('/page-settings/about_us', [PageSettingController::class, 'aboutUs'])->name('admin-ps-about_us');
       Route::get('/page-settings/portfolio', [PageSettingController::class, 'portfolio'])->name('admin-ps-portfolio');
       Route::get('/page-settings/after_before', [PageSettingController::class, 'after_before'])->name('admin-ps-after_before');
@@ -336,17 +391,59 @@ Route::prefix('admin')->group(function () {
    
     });
 
+    Route::group(['middleware' => 'permissions:about_visions'], function () {
+
+     
+      Route::get('/about_visions/datatables',  [AboutVisionController::class, 'datatables'])->name('admin-about_visions-datatables');
+      Route::get('/about_visions',  [AboutVisionController::class, 'index'])->name('admin-about_visions-index');
+      Route::get('/about_visions/create',   [AboutVisionController::class, 'create'])->name('admin-about_visions-create');
+      Route::post('/about_visions/create',  [AboutVisionController::class, 'store'])->name('admin-about_visions-store');
+      Route::get('/about_visions/edit/{id}',  [AboutVisionController::class, 'edit'])->name('admin-about_visions-edit');
+      Route::post('/about_visions/update/{id}', [AboutVisionController::class, 'update'])->name('admin-about_visions-update');
+
+      Route::get('/about_visions/delete/{id}',  [AboutVisionController::class, 'destroy'])->name('admin-about_visions-delete');
+   
+    });
+
     Route::group(['middleware' => 'permissions:doctors'], function () {
 
      
-      Route::get('/doctors/datatables',  [DoctorController::class, 'datatables'])->name('admin-doctors-datatables');
-      Route::get('/doctors',  [DoctorController::class, 'index'])->name('admin-doctors-index');
-      Route::get('/doctors/create',   [DoctorController::class, 'create'])->name('admin-doctors-create');
-      Route::post('/doctors/create',  [DoctorController::class, 'store'])->name('admin-doctors-store');
-      Route::get('/doctors/edit/{id}',  [DoctorController::class, 'edit'])->name('admin-doctors-edit');
-      Route::post('/doctors/update/{id}', [DoctorController::class, 'update'])->name('admin-doctors-update');
+      Route::get('/teams/datatables',  [DoctorController::class, 'datatables'])->name('admin-doctors-datatables');
+      Route::get('/teams',  [DoctorController::class, 'index'])->name('admin-doctors-index');
+      Route::get('/teams/create',   [DoctorController::class, 'create'])->name('admin-doctors-create');
+      Route::post('/teams/create',  [DoctorController::class, 'store'])->name('admin-doctors-store');
+      Route::get('/teams/edit/{id}',  [DoctorController::class, 'edit'])->name('admin-doctors-edit');
+      Route::post('/teams/update/{id}', [DoctorController::class, 'update'])->name('admin-doctors-update');
 
-      Route::get('/doctors/delete/{id}',  [DoctorController::class, 'destroy'])->name('admin-doctors-delete');
+      Route::get('/teams/delete/{id}',  [DoctorController::class, 'destroy'])->name('admin-doctors-delete');
+   
+    });
+    Route::group(['middleware' => 'permissions:agenda'], function () {
+
+     
+      Route::get('/agenda/datatables',  [AgendaController::class, 'datatables'])->name('admin-agenda-datatables');
+      Route::get('/agenda/datatables',  [AgendaController::class, 'datatables'])->name('admin-agenda-datatables');
+      Route::get('/agenda',  [AgendaController::class, 'index'])->name('admin-agenda-index');
+      Route::get('/agenda/create',   [AgendaController::class, 'create'])->name('admin-agenda-create');
+      Route::post('/agenda/create',  [AgendaController::class, 'store'])->name('admin-agenda-store');
+      Route::get('/agenda/edit/{id}',  [AgendaController::class, 'edit'])->name('admin-agenda-edit');
+      Route::post('/agenda/update/{id}', [AgendaController::class, 'update'])->name('admin-agenda-update');
+
+      Route::get('/agenda/delete/{id}',  [AgendaController::class, 'destroy'])->name('admin-agenda-delete');
+   
+    });
+    Route::group(['middleware' => 'permissions:donate_campaigns'], function () {
+
+     
+      Route::get('/donate_campaigns/datatables',  [DonateCampaignController::class, 'datatables'])->name('admin-donate_campaigns-datatables');
+      Route::get('/donate_campaigns/datatables',  [DonateCampaignController::class, 'datatables'])->name('admin-donate_campaigns-datatables');
+      Route::get('/donate_campaigns',  [DonateCampaignController::class, 'index'])->name('admin-donate_campaigns-index');
+      Route::get('/donate_campaigns/create',   [DonateCampaignController::class, 'create'])->name('admin-donate_campaigns-create');
+      Route::post('/donate_campaigns/create',  [DonateCampaignController::class, 'store'])->name('admin-donate_campaigns-store');
+      Route::get('/donate_campaigns/edit/{id}',  [DonateCampaignController::class, 'edit'])->name('admin-donate_campaigns-edit');
+      Route::post('/donate_campaigns/update/{id}', [DonateCampaignController::class, 'update'])->name('admin-donate_campaigns-update');
+
+      Route::get('/donate_campaigns/delete/{id}',  [DonateCampaignController::class, 'destroy'])->name('admin-donate_campaigns-delete');
    
     });
     Route::group(['middleware' => 'permissions:timelines'], function () {

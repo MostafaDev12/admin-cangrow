@@ -22,7 +22,7 @@
                         </h2>
                     </div>
 
-                    <a href="#"
+                    <a href="{{ route('donate_campaigns.index', $sign) }}"
                         class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-white hover:text-custom-orange transition-all duration-300 ease-in-out flex items-center space-x-2 space-x-reverse">
                         <span>  {{ __('وسائل التبرع') }}</span>
                         <i class="fas fa-arrow-left text-sm"></i>

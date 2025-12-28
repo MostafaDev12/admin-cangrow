@@ -75,6 +75,13 @@ class PageSettingController extends Controller
                 $data->upload($name,$file,$data->portfolio_photo);
                 $input['portfolio_photo'] = $name;
             }
+             
+            if ($file = $request->file('volunteering_photo'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->volunteering_photo);
+                $input['volunteering_photo'] = $name;
+            }
               
             if ($file = $request->file('after_photo'))
             {
@@ -112,6 +119,10 @@ class PageSettingController extends Controller
     }
      
 
+    public function about_volunteering()
+    {
+        return view('admin.pagesetting.about_volunteering');
+    }
     public function aboutUs()
     {
         return view('admin.pagesetting.about_us');

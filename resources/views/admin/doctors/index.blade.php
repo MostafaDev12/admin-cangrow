@@ -12,11 +12,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.doctors') }}
+        {{ __('translation.teams') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.doctors') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.teams') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -101,7 +101,7 @@
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
           '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-doctors-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_doctor") }}'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_team") }}'+
           '</a>'+
           '</div>');
       });

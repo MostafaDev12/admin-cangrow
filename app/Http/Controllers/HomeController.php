@@ -10,6 +10,7 @@ use App\Models\PageModel;
 use App\Models\ModelCategory;
 use App\Models\Service;
 use App\Models\Slider;
+use App\Models\Event;
 use App\Models\Partner;
 use App\Models\Contact;
 use App\Models\Category;
@@ -17,6 +18,7 @@ use App\Models\Generalsetting;
 use App\Models\Media;
 use App\Models\AfterBefore;
 use App\Models\Certificate;
+use App\Models\Agenda;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,9 +27,13 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use App\Classes\GeniusMailer;
 use App\Models\AboutVision;
+use App\Models\Bank;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\DonateCampaign;
+use App\Models\HumanitarianCase;
 use App\Models\Location;
+use App\Models\Party;
 use App\Models\Process;
 use App\Models\Project;
 use App\Models\Subcategory;
@@ -240,7 +246,7 @@ $processes = Process::get();
     $sign = $this->langSign($lang);
 
  
-    $blogs = Blog::orderby('blog_date','desc')->paginate(8);
+    $blogs = Blog::orderby('blog_date','desc')->paginate(9);
 
     return view('front.blogs', compact('sign', 'blogs'));
   }
@@ -260,10 +266,10 @@ $processes = Process::get();
     return view('front.products', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }  
   
-  public function services(Request $request)
+  public function services(Request $request,$lang)
   {
 
-    $sign = $this->langSign();
+    $sign = $this->langSign($lang);
 
 
     $sliders = Slider::first();
@@ -276,7 +282,351 @@ $processes = Process::get();
    $timelines = Timeline::get();
     return view('front.services', compact('sign','timelines', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
   }  
+    public function agenda(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+   
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+   // $servicess = Subcategory::paginate(8);
+    $servicess = Service::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+  $projects = Project::get();
+   $timelines = Timeline::get();
+
+         $selectedDate = \Carbon\Carbon::createFromFormat('Y-m-d', \Carbon\Carbon::now()->format('Y-m-d'));
+      
+      // جلب الأحداث في التاريخ المحدد
+      $events = Agenda::whereDate('date', $selectedDate)->get();
+      
+    return view('front.agenda', compact('sign','timelines','events', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
+  }
+
+  public function getAgendaEvents(Request $request, $date)
+  {
+    $sign = $this->langSign();
+    
+    try {
+      // تحويل التاريخ من صيغة Y-m-d إلى صيغة Date
+      $selectedDate = \Carbon\Carbon::createFromFormat('Y-m-d', $date);
+      
+      // جلب الأحداث في التاريخ المحدد
+      $events = Agenda::whereDate('date', $selectedDate)->get();
+      
+      if ($events->isEmpty()) {
+        return response()->json([
+          'success' => false,
+          'message' => __('لا توجد أحداث مجدولة في هذا التاريخ'),
+          'html' => '<p class="text-center text-gray-500 py-8"> '.__('لا توجد أحداث مجدولة في هذا التاريخ').' </p>'
+        ]);
+      }
+
+      $html = '';
+      foreach ($events as $event) {
+        $formattedDate = \Carbon\Carbon::createFromFormat('Y-m-d', $event->date)->format('d F Y');
+        $html .= '<div class="bg-white rounded-lg shadow p-5 border-r-4 border-primary">';
+        $html .= '<h4 class="text-lg font-semibold text-gray-800 mb-2">' . $event->{'title_' . $sign} . '</h4>';
+        $html .= '<p class="text-sm text-gray-600 mb-1">📅 '. __('التاريخ').': ' . $formattedDate . '</p>';
+        $html .= '<p class="text-sm text-gray-600 mb-2">📍 '.__('المكان').': ' . $event->{'location_' . $sign} . '</p>';
+        $html .= '<p class="text-gray-700 text-sm leading-relaxed">' . $event->{'details_' . $sign} . '</p>';
+        $html .= '</div>';
+      }
+
+      return response()->json([
+        'success' => true,
+        'html' => $html,
+        'count' => $events->count()
+      ]);
+
+    } catch (\Exception $e) {
+      return response()->json([
+        'success' => false,
+        'message' => 'خطأ في جلب البيانات',
+        'html' => '<p class="text-center text-red-500 py-8">حدث خطأ في تحميل الأحداث</p>'
+      ], 500);
+    }
+  }  
   
+  public function donate_campaigns(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = DonateCampaign::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.donate_campaigns', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+
+    
+  public function singleDonate_campaigns(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $service = DonateCampaign::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    
+    if(!$service){
+
+      abort(404);
+    }
+
+         switch ($sign) {
+        case 'en':
+            $correctSlug = $service->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $service->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $service->slug_fr;
+            break;
+        default:
+            $correctSlug = $service->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/donate-campaign/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/donate-campaign/$correctSlug");
+        }
+    }
+
+
+
+    return view('front.details-donate_campaigns', compact('sign', 'service'));
+  }  
+  public function cross_bank_donation(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Event::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $insides = Bank::where('type','in')->get();
+    $outsides = Bank::where('type','out')->get();
+
+    return view('front.cross-bank-donation', compact('sign', 'insides', 'outsides', 'servicess', 'models', 'reviews'));
+  }  
+
+    
+  public function contributions_kind(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Event::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $insides = Bank::where('type','in')->get();
+    $outsides = Bank::where('type','out')->get();
+
+    return view('front.contributions-kind', compact('sign', 'insides', 'outsides', 'servicess', 'models', 'reviews'));
+  }  
+
+    
+  public function humanitarian_cases(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = HumanitarianCase::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $insides = Bank::where('type','in')->get();
+    $outsides = Bank::where('type','out')->get();
+
+    return view('front.humanitarian_cases', compact('sign', 'insides', 'outsides', 'servicess', 'models', 'reviews'));
+  }  
+  public function About_volunteering(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = HumanitarianCase::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $insides = Bank::where('type','in')->get();
+    $outsides = Bank::where('type','out')->get();
+
+    return view('front.about_volunteering', compact('sign', 'insides', 'outsides', 'servicess', 'models', 'reviews'));
+  }  
+  public function be_volunteer(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = HumanitarianCase::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $insides = Bank::where('type','in')->get();
+    $outsides = Bank::where('type','out')->get();
+
+    return view('front.be-volunteer', compact('sign', 'insides', 'outsides', 'servicess', 'models', 'reviews'));
+  }  
+
+    
+  public function stories_success_volunteers(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = HumanitarianCase::paginate(6);
+    $models = PageModel::paginate(9);
+    $reviews = Partner::get();
+    $insides = Bank::where('type','in')->get();
+    $outsides = Bank::where('type','out')->get();
+
+    return view('front.stories-success-volunteers', compact('sign', 'insides', 'outsides', 'servicess', 'models', 'reviews'));
+  }  
+
+    
+  public function events(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Event::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.events', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+
+    
+  public function singleEvent(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $service = Event::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    
+    if(!$service){
+
+      abort(404);
+    }
+
+         switch ($sign) {
+        case 'en':
+            $correctSlug = $service->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $service->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $service->slug_fr;
+            break;
+        default:
+            $correctSlug = $service->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/event/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/event/$correctSlug");
+        }
+    }
+
+
+
+    return view('front.details-event', compact('sign', 'service'));
+  }
+  public function parties(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Party::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.parties', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+
+    
+  public function singleParty(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $service = Party::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    
+    if(!$service){
+
+      abort(404);
+    }
+
+         switch ($sign) {
+        case 'en':
+            $correctSlug = $service->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $service->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $service->slug_fr;
+            break;
+        default:
+            $correctSlug = $service->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/party/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/party/$correctSlug");
+        }
+    }
+
+
+
+    return view('front.details-party', compact('sign', 'service'));
+  }
   public function locations(Request $request)
   {
 
@@ -292,7 +642,7 @@ $processes = Process::get();
 
     return view('front.locations', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
-  public function BookNow(Request $request)
+  public function privacy(Request $request)
   {
 
     $sign = $this->langSign();
@@ -304,7 +654,7 @@ $processes = Process::get();
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.reservation', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
+    return view('front.privacy', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
  public function contact(Request $request,$lang)
   {
@@ -459,11 +809,11 @@ $processes = Process::get();
   {
 
     $sign = $this->langSign($lang);
- 
+  $models = PageModel::paginate(6);
   $images = Media::whereNull('youtube_url')->get();
   $videos = Media::whereNotNull('youtube_url')->get();
 
-    return view('front.stories-success-volunteers', compact('sign','images'));
+    return view('front.stories-success-volunteers', compact('sign','models'));
   }
 
   public function singleCategoryService(Request $request,$lang, $slug)
@@ -559,7 +909,7 @@ $processes = Process::get();
 
   public function change($id)
   {
-
+dd($id);
     $data = Language::findOrFail($id);
 
     App::setlocale($data->name);

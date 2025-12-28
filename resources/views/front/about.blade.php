@@ -3,7 +3,7 @@
 
 @section('title')
    
-{{ __('عن الشركه') }} -  {{ $gs->{'title_' . $sign} }}
+{{ __('من نحن') }} -  {{ $gs->{'title_' . $sign} }}
      
 @stop
 
@@ -104,6 +104,20 @@
                  </div>
 
              </div>
+                    <div class="text-center mt-12">
+                        <a href="{{ route('events.index',$sign) }}"
+                            class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
+                            <span>           {{ __('مناسبات دائمة خاصة بالمؤسسة') }}  
+                            </span>
+                            <i class="fa-solid fa-arrow-left-long mr-2"></i>
+                        </a>
+                        <a href="{{ route('parties.index',$sign) }}"
+                            class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
+                            <span>      {{ __('الاحتفالات') }}
+                            </span>
+                            <i class="fa-solid fa-arrow-left-long mr-2"></i>
+                        </a>
+                    </div>
          </div>
      </section>
      <section class="relative bg-no-repeat bg-cover bg-center flex items-center justify-center"
@@ -200,7 +214,7 @@
                  </div>
 
                  <div class="flex-shrink-0">
-                     <a href="#"
+                     <a href="{{ route('board-trustees.index',$sign) }}"
                          class="inline-block bg-primary text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-accent hover:shadow-lg">
                           {{ __('شاهد الكل') }}
                      </a>
@@ -209,7 +223,7 @@
              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 @foreach ($teams as $team)
                       <article class="rounded-lg group cursor-pointer transition-all duration-300">
-                     <img src="{{ $team->photo }}" alt="{!! $team->{'name_' . $sign} ?? '' !!} "
+                     <img src="{{ $team->photo_url }}" alt="{!! $team->{'name_' . $sign} ?? '' !!} "
                          class="w-full h-64 rounded-t-lg">
                      <div
                          class="p-6 text-center py-3 bg-white transition-all duration-300 group-hover:shadow-2xl group-hover:rounded-lg group-hover:w-fit group-hover:mx-auto  group-hover:-translate-y-6">

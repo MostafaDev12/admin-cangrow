@@ -25,6 +25,9 @@ class PageModel extends Model
     protected $fillable = [
         
         'photo',
+        'name_ar',
+        'name_en',
+        'name_fr',
         'title_ar',
         'title_en',
         'title_fr',

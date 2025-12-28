@@ -170,7 +170,7 @@
                 <div class="flex justify-between items-center h-24">
                     <!-- Logo -->
                     <div class="flex-shrink-0">
-                        <a href="">
+                        <a href="{{ route('front.index',$sign) }}">
                             <img class="h-24 w-auto p-0 m-0" src="{{ $gs->{'logo_' . $sign} }}"
                                 alt="Life Makers Logo">
                         </a>
@@ -194,8 +194,8 @@
                                     class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 w-64 z-10 border border-gray-200">
                                     <div class="py-2">
                                         <a href="{{ route('about.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">من
-                                            نحن</a>
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                            {{ __('من نحن') }}</a>
                                         <a href="{{ route('our-impact.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('انتشارنا') }}</a>
                                         <a href="{{ route('associations.index',$sign) }}"
@@ -228,9 +228,9 @@
                                  
                             </a>
                             <li class="relative group">
-                                <a href="./agenda.html"
+                                <a href="{{ route('agenda.index',$sign) }}"
                                     class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">
-                                    الأجندة الشهرية
+                                     {{ __('الأجندة الشهرية') }}  
                                 </a>
                             </li>
                             <!-- Donation Dropdown -->
@@ -238,25 +238,25 @@
                             <div class="relative dropdown">
                                 <button
                                     class="dropdown-btn font-semibold text-gray-700 hover:text-custom-orange transition-colors flex items-center">
-                                    التبرع
+                                       {{ __('التبرع') }} 
                                     <i class="fas fa-chevron-down mr-1 text-xs"></i>
                                 </button>
                                 <div
                                     class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 w-64 z-10 border border-gray-200">
                                     <div class="py-2">
-                                        <a href="https://donate.lifemakers.org/"
+                                        <a href="{{ route('donate_campaigns.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
-                                            التبرع عبر الموقع الإلكتروني
+                                           {{ __('التبرع عبر الموقع الإلكتروني') }} 
                                         </a>
 
-                                        <a href="#تبرع-عبر-البنوك/"
+                                        <a href="{{ route('cross-bank-donation.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
-                                            التبرع عبر البنوك
+                                            {{ __('التبرع عبر البنوك') }}
                                         </a>
 
-                                        <a href="#التبرعات-العينية/"
+                                        <a href="{{ route('contributions-kind.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
-                                            التبرعات العينية
+                                              {{ __('التبرعات العينية') }}   
                                         </a>
                                     </div>
                                 </div>
@@ -264,45 +264,45 @@
                             </div>
 
                             <!-- Humanitarian Cases -->
-                            <a href="./donate.html"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">حالات
-                                انسانية</a>
+                            <a href="{{ route('humanitarian-cases.index', $sign) }}"
+                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors"> 
+                                 {{ __('حالات انسانية') }}</a>
 
                             <!-- Volunteering Dropdown -->
                             <div class="relative dropdown">
                                 <button
                                     class="dropdown-btn font-semibold text-gray-700 hover:text-custom-orange transition-colors flex items-center">
-                                    التطوع
+                                    {{ __('التطوع') }}
                                     <i class="fas fa-chevron-down mr-1 text-xs"></i>
                                 </button>
                                 <div
                                     class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 w-48 z-10 border border-gray-200">
                                     <div class="py-2">
-                                        <a href="./donate.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">عن
-                                            التطوع</a>
-                                        <a href="./be-volunteer.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">كن
-                                            متطوع</a>
-                                        <a href="./stories-success-volunteers.html"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">قصص
-                                            نجاح المتطوعيين</a>
+                                        <a href="{{ route('About_volunteering.index', $sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
+                                            {{ __('عن التطوع') }}</a>
+                                        <a href="{{ route('be-volunteer.index', $sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                          {{ __('كن متطوع') }}</a>
+                                        <a href="{{ route('stories-success-volunteers.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                               {{ __('قصص نجاح المتطوعيين') }}</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- News -->
-                            <a href="./news.html"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">الأخبار</a>
+                            <a href="{{ route('blogs.index',$sign) }}"
+                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">{{ __('الأخبار') }}</a>
 
                             <!-- Privacy Policy -->
-                            <a href="./privacy.html"
-                                class="hidden lg:block font-semibold text-gray-700 hover:text-custom-orange transition-colors">سياسة
-                                الخصوصية</a>
-
+                            <a href="{{ route('privacy.index',$sign) }}"
+                                class="hidden lg:block font-semibold text-gray-700 hover:text-custom-orange transition-colors"> 
+                                  {{ __('سياسة الخصوصية') }}</a>
+ 
                             <!-- Contact Us -->
-                            <a href="./contact.html"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">اتصل
-                                بنا</a>
+                            <a href="{{ route('contact.index',$sign) }}"
+                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors"> 
+                                {{ __('اتصل بنا') }}</a>
                         </div>
                     </div>
 
@@ -315,11 +315,14 @@
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-
+ @php
+                    $lang = App\Models\Language::where('sign', '!=', $sign)->first();
+                @endphp
                         <!-- Language -->
-                        <a href="#"
-                            class="hidden md:block text-gray-700 hover:text-custom-orange ml-3">English</a>
-
+                          @if ($lang)
+                        <a href="{{ route('change-lang.index', $lang->id) }}"
+                            class="hidden md:block text-gray-700 hover:text-custom-orange ml-3">{{ $lang->language }}</a>
+                        @endif
                         <!-- Mobile Menu Button -->
                         <button id="mobile-menu-button"
                             class="md:hidden text-gray-700 hover:text-custom-orange focus:outline-none">
@@ -344,8 +347,8 @@
                         </button>
                         <div class="mobile-dropdown-content hidden pl-4">
                             <a href="{{ route('about.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">من
-                                نحن</a>
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                {{ __('من نحن') }}</a>
                             <a href="{{ route('our-impact.index',$sign) }}"
                                 class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('انتشارنا') }}</a>
                             <a href="{{ route('associations.index',$sign) }}"
@@ -370,64 +373,64 @@
                         class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> 
                         {{ __('خدماتنا و مشروعاتنا') }}</a>
 
+                    <a href="{{ route('agenda.index',$sign) }}"
+                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> 
+                        {{ __('الأجندة الشهرية') }}</a>
+
                     <!-- Donation Mobile Dropdown -->
                     <div class="relative">
                         <button
                             class="mobile-dropdown-toggle w-full text-left px-3 py-2 rounded-md font-bold text-custom-orange hover:text-accent hover:bg-gray-50 flex justify-between items-center">
-                            التبرع
+                                {{ __('التبرع') }} 
                             <i class="fas fa-chevron-down text-xs"></i>
                         </button>
                         <div class="mobile-dropdown-content hidden pl-4">
-                            <a href="#booths-location/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">أماكن
-                                منافذ التبرع</a>
-                            <a href="https://donate.lifemakers.org/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">التبرع
-                                عبر الموقع الإلكتروني</a>
-                            <a href="#%d8%aa%d8%a8%d8%b1%d8%b9-%d8%b9%d8%a8%d8%b1-%d8%a7%d9%84%d8%a8%d9%86%d9%88%d9%83/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">تبرع
-                                عبر البنوك</a>
-                            <a href="#%d9%88%d8%b3%d8%a7%d8%a6%d9%84-%d9%88%d9%85%d9%86%d8%a7%d9%81%d8%b0-%d8%a3%d8%ae%d8%b1%d9%89-%d9%84%d9%84%d8%aa%d8%a8%d8%b1%d8%b9/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">وسائل
-                                ومنافذ أخرى للتبرع</a>
-                            <a href="#%d8%a7%d9%84%d8%aa%d8%a8%d8%b1%d8%b9%d8%a7%d8%aa-%d8%a7%d9%84%d8%b9%d9%8a%d9%86%d9%8a%d8%a9/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">التبرعات
-                                العينية</a>
+                           
+                            <a href="{{ route('donate_campaigns.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                      {{ __('التبرع عبر الموقع الإلكتروني') }}  </a>
+                            <a href="{{ route('cross-bank-donation.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                    {{ __('التبرع عبر البنوك') }}</a>
+                           
+                            <a href="{{ route('contributions-kind.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                {{ __('التبرعات العينية') }}   </a>
                         </div>
                     </div>
 
-                    <a href="https://donate.lifemakers.org/CaseDetails/indexAr"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">حالات
-                        انسانية</a>
+                    <a href="{{ route('humanitarian-cases.index', $sign) }}"
+                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> 
+                         {{ __('حالات انسانية') }}</a>
 
                     <!-- Volunteering Mobile Dropdown -->
                     <div class="relative">
                         <button
                             class="mobile-dropdown-toggle w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50 flex justify-between items-center">
-                            التطوع
+                            {{ __('التطوع') }}
                             <i class="fas fa-chevron-down text-xs"></i>
                         </button>
                         <div class="mobile-dropdown-content hidden pl-4">
-                            <a href="#"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">عن
-                                التطوع</a>
-                            <a href="#%d9%83%d9%86-%d9%85%d8%aa%d8%b7%d9%88%d8%b9/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">كن
-                                متطوع</a>
-                            <a href="#%d9%82%d8%b5%d8%b5-%d9%86%d8%ac%d8%a7%d8%ad-%d8%a7%d9%84%d9%85%d8%aa%d8%b7%d9%88%d8%b9%d9%8a%d9%8a%d9%86/"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">قصص
-                                نجاح المتطوعيين</a>
+                            <a href="{{ route('About_volunteering.index', $sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                   {{ __('عن التطوع') }}</a>
+                            <a href="{{ route('be-volunteer.index', $sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">
+                                  {{ __('كن متطوع') }} </a>
+                            <a href="{{ route('stories-success-volunteers.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                   {{ __('قصص نجاح المتطوعيين') }} </a>
                         </div>
                     </div>
 
-                    <a href="#%d8%a7%d9%84%d8%a3%d8%ae%d8%a8%d8%a7%d8%b1/"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">الأخبار</a>
-                    <a href="#privacy/"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">سياسة
-                        الخصوصية</a>
-                    <a href="#%d8%a7%d8%aa%d8%b5%d9%84-%d8%a8%d9%86%d8%a7/"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">اتصل
-                        بنا</a>
+                    <a href="{{ route('blogs.index',$sign) }}"
+                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">     {{ __('الأخبار') }}</a>
+                    <a href="{{ route('privacy.index',$sign) }}"
+                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">
+                        {{ __('سياسة الخصوصية') }}  </a>
+                    <a href="{{ route('contact.index',$sign) }}"
+                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> {{ __('اتصل بنا') }}
+                         </a>
                 </div>
 
                 <!-- Mobile Search and Language -->
@@ -481,7 +484,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 ">
 
                 <div class="space-y-6">
-                    <h5 class="text-xl font-bold text-white mb-6">بيانات التواصل</h5>
+                    <h5 class="text-xl font-bold text-white mb-6"> {{ __('بيانات التواصل') }}</h5>
 
                     <div class="flex items-start gap-3">
                         <div
@@ -489,8 +492,12 @@
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <div class="text-sm">
-                            <strong class="block ">رقم الهاتف:</strong>
-                            <span class="text-white" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">+20 10 13532333</span>
+                            <strong class="block "> {{ __('رقم الهاتف') }}:</strong>
+                             @foreach ($phones as $phone)
+                            <span class="text-white" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">{{ $phone }}</span>
+                       
+                            <br>
+                            @endforeach
                         </div>
                     </div>
 
@@ -500,11 +507,15 @@
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div class="text-sm break-words">
-                            <strong class="block ">البريد الإلكتروني:</strong>
+                            <strong class="block ">  {{ __('البريد الالكتروني') }}:</strong>
+                             @foreach ($emails as $email)
+                                
                             <a class="text-white break-all"
-                                href="mailto:dareltadareltawfikcharityfoundation@gmail.com" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">
-                                dareltadareltawfikcharityfoundation@gmail.com
+                                href="mailto:{{ $email }}" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">
+                               {{ $email }}
                             </a>
+                            <br>
+                            @endforeach
                         </div>
 
                     </div>
@@ -515,51 +526,59 @@
                             <i class="fa-solid fa-map-marker-alt"></i>
                         </div>
                         <div class="text-sm">
-                            <strong class="block ">العنوان:</strong>
-                            <span class="text-white">شارع الشهيد (المخيم الدائم) داخل نادي أعضاء هيئة التدريس جامعة
-                                الأزهر أمام بوابة الأمن الوطني مدينة نصر , Nasr City
-                                مصر</span>
+                            <strong class="block ">{{ __('العنوان') }}:</strong>
+                            @foreach ($addresses as $address)
+                            <span class="text-white">{{ $address }} </span>
+                                
+                            <br>
+                            @endforeach
                         </div>
                     </div>
 
                 </div>
 
                 <div>
-                    <h5 class="text-xl font-bold text-white mb-6">روابط سريعة</h5>
+                    <h5 class="text-xl font-bold text-white mb-6"> {{ __('روابط سريعة') }}</h5>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="{{ route('front.index',$sign) }}" class="hover:text-primary transition-colors">الرئيسية</a></li>
-                        <li><a href="{{ route('about.index',$sign) }}" class="hover:text-primary transition-colors">عن نحن</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">الانجازات</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">جائزة دويق للفترة</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">خدمتنا ومجتمعاتنا</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">مجلس الأمناء</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">سياسة الخصوصية</a></li>
+                        <li><a href="{{ route('front.index',$sign) }}" class="hover:text-primary transition-colors">  {{ __('الرئيسية') }}</a></li>
+                        <li><a href="{{ route('about.index',$sign) }}" class="hover:text-primary transition-colors">   {{ __('من نحن') }}</a></li>
+                        <li><a href="{{ route('achievements.index',$sign) }}" class="hover:text-primary transition-colors">  {{ __('الانجازات') }}</a></li>
+ 
+                        <li><a href="{{ route('services.index',$sign) }}" class="hover:text-primary transition-colors">   {{ __('خدمتنا ومجتمعاتنا') }}</a></li>
+                        <li><a href="{{ route('board-trustees.index',$sign) }}" class="hover:text-primary transition-colors">  {{ __('مجلس الأمناء') }} </a></li>
+                        <li><a href="{{ route('privacy.index',$sign) }}" class="hover:text-primary transition-colors">    {{ __('سياسة الخصوصية') }}</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h5 class="text-xl font-bold text-white mb-6">التبرع</h5>
+                    <h5 class="text-xl font-bold text-white mb-6">   {{ __('التبرع') }} </h5>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="hover:text-primary transition-colors">التبرع عبر الموقع
-                                الالكتروني</a>
+                        <li><a href="{{ route('donate_campaigns.index',$sign) }}" class="hover:text-primary transition-colors">      {{ __('التبرع عبر الموقع الإلكتروني') }} 
+                                 </a>
                         </li>
-                        <li><a href="#" class="hover:text-primary transition-colors">التبرع عبر البنوك</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">وسائل تبرع آخري</a></li>
+                        <li><a href="{{ route('cross-bank-donation.index',$sign) }}" class="hover:text-primary transition-colors">    {{ __('التبرع عبر البنوك') }}  </a></li>
+                        <li><a href="{{ route('contributions-kind.index',$sign) }}" class="hover:text-primary transition-colors">   {{ __('التبرعات العينية') }} </a></li>
                     </ul>
                 </div>
 
                 <div>
                     <img src="{{ $gs->{'logo_' . $sign} }}" alt="Life Makers Logo" class="w-32 mb-4">
                     <p class="text-sm mb-6">
-                        اشترك في النشرة البريدية لمؤسسة دار التوفيق ليصلك كل جديد.
+                       {{ __('اشترك في النشرة البريدية لمؤسسة دار التوفيق ليصلك كل جديد.') }}
                     </p>
 
-                    <h5 class="text-xl font-bold text-white mb-4">تابع نشرتنا البريدية</h5>
-                    <form>
-                        <label for="email-subscribe" class="sr-only">البريد الالكتروني</label>
+                    <h5 class="text-xl font-bold text-white mb-4">  {{ __('تابع نشرتنا البريدية') }}</h5>
+                     <form action="{{ route('front.subscripe.submit') }}" name="appointment"
+                                                id="subscribeform" aria-label="subscripe form" data-status="init"
+                                                method="POST" autocomplete="off">
+                                                {{ csrf_field() }}
+                                                <div style="width: 81%;">
+                                                        @include('includes.admin.form-both')
+                                                   </div>
+                        <label for="email-subscribe" class="sr-only"> {{ __('البريد الالكتروني') }}</label>
                         <div
                             class="relative flex items-center border border-green-700 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary">
-                            <input id="email-subscribe" type="email" name="email" placeholder="البريد الالكتروني"
+                            <input id="email-subscribe" type="email" name="email" required placeholder=" {{ __('البريد الالكتروني') }}"
                                 class="w-full bg-transparent py-3 px-4 text-white focus:outline-none placeholder-white">
 
                             <button type="submit" aria-label="Subscribe"
@@ -577,14 +596,32 @@
             <div
                 class="container mx-auto px-4 py-4 flex flex-col-reverse md:flex-row justify-between items-center text-center md:text-right text-xs gap-4">
 
-                <p>2025
-                    © جميع الحقوق محفوظة
+                <p>{{ date('Y') }}
+                    ©   {{ __('جميع الحقوق محفوظة') }}
                     <span class="mx-2" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">|</span>
                     <a href="https://www.cangrowonline.com/en" class="font-bold hover:underline"
                         dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">Cangrow</a>
                 </p>
 
                 <div class="flex items-center gap-4">
+
+                     @if(App\Models\Socialsetting::find(1)->t_status == 1) 
+                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank" aria-label="Twitter" class="hover:text-slate-900 transition-colors"><i
+                                class="fa-brands fa-twitter text-lg"></i></a>
+                        @endif
+                        @if(App\Models\Socialsetting::find(1)->f_status == 1)
+                                                <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"  aria-label="Facebook"
+                                                    class="hover:text-slate-900 transition-colors"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+                        @endif
+                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
+                                                <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"  aria-label="YouTube" class="hover:text-slate-900 transition-colors"><i
+                                                        class="fa-brands fa-youtube text-lg"></i></a>
+                        @endif
+                        @if(App\Models\Socialsetting::find(1)->i_status == 1)
+                                                <a href="{{ App\Models\Socialsetting::find(1)->instagram }}" target="_blank"  aria-label="Instagram" class="hover:text-slate-900 transition-colors"><i
+                                                        class="fa-brands fa-instagram text-lg"></i></a>
+                        @endif
+{{-- 
                     <a href="#" aria-label="YouTube" class="hover:text-slate-900 transition-colors"><i
                             class="fa-brands fa-youtube text-lg"></i></a>
                     <a href="#" aria-label="Twitter" class="hover:text-slate-900 transition-colors"><i
@@ -596,7 +633,7 @@
                         class="hover:text-slate-900 transition-colors"><i
                             class="fa-brands fa-instagram text-lg"></i></a>
                     <a href="#" aria-label="LinkedIn" class="hover:text-slate-900 transition-colors"><i
-                            class="fa-brands fa-linkedin-in text-lg"></i></a>
+                            class="fa-brands fa-linkedin-in text-lg"></i></a> --}}
                 </div>
             </div>
         </div>
@@ -608,8 +645,8 @@
             <i class="fa-solid fa-users text-custom-orange text-2xl"></i>
         </div>
         <div class="flex-1">
-            <h4 class="text-base font-semibold text-gray-800 mb-1">عدد الزائرين</h4>
-            <p id="visitor-count" class="text-sm text-gray-600">جارِ التحميل...</p>
+            <h4 class="text-base font-semibold text-gray-800 mb-1"> {{ __('عدد الزائرين') }}</h4>
+            <p id="visitor-count" class="text-sm text-gray-600"> {{ __('جار التحميل') }}..</p>
         </div>
         <button id="close-popup" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
             <i class="fa-solid fa-xmark"></i>
