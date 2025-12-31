@@ -293,7 +293,7 @@
                                 <i class="icon-search" aria-hidden="true"></i>
                                 <span class="sr-only">بحث</span>
                             </a>
-                            <!-- <a href="contact.html" class="main-header__cart">
+                            <!-- <a href="{{ route('contact.index',$sign) }}" class="main-header__cart">
                                 <i class="icon-cart" aria-hidden="true"></i>
                                 <span class="sr-only">سلة التسوق</span>
                             </a> -->
@@ -357,10 +357,10 @@
                     <div class="row gutter-y-50">
                         <div class="col-lg-5 col-xl-3 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
                             <div class="footer-widget footer-widget--about">
-                                <h2 class="footer-widget__title">نقدّم لحومًا طازجة وعضوية من مزرعتنا بطريقة نظيفة وصحية
-                                    للغاية.</h2>
+                                <h2 class="footer-widget__title">   
+                                      {{ $gs->{'footer_' . $sign} }}</h2>
                                 <!-- /.footer-widget__title -->
-                                <a href="contact.html" class="boskery-btn">
+                                <a href="{{ route('contact.index',$sign) }}" class="boskery-btn">
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
@@ -377,11 +377,10 @@
                             <div class="footer-widget footer-widget--links">
                                 <h2 class="footer-widget__title">استكشف</h2><!-- /.footer-widget__title -->
                                 <ul class="list-unstyled footer-widget__links">
-                                    <li><a href="about.html">من نحن</a></li>
-                                    <li><a href="checkout.html">أَكْمل الطلب</a></li>
-                                    <li><a href="team.html">تعرف على الفريق</a></li>
-                                    <li><a href="blog.html">آخر الأخبار</a></li>
-                                    <li><a href="contact.html">اتصل بنا</a></li>
+                                    <li><a href="{{ route('about.index',$sign) }}">من نحن</a></li>
+                                 
+                                    <li><a href="{{ route('blogs.index',$sign) }}">آخر الأخبار</a></li>
+                                    <li><a href="{{ route('contact.index',$sign) }}">اتصل بنا</a></li>
                                 </ul><!-- /.list-unstyled footer-widget__links -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 col-md-3 col-xl-2 -->
@@ -390,33 +389,46 @@
                             <div class="footer-widget footer-widget--contact">
                                 <h2 class="footer-widget__title">اتصل بنا</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__contact">
-                                    <address class="footer-widget__address">القاهرة: 13 شارع مصطفى رفعت، شيراتون
-                                        هليوبوليس</address>
+                                     @foreach ($addresses as $address)
+                                    <address class="footer-widget__address"> {{ $address }} 
+                                         </address>
+                                         @endforeach
                                     <!-- /.footer-widget__address -->
                                     <ul class="list-unstyled footer-widget__info">
+                                         @foreach ($emails as $email)
                                         <li><span class="icon-paper-plane"></span> <a
-                                                href="mailto:sherif.zaki@shatat-group.com">sherif.zaki@shatat-group.com</a>
+                                                href="mailto:{{ $email }}">{{ $email }}</a>
                                         </li>
-                                        <li><span class="icon-phone-call"></span> <a href="tel:+(+2) 01555554562">(+2)
-                                                01555554562</a></li>
+                                         @endforeach
+                                         @foreach ($phones as $phone)
+                                        <li><span class="icon-phone-call"></span> <a href="tel:{{ $phone }}">{{ $phone }}</a></li>
+                                           @endforeach
                                     </ul><!-- /.list-unstyled footer-widget__info -->
                                     <div class="footer-widget__social">
-                                        <a href="https://facebook.com">
+ @if(App\Models\Socialsetting::find(1)->f_status == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
                                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                             <span class="sr-only">فيسبوك</span>
                                         </a>
-                                        <a href="https://twitter.com">
+@endif
+  @if(App\Models\Socialsetting::find(1)->t_status == 1) 
+                                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
                                             <i class="fab fa-twitter" aria-hidden="true"></i>
                                             <span class="sr-only">تويتر</span>
                                         </a>
-                                        <a href="https://linkedin.com">
+                                         @endif
+                                          @if(App\Models\Socialsetting::find(1)->l_status == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->linkedin }}">
                                             <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                                             <span class="sr-only">لينكدإن</span>
                                         </a>
-                                        <a href="https://youtube.com" aria-hidden="true">
+                                          @endif
+                                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-hidden="true">
                                             <i class="fab fa-youtube"></i>
                                             <span class="sr-only">يوتيوب</span>
                                         </a>
+                                        @endif
                                     </div><!-- /.footer-widget__social -->
                                 </div><!-- /.footer-widget__contact -->
                             </div><!-- /.footer-widget -->
@@ -426,30 +438,14 @@
                             <div class="footer-widget footer-widget--gallery">
                                 <h2 class="footer-widget__title">المعرض</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__gallery">
-                                    <a href="gallery.html" class="footer-widget__gallery__link">
-                                        <img src="assets/images/gallery/footer-widget-gallery-1.jpg" alt="معرض الصور">
+                                   @foreach ($footer_images as $footer_image)
+                                       
+                                    <a href="#" class="footer-widget__gallery__link">
+                                        <img src="{{  $footer_image->photo }}" alt="معرض الصور">
                                         <span class="footer-widget__gallery__icon icon-plus"></span>
                                     </a><!-- /.footer-widget__gallery__link -->
-                                    <a href="gallery.html" class="footer-widget__gallery__link">
-                                        <img src="assets/images/gallery/footer-widget-gallery-2.jpg" alt="معرض الصور">
-                                        <span class="footer-widget__gallery__icon icon-plus"></span>
-                                    </a><!-- /.footer-widget__gallery__link -->
-                                    <a href="gallery.html" class="footer-widget__gallery__link">
-                                        <img src="assets/images/gallery/footer-widget-gallery-3.jpg" alt="معرض الصور">
-                                        <span class="footer-widget__gallery__icon icon-plus"></span>
-                                    </a><!-- /.footer-widget__gallery__link -->
-                                    <a href="gallery.html" class="footer-widget__gallery__link">
-                                        <img src="assets/images/gallery/footer-widget-gallery-4.jpg" alt="معرض الصور">
-                                        <span class="footer-widget__gallery__icon icon-plus"></span>
-                                    </a><!-- /.footer-widget__gallery__link -->
-                                    <a href="gallery.html" class="footer-widget__gallery__link">
-                                        <img src="assets/images/gallery/footer-widget-gallery-5.jpg" alt="معرض الصور">
-                                        <span class="footer-widget__gallery__icon icon-plus"></span>
-                                    </a><!-- /.footer-widget__gallery__link -->
-                                    <a href="gallery.html" class="footer-widget__gallery__link">
-                                        <img src="assets/images/gallery/footer-widget-gallery-6.jpg" alt="معرض الصور">
-                                        <span class="footer-widget__gallery__icon icon-plus"></span>
-                                    </a><!-- /.footer-widget__gallery__link -->
+                                   
+                                   @endforeach
                                 </div>
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-5 col-md-4 col-sm-8 col-xl-3 -->
@@ -485,17 +481,46 @@
             <!-- /.mobile-nav__container -->
 
             <ul class="mobile-nav__contact list-unstyled">
+                 @foreach ($emails as $email)
+                                      
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:needhelp@boskery.com">needhelp@boskery.com</a>
-                </li>
+                    <a href="mailto:{{ $email }}">{{ $email }}</a>
+                </li> 
+                  @endforeach
+                     @foreach ($phones as $phone)
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="tel:+92(8800)-9850">+ 92(8800) - 9850</a>
+                    <a href="tel:{{ $phone }}">{{ $phone }}</a>
                 </li>
+                    @endforeach
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__social">
-                <a href="https://facebook.com">
+                @if(App\Models\Socialsetting::find(1)->f_status == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                            <span class="sr-only">فيسبوك</span>
+                                        </a>
+@endif
+  @if(App\Models\Socialsetting::find(1)->t_status == 1) 
+                                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
+                                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                                            <span class="sr-only">تويتر</span>
+                                        </a>
+                                         @endif
+                                          @if(App\Models\Socialsetting::find(1)->l_status == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->linkedin }}">
+                                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                                            <span class="sr-only">لينكدإن</span>
+                                        </a>
+                                          @endif
+                                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-hidden="true">
+                                            <i class="fab fa-youtube"></i>
+                                            <span class="sr-only">يوتيوب</span>
+                                        </a>
+                                        @endif
+                {{-- <a href="https://facebook.com">
                     <i class="fab fa-facebook-f" aria-hidden="true"></i>
                     <span class="sr-only">Facebook</span>
                 </a>
@@ -510,7 +535,7 @@
                 <a href="https://instagram.com">
                     <i class="fab fa-instagram" aria-hidden="true"></i>
                     <span class="sr-only">Instagram</span>
-                </a>
+                </a> --}}
             </div><!-- /.mobile-nav__social -->
         </div>
         <!-- /.mobile-nav__content -->
@@ -545,24 +570,56 @@
                         alt="logo" /></a>
             </div><!-- /.sidebar-one__logo -->
             <div class="sidebar-one__about sidebar-one__item">
-                <p class="sidebar-one__about__text">Providing fresh and organic meat from our farm in a very hygienic
-                    way.
+                <p class="sidebar-one__about__text"> {{ $gs->{'footer_' . $sign} }}
                 </p>
             </div><!-- /.sidebar-one__about -->
             <div class="sidebar-one__info sidebar-one__item">
                 <h4 class="sidebar-one__title">Contact</h4>
                 <ul class="sidebar-one__info__list">
+                       @foreach ($addresses as $address)
                     <li><span class="icon-maps-and-flags"></span>
-                        <address>85 Ketch Harbour Road
-                            Bensal PA 19020</address>
+                        <address> {{ $address }} </address>
                     </li>
-                    <li><span class="icon-paper-plane"></span> <a
+                           @endforeach
+                     @foreach ($emails as $email)
+                                        <li><span class="icon-paper-plane"></span> <a
+                                                href="mailto:{{ $email }}">{{ $email }}</a>
+                                        </li>
+                                         @endforeach
+                                         @foreach ($phones as $phone)
+                                        <li><span class="icon-phone-call"></span> <a href="tel:{{ $phone }}">{{ $phone }}</a></li>
+                                           @endforeach
+                    {{-- <li><span class="icon-paper-plane"></span> <a
                             href="mailto:needhelp@company.com">needhelp@company.com</a></li>
-                    <li><span class="icon-phone-call"></span> <a href="tel:+9156980036420">+91 5698 0036 420</a></li>
+                    <li><span class="icon-phone-call"></span> <a href="tel:+9156980036420">+91 5698 0036 420</a></li> --}}
                 </ul><!-- /.sidebar-one__info__list -->
             </div><!-- /.sidebar-one__info -->
             <div class="sidebar-one__social sidebar-one__item">
-                <a href="https://facebook.com">
+                @if(App\Models\Socialsetting::find(1)->f_status == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                            <span class="sr-only">فيسبوك</span>
+                                        </a>
+@endif
+  @if(App\Models\Socialsetting::find(1)->t_status == 1) 
+                                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
+                                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                                            <span class="sr-only">تويتر</span>
+                                        </a>
+                                         @endif
+                                          @if(App\Models\Socialsetting::find(1)->l_status == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->linkedin }}">
+                                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                                            <span class="sr-only">لينكدإن</span>
+                                        </a>
+                                          @endif
+                                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
+                                        <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-hidden="true">
+                                            <i class="fab fa-youtube"></i>
+                                            <span class="sr-only">يوتيوب</span>
+                                        </a>
+                                        @endif
+                {{-- <a href="https://facebook.com">
                     <i class="fab fa-facebook-f" aria-hidden="true"></i>
                     <span class="sr-only">Facebook</span>
                 </a>
@@ -577,12 +634,19 @@
                 <a href="https://youtube.com" aria-hidden="true">
                     <i class="fab fa-youtube"></i>
                     <span class="sr-only">Youtube</span>
-                </a>
+                </a> --}}
             </div><!-- /sidebar-one__social -->
             <div class="sidebar-one__newsletter sidebar-one__item">
                 <label class="sidebar-one__title" for="sidebar-email">Newsletter</label>
-                <form action="#" class="sidebar-one__newsletter__inner mc-form" data-url="MAILCHIMP_FORM_URL">
-                    <input type="email" name="EMAIL" id="sidebar-email" class="sidebar-one__newsletter__input"
+              
+                       <form action="{{ route('front.subscripe.submit') }}" name="appointment"
+                                                id="subscribeform" aria-label="subscripe form" data-status="init"
+                                                method="POST" autocomplete="off"  data-url="{{ route('front.subscripe.submit') }}" class="sidebar-one__newsletter__inner  ">
+                                                {{ csrf_field() }}
+                                                <div style="width: 81%;">
+                                                        @include('includes.admin.form-both')
+                                                   </div>
+                    <input type="email" name="email" required id="sidebar-email" class="sidebar-one__newsletter__input"
                         placeholder="Email Address">
                     <button type="submit" class="sidebar-one__newsletter__btn"><span class="icon-email"
                             aria-hidden="true"></span></button>

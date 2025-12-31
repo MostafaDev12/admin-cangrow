@@ -123,21 +123,13 @@
 
 
 
-                                @if (Auth::guard('admin')->user()->sectionCheck('locations'))
-                                    <li class="nav-item">
-                                        <a class="nav-link  " href="{{ route('admin-locations-index') }}"
-                                            aria-controls="sidebarlocations">
-                                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.locations')</span>
-                                        </a>
-                                    </li>
-                                @endif
                                 {{-- --}}
 
                                 @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
                                     <li class="nav-item">
                                         <a class="nav-link  " href="{{ route('admin-certificates-index') }}"
                                             aria-controls="sidebarcertificates">
-                                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.certificates')</span>
+                                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.footer_photos')</span>
                                         </a>
                                     </li>
                                 @endif
@@ -424,6 +416,15 @@
                         </a>
                     </li>
                 @endif
+                
+                                @if (Auth::guard('admin')->user()->sectionCheck('locations'))
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="{{ route('admin-locations-index') }}"
+                                            aria-controls="sidebarlocations">
+                                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.locations')</span>
+                                        </a>
+                                    </li>
+                                @endif
                 @if (Auth::guard('admin')->user()->sectionCheck('general_settings'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#general" data-bs-toggle="collapse" role="button"

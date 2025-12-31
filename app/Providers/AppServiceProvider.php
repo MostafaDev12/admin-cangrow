@@ -8,6 +8,7 @@ use App\Models\Pagesetting;
 use App\Models\Service;
 use App\Models\Location;
 use App\Models\BlogCategory;
+use App\Models\Certificate;
 use App\Models\ModelCategory;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -35,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('blogcategories', BlogCategory::get());
             $settings->with('references', ModelCategory::get());
             $settings->with('locations', Location::get());
+            $settings->with('footer_images', Certificate::get());
             $settings->with('servicesWithoutCats', Service::whereNull('category_id')->get());
         });
 

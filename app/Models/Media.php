@@ -22,6 +22,9 @@ class Media extends Model
         'ext',
         'type',
         'youtube_url',
+        'link',
+        'title_ar',
+        'title_en',
        
       
     ];
