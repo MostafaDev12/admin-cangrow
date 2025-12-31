@@ -24,6 +24,11 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
     //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
 
 
+    
+
+     Route::get('change/{id}', [HomeController::class, 'change'])->name('change-lang.index');
+
+        
     Route::get('/', function () {
 
         $data = Language::where('is_default', '=', '1')->first();
@@ -112,9 +117,5 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
     
 
-
-        Route::get('change/{id}', [HomeController::class, 'change'])->name('change-lang.index');
-
-        
    });
  

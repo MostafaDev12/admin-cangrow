@@ -941,7 +941,7 @@ $processes = Process::get();
 
   public function change($id)
   {
-dd($id);
+ 
     $data = Language::findOrFail($id);
 
     App::setlocale($data->name);
