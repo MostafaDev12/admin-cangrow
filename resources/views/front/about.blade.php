@@ -1,4 +1,4 @@
-  
+   
    @extends('layouts.front')
 
 @section('title')
@@ -16,304 +16,410 @@
  @stop
 
 @section('content')
- 
-  
+      @php
+         $phones = explode(',', $gs->phones);
+         $emails = explode(',', $gs->emails);
+         $addresses = json_decode($gs->{'addresses_' . $sign});
+
+         $randomAddress = Arr::random($addresses);
+         $randomPhone = Arr::random($phones);
+         $randomEmail = Arr::random($emails);
+     @endphp
+
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: linear-gradient(to right, #000000, #ffffff);"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <h2 class="page-header__title">من نحن</h2>
+              
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+       
+        <!-- /.meat-list -->
+
+        <!-- ------------------------------- -->
+       <!-- من نحن -->
+        <section class="about-two" id="our-story">
+            <div class="container">
+                <div class="row gutter-y-60">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
+                        <div class="about-two__image">
+                            <img src="{{ asset('front/mtc/') }}/assets/images/about/about-2-1.jpg" alt="مجمع تكنولوجيا اللحوم MTC"
+                                class="about-two__image__one">
+                            <img src="{{ $ps->about_photo }}" alt="منتجات اللحوم الطازجة"
+                                class="about-two__image__two">
+                            <div class="about-two__experience">
+                                <div class="about-two__experience__bg"
+                                    style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/about-experience-bg-2-1.png);">
+                                </div><!-- /.about-two__experience__bg -->
+                                <div class="about-two__experience__content">
+                                    <div class="about-two__experience__box count-box relative"
+                                        style="position: relative;">
+                                        <div class="">
+                                            <img class="!h-[100px] !w-[100px]" src="{{ asset('front/mtc/') }}/assets/images/logo/Artboard 2.png"
+                                                width="50" height="50" />
+                                        </div>
+                                        <h3 class="about-two__experience__year">+</h3>
+                                    </div><!-- /.about-two__experience__box -->
+                                    <h4 class="about-two__experience__text">سنوات من <br> الخبرة</h4>
+                                    <!-- /.about-two__experience__text -->
+                                </div><!-- /.about-two__experience__content -->
+                            </div><!-- /.about-two__experience -->
+                        </div><!-- /.about-two__image -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6 wow fadeInRight" data-wow-duration="1500ms">
+                        <div class="about-two__content">
+                            <div class="sec-title @@extraClassName">
+
+                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="عن مجمع تكنولوجيا اللحوم MTC"
+                                    class="sec-title__img">
+
+                                <!-- <h6 class="sec-title__tagline">عن مجمع تكنولوجيا اللحوم MTC</h6> -->
+                                <!-- /.sec-title__tagline -->
+
+                                <h2 class="sec-title__title">      {{ $ps->{'about_title_' . $sign} ?? '' }}    </h2><!-- /.sec-title__title -->
+                            </div><!-- /.sec-title -->
+                            <p class="about-two__text">    {!! $ps->{'about_details_' . $sign} ?? '' !!} <p>
+                            <!-- /.about-two__text -->
+                            <div class="about-two__inner">
 
 
-
- <main>
-     <section class="py-16 md:py-24 overflow-hidden min-h-screen flex items-center justify-center">
-         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-
-             <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 start-1/2 translate-x-3/4 w-48 h-80 z-[-1]"
-                 style="background-image: radial-gradient(circle at center, #d1d5db 1px, transparent 1.5px); background-size: 1.25rem 1.25rem;">
-             </div>
-
-             <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24 items-center">
-
-                 <div class="lg:col-span-2 relative mt-20 lg:mt-0">
-                     <img src="{{ $ps->about_photo }}" alt="أطفال مبتسمون"
-                         class="w-full h-auto rounded-lg shadow-xl object-cover">
-
-                     <div
-                         class="absolute bottom-0 start-0 w-2/3 md:w-3/4  rounded-lg shadow-2xl transform translate-y-1/3 md:translate-x-1/2">
-                         <img src="{{ asset('front/dareltawfik/') }}/assets/imgs/banner/image-2.jpg" alt="Life Makers Logo"
-                             class="w-full h-full rounded-lg object-cover">
-                     </div>
-                 </div>
-
-                 <div class="lg:col-span-3">
-                     <div class="mb-8">
+                                <div class="about-two__info">
+                                    <div class="about-two__info__icon">
+                                        <span class="icon-healthy-food"></span>
+                                    </div><!-- /.about-two__info__icon -->
+                                    <div class="about-two__info__content">
+                                        <h4 class="about-two__info__title">لحوم طازجة عالية الجودة</h4>
+                                        <!-- /.about-two__info__title -->
+                                    </div><!-- /.about-two__info__content -->
+                                </div><!-- /.about-two__info -->
+                                <div class="about-two__info">
+                                    <div class="about-two__info__icon">
+                                        <span class="icon-butchering"></span>
+                                    </div><!-- /.about-two__info__icon -->
+                                    <div class="about-two__info__content">
+                                        <h4 class="about-two__info__title">تقنيات ذبح وتجهيز متطورة</h4>
+                                        <!-- /.about-two__info__title -->
+                                    </div><!-- /.about-two__info__content -->
+                                </div><!-- /.about-two__info -->
 
 
-                         <div class="mb-12 max-w-3xl mx-auto">
-                             <div class="relative mb-10">
-                                 <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                                      {{ __('من نحن') }}
-                                 </h1>
+                            </div><!-- /.about-two__inner -->
+                            <ul class="about-two__list">
+                                 @foreach ($points as $point)
+                              
+                                <li>
+                                    <span class="icon-check"></span>
+                                    {!! $point->{'title_' . $sign} ?? '' !!}
+                                </li>
+                                  @endforeach 
+                               
+                            </ul><!-- /.about-two__list -->
+                            {{-- <a href="{{ route('about.index',$sign) }}" class="boskery-btn">
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__text">تعرف علينا أكثر</span>
+                                <i class="icon-meat-3"></i>
+                            </a><!-- /.boskery-btn --> --}}
+                        </div><!-- /.about-two__content -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+            <div class="about-two__shape">
+                <div class="about-two__shape__image wow fadeInRight" data-wow-duration="1500ms">
+                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-1.png" alt="about-shape">
+                </div><!-- /.about-two__shape__image -->
+                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-2.png" alt="about-shape"
+                    class="about-two__shape__two wow fadeInLeft" data-wow-duration="1500ms">
+            </div><!-- /.about-two__shape -->
+        </section><!-- /.about-two -->
+    
+        <!-- الرؤيا الرسالة والقيم -->
+        <section class="about-three section-space" id="vision-mission-values">
+            <div class="container">
+                <div class="row gutter-y-60">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
+                        <div class="about-three__image">
+                            <img src="{{ asset('front/mtc/') }}/assets/images/about/about-3-1.jpg" alt="مجمع تكنولوجيا اللحوم MTC"
+                                class="about-three__image__one">
+                            <div class="about-three__image__inner">
+                                <img src="{{ asset('front/mtc/') }}/assets/images/about/about-3-2.jpg" alt="منتجات اللحوم"
+                                    class="about-three__image__two">
+                            </div><!-- /.about-three__image__inner -->
+                            <div class="about-three__experience">
+                                <div class="about-three__experience__bg"
+                                    style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/about-shape-3-1.png);"></div>
+                                <!-- /.about-three__experience__bg -->
+                                <div class="about-three__experience__content">
+                                    <div class="about-three__experience__text">
+                                        <h4 class="about-three__experience__title">سنوات من <br>
+                                            الخبرة</h4><!-- /.about-three__experience__title -->
+                                    </div><!-- /.about-three__experience__text -->
+                                    <h4 class="about-three__experience__year">50+</h4>
+                                    <!-- /.about-three__experience__year -->
+                                </div><!-- /.about-three__experience__content -->
+                            </div><!-- /.about-three__experience -->
+                        </div><!-- /.about-three__image -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6 wow fadeInRight" data-wow-duration="1500ms">
+                        <div class="about-three__content">
+                            <div class="sec-title @@extraClassName">
 
-                             </div>
-                             <p class="text-lg text-gray-600 leading-relaxed">
-                                  {{ $ps->{'about_title_' . $sign} ?? '' }}  
-                             </p>
-                             <div class="w-20 h-1.5 bg-custom-orange rounded-full"></div>
+                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="الرؤية والرسالة والقيم"
+                                    class="sec-title__img">
 
-                         </div>
+                                <!-- <h6 class="sec-title__tagline">الرؤية والرسالة والقيم</h6> -->
+                                <!-- /.sec-title__tagline -->
 
-                     </div>
+                                <h2 class="sec-title__title">رؤيتنا ورسالتنا <br> نحو مستقبل أفضل</h2>
+                                <!-- /.sec-title__title -->
+                            </div><!-- /.sec-title -->
 
-                     <p class="text-lg text-gray-700 leading-relaxed mb-8">
-                          {!! $ps->{'about_details_' . $sign} ?? '' !!}
-                    </p>
+                            <div class="vision-mission-values">
+                                  @foreach ($processes as $process)
+                                <div class="vision-section mb-4">
+                                    <h4 class="about-three__info__title mb-2">{!! $process->{'title_' . $sign} ?? '' !!}</h4>
+                                    <p class="about-three__text"> {!! $process->{'details_' . $sign} ?? '' !!} </p>
+                                </div>
+     @endforeach
+                                
 
-                     <div class="space-y-6">
+                                <div class="values-section">
+                                    <h4 class="about-three__info__title mb-2">القيم</h4>
+                                    <div class="about-three__info">
+                                        <div class="about-three__info__inner">
+                                            <div class="about-three__info__icon">
+                                                <span class="icon-healthcare-1"></span>
+                                            </div><!-- /.about-three__info__icon -->
+                                            <div class="about-three__info__content">
+                                                <h4 class="about-three__info__title">الصحة والنظافة</h4>
+                                                <!-- /.about-three__info__title -->
+                                            </div><!-- /.about-three__info__content -->
+                                        </div><!-- /.about-three__info__inner -->
+                                        <div class="about-three__info__inner">
+                                            <div class="about-three__info__icon">
+                                                <span class="icon-meat"></span>
+                                            </div><!-- /.about-three__info__icon -->
+                                            <div class="about-three__info__content">
+                                                <h4 class="about-three__info__title">الثقة والشفافية</h4>
+                                                <!-- /.about-three__info__title -->
+                                            </div><!-- /.about-three__info__content -->
+                                        </div><!-- /.about-three__info__inner -->
+                                        <div class="about-three__info__inner">
+                                            <div class="about-three__info__icon">
+                                                <span class="icon-meat"></span>
+                                            </div><!-- /.about-three__info__icon -->
+                                            <div class="about-three__info__content">
+                                                <h4 class="about-three__info__title">الابتكار</h4>
+                                                <!-- /.about-three__info__title -->
+                                            </div><!-- /.about-three__info__content -->
+                                        </div><!-- /.about-three__info__inner -->
+                                        <div class="about-three__info__inner">
+                                            <div class="about-three__info__icon">
+                                                <span class="icon-meat"></span>
+                                            </div><!-- /.about-three__info__icon -->
+                                            <div class="about-three__info__content">
+                                                <h4 class="about-three__info__title">التركيز على العميل</h4>
+                                                <!-- /.about-three__info__title -->
+                                            </div><!-- /.about-three__info__content -->
+                                        </div><!-- /.about-three__info__inner -->
+                                    </div><!-- /.about-three__info -->
+                                </div>
+                            </div>
 
-                         
-                         <div class="space-y-6">
-                             {{-- <div class="flex items-start">
-                                 <div class="flex-shrink-0">
-                                     <span
-                                         class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                         <i class="fas fa-check text-white text-sm"></i>
-                                     </span>
-                                 </div>
-                                 <p class="mr-4 text-base text-gray-700">
-                                     برامج الدعم الإنساني والاجتماعي
-                                 </p>
-                             </div> --}}
-                             @foreach ($points as $point)
-                                  
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0">
-                                        <span
-                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                            <i class="fas fa-check text-white text-sm"></i>
-                                        </span>
+                            <div class="about-three__bottom">
+                                <a href="{{ route('contact.index',$sign) }}" class="boskery-btn">
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__text">تواصل معنا</span>
+                                    <i class="icon-meat-3"></i>
+                                </a><!-- /.boskery-btn -->
+                            </div><!-- /.about-three__bottom -->
+                        </div><!-- /.about-three__content -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+            <div class="about-three__shape">
+                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-1.png" alt="about shape" class="about-three__shape-one">
+                <div class="about-three__shape__image wow fadeInLeft" data-wow-duration="1500ms">
+                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-2.png" alt="about shape">
+                </div><!-- /.about-three__shape__image -->
+            </div><!-- /.about-three__shape -->
+        </section><!-- /.about-three section-space -->
+
+        <!-- لماذا MTC -->
+     
+        <section class="about-one section-space-top"  id="why-mtc">
+            <div class="container">
+                <div class="row gutter-y-60">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
+                        <div class="about-one__image">
+                            <div class="about-one__image__inner">
+                                <h3 class="about-one__image__text">لماذا MTC</h3>
+                                <img src="{{ asset('front/mtc/') }}/assets/images/about/about-1-1.jpg" alt="about image">
+                                <a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="video-button video-popup">
+                                    <span class="icon-play"></span>
+                                    <i class="video-button__ripple"></i>
+                                </a>
+                                <div class="about-one__image__border"></div>
+                            </div>
+                            <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-1.png" alt="about shape"
+                                class="about-one__image__shape">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 wow fadeInRight" data-wow-duration="1500ms">
+                        <div class="about-one__content">
+                            <div class="sec-title @@extraClassName">
+
+                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="about boskery meat shop"
+                                    class="sec-title__img">
+
+                                <!-- <h6 class="sec-title__tagline"></h6> -->
+
+                                <!-- <h2 class="sec-title__title">نقاط تميزنا</h2> -->
+                                <h2 class="sec-title__title">لماذا MTC</h2>
+                            </div>
+
+                            <p class="about-one__text">
+                                {!! $ps->{'portfolio_details_' . $sign}  ?? '' !!} 
+                            </p>
+
+                            <div class="about-one__inner">
+                                <h5 class="about-one__info-title">أهم مميزاتنا</h5>
+
+                                <ul class="about-one__info">
+                                    @foreach ($about_visions as $point)
+                     
+                                    <li><span class="icon-check-mark"></span>  {!! $point->{'title_' . $sign} ?? '' !!}    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                            <div class="about-one__bottom">
+                                <a href="{{ route('contact.index',$sign) }}" class="boskery-btn">
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__text">تواصل معنا</span>
+                                    <i class="icon-meat-3"></i>
+                                </a>
+
+                                <div class="contact__info">
+                                    <div class="contact__info__inner">
+                                        <div class="contact__info__icon">
+                                            <span class="icon-telephone"></span>
+                                        </div>
+                                        <div class="contact__info__right">
+                                            <h4 class="contact__info__title">اتصل بنا</h4>
+                                            <a href="tel:{{ $randomPhone}}" class="contact__info__number">
+                                             {{ $randomPhone}}
+                                            </a>
+                                        </div>
                                     </div>
-                                    <p class="mr-4 text-base text-gray-700">
-                                          {!! $point->{'title_' . $sign} ?? '' !!}
-                                    </p>
                                 </div>
 
-                              @endforeach  
- 
-                         </div>
- 
-
-                     </div>
-                 </div>
-
-             </div>
-                    <div class="text-center mt-12">
-                        <a href="{{ route('events.index',$sign) }}"
-                            class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
-                            <span>           {{ __('مناسبات دائمة خاصة بالمؤسسة') }}  
-                            </span>
-                            <i class="fa-solid fa-arrow-left-long mr-2"></i>
-                        </a>
-                        <a href="{{ route('parties.index',$sign) }}"
-                            class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
-                            <span>      {{ __('الاحتفالات') }}
-                            </span>
-                            <i class="fa-solid fa-arrow-left-long mr-2"></i>
-                        </a>
+                            </div>
+                        </div>
                     </div>
-         </div>
-     </section>
-     <section class="relative bg-no-repeat bg-cover bg-center flex items-center justify-center"
-         style=" background-image:
-            url('{{ asset('front/dareltawfik/') }}/assets/imgs/home/bg-1-3.png')">
 
-         <!-- <div class="absolute inset-0 bg-blue-900 bg-opacity-80"></div> -->
+                </div>
+            </div>
 
-         <div class="grid grid-cols-1 lg:grid-cols-5">
-
-             <div class="lg:col-span-2 relative h-64 lg:h-auto">
-                 <img src="{{ asset('front/dareltawfik/') }}/assets/imgs/about/about-1.jpg" alt="Child" class="w-full h-full object-cover">
-
-                 <!-- <div class="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48">
-                        <img src="https://via.placeholder.com/200x200/ea580c/ea580c?text=SPLATTER" alt="Splatter effect"
-                            class="opacity-75">
-                    </div> -->
-             </div>
-
-             <div class="lg:col-span-3  text-gray-300 p-12 md:p-16 relative">
-
-                 <i class="fa-solid fa-earth-africa text-9xl absolute bottom-10 left-10 text-white opacity-5"
-                     style="font-size: 20rem;"></i>
-
-                 <div class="relative z-10">
-
-                     <div class="mb-12">
+            <div class="about-one__shape">
+                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-2.png" alt="about shape" class="about-one__shape__one">
+                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-3.png" alt="about shape" class="about-one__shape__two">
+            </div>
+        </section>
 
 
-                         <div class=" mb-12 max-w-3xl mx-auto">
-                             <div class="relative mb-10">
-                                 <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                                 {{ __('مؤسسة دار التوفيق مصر') }}             
-                                 </h1>
-                                 <div
-                                     class="font-['Aref_Ruqaa'] text-[60px] font-normal text-[color:var(--funden-heading-color)] opacity-10 tracking-[0] absolute left-0 top-[30%] w-full -translate-y-1/2 capitalize leading-[1] z-1">
-                                         {{ __('عن المؤسسة') }}
-                                 </div>
-                             </div>
-                             <p class="text-lg  leading-relaxed">
-                            {{ __('هي مؤسسة أهلية وطنية غير حكومية وغير هادفة للربح أسست عام 2011 ومشهرة مركزياً برقم 839. في مؤسسة دار التوفيق مصر، نؤمن أن تنمية الإنسان هي السبيل لبناء مجتمعات قوية ومزدهرة.') }}
-                            </p>
-                         </div>
+        <!-- الإنجازات -->
+        <section class="counter-one section-space">
+            <div class="counter-one__bg boskery-jarallax" data-jarallax data-speed="0.3"
+                style="background-image: url(assets/images/backgrounds/counter-bg-2.jpg);"></div>
+            <!-- /.counter-one__bg -->
+            <div class="container">
+                <div class="counter-one__wrapper">
+    @foreach ($timelines as $timeline)
+                    <div class="counter-one__item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                        <div class="counter-one__item__inner">
+                            <div class="counter-one__box count-box">
+                                <h3 class="counter-one__count-text count-text" data-stop=" {{ $timeline->year ?? 0 }}" data-speed="1500">0</h3>
+                            </div><!-- /.counter-one__box -->
+                            <h4 class="counter-one__title">    {{ $timeline->{'title_' . $sign} ?? '' }}  </h4><!-- /.counter-one__title -->
+                        </div><!-- /.counter-one__item__inner -->
+                    </div><!-- /.counter-one__item -->
+@endforeach
+                   
+                </div><!-- /.counter-one__wrapper -->
+            </div><!-- /.container -->
+        </section><!-- /.counter-one section-space -->
 
-                     </div>
+        <!-- شركاء النجاح -->
+        <section class="client-carousel client-carousel--two" id="success-partners" style="padding-top: 143px;">
+            <div class="container">
+                <div class="sec-title text-center mb-5">
+                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="شركاء النجاح" class="sec-title__img">
+                    <!-- <h6 class="sec-title__tagline">شركاء النجاح</h6> -->
+                    <h2 class="sec-title__title"> شركاء النجاح
+                    </h2>
+                </div>
 
-                     <!-- الرؤية -->
-                     @foreach ($about_visions as $point)
-                         
-                     <div class="flex items-center gap-4 mb-6">
-                         <div
-                             class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-white bg-opacity-10 text-primary">
-                             <i class="{{ $point->icon }}"></i>
-                         </div>
-                         <div>
-                             <h3 class="text-xl font-bold text-white mb-2">  {!! $point->{'title_' . $sign} ?? '' !!}</h3>
-                             <p class="text-sm text-white">
-                                 {!! $point->{'details_' . $sign} ?? '' !!}
-                             </p>
-                         </div>
-                     </div>
+                <div class="client-carousel__one boskery-owl__carousel boskery-owl__carousel--basic-nav owl-carousel owl-theme"
+                    data-owl-options='{
+            "items": 1,
+            "margin": 0,
+            "loop": true,
+            "smartSpeed": 700,
+            "nav": false,
+            "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+            "dots": false,
+            "autoplay": true,
+            "responsive": {
+                "0":{
+                    "items": 2,
+                    "margin": 50
+                },
+                "500":{
+                    "items": 3,
+                    "margin": 70
+                },
+                "768":{
+                    "items": 4,
+                    "margin": 70
+                },
+                "992":{
+                    "items": 5,
+                    "margin": 100
+                },
+                "1200":{
+                    "items": 5,
+                    "margin": 150
+                }
+            }
+        }'>
+          @foreach ($partners as $partner) 
+                    <div class="client-carousel__one__item">
+                        <img src="{{ $partner->photo }}" alt=" {{ $partner->{'title_' . $sign} ?? '' }}      ">
+                        <p class="partner-name"> {{ $partner->{'title_' . $sign} ?? '' }}  </p>
+                    </div><!-- /.owl-slide-item-->
+ @endforeach
 
-                     @endforeach
-                  
-                 </div>
-             </div>
-         </div>
-     </section>
-
-     <section class="py-16 md:py-24 mb-20">
-         <div class="container mx-auto px-4">
-
-             <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
-                 <div class="md:max-w-2xl">
+                   
+                </div><!-- /.thm-owl__slider -->
 
 
-                     <div class="mb-12 max-w-3xl mx-auto">
-                         <div class="relative mb-10">
-                             <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                                    {{ __('مجلس الأمناء') }}
-                             </h1>
-                             <div
-                                 class="font-['Aref_Ruqaa'] text-[60px] font-normal text-[color:var(--funden-heading-color)] opacity-10 tracking-[0] absolute left-0 top-[30%] w-full -translate-y-1/2 capitalize leading-[1] z-1">
-                                    {{ __('دار التوفيق') }}
-                             </div>
-                         </div>
-
-                     </div>
-
-
-                     <p class="text-gray-600 leading-relaxed">
-                        {{ __('تدار مؤسسة دار التوفيق مصر من خلال مجلس أمناء يضم نخبة متميزة من الشخصيات العامة والوزراء السابقين وأساتذة الجامعات وأصحاب الخبرات في مجال العمل الشبابي والتطوعي.') }}
-                     </p>
-                 </div>
-
-                 <div class="flex-shrink-0">
-                     <a href="{{ route('board-trustees.index',$sign) }}"
-                         class="inline-block bg-primary text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-accent hover:shadow-lg">
-                          {{ __('شاهد الكل') }}
-                     </a>
-                 </div>
-             </div>
-             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                @foreach ($teams as $team)
-                      <article class="rounded-lg group cursor-pointer transition-all duration-300">
-                     <img src="{{ $team->photo_url }}" alt="{!! $team->{'name_' . $sign} ?? '' !!} "
-                         class="w-full h-64 rounded-t-lg">
-                     <div
-                         class="p-6 text-center py-3 bg-white transition-all duration-300 group-hover:shadow-2xl group-hover:rounded-lg group-hover:w-fit group-hover:mx-auto  group-hover:-translate-y-6">
-                         <h3 class="text-xl font-bold text-slate-800 mb-1">   {!! $team->{'name_' . $sign} ?? '' !!}    </h3>
-                         <p class="text-accent font-semibold">{!! $team->{'title_' . $sign} ?? '' !!}</p>
-                     </div>
-                 </article>
-
-                @endforeach
-                
-             </div>
-
-         </div>
-     </section>
-     <section
-         class="bg-slate-900 py-16 md:py-24 relative bg-no-repeat bg-cover bg-center flex items-center justify-center"
-         style=" background-image:
-            url('{{ asset('front/dareltawfik/') }}/assets/imgs/home/bg-1-3.png')">
-         <div class="container mx-auto px-4">
-
-             <div class="relative max-w-4xl mx-auto -mt-48 mb-16 md:mb-24 rounded-lg overflow-hidden shadow-2xl">
-                 <img src="{{ asset('front/dareltawfik/') }}/assets/imgs/home/bg-1-3.png" alt="Promotional Video" class="w-full h-auto block">
-
-                 <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-
-                 <a href="#"
-                     class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 bg-white bg-opacity-90 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group">
-                     <i
-                         class="fa-solid fa-play text-slate-900 text-3xl md:text-4xl ml-1 group-hover:text-accent transition-colors"></i>
-                 </a>
-             </div>
-
-             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-                @foreach ($processes as $process)
-                 <div>
-                     <i class="{{ $process->icon }} text-primary text-4xl mb-3"></i>
-                     <p class="text-3xl font-extrabold">   {!! $process->{'title_' . $sign} ?? '' !!}  </p>
-                     <p class="text-gray-300">   {!! $process->{'details_' . $sign} ?? '' !!}  </p>
-                 </div>
-                    
-                @endforeach
-                 
-
-                 
-             </div>
-
-         </div>
-     </section>
-
-      <section class="py-16 md:py-24">
-             <div class="container mx-auto px-4">
-
-                 <div class="text-center mb-12 max-w-3xl mx-auto">
-                     <div class="relative mb-10">
-                         <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                          {{ __('شركاء النجاح') }}       </h1>
-
-                     </div>
-                     <p class="text-lg text-gray-600 leading-relaxed">
-                         
-                         {{ __('شركاء نجاح مؤسسة دار التوفيق') }}
-                     </p>
-                 </div>
-
-                 <!-- Swiper -->
-                 <div class="swiper partners-swiper">
-                     <div class="swiper-wrapper">
-                         <!-- توليد 19 شريكًا -->
-                         @foreach ($partners as $partner) 
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="{{ $partner->photo }}" alt="Partner 1"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                             @endforeach
-                     </div>
-
-                     <!-- أزرار التحكم -->
-                     <div class="swiper-button-next !text-primary"></div>
-                     <div class="swiper-button-prev !text-primary"></div>
-
-                     <!-- النقاط -->
-                     <div class="swiper-pagination mt-6"></div>
-                 </div>
-             </div>
-      </section>
-
- 
-        @include('includes.share')
- </main>
- @stop
+            </div><!-- /.container -->
+        </section>
+     @stop

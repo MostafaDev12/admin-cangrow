@@ -1,4 +1,4 @@
- @extends('layouts.front')
+  @extends('layouts.front')
 
  @section('title')
 
@@ -22,548 +22,334 @@
          $randomEmail = Arr::random($emails);
      @endphp
 
-     <main>
 
-         <section class="relative w-full h-[500px] mb-28 lg:h-[600px] bg-custom-blue">
-             <!-- Swiper Slider -->
-             <div class="swiper hero-slider h-full">
-                 <div class="swiper-wrapper">
-                    @foreach ($sliders as $slider)
-                        
-                     <div class="swiper-slide">
-                         <img src="{{ $slider->{'photo'} ?? '' }}" alt="صدقة جارية - نخلة بلح"
-                             class="absolute inset-0 w-full h-full object-" />
-                     </div>
-                    @endforeach
-                     
-                 </div>
+        <section class="hero-slider-two" id="home">
+            <div class="hero-slider-two__carousel boskery-owl__carousel boskery-owl__carousel--basic-nav owl-carousel"
+                data-owl-options='{
+		"loop": true,
+		"animateIn": "fadeIn",
+		"animateOut": "slideOutDown",
+		"items": 1,
+		"autoplay": true,
+		"autoplayTimeout": 7000,    
+		"smartSpeed": 1000,
+		"nav": true,
+        "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+		"dots": false,
+		"margin": 0
+	    }'>
+         @foreach ($sliders as $slider)
+                <div class="item">
+                    <div class="hero-slider-two__item">
+                        <div class="hero-slider-two__bg"
+                            style="background-image: url({{ $slider->{'photo'} ?? '' }});"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xxl-12 col-xl-10 col-lg-10 mx-auto">
+                                    <div class="hero-slider-two__content">
+                                        <h5 class="hero-slider-two__sub-title">
+                                          {!! $slider->{'title_' . $sign} ?? '' !!}
+                                            <span
+                                                class="hero-slider-two__sub-title__border hero-slider-two__sub-title__border--left"></span>
+                                            <span
+                                                class="hero-slider-two__sub-title__border hero-slider-two__sub-title__border--right"></span>
+                                        </h5><!-- /.slider-sub-title -->
+                                        <h2 class="hero-slider-two__title">
+                                         {!! $slider->{'details_' . $sign} ?? '' !!}
 
-                 <!-- Swiper Navigation -->
-                 <div class="swiper-button-prev"></div>
-                 <div class="swiper-button-next"></div>
-             </div>
-
-             <!-- Overlay Section -->
-             <div class="absolute z-10 left-0 right-0 -bottom-40  px-4 sm:px-6 lg:px-8">
-                 <div class="relative max-w-7xl mx-auto py-10 bg-custom-orange rounded-2xl overflow-hidden shadow-lg">
-                     <!-- Background Pattern -->
-                     <div class="absolute inset-0 opacity-20"
-                         style="
-          background-image: url('{{ asset('front/dareltawfik/') }}/assets/imgs/banner/bg-lines-transparent.png');
-          background-size: cover;
-          background-position: center bottom;
-          background-repeat: no-repeat;
-        ">
-                     </div>
-
-                     <!-- Text + Button -->
-                     <div
-                         class="relative flex flex-col md:flex-row justify-between items-center text-center md:text-right px-4 sm:px-6 lg:px-8 py-6 md:py-8">
-                         <div class="mb-6 md:mb-0">
-                             <h2 class="text-2xl md:text-3xl font-bold leading-tight text-white">
-                                    {{ __('شارك بصدقتك وزكاتك مع دار التوفيق') }}
-                                 <br class="hidden md:block" />
-                                    {{ __('وفرّح ملايين المستفيدين في كل محافظات مصر.') }}
-                             </h2>
-                         </div>
-
-                         <a href="{{ route('donate_campaigns.index', $sign) }}"
-                             class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-white hover:text-custom-orange transition-all duration-300 ease-in-out flex items-center space-x-2 space-x-reverse">
-                             <span>   {{ __('تبرع الآن') }}</span>
-                             <i class="fas fa-arrow-left text-sm"></i>
-                         </a>
-                     </div>
-                 </div>
-             </div>
-         </section>
-
-         <section class="py-16 md:py-24 overflow-hidden min-h-screen flex items-center justify-center">
-             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-
-                 <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 start-1/2 translate-x-3/4 w-48 h-80 z-[-1]"
-                     style="background-image: radial-gradient(circle at center, #d1d5db 1px, transparent 1.5px); background-size: 1.25rem 1.25rem;">
-                 </div>
-
-                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24 items-center">
-
-                     <div class="lg:col-span-2 relative mt-20 lg:mt-0">
-                         <img src="{{ $ps->about_photo }}" alt="أطفال مبتسمون"
-                             class="w-full h-auto rounded-lg shadow-xl object-cover">
-
-                         <div
-                             class="absolute bottom-0 start-0 w-2/3 md:w-3/4  rounded-lg shadow-2xl transform translate-y-1/3 md:translate-x-1/2">
-                             <img src="{{ asset('front/dareltawfik/') }}/assets/imgs/banner/image-2.jpg" alt="Life Makers Logo"
-                                 class="w-full h-full rounded-lg object-cover">
-                         </div>
-                     </div>
-
-                     <div class="lg:col-span-3">
-                         <div class="mb-8">
-
-
-                             <div class="mb-12 max-w-3xl mx-auto">
-                                 <div class="relative mb-10">
-                                     <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                                            {{ __('من نحن') }}
-                                     </h1>
-
-                                 </div>
-                                 <p class="text-lg text-gray-600 leading-relaxed">
-                                   {{ $ps->{'about_title_' . $sign} ?? '' }}
-                                 </p>
-                                 <div class="w-20 h-1.5 bg-custom-orange rounded-full"></div>
-
-                             </div>
-
-                         </div>
-
-                        
-                          
-                        <div class="space-y-6">
- 
-                            <div class="space-y-6"> 
-
-                                {!! $ps->{'about_details_' . $sign} ?? '' !!}
-
-                              @foreach ($points as $point)
-                                  
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0">
-                                        <span
-                                            class="flex items-center justify-center h-7 w-7 rounded-full bg-custom-orange shadow-md">
-                                            <i class="fas fa-check text-white text-sm"></i>
-                                        </span>
+                                        </h2><!-- /.slider-title -->
+                                        <div class="hero-slider-two__btn">
+                                            <a href="{{ route('contact.index',$sign) }}" class="boskery-btn">
+                                                <span class="boskery-btn__hover"></span>
+                                                <span class="boskery-btn__hover"></span>
+                                                <span class="boskery-btn__hover"></span>
+                                                <span class="boskery-btn__hover"></span>
+                                                <span class="boskery-btn__hover"></span>
+                                                <span class="boskery-btn__hover"></span>
+                                                <span class="boskery-btn__text">اتصل بنا الآن</span>
+                                                <i class="icon-meat-3"></i>
+                                            </a><!-- slider-btn -->
+                                        </div>
                                     </div>
-                                    <p class="mr-4 text-base text-gray-700">
-                                          {!! $point->{'title_' . $sign} ?? '' !!}
-                                    </p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.slider-item -->
+          @endforeach
+            </div>
+        </section><!-- /.hero-slider-two -->
 
-                              @endforeach  
- 
+        <section class="meat-list meat-list-two">
+            <div class="meat-list-two__inner">
+                <div class="meat-list-two__wrapper">
+                    <div class="container">
+                        <div class="flex-col flex md:flex-row !items-center !justify-between !w-auto"
+                            data-owl-options='{
+                    "items": 1,
+                    "margin": 0,
+                    "loop": true,
+                    "autoplay": true,
+                    "smartSpeed": 700,
+                    "nav": false,
+                    "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+                    "dots": true,
+                    "responsive": {
+                        "0": {
+                            "items": 1,
+                            "nav": true,
+                            "dots": false,
+                            "margin": 10
+                        },
+                        "361": {
+                            "items": 2,
+                            "nav": true,
+                            "dots": false,
+                            "margin": 40
+                        },
+                        "576": {
+                            "items": 3,
+                            "margin": 40
+                        },
+                        "768": {
+                            "items": 4,
+                            "margin": 40
+                        },
+                        "992": {
+                            "items": 5,
+                            "margin": 60
+                        },
+                        "1200": {
+                            "items": 6,
+                            "loop": false,
+                            "autoplay": false,
+                            "dots": false,
+                            "margin": 60
+                        },
+                        "1400": {
+                            "items": 6,
+                            "loop": false,
+                            "autoplay": false,
+                            "dots": false,
+                            "margin": 80
+                        },
+                        "1600": {
+                            "items": 6,
+                            "loop": false,
+                            "autoplay": false,
+                            "dots": false,
+                            "margin": 101
+                        }
+                    }
+                }'>
+                        @foreach ($categories as $k=>$category)
+                            
+                        
+                            <div class="meat-list__item item wow fadeInUp !w-auto" data-wow-duration="1500ms"
+                                data-wow-delay="{{ $k }}00ms">
+                                <div class="meat-list__icon">
+                                    <span class="icon-bull"></span>
+                                </div><!-- /.meat-list__icon -->
+                                <h6 class="meat-list__title">    {!! $category->{'title_' . $sign} ?? '' !!} </h6><!-- /.meat-list__title -->
+                            </div><!-- /.meat-list__item item -->
+                             
+
+
+                        @endforeach
+                        </div><!-- /.meat-list__carousel -->
+                    </div><!-- /.container -->
+                </div><!-- /.meat-list-two__wrapper -->
+            </div><!-- /.meat-list__inner -->
+        </section><!-- /.meat-list -->
+
+        <!-- ------------------------------- -->
+        <!-- من نحن -->
+        <section class="about-two" id="about">
+            <div class="container">
+                <div class="row gutter-y-60">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
+                        <div class="about-two__image">
+                            <img src="{{ asset('front/mtc/') }}/assets/images/about/about-2-1.jpg" alt="مجمع تكنولوجيا اللحوم MTC"
+                                class="about-two__image__one">
+                            <img src="{{ $ps->about_photo }}" alt="منتجات اللحوم الطازجة"
+                                class="about-two__image__two">
+                            <div class="about-two__experience">
+                                <div class="about-two__experience__bg"
+                                    style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/about-experience-bg-2-1.png);">
+                                </div><!-- /.about-two__experience__bg -->
+                                <div class="about-two__experience__content">
+                                    <div class="about-two__experience__box count-box relative"
+                                        style="position: relative;">
+                                        <div class="">
+                                            <img class="!h-[100px] !w-[100px]" src="{{ asset('front/mtc/') }}/assets/images/logo/Artboard 2.png"
+                                                width="50" height="50" />
+                                        </div>
+                                        <h3 class="about-two__experience__year">+</h3>
+                                    </div><!-- /.about-two__experience__box -->
+                                    <h4 class="about-two__experience__text">سنوات من <br> الخبرة</h4>
+                                    <!-- /.about-two__experience__text -->
+                                </div><!-- /.about-two__experience__content -->
+                            </div><!-- /.about-two__experience -->
+                        </div><!-- /.about-two__image -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6 wow fadeInRight" data-wow-duration="1500ms">
+                        <div class="about-two__content">
+                            <div class="sec-title @@extraClassName">
+
+                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="عن مجمع تكنولوجيا اللحوم MTC"
+                                    class="sec-title__img">
+
+                                <!-- <h6 class="sec-title__tagline">عن مجمع تكنولوجيا اللحوم MTC</h6> -->
+                                <!-- /.sec-title__tagline -->
+
+                                <h2 class="sec-title__title">      {{ $ps->{'about_title_' . $sign} ?? '' }}    </h2><!-- /.sec-title__title -->
+                            </div><!-- /.sec-title -->
+                            <p class="about-two__text">    {!! $ps->{'about_details_' . $sign} ?? '' !!} <p>
+                            <!-- /.about-two__text -->
+                            <div class="about-two__inner">
+
+
+                                <div class="about-two__info">
+                                    <div class="about-two__info__icon">
+                                        <span class="icon-healthy-food"></span>
+                                    </div><!-- /.about-two__info__icon -->
+                                    <div class="about-two__info__content">
+                                        <h4 class="about-two__info__title">لحوم طازجة عالية الجودة</h4>
+                                        <!-- /.about-two__info__title -->
+                                    </div><!-- /.about-two__info__content -->
+                                </div><!-- /.about-two__info -->
+                                <div class="about-two__info">
+                                    <div class="about-two__info__icon">
+                                        <span class="icon-butchering"></span>
+                                    </div><!-- /.about-two__info__icon -->
+                                    <div class="about-two__info__content">
+                                        <h4 class="about-two__info__title">تقنيات ذبح وتجهيز متطورة</h4>
+                                        <!-- /.about-two__info__title -->
+                                    </div><!-- /.about-two__info__content -->
+                                </div><!-- /.about-two__info -->
+
+
+                            </div><!-- /.about-two__inner -->
+                            <ul class="about-two__list">
+                                 @foreach ($points as $point)
+                              
+                                <li>
+                                    <span class="icon-check"></span>
+                                    {!! $point->{'title_' . $sign} ?? '' !!}
+                                </li>
+                                  @endforeach 
+                               
+                            </ul><!-- /.about-two__list -->
+                            <a href="{{ route('about.index',$sign) }}" class="boskery-btn">
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__hover"></span>
+                                <span class="boskery-btn__text">تعرف علينا أكثر</span>
+                                <i class="icon-meat-3"></i>
+                            </a><!-- /.boskery-btn -->
+                        </div><!-- /.about-two__content -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+            <div class="about-two__shape">
+                <div class="about-two__shape__image wow fadeInRight" data-wow-duration="1500ms">
+                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-1.png" alt="about-shape">
+                </div><!-- /.about-two__shape__image -->
+                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-2.png" alt="about-shape"
+                    class="about-two__shape__two wow fadeInLeft" data-wow-duration="1500ms">
+            </div><!-- /.about-two__shape -->
+        </section><!-- /.about-two -->
+    
+        <section class="about-one section-space-top" id="about">
+            <div class="container">
+                <div class="row gutter-y-60">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
+                        <div class="about-one__image">
+                            <div class="about-one__image__inner">
+                                <h3 class="about-one__image__text">لماذا MTC</h3>
+                                <img src="{{ asset('front/mtc/') }}/assets/images/about/about-1-1.jpg" alt="about image">
+                                <a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="video-button video-popup">
+                                    <span class="icon-play"></span>
+                                    <i class="video-button__ripple"></i>
+                                </a>
+                                <div class="about-one__image__border"></div>
+                            </div>
+                            <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-1.png" alt="about shape"
+                                class="about-one__image__shape">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 wow fadeInRight" data-wow-duration="1500ms">
+                        <div class="about-one__content">
+                            <div class="sec-title @@extraClassName">
+
+                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="about boskery meat shop"
+                                    class="sec-title__img">
+
+                                <!-- <h6 class="sec-title__tagline"></h6> -->
+
+                                <!-- <h2 class="sec-title__title">نقاط تميزنا</h2> -->
+                                <h2 class="sec-title__title">لماذا MTC</h2>
                             </div>
 
-                           
+                            <p class="about-one__text">
+                                {!! $ps->{'portfolio_details_' . $sign}  ?? '' !!} 
+                            </p>
+
+                            <div class="about-one__inner">
+                                <h5 class="about-one__info-title">أهم مميزاتنا</h5>
+
+                                <ul class="about-one__info">
+                                    @foreach ($about_visions as $point)
+                     
+                                    <li><span class="icon-check-mark"></span>  {!! $point->{'title_' . $sign} ?? '' !!}    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                            <div class="about-one__bottom">
+                                <a href="{{ route('contact.index',$sign) }}" class="boskery-btn">
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__text">تواصل معنا</span>
+                                    <i class="icon-meat-3"></i>
+                                </a>
+
+                                <div class="contact__info">
+                                    <div class="contact__info__inner">
+                                        <div class="contact__info__icon">
+                                            <span class="icon-telephone"></span>
+                                        </div>
+                                        <div class="contact__info__right">
+                                            <h4 class="contact__info__title">اتصل بنا</h4>
+                                            <a href="tel:{{ $randomPhone}}" class="contact__info__number">
+                                             {{ $randomPhone}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                     </div>
-
-                 </div>
-                    <div class="text-center mt-12">
-                        <a href="{{ route('events.index',$sign) }}"
-                            class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
-                            <span>           {{ __('مناسبات دائمة خاصة بالمؤسسة') }}  
-                            </span>
-                            <i class="fa-solid fa-arrow-left-long mr-2"></i>
-                        </a>
-                        <a href="{{ route('parties.index',$sign) }}"
-                            class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
-                            <span>      {{ __('الاحتفالات') }}
-                            </span>
-                            <i class="fa-solid fa-arrow-left-long mr-2"></i>
-                        </a>
                     </div>
-             </div>
-         </section>
 
-
-         <section class="container mx-auto px-4 py-16 md:py-24">
-
-
-             <div class="text-center mb-12 max-w-3xl mx-auto">
-                 <div class="relative mb-10">
-                     <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                            {{ __('المشروعات والخدمات') }}
-                     </h1>
-
-                 </div>
-                 <p class="text-lg text-gray-600 leading-relaxed">
-                        {{ __('المشروعات والخدمات') }}
-                 </p>
-             </div>
-
-             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                @foreach ($projects as $project)
-                    
-                 <div
-                     class="fade-in-card group relative bg-white rounded-xl shadow-lg p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden flex items-start gap-4">
-                     <span
-                         class="absolute bottom-0 right-0 h-0 w-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:h-full"></span>
-
-                     <span
-                         class="absolute bottom-0 right-0 w-0 h-[4px] bg-custom-orange transition-all duration-500 ease-out group-hover:w-full"></span>
-
-                     <div class="flex-shrink-0 text-accent w-12 h-12 flex items-center justify-center">
-                         <i class="{{ $project->icon }} text-4xl"></i>
-                     </div>
-                     <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">   {!! $project->{'title_' . $sign} ?? '' !!}  </h3>
-                         <p class="text-gray-500">    {!! $project->{'short_details_' . $sign} ?? '' !!}   </p>
-                     </div>
-                 </div>
-
-                @endforeach
-                 
-             </div>
-         </section>
-
-         <section class="py-16 md:py-24 bg-gray-50" dir="{{ session::get('front_language_duraction') }}">
-             <div class="container mx-auto px-4">
-                 <div class="text-center mb-12 max-w-3xl mx-auto">
-                     <h1 class="text-2xl font-extrabold text-slate-800 mb-4">   {{ __('معلومات لحظية') }}</h1>
-                     <p class="text-lg text-gray-600"> {{ __('مواقيت الصلاة، آية/سورة من القرآن، ودرجات الحرارة حسب مدينتك') }} </p>
-                 </div>
-
-                 <!-- اختيار المدينة العام -->
-                 <div class="mb-10 text-center">
-                     <label class="text-gray-700 font-semibold text-sm">   {{ __('اختر مدينتك') }}</label>
-                    <select id="global-city" class="px-3 py-2 border rounded-md text-sm">
-                        <option value="cairo" data-value="{{ __('القاهرة') }}" data-latitude="30.0444" data-longitude="31.2357">{{ __('القاهرة') }}</option>
-                        <option value="giza" data-value="{{ __('الجيزة') }}" data-latitude="29.9765" data-longitude="31.1313">{{ __('الجيزة') }}</option>
-                        <option value="alex" data-value="{{ __('الإسكندرية') }}" data-latitude="31.2001" data-longitude="29.9187">{{ __('الإسكندرية') }}</option>
-                        <option value="mansoura" data-value="{{ __('المنصورة') }}" data-latitude="31.0400" data-longitude="31.3785">{{ __('المنصورة') }}</option>
-                        <option value="aswan" data-value="{{ __('أسوان') }}" data-latitude="24.0908" data-longitude="32.8998">{{ __('أسوان') }}</option>
-                    </select>
-                 </div>
-
-                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                     <!-- مواقيت الصلاة -->
-                     <div class="bg-white rounded-lg shadow-md p-6">
-                         <div class="flex items-center justify-between mb-4">
-                             <h3 class="text-lg font-semibold text-slate-800">   {{ __('مواقيت الصلاة') }}</h3>
-                             <button id="refreshPrayer" class="text-sm text-custom-orange hover:underline">{{ __('تحديث') }}</button>
-                         </div>
-                         <div class="text-sm text-gray-600 mb-3"> {{ __('المدينة') }} :<span id="prayer-city"
-                                 class="font-semibold">{{ __('القاهرة') }}</span></div>
-                         <ul id="prayer-times" class="space-y-2 text-sm text-slate-700">
-                             <li>: {{ __('الفجر') }}<span class="font-medium">--:--</span></li>
-                             <li>: {{ __('الظهر') }}<span class="font-medium">--:--</span></li>
-                             <li>: {{ __('العصر') }}<span class="font-medium">--:--</span></li>
-                             <li>: {{ __('المغرب') }}<span class="font-medium">--:--</span></li>
-                             <li>: {{ __('العشاء') }}<span class="font-medium">--:--</span></li>
-                         </ul>
-                         <div class="mt-4 text-xs text-gray-500"> AlAdhan API : {{ __('المصدر') }}</div>
-                     </div>
-
-                     <!-- القرآن الكريم -->
-                     <div class="bg-white rounded-lg shadow-md p-6">
-                         <div class="flex items-center justify-between mb-4">
-                             <h3 class="text-lg font-semibold text-slate-800">   {{ __('القرآن الكريم') }}</h3>
-                             <div class="flex items-center gap-2">
-                                 <select id="quran-surah" class="text-sm px-2 py-1 border rounded-md">
-                                     <option value="1">{{ __('الفاتحة') }}</option>
-                                     <option value="2">{{ __('البقرة') }}</option>
-                                     <option value="36">{{ __('يس') }}</option>
-                                     <option value="55">{{ __('الرحمن') }}</option>
-                                     <option value="112">{{ __('الإخلاص') }}</option>
-                                 </select>
-                                 <button id="loadQuran" class="text-sm text-custom-orange hover:underline">{{ __('تحميل') }}</button>
-                             </div>
-                         </div>
-
-                         <div id="quran-content" class="text-slate-700 text-sm space-y-3" style="font-family: initial;font-size: initial;">
-                             <div id="quran-title" class="font-semibold">   {{ __('سورة الفاتحة') }}</div>
-                             <div id="quran-ayah" class="leading-relaxed">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ …</div>
-
-                             <!-- إضافة صوت القارئ -->
-                             {{-- <label class="text-xs text-gray-600 font-semibold mt-2 block">اختر القارئ</label>
-                             <select id="quran-reciter" class="text-sm px-2 py-1 border rounded-md w-full">
-                                 <option value="ar.alafasy">العفاسي</option>
-                                 <option value="ar.husary">الحصري</option>
-                                 <option value="ar.hudhaifi">الحذيفي</option>
-                                 <option value="ar.minshawi">المنشاوي</option>
-                             </select> --}}
-
-                             <audio id="quran-audio" controls class="w-full mt-3 hidden">
-                                 <source id="quran-audio-src" src="" type="audio/mpeg">
-                                 متصفحك لا يدعم عنصر الصوت.
-                             </audio>
-                         </div>
-
-                         <div class="mt-4 text-xs text-gray-500"> Quran API : {{ __('المصدر') }}</div>
-                     </div>
-
-                     <!-- درجات الحرارة -->
-                     <div class="bg-white rounded-lg shadow-md p-6">
-                         <div class="flex items-center justify-between mb-4">
-                             <h3 class="text-lg font-semibold text-slate-800">   {{ __('درجة الحرارة') }}</h3>
-                             <button id="refreshWeather" class="text-sm text-custom-orange hover:underline">{{ __('تحديث') }}</button>
-                         </div>
-
-                         <div class="flex items-center gap-4">
-                             <div>
-                                 <div class="text-xs text-gray-600">{{ __('المدينة') }}</div>
-                                 <div id="weather-city" class="text-lg font-semibold">{{ __('القاهرة') }}</div>
-                             </div>
-                             <div class="flex-1 text-right">
-                                 <div id="weather-temp" class="text-3xl font-bold text-slate-800">--°C</div>
-                                 <div id="weather-desc" class="text-sm text-gray-600">--</div>
-                             </div>
-                         </div>
-
-                         <div class="mt-4 grid grid-cols-2 gap-2 text-sm text-gray-600">
-                             <div>: {{ __('الرطوبة') }}<span id="weather-humidity">--%</span></div>
-                             <div>: {{ __('الرياح') }}<span id="weather-wind">-- m/s</span></div>
-                         </div>
-
-                         <div class="mt-4 text-xs text-gray-500">api.met.no : {{ __('المصدر') }}</div>
-                     </div>
-                 </div>
-             </div>
-         </section>
-
-
-         <section class="container mx-auto px-4 py-16">
-             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
- @foreach ($servicess as $service)
-                 <!-- كارت 1 -->
-                 <article
-                     class="group bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                     <div class="relative overflow-hidden">
-                         <img src="{!! $service->photo !!}" alt=" {!! $service->{'title_' . $sign} ?? '' !!}"
-                             class="w-full h-64 object- transition-transform duration-500 ease-out group-hover:scale-110" />
-
-                         <!-- الخط الصاعد -->
-                         <span
-                             class="absolute bottom-0 right-0 w-[2px] h-0 bg-custom-orange transition-all duration-500 ease-out group-hover:h-full group-hover:bottom-auto group-hover:top-0"></span>
-                     </div>
-
-                     <div class="p-6 flex-grow flex flex-col">
-                         <h3 class="text-xl font-bold text-gray-900 mb-2">  {!! $service->{'title_' . $sign} ?? '' !!}    </h3>
-                         <p class="text-gray-600 text-sm mb-4 flex-grow">
-                              {!! $service->{'short_details_' . $sign} ?? '' !!}
-                         </p>
-                         <div class="flex gap-2">
-                             <!-- Outline Button -->
-                             <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
-                                 class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
-                   {{ __('قدّم طلبك الآن') }}
-                             </a>
-
-                             <!-- Primary (Filled) Button -->
-                             <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
-                                 class="flex-1 text-white bg-custom-orange border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-white hover:text-custom-orange">
-                                    {{ __('تبرع الآن') }}
-                             </a>
-                         </div>
-                     </div>
-                 </article>
-  @endforeach
-                  
-             </div>
-
-             <div class="text-center mt-12">
-                 <a href="{{ route('services.index',$sign) }}"
-                     class="inline-flex items-center justify-center bg-custom-orange text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-white hover:text-custom-orange border-2 border-custom-orange focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">
-                     <i class="fa-solid fa-arrow-left-long ml-2"></i>
-                     <span>    {{ __('شاهد الكل') }}  </span>
-                 </a>
-             </div>
-         </section>
-
-
-
-
-
-
-
-
-
-         <section class="relative bg-no-repeat bg-cover bg-center py-20 flex items-center justify-center"
-             style=" background-image:
-            url('{{ asset('front/dareltawfik/') }}/assets/imgs/home/bg-1-3.png')">
-
-             <!-- <div class="absolute inset-0 bg-blue-900 bg-opacity-80"></div> -->
-
-             <div class="relative container mx-auto px-4 py-16 md:py-24 text-center">
-
-                 <h2 class="text-white text-3xl md:text-4xl font-bold mb-10">
-                   
-                     {{ __('تقرير الاعمال السنوية لمؤسسة دار التوفيق') }}
-                 </h2>
-
-                 <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-                    @foreach ($timelines as $timeline)
-                        <a href="#" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}"
-                         class="inline-flex items-center justify-center bg-primary text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-accent hover:shadow-lg hover:-translate-y-0.5">
-                         <i class="fa-solid fa-arrow-left mr-2"></i>
-                         <span>   {{ $timeline->{'title_' . $sign} ?? '' }}  </span>
-                     </a>
-@endforeach
-                      
-
-                 </div>
-
-             </div>
-         </section>
-         <section class="py-16 md:py-24">
-             <div class="container mx-auto px-4">
-
-                 <div class="text-center mb-12 max-w-3xl mx-auto">
-                     <div class="relative mb-10">
-                         <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
-                          {{ __('شركاء النجاح') }}       </h1>
-
-                     </div>
-                     <p class="text-lg text-gray-600 leading-relaxed">
-                         
-                         {{ __('شركاء نجاح مؤسسة دار التوفيق') }}
-                     </p>
-                 </div>
-
-                 <!-- Swiper -->
-                 <div class="swiper partners-swiper">
-                     <div class="swiper-wrapper">
-                         <!-- توليد 19 شريكًا -->
-                         @foreach ($partners as $partner) 
-                         <div class="swiper-slide">
-                             <div
-                                 class="bg-slate-100 rounded-lg p-6 flex items-center justify-center h-32 transition-all duration-300 hover:shadow-lg">
-                                 <img src="{{ $partner->photo }}" alt="Partner 1"
-                                     class="max-h-12 w-auto object-contain" />
-                             </div>
-                         </div>
-                             @endforeach
-                     </div>
-
-                     <!-- أزرار التحكم -->
-                     <div class="swiper-button-next !text-primary"></div>
-                     <div class="swiper-button-prev !text-primary"></div>
-
-                     <!-- النقاط -->
-                     <div class="swiper-pagination mt-6"></div>
-                 </div>
-             </div>
-         </section>
-
-
-     </main>
-
- @stop
-
- @section('js')
-     <script>
-         // تحميل البيانات عند تحميل الصفحة
-         loadHomeData();
-
-         function loadHomeData(city = "Cairo") {
-             fetch(`/api/home-data?city=${city}&country=Egypt`)
-                 .then(res => res.json())
-                 .then(data => {
-
-                     // مواقيت الصلاة
-                     const p = data.prayer;
-                     document.querySelector("#prayer-times").innerHTML = `
-               <li>{{ __('الفجر') }} : <span>${p.Fajr}</span></li>
-                <li>{{ __('الظهر') }} : <span>${p.Dhuhr}</span></li>
-                <li>{{ __('العصر') }} : <span>${p.Asr}</span></li>
-                <li>{{ __('المغرب') }} : <span>${p.Maghrib}</span></li>
-                <li>{{ __('العشاء') }} : <span>${p.Isha}</span></li>
-            `;
-
-                     // القرآن
-                     const q = data.quran;
-                  //   document.querySelector("#quran-title").textContent = `سورة ${q.surah_name}`;
-                     document.querySelector("#quran-ayah").innerHTML =
-                         q.ayahs.map(a => a.text + '(' + a.numberInSurah + ')').join("<br>");
-
-                     // الصوت
-                     const audio = document.querySelector("#quran-audio");
-                     audio.classList.remove("hidden");
-                     document.querySelector("#quran-audio-src").src = q.audio;
-                     audio.load();
-                     // الطقس
-                     const w = data.weather;
-                     document.querySelector("#weather-city").textContent = "{{ __('القاهره') }}";
-                     document.querySelector("#weather-temp").textContent = w.temp + "°C";
-                     document.querySelector("#weather-humidity").textContent = w.humidity + "%";
-                     document.querySelector("#weather-wind").textContent = w.wind + " m/s";
-                     document.querySelector("#weather-desc").textContent = w.desc;
-
-                 });
-         }
-
-         document.querySelector("#loadQuran").addEventListener("click", function() {
-             let surah = document.querySelector("#quran-surah").value;
-
-
-             fetch(`/api/quran/${surah}`)
-                 .then(res => res.json())
-                 .then(data => {
-
-                     document.querySelector("#quran-title").textContent =
-                         ` ${data.surah_name}`;
-
-                     document.querySelector("#quran-ayah").innerHTML =
-                         data.ayahs.filter(a => a.numberInSurah <= 10).map(a => `
-                    <div>
-                        ${a.text} (${a.numberInSurah})
-                      
-                    </div>
-                `).join("");
-                     //   <audio controls class="w-full mt-1">
-                     //                             <source src="${data.ayah_audio_base}${a.number}.mp3" type="audio/mpeg">
-                     //                         </audio>
-                     const audio = document.querySelector("#quran-audio");
-                     audio.classList.remove("hidden");
-                     document.querySelector("#quran-audio-src").src = data.audio;
-                     audio.load();
-                 });
-         });
-
-         document.querySelector("#refreshWeather").addEventListener("click", function() {
-             let city = document.querySelector("#global-city").value;
-            const select = document.querySelector("#global-city");
-                const selectedOption = select.options[select.selectedIndex];
-
-            // const city = select.value;
-            const city_ar = selectedOption.dataset.value || "{{ __('القاهره') }}";
-            const longitude = selectedOption.dataset.longitude || "31.2357";
-            const latitude = selectedOption.dataset.latitude || "30.0444";
-
-             fetch(`/api/weather-data?city=${city}&longitude=${longitude}&latitude=${latitude}`)
-                 .then(res => res.json())
-                 .then(data => {
- 
-                      // الطقس
-                     const w = data.weather;
-                     document.querySelector("#weather-city").textContent = city_ar;
-                     document.querySelector("#weather-temp").textContent = w.temp + "°C";
-                     document.querySelector("#weather-humidity").textContent = w.humidity + "%";
-                     document.querySelector("#weather-wind").textContent = w.wind + " m/s";
-                     document.querySelector("#weather-desc").textContent = w.desc;
-
-                 });
-         });
-
-
-         document.querySelector("#refreshPrayer").addEventListener("click", function() {
-             let city = document.querySelector("#global-city").value;
-            const select = document.querySelector("#global-city");
-                const selectedOption = select.options[select.selectedIndex];
-
-            // const city = select.value;
-                const city_ar = selectedOption.dataset.value || "Cairo";
-             fetch(`/api/prayer-data?city=${city}&country=Egypt`)
-                 .then(res => res.json())
-                 .then(data => {
-
-                     // مواقيت الصلاة
-                     const p = data.prayer;
-                     document.querySelector("#prayer-city").innerHTML = city_ar;
-
-                     document.querySelector("#prayer-times").innerHTML = `
-                <li>{{ __('الفجر') }} : <span>${p.Fajr}</span></li>
-                <li>{{ __('الظهر') }} : <span>${p.Dhuhr}</span></li>
-                <li>{{ __('العصر') }} : <span>${p.Asr}</span></li>
-                <li>{{ __('المغرب') }} : <span>${p.Maghrib}</span></li>
-                <li>{{ __('العشاء') }} : <span>${p.Isha}</span></li>
-            `;
-
-                 });
-         });
-
-
-     </script>
- @stop
+                </div>
+            </div>
+
+            <div class="about-one__shape">
+                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-2.png" alt="about shape" class="about-one__shape__one">
+                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-3.png" alt="about shape" class="about-one__shape__two">
+            </div>
+        </section>
+
+        <!-- المنجات -->
+        <!-- المنتجات -->
+    @include('includes.form')
+@stop

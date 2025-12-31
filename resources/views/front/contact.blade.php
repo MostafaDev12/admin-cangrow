@@ -1,141 +1,325 @@
+   
+ 
+    
    @extends('layouts.front')
 
-  @section('title')
+@section('title')
+   
+{{ __('تواصل معانا') }} -  {{ $gs->{'title_' . $sign} }}
+     
+@stop
 
-      {{ __('الإتصـــال بنـــا') }} - {{ $gs->{'title_' . $sign} }}
+@section('gsearch')
+    <meta property="og:image" content=" {{ $gs->{'logo_' . $sign} }}" />
+@stop
 
-  @stop
+@section('css')
 
-  @section('gsearch')
-      <meta property="og:image" content=" {{ $gs->{'logo_' . $sign} }}" />
-  @stop
-
-
-  @section('content')
-      @php
-          $phones = explode(',', $gs->phones);
-          $emails = explode(',', $gs->emails);
-          $addresses = json_decode($gs->{'addresses_' . $sign});
-          $randomPhone = Arr::random($phones);
-      @endphp
-
-
-    <main>
-
-        <section class="py-16 md:py-24">
-            <div class="container mx-auto px-4">
-
-                <div class="flex justify-center items-center gap-5 mb-10">
-
-                    @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank" aria-label="Twitter" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-primary hover:text-white transition-all"><i
-                                class="fa-brands fa-twitter"></i></a>
-                        @endif
-                        @if(App\Models\Socialsetting::find(1)->f_status == 1)
-                                                <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"  aria-label="Facebook"
-                                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-primary hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-                        @endif
-                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
-                                                <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"  aria-label="YouTube" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-primary hover:text-white transition-all"><i
-                                                        class="fa-brands fa-youtube"></i></a>
-                        @endif
-                        @if(App\Models\Socialsetting::find(1)->i_status == 1)
-                                                <a href="{{ App\Models\Socialsetting::find(1)->instagram }}" target="_blank"  aria-label="Instagram" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-primary hover:text-white transition-all"><i
-                                                        class="fa-brands fa-instagram"></i></a>
-                        @endif
-                    {{-- <a href="#"
-                        class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-primary hover:text-white transition-all">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-primary hover:text-white transition-all">
-                        <i class="fa-brands fa-pinterest-p"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-primary hover:text-white transition-all">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-primary hover:text-white transition-all">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a> --}}
-                </div>
-
-                <div class="bg-slate-50 shadow-xl rounded-lg overflow-hidden max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 lg:grid-cols-2">
-
-                        <div class="p-8 md:p-12">
-                            <h2 class="text-3xl font-extrabold text-slate-800 mb-8">  {{ __('أرسل لنا رسالة') }}</h2>
-
-                          
-                  <form action="{{ route('front.contact.submit') }}" name="appointment" id="email-form" method="POST"
-                      autocomplete="off" class="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-gray-100">
-                      {{ csrf_field() }}
-                      <div class="form-group w-100">
-                          <div class="response w-100"></div>
-                      </div>
-                      <input type="hidden" name="form_type" value="contact_us">
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                    <div>
-                                        <label for="first-name"
-                                            class="block text-sm font-semibold text-gray-700 mb-2">{{ __('الاسم') }}</label>
-                                        <input type="text" name="name" id="first-name" placeholder="{{ __('الاسم') }}"
-                                            class="w-full px-4 py-3 fname bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    </div>
-                                    <div>
-                                        <label for="last-name"
-                                            class="block text-sm font-semibold text-gray-700 mb-2"> 
-                                             {{ __('رقم الهاتف') }}</label>
-                                        <input type="number" name="phone" id="last-name" placeholder=" {{ __('رقم الهاتف') }} "
-                                            class="w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    </div>
-                                    <div>
-                                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2"> 
-                                             {{ __('البريد الالكتروني') }}</label>
-                                        <input type="email" name="email" id="email" placeholder="   {{ __('البريد الالكتروني') }}"
-                                            class="w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    </div>
-                                    <div>
-                                        <label for="subject"
-                                            class="block text-sm font-semibold text-gray-700 mb-2"> 
-                                             {{ __('موضوع الرسالة') }}</label>
-                                        <input type="text" name="subject" id="subject" placeholder="    {{ __('موضوع الرسالة') }}"
-                                            class="w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <label for="message"
-                                            class="block text-sm font-semibold text-gray-700 mb-2"> 
-                                            {{ __('محتوى الرسالة') }} </label>
-                                        <textarea name="message" id="message" rows="5" placeholder="{{ __('ما الذي تفكر فيه') }}"
-                                            class="w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <button type="submit"
-                                            class="bg-primary text-white font-bold py-3 px-10 rounded-full transition-all duration-300 hover:bg-accent hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                                             {{ __('إرسال الرسالة') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="w-full h-full min-h-[400px] lg:min-h-0">
-                            <iframe
-                                src=" {!! $gs->map !!}"
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-      
-         @include('includes.share')
-
-    </main>
  @stop
+
+@section('content')
+     @php
+         $phones = explode(',', $gs->phones);
+         $emails = explode(',', $gs->emails);
+         $addresses = json_decode($gs->{'addresses_' . $sign});
+
+         $randomAddress = Arr::random($addresses);
+         $randomPhone = Arr::random($phones);
+         $randomEmail = Arr::random($emails);
+     @endphp
+           <section class="page-header">
+            <div class="page-header__bg" style="background-image: linear-gradient(to right, #000000, #ffffff);"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <h2 class="page-header__title"> تواصل معانا</h2>
+               
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+       
+
+    @include('includes.form')
+
+        <section class="contact-info section-space-bottom">
+            <div class="contact-info__bg boskery-jarallax" data-jarallax data-speed="0.3"
+                style="background-image: url(assets/images/backgrounds/contact-bg.jpg);"></div>
+            <!-- /.contact-info__bg -->
+            <div class="container">
+                <div class="row gutter-y-30">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                        <div class="contact-info__contact">
+                            <div class="contact-info__contact__bg"
+                                style="background-image: url(assets/images/shapes/contact-bg-1-1.png);"></div>
+                            <!-- /.contact-info__contact__bg -->
+                            <div class="contact-info__contact__content">
+                                <div class="contact-info__top">
+                                    <h4 class="contact-info__title">نرحب بكم دائماً للتواصل معنا</h4>
+                                    <!-- /.contact-info__title -->
+                                    <p class="contact-info__text">فريقنا الودود جاهز لمساعدتكم في أي استفسارات أو
+                                        استشارات تحتاجونها.</p><!-- /.contact-info__text -->
+                                </div><!-- /.contact-info__top -->
+                                <div class="contact-info__contact-list">
+                                    <div class="contact-info__contact-list__item">
+                                        <span
+                                            class="contact-info__contact-list__icon icon-phone-call"></span><!-- /.contact-info__contact-list__icon -->
+                                        <div class="contact-info__contact-list__content">
+                                            <span class="contact-info__contact-list__title">اتصل
+                                                بنا</span><!-- /.contact-info__contact-list__title -->
+                                            <a href="tel:+(+2) 01555554562"
+                                                class="contact-info__contact-list__link">01555554562
+                                                (+2)</a><!-- /.contact-info__contact-list__link -->
+                                        </div><!-- /.contact-info__contact-list__content -->
+                                    </div><!-- /.contact-info__contact-list__item -->
+                                    <div class="contact-info__contact-list__item">
+                                        <span
+                                            class="contact-info__contact-list__icon icon-paper-plane"></span><!-- /.contact-info__contact-list__icon -->
+                                        <div class="contact-info__contact-list__content">
+                                            <span class="contact-info__contact-list__title">البريد
+                                                الإلكتروني</span><!-- /.contact-info__contact-list__title -->
+                                            <a href="mailto:sherif.zaki@shatat-group.com"
+                                                class="contact-info__contact-list__link">sherif.zaki@shatat-group.com</a><!-- /.contact-info__contact-list__link -->
+                                        </div><!-- /.contact-info__contact-list__content -->
+                                    </div><!-- /.contact-info__contact-list__item -->
+                                    <div class="contact-info__contact-list__item">
+                                        <span
+                                            class="contact-info__contact-list__icon icon-maps-and-flags"></span><!-- /.contact-info__contact-list__icon -->
+                                        <div class="contact-info__contact-list__content">
+                                            <span class="contact-info__contact-list__title">المقر
+                                                الرئيسي</span><!-- /.contact-info__contact-list__title -->
+                                            <a href="https://maps.app.goo.gl/BGEEPPnogKLavEVV8"
+                                                class="contact-info__contact-list__link">13 شارع مصطفى رفعت، بلوك 1138،
+                                                شيراتون هليوبوليس،
+                                                القاهرة</a><!-- /.contact-info__contact-list__link -->
+                                        </div><!-- /.contact-info__contact-list__content -->
+                                    </div><!-- /.contact-info__contact-list__item -->
+                                    <div class="contact-info__contact-list__item">
+                                        <span
+                                            class="contact-info__contact-list__icon icon-maps-and-flags"></span><!-- /.contact-info__contact-list__icon -->
+                                        <div class="contact-info__contact-list__content">
+                                            <span class="contact-info__contact-list__title">موقع
+                                                المجمع</span><!-- /.contact-info__contact-list__title -->
+                                            <a href="#" class="contact-info__contact-list__link">مدينة بني سويف - مجمع
+                                                تكنولوجيا اللحوم (MTC)</a><!-- /.contact-info__contact-list__link -->
+                                        </div><!-- /.contact-info__contact-list__content -->
+                                    </div><!-- /.contact-info__contact-list__item -->
+                                </div><!-- /.contact-info__contact-list -->
+                            </div><!-- /.contact-info__contact__content -->
+                        </div><!-- /.contact-info__contact -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
+                        <div class="contact-info__business-hours">
+                            <div class="contact-info__business-hours__bg"
+                                style="background-image: url(assets/images/shapes/contact-bg-1-2.png);"></div>
+                            <!-- /.contact-info__business-hours__bg -->
+                            <div class="contact-info__business-hours__content">
+                                <div class="contact-info__top contact-info__top--business-hours">
+                                    <h4 class="contact-info__title contact-info__title--business-hours">ساعات العمل</h4>
+                                    <!-- /.contact-info__title -->
+                                    <p class="contact-info__text contact-info__text--business-hours">فريقنا جاهز لخدمتكم
+                                        خلال ساعات العمل الرسمية</p>
+                                    <!-- /.contact-info__text -->
+                                </div><!-- /.contact-info__top -->
+                                <div class="table-responsive">
+                                    <table class="table contact-info__business-hours__table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الإثنين</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الثلاثاء</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الأربعاء</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الخميس</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الجمعة</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>السبت</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">مغلق</td>
+                                            </tr>
+                                        </tbody>
+                                    </table><!-- /.table -->
+                                </div><!-- /.table-responsive -->
+                            </div><!-- /.contact-info__business-hours__content -->
+                        </div><!-- /.contact-info__business-hours -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+                <div class="row gutter-y-30 mt-20">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                        <div class="contact-info__contact">
+                            <div class="contact-info__contact__bg"
+                                style="background-image: url(assets/images/shapes/contact-bg-1-1.png);"></div>
+                            <!-- /.contact-info__contact__bg -->
+                            <div class="contact-info__contact__content">
+                                <div class="contact-info__top">
+                                    <h4 class="contact-info__title">نرحب بكم دائماً للتواصل معنا</h4>
+                                    <!-- /.contact-info__title -->
+                                    <p class="contact-info__text">فريقنا الودود جاهز لمساعدتكم في أي استفسارات أو
+                                        استشارات تحتاجونها.</p><!-- /.contact-info__text -->
+                                </div><!-- /.contact-info__top -->
+                                <div class="contact-info__contact-list">
+                                    <div class="contact-info__contact-list__item">
+                                        <span
+                                            class="contact-info__contact-list__icon icon-phone-call"></span><!-- /.contact-info__contact-list__icon -->
+                                        <div class="contact-info__contact-list__content">
+                                            <span class="contact-info__contact-list__title">اتصل
+                                                بنا</span><!-- /.contact-info__contact-list__title -->
+                                            <a href="tel:+(+2) 01555554562"
+                                                class="contact-info__contact-list__link">01555554562
+                                                (+2)</a><!-- /.contact-info__contact-list__link -->
+                                        </div><!-- /.contact-info__contact-list__content -->
+                                    </div><!-- /.contact-info__contact-list__item -->
+                                    <div class="contact-info__contact-list__item">
+                                        <span
+                                            class="contact-info__contact-list__icon icon-paper-plane"></span><!-- /.contact-info__contact-list__icon -->
+                                        <div class="contact-info__contact-list__content">
+                                            <span class="contact-info__contact-list__title">البريد
+                                                الإلكتروني</span><!-- /.contact-info__contact-list__title -->
+                                            <a href="mailto:sherif.zaki@shatat-group.com"
+                                                class="contact-info__contact-list__link">sherif.zaki@shatat-group.com</a><!-- /.contact-info__contact-list__link -->
+                                        </div><!-- /.contact-info__contact-list__content -->
+                                    </div><!-- /.contact-info__contact-list__item -->
+                                    <div class="contact-info__contact-list__item">
+                                        <span
+                                            class="contact-info__contact-list__icon icon-maps-and-flags"></span><!-- /.contact-info__contact-list__icon -->
+                                        <div class="contact-info__contact-list__content">
+                                            <span class="contact-info__contact-list__title">المقر
+                                                الرئيسي</span><!-- /.contact-info__contact-list__title -->
+                                            <a href="https://maps.app.goo.gl/BGEEPPnogKLavEVV8"
+                                                class="contact-info__contact-list__link">13 شارع مصطفى رفعت، بلوك 1138،
+                                                شيراتون هليوبوليس،
+                                                القاهرة</a><!-- /.contact-info__contact-list__link -->
+                                        </div><!-- /.contact-info__contact-list__content -->
+                                    </div><!-- /.contact-info__contact-list__item -->
+                                    <div class="contact-info__contact-list__item">
+                                        <span
+                                            class="contact-info__contact-list__icon icon-maps-and-flags"></span><!-- /.contact-info__contact-list__icon -->
+                                        <div class="contact-info__contact-list__content">
+                                            <span class="contact-info__contact-list__title">موقع
+                                                المجمع</span><!-- /.contact-info__contact-list__title -->
+                                            <a href="#" class="contact-info__contact-list__link">مدينة بني سويف - مجمع
+                                                تكنولوجيا اللحوم (MTC)</a><!-- /.contact-info__contact-list__link -->
+                                        </div><!-- /.contact-info__contact-list__content -->
+                                    </div><!-- /.contact-info__contact-list__item -->
+                                </div><!-- /.contact-info__contact-list -->
+                            </div><!-- /.contact-info__contact__content -->
+                        </div><!-- /.contact-info__contact -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
+                        <div class="contact-info__business-hours">
+                            <div class="contact-info__business-hours__bg"
+                                style="background-image: url(assets/images/shapes/contact-bg-1-2.png);"></div>
+                            <!-- /.contact-info__business-hours__bg -->
+                            <div class="contact-info__business-hours__content">
+                                <div class="contact-info__top contact-info__top--business-hours">
+                                    <h4 class="contact-info__title contact-info__title--business-hours">ساعات العمل</h4>
+                                    <!-- /.contact-info__title -->
+                                    <p class="contact-info__text contact-info__text--business-hours">فريقنا جاهز لخدمتكم
+                                        خلال ساعات العمل الرسمية</p>
+                                    <!-- /.contact-info__text -->
+                                </div><!-- /.contact-info__top -->
+                                <div class="table-responsive">
+                                    <table class="table contact-info__business-hours__table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الإثنين</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الثلاثاء</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الأربعاء</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الخميس</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>الجمعة</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">10:00 ص - 07:00 م</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__left-data"><i class="icon-check"></i>السبت</td>
+                                                <td class="table__border">
+                                                    <div class="table__border__line"></div><!-- /.table__border -->
+                                                </td>
+                                                <td class="table__right-data">مغلق</td>
+                                            </tr>
+                                        </tbody>
+                                    </table><!-- /.table -->
+                                </div><!-- /.table-responsive -->
+                            </div><!-- /.contact-info__business-hours__content -->
+                        </div><!-- /.contact-info__business-hours -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.contact-info section-space-bottom -->
+
+        
+        <section class="contact-map">
+            <div class="container-fluid">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="google-map google-map__contact col-md">
+                            <iframe   me title="خريطة المقر الرئيسي"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.396036912234!2d31.367215315117!3d30.101623581860!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458161c0e7b5d7f%3A0x5b5a5e5a5a5a5a5a!2s13%20Mostafa%20Refaat%20St%2C%20Sheraton%20Heliopolis%2C%20Cairo!5e0!3m2!1sen!2seg!4v1234567890123!5m2!1sen!2seg"
+                                class="map__contact" allowfullscreen></iframe>
+                        </div>
+                        <div class="google-map google-map__contact col-md">
+                            <iframe title="خريطة المقر الرئيسي"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.396036912234!2d31.367215315117!3d30.101623581860!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458161c0e7b5d7f%3A0x5b5a5e5a5a5a5a5a!2s13%20Mostafa%20Refaat%20St%2C%20Sheraton%20Heliopolis%2C%20Cairo!5e0!3m2!1sen!2seg!4v1234567890123!5m2!1sen!2seg"
+                                class="map__contact" allowfullscreen></iframe>
+                        </div>
+                        <div class="google-map google-map__contact col-md">
+                            <iframe title="خريطة المقر الرئيسي"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.396036912234!2d31.367215315117!3d30.101623581860!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458161c0e7b5d7f%3A0x5b5a5e5a5a5a5a5a!2s13%20Mostafa%20Refaat%20St%2C%20Sheraton%20Heliopolis%2C%20Cairo!5e0!3m2!1sen!2seg!4v1234567890123!5m2!1sen!2seg"
+                                class="map__contact" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                <!-- /.google-map -->
+            </div><!-- /.container-fluid -->
+        </section><!-- /.contact-map -->
+    @stop

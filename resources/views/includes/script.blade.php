@@ -1,32 +1,25 @@
 
-    <script>
-        (function () {
-            const countKey = 'visitor_count';
-            let count = localStorage.getItem(countKey);
-
-            if (!count) {
-                count = Math.floor(Math.random() * 900 + 100);
-                localStorage.setItem(countKey, count);
-            } else {
-                count = parseInt(count) + Math.floor(Math.random() * 3 + 1);
-                localStorage.setItem(countKey, count);
-            }
-
-            const el = document.getElementById('visitor-count');
-            el.textContent = `${count.toLocaleString()} زائر حتى الآن`;
-
-            const popup = document.getElementById('visitors-popup');
-            setTimeout(() => popup.classList.remove('hidden'), 1000);
-
-            document.getElementById('close-popup').addEventListener('click', () => {
-                popup.classList.add('hidden');
-            });
-        })();
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <script src="{{ asset('front/dareltawfik/') }}/assets/scripts/index.js"></script>
-
-
-    
+        
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery/jquery-3.7.0.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/tiny-slider/tiny-slider.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/swiper/js/swiper-bundle.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/wow/wow.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/imagesloaded/imagesloaded.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/isotope/isotope.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/countdown/countdown.min.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery-circleType/jquery.circleType.js"></script>
+    <script src="{{ asset('front/mtc/') }}/assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
+    <!-- template js -->
+    <script src="{{ asset('front/mtc/') }}/assets/js/boskery.js"></script>

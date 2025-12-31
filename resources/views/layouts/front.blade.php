@@ -113,545 +113,495 @@
 @endphp
 
 
-<body class="bg-white">
+<body class="custom-cursor">
 
-    <header class="shadow-md">
-        <!-- Top bar -->
-        <div class="bg-custom-blue text-gray-300 text-sm">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row justify-between items-center py-2">
-                    <div
-                        class="flex flex-wrap justify-center md:justify-start items-center space-x-4 space-x-reverse mb-2 md:mb-0">
-                        <div class="flex items-center space-x-2 space-x-reverse my-1 break-words">
-                            <i class="fas fa-envelope text-white"></i>
-                            <a href="mailto:{{ $randomEmail }}"
-                                class="hover:text-white transition-colors  break-all">{{ $randomEmail }}
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+    
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url({{ asset('front/mtc/') }}/assets/images/loader.png.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div class="topbar topbar--two">
+            <div class="container-fluid">
+                <div class="topbar__inner">
+                    <ul class="list-unstyled topbar__info">
+                        <li>
+                            <i class="icon-paper-plane"></i>
+                            <a href="mailto:{{ $randomEmail }}">{{ $randomEmail }}</a>
+                        </li>
+                        <li>
+                            <i class="icon-maps-and-flags"></i>
+                            <a href="https://maps.app.goo.gl/RU419bHcAWhNFQqb8">القاهرة: 13 شارع مصطفى رفعت، شيراتون
+                                هليوبوليس</a>
+                        </li>
+                    </ul><!-- /.list-unstyled topbar__info -->
+                    <div class="topbar__right">
+                        <ul class="list-unstyled topbar__pages">
+                            <li><a href="{{ route('contact.index',$sign) }}">مساعدة</a></li>
+                            <li><a href="{{ route('contact.index',$sign) }}">دعم</a></li>
+                            <li><a href="{{ route('contact.index',$sign) }}">اتصل بنا</a></li>
+                        </ul><!-- /.list-unstyled topbar__pages -->
+                        <div class="topbar__social">
+                            @if(App\Models\Socialsetting::find(1)->f_status == 1)
+                            <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                <span class="sr-only">فيسبوك</span>
                             </a>
-                        </div>
-                        <div class="hidden lg:flex items-center space-x-2 space-x-reverse my-1">
-                            <i class="fas fa-map-marker-alt text-white"></i>
-                            <span>
-                              {{ $randomAddress }}
+                             @endif
+                               @if(App\Models\Socialsetting::find(1)->t_status == 1) 
+                            <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                                <span class="sr-only">تويتر</span>
+                            </a>
+                            @endif
+                              @if(App\Models\Socialsetting::find(1)->ystatus == 1)
+                            <a href="{{ App\Models\Socialsetting::find(1)->youtube }}">
+                                <i class="fab fa-pinterest-p" aria-hidden="true"></i>
+                                <span class="sr-only">بينترست</span>
+                            </a>
+                            @endif
+                             @if(App\Models\Socialsetting::find(1)->i_status == 1)
+                            <a href="{{ App\Models\Socialsetting::find(1)->instagram }}">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                                <span class="sr-only">إنستغرام</span>
+                            </a>
+                            @endif
+                        </div><!-- /.topbar__social -->
+                    </div><!-- /.topbar__right -->
+                </div><!-- /.topbar__inner -->
+            </div><!-- /.container-fluid -->
+        </div><!-- /.topbar -->
 
-
-                            </span>
-                        </div>
-                        <div class="flex items-center space-x-2 space-x-reverse my-1">
-                            <i class="fas fa-phone-alt text-white"></i>
-                            <a href="tel:{{ $randomPhone }}" class="hover:text-white transition-colors">{{ $randomPhone }}</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-2">
-                         @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" aria-label="Twitter" class="hover:text-white transition-colors"><i
-                                class="fab fa-twitter"></i></a>
- @endif
- @if(App\Models\Socialsetting::find(1)->f_status == 1)
-                        <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" aria-label="Facebook"
-                            class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
- @endif
-  @if(App\Models\Socialsetting::find(1)->ystatus == 1)
-                        <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-label="YouTube" class="hover:text-white transition-colors"><i
-                                class="fab fa-youtube"></i></a>
- @endif
- @if(App\Models\Socialsetting::find(1)->i_status == 1)
-                        <a href="{{ App\Models\Socialsetting::find(1)->instagram }}" aria-label="Instagram" class="hover:text-white transition-colors"><i
-                                class="fab fa-instagram"></i></a>
- @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Navigation -->
-        <nav class="bg-white border-b border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-24">
-                    <!-- Logo -->
-                    <div class="flex-shrink-0">
+        <header class="main-header main-header--two sticky-header sticky-header--normal">
+            <div class="main-header__container-fluid container-fluid">
+                <div class="main-header__inner">
+                    <div class="main-header__logo">
                         <a href="{{ route('front.index',$sign) }}">
-                            <img class="h-24 w-auto p-0 m-0" src="{{ $gs->{'logo_' . $sign} }}"
-                                alt="Life Makers Logo">
+                            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Boskery HTML" width="100">
                         </a>
-                    </div>
+                    </div><!-- /.main-header__logo -->
+                    <div class="main-header__right">
+                        <div class="main-header__right__left">
+                            <nav class="main-header__nav main-menu">
+                                <ul class="main-menu__list one-page-scroll-menu">
+                                    <!-- الرئيسية -->
+                                    <li  class="scrollToLink">
+                                        <a href="{{ route('front.index',$sign) }}">الرئيسية</a>
+                                    </li>
 
-                    <!-- Desktop Menu -->
-                    <div class="hidden md:flex justify-center flex-grow">
-                        <div class="flex items-center space-x-5 space-x-reverse">
-                            <!-- Home -->
-                            <a href="{{ route('front.index',$sign) }}"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">{{ __('الرئيسية') }}</a>
+                                    <!-- About MTC – من نحن (Mega Menu) -->
+                                    <li  class="dropdown">
+                                        <a href="{{ route('about.index',$sign) }}">من نحن</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ route('about.index',$sign) }}#our-story">قصتنا / من نحن</a></li>
+                                            <li><a href="{{ route('about.index',$sign) }}#vision-mission-values">الرؤية والرسالة والقيم</a>
+                                            </li>
+                                            <li><a href="{{ route('about.index',$sign) }}#why-mtc">لماذا MTC</a></li>
+                                            <li><a href="{{ route('about.index',$sign) }}#success-partners">شركاء النجاح</a></li>
+                                        </ul>
+                                    </li>
 
-                            <!-- Life Makers Dropdown -->
-                            <div class="relative  dropdown">
-                                <button
-                                    class="dropdown-btn font-semibold text-gray-700 hover:text-custom-orange transition-colors flex items-center">
-                                       {{ __('دار التوفيق') }}
-                                    <i class="fas fa-chevron-down mr-1 text-xs"></i>
-                                </button>
-                                <div
-                                    class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 w-64 z-10 border border-gray-200">
-                                    <div class="py-2">
-                                        <a href="{{ route('about.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
-                                            {{ __('من نحن') }}</a>
-                                        <a href="{{ route('our-impact.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('انتشارنا') }}</a>
-                                        <a href="{{ route('associations.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الجمعيات') }}</a>
-                                        <a href="{{ route('board-trustees.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
-                                             {{ __('مجلس الأمناء') }}</a>
-                                        <a href="{{ route('achievements.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الإنجازات') }}</a>
-                                        <a href="{{ route('certificate.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
+                                    <!-- Farm to Fork – من المزرعة إلى المائدة -->
+                                    <li  class="dropdown">
+                                        <a href="{{ route('farm-to-fork.index',$sign) }}">من المزرعة إلى المائدة</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#fattening-farms">مزارع التسمين</a></li>
+                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#slaughterhouse">المجزر وعمليات الذبح</a></li>
+                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#processing-packaging">التصنيع والتعبئة
+                                                    والتغليف</a></li>
+                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#cold-chain">سلسلة التبريد والنقل</a></li>
+                                        </ul>
+                                    </li>
 
-{{ __('إنجازاتنا وشهادات التقدير') }}
+                                    <!-- المنتجات -->
+                                    <li style="font-size: 10px; " class="dropdown ">
+                                        <a href="{{ route('products.index',$sign) }}">المنتجات</a>
+                                        <ul class="sub-menu">
+                                            @foreach ($categories as $category)
                                                 
+                                            <li><a href="{{ route('products.index',$sign) }}#{{ $category->title_en }}"> {{ $category->{'title_' . $sign} }}  </a>
+                                            </li>
+                                            @endforeach
+                                          
+                                        </ul>
+                                    </li>
 
-                                        </a>
-                                        <a href="{{ route('gallery.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الجاليري') }}</a>
-                                        <a href="{{ route('success-volunteers.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
-                                             {{ __('شركاء النجاح') }}</a>
-                                    </div>
-                                </div>
+                                    <!-- B2B Services -->
+                                    <li style="font-size: 10px; " class="dropdown ">
+                                        <a href="{{ route('b2b-services.index',$sign) }}">عملاءنا</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ route('b2b-services.index',$sign) }}#restaurant-cuts">قطع خاصة للمطاعم</a></li>
+                                            <li><a href="{{ route('b2b-services.index',$sign) }}#bulk-vacuum">عبوات Bulk / Vacuum large
+                                                    packs</a></li>
+                                            <li><a href="{{ route('b2b-services.index',$sign) }}#private-label">Private Label</a></li>
+                                            <li><a href="{{ route('b2b-services.index',$sign) }}#rfq-form">نموذج طلب عرض أسعار</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <!-- الجودة والسلامة الغذائية -->
+                                    <li  class="dropdown">
+                                        <a href="{{ route('quality.index',$sign) }}">الجودة والسلامة الغذائية</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ route('quality.index',$sign) }}#certifications">شهادات الجودة (ISO / Halal /
+                                                    ...)</a></li>
+                                            <li><a href="{{ route('quality.index',$sign) }}#halal-standards">معايير الذبح الحلال والرقابة
+                                                    الصحية</a></li>
+                                            <li><a href="{{ route('quality.index',$sign) }}#traceability">نظام التتبع من المزرعة للمستهلك</a>
+                                            </li>
+                                            <li><a href="{{ route('quality.index',$sign) }}#faqs">أسئلة شائعة عن التخزين والتجميد
+                                                    الآمن</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <!-- الوظائف -->
+                                    <li  class="dropdown">
+                                        <a href="{{ route('careers.index',$sign) }}">الوظائف</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ route('careers.index',$sign) }}#work-culture">ثقافة العمل في MTC</a></li>
+                                            <li><a href="{{ route('careers.index',$sign) }}#available-jobs">الوظائف المتاحة</a></li>
+                                            <li><a href="{{ route('careers.index',$sign) }}#apply-cv">نموذج إرسال السيرة الذاتية</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <!-- صحتك أمانة -->
+                                    <li  class="dropdown">
+                                        <a href="health-trust.html">صحتك أمانة</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="health-trust.html#articles">مقالات قصيرة</a></li>
+                                            <li><a href="health-trust.html#videos">فيديوهات</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <!-- اتصل بنا -->
+                                    <li class="scrollToLink">
+                                        <a href="{{ route('contact.index',$sign) }}">اتصل بنا</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Right Icons / Controls -->
+                        <div class="main-header__right__right">
+                            <div class="mobile-nav__btn mobile-nav__toggler">
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </div>
-
-                            <!-- Services -->
-                            <a href="{{ route('services.index',$sign) }}"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors"> {{ __('خدماتنا و مشروعاتنا') }}
-                                 
-                                 
+                            <a href="#" class="search-toggler main-header__search">
+                                <i class="icon-search" aria-hidden="true"></i>
+                                <span class="sr-only">بحث</span>
                             </a>
-                            <li class="relative group">
-                                <a href="{{ route('agenda.index',$sign) }}"
-                                    class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">
-                                     {{ __('الأجندة الشهرية') }}  
-                                </a>
-                            </li>
-                            <!-- Donation Dropdown -->
-                            <!-- Dropdown Wrapper -->
-                            <div class="relative dropdown">
-                                <button
-                                    class="dropdown-btn font-semibold text-gray-700 hover:text-custom-orange transition-colors flex items-center">
-                                       {{ __('التبرع') }} 
-                                    <i class="fas fa-chevron-down mr-1 text-xs"></i>
-                                </button>
-                                <div
-                                    class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 w-64 z-10 border border-gray-200">
-                                    <div class="py-2">
-                                        <a href="{{ route('donate_campaigns.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
-                                           {{ __('التبرع عبر الموقع الإلكتروني') }} 
-                                        </a>
-
-                                        <a href="{{ route('cross-bank-donation.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
-                                            {{ __('التبرع عبر البنوك') }}
-                                        </a>
-
-                                        <a href="{{ route('contributions-kind.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
-                                              {{ __('التبرعات العينية') }}   
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Humanitarian Cases -->
-                            <a href="{{ route('humanitarian-cases.index', $sign) }}"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors"> 
-                                 {{ __('حالات انسانية') }}</a>
-
-                            <!-- Volunteering Dropdown -->
-                            <div class="relative dropdown">
-                                <button
-                                    class="dropdown-btn font-semibold text-gray-700 hover:text-custom-orange transition-colors flex items-center">
-                                    {{ __('التطوع') }}
-                                    <i class="fas fa-chevron-down mr-1 text-xs"></i>
-                                </button>
-                                <div
-                                    class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 w-48 z-10 border border-gray-200">
-                                    <div class="py-2">
-                                        <a href="{{ route('About_volunteering.index', $sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
-                                            {{ __('عن التطوع') }}</a>
-                                        <a href="{{ route('be-volunteer.index', $sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
-                                          {{ __('كن متطوع') }}</a>
-                                        <a href="{{ route('stories-success-volunteers.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
-                                               {{ __('قصص نجاح المتطوعيين') }}</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- News -->
-                            <a href="{{ route('blogs.index',$sign) }}"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors">{{ __('الأخبار') }}</a>
-
-                            <!-- Privacy Policy -->
-                            <a href="{{ route('privacy.index',$sign) }}"
-                                class="hidden lg:block font-semibold text-gray-700 hover:text-custom-orange transition-colors"> 
-                                  {{ __('سياسة الخصوصية') }}</a>
- 
-                            <!-- Contact Us -->
-                            <a href="{{ route('contact.index',$sign) }}"
-                                class="font-semibold text-gray-700 hover:text-custom-orange transition-colors"> 
-                                {{ __('اتصل بنا') }}</a>
-                        </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="flex items-center space-x-4 space-x-reverse">
-                        <!-- Search -->
-                        <div class="hidden md:flex items-center">
-                            <button id="search-btn"
-                                class="flex items-center justify-center w-10 h-10 bg-custom-orange rounded-full text-white hover:bg-accent transition-colors">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
- @php
+                            <!-- <a href="contact.html" class="main-header__cart">
+                                <i class="icon-cart" aria-hidden="true"></i>
+                                <span class="sr-only">سلة التسوق</span>
+                            </a> -->
+                             @php
                     $lang = App\Models\Language::where('sign', '!=', $sign)->first();
                 @endphp
-                        <!-- Language -->
-                          @if ($lang)
-                        <a href="{{ route('change-lang.index', $lang->id) }}"
-                            class="hidden md:block text-gray-700 hover:text-custom-orange ml-3">{{ $lang->language }}</a>
-                        @endif
-                        <!-- Mobile Menu Button -->
-                        <button id="mobile-menu-button"
-                            class="md:hidden text-gray-700 hover:text-custom-orange focus:outline-none">
-                            <i class="fas fa-bars fa-lg"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden border-t border-gray-200 bg-white">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">الرئيسية</a>
-
-                    <!-- Life Makers Mobile Dropdown -->
-                    <div class="relative">
-                        <button
-                            class="mobile-dropdown-toggle w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50 flex justify-between items-center">
-                            دار التوفيق
-                            <i class="fas fa-chevron-down text-xs"></i>
-                        </button>
-                        <div class="mobile-dropdown-content hidden pl-4">
-                            <a href="{{ route('about.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                {{ __('من نحن') }}</a>
-                            <a href="{{ route('our-impact.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('انتشارنا') }}</a>
-                            <a href="{{ route('associations.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('الجمعيات') }}</a>
-                            <a href="{{ route('board-trustees.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                 {{ __('مجلس الأمناء') }}</a>
-                            <a href="{{ route('achievements.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('الإنجازات') }}</a>
-                            <a href="{{ route('certificate.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                   {{ __('إنجازاتنا وشهادات التقدير') }}</a>
-                            <a href="{{ route('gallery.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">{{ __('الجاليري') }}</a>
-                            <a href="{{ route('success-volunteers.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                     {{ __('شركاء النجاح') }}</a>
+                  @if ($lang)
+                            <a href="{{ route('change-lang.index', $lang->id) }}" style="padding-right: 10px;font-weight: bold;" class="main-header__lang">
+                                <span>{{ $lang->language }}</span>
+                            </a>
+                              @endif
+                            <div class="main-header__call">
+                                <span class="main-header__call__icon icon-mobile"></span>
+                                <div class="main-header__call__inner">
+                                    <span class="main-header__call__tagline">اتصل بنا في أي وقت</span>
+                                    <a href="tel:{{ $randomPhone }}" class="main-header__call__number">{{ $randomPhone }}</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div><!-- /.main-header__inner -->
+            </div><!-- /.container-fluid -->
+        </header><!-- /.main-header -->
 
-                    <a href="{{ route('services.index',$sign) }}"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> 
-                        {{ __('خدماتنا و مشروعاتنا') }}</a>
-
-                    <a href="{{ route('agenda.index',$sign) }}"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> 
-                        {{ __('الأجندة الشهرية') }}</a>
-
-                    <!-- Donation Mobile Dropdown -->
-                    <div class="relative">
-                        <button
-                            class="mobile-dropdown-toggle w-full text-left px-3 py-2 rounded-md font-bold text-custom-orange hover:text-accent hover:bg-gray-50 flex justify-between items-center">
-                                {{ __('التبرع') }} 
-                            <i class="fas fa-chevron-down text-xs"></i>
-                        </button>
-                        <div class="mobile-dropdown-content hidden pl-4">
-                           
-                            <a href="{{ route('donate_campaigns.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                      {{ __('التبرع عبر الموقع الإلكتروني') }}  </a>
-                            <a href="{{ route('cross-bank-donation.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                    {{ __('التبرع عبر البنوك') }}</a>
-                           
-                            <a href="{{ route('contributions-kind.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                {{ __('التبرعات العينية') }}   </a>
-                        </div>
-                    </div>
-
-                    <a href="{{ route('humanitarian-cases.index', $sign) }}"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> 
-                         {{ __('حالات انسانية') }}</a>
-
-                    <!-- Volunteering Mobile Dropdown -->
-                    <div class="relative">
-                        <button
-                            class="mobile-dropdown-toggle w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50 flex justify-between items-center">
-                            {{ __('التطوع') }}
-                            <i class="fas fa-chevron-down text-xs"></i>
-                        </button>
-                        <div class="mobile-dropdown-content hidden pl-4">
-                            <a href="{{ route('About_volunteering.index', $sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                   {{ __('عن التطوع') }}</a>
-                            <a href="{{ route('be-volunteer.index', $sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50">
-                                  {{ __('كن متطوع') }} </a>
-                            <a href="{{ route('stories-success-volunteers.index',$sign) }}"
-                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                   {{ __('قصص نجاح المتطوعيين') }} </a>
-                        </div>
-                    </div>
-
-                    <a href="{{ route('blogs.index',$sign) }}"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">     {{ __('الأخبار') }}</a>
-                    <a href="{{ route('privacy.index',$sign) }}"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50">
-                        {{ __('سياسة الخصوصية') }}  </a>
-                    <a href="{{ route('contact.index',$sign) }}"
-                        class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-custom-orange hover:bg-gray-50"> {{ __('اتصل بنا') }}
-                         </a>
-                </div>
-
-                <!-- Mobile Search and Language -->
-                <div class="px-4 py-3 border-t border-gray-200">
-                    <div class="flex items-center justify-between">
-                        <button class="flex items-center text-gray-700 hover:text-custom-orange">
-                            <i class="fas fa-search ml-2"></i>
-                            <span>بحث</span>
-                        </button>
-                        <a href="#" class="text-gray-700 hover:text-custom-orange">English</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Search Modal -->
-    <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden transition-opacity">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-lg w-full max-w-md p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-bold">بحث</h3>
-                    <button id="close-search" class="text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <form method="get" action="#" class="flex">
-                    <input name="s"
-                        class="flex-grow border border-gray-300 rounded-r-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-custom-orange focus:border-transparent"
-                        type="text" placeholder="بحث...">
-                    <button type="submit"
-                        class="bg-custom-orange text-white rounded-l-lg px-4 hover:bg-accent transition-colors">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
+ 
 
 
     @yield('content')
 
-
-    <footer class="bg-slate-900 bg-no-repeat bg-cover bg-center text-white"
-        style=" background-image:
-            url('{{ asset('front/dareltawfik/') }}/assets/imgs/home/bg-1-3.png')">
-        <div class="container mx-auto px-4 py-16">
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 ">
-
-                <div class="space-y-6">
-                    <h5 class="text-xl font-bold text-white mb-6"> {{ __('بيانات التواصل') }}</h5>
-
-                    <div class="flex items-start gap-3">
-                        <div
-                            class="flex-shrink-0 bg-primary rounded-full w-10 h-10 flex items-center justify-center text-white text-lg">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="text-sm">
-                            <strong class="block "> {{ __('رقم الهاتف') }}:</strong>
-                             @foreach ($phones as $phone)
-                            <span class="text-white" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">{{ $phone }}</span>
-                       
-                            <br>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-3">
-                        <div
-                            class="flex-shrink-0 bg-primary rounded-full w-10 h-10 flex items-center justify-center text-white text-lg">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="text-sm break-words">
-                            <strong class="block ">  {{ __('البريد الالكتروني') }}:</strong>
-                             @foreach ($emails as $email)
-                                
-                            <a class="text-white break-all"
-                                href="mailto:{{ $email }}" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">
-                               {{ $email }}
-                            </a>
-                            <br>
-                            @endforeach
-                        </div>
-
-                    </div>
-
-                    <div class="flex items-start gap-3">
-                        <div
-                            class="flex-shrink-0 bg-primary rounded-full w-10 h-10 flex items-center justify-center text-white text-lg">
-                            <i class="fa-solid fa-map-marker-alt"></i>
-                        </div>
-                        <div class="text-sm">
-                            <strong class="block ">{{ __('العنوان') }}:</strong>
-                            @foreach ($addresses as $address)
-                            <span class="text-white">{{ $address }} </span>
-                                
-                            <br>
-                            @endforeach
-                        </div>
-                    </div>
-
-                </div>
-
-                <div>
-                    <h5 class="text-xl font-bold text-white mb-6"> {{ __('روابط سريعة') }}</h5>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="{{ route('front.index',$sign) }}" class="hover:text-primary transition-colors">  {{ __('الرئيسية') }}</a></li>
-                        <li><a href="{{ route('about.index',$sign) }}" class="hover:text-primary transition-colors">   {{ __('من نحن') }}</a></li>
-                        <li><a href="{{ route('achievements.index',$sign) }}" class="hover:text-primary transition-colors">  {{ __('الانجازات') }}</a></li>
  
-                        <li><a href="{{ route('services.index',$sign) }}" class="hover:text-primary transition-colors">   {{ __('خدمتنا ومجتمعاتنا') }}</a></li>
-                        <li><a href="{{ route('board-trustees.index',$sign) }}" class="hover:text-primary transition-colors">  {{ __('مجلس الأمناء') }} </a></li>
-                        <li><a href="{{ route('privacy.index',$sign) }}" class="hover:text-primary transition-colors">    {{ __('سياسة الخصوصية') }}</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h5 class="text-xl font-bold text-white mb-6">   {{ __('التبرع') }} </h5>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="{{ route('donate_campaigns.index',$sign) }}" class="hover:text-primary transition-colors">      {{ __('التبرع عبر الموقع الإلكتروني') }} 
-                                 </a>
-                        </li>
-                        <li><a href="{{ route('cross-bank-donation.index',$sign) }}" class="hover:text-primary transition-colors">    {{ __('التبرع عبر البنوك') }}  </a></li>
-                        <li><a href="{{ route('contributions-kind.index',$sign) }}" class="hover:text-primary transition-colors">   {{ __('التبرعات العينية') }} </a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <img src="{{ $gs->{'logo_' . $sign} }}" alt="Life Makers Logo" class="w-32 mb-4">
-                    <p class="text-sm mb-6">
-                       {{ __('اشترك في النشرة البريدية لمؤسسة دار التوفيق ليصلك كل جديد.') }}
-                    </p>
-
-                    <h5 class="text-xl font-bold text-white mb-4">  {{ __('تابع نشرتنا البريدية') }}</h5>
-                     <form action="{{ route('front.subscripe.submit') }}" name="appointment"
+        <footer class="main-footer">
+            <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg.png);"></div>
+            <!-- /.main-footer__bg -->
+            <div class="container">
+                <div class="main-footer__top">
+                    <div class="row gutter-y-40 align-items-center">
+                        <div class="col-md-3 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                            <a href="{{ route('front.index',$sign) }}" class="main-footer__logo">
+                                <img src="{{ $gs->{'logo_' . $sign} }}" width="119" alt="قالب بوسكيري HTML">
+                            </a><!-- /.main-footer__logo -->
+                        </div><!-- /.col-md-3 -->
+                        <div class="col-md-9 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="300ms">
+                           <form action="{{ route('front.subscripe.submit') }}" name="appointment"
                                                 id="subscribeform" aria-label="subscripe form" data-status="init"
-                                                method="POST" autocomplete="off">
+                                                method="POST" autocomplete="off"  data-url=" " class="main-footer__newsletter  ">
                                                 {{ csrf_field() }}
                                                 <div style="width: 81%;">
                                                         @include('includes.admin.form-both')
                                                    </div>
-                        <label for="email-subscribe" class="sr-only"> {{ __('البريد الالكتروني') }}</label>
-                        <div
-                            class="relative flex items-center border border-green-700 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary">
-                            <input id="email-subscribe" type="email" name="email" required placeholder=" {{ __('البريد الالكتروني') }}"
-                                class="w-full bg-transparent py-3 px-4 text-white focus:outline-none placeholder-white">
+                                <input type="text" name="email" required placeholder="عنوان البريد الإلكتروني">
+                                <button type="submit" class="icon-paper-plane">
+                                    <span class="sr-only">إرسال</span><!-- /.sr-only -->
+                                </button>
+                            </form><!-- /.main-footer__newsletter mc-form -->
+                            <div class="mc-form__response"></div><!-- /.mc-form__response -->
+                        </div><!-- /.col-md-9 -->
+                    </div><!-- /.row -->
+                </div><!-- /.main-footer__top -->
+                <div class="main-footer__widget">
+                    <div class="row gutter-y-50">
+                        <div class="col-lg-5 col-xl-3 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                            <div class="footer-widget footer-widget--about">
+                                <h2 class="footer-widget__title">نقدّم لحومًا طازجة وعضوية من مزرعتنا بطريقة نظيفة وصحية
+                                    للغاية.</h2>
+                                <!-- /.footer-widget__title -->
+                                <a href="contact.html" class="boskery-btn">
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__hover"></span>
+                                    <span class="boskery-btn__text">اتصل بنا</span>
+                                    <i class="icon-meat-3"></i>
+                                </a><!-- /.boskery-btn -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-5 col-xl-3 -->
+                        <div class="col-lg-3 col-md-3 col-xl-2 wow fadeInUp" data-wow-duration="1500ms"
+                            data-wow-delay="200ms">
+                            <div class="footer-widget footer-widget--links">
+                                <h2 class="footer-widget__title">استكشف</h2><!-- /.footer-widget__title -->
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><a href="about.html">من نحن</a></li>
+                                    <li><a href="checkout.html">أَكْمل الطلب</a></li>
+                                    <li><a href="team.html">تعرف على الفريق</a></li>
+                                    <li><a href="blog.html">آخر الأخبار</a></li>
+                                    <li><a href="contact.html">اتصل بنا</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-3 col-md-3 col-xl-2 -->
+                        <div class="col-lg-4 col-md-5 col-xl-4 wow fadeInUp" data-wow-duration="1500ms"
+                            data-wow-delay="400ms">
+                            <div class="footer-widget footer-widget--contact">
+                                <h2 class="footer-widget__title">اتصل بنا</h2><!-- /.footer-widget__title -->
+                                <div class="footer-widget__contact">
+                                    <address class="footer-widget__address">القاهرة: 13 شارع مصطفى رفعت، شيراتون
+                                        هليوبوليس</address>
+                                    <!-- /.footer-widget__address -->
+                                    <ul class="list-unstyled footer-widget__info">
+                                        <li><span class="icon-paper-plane"></span> <a
+                                                href="mailto:sherif.zaki@shatat-group.com">sherif.zaki@shatat-group.com</a>
+                                        </li>
+                                        <li><span class="icon-phone-call"></span> <a href="tel:+(+2) 01555554562">(+2)
+                                                01555554562</a></li>
+                                    </ul><!-- /.list-unstyled footer-widget__info -->
+                                    <div class="footer-widget__social">
+                                        <a href="https://facebook.com">
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                            <span class="sr-only">فيسبوك</span>
+                                        </a>
+                                        <a href="https://twitter.com">
+                                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                                            <span class="sr-only">تويتر</span>
+                                        </a>
+                                        <a href="https://linkedin.com">
+                                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                                            <span class="sr-only">لينكدإن</span>
+                                        </a>
+                                        <a href="https://youtube.com" aria-hidden="true">
+                                            <i class="fab fa-youtube"></i>
+                                            <span class="sr-only">يوتيوب</span>
+                                        </a>
+                                    </div><!-- /.footer-widget__social -->
+                                </div><!-- /.footer-widget__contact -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-4 col-md-5 col-xl-4 -->
+                        <div class="col-lg-5 col-md-4 col-sm-8 col-xl-3 wow fadeInUp" data-wow-duration="1500ms"
+                            data-wow-delay="600ms">
+                            <div class="footer-widget footer-widget--gallery">
+                                <h2 class="footer-widget__title">المعرض</h2><!-- /.footer-widget__title -->
+                                <div class="footer-widget__gallery">
+                                    <a href="gallery.html" class="footer-widget__gallery__link">
+                                        <img src="assets/images/gallery/footer-widget-gallery-1.jpg" alt="معرض الصور">
+                                        <span class="footer-widget__gallery__icon icon-plus"></span>
+                                    </a><!-- /.footer-widget__gallery__link -->
+                                    <a href="gallery.html" class="footer-widget__gallery__link">
+                                        <img src="assets/images/gallery/footer-widget-gallery-2.jpg" alt="معرض الصور">
+                                        <span class="footer-widget__gallery__icon icon-plus"></span>
+                                    </a><!-- /.footer-widget__gallery__link -->
+                                    <a href="gallery.html" class="footer-widget__gallery__link">
+                                        <img src="assets/images/gallery/footer-widget-gallery-3.jpg" alt="معرض الصور">
+                                        <span class="footer-widget__gallery__icon icon-plus"></span>
+                                    </a><!-- /.footer-widget__gallery__link -->
+                                    <a href="gallery.html" class="footer-widget__gallery__link">
+                                        <img src="assets/images/gallery/footer-widget-gallery-4.jpg" alt="معرض الصور">
+                                        <span class="footer-widget__gallery__icon icon-plus"></span>
+                                    </a><!-- /.footer-widget__gallery__link -->
+                                    <a href="gallery.html" class="footer-widget__gallery__link">
+                                        <img src="assets/images/gallery/footer-widget-gallery-5.jpg" alt="معرض الصور">
+                                        <span class="footer-widget__gallery__icon icon-plus"></span>
+                                    </a><!-- /.footer-widget__gallery__link -->
+                                    <a href="gallery.html" class="footer-widget__gallery__link">
+                                        <img src="assets/images/gallery/footer-widget-gallery-6.jpg" alt="معرض الصور">
+                                        <span class="footer-widget__gallery__icon icon-plus"></span>
+                                    </a><!-- /.footer-widget__gallery__link -->
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-5 col-md-4 col-sm-8 col-xl-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.main-footer__widget -->
+            </div><!-- /.container -->
+            <div class="main-footer__bottom">
+                <div class="container">
+                    <div class="main-footer__bottom__inner">
+                        <p class="main-footer__copyright">
+                            &copy; حقوق النشر <span class="dynamic-year"></span>© 2025 جميع الحقوق محفوظة –
+                            cangrowonline
+                        </p>
+                    </div><!-- /.main-footer__inner -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__bottom -->
+        </footer><!-- /.main-footer -->
 
-                            <button type="submit" aria-label="Subscribe"
-                                class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-primary rounded-full w-10 h-10 flex items-center justify-center text-white text-lg hover:bg-accent transition-colors focus:outline-none">
-                                <i class="fa-solid fa-arrow-left"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+    </div><!-- /.page-wrapper -->
 
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="{{ route('front.index',$sign) }}" aria-label="logo image"><img src="{{ $gs->{'logo_' . $sign} }}" width="100"
+                        alt="logo" /></a>
             </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:needhelp@boskery.com">needhelp@boskery.com</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:+92(8800)-9850">+ 92(8800) - 9850</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__social">
+                <a href="https://facebook.com">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    <span class="sr-only">Facebook</span>
+                </a>
+                <a href="https://twitter.com">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span class="sr-only">Twitter</span>
+                </a>
+                <a href="https://pinterest.com">
+                    <i class="fab fa-pinterest-p" aria-hidden="true"></i>
+                    <span class="sr-only">Pinterest</span>
+                </a>
+                <a href="https://instagram.com">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <span class="sr-only">Instagram</span>
+                </a>
+            </div><!-- /.mobile-nav__social -->
         </div>
-
-        <div class="bg-primary text-white">
-            <div
-                class="container mx-auto px-4 py-4 flex flex-col-reverse md:flex-row justify-between items-center text-center md:text-right text-xs gap-4">
-
-                <p>{{ date('Y') }}
-                    ©   {{ __('جميع الحقوق محفوظة') }}
-                    <span class="mx-2" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">|</span>
-                    <a href="https://www.cangrowonline.com/en" class="font-bold hover:underline"
-                        dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">Cangrow</a>
-                </p>
-
-                <div class="flex items-center gap-4">
-
-                     @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank" aria-label="Twitter" class="hover:text-slate-900 transition-colors"><i
-                                class="fa-brands fa-twitter text-lg"></i></a>
-                        @endif
-                        @if(App\Models\Socialsetting::find(1)->f_status == 1)
-                                                <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"  aria-label="Facebook"
-                                                    class="hover:text-slate-900 transition-colors"><i class="fa-brands fa-facebook-f text-lg"></i></a>
-                        @endif
-                        @if(App\Models\Socialsetting::find(1)->ystatus == 1)
-                                                <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"  aria-label="YouTube" class="hover:text-slate-900 transition-colors"><i
-                                                        class="fa-brands fa-youtube text-lg"></i></a>
-                        @endif
-                        @if(App\Models\Socialsetting::find(1)->i_status == 1)
-                                                <a href="{{ App\Models\Socialsetting::find(1)->instagram }}" target="_blank"  aria-label="Instagram" class="hover:text-slate-900 transition-colors"><i
-                                                        class="fa-brands fa-instagram text-lg"></i></a>
-                        @endif
-{{-- 
-                    <a href="#" aria-label="YouTube" class="hover:text-slate-900 transition-colors"><i
-                            class="fa-brands fa-youtube text-lg"></i></a>
-                    <a href="#" aria-label="Twitter" class="hover:text-slate-900 transition-colors"><i
-                            class="fa-brands fa-twitter text-lg"></i></a>
-                    <a href="facebook.com/100069528862442" aria-label="Facebook"
-                        class="hover:text-slate-900 transition-colors"><i
-                            class="fa-brands fa-facebook-f text-lg"></i></a>
-                    <a href="instagram.com/%3Futm_source%3Dig_web_copy_link" aria-label="Instagram"
-                        class="hover:text-slate-900 transition-colors"><i
-                            class="fa-brands fa-instagram text-lg"></i></a>
-                    <a href="#" aria-label="LinkedIn" class="hover:text-slate-900 transition-colors"><i
-                            class="fa-brands fa-linkedin-in text-lg"></i></a> --}}
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div id="visitors-popup"
-        class="fixed bottom-6 left-6 bg-white rounded-xl shadow-lg border border-gray-200 p-4 w-64 z-50 flex gap-3 animate__animated animate__fadeInUp hidden">
-        <div class="flex-shrink-0">
-            <i class="fa-solid fa-users text-custom-orange text-2xl"></i>
-        </div>
-        <div class="flex-1">
-            <h4 class="text-base font-semibold text-gray-800 mb-1"> {{ __('عدد الزائرين') }}</h4>
-            <p id="visitor-count" class="text-sm text-gray-600"> {{ __('جار التحميل') }}..</p>
-        </div>
-        <button id="close-popup" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
+        <!-- /.mobile-nav__content -->
     </div>
+    <!-- /.mobile-nav__wrapper -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form role="search" method="get" class="search-popup__form" action="#">
+                <input type="text" id="search" placeholder="Search Here..." />
+                <button type="submit" aria-label="search submit" class="boskery-btn">
+                    <span class="boskery-btn__hover"></span>
+                    <span class="boskery-btn__hover"></span>
+                    <span class="boskery-btn__hover"></span>
+                    <span class="boskery-btn__hover"></span>
+                    <span class="boskery-btn__hover"></span>
+                    <span class="boskery-btn__hover"></span>
+                    <span class="icon-search"></span>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+    <aside class="sidebar-one">
+        <div class="sidebar-one__overlay sidebar-btn__toggler"></div><!-- /.siderbar-ovarlay -->
+        <div class="sidebar-one__content">
+            <span class="sidebar-one__close sidebar-btn__toggler"><i class="fa fa-times"></i></span>
+            <div class="sidebar-one__logo sidebar-one__item">
+                <a href="{{ route('front.index',$sign) }}" aria-label="logo image"><img src="{{ $gs->{'logo_' . $sign} }}" width="100"
+                        alt="logo" /></a>
+            </div><!-- /.sidebar-one__logo -->
+            <div class="sidebar-one__about sidebar-one__item">
+                <p class="sidebar-one__about__text">Providing fresh and organic meat from our farm in a very hygienic
+                    way.
+                </p>
+            </div><!-- /.sidebar-one__about -->
+            <div class="sidebar-one__info sidebar-one__item">
+                <h4 class="sidebar-one__title">Contact</h4>
+                <ul class="sidebar-one__info__list">
+                    <li><span class="icon-maps-and-flags"></span>
+                        <address>85 Ketch Harbour Road
+                            Bensal PA 19020</address>
+                    </li>
+                    <li><span class="icon-paper-plane"></span> <a
+                            href="mailto:needhelp@company.com">needhelp@company.com</a></li>
+                    <li><span class="icon-phone-call"></span> <a href="tel:+9156980036420">+91 5698 0036 420</a></li>
+                </ul><!-- /.sidebar-one__info__list -->
+            </div><!-- /.sidebar-one__info -->
+            <div class="sidebar-one__social sidebar-one__item">
+                <a href="https://facebook.com">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    <span class="sr-only">Facebook</span>
+                </a>
+                <a href="https://twitter.com">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span class="sr-only">Twitter</span>
+                </a>
+                <a href="https://linkedin.com">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    <span class="sr-only">Linkedin</span>
+                </a>
+                <a href="https://youtube.com" aria-hidden="true">
+                    <i class="fab fa-youtube"></i>
+                    <span class="sr-only">Youtube</span>
+                </a>
+            </div><!-- /sidebar-one__social -->
+            <div class="sidebar-one__newsletter sidebar-one__item">
+                <label class="sidebar-one__title" for="sidebar-email">Newsletter</label>
+                <form action="#" class="sidebar-one__newsletter__inner mc-form" data-url="MAILCHIMP_FORM_URL">
+                    <input type="email" name="EMAIL" id="sidebar-email" class="sidebar-one__newsletter__input"
+                        placeholder="Email Address">
+                    <button type="submit" class="sidebar-one__newsletter__btn"><span class="icon-email"
+                            aria-hidden="true"></span></button>
+                </form>
+                <div class="mc-form__response"></div><!-- /.mc-form__response -->
+            </div><!-- /.sidebar-one__form -->
+        </div><!-- /.sidebar__content -->
+    </aside><!-- /.sidebar-one -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+
+
+
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

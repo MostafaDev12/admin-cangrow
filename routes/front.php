@@ -37,10 +37,16 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
         Route::get('/products', [HomeController::class, 'products'])->name('products.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
-        Route::get('/our-impact', [HomeController::class, 'our_impact'])->name('our-impact.index');
-        Route::get('/associations', [HomeController::class, 'associations'])->name('associations.index');
-        Route::get('/board-trustees', [HomeController::class, 'board_trustees'])->name('board-trustees.index');
-        Route::get('/achievements', [HomeController::class, 'achievements'])->name('achievements.index');
+
+
+        Route::get('/farm-to-fork', [HomeController::class, 'farm_to_fork'])->name('farm-to-fork.index');
+
+        Route::get('/b2b-services', [HomeController::class, 'b2b_services'])->name('b2b-services.index');
+        Route::get('/quality', [HomeController::class, 'quality'])->name('quality.index');
+        Route::get('/quality-list/{id}', [HomeController::class, 'quality_list'])->name('quality_list.index');
+
+
+        Route::get('/careers', [HomeController::class, 'careers'])->name('careers.index');
         Route::get('/certificate', [HomeController::class, 'certificate'])->name('certificate.index');
         Route::get('/success-volunteers', [HomeController::class, 'success_volunteers'])->name('success-volunteers.index');
         Route::get('/agenda', [HomeController::class, 'agenda'])->name('agenda.index');
@@ -73,7 +79,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/فيديوهات', [HomeController::class, 'videos'])->name('videos.index');
         Route::get('/locations', [HomeController::class, 'locations'])->name('locations.index');
        
-        Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs.index');    
+        Route::get('/health-trust', [HomeController::class, 'blogs'])->name('blogs.index');    
         Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews.index');    
         
         Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');

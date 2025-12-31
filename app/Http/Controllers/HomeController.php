@@ -88,7 +88,8 @@ $processes = Process::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
   $certificates = Certificate::get();
   $servicess = Service::get();
-    return view('front.index', compact('sign','projects', 'sliders','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
+   $about_visions = AboutVision::get();
+    return view('front.index', compact('sign','projects', 'sliders', 'about_visions','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
   }
 
 
@@ -116,7 +117,7 @@ $processes = Process::get();
 
    
 
-  public function our_impact(Request $request,$lang)
+  public function farm_to_fork(Request $request,$lang)
   {
 
     $sign = $this->langSign($lang);
@@ -133,33 +134,12 @@ $processes = Process::get();
         $testimonials = Testimonial::get();
             $certificates = Certificate::get();
               $locations = Location::get();
+               $colings = PageModel::get();
 
-    return view('front.our-impact', compact('sign', 'sliders', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+    return view('front.farm-to-fork', compact('sign', 'colings', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
 
-  public function associations(Request $request,$lang)
-  {
-
-    $sign = $this->langSign($lang);
-
-    $sliders = Slider::get();
-    $points = AboutPoint::get();
-    $about_visions = AboutVision::get();
-    $services = Service::get();
-    $models = ModelCategory::get();
-    $partners = Partner::get();
-    $teams = Doctor::get()->take(4);
-    $processes = Process::get();
-       $timelines = Timeline::get();
-        $testimonials = Testimonial::get();
-            $certificates = Certificate::get();
-              $locations = Location::get();
-
-    return view('front.associations', compact('sign', 'sliders', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
-  }
-
-   
-  public function board_trustees(Request $request,$lang)
+  public function b2b_services(Request $request,$lang)
   {
 
     $sign = $this->langSign($lang);
@@ -176,12 +156,36 @@ $processes = Process::get();
         $testimonials = Testimonial::get();
             $certificates = Certificate::get();
               $locations = Location::get();
+        $achievements = AfterBefore::get();
 
-    return view('front.board-trustees', compact('sign', 'teams', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+    return view('front.b2b-services', compact('sign', 'achievements', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'teams', 'partners'));
   }
 
-      
-  public function achievements(Request $request,$lang)
+   
+  public function quality(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+    $sliders = Slider::get();
+    
+    $about_visions = AboutVision::get();
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $partners = Partner::get();
+    $teams = Doctor::get();
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Event::get();
+            $points = Party::get();
+              $locations = Location::get();
+              $faqs = Agenda::get();
+
+    return view('front.quality', compact('sign', 'teams','faqs', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+  }
+
+  public function quality_list(Request $request,$lang,$id)
   {
 
     $sign = $this->langSign($lang);
@@ -190,6 +194,33 @@ $processes = Process::get();
     $points = AboutPoint::get();
     $about_visions = AboutVision::get();
     $services = Service::get();
+    $model = ModelCategory::find($id);
+    $partners = Partner::get();
+    $teams = Doctor::get();
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Certificate::get();
+              $locations = Location::get();
+  
+    if(!$model){
+
+      abort(404);
+    }
+
+    return view('front.quality-list', compact('sign', 'teams', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'model', 'partners'));
+  }
+
+      
+  public function careers(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+    $sliders = Slider::get();
+    $points = AboutPoint::get();
+    $about_visions = AboutVision::get();
+    $services = Project::get();
     $models = ModelCategory::get();
     $partners = Partner::get();
     $teams = Doctor::get();
@@ -198,9 +229,9 @@ $processes = Process::get();
        $timelines = Timeline::get();
         $testimonials = Testimonial::get();
             $certificates = Certificate::get();
-              $locations = Location::get();
+              $jobs = DonateCampaign::get();
 
-    return view('front.achievements', compact('sign','achievements', 'teams', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+    return view('front.careers', compact('sign','achievements', 'teams', 'jobs', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
 
    
@@ -246,9 +277,10 @@ $processes = Process::get();
     $sign = $this->langSign($lang);
 
  
-    $blogs = Blog::orderby('blog_date','desc')->paginate(9);
+    $blogs = Blog::orderby('blog_date','desc')->get();
+    $videos = Media::get();
 
-    return view('front.blogs', compact('sign', 'blogs'));
+    return view('front.blogs', compact('sign', 'blogs','videos'));
   }
 
   public function products(Request $request)

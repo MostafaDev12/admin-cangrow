@@ -36,6 +36,11 @@ class Pagesetting extends Model
      'volunteering_title_en',
      'volunteering_details_en',
    
+     'packing_title_ar',
+     'packing_details_ar',
+     'packing_title_en',
+     'packing_details_en',
+   
 ];
 
     public $timestamps = false;
