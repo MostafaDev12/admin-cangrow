@@ -106,7 +106,7 @@
                                     <table id="geniustable" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                              <th>{{ __('translation.photo') }}</th>
+                                              {{-- <th>{{ __('translation.photo') }}</th> --}}
                                               <th>{{ __('translation.title') }}</th>
                                           
                                           <th>{{ __('translation.actions') }}</th>
@@ -210,7 +210,7 @@
                serverSide: true,
                ajax: '{{ route('admin-categories-datatables') }}',
                columns: [
-                        { data: 'photo', name: 'photo' },
+                    //    { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
                          
                         { data: 'action', searchable: false, orderable: false }

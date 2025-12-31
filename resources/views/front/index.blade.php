@@ -277,7 +277,7 @@
                                 </a>
                                 <div class="about-one__image__border"></div>
                             </div>
-                            <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-1.png" alt="about shape"
+                            <img src="{{ $ps->portfolio_photo }}" alt="about shape"
                                 class="about-one__image__shape">
                         </div>
                     </div>

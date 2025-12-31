@@ -349,6 +349,7 @@ Route::prefix('admin')->group(function () {
       Route::get('/page-settings/portfolio', [PageSettingController::class, 'portfolio'])->name('admin-ps-portfolio');
       Route::get('/page-settings/after_before', [PageSettingController::class, 'after_before'])->name('admin-ps-after_before');
       Route::get('/page-settings/our_team', [PageSettingController::class, 'our_team'])->name('admin-ps-our_team');
+      Route::get('/page-settings/packing', [PageSettingController::class, 'packing'])->name('admin-ps-packing');
       Route::post('/page-settings/update/all', [PageSettingController::class, 'pageupdate'])->name('admin-ps-update');
     });
 

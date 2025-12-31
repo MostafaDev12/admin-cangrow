@@ -131,7 +131,7 @@
                         <div class="service-card">
                             <div class="service-card__content">
                                 <div class="service-card__image">
-                                    <img src="{{ $model->photo }}" alt="قطعيات خاصة للمطاعم">
+                                    <img src="{{ $model->photo_url }}" alt="قطعيات خاصة للمطاعم">
                                     <div class="service-card__icon">
                                         <span class="icon-butchering"></span>
                                     </div><!-- /.service-card__icon -->

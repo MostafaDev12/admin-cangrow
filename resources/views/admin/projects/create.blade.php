@@ -222,16 +222,16 @@ $icons = [
                                               {{-- <div class="mb-3">
                                                   <label for="short_details_ar" class="form-label">{{ __('translation.short_details') }}</label>
                                                   <textarea class="form-control ckeditor" name="short_details_ar"  id="short_details_ar" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
-                                              </div> --}}
+                                              </div> 
                                               <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
-                                              </div>
+                                              </div>--}}
                                               <div class="mb-3">
                                                   <label for="short_details_ar" class="form-label">{{ __('translation.short_details') }}</label>
                                                   <textarea class="form-control  " name="short_details_ar"  id="short_details_ar" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
                                               </div>
-                                             <div class="mb-3">
+                                             {{-- <div class="mb-3">
                                                   <label for="slug_ar" class="form-label">{{ __('translation.slug') }}</label>
                                                   <input type="text" class="form-control" name="slug_ar" id="slug_ar" required placeholder="{{ __('translation.slug') }}">
                                               </div>
@@ -245,7 +245,7 @@ $icons = [
                                               <div class="mb-3">
                                                   <label for="meta_details_ar" class="form-label">{{ __('translation.meta_details') }}</label>
                                                   <textarea class="form-control" name="meta_details_ar"  id="meta_details_ar" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
+                                              </div>    --}}
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
@@ -259,11 +259,11 @@ $icons = [
                                               <label for="short_details_en" class="form-label">{{ __('translation.short_details') }}</label>
                                               <textarea class="form-control ckeditor" name="short_details_en"  id="short_details_en" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
                                           </div>
-                                           --}}
+                                          
                                           <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
-                                          </div>
+                                          </div> --}}
                                           
                                           
                                           <div class="mb-3">
@@ -272,7 +272,7 @@ $icons = [
                                           </div>
                                           
                                           
-                                           <div class="mb-3">
+                                           {{-- <div class="mb-3">
                                                   <label for="slug_en" class="form-label">{{ __('translation.slug') }}</label>
                                                   <input type="text" class="form-control" name="slug_en" id="slug_en"   placeholder="{{ __('translation.slug') }}">
                                               </div>
@@ -286,7 +286,7 @@ $icons = [
                                               <div class="mb-3">
                                                   <label for="meta_details_en" class="form-label">{{ __('translation.meta_details') }}</label>
                                                   <textarea class="form-control" name="meta_details_en"  id="meta_details_en" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
+                                              </div>    --}}
                                           
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
@@ -300,9 +300,9 @@ $icons = [
                                            
                                           <div class="mb-3">
                                               <label for="short_details_fr" class="form-label">{{ __('translation.short_details') }}</label>
-                                              <textarea class="form-control ckeditor" name="short_details_fr"  id="short_details_fr" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
+                                              <textarea class="form-control " name="short_details_fr"  id="short_details_fr" rows="3" placeholder="{{ __('translation.short_details') }}"></textarea>
                                           </div>
-                                          
+{{--                                           
                                           <div class="mb-3">
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
@@ -329,7 +329,7 @@ $icons = [
                                               <div class="mb-3">
                                                   <label for="meta_details_fr" class="form-label">{{ __('translation.meta_details') }}</label>
                                                   <textarea class="form-control" name="meta_details_fr"  id="meta_details_fr" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
+                                              </div>    --}}
                                         </div>
 
                                     </div>
@@ -339,7 +339,7 @@ $icons = [
                     </div>
   
                         <div class="row">
-                                   <div class="col-xl-12 col-md-12">
+                                   {{-- <div class="col-xl-12 col-md-12">
 
                                 <div class="mb-3">
                                     <label for="parent_id" class="form-label">{{ __('translation.icons') }}</label>
@@ -354,7 +354,7 @@ $icons = [
                                        
                                     </select>
                                 </div>  
-                            </div>
+                            </div> --}}
   {{--
                             <div class="col-xl-12 col-md-12">
 

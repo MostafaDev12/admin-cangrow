@@ -267,10 +267,10 @@
 
                                     <!-- صحتك أمانة -->
                                     <li  class="dropdown">
-                                        <a href="health-trust.html">صحتك أمانة</a>
+                                        <a href="{{ route('blogs.index',$sign) }}">صحتك أمانة</a>
                                         <ul class="sub-menu">
-                                            <li><a href="health-trust.html#articles">مقالات قصيرة</a></li>
-                                            <li><a href="health-trust.html#videos">فيديوهات</a></li>
+                                            <li><a href="{{ route('blogs.index',$sign) }}#articles">مقالات قصيرة</a></li>
+                                            <li><a href="{{ route('blogs.index',$sign) }}#videos">فيديوهات</a></li>
                                         </ul>
                                     </li>
 

@@ -74,12 +74,12 @@
                                             <h6 style="text-align: center;"> {{ __('translation.arabic') }}</h6>
 
 
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="name_ar"
                                                     class="form-label">{{ __('translation.name') }}</label>
                                                 <input type="text" class="form-control" name="name_ar" id="name_ar"
                                                     placeholder="{{ __('translation.name') }}">
-                                            </div>
+                                            </div> --}}
 
                                             <div class="mb-3">
                                                 <label for="title_ar"
@@ -100,12 +100,12 @@
                                             id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
 
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="name_en"
                                                     class="form-label">{{ __('translation.name') }}</label>
                                                 <input type="text" class="form-control" name="name_en" id="name_en"
                                                     placeholder="{{ __('translation.name') }}">
-                                            </div>
+                                            </div> --}}
 
                                             <div class="mb-3">
                                                 <label for="title_en"

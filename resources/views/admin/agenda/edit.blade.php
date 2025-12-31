@@ -83,11 +83,11 @@
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_ar }}</textarea>
                                               </div>
-                                               <div class="mb-3">
+                                            {{--     <div class="mb-3">
                                                 <label for="location_ar" class="form-label">{{ __('translation.location') }}</label>
                                                 <textarea class="form-control" name="location_ar"  id="location_ar" rows="3" placeholder="{{ __('translation.location') }}">{{ $data->location_ar }}</textarea>
                                             </div>
-                                           {{-- 
+                                          
                                             <div class="mb-3">
                                                 <label for="date_ar" class="form-label">{{ __('translation.date') }}</label>
                                                 <textarea class="form-control" name="date_ar"  id="date_ar" rows="3" placeholder="{{ __('translation.date') }}">{{ $data->date_ar }}</textarea>
@@ -108,12 +108,12 @@
                                               <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_en }}</textarea>
                                           </div>
                                           
-                                      
+         {{--                               
                                         <div class="mb-3">
                                           <label for="location_en" class="form-label">{{ __('translation.location') }}</label>
                                           <textarea class="form-control" name="location_en"  id="location_en" rows="3" placeholder="{{ __('translation.location') }}">{{ $data->location_en }}</textarea>
                                       </div>
-    {{--                                             
+                                               
                                         <div class="mb-3">
                                             <label for="date_en" class="form-label">{{ __('translation.date') }}</label>
                                             <textarea class="form-control" name="date_en"  id="date_en" rows="3" placeholder="{{ __('translation.date') }}">{{ $data->date_en }}</textarea>
@@ -152,7 +152,7 @@
                                       <div class="row">
 
 
-                            <div class="col-xl-12 col-md-12">
+                            {{-- <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                   
                                     <div class="mb-3">
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                                 <!-- end card -->
-                            </div> <!-- end col -->
+                            </div> <!-- end col --> --}}
 {{-- 
                              
                             <div class="col-xl-12 col-md-12">

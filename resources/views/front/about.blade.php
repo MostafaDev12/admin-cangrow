@@ -144,12 +144,12 @@
                 <div class="row gutter-y-60">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                         <div class="about-three__image">
-                            <img src="{{ asset('front/mtc/') }}/assets/images/about/about-3-1.jpg" alt="مجمع تكنولوجيا اللحوم MTC"
+                            <img src="{{ $ps->volunteering_photo }}" alt="مجمع تكنولوجيا اللحوم MTC"
                                 class="about-three__image__one">
-                            <div class="about-three__image__inner">
+                            {{-- <div class="about-three__image__inner">
                                 <img src="{{ asset('front/mtc/') }}/assets/images/about/about-3-2.jpg" alt="منتجات اللحوم"
                                     class="about-three__image__two">
-                            </div><!-- /.about-three__image__inner -->
+                            </div><!-- /.about-three__image__inner --> --}}
                             <div class="about-three__experience">
                                 <div class="about-three__experience__bg"
                                     style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/about-shape-3-1.png);"></div>
@@ -347,7 +347,7 @@
         <!-- الإنجازات -->
         <section class="counter-one section-space">
             <div class="counter-one__bg boskery-jarallax" data-jarallax data-speed="0.3"
-                style="background-image: url(assets/images/backgrounds/counter-bg-2.jpg);"></div>
+                style="background-image: url({{ asset('front/mtc/') }}/assets/images/backgrounds/testimonials-bg-2-1.jpg);"></div>
             <!-- /.counter-one__bg -->
             <div class="container">
                 <div class="counter-one__wrapper">
@@ -355,7 +355,7 @@
                     <div class="counter-one__item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
                         <div class="counter-one__item__inner">
                             <div class="counter-one__box count-box">
-                                <h3 class="counter-one__count-text count-text" data-stop=" {{ $timeline->year ?? 0 }}" data-speed="1500">0</h3>
+                                <h3 class="counter-one__count-text count-text"  >{{ $timeline->year ?? 0 }}</h3>
                             </div><!-- /.counter-one__box -->
                             <h4 class="counter-one__title">    {{ $timeline->{'title_' . $sign} ?? '' }}  </h4><!-- /.counter-one__title -->
                         </div><!-- /.counter-one__item__inner -->

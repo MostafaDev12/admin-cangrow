@@ -79,7 +79,7 @@
                                                   <input type="text" class="form-control" name="title_ar" id="title_ar" placeholder="{{ __('translation.title') }}">
                                               </div>
                                                
-                                              <div class="mb-3">
+                                              {{-- <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                               </div>
@@ -97,7 +97,7 @@
                                               <div class="mb-3">
                                                   <label for="meta_details_ar" class="form-label">{{ __('translation.meta_details') }}</label>
                                                   <textarea class="form-control" name="meta_details_ar"  id="meta_details_ar" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
+                                              </div>    --}}
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
@@ -107,7 +107,7 @@
                                               <input type="text" class="form-control" name="title_en" id="title_en" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <div class="mb-3">
+                                          {{-- <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                           </div>
@@ -128,7 +128,7 @@
                                                   <label for="meta_details_en" class="form-label">{{ __('translation.meta_details') }}</label>
                                                   <textarea class="form-control" name="meta_details_en"  id="meta_details_en" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
                                               </div>   
-                                          
+                                           --}}
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
                                             <h6 style="text-align: center;">{{ __('translation.france') }}</h6>
@@ -139,7 +139,7 @@
                                               <input type="text" class="form-control" name="title_fr" id="title_fr" placeholder="{{ __('translation.title') }}">
                                           </div>
                                            
-                                          <div class="mb-3">
+                                          {{-- <div class="mb-3">
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                           </div>
@@ -159,7 +159,7 @@
                                               <div class="mb-3">
                                                   <label for="meta_details_fr" class="form-label">{{ __('translation.meta_details') }}</label>
                                                   <textarea class="form-control" name="meta_details_fr"  id="meta_details_fr" rows="3" placeholder="{{ __('translation.meta_details') }}"></textarea>
-                                              </div>   
+                                              </div>    --}}
                                         </div>
 
                                     </div>
@@ -171,7 +171,7 @@
                         <div class="row">
 
 
-                            <div class="col-xl-12 col-md-12">
+                            {{-- <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>
@@ -197,7 +197,7 @@
 
                                 </div>
                                 <!-- end card -->
-                            </div> <!-- end col -->
+                            </div> <!-- end col --> --}}
 
 
                         </div>

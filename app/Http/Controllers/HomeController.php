@@ -126,7 +126,7 @@ $processes = Process::get();
     $points = AboutPoint::get();
     $about_visions = AboutVision::get();
     $services = Service::get();
-    $models = ModelCategory::get();
+    $models = HumanitarianCase::get();
     $partners = Partner::get();
     $teams = Doctor::get()->take(4);
     $processes = Process::get();
@@ -134,7 +134,7 @@ $processes = Process::get();
         $testimonials = Testimonial::get();
             $certificates = Certificate::get();
               $locations = Location::get();
-               $colings = PageModel::get();
+               $colings = Subcategory::get();
 
     return view('front.farm-to-fork', compact('sign', 'colings', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
@@ -220,7 +220,7 @@ $processes = Process::get();
     $sliders = Slider::get();
     $points = AboutPoint::get();
     $about_visions = AboutVision::get();
-    $services = Project::get();
+    $servicess = Project::get();
     $models = ModelCategory::get();
     $partners = Partner::get();
     $teams = Doctor::get();
@@ -231,7 +231,7 @@ $processes = Process::get();
             $certificates = Certificate::get();
               $jobs = DonateCampaign::get();
 
-    return view('front.careers', compact('sign','achievements', 'teams', 'jobs', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+    return view('front.careers', compact('sign','achievements', 'teams', 'jobs', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'servicess', 'models', 'partners'));
   }
 
    

@@ -106,7 +106,7 @@
                                     <table id="geniustable" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                              <th>{{ __('translation.photo') }}</th>
+                                              {{-- <th>{{ __('translation.photo') }}</th> --}}
                                               <th>{{ __('translation.title_ar') }}</th>
                                               <th>{{ __('translation.title_en') }}</th>
                                           {{-- <th>{{ __('translation.category') }}</th>  --}}
@@ -211,7 +211,7 @@
                serverSide: true,
                ajax: '{{ route('admin-donate_campaigns-datatables') }}',
                columns: [
-                        { data: 'photo', name: 'photo' },
+                       // { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
                         { data: 'title_en', name: 'title_en' },
                           // { data: 'category', name: 'category' },

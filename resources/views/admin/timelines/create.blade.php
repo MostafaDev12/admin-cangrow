@@ -82,12 +82,12 @@
                                                     placeholder="{{ __('translation.title') }}">
                                             </div>
 
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="details_ar"
                                                     class="form-label">{{ __('translation.details') }}</label>
                                                 <textarea class="form-control" name="details_ar" id="details_ar" rows="3"
                                                     placeholder="{{ __('translation.details') }}"></textarea>
-                                            </div>
+                                            </div> --}}
 
 
 
@@ -103,12 +103,12 @@
                                                     placeholder="{{ __('translation.title') }}">
                                             </div>
 
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="details_en"
                                                     class="form-label">{{ __('translation.details') }}</label>
                                                 <textarea class="form-control" name="details_en" id="details_en" rows="3"
                                                     placeholder="{{ __('translation.details') }}"></textarea>
-                                            </div>
+                                            </div> --}}
 
 
                                         </div>
@@ -123,12 +123,12 @@
                                                     placeholder="{{ __('translation.title') }}">
                                             </div>
 
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="details_fr"
                                                     class="form-label">{{ __('translation.details') }}</label>
                                                 <textarea class="form-control" name="details_fr" id="details_fr" rows="3"
                                                     placeholder="{{ __('translation.details') }}"></textarea>
-                                            </div>
+                                            </div> --}}
 
 
 
@@ -139,7 +139,7 @@
 
                                     <div class="row">
 
-
+{{--  --}}
                                         <div class="col-xl-12 col-md-12">
                                             <div class="card">
 
@@ -147,12 +147,12 @@
                                                     <label for="year"
                                                         class="form-label">{{ __('translation.button_link') }}</label>
                                                     <input type="text" class="form-control" name="year"
-                                                        id="year" placeholder="{{ __('translation.button_link') }}">
+                                                        id="year" placeholder="{{ __('translation.counter') }}">
                                                 </div>
                                             </div>
                                             <!-- end card -->
                                         </div> <!-- end col -->
-
+{{-- 
                                         <div class="col-xl-12 col-md-12">
                                             <div class="card">
                                                 <div class="card-header">
@@ -182,7 +182,7 @@
 
                                             </div>
                                             <!-- end card -->
-                                        </div> <!-- end col -->
+                                        </div> <!-- end col --> --}}
 
                                     </div>
                                 </div><!-- end card-body -->

@@ -75,6 +75,19 @@ class PageSettingController extends Controller
                 $data->upload($name,$file,$data->portfolio_photo);
                 $input['portfolio_photo'] = $name;
             }
+            if ($file = $request->file('packing_photo1'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->packing_photo1);
+                $input['packing_photo1'] = $name;
+            }
+             
+            if ($file = $request->file('packing_photo2'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->packing_photo2);
+                $input['packing_photo2'] = $name;
+            }
              
             if ($file = $request->file('volunteering_photo'))
             {
@@ -132,6 +145,12 @@ class PageSettingController extends Controller
     public function portfolio()
     {
         return view('admin.pagesetting.portfolio');
+    }
+
+  
+    public function packing()
+    {
+        return view('admin.pagesetting.packing');
     }
 
  

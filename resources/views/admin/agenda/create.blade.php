@@ -82,10 +82,10 @@
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                               </div>
-                                              <div class="mb-3">
+                                              {{-- <div class="mb-3">
                                         <label for="location_ar" class="form-label">{{ __('translation.location') }}</label>
                                         <textarea class="form-control" name="location_ar"  id="location_ar" rows="3" placeholder="{{ __('translation.location') }}"></textarea>
-                                    </div>
+                                    </div> --}}
                                             
                                               
                                         </div>
@@ -101,12 +101,12 @@
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}"></textarea>
                                           </div>
-                                          
+{{--                                           
                                          <div class="mb-3">
                                         <label for="location_ar" class="form-label">{{ __('translation.location') }}</label>
                                         <textarea class="form-control" name="location_en"  id="location_en" rows="3" placeholder="{{ __('translation.location') }}"></textarea>
                                     </div>
-                                        
+                                         --}}
                                         </div>
                                         <div class="tab-pane" id="base-justified-messages" role="tabpanel">
                                             <h6 style="text-align: center;">{{ __('translation.france') }}</h6>
@@ -132,7 +132,7 @@
                                        <div class="row">
 
 
-                            <div class="col-xl-12 col-md-12">
+                            {{-- <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                   
                                     <div class="mb-3">
@@ -141,7 +141,7 @@
                                     </div>
                                 </div>
                                 <!-- end card -->
-                            </div> <!-- end col -->
+                            </div> <!-- end col --> --}}
 
  
 {{-- 

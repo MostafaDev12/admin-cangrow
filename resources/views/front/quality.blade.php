@@ -126,7 +126,7 @@
                                 <h3 class="service-card__title"><a href="#">   
                                         {{ $certificate->{'title_' . $sign} }}</a></h3>
                                 <!-- /.services-card__title -->
-                                <p class="service-card__text">  {{ $certificate->{'details_' . $sign} }} </p>
+                                <p class="service-card__text">  {{ $certificate->{'short_details_' . $sign} }} </p>
                                 <!-- /.services-card__text -->
                             </div><!-- /.services-card__content -->
                             {{-- <a href="service-d-custom-cutting.html" class="service-card__btn">تفاصيل الخدمة <span
@@ -261,19 +261,19 @@
                     <div class="col-lg-6">
                         <div class="faq-two__accordion">
                             <div class="faq-accordion boskery-accordion" data-grp-name="boskery-accordion">
-                                @foreach ($faqs as $faq)
+                                @foreach ($faqs as $k=>$faq)
                                     
-                                <div class="accordion active wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                                <div class="accordion {{$k == 0 ? 'active' : ''  }}  wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
                                     <div class="accordion-title">
                                         <h4>
-                                           {{ $point->{'title_' . $sign} }}
+                                           {{ $faq->{'title_' . $sign} }}
                                             <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
                                         </h4>
                                     </div><!-- /.accordion-title -->
                                     <div class="accordion-content">
                                         <div class="inner">
                                             
-                                            <p> {{ $point->{'details_' . $sign} }}   </p>
+                                            <p> {{ $faq->{'details_' . $sign} }}   </p>
                                         </div><!-- /.accordion-content -->
                                     </div>
                                 </div><!-- /.accordion-item -->

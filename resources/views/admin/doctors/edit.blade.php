@@ -73,12 +73,12 @@
                                         <div class="tab-pane {{$gs->lang_arabic == 1 ? 'active' : '' }}" id="base-justified-home" role="tabpanel">
                                             <h6 style="text-align: center;">   {{ __('translation.arabic') }}</h6>
                                             
-                                       <div class="mb-3">
+                                       {{-- <div class="mb-3">
                                                 <label for="name_ar"
                                                     class="form-label">{{ __('translation.name') }}</label>
                                                 <input type="text" class="form-control" name="name_ar" id="name_ar"   value="{{ $data->name_ar }}"
                                                     placeholder="{{ __('translation.name') }}">
-                                            </div>
+                                            </div> --}}
                                               <div class="mb-3">
                                                   <label for="title_ar" class="form-label">{{ __('translation.title') }}</label>
                                                   <input type="text" class="form-control" name="title_ar" value="{{ $data->title_ar }}" id="title_ar" placeholder="{{ __('translation.title') }}">
@@ -94,12 +94,12 @@
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
-                                              <div class="mb-3">
+                                              {{-- <div class="mb-3">
                                                 <label for="name_en"
                                                     class="form-label">{{ __('translation.name') }}</label>
                                                 <input type="text" class="form-control" name="name_en" id="name_en"   value="{{ $data->name_en }}"
                                                     placeholder="{{ __('translation.name') }}">
-                                            </div>
+                                            </div> --}}
                                             <div class="mb-3">
                                               <label for="title_en" class="form-label">{{ __('translation.title') }}</label>
                                               <input type="text" class="form-control" name="title_en"  value="{{ $data->title_en }}"  id="title_en" placeholder="{{ __('translation.title') }}">

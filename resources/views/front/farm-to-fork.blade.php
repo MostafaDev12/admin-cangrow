@@ -48,7 +48,7 @@
                                 <!-- <h6 class="sec-title__tagline">خدمة التوصيل</h6> -->
                                 <!-- /.sec-title__tagline -->
 
-                                <h2 class="sec-title__title"> المزارع <br>وعملية التسمين  </h2>
+                                <h2 class="sec-title__title">    {!! $ps->{'our_team_title_' . $sign} ?? '' !!}       </h2>
                                 <!-- /.sec-title__title -->
                             </div><!-- /.sec-title -->
                             <p class="delivery-one__text">  {!! $ps->{'our_team_details_' . $sign} ?? '' !!}     </p><!-- /.delivery-one__text -->
@@ -254,7 +254,7 @@
                                        @foreach ($models as $k=>$item)
                                     <div class="tab {{ $k == 0 ? 'active-tab' : '' }} fadeInUp animated" data-wow-delay="200ms"
                                         id="item-{{  $item->id }}" style="{{ $k == 0 ? 'display: block;' : '' }}">
-                                        <p > {!! $item->{'details_' . $sign} ?? '' !!} </p>
+                                        <p > {!! $item->{'short_details_' . $sign} ?? '' !!} </p>
                                     </div><!-- /.slaughter-process-tab -->
                                     @endforeach
                                  
@@ -282,10 +282,10 @@
                 <div class="row gutter-y-60">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                         <div class="about-three__image">
-                            <img src="{{ $ps->before_photo }}" alt="التصنيع والتغليف"
+                            <img src="{{ $ps->packing_photo1 }}" alt="التصنيع والتغليف"
                                 class="about-three__image__one">
                             <div class="about-three__image__inner">
-                                <img src="{{ $ps->after_photo }}" alt="منتجات اللحوم"
+                                <img src="{{ $ps->packing_photo2 }}" alt="منتجات اللحوم"
                                     class="about-three__image__two">
                             </div><!-- /.about-three__image__inner -->
                             <div class="about-three__experience">
@@ -379,13 +379,13 @@
                             @if (($k % 4) < 2)
                                 <!-- Image first (card-1, card-3 pattern) -->
                                 <div class="why-choose-card__image">
-                                    <img src="{{ $coling->photo }}" alt="{{ $coling->{'title_' . $sign} ?? $coling->title }}">
+                                    <img src="{{ $coling->photo }}" alt="{{ $coling->{'title_' . $sign} }}">
                                     <div class="why-choose-card__image__content  ">
                                         <div class="why-choose-card__image__title">
-                                            <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="{{ $coling->{'title_' . $sign} ?? $coling->title }}"
+                                            <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="{{ $coling->{'title_' . $sign} }}"
                                                 class="why-choose-card__image__icon">
-                                            <h6 class="why-choose-card__image__title__tagline">{{ $coling->{'title_' . $sign} ?? $coling->title }}</h6>
-                                            <h2 class="why-choose-card__image__title__title">{{ $coling->{'subtitle_' . $sign} ?? '' }}</h2>
+                                            <h6 class="why-choose-card__image__title__tagline">{{ $coling->{'title_' . $sign} }}</h6>
+                                            {{-- <h2 class="why-choose-card__image__title__title">{{ $coling->{'subtitle_' . $sign} ?? '' }}</h2> --}}
                                         </div><!-- /.why-choose-card__image__title -->
                                         <a href="{{ route('contact.index',$sign) }}" class="boskery-btn">
                                             <span class="boskery-btn__hover"></span>

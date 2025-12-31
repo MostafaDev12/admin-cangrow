@@ -40,6 +40,8 @@ class Pagesetting extends Model
      'packing_details_ar',
      'packing_title_en',
      'packing_details_en',
+     'packing_photo1',
+     'packing_photo2',
    
 ];
 
@@ -56,6 +58,15 @@ class Pagesetting extends Model
     public function getPortfolioPhotoAttribute()
     {
         return !empty($this->attributes['portfolio_photo']) ? url('/') . '/assets/images/' . $this->attributes['portfolio_photo'] : '';
+    }
+
+    public function getPackingPhoto1Attribute()
+    {
+        return !empty($this->attributes['packing_photo1']) ? url('/') . '/assets/images/' . $this->attributes['packing_photo1'] : '';
+    }
+    public function getPackingPhoto2Attribute()
+    {
+        return !empty($this->attributes['packing_photo2']) ? url('/') . '/assets/images/' . $this->attributes['packing_photo2'] : '';
     }
 
     public function getVolunteeringPhotoAttribute()

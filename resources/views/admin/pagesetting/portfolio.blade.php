@@ -145,6 +145,34 @@
                                 <!-- end card -->
                             </div> <!-- end col -->
 
+                            <div class="col-xl-12 col-md-12 ">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <p class="text-muted">FilePond is a JavaScript library with profile picture-shaped
+                                            file
+                                            upload variation.</p>
+                                        <div class="currrent-logo" style="text-align: center;">
+                                            <img style="width: 171px;" src="{{$ps->volunteering_photo ? $ps->volunteering_photo  :  asset('assets/images/noimage.png') }}"
+                                                alt="">
+                                        </div>
+                                        <div class="avatar-xl mx-auto">
+                                            <input type="file" class="filepond filepond-input-circle" name="volunteering_photo"
+                                                accept="image/png, image/jpeg, image/gif, image/webp" />
+                                        </div>
+
+
+                                    </div>
+                                    <!-- end card body -->
+
+
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+
 
                         </div>
 

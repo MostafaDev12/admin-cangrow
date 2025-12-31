@@ -48,7 +48,7 @@
                     <div class="col-xl-5 col-lg-6">
                         <div class="technologies-one__image">
                             <div class="technologies-one__image__inner">
-      @foreach ($services as $k=>$item)
+      @foreach ($servicess as $k=>$item)
                                     <img src="{{ $item->photo }}" alt="{!! $item->{'title_' . $sign} ?? '' !!}  " id="photo-{{  $item->id }}"
                                         class="technologies-one__image__one" style="{{ $k == 0 ? '' : 'display:none;' }}">
       @endforeach
@@ -77,7 +77,7 @@
                             <div class="technologies-one__main-tab-box tabs-box wow fadeInUp"
                                 data-wow-duration="1500ms">
                                 <ul class="tab-buttons">
-                                    @foreach ($services as $k=>$item)
+                                    @foreach ($servicess as $k=>$item)
                                         
                                     <li data-tab="#item-{{  $item->id }}" class="tab-btn {{ $k == 0 ? 'active-btn' : '' }}"> {!! $item->{'title_' . $sign} ?? '' !!}  
                                     
@@ -86,10 +86,10 @@
                                    
                                 </ul><!-- /.tab-buttons -->
                                 <div class="tabs-content">
-                                       @foreach ($services as $k=>$item)
+                                       @foreach ($servicess as $k=>$item)
                                     <div class="tab {{ $k == 0 ? 'active-tab' : '' }} fadeInUp animated" data-wow-delay="200ms"
                                         id="item-{{  $item->id }}" style="{{ $k == 0 ? 'display: block;' : '' }}">
-                                        <p > {!! $item->{'details_' . $sign} ?? '' !!} </p>
+                                        <p > {!! $item->{'short_details_' . $sign} ?? '' !!} </p>
                                     </div><!-- /.slaughter-process-tab -->
                                     @endforeach
                                  
