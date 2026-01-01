@@ -66,7 +66,7 @@
                                                 <span class="boskery-btn__hover"></span>
                                                 <span class="boskery-btn__hover"></span>
                                                 <span class="boskery-btn__hover"></span>
-                                                <span class="boskery-btn__text">اتصل بنا الآن</span>
+                                                <span class="boskery-btn__text">{{ __('اتصل بنا الآن') }}</span>
                                                 <i class="icon-meat-3"></i>
                                             </a><!-- slider-btn -->
                                         </div>
@@ -186,7 +186,7 @@
                                         </div>
                                         <h3 class="about-two__experience__year">+</h3>
                                     </div><!-- /.about-two__experience__box -->
-                                    <h4 class="about-two__experience__text">سنوات من <br> الخبرة</h4>
+                                    <h4 class="about-two__experience__text">{{ __('سنوات من') }}<br> {{ __('الخبرة') }}</h4>
                                     <!-- /.about-two__experience__text -->
                                 </div><!-- /.about-two__experience__content -->
                             </div><!-- /.about-two__experience -->
@@ -214,7 +214,7 @@
                                         <span class="icon-healthy-food"></span>
                                     </div><!-- /.about-two__info__icon -->
                                     <div class="about-two__info__content">
-                                        <h4 class="about-two__info__title">لحوم طازجة عالية الجودة</h4>
+                                        <h4 class="about-two__info__title">{{ __('لحوم طازجة عالية الجودة') }}</h4>
                                         <!-- /.about-two__info__title -->
                                     </div><!-- /.about-two__info__content -->
                                 </div><!-- /.about-two__info -->
@@ -222,8 +222,8 @@
                                     <div class="about-two__info__icon">
                                         <span class="icon-butchering"></span>
                                     </div><!-- /.about-two__info__icon -->
-                                    <div class="about-two__info__content">
-                                        <h4 class="about-two__info__title">تقنيات ذبح وتجهيز متطورة</h4>
+                                    <div class="about-two__info__content"> {{ __('') }}
+                                        <h4 class="about-two__info__title">{{ __('تقنيات ذبح وتجهيز متطورة') }}</h4>
                                         <!-- /.about-two__info__title -->
                                     </div><!-- /.about-two__info__content -->
                                 </div><!-- /.about-two__info -->
@@ -247,7 +247,7 @@
                                 <span class="boskery-btn__hover"></span>
                                 <span class="boskery-btn__hover"></span>
                                 <span class="boskery-btn__hover"></span>
-                                <span class="boskery-btn__text">تعرف علينا أكثر</span>
+                                <span class="boskery-btn__text">{{ __('تعرف علينا أكثر') }}</span>
                                 <i class="icon-meat-3"></i>
                             </a><!-- /.boskery-btn -->
                         </div><!-- /.about-two__content -->
@@ -269,7 +269,7 @@
                     <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                         <div class="about-one__image">
                             <div class="about-one__image__inner">
-                                <h3 class="about-one__image__text">لماذا MTC</h3>
+                                <h3 class="about-one__image__text">{{ __('لماذا MTC') }}</h3>
                                 <img src="{{ asset('front/mtc/') }}/assets/images/about/about-1-1.jpg" alt="about image">
                                 <a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="video-button video-popup">
                                     <span class="icon-play"></span>
@@ -292,7 +292,7 @@
                                 <!-- <h6 class="sec-title__tagline"></h6> -->
 
                                 <!-- <h2 class="sec-title__title">نقاط تميزنا</h2> -->
-                                <h2 class="sec-title__title">لماذا MTC</h2>
+                                <h2 class="sec-title__title"> {{ __('لماذا MTC') }}</h2>
                             </div>
 
                             <p class="about-one__text">
@@ -300,7 +300,7 @@
                             </p>
 
                             <div class="about-one__inner">
-                                <h5 class="about-one__info-title">أهم مميزاتنا</h5>
+                                <h5 class="about-one__info-title">{{ __('أهم مميزاتنا') }}</h5>
 
                                 <ul class="about-one__info">
                                     @foreach ($about_visions as $point)
@@ -318,7 +318,7 @@
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
-                                    <span class="boskery-btn__text">تواصل معنا</span>
+                                    <span class="boskery-btn__text">  {{ __('تواصل معنا') }}</span>
                                     <i class="icon-meat-3"></i>
                                 </a>
 
@@ -328,7 +328,7 @@
                                             <span class="icon-telephone"></span>
                                         </div>
                                         <div class="contact__info__right">
-                                            <h4 class="contact__info__title">اتصل بنا</h4>
+                                            <h4 class="contact__info__title"> {{ __('اتصل بنا') }}</h4>
                                             <a href="tel:{{ $randomPhone}}" class="contact__info__number">
                                              {{ $randomPhone}}
                                             </a>

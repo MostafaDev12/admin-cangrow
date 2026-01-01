@@ -133,39 +133,39 @@
                         </li>
                         <li>
                             <i class="icon-maps-and-flags"></i>
-                            <a href="https://maps.app.goo.gl/RU419bHcAWhNFQqb8">القاهرة: 13 شارع مصطفى رفعت، شيراتون
-                                هليوبوليس</a>
+                            <a href="{{ $ps->map }}">   
+                                 {{ $randomAddress }}</a>
                         </li>
                     </ul><!-- /.list-unstyled topbar__info -->
                     <div class="topbar__right">
                         <ul class="list-unstyled topbar__pages">
-                            <li><a href="{{ route('contact.index',$sign) }}">مساعدة</a></li>
-                            <li><a href="{{ route('contact.index',$sign) }}">دعم</a></li>
-                            <li><a href="{{ route('contact.index',$sign) }}">اتصل بنا</a></li>
+                            <li><a href="{{ route('contact.index',$sign) }}">{{ __('مساعدة') }} </a></li>
+                            <li><a href="{{ route('contact.index',$sign) }}">{{ __('دعم') }}</a></li>
+                            <li><a href="{{ route('contact.index',$sign) }}"> {{ __('اتصل بنا') }}  </a></li>
                         </ul><!-- /.list-unstyled topbar__pages -->
                         <div class="topbar__social">
                             @if(App\Models\Socialsetting::find(1)->f_status == 1)
                             <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
                                 <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                <span class="sr-only">فيسبوك</span>
+                                <span class="sr-only">{{ __('فيسبوك') }}</span>
                             </a>
                              @endif
                                @if(App\Models\Socialsetting::find(1)->t_status == 1) 
                             <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
                                 <i class="fab fa-twitter" aria-hidden="true"></i>
-                                <span class="sr-only">تويتر</span>
+                                <span class="sr-only">{{ __('تويتر') }}</span>
                             </a>
                             @endif
                               @if(App\Models\Socialsetting::find(1)->ystatus == 1)
                             <a href="{{ App\Models\Socialsetting::find(1)->youtube }}">
-                                <i class="fab fa-pinterest-p" aria-hidden="true"></i>
-                                <span class="sr-only">بينترست</span>
+                                <i class="fab fa-youtube" aria-hidden="true"></i>
+                                <span class="sr-only">{{ __('يوتيوب') }}</span>
                             </a>
                             @endif
                              @if(App\Models\Socialsetting::find(1)->i_status == 1)
                             <a href="{{ App\Models\Socialsetting::find(1)->instagram }}">
                                 <i class="fab fa-instagram" aria-hidden="true"></i>
-                                <span class="sr-only">إنستغرام</span>
+                                <span class="sr-only">{{ __('إنستغرام') }}</span>
                             </a>
                             @endif
                         </div><!-- /.topbar__social -->
@@ -188,36 +188,36 @@
                                 <ul class="main-menu__list one-page-scroll-menu">
                                     <!-- الرئيسية -->
                                     <li  class="scrollToLink">
-                                        <a href="{{ route('front.index',$sign) }}">الرئيسية</a>
+                                        <a href="{{ route('front.index',$sign) }}">{{ __('الرئيسية') }}</a>
                                     </li>
 
                                     <!-- About MTC – من نحن (Mega Menu) -->
                                     <li  class="dropdown">
-                                        <a href="{{ route('about.index',$sign) }}">من نحن</a>
+                                        <a href="{{ route('about.index',$sign) }}"> {{ __('من نحن') }}</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('about.index',$sign) }}#our-story">قصتنا / من نحن</a></li>
-                                            <li><a href="{{ route('about.index',$sign) }}#vision-mission-values">الرؤية والرسالة والقيم</a>
+                                            <li><a href="{{ route('about.index',$sign) }}#our-story">{{ __('قصتنا / من نحن') }}</a></li>
+                                            <li><a href="{{ route('about.index',$sign) }}#vision-mission-values">{{ __('الرؤية والرسالة والقيم') }}</a>
                                             </li>
-                                            <li><a href="{{ route('about.index',$sign) }}#why-mtc">لماذا MTC</a></li>
-                                            <li><a href="{{ route('about.index',$sign) }}#success-partners">شركاء النجاح</a></li>
+                                            <li><a href="{{ route('about.index',$sign) }}#why-mtc">{{ __('لماذا MTC') }}</a></li>
+                                            <li><a href="{{ route('about.index',$sign) }}#success-partners">{{ __('شركاء النجاح') }}</a></li>
                                         </ul>
                                     </li>
 
                                     <!-- Farm to Fork – من المزرعة إلى المائدة -->
                                     <li  class="dropdown">
-                                        <a href="{{ route('farm-to-fork.index',$sign) }}">من المزرعة إلى المائدة</a>
+                                        <a href="{{ route('farm-to-fork.index',$sign) }}">{{ __('من المزرعة إلى المائدة') }}</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#fattening-farms">مزارع التسمين</a></li>
-                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#slaughterhouse">المجزر وعمليات الذبح</a></li>
-                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#processing-packaging">التصنيع والتعبئة
-                                                    والتغليف</a></li>
-                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#cold-chain">سلسلة التبريد والنقل</a></li>
+                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#fattening-farms">{{ __('مزارع التسمين') }}</a></li>
+                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#slaughterhouse">{{ __('المجزر وعمليات الذبح') }}</a></li>
+                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#processing-packaging">{{ __('التصنيع والتعبئه والتغليف') }}
+                                                    </a></li>
+                                            <li><a href="{{ route('farm-to-fork.index',$sign) }}#cold-chain">{{ __('سلسلة التبريد والنقل') }}</a></li>
                                         </ul>
                                     </li>
 
                                     <!-- المنتجات -->
                                     <li style="font-size: 10px; " class="dropdown ">
-                                        <a href="{{ route('products.index',$sign) }}">المنتجات</a>
+                                        <a href="{{ route('products.index',$sign) }}">{{ __('المنتجات') }}</a>
                                         <ul class="sub-menu">
                                             @foreach ($categories as $category)
                                                 
@@ -230,53 +230,48 @@
 
                                     <!-- B2B Services -->
                                     <li style="font-size: 10px; " class="dropdown ">
-                                        <a href="{{ route('b2b-services.index',$sign) }}">عملاءنا</a>
+                                        <a href="{{ route('b2b-services.index',$sign) }}">{{ __('عملاءنا') }}</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('b2b-services.index',$sign) }}#restaurant-cuts">قطع خاصة للمطاعم</a></li>
-                                            <li><a href="{{ route('b2b-services.index',$sign) }}#bulk-vacuum">عبوات Bulk / Vacuum large
-                                                    packs</a></li>
-                                            <li><a href="{{ route('b2b-services.index',$sign) }}#private-label">Private Label</a></li>
-                                            <li><a href="{{ route('b2b-services.index',$sign) }}#rfq-form">نموذج طلب عرض أسعار</a></li>
+                                            <li><a href="{{ route('b2b-services.index',$sign) }}#restaurant-cuts">{{ __('قطع خاصة للمطاعم') }}</a></li>
+                                            <li><a href="{{ route('b2b-services.index',$sign) }}#bulk-vacuum">{{ __('عبوات Bulk / Vacuum large packs') }}</a></li>
+                                            <li><a href="{{ route('b2b-services.index',$sign) }}#private-label">{{ __('Private Label') }}</a></li>
+                                            <li><a href="{{ route('b2b-services.index',$sign) }}#rfq-form">{{ __('نموذج طلب عرض أسعار') }}</a></li>
                                         </ul>
                                     </li>
 
                                     <!-- الجودة والسلامة الغذائية -->
                                     <li  class="dropdown">
-                                        <a href="{{ route('quality.index',$sign) }}">الجودة والسلامة الغذائية</a>
+                                        <a href="{{ route('quality.index',$sign) }}"> {{ __('الجودة والسلامة الغذائية') }}</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('quality.index',$sign) }}#certifications">شهادات الجودة (ISO / Halal /
-                                                    ...)</a></li>
-                                            <li><a href="{{ route('quality.index',$sign) }}#halal-standards">معايير الذبح الحلال والرقابة
-                                                    الصحية</a></li>
-                                            <li><a href="{{ route('quality.index',$sign) }}#traceability">نظام التتبع من المزرعة للمستهلك</a>
-                                            </li>
-                                            <li><a href="{{ route('quality.index',$sign) }}#faqs">أسئلة شائعة عن التخزين والتجميد
-                                                    الآمن</a></li>
+                                            <li><a href="{{ route('quality.index',$sign) }}#certifications">{{ __('شهادات الجودة (ISO / Halal /...)') }}</a></li>
+                                            <li><a href="{{ route('quality.index',$sign) }}#halal-standards">{{ __('معايير الذبح الحلال والرقابة الصحية') }}</a></li>
+                                            <li><a href="{{ route('quality.index',$sign) }}#traceability">{{ __('نظام التتبع من المزرعة للمستهلك') }}</a></li>
+                                            <li><a href="{{ route('quality.index',$sign) }}#faqs">{{ __('أسئلة شائعة عن التخزين والتجميد الآمن') }}</a></li>
                                         </ul>
                                     </li>
 
                                     <!-- الوظائف -->
                                     <li  class="dropdown">
-                                        <a href="{{ route('careers.index',$sign) }}">الوظائف</a>
+                                        <a href="{{ route('careers.index',$sign) }}">{{ __('الوظائف') }}</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('careers.index',$sign) }}#work-culture">ثقافة العمل في MTC</a></li>
-                                            <li><a href="{{ route('careers.index',$sign) }}#available-jobs">الوظائف المتاحة</a></li>
-                                            <li><a href="{{ route('careers.index',$sign) }}#apply-cv">نموذج إرسال السيرة الذاتية</a></li>
+                                            <li><a href="{{ route('careers.index',$sign) }}#work-culture">{{ __('ثقافة العمل في MTC') }}</a></li>
+                                            <li><a href="{{ route('careers.index',$sign) }}#available-jobs">{{ __('الوظائف المتاحة') }}</a></li>
+                                            <li><a href="{{ route('careers.index',$sign) }}#apply-cv">{{ __('نموذج إرسال السيرة الذاتية') }}</a></li>
                                         </ul>
                                     </li>
 
                                     <!-- صحتك أمانة -->
                                     <li  class="dropdown">
-                                        <a href="{{ route('blogs.index',$sign) }}">صحتك أمانة</a>
+                                        <a href="{{ route('blogs.index',$sign) }}">{{ __('صحتك أمانة') }}</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{ route('blogs.index',$sign) }}#articles">مقالات قصيرة</a></li>
-                                            <li><a href="{{ route('blogs.index',$sign) }}#videos">فيديوهات</a></li>
+                                            <li><a href="{{ route('blogs.index',$sign) }}#articles">{{ __('مقالات قصيرة') }}</a></li>
+                                            <li><a href="{{ route('blogs.index',$sign) }}#videos">{{ __('فيديوهات') }}</a></li>
                                         </ul>
                                     </li>
 
                                     <!-- اتصل بنا -->
                                     <li class="scrollToLink">
-                                        <a href="{{ route('contact.index',$sign) }}">اتصل بنا</a>
+                                        <a href="{{ route('contact.index',$sign) }}">{{ __('اتصل بنا') }}</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -291,7 +286,7 @@
                             </div>
                             <a href="#" class="search-toggler main-header__search">
                                 <i class="icon-search" aria-hidden="true"></i>
-                                <span class="sr-only">بحث</span>
+                                <span class="sr-only">{{ __('بحث') }}</span>
                             </a>
                             <!-- <a href="{{ route('contact.index',$sign) }}" class="main-header__cart">
                                 <i class="icon-cart" aria-hidden="true"></i>
@@ -309,7 +304,7 @@
                             <div class="main-header__call">
                                 <span class="main-header__call__icon icon-mobile"></span>
                                 <div class="main-header__call__inner">
-                                    <span class="main-header__call__tagline">اتصل بنا في أي وقت</span>
+                                    <span class="main-header__call__tagline">{{ __('اتصل بنا في أي وقت') }}</span>
                                     <a href="tel:{{ $randomPhone }}" class="main-header__call__number">{{ $randomPhone }}</a>
                                 </div>
                             </div>
@@ -326,7 +321,7 @@
 
  
         <footer class="main-footer">
-            <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg.png);"></div>
+            <div class="main-footer__bg" style="background-image: url({{ asset('front/mtc/') }}/assets/images/backgrounds/footer-bg.png);"></div>
             <!-- /.main-footer__bg -->
             <div class="container">
                 <div class="main-footer__top">
@@ -344,9 +339,9 @@
                                                 <div style="width: 81%;">
                                                         @include('includes.admin.form-both')
                                                    </div>
-                                <input type="text" name="email" required placeholder="عنوان البريد الإلكتروني">
+                                <input type="text" name="email" required placeholder="{{ __('عنوان البريد الإلكتروني') }}">
                                 <button type="submit" class="icon-paper-plane">
-                                    <span class="sr-only">إرسال</span><!-- /.sr-only -->
+                                    <span class="sr-only">{{ __('إرسال') }}</span><!-- /.sr-only -->
                                 </button>
                             </form><!-- /.main-footer__newsletter mc-form -->
                             <div class="mc-form__response"></div><!-- /.mc-form__response -->
@@ -367,7 +362,7 @@
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
-                                    <span class="boskery-btn__text">اتصل بنا</span>
+                                    <span class="boskery-btn__text">{{ __('اتصل بنا') }}</span>
                                     <i class="icon-meat-3"></i>
                                 </a><!-- /.boskery-btn -->
                             </div><!-- /.footer-widget -->
@@ -375,19 +370,19 @@
                         <div class="col-lg-3 col-md-3 col-xl-2 wow fadeInUp" data-wow-duration="1500ms"
                             data-wow-delay="200ms">
                             <div class="footer-widget footer-widget--links">
-                                <h2 class="footer-widget__title">استكشف</h2><!-- /.footer-widget__title -->
+                                <h2 class="footer-widget__title">{{ __('استكشف') }}</h2><!-- /.footer-widget__title -->
                                 <ul class="list-unstyled footer-widget__links">
-                                    <li><a href="{{ route('about.index',$sign) }}">من نحن</a></li>
+                                    <li><a href="{{ route('about.index',$sign) }}">{{ __('من نحن') }}</a></li>
                                  
-                                    <li><a href="{{ route('blogs.index',$sign) }}">آخر الأخبار</a></li>
-                                    <li><a href="{{ route('contact.index',$sign) }}">اتصل بنا</a></li>
+                                    <li><a href="{{ route('blogs.index',$sign) }}">{{ __('آخر الأخبار') }}</a></li>
+                                    <li><a href="{{ route('contact.index',$sign) }}">{{ __('اتصل بنا') }}</a></li>
                                 </ul><!-- /.list-unstyled footer-widget__links -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 col-md-3 col-xl-2 -->
                         <div class="col-lg-4 col-md-5 col-xl-4 wow fadeInUp" data-wow-duration="1500ms"
                             data-wow-delay="400ms">
                             <div class="footer-widget footer-widget--contact">
-                                <h2 class="footer-widget__title">اتصل بنا</h2><!-- /.footer-widget__title -->
+                                <h2 class="footer-widget__title">{{ __('اتصل بنا') }}</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__contact">
                                      @foreach ($addresses as $address)
                                     <address class="footer-widget__address"> {{ $address }} 
@@ -408,25 +403,25 @@
  @if(App\Models\Socialsetting::find(1)->f_status == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
                                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                            <span class="sr-only">فيسبوك</span>
+                                            <span class="sr-only">{{ __('فيسبوك') }}</span>
                                         </a>
 @endif
   @if(App\Models\Socialsetting::find(1)->t_status == 1) 
                                         <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
                                             <i class="fab fa-twitter" aria-hidden="true"></i>
-                                            <span class="sr-only">تويتر</span>
+                                            <span class="sr-only">{{ __('تويتر') }}</span>
                                         </a>
                                          @endif
                                           @if(App\Models\Socialsetting::find(1)->l_status == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->linkedin }}">
                                             <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                                            <span class="sr-only">لينكدإن</span>
+                                            <span class="sr-only">{{ __('لينكدإن') }}</span>
                                         </a>
                                           @endif
                                         @if(App\Models\Socialsetting::find(1)->ystatus == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-hidden="true">
                                             <i class="fab fa-youtube"></i>
-                                            <span class="sr-only">يوتيوب</span>
+                                            <span class="sr-only">{{ __('يوتيوب') }}</span>
                                         </a>
                                         @endif
                                     </div><!-- /.footer-widget__social -->
@@ -436,7 +431,7 @@
                         <div class="col-lg-5 col-md-4 col-sm-8 col-xl-3 wow fadeInUp" data-wow-duration="1500ms"
                             data-wow-delay="600ms">
                             <div class="footer-widget footer-widget--gallery">
-                                <h2 class="footer-widget__title">المعرض</h2><!-- /.footer-widget__title -->
+                                <h2 class="footer-widget__title">{{ __('المعرض') }}</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__gallery">
                                    @foreach ($footer_images as $footer_image)
                                        
@@ -456,7 +451,7 @@
                 <div class="container">
                     <div class="main-footer__bottom__inner">
                         <p class="main-footer__copyright">
-                            &copy; حقوق النشر <span class="dynamic-year"></span>© 2025 جميع الحقوق محفوظة –
+                            &copy; حقوق النشر <span class="dynamic-year"></span>© {{ date('Y') }} جميع الحقوق محفوظة –
                             cangrowonline
                         </p>
                     </div><!-- /.main-footer__inner -->
@@ -499,25 +494,25 @@
                 @if(App\Models\Socialsetting::find(1)->f_status == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
                                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                            <span class="sr-only">فيسبوك</span>
+                                            <span class="sr-only">{{ __('فيسبوك') }}</span>
                                         </a>
 @endif
   @if(App\Models\Socialsetting::find(1)->t_status == 1) 
                                         <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
                                             <i class="fab fa-twitter" aria-hidden="true"></i>
-                                            <span class="sr-only">تويتر</span>
+                                            <span class="sr-only">{{ __('تويتر') }}</span>
                                         </a>
                                          @endif
                                           @if(App\Models\Socialsetting::find(1)->l_status == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->linkedin }}">
                                             <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                                            <span class="sr-only">لينكدإن</span>
+                                            <span class="sr-only">{{ __('لينكدإن') }}</span>
                                         </a>
                                           @endif
                                         @if(App\Models\Socialsetting::find(1)->ystatus == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-hidden="true">
                                             <i class="fab fa-youtube"></i>
-                                            <span class="sr-only">يوتيوب</span>
+                                            <span class="sr-only">{{ __('يوتيوب') }}</span>
                                         </a>
                                         @endif
                 {{-- <a href="https://facebook.com">
@@ -574,7 +569,7 @@
                 </p>
             </div><!-- /.sidebar-one__about -->
             <div class="sidebar-one__info sidebar-one__item">
-                <h4 class="sidebar-one__title">Contact</h4>
+                <h4 class="sidebar-one__title">{{ __('Contact') }}</h4>
                 <ul class="sidebar-one__info__list">
                        @foreach ($addresses as $address)
                     <li><span class="icon-maps-and-flags"></span>
@@ -598,25 +593,25 @@
                 @if(App\Models\Socialsetting::find(1)->f_status == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->facebook }}">
                                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                            <span class="sr-only">فيسبوك</span>
+                                            <span class="sr-only">{{ __('فيسبوك') }}</span>
                                         </a>
 @endif
   @if(App\Models\Socialsetting::find(1)->t_status == 1) 
                                         <a href="{{ App\Models\Socialsetting::find(1)->twitter }}">
                                             <i class="fab fa-twitter" aria-hidden="true"></i>
-                                            <span class="sr-only">تويتر</span>
+                                            <span class="sr-only">{{ __('تويتر') }}</span>
                                         </a>
                                          @endif
                                           @if(App\Models\Socialsetting::find(1)->l_status == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->linkedin }}">
                                             <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                                            <span class="sr-only">لينكدإن</span>
+                                            <span class="sr-only">{{ __('لينكدإن') }}</span>
                                         </a>
                                           @endif
                                         @if(App\Models\Socialsetting::find(1)->ystatus == 1)
                                         <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-hidden="true">
                                             <i class="fab fa-youtube"></i>
-                                            <span class="sr-only">يوتيوب</span>
+                                            <span class="sr-only">{{ __('يوتيوب') }}</span>
                                         </a>
                                         @endif
                 {{-- <a href="https://facebook.com">
@@ -637,7 +632,7 @@
                 </a> --}}
             </div><!-- /sidebar-one__social -->
             <div class="sidebar-one__newsletter sidebar-one__item">
-                <label class="sidebar-one__title" for="sidebar-email">Newsletter</label>
+                <label class="sidebar-one__title" for="sidebar-email">{{ __('Newsletter') }}</label>
               
                        <form action="{{ route('front.subscripe.submit') }}" name="appointment"
                                                 id="subscribeform" aria-label="subscripe form" data-status="init"
@@ -657,7 +652,7 @@
     </aside><!-- /.sidebar-one -->
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
-        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__text">{{ __('back top') }}</span>
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
     </a>
 

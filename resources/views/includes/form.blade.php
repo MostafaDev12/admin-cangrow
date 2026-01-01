@@ -12,9 +12,8 @@ $email = Arr::random($emails);
                 <div class="contact-page__wrapper">
                     <div class="contact-page__content">
                         <div class="contact-page__sec-title">
-                            <h2 class="contact-page__title">تواصل معنا</h2><!-- /.contact-page__title -->
-                            <p class="contact-page__text">يسعدنا تواصلكم معنا للاستفسار عن منتجاتنا وخدماتنا. فريقنا
-                                المتخصص جاهز للإجابة على جميع استفساراتكم.</p>
+                            <h2 class="contact-page__title">  {{ __('تواصل معنا') }}</h2><!-- /.contact-page__title -->
+                            <p class="contact-page__text"> {{ __('يسعدنا تواصلكم معنا للاستفسار عن منتجاتنا وخدماتنا. فريقنا المتخصص جاهز للإجابة على جميع استفساراتكم.') }}</p>
                             <!-- /.contact-page__text -->
                         </div><!-- /.contact-page__sec-title -->
                      
@@ -30,15 +29,15 @@ $email = Arr::random($emails);
                             <div class="form-one__group">
                                 <div class="form-one__control wow fadeInUp" data-wow-duration="1500ms"
                                     data-wow-delay="00ms">
-                                    <input type="text" name="name" required placeholder="الاسم بالكامل">
+                                    <input type="text" name="name" required placeholder=" {{ __('الاسم بالكامل') }}">
                                 </div><!-- /.form-one__control -->
                                 <div class="form-one__control wow fadeInUp" data-wow-duration="1500ms"
                                     data-wow-delay="50ms">
-                                    <input type="email" name="email" placeholder="البريد الإلكتروني">
+                                    <input type="email" name="email" placeholder="{{ __('البريد الإلكتروني') }}">
                                 </div><!-- /.form-one__control -->
                                 <div class="form-one__control form-one__control--full wow fadeInUp"
                                     data-wow-duration="1500ms" data-wow-delay="100ms">
-                                    <textarea name="message" required placeholder="اكتب رسالتك هنا . ."></textarea>
+                                    <textarea name="message" required placeholder="{{ __('اكتب رسالتك هنا') }}"></textarea>
                                 </div><!-- /.form-one__control -->
                                 <div class="form-one__control form-one__control--full wow fadeInUp"
                                     data-wow-duration="1500ms" data-wow-delay="150ms">
@@ -49,7 +48,7 @@ $email = Arr::random($emails);
                                         <span class="boskery-btn__hover"></span>
                                         <span class="boskery-btn__hover"></span>
                                         <span class="boskery-btn__hover"></span>
-                                        <span class="boskery-btn__text">إرسال الرسالة</span>
+                                        <span class="boskery-btn__text">{{ __('إرسال الرسالة') }}</span>
                                         <i class="icon-meat-3"></i>
                                     </button>
                                 </div><!-- /.form-one__control -->
