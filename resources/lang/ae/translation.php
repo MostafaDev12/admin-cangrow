@@ -255,5 +255,33 @@ return [
        "social_media_links" => "social media links",
        "models_category" => "models category",
    
+
+       "about_points" => "نبذة مختصرة",
+"why_mtc" => "لماذا MTC",
+"about_company" => "عن الشركة",
+"about_visions" => "رؤيتنا",
+"counter" => "الإحصائيات",
+"footer_photos" => "صور الفوتر",
+"farm-to-fork" => "من المزرعة إلى المائدة",
+"about_farm" => "عن المزرعة",
+"about_butcher" => "عن الجزار",
+"butcher_order" => "طلبات الجزار",
+"packing" => "التعبئة",
+"cooling" => "التبريد",
+"categories" => "التصنيفات",
+"our_customer" => "عملاؤنا",
+"b2b_services" => "خدمات الشركات",
+"packs" => "الباقات",
+"quality" => "الجودة",
+"quality_category" => "تصنيفات الجودة",
+"quality_list" => "قائمة الجودة",
+"certificates" => "الشهادات",
+"butcher_standards" => "معايير الجزار",
+"careers" => "الوظائف",
+"job_culture" => "ثقافة العمل",
+"locations" => "الفروع",
+"blogs" => "المدونة",
+"language" => "اللغة",
+
 ];
 ?>

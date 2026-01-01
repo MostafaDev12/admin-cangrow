@@ -272,6 +272,38 @@ return [
        "social_settings" => "social settings",
        "social_media_links" => "social media links",
        "models_category" => "models category",
+
+
+       "about_points" => "about points",
+       "why_mtc" => "why MTC",
+       "about_company" => "about company",
+       "about_visions" => "about visions",
+       "counter" => "counter",
+       "footer_photos" => "footer photos",
+       "farm-to-fork" => "farm to fork",
+       "about_farm" => "about farm",
+       "about_butcher" => "about butcher",
+       "butcher_order" => "butcher order",
+       "packing" => "packing",
+       "cooling" => "cooling",
+       "categories" => "categories",
+       "our_customer" => "our customer",
+       "b2b_services" => "b2b services",
+       "packs" => "packs",
+       "quality" => "quality",
+       "quality_category" => "quality category",
+       "quality_list" => "quality list",
+       "certificates" => "certificates",
+       "butcher_standards" => "butcher standards",
+       "careers" => "careers",
+       "job_culture" => "job culture",
+       "locations" => "locations",
+       "blogs" => "blogs",
+       "language" => "language",
+
+
+
+
 ];
 ?>
 
