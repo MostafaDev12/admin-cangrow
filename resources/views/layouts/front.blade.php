@@ -199,23 +199,27 @@
                                         <a href="{{ route('our-impact.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('انتشارنا') }}</a>
                                         <a href="{{ route('associations.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الجمعيات') }}</a>
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange hidden">{{ __('الجمعيات') }}</a>
                                         <a href="{{ route('board-trustees.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
                                              {{ __('مجلس الأمناء') }}</a>
                                         <a href="{{ route('achievements.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الإنجازات') }}</a>
                                         <a href="{{ route('certificate.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange hidden">
 
 {{ __('إنجازاتنا وشهادات التقدير') }}
                                                 
 
                                         </a>
                                         <a href="{{ route('gallery.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">{{ __('الجاليري') }}</a>
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange hidden">{{ __('الجاليري') }}</a>
+                                        <a href="{{ route('parties.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange ">{{ __('الاحتفالات') }}   </a>
+                                        <a href="{{ route('events.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange ">{{ __('مناسبات دائمة خاصة بالمؤسسة') }}</a>
                                         <a href="{{ route('success-volunteers.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange hidden"> 
                                              {{ __('شركاء النجاح') }}</a>
                                     </div>
                                 </div>
@@ -250,9 +254,15 @@
                                         </a>
 
                                         <a href="{{ route('cross-bank-donation.index',$sign) }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange hidden">
                                             {{ __('التبرع عبر البنوك') }}
                                         </a>
+                                       <button
+                                          onclick="openDonateModal()"
+                                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
+                                          ميجا خير
+                                        </button>
+
 
                                         <a href="{{ route('contributions-kind.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
@@ -471,6 +481,82 @@
     </div>
 
 
+<!-- Overlay -->
+    <div
+      id="donateModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50">
+    
+      <!-- Modal box -->
+      <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 text-center relative">
+        
+        <!-- Close button -->
+        <button
+          onclick="closeDonateModal()"
+          class="absolute top-3 right-3 text-gray-400 hover:text-gray-600">
+          ✕
+        </button>
+    
+        <h2 class="text-xl font-bold mb-2 text-gray-800">
+          التبرع عبر فودافون كاش
+        </h2>
+    
+        <p class="text-gray-600 mb-4">
+          مؤسسة <span class="font-semibold text-custom-orange">ميجا خير</span>
+        </p>
+    
+        <div class="bg-gray-100 rounded-lg p-4 mb-4">
+          <p class="text-sm text-gray-500 mb-1">رقم فودافون كاش</p>
+        
+          <div class="flex items-center justify-between gap-2">
+            <p id="vodafoneNumber" class="text-lg font-bold text-gray-800" dir="ltr">
+              +20 10 1353 2333
+            </p>
+        
+            <button
+              onclick="copyNumber()"
+              class="px-3 py-1 text-sm rounded-md bg-custom-orange text-white hover:opacity-90 transition">
+              نسخ
+            </button>
+          </div>
+        
+          <p
+            id="copySuccess"
+            class="hidden mt-2 text-sm text-green-600">
+            تم نسخ الرقم
+          </p>
+        </div>
+    
+        <button
+          onclick="closeDonateModal()"
+          class="w-full bg-custom-orange text-white py-2 rounded-lg hover:opacity-90 transition">
+          تم
+        </button>
+      </div>
+    </div>
+    <script>
+      function openDonateModal() {
+        document.getElementById('donateModal').classList.remove('hidden');
+        document.getElementById('donateModal').classList.add('flex');
+      }
+    
+      function closeDonateModal() {
+        document.getElementById('donateModal').classList.add('hidden');
+        document.getElementById('donateModal').classList.remove('flex');
+      }
+   
+      function copyNumber() {
+        const number = document.getElementById('vodafoneNumber').innerText;
+    
+        navigator.clipboard.writeText(number).then(() => {
+          const msg = document.getElementById('copySuccess');
+          msg.classList.remove('hidden');
+    
+          setTimeout(() => {
+            msg.classList.add('hidden');
+          }, 2000);
+        });
+      }
+</script>
 
 
     @yield('content')

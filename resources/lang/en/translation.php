@@ -272,6 +272,32 @@ return [
        "social_settings" => "social settings",
        "social_media_links" => "social media links",
        "models_category" => "models category",
-];
+       "about_points" => "about points",
+       "about_visions" => "about visions",
+       "about_company" => "about company",
+       "achievements" => "achievements",
+       "certificate_details" => "certificate details",
+       "certificates" => "certificates",
+       "privacy" => "privacy",
+       "about_volunteering" => "about volunteering",
+       "humanitarian_cases" => "humanitarian cases",
+       "Board_of_Trustees" => "Board of Trustees",
+       "events" => "events",
+       "parties" => "parties",
+       "services_projects" => "services and projects",
+       "services" => "services",
+       "timelines" => "timelines",
+       "success-volunteers" => "success volunteers",
+       "agenda" => "agenda",
+       "donate_campaigns" => "donate campaigns",
+       "locations" => "locations",
+       "blogs" => "blogs",
+       "language" => "language",
+       
+       
+       
+       
+       
+]; 
 ?>
 

@@ -282,6 +282,38 @@ $processes = Process::get();
    $timelines = Timeline::get();
     return view('front.services', compact('sign','timelines', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
   }  
+    public function servicesCategory(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+   // $servicess = Subcategory::paginate(8);
+    $servicess = Service::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+  $projects = Project::get();
+   $timelines = Timeline::get();
+    return view('front.services-category', compact('sign','timelines', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+    public function galleryServices(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+   // $servicess = Subcategory::paginate(8);
+    $servicess = Service::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+  $projects = Project::get();
+   $timelines = Timeline::get();
+    return view('front.gallery-services', compact('sign','timelines', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
     public function agenda(Request $request,$lang)
   {
 
@@ -526,6 +558,21 @@ $processes = Process::get();
 
     return view('front.events', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
   }  
+  public function galleryEvents(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Event::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.gallery-events', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
 
     
   public function singleEvent(Request $request,$lang, $slug)
@@ -583,6 +630,21 @@ $processes = Process::get();
     $locations = Location::get();
 
     return view('front.parties', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+  public function galleryParties(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Party::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.gallery-parties', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
   }  
 
     

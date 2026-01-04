@@ -38,7 +38,7 @@
                   
                     @foreach ($servicess as $service)
                         
-                    <div class="rounded-lg overflow-hidden shadow-lg bg-white group">
+                    <a href="{{ route('gallery-events.index', ['lang' => $sign]) }}" class="rounded-lg overflow-hidden shadow-lg bg-white group">
                         <img src="{!! $service->photo !!}"
                             alt="{!! $service->{'title_' . $sign} ?? '' !!}"
                             class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
@@ -48,7 +48,7 @@
                                 {!! $service->{'short_details_' . $sign} ?? '' !!}
                             </p>
                         </div>
-                    </div>
+                    </a>
 
                     @endforeach
                    

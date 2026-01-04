@@ -33,26 +33,23 @@
 
                  <!-- القسم الأول: مجلس الإدارة -->
                  <div class="mb-16">
-                     {{-- <h2 class="text-2xl font-bold text-center text-slate-800 mb-10">مجلس الإدارة</h2> --}}
-                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                           @foreach ($teams as $team)
-                         <!-- عضو -->
-                         <div
-                             class="bg-white rounded-lg shadow-lg p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                             <img src="{{ $team->photo_url }}" alt="{!! $team->{'name_' . $sign} ?? '' !!}"
-                                 class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg mx-auto mb-5">
-                             <div>
-                                 <h3 class="text-xl font-bold text-slate-800 mb-1">{!! $team->{'name_' . $sign} ?? '' !!} 
-                                 </h3>
-                                 <p class="text-accent font-semibold text-sm mb-3">  {!! $team->{'title_' . $sign} ?? '' !!}  </p>
-                                 <!-- <p class="text-gray-600 text-sm">"يؤمن أن العمل التطوعي هو حجر الأساس لبناء مجتمع
-                                        متكامل."</p> -->
-                             </div>
-                         </div>
-   @endforeach
-                       
+                      <h2 class="text-2xl font-bold text-center text-slate-800 mb-10">مجلس الإدارة</h2> 
+                     
+                      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                @foreach ($teams as $team)
+                      <article class="rounded-lg group cursor-pointer transition-all duration-300">
+                     <img src="{{ $team->photo_url }}" alt="{!! $team->{'name_' . $sign} ?? '' !!} "
+                         class="w-full h-64 rounded-t-lg">
+                     <div
+                         class="p-6 text-center py-3 bg-white transition-all duration-300 group-hover:shadow-2xl group-hover:rounded-lg group-hover:w-fit group-hover:mx-auto  group-hover:-translate-y-6">
+                         <h3 class="text-xl font-bold text-slate-800 mb-1">   {!! $team->{'name_' . $sign} ?? '' !!}    </h3>
+                         <p class="text-accent font-semibold">{!! $team->{'title_' . $sign} ?? '' !!}</p>
                      </div>
+                 </article>
+
+                @endforeach
+                
+             </div>
                  </div>
 
                  <!-- القسم الثاني: الأعضاء -->
