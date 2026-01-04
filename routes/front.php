@@ -37,6 +37,9 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
         Route::get('/products', [HomeController::class, 'products'])->name('products.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
+        Route::get('/services/category', [HomeController::class, 'servicesCategory'])->name('services.category.index');
+        Route::get('/services/gallery', [HomeController::class, 'galleryServices'])->name('gallery.services.index');
+
         Route::get('/our-impact', [HomeController::class, 'our_impact'])->name('our-impact.index');
         Route::get('/associations', [HomeController::class, 'associations'])->name('associations.index');
         Route::get('/board-trustees', [HomeController::class, 'board_trustees'])->name('board-trustees.index');
@@ -55,18 +58,22 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/stories-success-volunteers', [HomeController::class, 'stories_success_volunteers'])->name('stories-success-volunteers.index');
         Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy.index');
         Route::get('/events', [HomeController::class, 'events'])->name('events.index');
-     
+        
+
         Route::get('/event/{slug}', [HomeController::class, 'singleEvent'])->name('single-events.index');
-     
+        
+        Route::get('/events/gallery-events', [HomeController::class, 'galleryEvents'])->name('gallery-events.index');
+
         Route::get('/parties', [HomeController::class, 'parties'])->name('parties.index');
-     
+
         Route::get('/party/{slug}', [HomeController::class, 'singleParty'])->name('single-parties.index');
+         Route::get('/parties/gallery-parties', [HomeController::class, 'galleryParties'])->name('gallery-parties.index');
 
         Route::get('/product/{slug}', [HomeController::class, 'singleProduct'])->name('single-service.index');
-         Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery.index');
-          Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
+        Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery.index');
+        Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
          
-          Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service-service.index');
+        Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service-service.index');
 
         Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
@@ -77,7 +84,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews.index');    
         
         Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');
-      Route::get('/appointments', [HomeController::class, 'BookNow'])->name('appointments.index');
+        Route::get('/appointments', [HomeController::class, 'BookNow'])->name('appointments.index');
         Route::get('/doctors', [HomeController::class, 'doctors'])->name('doctors.index');
       
         Route::get('/dentistry', [HomeController::class, 'dentistry'])->name('dentistry.index');
