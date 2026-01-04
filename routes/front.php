@@ -24,6 +24,9 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
     //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
 
 
+
+        Route::get('change/{id}', [HomeController::class, 'change'])->name('change-lang.index');
+
     Route::get('/', function () {
 
         $data = Language::where('is_default', '=', '1')->first();
@@ -37,8 +40,9 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
         Route::get('/products', [HomeController::class, 'products'])->name('products.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
-        Route::get('/services/category', [HomeController::class, 'servicesCategory'])->name('services.category.index');
-        Route::get('/services/gallery', [HomeController::class, 'galleryServices'])->name('gallery.services.index');
+
+        Route::get('/services/category/{slug}', [HomeController::class, 'servicesCategory'])->name('services.category.index');
+        Route::get('/services/gallery/{slug}', [HomeController::class, 'galleryServices'])->name('gallery.services.index');
 
         Route::get('/our-impact', [HomeController::class, 'our_impact'])->name('our-impact.index');
         Route::get('/associations', [HomeController::class, 'associations'])->name('associations.index');
@@ -112,9 +116,6 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
         Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
     
-
-
-        Route::get('change/{id}', [HomeController::class, 'change'])->name('change-lang.index');
 
         
    });

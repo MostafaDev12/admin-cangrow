@@ -3,7 +3,7 @@
  @extends('layouts.front')
 
  @section('title')
-         {{ __('كن متطوع') }} - {{ $gs->{'title_' . $sign} }}
+           {!! $service->{'title_' . $sign} ?? '' !!}- {{ $gs->{'title_' . $sign} }}
  @stop
 
  @section('gsearch')
@@ -40,44 +40,23 @@
                         دار التوفيق
                     </h2>
                     <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 -mt-9 md:-mt-14">
-                        ألبوم صور مؤسسة دار التوفيق
+                        {!! $service->{'title_' . $sign} ?? '' !!}
                     </h1>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-16 md:mb-24">
+                    @foreach ($service->galleries as $image)
+                        
                     <div class="rounded-lg overflow-hidden shadow-lg group">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f1.jpg"
+                        <img src="{{ $image->photo_url }}"
                             alt="Gallery Image 1"
                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                     </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f2.jpg"
-                            alt="Gallery Image 2"
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f3.jpg"
-                            alt="Gallery Image 3"
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f4.jpg"
-                            alt="Gallery Image 4"
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f5.jpg"
-                            alt="Gallery Image 5"
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f6.jpg"
-                            alt="Gallery Image 6"
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                    </div>
+                     
+                    @endforeach
                 </div>
 
-                <div class="text-center mb-12 max-w-3xl mx-auto">
+                {{-- <div class="text-center mb-12 max-w-3xl mx-auto">
 
 
 
@@ -109,47 +88,7 @@
                         </a>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f1.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                        <!-- play overlay -->
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f2.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f3.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f4.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f5.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f6.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f1.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f2.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg group relative">
-                        <img src="https://hpt.ea2.myftpupload.com/wp-content/uploads/2023/01/f3.jpg"
-                            alt="Video Thumbnail" class="w-full h-full object-cover">
-                    </div>
-                </div>
-
+  --}}
 
             </div>
         </section>

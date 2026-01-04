@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HumanitarianCaseController;
 use App\Http\Controllers\Admin\PartyController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ProjectCategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -263,6 +264,15 @@ Route::prefix('admin')->group(function () {
       Route::post('/projects/update/{id}', [ProjectController::class, 'update'])->name('admin-projects-update');
 
       Route::get('/projects/delete/{id}',  [ProjectController::class, 'destroy'])->name('admin-projects-delete');
+    
+      Route::get('/project_categories/datatables',  [ProjectCategoryController::class, 'datatables'])->name('admin-project_categories-datatables');
+      Route::get('/project_categories',  [ProjectCategoryController::class, 'index'])->name('admin-project_categories-index');
+      Route::get('/project_categories/create',   [ProjectCategoryController::class, 'create'])->name('admin-project_categories-create');
+      Route::post('/project_categories/create',  [ProjectCategoryController::class, 'store'])->name('admin-project_categories-store');
+      Route::get('/project_categories/edit/{id}',  [ProjectCategoryController::class, 'edit'])->name('admin-project_categories-edit');
+      Route::post('/project_categories/update/{id}', [ProjectCategoryController::class, 'update'])->name('admin-project_categories-update');
+
+      Route::get('/project_categories/delete/{id}',  [ProjectCategoryController::class, 'destroy'])->name('admin-project_categories-delete');
     });
 
     Route::group(['middleware' => 'permissions:categories'], function () {

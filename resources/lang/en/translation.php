@@ -285,7 +285,7 @@ return [
        "events" => "events",
        "parties" => "parties",
        "services_projects" => "services and projects",
-       "services" => "services",
+     
        "timelines" => "timelines",
        "success-volunteers" => "success volunteers",
        "agenda" => "agenda",

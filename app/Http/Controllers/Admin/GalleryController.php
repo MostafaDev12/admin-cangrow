@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use App\Models\Category;
+use App\Models\Event;
+use App\Models\Party;
+use App\Models\Project;
 use App\Models\Service;
 use Image;
 
@@ -25,15 +28,45 @@ class GalleryController extends Controller
      
         
         if($id){
+              $type = $_GET['type'] ?? '';
+            if($type == 'Project'){
+                $prod = Project::findOrFail($id);
+             
+                if(count($prod->galleries))
+                {
+                    $data[0] = 1;
+                    $data[1] = $prod->galleries;
+                }
+
+            }elseif($type == 'Event'){
+                $prod = Event::findOrFail($id);
+             
+                if(count($prod->galleries))
+                {
+                    $data[0] = 1;
+                    $data[1] = $prod->galleries;
+                }
+
+            }elseif($type == 'Party'){
+                $prod = Party::findOrFail($id);
+             
+                if(count($prod->galleries))
+                {
+                    $data[0] = 1;
+                    $data[1] = $prod->galleries;
+                }
+
+            }else{
              $prod = Service::findOrFail($id);
              
-         if(count($prod->galleries))
-        {
-            $data[0] = 1;
-            $data[1] = $prod->galleries;
-        } 
+            if(count($prod->galleries))
+            {
+                $data[0] = 1;
+                $data[1] = $prod->galleries;
+            } 
+            
         
-        
+        }
         }
         
           
@@ -57,6 +90,9 @@ class GalleryController extends Controller
         $data = null;
         $lastid = $request->category_id;
         $proid = $request->service_id;
+        $project_id = $request->project_id;
+        $event_id = $request->event_id;
+        $party_id = $request->party_id;
         $subcategory_id = $request->subcategory_id;
         if ($files = $request->file('gallery')){
             foreach ($files as  $key => $file){
@@ -71,7 +107,10 @@ class GalleryController extends Controller
 
                     $gallery['photo'] = $thumbnail;
                     
-                    $gallery['service_id'] = $proid;
+                    $gallery['service_id'] = $proid ?? null;
+                    $gallery['project_id'] = $project_id ?? null;
+                    $gallery['event_id'] = $event_id ?? null;
+                    $gallery['party_id'] = $party_id ?? null;
                  
                     $gallery->save();
                     $data[] = $gallery;                        

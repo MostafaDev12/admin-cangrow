@@ -249,7 +249,7 @@
               $.ajax({
                       type: "GET",
                       url:"{{ route('admin-gallery-show') }}",
-                      data:{id:pid},
+                      data:{id:pid , type:'service'},
                       success:function(data){
                         if(data[0] == 0)
                         {

@@ -196,7 +196,7 @@
                          <i class="{{ $project->icon }} text-4xl"></i>
                      </div>
                      <div>
-                         <h3 class="text-xl font-bold text-gray-900 mb-1">   {!! $project->{'title_' . $sign} ?? '' !!}  </h3>
+                         <h3 class="text-xl font-bold text-gray-900 mb-1">  <a href="{{ route('services.category.index', ['lang' => $sign, 'slug' => $project->{'slug_' . $sign}]) }}">{!! $project->{'title_' . $sign} ?? '' !!}</a>   </h3>
                          <p class="text-gray-500">    {!! $project->{'short_details_' . $sign} ?? '' !!}   </p>
                      </div>
                  </div>

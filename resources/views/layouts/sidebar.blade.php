@@ -332,6 +332,12 @@
                                             aria-controls="sidebarprojects">
                                             <span>@lang('translation.projects')</span>
                                         </a>
+                                    </li>            
+                                   <li class="nav-item">
+                                        <a class="nav-link  " href="{{ route('admin-project_categories-index') }}"
+                                            aria-controls="sidebarprojects">
+                                            <span>@lang('translation.project_categories')</span>
+                                        </a>
                                     </li>
                                 @endif
                                 @if (Auth::guard('admin')->user()->sectionCheck('services'))

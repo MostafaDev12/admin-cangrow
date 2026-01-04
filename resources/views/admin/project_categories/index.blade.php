@@ -91,11 +91,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.parties') }}
+        {{ __('translation.project_categories') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.parties') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.project_categories') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -136,7 +136,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-            <p class="text-center">{{ __('You are about to delete this party.') }}</p>
+            <p class="text-center">{{ __('You are about to delete this service.') }}</p>
             <p class="text-center">{{ __('Do you want to proceed?') }}</p>
       </div>
 
@@ -171,7 +171,7 @@
                 <div class="col-md-10 col-8">
                 <form  method="POST" enctype="multipart/form-data" id="form-gallery">
                   {{ csrf_field() }}
-                    <input type="hidden" id="pid" name="party_id" value="">
+                    <input type="hidden" id="pid" name="project_id" value="">
                     <input type="file" name="gallery[]" class="hidden" id="uploadgallery" accept="image/*" multiple>
                       <label for="image-upload" id="prod_gallery"><i class="icofont-upload-alt"></i>{{ __('Upload File') }}</label>
                   </form>
@@ -209,7 +209,7 @@
          ordering: false,
                processing: true,
                serverSide: true,
-               ajax: '{{ route('admin-parties-datatables') }}',
+               ajax: '{{ route('admin-project_categories-datatables') }}',
                columns: [
                         { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
@@ -225,8 +225,8 @@
 
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
-          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-parties-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_party") }}'+
+          '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-project_categories-create')}}">'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_service") }}'+
           '</a>'+
           '</div>');
       });
@@ -249,7 +249,7 @@
               $.ajax({
                       type: "GET",
                       url:"{{ route('admin-gallery-show') }}",
-                      data:{id:pid, type:'Party'},
+                      data:{id:pid, type:'Project'},
                       success:function(data){
                         if(data[0] == 0)
                         {

@@ -74,7 +74,7 @@ class HomeController extends Controller
 
     $sliders = Slider::get();
     $points = AboutPoint::get();
-    $projects = Project::get();
+    $projects = Project::where('parent_id',0)->get();
     $home_services = Service::get()->take(10);
     $models = PageModel::get();
     $features = ModelCategory::get();
@@ -278,11 +278,11 @@ $processes = Process::get();
     $servicess = Service::paginate(6);
     $models = PageModel::get();
     $reviews = Partner::get();
-  $projects = Project::get();
+  $projects = Project::where('parent_id',0)->get();
    $timelines = Timeline::get();
     return view('front.services', compact('sign','timelines', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
   }  
-    public function servicesCategory(Request $request,$lang)
+    public function servicesCategory(Request $request,$lang, $slug)
   {
 
     $sign = $this->langSign($lang);
@@ -296,9 +296,43 @@ $processes = Process::get();
     $reviews = Partner::get();
   $projects = Project::get();
    $timelines = Timeline::get();
-    return view('front.services-category', compact('sign','timelines', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
+
+
+    $project = Project::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    
+   
+    if(!$project){
+
+      abort(404);
+    }
+
+         switch ($sign) {
+        case 'en':
+            $correctSlug = $project->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $project->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $project->slug_fr;
+            break;
+        default:
+            $correctSlug = $project->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/services/category/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/services/category/$correctSlug");
+        }
+    }
+
+    return view('front.services-category', compact('sign','timelines', 'projects','sliders', 'points','project', 'servicess', 'models', 'reviews'));
   }  
-    public function galleryServices(Request $request,$lang)
+    public function galleryServices(Request $request,$lang, $slug)
   {
 
     $sign = $this->langSign($lang);
@@ -312,7 +346,39 @@ $processes = Process::get();
     $reviews = Partner::get();
   $projects = Project::get();
    $timelines = Timeline::get();
-    return view('front.gallery-services', compact('sign','timelines', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
+
+   $project = Project::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    
+    if(!$project){
+
+      abort(404);
+    }
+
+         switch ($sign) {
+        case 'en':
+            $correctSlug = $project->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $project->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $project->slug_fr;
+            break;
+        default:
+            $correctSlug = $project->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/services/gallery/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/services/gallery/$correctSlug");
+        }
+    }
+
+    return view('front.gallery-services', compact('sign','timelines', 'project', 'projects','sliders', 'points', 'servicess', 'models', 'reviews'));
   }  
     public function agenda(Request $request,$lang)
   {
@@ -581,40 +647,40 @@ $processes = Process::get();
     $sign = $this->langSign($lang);
 
 
-    $service = Event::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    $service = Event::where('id', $slug)->first();
     
     if(!$service){
 
       abort(404);
     }
 
-         switch ($sign) {
-        case 'en':
-            $correctSlug = $service->slug_en;
-            break;
-        case 'ar':
-            $correctSlug = $service->slug_ar;
-            break;
-        case 'fr':
-            $correctSlug = $service->slug_fr;
-            break;
-        default:
-            $correctSlug = $service->slug_en;
-    }
-    if ($slug !== $correctSlug) {
-        if($lang){
+    //      switch ($sign) {
+    //     case 'en':
+    //         $correctSlug = $service->slug_en;
+    //         break;
+    //     case 'ar':
+    //         $correctSlug = $service->slug_ar;
+    //         break;
+    //     case 'fr':
+    //         $correctSlug = $service->slug_fr;
+    //         break;
+    //     default:
+    //         $correctSlug = $service->slug_en;
+    // }
+    // if ($slug !== $correctSlug) {
+    //     if($lang){
             
-        return redirect()->to("/$sign/event/$correctSlug");
-        }else{
+    //     return redirect()->to("/$sign/event/$correctSlug");
+    //     }else{
             
             
-        return redirect()->to("/event/$correctSlug");
-        }
-    }
+    //     return redirect()->to("/event/$correctSlug");
+    //     }
+    // }
 
 
 
-    return view('front.details-event', compact('sign', 'service'));
+    return view('front.gallery-events', compact('sign', 'service'));
   }
   public function parties(Request $request,$lang)
   {
@@ -654,40 +720,40 @@ $processes = Process::get();
     $sign = $this->langSign($lang);
 
 
-    $service = Party::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    $service = Party::where('id', $slug)->first();
     
     if(!$service){
 
       abort(404);
     }
 
-         switch ($sign) {
-        case 'en':
-            $correctSlug = $service->slug_en;
-            break;
-        case 'ar':
-            $correctSlug = $service->slug_ar;
-            break;
-        case 'fr':
-            $correctSlug = $service->slug_fr;
-            break;
-        default:
-            $correctSlug = $service->slug_en;
-    }
-    if ($slug !== $correctSlug) {
-        if($lang){
+    //      switch ($sign) {
+    //     case 'en':
+    //         $correctSlug = $service->slug_en;
+    //         break;
+    //     case 'ar':
+    //         $correctSlug = $service->slug_ar;
+    //         break;
+    //     case 'fr':
+    //         $correctSlug = $service->slug_fr;
+    //         break;
+    //     default:
+    //         $correctSlug = $service->slug_en;
+    // }
+    // if ($slug !== $correctSlug) {
+    //     if($lang){
             
-        return redirect()->to("/$sign/party/$correctSlug");
-        }else{
+    //     return redirect()->to("/$sign/party/$correctSlug");
+    //     }else{
             
             
-        return redirect()->to("/party/$correctSlug");
-        }
-    }
+    //     return redirect()->to("/party/$correctSlug");
+    //     }
+    // }
 
 
 
-    return view('front.details-party', compact('sign', 'service'));
+    return view('front.gallery-parties', compact('sign', 'service'));
   }
   public function locations(Request $request)
   {
@@ -971,7 +1037,7 @@ $processes = Process::get();
 
   public function change($id)
   {
-dd($id);
+ 
     $data = Language::findOrFail($id);
 
     App::setlocale($data->name);

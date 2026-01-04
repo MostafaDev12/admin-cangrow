@@ -26,19 +26,20 @@
                                 {{ __('دار التوفيق') }} 
                     </h2>
                     <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 -mt-9 md:-mt-14">
-                        {{ __('مناسبات دائمة خاصة بالمؤسسة') }}
+                        {!! $project->{'title_' . $sign} ?? '' !!}
                     </h1>
                      <p class="text-lg text-gray-600 mt-6 leading-relaxed max-w-2xl mx-auto">
-                           {{ __('فعاليات مستمرة تنظمها مؤسسة دار التوفيق لتعزيز روح العطاء والترابط المجتمعي') }}
-                    </p> {{----}}
+                           {{-- {{ __('فعاليات مستمرة تنظمها مؤسسة دار التوفيق لتعزيز روح العطاء والترابط المجتمعي') }} --}}
+                       {!! $project->{'short_details_' . $sign} ?? '' !!} 
+                     </p> {{----}}
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 md:mb-24">
                     <!-- Card 1 -->
                   
-                    @foreach ($servicess as $service)
+                    @foreach ($project->childs as $service)
                         
-                    <a href="{{ route('gallery.services.index', ['lang' => $sign]) }}" class="rounded-lg overflow-hidden shadow-lg bg-white group">
+                    <a href="{{ route('gallery.services.index', ['lang' => $sign , 'slug' => $service->{'slug_' . $sign} ]) }}" class="rounded-lg overflow-hidden shadow-lg bg-white group">
                         <img src="{!! $service->photo !!}"
                             alt="{!! $service->{'title_' . $sign} ?? '' !!}"
                             class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
@@ -47,7 +48,7 @@
                             <p class="text-gray-600 mt-2 text-sm leading-relaxed">
                                 {!! $service->{'short_details_' . $sign} ?? '' !!}
                             </p>
-                        </div>
+                        </div> 
                     </a>
 
                     @endforeach
@@ -61,7 +62,7 @@
                     <span>شاهد الكل</span>
                 </a> --}}
                  {{-- {{ $servicess->links() }} --}}
-                 {{ $servicess->links() }}
+                 {{-- {{ $servicess->links() }} --}}
             </div>
                 {{-- <div class="text-center mb-12 max-w-3xl mx-auto">
                     <div class="relative mb-10">

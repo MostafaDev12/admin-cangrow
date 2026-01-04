@@ -265,7 +265,7 @@ return [
 "events" => "الفعاليات",
 "parties" => "الاحتفالات",
 "services_projects" => "الخدمات والمشاريع",
-"services" => "الخدمات",
+ 
 "timelines" => "الجدول الزمني",
 "success-volunteers" => "قصص نجاح المتطوعين",
 "agenda" => "الأجندة",

@@ -253,14 +253,14 @@
                                            {{ __('التبرع عبر الموقع الإلكتروني') }} 
                                         </a>
 
-                                        <a href="{{ route('cross-bank-donation.index',$sign) }}"
+                                        {{-- <a href="{{ route('cross-bank-donation.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange hidden">
                                             {{ __('التبرع عبر البنوك') }}
-                                        </a>
+                                        </a> --}}
                                        <button
                                           onclick="openDonateModal()"
                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange">
-                                          ميجا خير
+                                             {{ __('ميجا خير') }}
                                         </button>
 
 
@@ -399,10 +399,14 @@
                             <a href="{{ route('donate_campaigns.index',$sign) }}"
                                 class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
                                       {{ __('التبرع عبر الموقع الإلكتروني') }}  </a>
-                            <a href="{{ route('cross-bank-donation.index',$sign) }}"
+                            {{-- <a href="{{ route('cross-bank-donation.index',$sign) }}"
                                 class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
-                                    {{ __('التبرع عبر البنوك') }}</a>
+                                    {{ __('التبرع عبر البنوك') }}</a> --}}
                            
+                            <a href="#"
+                             onclick="openDonateModal()"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                 {{ __('ميجا خير') }} </a>
                             <a href="{{ route('contributions-kind.index',$sign) }}"
                                 class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
                                 {{ __('التبرعات العينية') }}   </a>
@@ -450,7 +454,12 @@
                             <i class="fas fa-search ml-2"></i>
                             <span>بحث</span>
                         </button>
-                        <a href="#" class="text-gray-700 hover:text-custom-orange">English</a>
+                        @php
+                    $lang = App\Models\Language::where('sign', '!=', $sign)->first();
+                @endphp
+                        @if ($lang)   
+                        <a href="{{ route('change-lang.index', $lang->id) }}" class="text-gray-700 hover:text-custom-orange">{{ $lang->language }}</a>
+                  @endif
                     </div>
                 </div>
             </div>
@@ -497,39 +506,39 @@
         </button>
     
         <h2 class="text-xl font-bold mb-2 text-gray-800">
-          التبرع عبر فودافون كاش
+               {{ __('التبرع عبر فودافون كاش') }}
         </h2>
     
         <p class="text-gray-600 mb-4">
-          مؤسسة <span class="font-semibold text-custom-orange">ميجا خير</span>
+            {{ __('مؤسسة') }}<span class="font-semibold text-custom-orange">  {{ __('دار التوفيق') }}</span>
         </p>
     
         <div class="bg-gray-100 rounded-lg p-4 mb-4">
-          <p class="text-sm text-gray-500 mb-1">رقم فودافون كاش</p>
+          <p class="text-sm text-gray-500 mb-1">   {{ __('رقم فودافون كاش') }}</p>
         
           <div class="flex items-center justify-between gap-2">
-            <p id="vodafoneNumber" class="text-lg font-bold text-gray-800" dir="ltr">
-              +20 10 1353 2333
+            <p id="vodafoneNumber" class="text-lg font-bold text-gray-800" dir="{{ session::get('front_language_duraction') == 'rtl' ? 'ltr' : 'rtl' }}">
+              {{ $randomPhone }}
             </p>
         
             <button
               onclick="copyNumber()"
               class="px-3 py-1 text-sm rounded-md bg-custom-orange text-white hover:opacity-90 transition">
-              نسخ
+               {{ __('نسخ') }}
             </button>
           </div>
         
           <p
             id="copySuccess"
             class="hidden mt-2 text-sm text-green-600">
-            تم نسخ الرقم
+             {{ __('تم نسخ الرقم') }}
           </p>
         </div>
     
         <button
           onclick="closeDonateModal()"
           class="w-full bg-custom-orange text-white py-2 rounded-lg hover:opacity-90 transition">
-          تم
+           {{ __('تم') }}
         </button>
       </div>
     </div>
@@ -642,7 +651,8 @@
                         <li><a href="{{ route('donate_campaigns.index',$sign) }}" class="hover:text-primary transition-colors">      {{ __('التبرع عبر الموقع الإلكتروني') }} 
                                  </a>
                         </li>
-                        <li><a href="{{ route('cross-bank-donation.index',$sign) }}" class="hover:text-primary transition-colors">    {{ __('التبرع عبر البنوك') }}  </a></li>
+                        {{-- <li><a href="{{ route('cross-bank-donation.index',$sign) }}" class="hover:text-primary transition-colors">    {{ __('التبرع عبر البنوك') }}  </a></li> --}}
+                        <li><a href="#" class="hover:text-primary transition-colors"  onclick="openDonateModal()">      {{ __('ميجا خير') }}  </a></li>
                         <li><a href="{{ route('contributions-kind.index',$sign) }}" class="hover:text-primary transition-colors">   {{ __('التبرعات العينية') }} </a></li>
                     </ul>
                 </div>

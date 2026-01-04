@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Location;
 use App\Models\BlogCategory;
 use App\Models\ModelCategory;
+use App\Models\Project;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
@@ -31,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('ps', Pagesetting::first());
             $settings->with('services', Service::get());
             $settings->with('parentservices', Service::where('parent_id',0)->get());
+            $settings->with('parentprojects', Project::where('parent_id',0)->get());
             $settings->with('categories', Category::get());
             $settings->with('blogcategories', BlogCategory::get());
             $settings->with('references', ModelCategory::get());

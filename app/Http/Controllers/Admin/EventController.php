@@ -38,6 +38,9 @@ class EventController extends Controller
                                 <a class=" btn btn-sm btn-secondary" href="' . route('admin-events-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
                              
                                 
+                                <a href="javascript:;" class="set-gallery btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#setgallery"><input type="hidden" value="'.$data->id.'"><i class="las la-eye"></i> View Gallery</a>
+                               
+                              
                               
                               <a href="javascript:;" data-href="' . route('admin-events-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';

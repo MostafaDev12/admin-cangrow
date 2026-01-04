@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 
-class ProjectController extends Controller
+class ProjectCategoryController extends Controller
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ class ProjectController extends Controller
     //*** JSON Request
     public function datatables()
     {
-         $datas = Project::where('parent_id',0)->orderBy('id','desc')->get();
+         $datas = Project::where('parent_id','!=',0)->orderBy('id','desc')->get();
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)
                             ->editColumn('photo', function(Project $data) {
@@ -29,17 +29,19 @@ class ProjectController extends Controller
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
                              ->addColumn('category', function(Project $data) {
-                                $photo =  optional($data->category)->title_ar ?? '';
+                                $photo =  optional($data->parent)->title_ar ?? '';
                               
                                 return  $photo;
                             })
                             ->addColumn('action', function(Project $data) {
                                 return '<div class="action-list">
-                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-projects-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
+                                <a class=" btn btn-sm btn-secondary" href="' . route('admin-project_categories-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
                              
                                 
+                                <a href="javascript:;" class="set-gallery btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#setgallery"><input type="hidden" value="'.$data->id.'"><i class="las la-eye"></i> View Gallery</a>
+                               
                               
-                              <a href="javascript:;" data-href="' . route('admin-projects-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
+                              <a href="javascript:;" data-href="' . route('admin-project_categories-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
                             ->rawColumns(['photo','action','category'])
@@ -49,14 +51,14 @@ class ProjectController extends Controller
     //*** GET Request
     public function index()
     {
-        return view('admin.projects.index');
+        return view('admin.project_categories.index');
     }
 
     //*** GET Request
     public function create()
     {
         $cats = Category::get();
-        return view('admin.projects.create',compact('cats'));
+        return view('admin.project_categories.create',compact('cats'));
     }
 
     //*** POST Request
@@ -94,8 +96,8 @@ class ProjectController extends Controller
         //--- Logic Section Ends
       
         //--- Redirect Section
-        $msg = 'New Data Added Successfully.<a href="'.route('admin-projects-index').'">View projects Lists.</a>';
-       //   return redirect(route('admin-projects-index'))->with($msg);
+        $msg = 'New Data Added Successfully.<a href="'.route('admin-project_categories-index').'">View project_categories Lists.</a>';
+       //   return redirect(route('admin-project_categories-index'))->with($msg);
       return response()->json($msg);
         //--- Redirect Section Ends    
 
@@ -107,7 +109,7 @@ class ProjectController extends Controller
     {
         $data = Project::findOrFail($id);
         $cats = Category::get();
-        return view('admin.projects.edit',compact('data','cats'));
+        return view('admin.project_categories.edit',compact('data','cats'));
     }
 
     //*** POST Request
@@ -149,7 +151,7 @@ class ProjectController extends Controller
         //--- Logic Section Ends
 
         //--- Redirect Section
-        $msg = 'Data Updated Successfully.<a href="'.route('admin-projects-index').'">View projects Lists.</a>';
+        $msg = 'Data Updated Successfully.<a href="'.route('admin-project_categories-index').'">View project_categories Lists.</a>';
         return response()->json($msg);
         //--- Redirect Section Ends    
 

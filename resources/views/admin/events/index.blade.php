@@ -171,7 +171,7 @@
                 <div class="col-md-10 col-8">
                 <form  method="POST" enctype="multipart/form-data" id="form-gallery">
                   {{ csrf_field() }}
-                    <input type="hidden" id="pid" name="service_id" value="">
+                    <input type="hidden" id="pid" name="event_id" value="">
                     <input type="file" name="gallery[]" class="hidden" id="uploadgallery" accept="image/*" multiple>
                       <label for="image-upload" id="prod_gallery"><i class="icofont-upload-alt"></i>{{ __('Upload File') }}</label>
                   </form>
@@ -249,7 +249,7 @@
               $.ajax({
                       type: "GET",
                       url:"{{ route('admin-gallery-show') }}",
-                      data:{id:pid},
+                      data:{id:pid , type:'Event'},
                       success:function(data){
                         if(data[0] == 0)
                         {
