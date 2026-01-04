@@ -92,10 +92,102 @@
 
             </div>
         </section>
+{{-- 
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+    
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  class="w-full h-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  title="YouTube video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
 
+                <div class="swiper-slide">
+              <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  class="w-full h-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  title="YouTube video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+    
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  class="w-full h-full"
+                  src="https://www.youtube.com/embed/9bZkp7q19f0"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+    
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  class="w-full h-full"
+                  src="https://www.youtube.com/embed/l482T0yNkeo"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+    
+          </div>
+    
+          <!-- Navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+    
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+        </div> --}}
 
+ 
 
- @include('includes.share')
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  </script>
     </main>
  @stop
+
+ @section('js')
+    
+  @stop
