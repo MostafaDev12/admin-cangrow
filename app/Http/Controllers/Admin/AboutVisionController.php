@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use DataTables;
-use App\Models\aboutVision;
+use App\Models\AboutVision;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -19,15 +19,15 @@ class AboutVisionController extends Controller
     //*** JSON Request
     public function datatables()
     {
-         $datas = aboutVision::orderBy('id','desc')->get();
+         $datas = AboutVision::orderBy('id','desc')->get();
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)
-                            ->editColumn('photo', function(aboutVision $data) {
+                            ->editColumn('photo', function(AboutVision $data) {
                                 $photo =  $data->photo;
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
-                            ->addColumn('action', function(aboutVision $data) {
+                            ->addColumn('action', function(AboutVision $data) {
                                 return '<div class="action-list">
                                 <a class=" btn btn-sm btn-secondary" href="' . route('admin-about_visions-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
                                 <a href="javascript:;" data-href="' . route('admin-about_visions-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
@@ -65,7 +65,7 @@ class AboutVisionController extends Controller
         //--- Validation Section Ends
 
         //--- Logic Section
-        $data = new aboutVision();
+        $data = new AboutVision();
         $input = $request->all();
         
         
@@ -84,7 +84,7 @@ class AboutVisionController extends Controller
     //*** GET Request
     public function edit($id)
     {
-        $data = aboutVision::findOrFail($id);
+        $data = AboutVision::findOrFail($id);
         return view('admin.about_visions.edit',compact('data'));
     }
 
@@ -104,7 +104,7 @@ class AboutVisionController extends Controller
         //--- Validation Section Ends
 
         //--- Logic Section
-        $data = aboutVision::findOrFail($id);
+        $data = AboutVision::findOrFail($id);
         $input = $request->all();
         
         $data->update($input);
@@ -120,7 +120,7 @@ class AboutVisionController extends Controller
     //*** GET Request Delete
     public function destroy($id)
     {
-        $data = aboutVision::findOrFail($id);
+        $data = AboutVision::findOrFail($id);
         $data->delete();
         //--- Redirect Section     
         $msg = 'Data Deleted Successfully.';

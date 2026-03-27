@@ -112,34 +112,34 @@
 				}
 			}
 		}'>
-                @foreach ($certificates as $certificate)
-                    
-                    <div class="item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
-                        <div class="service-card">
-                            <div class="service-card__content">
-                                <div class="service-card__image">
-                                    <img src="{{ $certificate->photo }}" alt="{{ $certificate->{'title_' . $sign} }}">
-                                    <div class="service-card__icon">
-                                        <span class="icon-butchering"></span>
-                                    </div><!-- /.service-card__icon -->
-                                </div><!-- /.services-card__image -->
-                                <h3 class="service-card__title"><a href="#">   
-                                        {{ $certificate->{'title_' . $sign} }}</a></h3>
-                                <!-- /.services-card__title -->
-                                <p class="service-card__text">  {{ $certificate->{'short_details_' . $sign} }} </p>
-                                <!-- /.services-card__text -->
-                            </div><!-- /.services-card__content -->
-                            {{-- <a href="service-d-custom-cutting.html" class="service-card__btn">تفاصيل الخدمة <span
-                                    class="icon-right"></span></a><!-- /.services-card__btn --> --}}
-                        </div><!-- /.service-card -->
-                    </div><!-- /.item -->
-                 
-                @endforeach
+              @foreach ($certificates as $certificate) <div class="item wow fadeInUp" data-wow-duration="1500ms"
+  data-wow-delay="00ms">
+  <div class="service-card">
+    <div class="service-card__content">
+      <div class="service-card__image"> <img src="{{ $certificate->photo }}"
+          alt="{{ $certificate->{'title_' . $sign} }}">
+        <div class="service-card__icon"> <span class="icon-butchering"></span> </div><!-- /.service-card__icon -->
+      </div><!-- /.services-card__image -->
+      <h3 class="service-card__title"><a href="#"> {{ $certificate->{'title_' . $sign} }}</a></h3>
+      <!-- /.services-card__title -->
+      <p class="service-card__text"> {{ $certificate->{'short_details_' . $sign} }} </p> <!-- /.services-card__text -->
+    </div><!-- /.services-card__content --> 
+    <button id="openModalBtn" class="service-card__btn">service details <span
+        class="icon-left"></span></button><!-- /.services-card__btn -->
+  </div><!-- /.service-card -->
+</div><!-- /.item --> @endforeach
                 </div><!-- /.services-page__carousel -->
             </div><!-- /.container -->
         </section><!-- /.services-page section-space -->
  
 
+<script>
+            const openBtn = document.getElementById('openModalBtn');
+           openBtn.addEventListener('click', () => {
+               console.log("sfgdfgdfg")
+        });
+
+</script>
         <section class="slide-text">
             <div class="slide-text__bg" style="background-image: url({{ asset('front/mtc/') }}/assets/images/backgrounds/slide-text-bg-1-1.jpg);">
             </div><!-- /.slide-text__bg -->
