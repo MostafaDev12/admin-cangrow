@@ -138,6 +138,9 @@ class CertificateController extends Controller
     public function destroy($id)
     {
         $data = Certificate::findOrFail($id);
+        if ($data->photo && file_exists(public_path('assets/images/certificates/' . $data->photo))) {
+            unlink(public_path('assets/images/certificates/' . $data->photo));
+        }
         $data->delete();
         //--- Redirect Section     
         $msg = 'Data Deleted Successfully.';

@@ -67,7 +67,7 @@ class Project extends Model
     
     public function childs()
     {
-        return $this->hasMany(Service::class,'parent_id');
+        return $this->hasMany(Project::class,'parent_id');
     }  
     /**
      * The attributes that should be hidden for serialization.
@@ -83,7 +83,7 @@ class Project extends Model
      
      public function parent()
      {
-         return $this->belongsTo(Service::class,'parent_id');
+         return $this->belongsTo(Project::class,'parent_id');
      }
     /**
      * The attributes that should be cast.

@@ -52,6 +52,7 @@ Route::get('/galleries',  [FrontController::class, 'partners']);
 
 Route::get('/categories',  [FrontController::class, 'categories']);
 Route::get('/single-category/{id}',  [FrontController::class, 'singleCategory']);
+Route::get('/single-subcategory/{id}',  [FrontController::class, 'singleSubcategory']);
 
 Route::get('/after_before',  [FrontController::class, 'after_before']);
 Route::get('/blogs',  [FrontController::class, 'blogs']);

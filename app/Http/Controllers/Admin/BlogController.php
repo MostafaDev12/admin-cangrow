@@ -160,6 +160,9 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $data = Blog::findOrFail($id);
+        if ($data->photo && file_exists(public_path('assets/images/blogs/' . $data->photo))) {
+            unlink(public_path('assets/images/blogs/' . $data->photo));
+        }
         $data->delete();
         //--- Redirect Section     
         $msg = 'Data Deleted Successfully.';

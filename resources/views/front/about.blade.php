@@ -30,7 +30,7 @@
             <div class="page-header__bg" style="background-image: linear-gradient(to right, #000000, #ffffff);"></div>
             <!-- /.page-header__bg -->
             <div class="container">
-                <h2 class="page-header__title">من نحن</h2>
+                <h2 class="page-header__title">{{ __('من نحن') }}</h2>
               
             </div><!-- /.container -->
         </section><!-- /.page-header -->
@@ -44,24 +44,24 @@
                 <div class="row gutter-y-60">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                         <div class="about-two__image">
-                            <img src="{{ asset('front/mtc/') }}/assets/images/about/about-2-1.jpg" alt="مجمع تكنولوجيا اللحوم MTC"
+                            <img src="{{ site_image('about_image_2') }}" alt="مجمع تكنولوجيا اللحوم MTC"
                                 class="about-two__image__one">
                             <img src="{{ $ps->about_photo }}" alt="منتجات اللحوم الطازجة"
                                 class="about-two__image__two">
                             <div class="about-two__experience">
                                 <div class="about-two__experience__bg"
-                                    style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/about-experience-bg-2-1.png);">
+                                    style="background-image: url({{ site_image('about_experience_bg') }});">
                                 </div><!-- /.about-two__experience__bg -->
                                 <div class="about-two__experience__content">
                                     <div class="about-two__experience__box count-box relative"
                                         style="position: relative;">
                                         <div class="">
-                                            <img class="!h-[100px] !w-[100px]" src="{{ asset('front/mtc/') }}/assets/images/logo/Artboard 2.png"
+                                            <img class="!h-[100px] !w-[100px]" src="{{ site_image('about_experience_logo') }}"
                                                 width="50" height="50" />
                                         </div>
                                         <h3 class="about-two__experience__year">+</h3>
                                     </div><!-- /.about-two__experience__box -->
-                                    <h4 class="about-two__experience__text">سنوات من <br> الخبرة</h4>
+                                    <h4 class="about-two__experience__text">{{ __('سنوات من') }} <br> {{ __('الخبرة') }}</h4>
                                     <!-- /.about-two__experience__text -->
                                 </div><!-- /.about-two__experience__content -->
                             </div><!-- /.about-two__experience -->
@@ -71,7 +71,7 @@
                         <div class="about-two__content">
                             <div class="sec-title @@extraClassName">
 
-                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="عن مجمع تكنولوجيا اللحوم MTC"
+                                <img src="{{ site_image('section_title_shape') }}" alt="عن مجمع تكنولوجيا اللحوم MTC"
                                     class="sec-title__img">
 
                                 <!-- <h6 class="sec-title__tagline">عن مجمع تكنولوجيا اللحوم MTC</h6> -->
@@ -84,24 +84,16 @@
                             <div class="about-two__inner">
 
 
+                                @foreach ($about_features as $feature)
                                 <div class="about-two__info">
                                     <div class="about-two__info__icon">
-                                        <span class="icon-healthy-food"></span>
+                                        <span class="{{ $feature->icon }}"></span>
                                     </div><!-- /.about-two__info__icon -->
                                     <div class="about-two__info__content">
-                                        <h4 class="about-two__info__title">لحوم طازجة عالية الجودة</h4>
-                                        <!-- /.about-two__info__title -->
+                                        <h4 class="about-two__info__title">{{ $feature->{'title_' . $sign} }}</h4>
                                     </div><!-- /.about-two__info__content -->
                                 </div><!-- /.about-two__info -->
-                                <div class="about-two__info">
-                                    <div class="about-two__info__icon">
-                                        <span class="icon-butchering"></span>
-                                    </div><!-- /.about-two__info__icon -->
-                                    <div class="about-two__info__content">
-                                        <h4 class="about-two__info__title">تقنيات ذبح وتجهيز متطورة</h4>
-                                        <!-- /.about-two__info__title -->
-                                    </div><!-- /.about-two__info__content -->
-                                </div><!-- /.about-two__info -->
+                                @endforeach
 
 
                             </div><!-- /.about-two__inner -->
@@ -122,7 +114,7 @@
                                 <span class="boskery-btn__hover"></span>
                                 <span class="boskery-btn__hover"></span>
                                 <span class="boskery-btn__hover"></span>
-                                <span class="boskery-btn__text">تعرف علينا أكثر</span>
+                                <span class="boskery-btn__text">{{ __('تعرف علينا أكثر') }}</span>
                                 <i class="icon-meat-3"></i>
                             </a><!-- /.boskery-btn --> --}}
                         </div><!-- /.about-two__content -->
@@ -131,9 +123,9 @@
             </div><!-- /.container -->
             <div class="about-two__shape">
                 <div class="about-two__shape__image wow fadeInRight" data-wow-duration="1500ms">
-                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-1.png" alt="about-shape">
+                    <img src="{{ site_image('about_shape_2_1') }}" alt="about-shape">
                 </div><!-- /.about-two__shape__image -->
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-2.png" alt="about-shape"
+                <img src="{{ site_image('about_shape_2_2') }}" alt="about-shape"
                     class="about-two__shape__two wow fadeInLeft" data-wow-duration="1500ms">
             </div><!-- /.about-two__shape -->
         </section><!-- /.about-two -->
@@ -152,12 +144,12 @@
                             </div><!-- /.about-three__image__inner --> --}}
                             <div class="about-three__experience">
                                 <div class="about-three__experience__bg"
-                                    style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/about-shape-3-1.png);"></div>
+                                    style="background-image: url({{ site_image('about_shape_3_1') }});"></div>
                                 <!-- /.about-three__experience__bg -->
                                 <div class="about-three__experience__content">
                                     <div class="about-three__experience__text">
-                                        <h4 class="about-three__experience__title">سنوات من <br>
-                                            الخبرة</h4><!-- /.about-three__experience__title -->
+                                        <h4 class="about-three__experience__title">{{ __('سنوات من') }} <br>
+                                            {{ __('الخبرة') }}</h4><!-- /.about-three__experience__title -->
                                     </div><!-- /.about-three__experience__text -->
                                     <h4 class="about-three__experience__year">50+</h4>
                                     <!-- /.about-three__experience__year -->
@@ -169,13 +161,13 @@
                         <div class="about-three__content">
                             <div class="sec-title @@extraClassName">
 
-                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="الرؤية والرسالة والقيم"
+                                <img src="{{ site_image('section_title_shape') }}" alt="الرؤية والرسالة والقيم"
                                     class="sec-title__img">
 
                                 <!-- <h6 class="sec-title__tagline">الرؤية والرسالة والقيم</h6> -->
                                 <!-- /.sec-title__tagline -->
 
-                                <h2 class="sec-title__title">رؤيتنا ورسالتنا <br> نحو مستقبل أفضل</h2>
+                                <h2 class="sec-title__title">{{ __('رؤيتنا ورسالتنا') }} <br> {{ __('نحو مستقبل أفضل') }}</h2>
                                 <!-- /.sec-title__title -->
                             </div><!-- /.sec-title -->
 
@@ -188,47 +180,23 @@
      @endforeach
                                 
 
+                                @if($about_values->count() > 0)
                                 <div class="values-section">
-                                    <h4 class="about-three__info__title mb-2">القيم</h4>
+                                    <h4 class="about-three__info__title mb-2">{{ __('القيم') }}</h4>
                                     <div class="about-three__info">
+                                        @foreach ($about_values as $value)
                                         <div class="about-three__info__inner">
                                             <div class="about-three__info__icon">
-                                                <span class="icon-healthcare-1"></span>
+                                                <span class="{{ $value->icon }}"></span>
                                             </div><!-- /.about-three__info__icon -->
                                             <div class="about-three__info__content">
-                                                <h4 class="about-three__info__title">الصحة والنظافة</h4>
-                                                <!-- /.about-three__info__title -->
+                                                <h4 class="about-three__info__title">{{ $value->{'title_' . $sign} }}</h4>
                                             </div><!-- /.about-three__info__content -->
                                         </div><!-- /.about-three__info__inner -->
-                                        <div class="about-three__info__inner">
-                                            <div class="about-three__info__icon">
-                                                <span class="icon-meat"></span>
-                                            </div><!-- /.about-three__info__icon -->
-                                            <div class="about-three__info__content">
-                                                <h4 class="about-three__info__title">الثقة والشفافية</h4>
-                                                <!-- /.about-three__info__title -->
-                                            </div><!-- /.about-three__info__content -->
-                                        </div><!-- /.about-three__info__inner -->
-                                        <div class="about-three__info__inner">
-                                            <div class="about-three__info__icon">
-                                                <span class="icon-meat"></span>
-                                            </div><!-- /.about-three__info__icon -->
-                                            <div class="about-three__info__content">
-                                                <h4 class="about-three__info__title">الابتكار</h4>
-                                                <!-- /.about-three__info__title -->
-                                            </div><!-- /.about-three__info__content -->
-                                        </div><!-- /.about-three__info__inner -->
-                                        <div class="about-three__info__inner">
-                                            <div class="about-three__info__icon">
-                                                <span class="icon-meat"></span>
-                                            </div><!-- /.about-three__info__icon -->
-                                            <div class="about-three__info__content">
-                                                <h4 class="about-three__info__title">التركيز على العميل</h4>
-                                                <!-- /.about-three__info__title -->
-                                            </div><!-- /.about-three__info__content -->
-                                        </div><!-- /.about-three__info__inner -->
+                                        @endforeach
                                     </div><!-- /.about-three__info -->
                                 </div>
+                                @endif
                             </div>
 
                             <div class="about-three__bottom">
@@ -239,7 +207,7 @@
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
-                                    <span class="boskery-btn__text">تواصل معنا</span>
+                                    <span class="boskery-btn__text">{{ __('تواصل معنا') }}</span>
                                     <i class="icon-meat-3"></i>
                                 </a><!-- /.boskery-btn -->
                             </div><!-- /.about-three__bottom -->
@@ -248,9 +216,9 @@
                 </div><!-- /.row -->
             </div><!-- /.container -->
             <div class="about-three__shape">
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-1.png" alt="about shape" class="about-three__shape-one">
+                <img src="{{ site_image('about_shape_2_1') }}" alt="about shape" class="about-three__shape-one">
                 <div class="about-three__shape__image wow fadeInLeft" data-wow-duration="1500ms">
-                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-2.png" alt="about shape">
+                    <img src="{{ site_image('about_shape_2_2') }}" alt="about shape">
                 </div><!-- /.about-three__shape__image -->
             </div><!-- /.about-three__shape -->
         </section><!-- /.about-three section-space -->
@@ -263,15 +231,15 @@
                     <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                         <div class="about-one__image">
                             <div class="about-one__image__inner">
-                                <h3 class="about-one__image__text">لماذا MTC</h3>
-                                <img src="{{ asset('front/mtc/') }}/assets/images/about/about-1-1.jpg" alt="about image">
+                                <h3 class="about-one__image__text">{{ __('لماذا MTC') }}</h3>
+                                <img src="{{ site_image('about_image_1') }}" alt="about image">
                                 <a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="video-button video-popup">
                                     <span class="icon-play"></span>
                                     <i class="video-button__ripple"></i>
                                 </a>
                                 <div class="about-one__image__border"></div>
                             </div>
-                            <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-1.png" alt="about shape"
+                            <img src="{{ site_image('about_shape_1_1') }}" alt="about shape"
                                 class="about-one__image__shape">
                         </div>
                     </div>
@@ -280,13 +248,13 @@
                         <div class="about-one__content">
                             <div class="sec-title @@extraClassName">
 
-                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="about boskery meat shop"
+                                <img src="{{ site_image('section_title_shape') }}" alt="about boskery meat shop"
                                     class="sec-title__img">
 
                                 <!-- <h6 class="sec-title__tagline"></h6> -->
 
                                 <!-- <h2 class="sec-title__title">نقاط تميزنا</h2> -->
-                                <h2 class="sec-title__title">لماذا MTC</h2>
+                                <h2 class="sec-title__title">{{ __('لماذا MTC') }}</h2>
                             </div>
 
                             <p class="about-one__text">
@@ -294,7 +262,7 @@
                             </p>
 
                             <div class="about-one__inner">
-                                <h5 class="about-one__info-title">أهم مميزاتنا</h5>
+                                <h5 class="about-one__info-title">{{ __('أهم مميزاتنا') }}</h5>
 
                                 <ul class="about-one__info">
                                     @foreach ($about_visions as $point)
@@ -312,7 +280,7 @@
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
-                                    <span class="boskery-btn__text">تواصل معنا</span>
+                                    <span class="boskery-btn__text">{{ __('تواصل معنا') }}</span>
                                     <i class="icon-meat-3"></i>
                                 </a>
 
@@ -322,7 +290,7 @@
                                             <span class="icon-telephone"></span>
                                         </div>
                                         <div class="contact__info__right">
-                                            <h4 class="contact__info__title">اتصل بنا</h4>
+                                            <h4 class="contact__info__title">{{ __('اتصل بنا') }}</h4>
                                             <a href="tel:{{ $randomPhone}}" class="contact__info__number">
                                              {{ $randomPhone}}
                                             </a>
@@ -338,8 +306,8 @@
             </div>
 
             <div class="about-one__shape">
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-2.png" alt="about shape" class="about-one__shape__one">
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-3.png" alt="about shape" class="about-one__shape__two">
+                <img src="{{ site_image('about_shape_1_2') }}" alt="about shape" class="about-one__shape__one">
+                <img src="{{ site_image('about_shape_1_3') }}" alt="about shape" class="about-one__shape__two">
             </div>
         </section>
 
@@ -347,7 +315,7 @@
         <!-- الإنجازات -->
         <section class="counter-one section-space">
             <div class="counter-one__bg boskery-jarallax" data-jarallax data-speed="0.3"
-                style="background-image: url({{ asset('front/mtc/') }}/assets/images/backgrounds/testimonials-bg-2-1.jpg);"></div>
+                style="background-image: url({{ site_image('counter_bg') }});"></div>
             <!-- /.counter-one__bg -->
             <div class="container">
                 <div class="counter-one__wrapper">
@@ -370,9 +338,9 @@
         <section class="client-carousel client-carousel--two" id="success-partners" style="padding-top: 143px;">
             <div class="container">
                 <div class="sec-title text-center mb-5">
-                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="شركاء النجاح" class="sec-title__img">
+                    <img src="{{ site_image('section_title_shape') }}" alt="شركاء النجاح" class="sec-title__img">
                     <!-- <h6 class="sec-title__tagline">شركاء النجاح</h6> -->
-                    <h2 class="sec-title__title"> شركاء النجاح
+                    <h2 class="sec-title__title"> {{ __('شركاء النجاح') }}
                     </h2>
                 </div>
 

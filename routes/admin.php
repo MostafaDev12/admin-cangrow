@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutFeatureController;
 use App\Http\Controllers\Admin\AboutPointController;
 use App\Http\Controllers\Admin\AboutVisionController;
 use App\Http\Controllers\Admin\AfterBeforeController;
@@ -36,6 +37,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProcessController;
 use App\Http\Controllers\Admin\TimelineController;
+use App\Http\Controllers\Admin\SiteImageController;
 use App\Http\Controllers\Admin\TestimonialController;
 
 /*
@@ -392,6 +394,16 @@ Route::prefix('admin')->group(function () {
    
     });
 
+    Route::group(['middleware' => 'permissions:about_points'], function () {
+      Route::get('/about_features/datatables', [AboutFeatureController::class, 'datatables'])->name('admin-about_features-datatables');
+      Route::get('/about_features', [AboutFeatureController::class, 'index'])->name('admin-about_features-index');
+      Route::get('/about_features/create', [AboutFeatureController::class, 'create'])->name('admin-about_features-create');
+      Route::post('/about_features/create', [AboutFeatureController::class, 'store'])->name('admin-about_features-store');
+      Route::get('/about_features/edit/{id}', [AboutFeatureController::class, 'edit'])->name('admin-about_features-edit');
+      Route::post('/about_features/update/{id}', [AboutFeatureController::class, 'update'])->name('admin-about_features-update');
+      Route::get('/about_features/delete/{id}', [AboutFeatureController::class, 'destroy'])->name('admin-about_features-delete');
+    });
+
     Route::group(['middleware' => 'permissions:about_visions'], function () {
 
      
@@ -423,7 +435,6 @@ Route::prefix('admin')->group(function () {
 
      
       Route::get('/agenda/datatables',  [AgendaController::class, 'datatables'])->name('admin-agenda-datatables');
-      Route::get('/agenda/datatables',  [AgendaController::class, 'datatables'])->name('admin-agenda-datatables');
       Route::get('/agenda',  [AgendaController::class, 'index'])->name('admin-agenda-index');
       Route::get('/agenda/create',   [AgendaController::class, 'create'])->name('admin-agenda-create');
       Route::post('/agenda/create',  [AgendaController::class, 'store'])->name('admin-agenda-store');
@@ -436,7 +447,6 @@ Route::prefix('admin')->group(function () {
     Route::group(['middleware' => 'permissions:donate_campaigns'], function () {
 
      
-      Route::get('/donate_campaigns/datatables',  [DonateCampaignController::class, 'datatables'])->name('admin-donate_campaigns-datatables');
       Route::get('/donate_campaigns/datatables',  [DonateCampaignController::class, 'datatables'])->name('admin-donate_campaigns-datatables');
       Route::get('/donate_campaigns',  [DonateCampaignController::class, 'index'])->name('admin-donate_campaigns-index');
       Route::get('/donate_campaigns/create',   [DonateCampaignController::class, 'create'])->name('admin-donate_campaigns-create');
@@ -488,6 +498,12 @@ Route::prefix('admin')->group(function () {
       Route::get('/processes/delete/{id}',  [ProcessController::class, 'destroy'])->name('admin-processes-delete');
    
     });
+
+    // SITE IMAGES SECTION ------------
+    Route::get('/site_images', [SiteImageController::class, 'index'])->name('admin-site_images-index');
+    Route::post('/site_images/update', [SiteImageController::class, 'update'])->name('admin-site_images-update');
+    Route::get('/site_images/reset/{id}', [SiteImageController::class, 'reset'])->name('admin-site_images-reset');
+    // SITE IMAGES SECTION ENDS ------------
 
     // GALLERY SECTION ------------
 

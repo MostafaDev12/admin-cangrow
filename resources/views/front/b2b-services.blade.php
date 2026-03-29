@@ -40,8 +40,8 @@
         <section class="gallery-page section-space" id="restaurant-cuts">
             <div class="container">
                 <div class="sec-title sec-title--center">
-                    <h6 class="sec-title__tagline">خدمات B2B</h6>
-                    <h2 class="sec-title__title">قطع خاصة للمطاعم والفنادق</h2>
+                    <h6 class="sec-title__tagline">{{ __('خدمات B2B') }}</h6>
+                    <h2 class="sec-title__title">{{ __('قطع خاصة للمطاعم والفنادق') }}</h2>
                 </div>
                 <div class="gallery-page__carousel boskery-owl__carousel boskery-owl__carousel--basic-nav owl-carousel owl-theme"
                     data-owl-options='{
@@ -94,8 +94,8 @@
         <section class="services-page section-space" id="bulk-vacuum">
             <div class="container">
                 <div class="sec-title sec-title--center">
-                    <h6 class="sec-title__tagline">خدمات الأعمال</h6>
-                    <h2 class="sec-title__title">العبوات  </h2>
+                    <h6 class="sec-title__tagline">{{ __('خدمات الأعمال') }}</h6>
+                    <h2 class="sec-title__title">{{ __('العبوات') }}  </h2>
                 </div>
                 <div class="services-page__carousel boskery-owl__carousel boskery-owl__carousel--basic-nav owl-carousel owl-theme"
                     data-owl-options='{
@@ -154,27 +154,19 @@
         </section><!-- /.services-page section-space -->
 
         <section class="slide-text" id="private-label">
-            <div class="slide-text__bg" style="background-image: url({{ asset('front/mtc/') }}/assets/images/backgrounds/slide-text-bg-1-1.jpg);">
+            <div class="slide-text__bg" style="background-image: url({{ site_image('slide_text_bg') }});">
             </div><!-- /.slide-text__bg -->
             <div class="container-fluid">
                 <div class="slide-text__row">
-                    <h2 class="slide-text__one">مطاعم</h2><!-- /.slide-text__one -->
-                    <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">فنادق</h2><!-- /.slide-text__two -->
-                    <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__one">موزعون</h2><!-- /.slide-text__one -->
-                    <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">مستشفيات</h2><!-- /.slide-text__two -->
-                    <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__one">مطاعم</h2><!-- /.slide-text__one -->
-                    <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">فنادق</h2><!-- /.slide-text__two -->
-                    <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__one">موزعون</h2><!-- /.slide-text__one -->
-                    <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">مستشفيات</h2><!-- /.slide-text__two -->
-                    <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">مطاعم</h2><!-- /.slide-text__two -->
+                    @foreach ($categories as $cat)
+                    <h2 class="slide-text__{{ $loop->odd ? 'one' : 'two' }}">{{ $cat->{'title_' . $sign} }}</h2>
+                    <span class="slide-text__icon icon-meat-3"></span>
+                    @endforeach
+                    {{-- Repeat for seamless scroll --}}
+                    @foreach ($categories as $cat)
+                    <h2 class="slide-text__{{ $loop->odd ? 'one' : 'two' }}">{{ $cat->{'title_' . $sign} }}</h2>
+                    <span class="slide-text__icon icon-meat-3"></span>
+                    @endforeach
                 </div><!-- /.slide-text__row -->
             </div><!-- /.container-fluid -->
         </section><!-- /.slide-text -->
@@ -184,7 +176,7 @@
                 <div class="contact-page__wrapper">
                     <div class="contact-page__content">
                         <div class="contact-page__sec-title">
-                            <h2 class="contact-page__title">نموذج طلب عرض  </h2><!-- /.contact-page__title -->
+                            <h2 class="contact-page__title">{{ __('نموذج طلب عرض') }}  </h2><!-- /.contact-page__title -->
                             {{-- <p class="contact-page__text">consectetur adipiscing elit. Phasellus et metus augue. Mauris ut libero eget erat scelerisque vehicula. Phasellus nec blandit metus.</p><!-- /.contact-page__text --> --}}
                         </div><!-- /.contact-page__sec-title -->
                            
@@ -199,23 +191,22 @@
                             
                             <div class="form-one__group">
                                 <div class="form-one__control wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
-                                    <input type="text" name="name" placeholder="الاسم الكامل">
+                                    <input type="text" name="name" placeholder="{{ __('الاسم الكامل') }}">
                                 </div><!-- /.form-one__control -->
                                 <div class="form-one__control wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="50ms">
-                                    <input type="email" name="email" placeholder="Your Email">
+                                    <input type="email" name="email" placeholder="{{ __('Your Email') }}">
                                 </div><!-- /.form-one__control -->
                                  <div class="form-one__control wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
-                                    <input type="text" name="name" placeholder="رقم الهاتف">
+                                    <input type="text" name="name" placeholder="{{ __('رقم الهاتف') }}">
                                 </div><!-- /.form-one__control -->
                                <div class="form-one__control wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
                                      
                                     <select name="service" class="">
 
-                                        <option value="">اختر الخدمة المطلوبة</option>
-                                        <option value="قطع خاصة للمطاعم">قطع خاصة للمطاعم</option>
-                                        <option value="عبوات Bulk / Vacuum large packs">عبوات Bulk / Vacuum large
-                                            packs</option>
-                                        <option value="Private Label">Private Label</option>
+                                        <option value="">{{ __('اختر الخدمة المطلوبة') }}</option>
+                                        <option value="قطع خاصة للمطاعم">{{ __('قطع خاصة للمطاعم') }}</option>
+                                        <option value="عبوات Bulk / Vacuum large packs">{{ __('عبوات Bulk / Vacuum large packs') }}</option>
+                                        <option value="Private Label">{{ __('Private Label') }}</option>
                                     </select>
                                         </div><!-- /.form-one__control -->
                                 <div class="form-one__control form-one__control--full wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="150ms">
@@ -226,7 +217,7 @@
                                         <span class="boskery-btn__hover"></span>
                                         <span class="boskery-btn__hover"></span>
                                         <span class="boskery-btn__hover"></span>
-                                        <span class="boskery-btn__text">send message</span>
+                                        <span class="boskery-btn__text">{{ __('send message') }}</span>
                                         <i class="icon-meat-3"></i>
                                     </button>
                                 </div><!-- /.form-one__control -->
@@ -235,7 +226,7 @@
                         <div class="result"></div><!-- /.result -->
                     </div><!-- /.contact-page__content -->
                     <div class="contact-page__image wow fadeInRight" data-wow-duration="1500ms">
-                        <img src="{{ asset('front/mtc/') }}/assets/images/resources/contact-1-1.jpg" alt="contact">
+                        <img src="{{ site_image('contact_form_image') }}" alt="contact">
                     </div><!-- /.contact-page__image -->
                 </div><!-- /.contact-page__wrapper -->
             </div><!-- /.container -->

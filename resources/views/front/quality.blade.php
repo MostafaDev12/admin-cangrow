@@ -31,7 +31,7 @@
             <div class="page-header__bg" style="background-image: linear-gradient(to right, #000000, #ffffff);"></div>
             <!-- /.page-header__bg -->
             <div class="container">
-                <h2 class="page-header__title">الجوده </h2>
+                <h2 class="page-header__title">{{ __('الجودة') }} </h2>
                
             </div><!-- /.container -->
         </section><!-- /.page-header -->
@@ -124,7 +124,7 @@
       <!-- /.services-card__title -->
       <p class="service-card__text"> {{ $certificate->{'short_details_' . $sign} }} </p> <!-- /.services-card__text -->
     </div><!-- /.services-card__content --> 
-    <button id="openModalBtn" class="service-card__btn">service details <span
+    <button id="openModalBtn" class="service-card__btn">{{ __('service details') }} <span
         class="icon-left"></span></button><!-- /.services-card__btn -->
   </div><!-- /.service-card -->
 </div><!-- /.item --> @endforeach
@@ -141,27 +141,27 @@
 
 </script>
         <section class="slide-text">
-            <div class="slide-text__bg" style="background-image: url({{ asset('front/mtc/') }}/assets/images/backgrounds/slide-text-bg-1-1.jpg);">
+            <div class="slide-text__bg" style="background-image: url({{ site_image('slide_text_bg') }});">
             </div><!-- /.slide-text__bg -->
             <div class="container-fluid">
                 <div class="slide-text__row">
-                    <h2 class="slide-text__one">الجودة</h2><!-- /.slide-text__one -->
+                    <h2 class="slide-text__one">{{ __('الجودة') }}</h2><!-- /.slide-text__one -->
                     <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">السلامة</h2><!-- /.slide-text__two -->
+                    <h2 class="slide-text__two">{{ __('السلامة') }}</h2><!-- /.slide-text__two -->
                     <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__one">النظافة</h2><!-- /.slide-text__one -->
+                    <h2 class="slide-text__one">{{ __('النظافة') }}</h2><!-- /.slide-text__one -->
                     <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">التتبع</h2><!-- /.slide-text__two -->
+                    <h2 class="slide-text__two">{{ __('التتبع') }}</h2><!-- /.slide-text__two -->
                     <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__one">الشهادات</h2><!-- /.slide-text__one -->
+                    <h2 class="slide-text__one">{{ __('الشهادات') }}</h2><!-- /.slide-text__one -->
                     <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">الرقابة</h2><!-- /.slide-text__two -->
+                    <h2 class="slide-text__two">{{ __('الرقابة') }}</h2><!-- /.slide-text__two -->
                     <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__one">الجودة</h2><!-- /.slide-text__one -->
+                    <h2 class="slide-text__one">{{ __('الجودة') }}</h2><!-- /.slide-text__one -->
                     <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">السلامة</h2><!-- /.slide-text__two -->
+                    <h2 class="slide-text__two">{{ __('السلامة') }}</h2><!-- /.slide-text__two -->
                     <span class="slide-text__icon icon-meat-3"></span><!-- /.slide-text__icon -->
-                    <h2 class="slide-text__two">النظافة</h2><!-- /.slide-text__two -->
+                    <h2 class="slide-text__two">{{ __('النظافة') }}</h2><!-- /.slide-text__two -->
                 </div><!-- /.slide-text__row -->
             </div><!-- /.container-fluid -->
         </section><!-- /.slide-text -->
@@ -169,7 +169,7 @@
         <section class="team-two section-space-two" id="traceability">
             <div class="container">
                 <div class="sec-title sec-title--center">
-                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="معايير الجودة" class="sec-title__img">
+                    <img src="{{ site_image('section_title_shape') }}" alt="معايير الجودة" class="sec-title__img">
                     <h6 class="sec-title__tagline">التزامنا</h6><!-- /.sec-title__tagline -->
                     <h2 class="sec-title__title">معايير الذبح والرقابة الصحية</h2><!-- /.sec-title__title -->
                 </div><!-- /.sec-title -->
@@ -199,19 +199,19 @@
                 </div><!-- /.team-two__item-wrapper -->
             </div><!-- /.container -->
             <div class="team-two__shape">
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-1.png" alt="team-shape" class="team-two__shape__image">
+                <img src="{{ site_image('about_shape_2_1') }}" alt="team-shape" class="team-two__shape__image">
             </div><!-- /.team-two__shape -->
         </section>
 
         <section class="faq-two section-space-two" id="faqs"
-            style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/faq-bg-2-1.png);">
+            style="background-image: url({{ site_image('quality_faq_bg') }});">
             <div class="container">
                 <div class="row gutter-y-50">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                         <div class="faq-two__content">
                             <div class="sec-title @@extraClassName">
 
-                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="أسئلة العملاء"
+                                <img src="{{ site_image('section_title_shape') }}" alt="أسئلة العملاء"
                                     class="sec-title__img">
 
 
@@ -226,10 +226,9 @@
                                         <span class="icon-check"></span>
                                     </div><!-- /.faq-two__info__icon -->
                                     <div class="faq-two__info__content">
-                                        <h4 class="faq-two__info__title">موثوق وجدير بالثقة</h4>
+                                        <h4 class="faq-two__info__title">{{ __('موثوق وجدير بالثقة') }}</h4>
                                         <!-- /.faq-two__info__title -->
-                                        <p class="faq-two__info__text">نلتزم بأعلى معايير الجودة والسلامة الغذائية في
-                                            جميع عملياتنا من الإنتاج حتى التسليم</p>
+                                        <p class="faq-two__info__text">{{ __('نلتزم بأعلى معايير الجودة والسلامة الغذائية في جميع عملياتنا من الإنتاج حتى التسليم') }}</p>
                                         <!-- /.faq-two__info__text -->
                                     </div><!-- /.faq-two__info__content -->
                                 </div><!-- /.faq-two__info__inner -->
@@ -238,10 +237,9 @@
                                         <span class="icon-check"></span>
                                     </div><!-- /.faq-two__info__icon -->
                                     <div class="faq-two__info__content">
-                                        <h4 class="faq-two__info__title">مراقبة الجودة 100%</h4>
+                                        <h4 class="faq-two__info__title">{{ __('مراقبة الجودة 100%') }}</h4>
                                         <!-- /.faq-two__info__title -->
-                                        <p class="faq-two__info__text">جميع منتجاتنا تخضع لمراقبة جودة صارمة في كل مرحلة
-                                            من مراحل الإنتاج والمعالجة</p>
+                                        <p class="faq-two__info__text">{{ __('جميع منتجاتنا تخضع لمراقبة جودة صارمة في كل مرحلة من مراحل الإنتاج والمعالجة') }}</p>
                                         <!-- /.faq-two__info__text -->
                                     </div><!-- /.faq-two__info__content -->
                                 </div><!-- /.faq-two__info__inner -->
@@ -253,7 +251,7 @@
                                 <span class="boskery-btn__hover"></span>
                                 <span class="boskery-btn__hover"></span>
                                 <span class="boskery-btn__hover"></span>
-                                <span class="boskery-btn__text">اتصل بنا</span>
+                                <span class="boskery-btn__text">{{ __('اتصل بنا') }}</span>
                                 <i class="icon-meat-3"></i>
                             </a><!-- /.boskery-btn -->
                         </div><!-- /.faq-two__content -->

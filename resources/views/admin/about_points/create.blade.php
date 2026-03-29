@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-body">
-                <form id="geniusform" action="{{ route('admin-about_points-create') }}" method="POST" enctype="multipart/form-data">
+                <form id="geniusform" action="{{ route('admin-about_points-store') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @include('includes.admin.form-both')
 

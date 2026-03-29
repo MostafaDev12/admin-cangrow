@@ -69,7 +69,7 @@ class HumanitarianCase extends Model
     
     public function childs()
     {
-        return $this->hasMany(Service::class,'parent_id');
+        return $this->hasMany(HumanitarianCase::class,'parent_id');
     }  
     /**
      * The attributes that should be hidden for serialization.
@@ -85,7 +85,7 @@ class HumanitarianCase extends Model
      
      public function parent()
      {
-         return $this->belongsTo(Service::class,'parent_id');
+         return $this->belongsTo(HumanitarianCase::class,'parent_id');
      }
     /**
      * The attributes that should be cast.

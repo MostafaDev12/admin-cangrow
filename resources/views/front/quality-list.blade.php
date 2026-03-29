@@ -31,7 +31,7 @@
             <div class="page-header__bg" style="background-image: linear-gradient(to right, #000000, #ffffff);"></div>
             <!-- /.page-header__bg -->
             <div class="container">
-                <h2 class="page-header__title">الجوده </h2>
+                <h2 class="page-header__title">{{ __('الجودة') }} </h2>
                 
             </div><!-- /.container -->
         </section><!-- /.page-header -->
@@ -44,7 +44,7 @@
                         <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                             <div class="about-one__image">
                                 <div class="about-one__image__inner">
-                                    <h3 class="about-one__image__text">since 1996</h3>
+                                    <h3 class="about-one__image__text">{{ __('since 1996') }}</h3>
                                     <img src="{{ $item->photo }}" alt="about image">
                                     <div class="about-one__image__border"></div>
                                 </div>
@@ -53,8 +53,8 @@
                         <div class="col-lg-6 wow fadeInRight" data-wow-duration="1500ms">
                             <div class="about-one__content">
                                 <div class="sec-title @@extraClassName">
-                                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="{{ $item->{'title_' . $sign} }}" class="sec-title__img">
-                                    <h6 class="sec-title__tagline">about MTC</h6>
+                                    <img src="{{ site_image('section_title_shape') }}" alt="{{ $item->{'title_' . $sign} }}" class="sec-title__img">
+                                    <h6 class="sec-title__tagline">{{ __('about MTC') }}</h6>
                                     <h2 class="sec-title__title">{{ $item->{'title_' . $sign} }}</h2>
                                 </div>
                                 <p class="about-one__text">{{ $item->{'details_' . $sign} }}</p>
@@ -64,8 +64,8 @@
                         <div class="col-lg-6 wow fadeInRight" data-wow-duration="1500ms">
                             <div class="about-one__content">
                                 <div class="sec-title @@extraClassName">
-                                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="{{ $item->{'title_' . $sign} }}" class="sec-title__img">
-                                    <h6 class="sec-title__tagline">about MTC</h6>
+                                    <img src="{{ site_image('section_title_shape') }}" alt="{{ $item->{'title_' . $sign} }}" class="sec-title__img">
+                                    <h6 class="sec-title__tagline">{{ __('about MTC') }}</h6>
                                     <h2 class="sec-title__title">{{ $item->{'title_' . $sign} }}</h2>
                                 </div>
                                 <p class="about-one__text">{{ $item->{'details_' . $sign} }}</p>
@@ -74,7 +74,7 @@
                         <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                             <div class="about-one__image">
                                 <div class="about-one__image__inner">
-                                    <h3 class="about-one__image__text">since 1996</h3>
+                                    <h3 class="about-one__image__text">{{ __('since 1996') }}</h3>
                                     <img src="{{ $item->photo }}" alt="about image">
                                     <div class="left about-one__image__border"></div>
                                 </div>
@@ -84,8 +84,8 @@
                 </div><!-- /.row -->
             </div><!-- /.container -->
             <div class="about-one__shape">
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-2.png" alt="about shape" class="about-one__shape__one">
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-3.png" alt="about shape" class="about-one__shape__two">
+                <img src="{{ site_image('about_shape_1_2') }}" alt="about shape" class="about-one__shape__one">
+                <img src="{{ site_image('about_shape_1_3') }}" alt="about shape" class="about-one__shape__two">
             </div><!-- /.about-one__shape -->
         </section><!-- /.about-one section-space-top -->
 

@@ -32,7 +32,7 @@
                         <!-- card body -->
                         <div class="card-body">
 
-                            <div id="users-by-countryy" data-colors='["--vz-light"]' class="text-center"
+                            <div id="users-by-country" data-colors='["--vz-light"]' class="text-center"
                                 style="height: 252px"></div>
 
                             {{-- <div class="table-responsive table-card mt-3">
@@ -64,7 +64,7 @@
                         </div>
                         <div class="card-body p-0">
                             <div>
-                                <div id="countries_chartss"
+                                <div id="countries_charts"
                                     data-colors='["--vz-info", "--vz-info", "--vz-info", "--vz-info", "--vz-danger", "--vz-info", "--vz-info", "--vz-info", "--vz-info", "--vz-info"]'
                                     class="apex-charts" dir="ltr"></div>
                             </div>
@@ -85,7 +85,7 @@
                     
                 </div><!-- end card header -->
                 <div class="card-body">
-                    <div id="user_device_pie_chartss" data-colors='["--vz-primary", "--vz-warning", "--vz-info"]'
+                    <div id="user_device_pie_charts" data-colors='["--vz-primary", "--vz-warning", "--vz-info"]'
                         class="apex-charts" dir="ltr"></div>
                 
                     <div class="table-responsive mt-3">
@@ -195,7 +195,7 @@
 <script>
     var countries = @json($countries);
     var sessions = @json($sessions);
-    var barchartCountriesColors = getChartColorsArray("countries_chartss");
+    var barchartCountriesColors = getChartColorsArray("countries_charts");
 
     if (barchartCountriesColors) {
         var options = {
@@ -230,7 +230,7 @@
             grid: { show: false },
             xaxis: { categories: countries },
         };
-        var chart = new ApexCharts(document.querySelector("#countries_chartss"), options);
+        var chart = new ApexCharts(document.querySelector("#countries_charts"), options);
         chart.render();
     }
 </script> 
@@ -239,12 +239,12 @@
 <script>
    
   
-        var vectorMapWorldLineColors = getChartColorsArray("users-by-countryy");
+        var vectorMapWorldLineColors = getChartColorsArray("users-by-country");
         if (vectorMapWorldLineColors) {
-            document.getElementById("users-by-countryy").innerHTML = "";
+            document.getElementById("users-by-country").innerHTML = "";
             var worldlinemap = new jsVectorMap({
                 map: "world_merc",
-                selector: "#users-by-countryy",
+                selector: "#users-by-country",
                 zoomOnScroll: false,
                 zoomButtons: false,
                 markers: countries.map((country, index) => ({
@@ -282,7 +282,7 @@
 
 
 <script>
-    var dountchartUserDeviceColors = getChartColorsArray("user_device_pie_chartss");
+    var dountchartUserDeviceColors = getChartColorsArray("user_device_pie_charts");
     if (dountchartUserDeviceColors) {
         var options = {
             series: @json($deviceData->pluck('count')),
@@ -332,7 +332,7 @@
             },
             colors: dountchartUserDeviceColors,
         };
-        var chart = new ApexCharts(document.querySelector("#user_device_pie_chartss"), options);
+        var chart = new ApexCharts(document.querySelector("#user_device_pie_charts"), options);
         chart.render();
     }
 </script>

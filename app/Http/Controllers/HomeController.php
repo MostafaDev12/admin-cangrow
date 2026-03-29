@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutFeature;
 use App\Models\AboutPoint;
 use App\Models\User;
 use App\Models\Doctor;
@@ -89,7 +90,9 @@ $processes = Process::get();
   $certificates = Certificate::get();
   $servicess = Service::get();
    $about_visions = AboutVision::get();
-    return view('front.index', compact('sign','projects', 'sliders', 'about_visions','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
+    $about_features = AboutFeature::where('type', 'feature')->get();
+    $about_values = AboutFeature::where('type', 'value')->get();
+    return view('front.index', compact('sign','projects', 'sliders', 'about_visions','about_features','about_values','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
   }
 
 
@@ -111,8 +114,10 @@ $processes = Process::get();
        $timelines = Timeline::get();
         $testimonials = Testimonial::get();
             $certificates = Certificate::get();
+    $about_features = AboutFeature::where('type', 'feature')->get();
+    $about_values = AboutFeature::where('type', 'value')->get();
 
-    return view('front.about', compact('sign', 'sliders', 'teams', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+    return view('front.about', compact('sign', 'sliders', 'teams', 'points','about_visions','about_features','about_values','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
 
    
@@ -135,8 +140,10 @@ $processes = Process::get();
             $certificates = Certificate::get();
               $locations = Location::get();
                $colings = Subcategory::get();
+    $about_features = AboutFeature::where('type', 'feature')->get();
+    $about_values = AboutFeature::where('type', 'value')->get();
 
-    return view('front.farm-to-fork', compact('sign', 'colings', 'locations', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+    return view('front.farm-to-fork', compact('sign', 'colings', 'locations', 'points','about_visions','about_features','about_values','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
 
   public function b2b_services(Request $request,$lang)
@@ -750,14 +757,22 @@ $processes = Process::get();
     $sign = $this->langSign($lang);
 
 
-    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    $service = Service::with(['galleries', 'category', 'childs'])->where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
     if(!$service){
 
       abort(404);
     }
 
+    // Get related products from same category
+    $relatedProducts = collect();
+    if ($service->category_id) {
+        $relatedProducts = Service::where('category_id', $service->category_id)
+            ->where('id', '!=', $service->id)
+            ->limit(4)
+            ->get();
+    }
 
-    return view('front.details-product', compact('sign', 'service'));
+    return view('front.details-product', compact('sign', 'service', 'relatedProducts'));
   } 
   
   public function singleService(Request $request,$lang, $slug)

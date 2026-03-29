@@ -77,6 +77,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link  " href="{{ route('admin-about_features-index') }}"
+                                        aria-controls="sidebarportfolio">
+                                        <i class="las la-star"></i> <span>@lang('translation.about_features')</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-ps-portfolio') }}"
                                         aria-controls="sidebarportfolio">
                                         <i class="las la-tachometer-alt"></i> <span>@lang('translation.why_mtc')</span>
@@ -449,6 +455,13 @@
                                 <li class="nav-item">
                                     <a href="{{ route('admin-gs-contents') }}" class="nav-link"
                                         data-key="t-Website_Contents"> @lang('translation.content') </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin-site_images-index') }}" class="nav-link"
+                                        data-key="t-Site_Images">
+                                        <i class="las la-image"></i> Site Images
+                                    </a>
                                 </li>
 
                                 <li class="nav-item">

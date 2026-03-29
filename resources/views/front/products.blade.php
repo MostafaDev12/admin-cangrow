@@ -32,7 +32,7 @@
             <div class="page-header__bg" style="background-image: linear-gradient(to right, #000000, #ffffff);"></div>
             <!-- /.page-header__bg -->
             <div class="container">
-                <h2 class="page-header__title">المنتاجات </h2>
+                <h2 class="page-header__title">{{ __('المنتجات') }} </h2>
               
             </div><!-- /.container -->
         </section><!-- /.page-header -->
@@ -43,12 +43,12 @@
         <!-- المنتجات -->
        @foreach ($categories as $category)
            
-    <section class="gallery-page section-space"  id="{{ $category->title_en }}"  style="background-image: url(assets/images/shapes/product-bg-2-1.png);">
+    <section class="gallery-page section-space"  id="{{ $category->title_en }}"  style="background-image: url({{ site_image('products_bg') }});">
          <div class="sec-title sec-title--center">
 
-                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="{{ $category->{'title_' . $sign} }}" class="sec-title__img">
+                    <img src="{{ site_image('section_title_shape') }}" alt="{{ $category->{'title_' . $sign} }}" class="sec-title__img">
 
-                    <h6 class="sec-title__tagline">منتجات مميزة</h6><!-- /.sec-title__tagline -->
+                    <h6 class="sec-title__tagline">{{ __('منتجات مميزة') }}</h6><!-- /.sec-title__tagline -->
 
                     <h2 class="sec-title__title">{{ $category->{'title_' . $sign} }}</h2><!-- /.sec-title__title -->
                 </div><!-- /.sec-title -->
@@ -83,8 +83,9 @@
                 @foreach ($category->services as $product)
                    <div class="item product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='500ms'>
                             <div class="product__item__image">
-                                <img src="{{ $product->photo }}" alt="{{ $product->{'title_' . $sign} }}">
-                          {{-- {{ asset('front/mtc/') }}/assets/images/products/product-1-4.png --}}
+                                <a href="{{ route('single-service.index', [$sign, $product->{'slug_' . $sign}]) }}">
+                                    <img src="{{ $product->photo }}" alt="{{ $product->{'title_' . $sign} }}">
+                                </a>
                             </div><!-- /.product-image -->
                             <div class="product__item__content">
                                 <div class="boskery-ratings">
@@ -94,16 +95,16 @@
                                     <span class="icon-star"></span>
                                     <span class="icon-star"></span>
                                 </div><!-- /.product-ratings -->
-                                <h4 class="product__item__title"><a href="#">   {{ $product->{'title_' . $sign} }}</a></h4>
+                                <h4 class="product__item__title"><a href="{{ route('single-service.index', [$sign, $product->{'slug_' . $sign}]) }}">   {{ $product->{'title_' . $sign} }}</a></h4>
                                 <!-- /.product-title -->
-                                <a href="{{ route('contact.index',$sign) }}" class="boskery-btn product__item__link">
+                                <a href="{{ route('single-service.index', [$sign, $product->{'slug_' . $sign}]) }}" class="boskery-btn product__item__link">
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
                                     <span class="boskery-btn__hover"></span>
-                                    <span class="boskery-btn__text">اتصل بنا</span>
+                                    <span class="boskery-btn__text">{{ __('عرض المنتج') }}</span>
                                     <i class="icon-meat-3"></i>
                                 </a>
                             </div><!-- /.product-content -->

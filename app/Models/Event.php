@@ -66,7 +66,7 @@ class Event extends Model
     
     public function childs()
     {
-        return $this->hasMany(Service::class,'parent_id');
+        return $this->hasMany(Event::class,'parent_id');
     }  
     /**
      * The attributes that should be hidden for serialization.
@@ -82,7 +82,7 @@ class Event extends Model
      
      public function parent()
      {
-         return $this->belongsTo(Service::class,'parent_id');
+         return $this->belongsTo(Event::class,'parent_id');
      }
     /**
      * The attributes that should be cast.

@@ -31,7 +31,7 @@
             <div class="page-header__bg" style="background-image: linear-gradient(to right, #000000, #ffffff);"></div>
             <!-- /.page-header__bg -->
             <div class="container">
-                <h2 class="page-header__title"> الوظائف</h2>
+                <h2 class="page-header__title"> {{ __('الوظائف') }}</h2>
                
             </div><!-- /.container -->
         </section><!-- /.page-header -->
@@ -39,9 +39,9 @@
         <!-- ------------------------------- -->
         <!-- ثقافة العمل في MTC -->
           <section id="work-culture" class="technologies-one section-space boskery-jarallax" data-jarallax data-spedd="0.3"
-            style="background-image: url({{ asset('front/mtc/') }}/assets/images/backgrounds/technologies-bg-1-1.jpg);">
+            style="background-image: url({{ site_image('careers_bg') }});">
             <div class="technologies-one__bg"
-                style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/technologies-shape-bg-1-1.png);">
+                style="background-image: url({{ site_image('careers_shape_bg') }});">
             </div><!-- /.technologies-one__bg -->
             <div class="container">
                 <div class="row gutter-y-60">
@@ -55,7 +55,7 @@
                                 <div class="technologies-one__image__border"></div>
                                 <!-- /.technologies-one__image__border -->
                             </div><!-- /.technologies-one__image__inner -->
-                            <img src="{{ asset('front/mtc/') }}/assets/images/resources/technologies-1-2.png" alt="تقنيات الذبح"
+                            <img src="{{ site_image('careers_tech_image') }}" alt="تقنيات الذبح"
                                 class="technologies-one__image__two">
                         </div><!-- /.technologies-one__image -->
                     </div><!-- /.col-xl-5 col-lg-6 -->
@@ -63,14 +63,14 @@
                         <div class="technologies-one__content">
                             <div class="sec-title @@extraClassName">
 
-                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="المجزر والذبح"
+                                <img src="{{ site_image('section_title_shape') }}" alt="المجزر والذبح"
                                     class="sec-title__img">
 
                                 <!-- <h6 class="sec-title__tagline">المجزر والذبح</h6> -->
                                 <!-- /.sec-title__tagline -->
 
-                                   <h6 class="sec-title__tagline">بيئة العمل</h6>
-                                <h2 class="sec-title__title">ثقافة العمل في <br> مجمع تكنولوجيا اللحوم</h2>
+                                   <h6 class="sec-title__tagline">{{ __('بيئة العمل') }}</h6>
+                                <h2 class="sec-title__title">{{ __('ثقافة العمل في') }} <br> {{ __('مجمع تكنولوجيا اللحوم') }}</h2>
                            
                                 <!-- /.sec-title__title -->
                             </div><!-- /.sec-title -->
@@ -102,7 +102,7 @@
                                 <span class="boskery-btn__hover"></span>
                                 <span class="boskery-btn__hover"></span>
                                 <span class="boskery-btn__hover"></span>
-                                  <span class="boskery-btn__text">انضم إلينا</span>
+                                  <span class="boskery-btn__text">{{ __('انضم إلينا') }}</span>
                                 <i class="icon-meat-3"></i>
                             </a><!-- /.boskery-btn -->
                         </div><!-- /.technologies-one__content -->
@@ -141,7 +141,7 @@
                                 <div class="product__item wow fadeInUp" data-wow-duration='1500ms'
                                     data-wow-delay='200ms'>
                                     <div class="product__item__image">
-                                        <img src="{{ asset('front/mtc/') }}/assets/images/products/product-1-3.png" alt="فني مختبر">
+                                        <img src="{{ site_image('careers_job_image') }}" alt="فني مختبر">
                                     </div>
                                     <div class="product__item__content">
 
@@ -162,7 +162,7 @@
                                             <span class="boskery-btn__hover"></span>
                                             <span class="boskery-btn__hover"></span>
                                             <span class="boskery-btn__hover"></span>
-                                            <span class="boskery-btn__text">تقدم الآن</span>
+                                            <span class="boskery-btn__text">{{ __('تقدم الآن') }}</span>
                                             <i class="icon-meat-3"></i>
                                         </a>
 
@@ -191,7 +191,7 @@
 
                         <div class="checkout-page__billing-address">
                             <h2 class="checkout-page__billing-address__title checkout-page__title">
-                                نموذج التقدم للوظائف
+                                {{ __('نموذج التقدم للوظائف') }}
                             </h2>
 
                            
@@ -200,64 +200,70 @@
                             
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box">
-                                        <label for="full-name">الاسم بالكامل *</label>
+                                        <label for="full-name">{{ __('الاسم بالكامل') }} *</label>
                                         <input type="text" name="name" id="full-name" required="">
                                     </div>
                                 </div>
 
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box">
-                                        <label for="email">البريد الإلكتروني *</label>
+                                        <label for="email">{{ __('البريد الإلكتروني') }} *</label>
                                         <input type="email" name="email" id="email" required="">
                                     </div>
                                 </div>
 
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box">
-                                        <label for="phone">رقم الهاتف *</label>
+                                        <label for="phone">{{ __('رقم الهاتف') }} *</label>
                                         <input type="tel" name="phone" id="phone" required="">
                                     </div>
                                 </div>
 
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box">
-                                        <label for="job-title">الوظيفة المتقدم لها *</label>
+                                        <label for="job-title">{{ __('الوظيفة المتقدم لها') }} *</label>
                                         <input type="text" name="job-title" id="job-title" required="">
                                     </div>
                                 </div>
 
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box">
-                                        <label>البلد *</label>
+                                        <label>{{ __('البلد') }} *</label>
                                         <select class="selectpicker" name="country" required>
-                                            <option selected="">اختر بلدك</option>
-                                            <option value="">مصر</option>
-                                            <option value="">السعودية</option>
-                                            <option value="">الإمارات</option>
-                                            <option value="">قطر</option>
-                                            <option value="">الكويت</option>
+                                            <option selected="">{{ __('اختر بلدك') }}</option>
+                                            <option value="مصر">{{ __('مصر') }}</option>
+                                            <option value="السعودية">{{ __('السعودية') }}</option>
+                                            <option value="الإمارات">{{ __('الإمارات') }}</option>
+                                            <option value="قطر">{{ __('قطر') }}</option>
+                                            <option value="الكويت">{{ __('الكويت') }}</option>
+                                            <option value="البحرين">{{ __('البحرين') }}</option>
+                                            <option value="عمان">{{ __('عمان') }}</option>
+                                            <option value="الأردن">{{ __('الأردن') }}</option>
+                                            <option value="العراق">{{ __('العراق') }}</option>
+                                            <option value="لبنان">{{ __('لبنان') }}</option>
+                                            <option value="أخرى">{{ __('أخرى') }}</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box checkout-page__input-box--address">
-                                        <label for="address">العنوان الحالي *</label>
-                                        <input type="text" name="address" id="address" placeholder="الشارع / المبنى" required="">
+                                        <label for="address">{{ __('العنوان الحالي') }} *</label>
+                                        <input type="text" name="address" id="address" placeholder="{{ __('الشارع / المبنى') }}" required="">
                                         {{-- <input type="text" placeholder="تفاصيل إضافية"> --}}
                                     </div>
                                 </div>
 
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box ">
-                                        <label for="city">المدينة *</label>
+                                        <label for="city">{{ __('المدينة') }} *</label>
                                         <input type="text" name="city" id="city" required="">
                                     </div>
                                 </div>
 
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box ">
-                                        <label for="experience">سنوات الخبرة *</label>
+                                        <label for="experience">{{ __('سنوات الخبرة') }} *</label>
                                         <input type="number" id="experience"  name="experience" min="0" required="">
                                     </div>
                                 </div>
@@ -265,7 +271,7 @@
                                 <!-- رفع السيرة الذاتية -->
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box">
-                                        <label for="cv-file">رفع السيرة الذاتية (PDF / DOC) *</label>
+                                        <label for="cv-file">{{ __('رفع السيرة الذاتية') }} (PDF / DOC) *</label>
                                         <input type="file" id="cv-file" name="cv-file" accept=".pdf,.doc,.docx" required="">
                                     </div>
                                 </div>
@@ -273,9 +279,9 @@
                                 <!-- خطاب التغطية -->
                                 <div class="col-xl-12">
                                     <div class="checkout-page__input-box checkout-page__input-box--message">
-                                        <label for="cover-letter">خطاب التغطية (اختياري)</label>
+                                        <label for="cover-letter">{{ __('خطاب التغطية') }} ({{ __('اختياري') }})</label>
                                         <textarea id="cover-letter"  name="cover-letter" cols="30" rows="10"
-                                            placeholder="اكتب نبذة مختصرة عن نفسك..."></textarea>
+                                            placeholder="{{ __('اكتب نبذة مختصرة عن نفسك...') }}"></textarea>
                                     </div>
                                 </div>
 
@@ -288,41 +294,41 @@
                         <div class="checkout-page__your-order">
 
                             <h2 class="checkout-page__your-order__title checkout-page__title">
-                                ملخص الطلب
+                                {{ __('ملخص الطلب') }}
                             </h2>
 
                             <table class="checkout-page__order-table">
                                 <thead>
                                     <tr>
-                                        <th>الحقل</th>
-                                        <th class="right">الحالة</th>
+                                        <th>{{ __('الحقل') }}</th>
+                                        <th class="right">{{ __('الحالة') }}</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td class="pro__title">الاسم</td>
-                                        <td class="pro__price">مطلوب</td>
+                                        <td class="pro__title">{{ __('الاسم') }}</td>
+                                        <td class="pro__price">{{ __('مطلوب') }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="pro__title">البريد الإلكتروني</td>
-                                        <td class="pro__price">مطلوب</td>
+                                        <td class="pro__title">{{ __('البريد الإلكتروني') }}</td>
+                                        <td class="pro__price">{{ __('مطلوب') }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="pro__title">الهاتف</td>
-                                        <td class="pro__price">مطلوب</td>
+                                        <td class="pro__title">{{ __('الهاتف') }}</td>
+                                        <td class="pro__price">{{ __('مطلوب') }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="pro__title">السيرة الذاتية</td>
-                                        <td class="pro__price">مطلوب</td>
+                                        <td class="pro__title">{{ __('السيرة الذاتية') }}</td>
+                                        <td class="pro__price">{{ __('مطلوب') }}</td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="2">
                                             <div class="checkout-page__order-address-data">
-                                                <h4 class="checkout-page__order-address">عنوانك</h4>
+                                                <h4 class="checkout-page__order-address">{{ __('عنوانك') }}</h4>
                                                 <address class="checkout-page__order-address-text">
-                                                    سيظهر هنا بعد الإرسال
+                                                    {{ __('سيظهر هنا بعد الإرسال') }}
                                                 </address>
                                             </div>
                                         </td>
@@ -331,8 +337,7 @@
                                     <tr>
                                         <td colspan="2">
                                             <p class="checkout-page__order-text">
-                                                سيتم استخدام بياناتك لأغراض التقدم للوظائف فقط ومراجعتها من قبل قسم
-                                                الموارد البشرية.
+                                                {{ __('سيتم استخدام بياناتك لأغراض التقدم للوظائف فقط ومراجعتها من قبل قسم الموارد البشرية.') }}
                                             </p>
                                         </td>
                                     </tr>
@@ -346,7 +351,7 @@
                                                 <span class="boskery-btn__hover"></span>
                                                 <span class="boskery-btn__hover"></span>
                                                 <span class="boskery-btn__hover"></span>
-                                                <span class="boskery-btn__text">إرسال الطلب</span>
+                                                <span class="boskery-btn__text">{{ __('إرسال الطلب') }}</span>
                                                 <i class="icon-meat-3"></i>
                                             </button>
                                         </td>

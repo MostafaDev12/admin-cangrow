@@ -18,38 +18,38 @@ class GalleryController extends Controller
       
     }
 
-    public function show()
+    public function show(Request $request)
     {
         $data[0] = 0;
-        $id = $_GET['id'] ?? '';
-     
-        
+        $id = $request->input('id', '');
+
+
         if($id){
              $prod = Service::findOrFail($id);
-             
+
          if(count($prod->galleries))
         {
             $data[0] = 1;
             $data[1] = $prod->galleries;
-        } 
-        
-        
         }
-        
-          
-        return response()->json($data);              
-    }    
-    public function mobileshow()
+
+
+        }
+
+
+        return response()->json($data);
+    }
+    public function mobileshow(Request $request)
     {
         $data[0] = 0;
-        $id = $_GET['id'];
+        $id = $request->input('id');
         $prod = Service::findOrFail($id);
         if(count($prod->mobilegalleries))
         {
             $data[0] = 1;
             $data[1] = $prod->mobilegalleries;
         }
-        return response()->json($data);              
+        return response()->json($data);
     }  
 
     public function store(Request $request)
@@ -111,10 +111,10 @@ class GalleryController extends Controller
         return response()->json($data);      
     } 
 
-    public function destroy()
+    public function destroy(Request $request)
     {
 
-        $id = $_GET['id'];
+        $id = $request->input('id');
         $gal = Gallery::findOrFail($id);
             if (file_exists(public_path().'/assets/images/galleries/'.$gal->photo)) {
                 unlink(public_path().'/assets/images/galleries/'.$gal->photo);

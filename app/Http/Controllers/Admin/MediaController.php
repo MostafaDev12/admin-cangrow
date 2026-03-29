@@ -181,6 +181,9 @@ class MediaController extends Controller
     public function destroy($id)
     {
         $data = Media::findOrFail($id);
+        if ($data->media && file_exists(public_path('assets/images/media/' . $data->media))) {
+            unlink(public_path('assets/images/media/' . $data->media));
+        }
         $data->delete();
         //--- Redirect Section     
         $msg = 'Data Deleted Successfully.';

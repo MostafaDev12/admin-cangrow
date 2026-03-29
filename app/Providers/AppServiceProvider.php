@@ -62,7 +62,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        require_once app_path('Helpers/helpers.php');
+
         Schema::defaultStringLength(191);
         if($this->app->environment('production')) {
             URL::forceScheme('https');

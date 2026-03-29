@@ -159,6 +159,9 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $data = Project::findOrFail($id);
+        if ($data->photo && file_exists(public_path('assets/images/projects/' . $data->photo))) {
+            unlink(public_path('assets/images/projects/' . $data->photo));
+        }
         $data->delete();
         //--- Redirect Section     
         $msg = 'Data Deleted Successfully.';

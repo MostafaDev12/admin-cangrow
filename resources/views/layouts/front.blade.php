@@ -119,7 +119,7 @@
     <div class="custom-cursor__cursor-two"></div>
     
     <div class="preloader">
-        <div class="preloader__image" style="background-image: url({{ asset('front/mtc/') }}/assets/images/loader.png.png);"></div>
+        <div class="preloader__image" style="background-image: url({{ site_image('preloader') }});"></div>
     </div>
     <!-- /.preloader -->
     <div class="page-wrapper">
@@ -321,7 +321,7 @@
 
  
         <footer class="main-footer">
-            <div class="main-footer__bg" style="background-image: url({{ asset('front/mtc/') }}/assets/images/backgrounds/footer-bg.png);"></div>
+            <div class="main-footer__bg" style="background-image: url({{ site_image('footer_bg') }});"></div>
             <!-- /.main-footer__bg -->
             <div class="container">
                 <div class="main-footer__top">
@@ -541,7 +541,7 @@
         <!-- /.search-popup__overlay -->
         <div class="search-popup__content">
             <form role="search" method="get" class="search-popup__form" action="#">
-                <input type="text" id="search" placeholder="Search Here..." />
+                <input type="text" id="search" placeholder="{{ __('ابحث هنا...') }}" />
                 <button type="submit" aria-label="search submit" class="boskery-btn">
                     <span class="boskery-btn__hover"></span>
                     <span class="boskery-btn__hover"></span>
@@ -569,7 +569,7 @@
                 </p>
             </div><!-- /.sidebar-one__about -->
             <div class="sidebar-one__info sidebar-one__item">
-                <h4 class="sidebar-one__title">{{ __('Contact') }}</h4>
+                <h4 class="sidebar-one__title">{{ __('اتصل بنا') }}</h4>
                 <ul class="sidebar-one__info__list">
                        @foreach ($addresses as $address)
                     <li><span class="icon-maps-and-flags"></span>
@@ -775,7 +775,13 @@
 
     @include('includes.script')
 
-
+    <script>
+        // Safety: hide preloader after 5 seconds max even if images fail to load
+        setTimeout(function() {
+            var p = document.querySelector('.preloader');
+            if (p) p.style.display = 'none';
+        }, 5000);
+    </script>
 
     <script src="{{ asset('build/js/toastr.js') }}"></script>
 

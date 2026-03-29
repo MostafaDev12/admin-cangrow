@@ -57,7 +57,7 @@ $email = Arr::random($emails);
                         <div class="result"></div><!-- /.result -->
                     </div><!-- /.contact-page__content -->
                     <div class="contact-page__image wow fadeInRight" data-wow-duration="1500ms">
-                        <img src="{{ asset('front/mtc/') }}/assets/images/resources/contact-1-1.jpg" alt="تواصل معنا">
+                        <img src="{{ site_image('contact_form_image') }}" alt="تواصل معنا">
                     </div><!-- /.contact-page__image -->
                 </div><!-- /.contact-page__wrapper -->
             </div><!-- /.container -->

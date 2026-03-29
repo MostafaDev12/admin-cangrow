@@ -31,7 +31,7 @@
             <div class="page-header__bg" style="background-image: linear-gradient(to right, #000000, #ffffff);"></div>
             <!-- /.page-header__bg -->
             <div class="container">
-                <h2 class="page-header__title">صحتك امانة </h2>
+                <h2 class="page-header__title">{{ __('صحتك امانة') }} </h2>
                
             </div><!-- /.container -->
         </section><!-- /.page-header -->
@@ -78,7 +78,7 @@
                                     <ul class="list-unstyled blog-card__meta">
                                         <li><a href="#">
                                                 <span class="icon-user"></span>
-                                                بواسطة الإدارة</a></li>
+                                                {{ __('بواسطة الإدارة') }}</a></li>
                                         {{-- <li><a href="#">
                                                 <span class="icon-chat"></span>
                                                 2 تعليق</a></li> --}}
@@ -101,7 +101,7 @@
                                            {{ optional($blog)->{'short_details_' . $sign} }}   </a></h3><!-- /.blog-card__title -->
                             </div><!-- /.blog-card__content -->
                             <a href="{{ route('single-blog.index',['lang'=> $sign , 'blog' =>$blog->{'slug_' . $sign} ]) }}" class="blog-card__link">
-                                اقرأ المزيد
+                                {{ __('اقرأ المزيد') }}
                                 <span class="icon-right"></span>
                             </a><!-- /.blog-card__link -->
                         </div><!-- /.blog-card -->
@@ -157,7 +157,7 @@
                             <div class="blog-card-three__content">
 
                                 <div class="blog-card-three__date">
-                                    <span>فيديو</span>
+                                    <span>{{ __('فيديو') }}</span>
                                     {{-- <span>جديد</span> --}}
                                 </div>
                                 <!-- /.blog-card-three__date -->
@@ -166,10 +166,10 @@
 
                                     <ul class="list-unstyled blog-card-three__meta">
                                         <li>
-                                            <a href="#"><span class="icon-user"></span> قناة الشركة</a>
+                                            <a href="#"><span class="icon-user"></span> {{ __('قناة الشركة') }}</a>
                                         </li>
                                         <li>
-                                            <a  href="{{ $video->link }}" target="_blank"><span class="icon-play"></span> شاهد الآن</a>
+                                            <a  href="{{ $video->link }}" target="_blank"><span class="icon-play"></span> {{ __('شاهد الآن') }}</a>
                                         </li>
                                     </ul>
                                     <!-- /.blog-card-three__meta -->

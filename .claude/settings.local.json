@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs wc:*)",
+      "Bash(grep -v \"^$\")",
+      "Bash(grep -l \"public function\" app/Http/Controllers/Admin/*.php)",
+      "Bash(grep -v \"^/c/laragon/www/admin-cangrows/resources/views/admin$\")",
+      "Bash(grep -E \"\\\\.\\(php|js\\)$\")",
+      "Bash(grep -l \"destroy\" c:/laragon/www/admin-cangrows/app/Http/Controllers/Admin/*.php)",
+      "Bash(done)",
+      "Bash(xargs grep:*)",
+      "Bash(grep -l \"agenda\\\\|events\\\\|parties\\\\|projects\\\\|donate_campaign\" /c/laragon/www/admin-cangrows/database/migrations/*.php)",
+      "Bash(grep -r \"file->move\\\\|file_put_contents\" c:/laragon/www/admin-cangrows/app/Http/Controllers/Admin/*.php)",
+      "Bash(ls /c/laragon/www/admin-cangrows/app/Models/*.php)",
+      "Bash(xargs -I {} basename {} .php)",
+      "Bash(xargs basename:*)",
+      "Bash(grep -r \"fillable\\\\|protected $\" /c/laragon/www/admin-cangrows/app/Models/Counter.php)",
+      "Bash(php -l app/Http/Controllers/Admin/AboutFeatureController.php)",
+      "Bash(php -l app/Models/AboutFeature.php)",
+      "Bash(php -l database/migrations/2025_06_02_000001_create_about_features_table.php)",
+      "Bash(php -l resources/views/front/quality.blade.php)",
+      "Bash(php -l resources/views/front/quality-list.blade.php)",
+      "Bash(php -l resources/views/front/blogs.blade.php)",
+      "Bash(php -l resources/views/front/contact.blade.php)",
+      "Bash(php -l resources/views/front/careers.blade.php)",
+      "Bash(php -l resources/views/front/b2b-services.blade.php)",
+      "Bash(php -l resources/views/front/about.blade.php)",
+      "Bash(php -l resources/views/front/farm-to-fork.blade.php)",
+      "Bash(php -l resources/views/front/products.blade.php)"
+    ]
+  }
+}

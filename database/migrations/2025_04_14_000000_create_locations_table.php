@@ -36,7 +36,8 @@ return new class extends Migration
             $table->text('date_fr')->nullable();
             
             $table->text('map')->nullable();
-             
+            $table->string('book_link')->nullable();
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

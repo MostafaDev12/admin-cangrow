@@ -101,7 +101,7 @@
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
           '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-banks-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_location") }}'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add_bank") }}'+
           '</a>'+
           '</div>');
       });

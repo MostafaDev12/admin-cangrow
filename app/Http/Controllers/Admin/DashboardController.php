@@ -82,7 +82,7 @@ class DashboardController extends Controller
     
             // Check if loc is already saved in the visitors table
             if (!$visitor->latitude || !$visitor->longitude) {
-                $response = Http::get("http://ipinfo.io/{$ip}/json?token=36d7049a61a982");
+                $response = Http::get("http://ipinfo.io/{$ip}/json?token=" . env('IPINFO_TOKEN', '36d7049a61a982'));
                 $location = $response->json();
     
                 if (isset($location['loc'])) {

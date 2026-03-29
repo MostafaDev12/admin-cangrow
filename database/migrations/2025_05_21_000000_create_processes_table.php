@@ -24,8 +24,9 @@ return new class extends Migration
             $table->text('details_ar')->nullable();
             $table->text('details_en')->nullable();
             $table->text('details_fr')->nullable();
-            
-              
+
+            $table->string('icon')->nullable();
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

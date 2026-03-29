@@ -169,19 +169,19 @@
                 <div class="row gutter-y-60">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-duration="1500ms">
                         <div class="about-two__image">
-                            <img src="{{ asset('front/mtc/') }}/assets/images/about/about-2-1.jpg" alt="مجمع تكنولوجيا اللحوم MTC"
+                            <img src="{{ site_image('about_image_2') }}" alt="مجمع تكنولوجيا اللحوم MTC"
                                 class="about-two__image__one">
                             <img src="{{ $ps->about_photo }}" alt="منتجات اللحوم الطازجة"
                                 class="about-two__image__two">
                             <div class="about-two__experience">
                                 <div class="about-two__experience__bg"
-                                    style="background-image: url({{ asset('front/mtc/') }}/assets/images/shapes/about-experience-bg-2-1.png);">
+                                    style="background-image: url({{ site_image('about_experience_bg') }});">
                                 </div><!-- /.about-two__experience__bg -->
                                 <div class="about-two__experience__content">
                                     <div class="about-two__experience__box count-box relative"
                                         style="position: relative;">
                                         <div class="">
-                                            <img class="!h-[100px] !w-[100px]" src="{{ asset('front/mtc/') }}/assets/images/logo/Artboard 2.png"
+                                            <img class="!h-[100px] !w-[100px]" src="{{ site_image('about_experience_logo') }}"
                                                 width="50" height="50" />
                                         </div>
                                         <h3 class="about-two__experience__year">+</h3>
@@ -196,7 +196,7 @@
                         <div class="about-two__content">
                             <div class="sec-title @@extraClassName">
 
-                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="عن مجمع تكنولوجيا اللحوم MTC"
+                                <img src="{{ site_image('section_title_shape') }}" alt="عن مجمع تكنولوجيا اللحوم MTC"
                                     class="sec-title__img">
 
                                 <!-- <h6 class="sec-title__tagline">عن مجمع تكنولوجيا اللحوم MTC</h6> -->
@@ -209,24 +209,16 @@
                             <div class="about-two__inner">
 
 
+                                @foreach ($about_features as $feature)
                                 <div class="about-two__info">
                                     <div class="about-two__info__icon">
-                                        <span class="icon-healthy-food"></span>
+                                        <span class="{{ $feature->icon }}"></span>
                                     </div><!-- /.about-two__info__icon -->
                                     <div class="about-two__info__content">
-                                        <h4 class="about-two__info__title">{{ __('لحوم طازجة عالية الجودة') }}</h4>
-                                        <!-- /.about-two__info__title -->
+                                        <h4 class="about-two__info__title">{{ $feature->{'title_' . $sign} }}</h4>
                                     </div><!-- /.about-two__info__content -->
                                 </div><!-- /.about-two__info -->
-                                <div class="about-two__info">
-                                    <div class="about-two__info__icon">
-                                        <span class="icon-butchering"></span>
-                                    </div><!-- /.about-two__info__icon -->
-                                    <div class="about-two__info__content"> {{ __('') }}
-                                        <h4 class="about-two__info__title">{{ __('تقنيات ذبح وتجهيز متطورة') }}</h4>
-                                        <!-- /.about-two__info__title -->
-                                    </div><!-- /.about-two__info__content -->
-                                </div><!-- /.about-two__info -->
+                                @endforeach
 
 
                             </div><!-- /.about-two__inner -->
@@ -256,9 +248,9 @@
             </div><!-- /.container -->
             <div class="about-two__shape">
                 <div class="about-two__shape__image wow fadeInRight" data-wow-duration="1500ms">
-                    <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-1.png" alt="about-shape">
+                    <img src="{{ site_image('about_shape_2_1') }}" alt="about-shape">
                 </div><!-- /.about-two__shape__image -->
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-2-2.png" alt="about-shape"
+                <img src="{{ site_image('about_shape_2_2') }}" alt="about-shape"
                     class="about-two__shape__two wow fadeInLeft" data-wow-duration="1500ms">
             </div><!-- /.about-two__shape -->
         </section><!-- /.about-two -->
@@ -270,7 +262,7 @@
                         <div class="about-one__image">
                             <div class="about-one__image__inner">
                                 <h3 class="about-one__image__text">{{ __('لماذا MTC') }}</h3>
-                                <img src="{{ asset('front/mtc/') }}/assets/images/about/about-1-1.jpg" alt="about image">
+                                <img src="{{ site_image('about_image_1') }}" alt="about image">
                                 <a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="video-button video-popup">
                                     <span class="icon-play"></span>
                                     <i class="video-button__ripple"></i>
@@ -286,7 +278,7 @@
                         <div class="about-one__content">
                             <div class="sec-title @@extraClassName">
 
-                                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/sec-title-s-1.png" alt="about boskery meat shop"
+                                <img src="{{ site_image('section_title_shape') }}" alt="about boskery meat shop"
                                     class="sec-title__img">
 
                                 <!-- <h6 class="sec-title__tagline"></h6> -->
@@ -344,8 +336,8 @@
             </div>
 
             <div class="about-one__shape">
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-2.png" alt="about shape" class="about-one__shape__one">
-                <img src="{{ asset('front/mtc/') }}/assets/images/shapes/about-shape-1-3.png" alt="about shape" class="about-one__shape__two">
+                <img src="{{ site_image('about_shape_1_2') }}" alt="about shape" class="about-one__shape__one">
+                <img src="{{ site_image('about_shape_1_3') }}" alt="about shape" class="about-one__shape__two">
             </div>
         </section>
 

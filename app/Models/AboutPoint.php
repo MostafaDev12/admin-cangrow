@@ -18,12 +18,9 @@ class AboutPoint extends Model
      
  
     protected $fillable = [
-        
-        
         'title_ar',
         'title_en',
         'title_fr',
-       
         'details_ar',
         'details_en',
         'details_fr',

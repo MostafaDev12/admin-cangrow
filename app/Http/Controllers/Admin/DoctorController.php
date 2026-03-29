@@ -118,13 +118,17 @@ class DoctorController extends Controller
         $data = Doctor::findOrFail($id);
         $input = $request->all();
     
-      if ($file = $request->file('photo')) 
-        {              
+      if ($file = $request->file('photo'))
+        {
+            // Delete old photo first
+            if ($data->photo && file_exists(public_path('assets/images/doctors/' . $data->photo))) {
+                unlink(public_path('assets/images/doctors/' . $data->photo));
+            }
             $name = time().$file->getClientOriginalName();
             $file->move('assets/images/doctors/',$name);
-                    
+
         $input['photo'] = $name;
-        } 
+        }
         $data->update($input);
         //--- Logic Section Ends
 
@@ -139,6 +143,9 @@ class DoctorController extends Controller
     public function destroy($id)
     {
         $data = Doctor::findOrFail($id);
+        if ($data->photo && file_exists(public_path('assets/images/doctors/' . $data->photo))) {
+            unlink(public_path('assets/images/doctors/' . $data->photo));
+        }
         $data->delete();
         //--- Redirect Section     
         $msg = 'Data Deleted Successfully.';
