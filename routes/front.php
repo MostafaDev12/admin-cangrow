@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FrontPagesController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Language;
@@ -17,6 +18,11 @@ use App\Models\Language;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+// Sitemap — registered outside the IpLocation/FrontLanguages middleware so
+// crawlers don't trigger session writes or geo-IP lookups.
+Route::get('/sitemap.xml', [FrontPagesController::class, 'sitemap'])->name('front.sitemap');
 
 
 Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
@@ -38,7 +44,11 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
     Route::prefix('{lang}')->group(function () {
 
- Route::get('/', [HomeController::class, 'index'])->name('front.index');
+        // Per-lang homepage now resolved through the dynamic Pages system
+        // (slug = "home"). Route name is preserved for compatibility with the
+        // 19 Blade files / HomeController references that call route('front.index').
+        Route::get('/', [FrontPagesController::class, 'show'])->name('front.index');
+
         Route::get('/about-us', [HomeController::class, 'about'])->name('about.index');
         Route::get('/products', [HomeController::class, 'products'])->name('products.index');
         Route::get('/services', [HomeController::class, 'services'])->name('services.index');
@@ -81,22 +91,30 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
         Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
-        Route::get('/فيديوهات', [HomeController::class, 'videos'])->name('videos.index');
         Route::get('/locations', [HomeController::class, 'locations'])->name('locations.index');
-       
-        Route::get('/health-trust', [HomeController::class, 'blogs'])->name('blogs.index');    
-        Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews.index');    
-        
+
+        Route::get('/health-trust', [HomeController::class, 'blogs'])->name('blogs.index');
+        Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews.index');
+
         Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');
-      Route::get('/appointments', [HomeController::class, 'BookNow'])->name('appointments.index');
-        Route::get('/doctors', [HomeController::class, 'doctors'])->name('doctors.index');
-      
-        Route::get('/dentistry', [HomeController::class, 'dentistry'])->name('dentistry.index');
-        Route::get('/invisalign', [HomeController::class, 'invisalign'])->name('invisalign.index');
-        Route::get('/veneers', [HomeController::class, 'veneers'])->name('veneers.index');
-        Route::get('/dental-implants', [HomeController::class, 'dental_implants'])->name('dental-implants.index');
 
     
+
+        // Contact form submit handler (POST). Different verb than the GET below,
+        // so no routing conflict with the Pages whitelist.
+        // throttle:5,1 = 5 submissions per minute per IP (basic spam guard).
+        Route::post('/contact', [FrontPagesController::class, 'submitContact'])
+            ->middleware('throttle:5,1')
+            ->name('front.bekdash.contact.submit');
+
+        // Bekdash dynamic Pages — registered BEFORE the legacy /{blog} catch-all
+        // but constrained to the explicit slug whitelist below, so any other
+        // slug falls through to HomeController::singleBlog as before.
+        // To add a new Bekdash page: append the slug to the where() pattern AND
+        // seed it in BekdashPageSeeder.
+        Route::get('/{slug}', [FrontPagesController::class, 'show'])
+            ->name('front.bekdash.page')
+            ->where('slug', 'home|about|goals|principles|contact');
 
         Route::get('/{blog}', [HomeController::class, 'singleBlog'])->name('single-blog.index');
 

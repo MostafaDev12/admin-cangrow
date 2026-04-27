@@ -1,0 +1,163 @@
+body {
+    font-family: "Changa", sans-serif;
+}
+
+.gsap-item {
+    opacity: 0;
+    transform: translateX(0);
+}
+
+.reveal-text {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.parallax-img {
+    will-change: transform;
+}
+
+.menu-overlay {
+    clip-path: circle(0% at 100% 0%);
+    transition: clip-path 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.menu-overlay.active {
+    clip-path: circle(150% at 100% 0%);
+}
+
+.menu-link {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.menu-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
+.menu-link:hover::after {
+    transform: scaleX(1);
+}
+.story-bg {
+  background-image: url('./asset/Main-sate-backgrounds/story.jpeg');
+  background-position: center;
+  background-size: cover;
+    height: 100vh; /* أو أي ارتفاع مناسب */
+
+  background-repeat: no-repeat;}
+
+/* تأثير ذهبي للـ VIP */
+.text-gold {
+    color: #d4af37;
+}
+
+.border-gold {
+    border-color: #d4af37;
+}
+
+.bg-gold {
+    background-color: #d4af37;
+}
+
+/* .two-line {
+    position: relative;
+}
+.two-line::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background-color: #fff;
+    animation: expandLine 0.8s ease forwards;
+}
+
+.two-line::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 2px;
+    background-color: #fff;
+    animation: expandLine 0.8s ease forwards;
+}
+
+@keyframes expandLine {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100px;
+        opacity: 1;
+    }
+} */
+
+.two-line::after,
+.two-line::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; /* البداية من 0 */
+    height: 2px;
+    background-color: #fff;
+}
+
+.two-line::after { bottom: -6px; }
+.two-line::before { top: -6px; }
+
+
+::selection {
+    background: #b87333;
+    color: #fff;
+}
+
+
+   .policy-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .policy-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2);
+        }
+        /* dark mode overrides for some gradients */
+        .dark .gradient-brown {
+            background: linear-gradient(135deg, #2d1e12 0%, #1f140a 100%);
+        }
+        .gradient-brown {
+            background: linear-gradient(135deg, #f7e9dc 0%, #e6d5c0 100%);
+        }
+        .dark .border-brown {
+            border-color: #5a3e2b;
+        }
+        /* custom list markers */
+        .custom-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .custom-list li i {
+            margin-top: 0.2rem;
+            color: #b87333;
+        }
+        .dark .custom-list li i {
+            color: #d9a066;
+        }
+        hr {
+            transition: border-color 0.2s;
+        }

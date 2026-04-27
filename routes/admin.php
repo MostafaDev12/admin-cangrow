@@ -505,6 +505,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/site_images/reset/{id}', [SiteImageController::class, 'reset'])->name('admin-site_images-reset');
     // SITE IMAGES SECTION ENDS ------------
 
+    // PAGES SECTION ------------
+    // Dynamic CMS pages. No dedicated 'pages' permission key exists yet, so the
+    // group is gated on auth.admin only. Sidebar visibility is gated by
+    // sectionCheck('super') to limit accidental access.
+    Route::get('/pages',              [\App\Http\Controllers\Admin\PageController::class, 'index'])->name('admin-pages-index');
+    Route::get('/pages/datatables',   [\App\Http\Controllers\Admin\PageController::class, 'datatables'])->name('admin-pages-datatables');
+    Route::get('/pages/edit/{id}',    [\App\Http\Controllers\Admin\PageController::class, 'edit'])->name('admin-pages-edit');
+    Route::post('/pages/update/{id}', [\App\Http\Controllers\Admin\PageController::class, 'update'])->name('admin-pages-update');
+    // PAGES SECTION ENDS ------------
+
     // GALLERY SECTION ------------
 
     Route::get('/gallery/show', [GalleryController::class, 'show'])->name('admin-gallery-show');

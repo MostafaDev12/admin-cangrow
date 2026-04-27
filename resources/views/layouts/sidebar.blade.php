@@ -41,6 +41,15 @@
                     </a>
                 </li> <!-- end Dashboard Menu -->
 
+                {{-- Pages (dynamic CMS) — gated on 'super' since no dedicated 'pages' permission key exists yet --}}
+                @if (Auth::guard('admin')->user()->sectionCheck('super'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-pages-index') }}" aria-controls="sidebarPages">
+                            <i class="las la-file-alt"></i> <span>Pages</span>
+                        </a>
+                    </li>
+                @endif
+
                 <li class="menu-title"><i class="ri-more-fill"></i> <span>@lang('translation.pages')</span></li>
 
                 {{-- --}}
