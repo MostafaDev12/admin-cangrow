@@ -11,7 +11,10 @@ return new class extends Migration
         Schema::create('page_images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('page_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('language_id')->nullable()->constrained()->nullOnDelete();
+            // languages.id is INT UNSIGNED (legacy ->increments('id')),
+            // so language_id must match — foreignId() defaults to BIGINT.
+            $table->unsignedInteger('language_id')->nullable();
+            $table->foreign('language_id')->references('id')->on('languages')->nullOnDelete();
             $table->string('key');
             $table->string('path')->nullable();
             $table->timestamps();

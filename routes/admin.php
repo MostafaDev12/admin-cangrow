@@ -515,6 +515,13 @@ Route::prefix('admin')->group(function () {
     Route::post('/pages/update/{id}', [\App\Http\Controllers\Admin\PageController::class, 'update'])->name('admin-pages-update');
     // PAGES SECTION ENDS ------------
 
+    // SITE GLOBALS SECTION ------------
+    // Chrome strings (nav menu, footer, contact labels) shared across all
+    // bekdash pages. Edit screen mirrors the Pages edit pattern.
+    Route::get('/site-globals',         [\App\Http\Controllers\Admin\SiteGlobalSettingController::class, 'edit'])->name('admin-site-globals-edit');
+    Route::post('/site-globals/update', [\App\Http\Controllers\Admin\SiteGlobalSettingController::class, 'update'])->name('admin-site-globals-update');
+    // SITE GLOBALS SECTION ENDS ------------
+
     // GALLERY SECTION ------------
 
     Route::get('/gallery/show', [GalleryController::class, 'show'])->name('admin-gallery-show');

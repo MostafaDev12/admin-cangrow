@@ -38,7 +38,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@section('script')
     <script type="text/javascript">
         var table = $('#geniustable').DataTable({
             ordering: false,

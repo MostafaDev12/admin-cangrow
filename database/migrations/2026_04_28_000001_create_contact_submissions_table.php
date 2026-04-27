@@ -15,7 +15,10 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('subject')->nullable();
             $table->text('message')->nullable();
-            $table->foreignId('language_id')->nullable()->constrained()->nullOnDelete();
+            // languages.id is INT UNSIGNED (legacy ->increments('id')),
+            // so language_id must match — foreignId() defaults to BIGINT.
+            $table->unsignedInteger('language_id')->nullable();
+            $table->foreign('language_id')->references('id')->on('languages')->nullOnDelete();
             $table->string('page_slug')->nullable();
             $table->string('ip', 45)->nullable();
             $table->text('user_agent')->nullable();

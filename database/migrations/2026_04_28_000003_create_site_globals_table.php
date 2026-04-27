@@ -8,24 +8,22 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('page_translations', function (Blueprint $table) {
+        Schema::create('site_globals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('page_id')->constrained()->cascadeOnDelete();
             // languages.id is INT UNSIGNED (legacy ->increments('id')),
             // so language_id must match — foreignId() defaults to BIGINT.
             $table->unsignedInteger('language_id');
-            $table->foreign('language_id')->references('id')->on('languages')->cascadeOnDelete();
-            $table->string('meta_title')->nullable();
-            $table->text('meta_description')->nullable();
             $table->longText('content_json')->nullable();
             $table->timestamps();
 
-            $table->unique(['page_id', 'language_id']);
+            $table->foreign('language_id')->references('id')->on('languages')->cascadeOnDelete();
+            // One row per language — admin form edits this row in place.
+            $table->unique('language_id');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('page_translations');
+        Schema::dropIfExists('site_globals');
     }
 };

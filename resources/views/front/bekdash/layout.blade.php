@@ -78,47 +78,74 @@
         <div id="social-icons"
             class="flex flex-col items-end gap-3 opacity-0 translate-y-6 transition-all duration-300">
 
-            <!-- Phone -->
-            <a href="tel:01270297000"
-                class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <i class="fa-solid fa-phone"></i>
-            </a>
+            @php
+                // Each social value comes from FrontPagesController::siteGlobals(),
+                // which already turns a bare WhatsApp number into a wa.me URL.
+                // Empty string → @if skips the icon.
+                $phone     = $globals->t('social_phone_url');
+                $whatsapp  = $globals->t('social_whatsapp_url');
+                $facebook  = $globals->t('social_facebook_url');
+                $xUrl      = $globals->t('social_x_url');
+                $instagram = $globals->t('social_instagram_url');
+                $snapchat  = $globals->t('social_snapchat_url');
+                $linkedin  = $globals->t('social_linkedin_url');
+            @endphp
 
-            <!-- WhatsApp -->
-            <a href="https://wa.me/201270297000" target="_blank"
-                class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
+            @if($phone)
+                <!-- Phone -->
+                <a href="tel:{{ $phone }}"
+                    class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            @endif
 
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/" target="_blank"
-                class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <i class="fa-brands fa-facebook-f"></i>
-            </a>
+            @if($whatsapp)
+                <!-- WhatsApp -->
+                <a href="{{ $whatsapp }}" target="_blank"
+                    class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            @endif
 
-            <!-- X (Twitter الجديد) -->
-            <a href="https://x.com/" target="_blank"
-                class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <i class="fa-brands fa-x-twitter"></i>
-            </a>
+            @if($facebook)
+                <!-- Facebook -->
+                <a href="{{ $facebook }}" target="_blank"
+                    class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            @endif
 
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/" target="_blank"
-                class="w-12 h-12 bg-gradient-to-tr from-pink-500 via-purple-500 to-yellow-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
+            @if($xUrl)
+                <!-- X (Twitter الجديد) -->
+                <a href="{{ $xUrl }}" target="_blank"
+                    class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+            @endif
 
-            <!-- Snapchat -->
-            <a href="https://www.snapchat.com/" target="_blank"
-                class="w-12 h-12 bg-yellow-400 text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <i class="fa-brands fa-snapchat"></i>
-            </a>
+            @if($instagram)
+                <!-- Instagram -->
+                <a href="{{ $instagram }}" target="_blank"
+                    class="w-12 h-12 bg-gradient-to-tr from-pink-500 via-purple-500 to-yellow-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            @endif
 
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/" target="_blank"
-                class="w-12 h-12 bg-[#0A66C2] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
+            @if($snapchat)
+                <!-- Snapchat -->
+                <a href="{{ $snapchat }}" target="_blank"
+                    class="w-12 h-12 bg-yellow-400 text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-snapchat"></i>
+                </a>
+            @endif
+
+            @if($linkedin)
+                <!-- LinkedIn -->
+                <a href="{{ $linkedin }}" target="_blank"
+                    class="w-12 h-12 bg-[#0A66C2] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            @endif
 
         </div>
 

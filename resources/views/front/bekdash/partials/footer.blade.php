@@ -34,17 +34,28 @@
                 </div>
             </div>
 
+            @php
+                $footerFb = $globals->t('social_facebook_url');
+                $footerIg = $globals->t('social_instagram_url');
+                $footerX  = $globals->t('social_x_url');
+            @endphp
             <div class="flex gap-6 mb-10 reveal-text">
-                <a href="{{ $globals->t('social_facebook_url', '#') }}"
-                    class="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"><i
-                        class="fa-brands fa-facebook-f"></i></a>
-                <a href="{{ $globals->t('social_instagram_url', '#') }}"
-                    class="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"><i
-                        class="fa-brands fa-instagram"></i></a>
-                <a href="{{ $globals->t('social_x_url', '#') }}"
-                    class="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
+                @if($footerFb)
+                    <a href="{{ $footerFb }}" target="_blank"
+                        class="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                @endif
+                @if($footerIg)
+                    <a href="{{ $footerIg }}" target="_blank"
+                        class="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"><i
+                            class="fa-brands fa-instagram"></i></a>
+                @endif
+                @if($footerX)
+                    <a href="{{ $footerX }}" target="_blank"
+                        class="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                @endif
             </div>
 
             <a href="#"

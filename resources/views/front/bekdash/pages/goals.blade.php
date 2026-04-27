@@ -96,18 +96,13 @@
             </div>
             <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                 <ul class="space-y-3 custom-list">
-                    <li class="reveal-text"><i class="fas fa-clipboard-list"></i> إنشاء نظام جودة داخلي (فحص المواد
-                        الخام ومراحل الإنتاج والتخزين والنقل).</li>
-                    <li class="reveal-text"><i class="fas fa-certificate"></i> الحصول على شهادات الجودة العالمية
-                        والمعايير المتعارف عليها (ISO، سلامة غذائية).</li>
-                    <li class="reveal-text"><i class="fas fa-building-user"></i> تنظيم الهيكل الإداري وتحديد الأقسام
-                        (إنتاج، تسويق، مبيعات، تصدير، مالية).</li>
+                    <li class="reveal-text"><i class="fas fa-clipboard-list"></i> {{ $page->t('short_term_item_1', 'إنشاء نظام جودة داخلي (فحص المواد الخام ومراحل الإنتاج والتخزين والنقل).') }}</li>
+                    <li class="reveal-text"><i class="fas fa-certificate"></i> {{ $page->t('short_term_item_2', 'الحصول على شهادات الجودة العالمية والمعايير المتعارف عليها (ISO، سلامة غذائية).') }}</li>
+                    <li class="reveal-text"><i class="fas fa-building-user"></i> {{ $page->t('short_term_item_3', 'تنظيم الهيكل الإداري وتحديد الأقسام (إنتاج، تسويق، مبيعات، تصدير، مالية).') }}</li>
                 </ul>
                 <ul class="space-y-3 custom-list">
-                    <li class="reveal-text"><i class="fas fa-map-marker-alt"></i> تواجد محلي وزيادة عليه عبر (موقع
-                        إلكتروني، منصات، إعلان طُرُقي، حملات تذوق، تطوير).</li>
-                    <li class="reveal-text"><i class="fas fa-chart-line"></i> زيادة الوعي بالعلامة في الأسواق المستهدفة
-                        الأولى.</li>
+                    <li class="reveal-text"><i class="fas fa-map-marker-alt"></i> {{ $page->t('short_term_item_4', 'تواجد محلي وزيادة عليه عبر (موقع إلكتروني، منصات، إعلان طُرُقي، حملات تذوق، تطوير).') }}</li>
+                    <li class="reveal-text"><i class="fas fa-chart-line"></i> {{ $page->t('short_term_item_5', 'زيادة الوعي بالعلامة في الأسواق المستهدفة الأولى.') }}</li>
                 </ul>
             </div>
         </div>
@@ -152,20 +147,14 @@
             <div class="p-6 md:p-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <ul class="space-y-3 custom-list">
-                        <li class="reveal-text"><i class="fas fa-globe-americas"></i> انتشار دولي في أسواق أوروبا،
-                            أمريكا، آسيا.</li>
-                        <li class="reveal-text"><i class="fas fa-trademark"></i> تسجيل العلامة تجارياً دولياً عبر نظام
-                            مدريد (Madrid Protocol).</li>
-                        <li class="reveal-text"><i class="fas fa-handshake"></i> إطلاق نظام فرانشايز وتوفير الشروط
-                            اللازمة للشركاء.</li>
+                        <li class="reveal-text"><i class="fas fa-globe-americas"></i> {{ $page->t('long_term_item_1', 'انتشار دولي في أسواق أوروبا، أمريكا، آسيا.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-trademark"></i> {{ $page->t('long_term_item_2', 'تسجيل العلامة تجارياً دولياً عبر نظام مدريد (Madrid Protocol).') }}</li>
+                        <li class="reveal-text"><i class="fas fa-handshake"></i> {{ $page->t('long_term_item_3', 'إطلاق نظام فرانشايز وتوفير الشروط اللازمة للشركاء.') }}</li>
                     </ul>
                     <ul class="space-y-3 custom-list">
-                        <li class="reveal-text"><i class="fas fa-city"></i> فتح أول فرع للشركة في عاصمة ذات طابع سياحي
-                            قوي بتعدد المنتجات وأصولها.</li>
-                        <li class="reveal-text"><i class="fas fa-leaf"></i> العمل على استدامة الشركة عبر تطوير المنتجات
-                            والتغليف مع مراعاة المواسم.</li>
-                        <li class="reveal-text"><i class="fas fa-chart-line"></i> تعزيز الابتكار المستدام والمرونة في
-                            سلاسل التوريد.</li>
+                        <li class="reveal-text"><i class="fas fa-city"></i> {{ $page->t('long_term_item_4', 'فتح أول فرع للشركة في عاصمة ذات طابع سياحي قوي بتعدد المنتجات وأصولها.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-leaf"></i> {{ $page->t('long_term_item_5', 'العمل على استدامة الشركة عبر تطوير المنتجات والتغليف مع مراعاة المواسم.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-chart-line"></i> {{ $page->t('long_term_item_6', 'تعزيز الابتكار المستدام والمرونة في سلاسل التوريد.') }}</li>
                     </ul>
                 </div>
             </div>
@@ -179,15 +168,10 @@
                 <i class="fas fa-rocket text-5xl text-amber-300 mb-4 block reveal-text"></i>
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4 reveal-text">{{ $page->t('big_vision_title', 'الرؤية الكبرى (بعد 7 سنوات)') }}</h2>
                 <div class="max-w-3xl mx-auto space-y-4 text-lg">
-                    <p class="reveal-text"><i class="fas fa-check-circle text-amber-300 ml-2"></i> أن تكون الشركة
-                        <strong class="text-amber-200">علامة عالمية رائدة</strong> في تصنيع منتجاتها.
-                    </p>
-                    <p class="reveal-text"><i class="fas fa-check-circle text-amber-300 ml-2"></i> أن يعرف اسم الشركة كـ
-                        <strong class="text-amber-200">مركز للجودة والابتكار بطابع عربي أصيل</strong>.
-                    </p>
-                    <p class="reveal-text"><i class="fas fa-check-circle text-amber-300 ml-2"></i> أن تكون الشركة ضمن
-                        <strong class="text-amber-200">أكبر 12 شركة في مجالها</strong> على المستوى العالمي.
-                    </p>
+                    {{-- These three contain inline <strong> markup, so editable text is rendered raw with {!! !!} --}}
+                    <p class="reveal-text"><i class="fas fa-check-circle text-amber-300 ml-2"></i> {!! $page->t('big_vision_p1', 'أن تكون الشركة <strong class="text-amber-200">علامة عالمية رائدة</strong> في تصنيع منتجاتها.') !!}</p>
+                    <p class="reveal-text"><i class="fas fa-check-circle text-amber-300 ml-2"></i> {!! $page->t('big_vision_p2', 'أن يعرف اسم الشركة كـ <strong class="text-amber-200">مركز للجودة والابتكار بطابع عربي أصيل</strong>.') !!}</p>
+                    <p class="reveal-text"><i class="fas fa-check-circle text-amber-300 ml-2"></i> {!! $page->t('big_vision_p3', 'أن تكون الشركة ضمن <strong class="text-amber-200">أكبر 12 شركة في مجالها</strong> على المستوى العالمي.') !!}</p>
                 </div>
                 <div class="mt-8 flex flex-wrap justify-center gap-4 text-amber-200 text-sm reveal-text">
                     <span class="bg-black/30 px-4 py-2 rounded-full"><i class="fas fa-chart-line"></i> {{ $page->t('big_vision_tag_1', 'توسع عالمي') }}</span>

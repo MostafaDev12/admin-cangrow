@@ -77,12 +77,12 @@
                                                  <i class="las la-user fs-6"></i>
                                              </span>
                                              
-
-                                                 <select name="sign" class="form-control" required="">
+                                             <input name="sign" type="text" class="form-control border-0 ps-2" placeholder="{{ __('write language sign') }}" required="">   
+                                                 {{-- <select name="sign" class="form-control" required="">
                                                     <option value="en">{{ __('en') }}</option>
                                                     <option value="ar">{{ __('ar') }}</option>
                                                     <option value="fr">{{ __('fr') }}</option>
-                                                  </select>
+                                                  </select> --}}
                                          </div>
                                      </div>
                                       <div class="mb-4">

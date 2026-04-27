@@ -41,77 +41,69 @@
                                             
                                       
                                          <div class="row" style="">
-                                                
+
                                           <div class="col-lg-3"></div>
                                           <div class="col-lg-6">
-                                              <!-- Checkbox Input -->
+                                              {{-- Bekdash front-site social links. Each row is just a URL/number
+                                                   input — no enable/disable switch. The front hides any icon whose
+                                                   value is empty, so leaving a field blank turns that icon off. --}}
+
                                               <div class="input-group">
-                                                  <div class="input-group-text ">
-                                                    <div class="form-check form-switch form-switch-secondary" style="padding-top: 4px;">
-                                                          <input class="form-check-input mt-0" name="f_status" {{$data->f_status==1?"checked":""}} type="checkbox" value="1" aria-label="Checkbox for following text input">
-                                                  
-                                                    </div>
-                                                  </div>
-                                                  <input type="text" class="form-control" name="facebook" id="facebook"  value="{{ $data->facebook }}" aria-label="write link here">
+                                                  <input type="text" class="form-control" name="facebook" id="facebook" value="{{ $data->facebook }}" placeholder="https://facebook.com/..." aria-label="write link here">
                                                   <label class="input-group-text" for="facebook">Facebook</label>
-                                              </div> 
+                                              </div>
                                               <br>
 
-
-                                              <!-- Checkbox Input -->
                                               <div class="input-group">
-                                                  <div class="input-group-text">
-                                                    <div class="form-check form-switch form-switch-secondary" style="padding-top: 4px;">
-                                                      <input class="form-check-input mt-0" name="t_status" {{$data->t_status==1?"checked":""}} type="checkbox" value="1" aria-label="Checkbox for following text input">
-                                                  </div>
-                                                  </div>
-                                                  <input type="text" class="form-control" name="twitter" id="twitter" value="{{ $data->twitter }}" aria-label="write link here">
-                                                  <label class="input-group-text" for="twitter">Instagram</label>
-                                              </div> 
+                                                  <input type="text" class="form-control" name="instagram" id="instagram" value="{{ $data->instagram }}" placeholder="https://instagram.com/..." aria-label="write link here">
+                                                  <label class="input-group-text" for="instagram">Instagram</label>
+                                              </div>
                                               <br>
 
-
-                                              <!-- Checkbox Input -->
                                               <div class="input-group">
-                                                  <div class="input-group-text">
-                                                    <div class="form-check form-switch form-switch-secondary" style="padding-top: 4px;">
-                                                      <input class="form-check-input mt-0" name="ystatus" {{$data->ystatus==1?"checked":""}} type="checkbox" value="1" aria-label="Checkbox for following text input">
-                                                  </div>
-                                                  </div>
-                                                  <input type="text" class="form-control" name="youtube" id="youtube" value="{{ $data->youtube }}"  aria-label="write link here">
-                                                  <label class="input-group-text" for="youtube">Youtube</label>
-                                              </div> 
+                                                  <input type="text" class="form-control" name="x_url" id="x_url" value="{{ $data->x_url }}" placeholder="https://x.com/..." aria-label="write link here">
+                                                  <label class="input-group-text" for="x_url">X / Twitter</label>
+                                              </div>
                                               <br>
 
-
-                                              <!-- Checkbox Input -->
                                               <div class="input-group">
-                                                  <div class="input-group-text">
-                                                    <div class="form-check form-switch form-switch-secondary" style="padding-top: 4px;">
-                                                      <input class="form-check-input mt-0" name="l_status" {{$data->l_status==1?"checked":""}} type="checkbox" value="1" aria-label="Checkbox for following text input">
-                                                  </div>
-                                                  </div>
-                                                  <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{ $data->linkedin }}"  aria-label="write link here">
-                                                  <label class="input-group-text" for="linkedin">Linkedin</label>
-                                              </div> 
+                                                  <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{ $data->linkedin }}" placeholder="https://linkedin.com/..." aria-label="write link here">
+                                                  <label class="input-group-text" for="linkedin">LinkedIn</label>
+                                              </div>
                                               <br>
 
-                                              <!-- Checkbox Input -->
                                               <div class="input-group">
-                                                  <div class="input-group-text">
-                                                    <div class="form-check form-switch form-switch-secondary" style="padding-top: 4px;">
-                                                      <input class="form-check-input mt-0" name="d_status" {{$data->d_status==1?"checked":""}}  type="checkbox" value="1" aria-label="Checkbox for following text input">
-                                                  </div>
-                                                  </div>
-                                                  <input type="text" class="form-control" name="dribble" id="dribble" value="{{ $data->dribble }}"  aria-label="write link here">
-                                                  <label class="input-group-text" for="dribble">Tiktok</label>
-                                              </div> 
+                                                  {{-- Accepts a full URL (https://wa.me/...) or just the phone number
+                                                       (e.g. 201270297000). The front auto-builds wa.me/<digits> when
+                                                       only a number is entered. --}}
+                                                  <input type="text" class="form-control" name="whatsapp" id="whatsapp" value="{{ $data->whatsapp }}" placeholder="201270297000 or https://wa.me/..." aria-label="write link or number here">
+                                                  <label class="input-group-text" for="whatsapp">WhatsApp</label>
+                                              </div>
+                                              <br>
+
+                                              <div class="input-group">
+                                                  <input type="text" class="form-control" name="snapchat" id="snapchat" value="{{ $data->snapchat }}" placeholder="https://snapchat.com/..." aria-label="write link here">
+                                                  <label class="input-group-text" for="snapchat">Snapchat</label>
+                                              </div>
+                                              <br>
+
+                                              <div class="input-group">
+                                                  <input type="text" class="form-control" name="tiktok" id="tiktok" value="{{ $data->tiktok }}" placeholder="https://tiktok.com/@..." aria-label="write link here">
+                                                  <label class="input-group-text" for="tiktok">TikTok</label>
+                                              </div>
+                                              <br>
+
+                                              <div class="input-group">
+                                                  {{-- Used as href="tel:<value>" — keep it dialable (digits, +, spaces). --}}
+                                                  <input type="text" class="form-control" name="phone" id="phone" value="{{ $data->phone }}" placeholder="01270297000" aria-label="write phone number here">
+                                                  <label class="input-group-text" for="phone">Phone (call)</label>
+                                              </div>
                                               <br>
 
 
                                           </div>
-           
-          
+
+
                                       </div><!--end row-->
                                       
         

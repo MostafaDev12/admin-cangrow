@@ -47,13 +47,9 @@
                 </div>
                 <div class="p-6">
                     <ul class="space-y-3 custom-list">
-                        <li class="reveal-text"><i class="fas fa-check-circle text-amber-400 text-lg"></i> <span>التزام
-                                الشركة بجميع قوانين التشغيل والإنتاج والاستيراد والتصدير بأوراق صادرة عن هيئات حكومية
-                                (إنشاء شركة / علامة تجارية / كافة التراخيص).</span></li>
-                        <li class="reveal-text"><i class="fas fa-file-signature text-amber-400 text-lg"></i>
-                            <span>اعتماد الشركة على عقود موثقة حكومياً بناءً على مضمون العقد.</span></li>
-                        <li class="reveal-text"><i class="fas fa-flask text-amber-400 text-lg"></i> <span>منتجات من
-                                مخابر معتمدة لضمان الأمن الغذائي وملتزمة بتحاليل دورية.</span></li>
+                        <li class="reveal-text"><i class="fas fa-check-circle text-amber-400 text-lg"></i> <span>{{ $page->t('legal_item_1', 'التزام الشركة بجميع قوانين التشغيل والإنتاج والاستيراد والتصدير بأوراق صادرة عن هيئات حكومية (إنشاء شركة / علامة تجارية / كافة التراخيص).') }}</span></li>
+                        <li class="reveal-text"><i class="fas fa-file-signature text-amber-400 text-lg"></i> <span>{{ $page->t('legal_item_2', 'اعتماد الشركة على عقود موثقة حكومياً بناءً على مضمون العقد.') }}</span></li>
+                        <li class="reveal-text"><i class="fas fa-flask text-amber-400 text-lg"></i> <span>{{ $page->t('legal_item_3', 'منتجات من مخابر معتمدة لضمان الأمن الغذائي وملتزمة بتحاليل دورية.') }}</span></li>
                     </ul>
                 </div>
             </div>
@@ -67,16 +63,11 @@
                 </div>
                 <div class="p-6">
                     <ul class="space-y-3 custom-list">
-                        <li class="reveal-text"><i class="fas fa-chart-pie"></i> <span>فصل واضح بين التكاليف المباشرة
-                                والغير مباشرة.</span></li>
-                        <li class="reveal-text"><i class="fas fa-chart-simple"></i> <span>اعتماد الشركة على تقارير يومية
-                                داخلية وخارجية لضبط حركة العمل كاملاً.</span></li>
-                        <li class="reveal-text"><i class="fas fa-coins"></i> <span>موازنة سنوية تضمن توقعات المبيعات
-                                وتكلفة الإنتاج والمصاريف.</span></li>
-                        <li class="reveal-text"><i class="fas fa-tags"></i> <span>استخدام استراتيجيات خصومات حجم / عروض
-                                موسمية / تسعير احترافي بالأسواق الجديدة.</span></li>
-                        <li class="reveal-text"><i class="fas fa-laptop-code"></i> <span>اعتماد برنامج حسابي احترافي
-                                شامل تحركات الشركة.</span></li>
+                        <li class="reveal-text"><i class="fas fa-chart-pie"></i> <span>{{ $page->t('financial_item_1', 'فصل واضح بين التكاليف المباشرة والغير مباشرة.') }}</span></li>
+                        <li class="reveal-text"><i class="fas fa-chart-simple"></i> <span>{{ $page->t('financial_item_2', 'اعتماد الشركة على تقارير يومية داخلية وخارجية لضبط حركة العمل كاملاً.') }}</span></li>
+                        <li class="reveal-text"><i class="fas fa-coins"></i> <span>{{ $page->t('financial_item_3', 'موازنة سنوية تضمن توقعات المبيعات وتكلفة الإنتاج والمصاريف.') }}</span></li>
+                        <li class="reveal-text"><i class="fas fa-tags"></i> <span>{{ $page->t('financial_item_4', 'استخدام استراتيجيات خصومات حجم / عروض موسمية / تسعير احترافي بالأسواق الجديدة.') }}</span></li>
+                        <li class="reveal-text"><i class="fas fa-laptop-code"></i> <span>{{ $page->t('financial_item_5', 'اعتماد برنامج حسابي احترافي شامل تحركات الشركة.') }}</span></li>
                     </ul>
                 </div>
             </div>
@@ -94,14 +85,10 @@
                     </div>
                     <p class="font-semibold text-amber-400 mb-3">{{ $page->t('smart_pricing_subtitle', 'مبني على القيمة والثبات') }}</p>
                     <ul class="space-y-2 custom-list">
-                        <li class="reveal-text"><i class="fas fa-chart-line"></i> المدى الأولي: إنتاج هادئ وبناء أساس
-                            متين.</li>
-                        <li class="reveal-text"><i class="fas fa-trophy"></i> المدى المتوسط والبعيد: بناء سمعة قوية
-                            وزيادة الطلب لوجود الثقة.</li>
-                        <li class="reveal-text"><i class="fas fa-gem"></i> يعتمد على الجودة، طريقة التقديم، ومكان تواجد
-                            المنتج بالسوق.</li>
-                        <li class="reveal-text"><i class="fas fa-chart-simple"></i> استراتيجية مستهدفة تحافظ على نسبة
-                            الربح واستمرارية التطوير لزيادة الانتشار.</li>
+                        <li class="reveal-text"><i class="fas fa-chart-line"></i> {{ $page->t('smart_pricing_item_1', 'المدى الأولي: إنتاج هادئ وبناء أساس متين.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-trophy"></i> {{ $page->t('smart_pricing_item_2', 'المدى المتوسط والبعيد: بناء سمعة قوية وزيادة الطلب لوجود الثقة.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-gem"></i> {{ $page->t('smart_pricing_item_3', 'يعتمد على الجودة، طريقة التقديم، ومكان تواجد المنتج بالسوق.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-chart-simple"></i> {{ $page->t('smart_pricing_item_4', 'استراتيجية مستهدفة تحافظ على نسبة الربح واستمرارية التطوير لزيادة الانتشار.') }}</li>
                     </ul>
                 </div>
                 <!-- price burning policy -->
@@ -111,14 +98,10 @@
                         <h2 class="text-2xl font-bold text-white">{{ $page->t('price_burning_title', 'سياسة حرق الأسعار') }}</h2>
                     </div>
                     <ul class="space-y-2 custom-list">
-                        <li class="reveal-text"><i class="fas fa-chart-line"></i> يعطي مبيعات سريعة على المدى الأولي لكن
-                            بأضرار كبيرة على المدى المتوسط والبعيد.</li>
-                        <li class="reveal-text"><i class="fas fa-hand-holding-usd"></i> مبني على كسر المنافسين بأي شكل
-                            على حساب الجودة وعدم المقدرة على الاستمرارية.</li>
-                        <li class="reveal-text"><i class="fas fa-battle"></i> يشعل حرب تنافسية وعدم التزام بالمصداقية مع
-                            الزبون → تراجع وسوء السمعة.</li>
-                        <li class="reveal-text"><i class="fas fa-thumbs-down"></i> يضر بالقدرة على التطوير وثبات الجودة.
-                        </li>
+                        <li class="reveal-text"><i class="fas fa-chart-line"></i> {{ $page->t('price_burning_item_1', 'يعطي مبيعات سريعة على المدى الأولي لكن بأضرار كبيرة على المدى المتوسط والبعيد.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-hand-holding-usd"></i> {{ $page->t('price_burning_item_2', 'مبني على كسر المنافسين بأي شكل على حساب الجودة وعدم المقدرة على الاستمرارية.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-battle"></i> {{ $page->t('price_burning_item_3', 'يشعل حرب تنافسية وعدم التزام بالمصداقية مع الزبون → تراجع وسوء السمعة.') }}</li>
+                        <li class="reveal-text"><i class="fas fa-thumbs-down"></i> {{ $page->t('price_burning_item_4', 'يضر بالقدرة على التطوير وثبات الجودة.') }}</li>
                     </ul>
                 </div>
             </div>
@@ -136,26 +119,17 @@
             </div>
             <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                 <ul class="space-y-3 custom-list">
-                    <li class="reveal-text"><i class="fas fa-chalkboard-user"></i> تدريب الموارد البشرية بشكل مناسب على
-                        كافة الأصعدة وعدم وجود صلة قرابة بينهم.</li>
-                    <li class="reveal-text"><i class="fas fa-users"></i> عدم التمييز بين أعضاء فريق العمل وتقبل الأخطاء
-                        في المرحلة الأولى.</li>
-                    <li class="reveal-text"><i class="fas fa-user-check"></i> توظيف الشخص الناجح في المكان المناسب
-                        لتوفير مناخ مناسب وتكريمه عند تقدمه.</li>
-                    <li class="reveal-text"><i class="fas fa-chart-line"></i> دراسة السوق لضمان جودة المنتج عبر عقود
-                        محددة بعد تحديد سياسة المشتريات من شركات توريد المواد الأولية على المدى الطويل.</li>
-                    <li class="reveal-text"><i class="fas fa-dollar-sign"></i> مراجعة دورية لأسعار السوق للمواد الأولية
-                        لمعرفة الجديد منها.</li>
+                    <li class="reveal-text"><i class="fas fa-chalkboard-user"></i> {{ $page->t('ops_item_1', 'تدريب الموارد البشرية بشكل مناسب على كافة الأصعدة وعدم وجود صلة قرابة بينهم.') }}</li>
+                    <li class="reveal-text"><i class="fas fa-users"></i> {{ $page->t('ops_item_2', 'عدم التمييز بين أعضاء فريق العمل وتقبل الأخطاء في المرحلة الأولى.') }}</li>
+                    <li class="reveal-text"><i class="fas fa-user-check"></i> {{ $page->t('ops_item_3', 'توظيف الشخص الناجح في المكان المناسب لتوفير مناخ مناسب وتكريمه عند تقدمه.') }}</li>
+                    <li class="reveal-text"><i class="fas fa-chart-line"></i> {{ $page->t('ops_item_4', 'دراسة السوق لضمان جودة المنتج عبر عقود محددة بعد تحديد سياسة المشتريات من شركات توريد المواد الأولية على المدى الطويل.') }}</li>
+                    <li class="reveal-text"><i class="fas fa-dollar-sign"></i> {{ $page->t('ops_item_5', 'مراجعة دورية لأسعار السوق للمواد الأولية لمعرفة الجديد منها.') }}</li>
                 </ul>
                 <ul class="space-y-3 custom-list">
-                    <li class="reveal-text"><i class="fas fa-tools"></i> خطة صيانة دورية للمكان والآلات مع رفع تقارير
-                        بها.</li>
-                    <li class="reveal-text"><i class="fas fa-qrcode"></i> تنطبق سياسة التتبع لمعرفة مصدر كل دفعة إنتاج.
-                    </li>
-                    <li class="reveal-text"><i class="fas fa-calendar-alt"></i> تحديد خطة تشغيل فريق العمل ضمن برنامج
-                        مسبق للإنتاج.</li>
-                    <li class="reveal-text"><i class="fas fa-truck-fast"></i> التوزيع اللوجستيك للشركة لوجود نقل مجهز
-                        (تبريد وتجميد مدعم بنظام GPS).</li>
+                    <li class="reveal-text"><i class="fas fa-tools"></i> {{ $page->t('ops_item_6', 'خطة صيانة دورية للمكان والآلات مع رفع تقارير بها.') }}</li>
+                    <li class="reveal-text"><i class="fas fa-qrcode"></i> {{ $page->t('ops_item_7', 'تنطبق سياسة التتبع لمعرفة مصدر كل دفعة إنتاج.') }}</li>
+                    <li class="reveal-text"><i class="fas fa-calendar-alt"></i> {{ $page->t('ops_item_8', 'تحديد خطة تشغيل فريق العمل ضمن برنامج مسبق للإنتاج.') }}</li>
+                    <li class="reveal-text"><i class="fas fa-truck-fast"></i> {{ $page->t('ops_item_9', 'التوزيع اللوجستيك للشركة لوجود نقل مجهز (تبريد وتجميد مدعم بنظام GPS).') }}</li>
                 </ul>
             </div>
         </div>
@@ -169,23 +143,16 @@
             </div>
             <div class="p-6 md:p-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="reveal-text"><i class="fas fa-chart-line text-amber-400 text-xl ml-2"></i> دراسة الأسواق
-                        المستهدفة باستمرار.</div>
-                    <div class="reveal-text"><i class="fas fa-globe"></i> توسيع جغرافي من خلال (فرانشايز، وكيل، وكلاء).
-                    </div>
-                    <div class="reveal-text"><i class="fas fa-flask"></i> سياسة البحث والتطوير.</div>
-                    <div class="reveal-text"><i class="fas fa-store"></i> التحالف مع سلاسل السوبر ماركت.</div>
-                    <div class="reveal-text"><i class="fas fa-shipping-fast"></i> التعاون مع شركات الشحن لتقليل تكلفة
-                        الشحن.</div>
-                    <div class="reveal-text"><i class="fas fa-calendar-week"></i> تطوير المنتجات بشكل موسمي.</div>
-                    <div class="reveal-text"><i class="fab fa-instagram"></i> استخدام المنصات المناسبة للبلد المناسبة
-                        بالسوشيال ميديا مع توفير بلوجر.</div>
-                    <div class="reveal-text"><i class="fas fa-hand-sparkles"></i> حملات تذوق ومحاولة دعم الجمعيات
-                        الخيرية إن أمكن واعلانات طرقية.</div>
-                    <div class="reveal-text"><i class="fas fa-percent"></i> الابتعاد عن الخصومات النقدية وتكون خصومات من
-                        المنتجات.</div>
-                    <div class="reveal-text"><i class="fas fa-utensils"></i> تواجد بالمعارض الغذائية لزيادة الانتشار
-                        وتعريف المجتمع على المنتجات.</div>
+                    <div class="reveal-text"><i class="fas fa-chart-line text-amber-400 text-xl ml-2"></i> {{ $page->t('market_item_1', 'دراسة الأسواق المستهدفة باستمرار.') }}</div>
+                    <div class="reveal-text"><i class="fas fa-globe"></i> {{ $page->t('market_item_2', 'توسيع جغرافي من خلال (فرانشايز، وكيل، وكلاء).') }}</div>
+                    <div class="reveal-text"><i class="fas fa-flask"></i> {{ $page->t('market_item_3', 'سياسة البحث والتطوير.') }}</div>
+                    <div class="reveal-text"><i class="fas fa-store"></i> {{ $page->t('market_item_4', 'التحالف مع سلاسل السوبر ماركت.') }}</div>
+                    <div class="reveal-text"><i class="fas fa-shipping-fast"></i> {{ $page->t('market_item_5', 'التعاون مع شركات الشحن لتقليل تكلفة الشحن.') }}</div>
+                    <div class="reveal-text"><i class="fas fa-calendar-week"></i> {{ $page->t('market_item_6', 'تطوير المنتجات بشكل موسمي.') }}</div>
+                    <div class="reveal-text"><i class="fab fa-instagram"></i> {{ $page->t('market_item_7', 'استخدام المنصات المناسبة للبلد المناسبة بالسوشيال ميديا مع توفير بلوجر.') }}</div>
+                    <div class="reveal-text"><i class="fas fa-hand-sparkles"></i> {{ $page->t('market_item_8', 'حملات تذوق ومحاولة دعم الجمعيات الخيرية إن أمكن واعلانات طرقية.') }}</div>
+                    <div class="reveal-text"><i class="fas fa-percent"></i> {{ $page->t('market_item_9', 'الابتعاد عن الخصومات النقدية وتكون خصومات من المنتجات.') }}</div>
+                    <div class="reveal-text"><i class="fas fa-utensils"></i> {{ $page->t('market_item_10', 'تواجد بالمعارض الغذائية لزيادة الانتشار وتعريف المجتمع على المنتجات.') }}</div>
                 </div>
                 <div class="mt-8 p-4 bg-amber-950/40 rounded-xl flex items-start gap-3 reveal-text">
                     <i class="fas fa-bullhorn text-2xl text-amber-700"></i>

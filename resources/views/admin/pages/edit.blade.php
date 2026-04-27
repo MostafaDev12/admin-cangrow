@@ -190,5 +190,5 @@
     </form>
 @endsection
 
-@section('scripts')
+@section('script')
 @endsection

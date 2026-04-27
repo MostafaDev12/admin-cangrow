@@ -18,7 +18,7 @@
 
                 @if (session('contact_success'))
                     <div class="mb-6 px-4 py-3 border border-green-600/40 bg-green-900/20 text-green-200 text-sm">
-                        {{ session('contact_success') }}
+                        {{ $page->t('form_success_message', 'تم إرسال رسالتك بنجاح. سنتواصل معك قريباً.') }}
                     </div>
                 @endif
 
@@ -101,16 +101,27 @@
 
                     <div class="pt-8">
                         <h3 class="text-xl font-bold mb-6">{{ $page->t('info_social_label', 'تابعنا على') }}</h3>
+                        @php
+                            $contactFb = $globals->t('social_facebook_url');
+                            $contactIg = $globals->t('social_instagram_url');
+                            $contactX  = $globals->t('social_x_url');
+                        @endphp
                         <div class="flex gap-4">
-                            <a href="{{ $globals->t('social_facebook_url', '#') }}" class="w-12 h-12 border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                            <a href="{{ $globals->t('social_instagram_url', '#') }}" class="w-12 h-12 border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-                            <a href="{{ $globals->t('social_x_url', '#') }}" class="w-12 h-12 border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
+                            @if($contactFb)
+                                <a href="{{ $contactFb }}" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            @endif
+                            @if($contactIg)
+                                <a href="{{ $contactIg }}" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            @endif
+                            @if($contactX)
+                                <a href="{{ $contactX }}" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                                    <i class="fa-brands fa-x-twitter"></i>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ use App\Models\Page;
 use App\Models\PageImage;
 use App\Models\PageTranslation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Yajra\DataTables\DataTables;
 
 class PageController extends Controller
@@ -141,6 +142,14 @@ class PageController extends Controller
                     ['path' => $path]
                 );
             }
+        }
+
+        // Invalidate frontend cache for this page across every language so
+        // edits surface immediately instead of waiting for the 10-min TTL.
+        // Cache keys are written by FrontPagesController::show() as
+        // 'pages.show.<slug>.<lang_sign>'.
+        foreach (Language::pluck('sign') as $sign) {
+            Cache::forget('pages.show.' . $page->slug . '.' . $sign);
         }
 
         return redirect()

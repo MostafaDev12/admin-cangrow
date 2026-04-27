@@ -77,12 +77,13 @@
                                              <span class="input-group-text bg-transparent px-6 border-0" id="basic-addon1">
                                                  <i class="las la-user fs-6"></i>
                                              </span>
-                                              
-                                                 <select name="sign" class="form-control" required="">
+                                               <input name="sign" type="text" class="form-control border-0 ps-2"  value="{{ $langg->sign }}" placeholder="{{ __('write language sign') }}" required="">   
+                                             
+                                                 {{-- <select name="sign" class="form-control" required="">
                                                     <option value="en" {{ $langg->sign == 'en' ? 'selected': ''}}>{{ __('en') }}</option>
                                                     <option value="ar" {{ $langg->sign == 'ar' ? 'selected': ''}}>{{ __('ar') }}</option>
                                                     <option value="fr" {{ $langg->sign == 'fr' ? 'selected': ''}}>{{ __('fr') }}</option>
-                                                  </select>
+                                                  </select> --}}
                                          </div>
                                      </div>
                                       <div class="mb-4">
