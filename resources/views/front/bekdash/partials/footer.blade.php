@@ -33,7 +33,7 @@
 
                 </div>
             </div>
-
+@php($navLang = session('sign'))
             @php
                 $footerFb = $globals->t('social_facebook_url');
                 $footerIg = $globals->t('social_instagram_url');
@@ -58,7 +58,7 @@
                 @endif
             </div>
 
-            <a href="#"
+            <a href="{{ route('front.bekdash.page', ['lang' => $navLang, 'slug' => 'contact']) }}"
                 class="px-10 py-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 reveal-text">
                 {{ $globals->t('contact_cta', 'تواصل معنا') }}
             </a>
