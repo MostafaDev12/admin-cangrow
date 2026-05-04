@@ -13,11 +13,11 @@
         </div>
         <div class="absolute inset-0 bg-black/30"></div>
     </main>
-
+  @php($navLang = session('sign'))
     <section id="about"
         class="group relative w-full overflow-hidden h-[60vh] flex items-center justify-center bg-stone-900 z-10 gsap-item story-bg"
         data-animation="up">
-        <a href="#">
+        <a href="{{ route('front.bekdash.page', ['lang' => $navLang, 'slug' => 'about']) }}">
 
             <div class="absolute inset-0">
                 <img src="{{ $page->image('about_image', asset('front/byun_bekdash2/asset/Main-sate-backgrounds/story.jpeg')) }}"
@@ -84,7 +84,7 @@
     <section
         class="group relative w-full overflow-hidden w-full group flex items-center justify-center bg-black overflow-hidden border-y border-white/10 gsap-item"
         data-animation="right" style="animation-delay: 0.4s;">
-        <a href="#">
+        <a href="{{ route('front.bekdash.page', ['lang' => $navLang, 'slug' => 'principles']) }}">
 
             <!-- <div class="absolute inset-0 border border-gold/30 rounded-sm z-0"></div> -->
 
@@ -102,7 +102,7 @@
     <section
         class="group relative w-full overflow-hidden w-full group flex items-center justify-center bg-black overflow-hidden border-y border-white/10 gsap-item"
         data-animation="up" style="animation-delay: 0.4s;">
-        <a href="#">
+        <a href="{{ route('front.bekdash.page', ['lang' => $navLang, 'slug' => 'goals']) }}">
 
             <!-- <div class="absolute inset-0 border border-gold/30 rounded-sm z-0"></div> -->
 
