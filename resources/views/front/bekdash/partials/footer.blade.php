@@ -33,8 +33,9 @@
 
                 </div>
             </div>
-@php($navLang = session('sign'))
+ 
             @php
+                 $navLang = session('sign');
                 $footerFb = $globals->t('social_facebook_url');
                 $footerIg = $globals->t('social_instagram_url');
                 $footerX  = $globals->t('social_x_url');
