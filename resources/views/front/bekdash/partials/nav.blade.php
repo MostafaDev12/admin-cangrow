@@ -11,7 +11,7 @@
                     <!-- Language button -->
                     <div class="cursor-pointer relative z-50">
                         <button id="lang-btn" type="button"
-                            class="gsap-item text-sm sm:text-base hover:text-stone-300 transition-colors relative z-50">{{ $globals->t('nav_lang_label', 'اللغة') }}</button>
+                            class="gsap-item text-sm sm:text-base hover:text-stone-300 transition-colors relative z-50">{{ strtoupper(session('sign', 'ar')) }}</button>
 
                         @isset($languages)
                             @if($languages->count())
