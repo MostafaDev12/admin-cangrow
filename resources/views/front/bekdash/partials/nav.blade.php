@@ -21,7 +21,7 @@
                                         <li>
                                             <a href="{{ route('change-lang.index', $language->id) }}"
                                                 class="block px-4 py-2 hover:bg-white/10 whitespace-nowrap">
-                                                {{ $language->language }}
+                                                {{ $language->sign }}
                                             </a>
                                         </li>
                                     @endforeach

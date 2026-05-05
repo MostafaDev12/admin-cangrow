@@ -30,7 +30,17 @@
                         </a>
                         <span class="text-white text-lg" dir="ltr">{{ $globals->t('contact_phone_2', '01070297000') }}</span>
                     </div>
+@php($phones = explode(',', $gs->phones))
 
+         @foreach ($phones as $phone)
+                    <div class="flex items-center gap-3">
+                        <a href="tel:{{ $phone }}"
+                            class="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                        <span class="text-white text-lg" dir="ltr">{{ $phone }}</span>
+                    </div>
+        @endforeach
                 </div>
             </div>
  

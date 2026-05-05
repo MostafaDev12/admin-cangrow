@@ -85,6 +85,10 @@
                             <div class="space-y-1">
                                 <p class="text-stone-400 text-lg" dir="ltr">{{ $page->t('info_phone_1', '01270297000') }}</p>
                                 <p class="text-stone-400 text-lg" dir="ltr">{{ $page->t('info_phone_2', '01070297000') }}</p>
+                                @php($phones = explode(',', $gs->phones))
+                                @foreach ($phones as $phone)
+                                    <p class="text-stone-400 text-lg" dir="ltr">{{ $phone }}</p>
+                                @endforeach
                             </div>
                         </div>
                     </div>
