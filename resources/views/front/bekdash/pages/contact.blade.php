@@ -75,7 +75,7 @@
                             <p class="text-stone-400 text-lg">{{ $page->t('info_address_value', 'مصر، القاهرة، مدينة العبور') }}</p>
                         </div>
                     </div>
-
+  @php($phones = explode(',', $gs->phones))
                     <div class="flex items-start gap-6">
                         <div class="w-14 h-14 bg-amber-600/10 border border-amber-600/30 flex items-center justify-center shrink-0">
                             <i class="fa-solid fa-phone text-2xl text-amber-500"></i>
@@ -85,7 +85,7 @@
                             <div class="space-y-1">
                                 <p class="text-stone-400 text-lg" dir="ltr">{{ $page->t('info_phone_1', '01270297000') }}</p>
                                 <p class="text-stone-400 text-lg" dir="ltr">{{ $page->t('info_phone_2', '01070297000') }}</p>
-                                @php($phones = explode(',', $gs->phones))
+                              
                                 @foreach ($phones as $phone)
                                     <p class="text-stone-400 text-lg" dir="ltr">{{ $phone }}</p>
                                 @endforeach

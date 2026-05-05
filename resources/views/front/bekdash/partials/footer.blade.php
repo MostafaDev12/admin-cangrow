@@ -12,6 +12,7 @@
             <div class="mb-10 text-stone-200 text-lg max-w-md mx-auto reveal-text w-full px-4">
                 <p>{{ $globals->t('contact_address', 'مصر القاهرة مدينه العبور') }}</p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 my-4 reveal-text">
+@php($phones = explode(',', $gs->phones))
 
                     <!-- Phone 1 -->
                     <div class="flex items-center gap-3">
@@ -30,7 +31,6 @@
                         </a>
                         <span class="text-white text-lg" dir="ltr">{{ $globals->t('contact_phone_2', '01070297000') }}</span>
                     </div>
-@php($phones = explode(',', $gs->phones))
 
          @foreach ($phones as $phone)
                     <div class="flex items-center gap-3">
