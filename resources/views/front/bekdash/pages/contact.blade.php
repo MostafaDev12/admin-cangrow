@@ -75,7 +75,7 @@
                             <p class="text-stone-400 text-lg">{{ $page->t('info_address_value', 'مصر، القاهرة، مدينة العبور') }}</p>
                         </div>
                     </div>
-  @php($phones = explode(',', $gs->phones))
+  @php $phones = explode(',', $gs->phones); @endphp
                     <div class="flex items-start gap-6">
                         <div class="w-14 h-14 bg-amber-600/10 border border-amber-600/30 flex items-center justify-center shrink-0">
                             <i class="fa-solid fa-phone text-2xl text-amber-500"></i>

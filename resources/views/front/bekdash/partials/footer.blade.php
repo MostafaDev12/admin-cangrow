@@ -12,7 +12,7 @@
             <div class="mb-10 text-stone-200 text-lg max-w-md mx-auto reveal-text w-full px-4">
                 <p>{{ $globals->t('contact_address', 'مصر القاهرة مدينه العبور') }}</p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 my-4 reveal-text">
-@php($phones = explode(',', $gs->phones))
+@php $phones = explode(',', $gs->phones); @endphp
 
                     <!-- Phone 1 -->
                     <div class="flex items-center gap-3">
