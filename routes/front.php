@@ -104,6 +104,9 @@ Route::get('/medical-tourism', [HomeController::class, 'medicalTourism'])->name(
   });
   Route::post('/contact-submit', [HomeController::class, 'contactemail'])->name('front.contact.submit');
 
+  Route::post('/booking/store', [HomeController::class, 'bookingStore'])->name('booking.store');
+  Route::get('/booking-thanks', [HomeController::class, 'bookingThanks'])->name('booking-thanks.index');
+
   Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
 
 

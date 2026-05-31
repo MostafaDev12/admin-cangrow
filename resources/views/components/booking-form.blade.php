@@ -24,94 +24,94 @@
     <div class="{{ $cardClass }}">
 
         <h3 class="text-center text-2xl font-extrabold text-[#0b4f8f] mb-2">
-            احجز استشارتك الآن
+            {{ __('احجز استشارتك الآن') }}
         </h3>
 
         <p class="text-center text-gray-500 text-sm mb-6">
-            املأ البيانات وسيتم التواصل معك في أقرب وقت
+            {{ __('املأ البيانات وسيتم التواصل معك في أقرب وقت') }}
         </p>
 
         <form action="{{ url('/booking/store') }}" method="POST" class="{{ $formClass }}">
             @csrf
 
             <div>
-                <label class="block text-sm font-bold text-gray-700 mb-2">الاسم</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2">{{ __('الاسم') }}</label>
                 <input
                     type="text"
                     name="name"
                     required
                     class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#1670d8]"
-                    placeholder="اكتب اسمك">
+                    placeholder="{{ __('اكتب اسمك') }}">
             </div>
 
             <div>
-                <label class="block text-sm font-bold text-gray-700 mb-2">رقم الهاتف</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2">{{ __('رقم الهاتف') }}</label>
                 <input
                     type="text"
                     name="phone"
                     required
                     class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#1670d8]"
-                    placeholder="رقم الهاتف">
+                    placeholder="{{ __('رقم الهاتف') }}">
             </div>
 
             <div>
-                <label class="block text-sm font-bold text-gray-700 mb-2">المدينة</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2">{{ __('المدينة') }}</label>
                 <input
                     type="text"
                     name="city"
                     class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#1670d8]"
-                    placeholder="اكتب المدينة">
+                    placeholder="{{ __('اكتب المدينة') }}">
             </div>
 
             <div>
-                <label class="block text-sm font-bold text-gray-700 mb-2">الخدمة المطلوبة</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2">{{ __('الخدمة المطلوبة') }}</label>
 
                 <select
                     name="service"
                     class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#1670d8] bg-white">
 
                     @if(isset($service) && isset($sign))
-                        <option value="{{ $service->{'title_' . $sign} ?? 'استشارة عامة' }}">
-                            {{ $service->{'title_' . $sign} ?? 'استشارة عامة' }}
+                        <option value="{{ $service->{'title_' . $sign} ?? __('استشارة عامة') }}">
+                            {{ $service->{'title_' . $sign} ?? __('استشارة عامة') }}
                         </option>
                     @else
-                        <option value="استشارة عامة">استشارة عامة</option>
+                        <option value="{{ __('استشارة عامة') }}">{{ __('استشارة عامة') }}</option>
                     @endif
 
-                    <option value="زراعة الأسنان">زراعة الأسنان</option>
-                    <option value="تركيبات الأسنان">تركيبات الأسنان</option>
-                    <option value="ابتسامة هوليود">ابتسامة هوليود</option>
-                    <option value="تبييض الأسنان">تبييض الأسنان</option>
-                    <option value="تقويم الأسنان">تقويم الأسنان</option>
-                    <option value="علاج اللثة">علاج اللثة</option>
-                    <option value="علاج الجذور">علاج الجذور</option>
-                    <option value="تنظيف الأسنان">تنظيف الأسنان</option>
-                    <option value="حشو الأسنان">حشو الأسنان</option>
-                    <option value="خلع الأسنان">خلع الأسنان</option>
+                    <option value="{{ __('زراعة الأسنان') }}">{{ __('زراعة الأسنان') }}</option>
+                    <option value="{{ __('تركيبات الأسنان') }}">{{ __('تركيبات الأسنان') }}</option>
+                    <option value="{{ __('ابتسامة هوليود') }}">{{ __('ابتسامة هوليود') }}</option>
+                    <option value="{{ __('تبييض الأسنان') }}">{{ __('تبييض الأسنان') }}</option>
+                    <option value="{{ __('تقويم الأسنان') }}">{{ __('تقويم الأسنان') }}</option>
+                    <option value="{{ __('علاج اللثة') }}">{{ __('علاج اللثة') }}</option>
+                    <option value="{{ __('علاج الجذور') }}">{{ __('علاج الجذور') }}</option>
+                    <option value="{{ __('تنظيف الأسنان') }}">{{ __('تنظيف الأسنان') }}</option>
+                    <option value="{{ __('حشو الأسنان') }}">{{ __('حشو الأسنان') }}</option>
+                    <option value="{{ __('خلع الأسنان') }}">{{ __('خلع الأسنان') }}</option>
                 </select>
             </div>
 
             <div class="{{ $fullClass }}">
-                <label class="block text-sm font-bold text-gray-700 mb-2">العنوان</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2">{{ __('العنوان') }}</label>
                 <input
                     type="text"
                     name="address"
                     class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#1670d8]"
-                    placeholder="اكتب العنوان">
+                    placeholder="{{ __('اكتب العنوان') }}">
             </div>
 
             <div class="{{ $fullClass }}">
-                <label class="block text-sm font-bold text-gray-700 mb-2">رسالتك</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2">{{ __('رسالتك') }}</label>
                 <textarea
                     name="message"
                     rows="4"
                     class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#1670d8]"
-                    placeholder="اكتب رسالتك هنا"></textarea>
+                    placeholder="{{ __('اكتب رسالتك هنا') }}"></textarea>
             </div>
 
             <div class="{{ $buttonWrapClass }}">
                 <button type="submit" class="{{ $buttonClass }}">
-                    إرسال الطلب
+                    {{ __('إرسال الطلب') }}
                 </button>
             </div>
         </form>

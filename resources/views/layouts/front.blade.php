@@ -145,10 +145,10 @@
             <a href="{{ route('videos.index'.$lang,$lang) }}"
                 class="text-white text-lg hover:font-semibold transition duration-300">{{ __('فيديوهات') }}</a>
                 <!--تعديل-->
-                <!--      <a href="{{ route('medical-tourism.index', $lang,$lang) }}"-->
-                <!-- class="text-white text-lg hover:font-semibold transition duration-300">-->
-                <!--      {{ __('السياحة العلاجية') }}-->
-                <!--       </a>-->
+                   <a href="{{ route('medical-tourism.index'.$lang,$lang) }}"
+                 class="text-white text-lg hover:font-semibold transition duration-300">
+                      {{ __('السياحة العلاجية') }}
+                     </a>
                           <!--تعديل-->
 
             <a href="{{ route('contact.index'.$lang,$lang) }}"

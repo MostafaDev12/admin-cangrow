@@ -180,12 +180,12 @@
             dir="ltr"
             class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-3 no-scrollbar"
         >
-            @foreach($treatments as $item)
+            @foreach($services as $item)
 
            @php
-    if (!empty($item['slug'])) {
+    if (!empty( $item->{'slug_' . $sign} )) {
         $serviceUrl = route('single-service.index'.$lang, [
-            'slug' => $item['slug'],
+            'slug' => $item->{'slug_' . $sign},
             'lang' => $lang
         ]);
     } else {
@@ -211,8 +211,8 @@
                     <!-- Image -->
                     <div class="relative h-[185px] md:h-[200px] overflow-hidden bg-gray-100">
                         <img
-                            src="{{ asset('assets/images/medical-tourism/' . $item['img']) }}"
-                            alt="{{ $item['title'] }}"
+                            src="{{ $item->photo }}"
+                            alt="{{ $item->{'title_' . $sign} }}"
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         >
 
@@ -222,11 +222,11 @@
                     <!-- Content -->
                     <div class="p-5 text-center">
                         <h3 class="font-extrabold text-[#1670d8] text-lg md:text-xl mb-3">
-                            {{ $item['title'] }}
+                            {{ $item->{'title_' . $sign} }}
                         </h3>
 
                         <p class="text-gray-600 text-sm leading-7 min-h-[56px]">
-                            {{ $item['text'] }}
+                           {{ $item->{'short_details_' . $sign} }}
                         </p>
 
                         <div class="mt-4 flex justify-center">

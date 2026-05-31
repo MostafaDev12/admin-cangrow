@@ -541,7 +541,77 @@ return redirect()->to($newUrl);
     // Redirect Section
     return response()->json(__('submit success'));
   }
-  
+
+  public function bookingStore(Request $request)
+  {
+    $request->validate([
+      'name'  => 'required|string|max:191',
+      'phone' => 'required|string|max:191',
+    ]);
+
+    $gs = Generalsetting::findOrFail(1);
+
+    $name    = $request->name;
+    $phone   = $request->phone;
+    $city    = $request->city;
+    $service = $request->service;
+    $address = $request->address;
+    $message = $request->message;
+
+    // Fold the extra fields into the message so nothing is lost.
+    $fullMessage = trim(
+      ($city    ? __('المدينة') . ': ' . $city . "\n" : '') .
+      ($address ? __('العنوان') . ': ' . $address . "\n" : '') .
+      ($message ?? '')
+    );
+
+    // Notify the clinic by email, matching the contact form behaviour.
+    if (!empty($gs->contact_emails)) {
+
+      $subject = "Booking Request From " . $name;
+      $msg = "Name: " . $name .
+        "<br>Phone: " . $phone .
+        "<br>City: " . $city .
+        "<br>Service: " . $service .
+        "<br>Address: " . $address .
+        "<br>Message: " . $message;
+
+      $to = explode(',', $gs->contact_emails);
+
+      foreach ($to as $key => $data1) {
+        if ($gs->is_smtp == 1) {
+          $data = [
+            'to' => $to[$key],
+            'subject' => $subject,
+            'body' => $msg,
+          ];
+          $mailer = new GeniusMailer();
+          $mailer->sendCustomMail($data);
+        } else {
+          $headers = "From: " . $gs->from_name . "<" . $gs->from_email . ">";
+          mail($to[$key], $subject, $msg, $headers);
+        }
+      }
+    }
+
+    Contact::create([
+      'name'    => $name,
+      'phone'   => $phone,
+      'service' => $service ?? '',
+      'message' => $fullMessage,
+    ]);
+
+    return redirect()->route('booking-thanks.index');
+  }
+
+  public function bookingThanks(Request $request)
+  {
+    $sign = $this->langSign();
+    $lang = $sign == 'en' ? 'en' : null;
+
+    return view('front.booking-thanks', compact('sign', 'lang'));
+  }
+
  public function subscribe(Request $request)
     {
         $subs = Subscription::where('email','=',$request->email)->first();
