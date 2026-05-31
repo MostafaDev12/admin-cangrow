@@ -12,7 +12,7 @@
     @endphp
 
 
-
+    <meta name="google-site-verification" content="XmE4cT8eN-RTm7fLfT_e-ap_toosMuXQwzYRDNRZqaM" />
 
     <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
 
@@ -91,7 +91,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0YQR8KJCZV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0YQR8KJCZV');
+</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -114,166 +122,158 @@
     @endphp
 
     <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-full z-50 py-4 sticky top-0">
-        <div class="container mx-auto  flex items-center justify-between">
-            <!-- Logo -->
-            <div>
-                <a href="{{ route('front.index'.$lang,$lang) }}">
-                    <img alt="Tooth Guard Logo" class="w-40  h-30" src="{{ $gs->{'logo_' . $sign} }}">
-                </a>
-            </div>
+<header class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-full z-50 py-4 sticky top-0">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <div>
+            <a href="{{ route('front.index'.$lang,$lang) }}">
+                <img alt="Tooth Guard Logo" class="w-40 h-30" src="{{ $gs->{'logo_' . $sign} }}">
+            </a>
+        </div>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center gap-6">
-                <a href="{{ route('front.index'.$lang,$lang) }}"
-                    class="text-white text-lg hover:font-semibold transition duration-300">{{ __('الرئيسية') }}</a>
-                <a href="{{ route('about.index'.$lang,$lang) }}"
-                    class="text-white text-lg hover:font-semibold transition duration-300">
-                    {{ __('معلومات عنا') }}</a>
-                <a href="{{ route('services.index'.$lang,$lang) }}"
-                    class="text-white text-lg hover:font-semibold transition duration-300">{{ __('الخدمات') }}</a>
-                <a href="{{ route('blogs.index'.$lang,$lang) }}"
-                    class="text-white text-lg hover:font-semibold transition duration-300">{{ __('المقالات') }}</a>
-                <a href="{{ route('videos.index'.$lang,$lang) }}"
-                    class="text-white text-lg hover:font-semibold transition duration-300">{{ __('فيديوهات') }}</a>
-                <a href="{{ route('contact.index'.$lang,$lang) }}"
-                    class="text-white text-lg hover:font-semibold transition duration-300"> {{ __('تواصل معنا') }}
-                </a>
-            </nav>
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-6">
+            <a href="{{ route('front.index'.$lang,$lang) }}"
+                class="text-white text-lg hover:font-semibold transition duration-300">{{ __('الرئيسية') }}</a>
+            <a href="{{ route('about.index'.$lang,$lang) }}"
+                class="text-white text-lg hover:font-semibold transition duration-300">
+                {{ __('معلومات عنا') }}</a>
+            <a href="{{ route('services.index'.$lang,$lang) }}"
+                class="text-white text-lg hover:font-semibold transition duration-300">{{ __('الخدمات') }}</a>
+            <a href="{{ route('blogs.index'.$lang,$lang) }}"
+                class="text-white text-lg hover:font-semibold transition duration-300">{{ __('المقالات') }}</a>
+            <a href="{{ route('videos.index'.$lang,$lang) }}"
+                class="text-white text-lg hover:font-semibold transition duration-300">{{ __('فيديوهات') }}</a>
+                <!--تعديل-->
+                <!--      <a href="{{ route('medical-tourism.index', $lang,$lang) }}"-->
+                <!-- class="text-white text-lg hover:font-semibold transition duration-300">-->
+                <!--      {{ __('السياحة العلاجية') }}-->
+                <!--       </a>-->
+                          <!--تعديل-->
 
-            <!-- Social Icons and Language Selector (Desktop) -->
-            <div class="hidden lg:flex items-center gap-4">
+            <a href="{{ route('contact.index'.$lang,$lang) }}"
+                class="text-white text-lg hover:font-semibold transition duration-300"> {{ __('تواصل معنا') }}
+            </a>
+        </nav>
+
+        <!-- Social Icons and Language Selector (Desktop) -->
+        <div class="hidden lg:flex items-center gap-4">
+            @if (App\Models\Socialsetting::find(1)->f_status == 1)
+                <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->facebook }}" 
+                   class="transition-transform duration-200 hover:scale-110">
+                    <i class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+            @endif
+            @if (App\Models\Socialsetting::find(1)->t_status == 1)
+                <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->twitter }}" 
+                   class="transition-transform duration-200 hover:scale-110">
+                    <i class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+            @endif
+
+            <a target="_blank" href="tel:{{ $randomPhone }}" 
+               class="transition-transform duration-200 hover:scale-110">
+                <i class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+            </a>
+            <a target="_blank" href="https://wa.me/{{ $randomPhone }}" 
+               class="transition-transform duration-200 hover:scale-110">
+                <i class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+            </a>
+            @if (App\Models\Socialsetting::find(1)->ystatus == 1)
+                <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->youtube }}" 
+                   class="transition-transform duration-200 hover:scale-110">
+                    <i class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                </a>
+            @endif
+            <select id="language-select2"
+                class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300">
+                @foreach ($languages as $language)
+                    <option class="bg-gray-600" value="{{ $language->sign }}"
+                        data-href="{{ route('front.lang-change', $language->id) }}"
+                        {{ $language->sign == $sign ? 'selected' : '' }}> {{ $language->language }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- Mobile Hamburger Menu -->
+        <div class="lg:hidden">
+            <button id="menu-toggle" class="text-white focus:outline-none transition-transform duration-200 hover:scale-110">
+                <i class="fa-solid fa-bars w-8 h-8"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu"
+        class="lg:hidden bg-gradient-to-r from-blue-500 to-green-600 text-white fixed inset-0 z-[9999] hidden opacity-0 scale-95 flex-col items-center justify-center transition-all duration-300 ease-in-out backdrop-blur-sm">
+        <button id="close-menu" class="absolute top-4 right-4 text-white focus:outline-none transition-transform duration-200 hover:scale-110">
+            <i class="fa-solid fa-times w-8 h-8"></i>
+        </button>
+        <nav class="flex flex-col items-center gap-6 text-lg transform transition-all duration-300">
+            <a href="{{ route('front.index'.$lang,$lang) }}"
+                class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('الرئيسية') }}</a>
+            <a href="{{ route('about.index'.$lang,$lang) }}" 
+                class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('معلومات عنا') }}</a>
+            <a href="{{ route('services.index'.$lang,$lang) }}"
+                class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('الخدمات') }}</a>
+            <a href="{{ route('blogs.index'.$lang,$lang) }}"
+                class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('المقالات') }}</a>
+            <a href="{{ route('videos.index'.$lang,$lang) }}"
+                class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('فيديوهات') }}</a>
+                
+                
+                <!--تعديل-->
+              <!--   <a href="{{ route('videos.index'.$lang,$lang) }}"-->
+              <!--  class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('السياحة العلاجية') }}</a>-->
+              <!--تعديل-->
+
+                
+            <a href="{{ route('contact.index'.$lang,$lang) }}" 
+                class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('تواصل معنا') }}</a>
+            
+            <!-- Social Icons (Mobile) -->
+            <div class="flex items-center gap-4 mt-6">
                 @if (App\Models\Socialsetting::find(1)->f_status == 1)
-                    <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->facebook }}">
-                        <i
-                            class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->facebook }}" 
+                       class="transition-transform duration-200 hover:scale-110">
+                        <i class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
                     </a>
                 @endif
                 @if (App\Models\Socialsetting::find(1)->t_status == 1)
-                    <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->twitter }}">
-                        <i
-                            class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->twitter }}" 
+                       class="transition-transform duration-200 hover:scale-110">
+                        <i class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
                     </a>
                 @endif
 
-
-                <a target="_blank" href="tel:{{ $randomPhone }}">
-                    <i
-                        class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                <a target="_blank" href="tel:{{ $randomPhone }}" 
+                   class="transition-transform duration-200 hover:scale-110">
+                    <i class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
                 </a>
-                <a target="_blank" href="https://wa.me/{{ $randomPhone }}">
-                    <i
-                        class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                <a target="_blank" href="https://wa.me/{{ $randomPhone }}" 
+                   class="transition-transform duration-200 hover:scale-110">
+                    <i class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
                 </a>
                 @if (App\Models\Socialsetting::find(1)->ystatus == 1)
-                    <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->youtube }}">
-                        <i
-                            class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
+                    <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->youtube }}" 
+                       class="transition-transform duration-200 hover:scale-110">
+                        <i class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
                     </a>
                 @endif
-                <select id="language-select2"
-                    class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300">
-                    @foreach ($languages as $language)
-                        <option class="bg-gray-600" value="{{ $language->sign }}"
-                            data-href="{{ route('front.lang-change', $language->id) }}"
-                            {{ $language->sign == $sign ? 'selected' : '' }}> {{ $language->language }}</option>
-                    @endforeach
-
-                </select>
             </div>
-
-            <!-- Mobile Hamburger Menu -->
-            <div class="lg:hidden">
-                <button id="menu-toggle" class="text-white focus:outline-none">
-                    <i class="fa-solid fa-bars w-8 h-8"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobile-menu"
-            class="lg:hidden bg-gradient-to-r from-blue-500 to-green-600 text-white fixed inset-0 z-50 flex flex-col items-center justify-center">
-            <button id="close-menu" class="absolute top-4 right-4 text-white focus:outline-none">
-                <i class="fa-solid fa-times w-8 h-8"></i>
-            </button>
-            <nav class="flex flex-col items-center gap-6 text-lg">
-                <a href="{{ route('front.index'.$lang,$lang) }}"
-                    class="hover:font-semibold transition duration-300">{{ __('الرئيسية') }}</a>
-                <a href="{{ route('about.index'.$lang,$lang) }}" class="hover:font-semibold transition duration-300">
-                    {{ __('معلومات عنا') }}</a>
-                <a href="{{ route('services.index'.$lang,$lang) }}"
-                    class="hover:font-semibold transition duration-300">{{ __('الخدمات') }}</a>
-                <a href="{{ route('blogs.index'.$lang,$lang) }}"
-                    class="hover:font-semibold transition duration-300">{{ __('المقالات') }}</a>
-                <a href="{{ route('videos.index'.$lang,$lang) }}"
-                    class="hover:font-semibold transition duration-300">{{ __('فيديوهات') }}</a>
-                <a href="{{ route('contact.index'.$lang,$lang) }}" class="hover:font-semibold transition duration-300">
-                    {{ __('تواصل معنا') }}</a>
-                <div class="flex items-center gap-4 mt-6">
-                    @if (App\Models\Socialsetting::find(1)->f_status == 1)
-                        <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->facebook }}">
-                            <i
-                                class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                        </a>
-                    @endif
-                    @if (App\Models\Socialsetting::find(1)->t_status == 1)
-                        <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->twitter }}">
-                            <i
-                                class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                        </a>
-                    @endif
-
-
-                    <a target="_blank" href="tel:{{ $randomPhone }}">
-                        <i
-                            class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                    </a>
-                    <a target="_blank" href="https://wa.me/{{ $randomPhone }}">
-                        <i
-                            class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                    </a>
-                    @if (App\Models\Socialsetting::find(1)->ystatus == 1)
-                        <a target="_blank" href="{{ App\Models\Socialsetting::find(1)->youtube }}">
-                            <i
-                                class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                        </a>
-                    @endif
-                    {{-- <a target="_blank" href="https://www.facebook.com/guardtooth">
-                        <i
-                            class="fa-brands fa-facebook w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                    </a>
-
-                    <a target="_blank" href="https://www.instagram.com/tooth_guard_dental_clinic">
-                        <i
-                            class="fa-brands fa-instagram w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                    </a>
-                    <a target="_blank" href="tel:+201555004694">
-                        <i
-                            class="fa-solid fa-phone w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                    </a>
-                    <a target="_blank" href="https://wa.me/+201555004694">
-                        <i
-                            class="fa-brands fa-whatsapp w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                    </a>
-                    <a target="_blank" href="https://youtube.com/@toothguard-be3le?si=bt-dU0y2VjucpM4s">
-                        <i
-                            class="fa-brands fa-youtube w-6 h-6 text-white hover:text-green-300 transition-colors cursor-pointer"></i>
-                    </a> --}}
-                </div>
-                <select id="language-select"
-                    class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300 mt-6">
-                    @foreach ($languages as $language)
-                        <option class="bg-gray-600" value="{{ $language->sign }}"
-                            data-href="{{ route('front.lang-change', $language->id) }}"
-                            {{ $language->sign == $sign ? 'selected' : '' }}> {{ $language->language }}</option>
-                    @endforeach
-
-
-                </select>
-            </nav>
-        </div>
-    </header>
-
+            
+            <!-- Language Selector (Mobile) -->
+            <select id="language-select"
+                class="outline-none px-3 py-2 bg-transparent text-white border border-white rounded-md hover:bg-blue-700 cursor-pointer transition duration-300 mt-6">
+                @foreach ($languages as $language)
+                    <option class="bg-gray-600" value="{{ $language->sign }}"
+                        data-href="{{ route('front.lang-change', $language->id) }}"
+                        {{ $language->sign == $sign ? 'selected' : '' }}> {{ $language->language }}</option>
+                @endforeach
+            </select>
+        </nav>
+    </div>
+</header>
 
 
     @yield('content')
@@ -418,6 +418,12 @@
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('المقالات') }}</a>
                         <a href="{{ route('videos.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('فيديوهات') }}</a>
+                            
+                            <!--تعديل-->
+                           <!--<a href="{{ route('videos.index'.$lang,$lang) }}"-->
+                           <!-- class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('السياحة العلاجية') }}</a>                     -->
+                            <!--تعديل-->
+
                         <a href="{{ route('contact.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">
                             {{ __('تواصل معنا') }}</a>
@@ -425,35 +431,39 @@
                 </div>
                 <!-- Social Media -->
                 <div class="lg:col-span-1">
-                    <h3 class="text-color_2 text-xl font-semibold uppercase mb-5"> {{ __('وسائل التواصل') }}</h3>
-                    <div class="flex justify-center lg:justify-end items-center gap-4">
-                        @if (App\Models\Socialsetting::find(1)->f_status == 1)
-                            <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"
-                                class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
-                                <i class="fab fa-facebook-f text-color_1 text-lg hover:text-primary_Color_Light"></i>
-                            </a>
-                        @endif
-                        @if (App\Models\Socialsetting::find(1)->t_status == 1)
-                            <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank"
-                                class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
-                                <i class="fab fa-instagram text-color_1 text-lg hover:text-primary_Color_Light"></i>
-                            </a>
-                        @endif
-                        <a href="tel:{{ $randomPhone }}" target="_blank"
-                            class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
-                            <i class="fas fa-phone text-color_1 text-lg hover:text-primary_Color_Light"></i>
-                        </a>
-                        <a href="https://wa.me/{{ $randomPhone }}" target="_blank"
-                            class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
-                            <i class="fab fa-whatsapp text-color_1 text-lg hover:text-primary_Color_Light"></i>
-                        </a>
-                        @if (App\Models\Socialsetting::find(1)->ystatus == 1)
-                            <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"
-                                class="bg-color_4 p-3 rounded-full hover:bg-blue-100 transition duration-300">
-                                <i class="fab fa-youtube text-color_1 text-lg hover:text-primary_Color_Light"></i>
-                            </a>
-                        @endif
-                    </div>
+                    <h3 class=" text-xl font-semibold uppercase mb-5"> {{ __('وسائل التواصل') }}</h3>
+<div class="flex justify-center lg:justify-end items-center gap-4 text-white">
+    @if (App\Models\Socialsetting::find(1)->f_status == 1)
+        <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"
+           class="text-white p-3 rounded-full hover:bg-blue-100 transition duration-300 hover:text-blue-500">
+            <i class="fab fa-facebook-f  text-lg "></i>
+        </a>
+    @endif
+
+    @if (App\Models\Socialsetting::find(1)->t_status == 1)
+        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank"
+           class="text-white p-3 rounded-full hover:bg-blue-100 transition duration-300 hover:text-pink-500">
+            <i class="fab fa-instagram  text-lg "></i>
+        </a>
+    @endif
+
+    <a href="tel:{{ $randomPhone }}" target="_blank"
+       class="text-white p-3 rounded-full hover:bg-blue-100 transition duration-300 hover:text-green-500">
+        <i class="fas fa-phone  text-lg"></i>
+    </a>
+
+    <a href="https://wa.me/{{ $randomPhone }}" target="_blank"
+       class="text-white p-3 rounded-full hover:bg-blue-100 transition duration-300  hover:text-green-500">
+        <i class="fab fa-whatsapp  text-lg"></i>
+    </a>
+
+    @if (App\Models\Socialsetting::find(1)->ystatus == 1)
+        <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"
+           class="text-white p-3 rounded-full hover:bg-blue-100 transition duration-300  hover:text-red-500">
+            <i class="fab fa-youtube  text-lg"></i>
+        </a>
+    @endif
+</div>
                 </div>
                 <!-- Logo -->
                 <div class="lg:col-span-1">
@@ -472,6 +482,48 @@
             </div>
         </div>
     </footer>
+    
+    
+    
+    
+<div class="fixed 
+    {{ Session::get('front_language_duraction') === 'rtl' ? 'left-4' : 'right-4' }} 
+    top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-50">
+    
+    
+     
+
+    <a href="tel:{{ $randomPhone }}" target="_blank"
+       class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-500 hover:bg-green-500 hover:from-green-500 hover:to-green-500">
+        <i class="fas fa-phone text-lg"></i>
+    </a>
+
+    <a href="https://wa.me/{{ $randomPhone }}" target="_blank"
+       class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-500 hover:bg-green-600 hover:from-green-600 hover:to-green-600">
+        <i class="fab fa-whatsapp text-lg"></i>
+    </a>
+@if (App\Models\Socialsetting::find(1)->f_status == 1)
+        <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"
+           class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-500 hover:bg-blue-600 hover:from-blue-600 hover:to-blue-600">
+            <i class="fab fa-facebook-f text-lg"></i>
+        </a>
+    @endif
+
+    @if (App\Models\Socialsetting::find(1)->t_status == 1)
+        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank"
+           class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-500 hover:bg-pink-500 hover:from-pink-500 hover:to-pink-500">
+            <i class="fab fa-instagram text-lg"></i>
+        </a>
+    @endif
+    @if (App\Models\Socialsetting::find(1)->ystatus == 1)
+        <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" target="_blank"
+           class="bg-gradient-to-r from-blue-500 to-green-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-500 hover:bg-red-600 hover:from-red-600 hover:to-red-600">
+            <i class="fab fa-youtube text-lg"></i>
+        </a>
+    @endif
+</div>
+
+    
     <script src="{{ asset('front/tooth-guard/') }}/js/script.js"></script>
     <script src="{{ asset('front/tooth-guard/') }}/js/swiper.js"></script>
     <script>
@@ -713,6 +765,25 @@
         });
     </script>
     @yield('js')
+    <div id="globalBookingModal"
+     class="hidden fixed inset-0 z-[999999] bg-black/50 px-4 py-8 overflow-y-auto">
+
+    <div class="max-w-md mx-auto relative">
+
+        <button type="button"
+                onclick="document.getElementById('globalBookingModal').classList.add('hidden'); document.body.style.overflow = '';"
+                class="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-white shadow-lg text-gray-700 hover:text-red-600 font-bold z-10">
+            ×
+        </button>
+
+        @include('components.booking-form', [
+            'variant' => 'sidebar',
+            'formId' => 'globalBookingFormBox',
+            'wrapperClass' => ''
+        ])
+
+    </div>
+</div>
 </body>
 
 </html>

@@ -1,61 +1,88 @@
-// Initialize Lucide icons
-document.addEventListener("DOMContentLoaded", function () {
-  lucide.createIcons();
-
-  // Mobile menu toggle
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
-  let menuOpen = false;
-
-  mobileMenuButton.addEventListener("click", function () {
-    menuOpen = !menuOpen;
-
-    if (menuOpen) {
-      mobileMenu.classList.remove("hidden");
-      // Change icon to X when menu is open
-      mobileMenuButton.innerHTML = '<i data-lucide="x" class="w-8 h-8"></i>';
-    } else {
-      mobileMenu.classList.add("hidden");
-      // Change icon back to menu when closed
-      mobileMenuButton.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+// Mobile Menu Toggle Functionality with Tailwind CSS
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const closeMenu = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const languageSelect = document.getElementById('language-select');
+    const languageSelect2 = document.getElementById('language-select2');
+    
+    // Function to open mobile menu
+    function openMobileMenu() {
+        mobileMenu.classList.remove('hidden', 'opacity-0', 'scale-95');
+        mobileMenu.classList.add('flex', 'opacity-100', 'scale-100');
+        document.body.classList.add('overflow-hidden'); // Prevent scrolling when menu is open
     }
-
-    // Refresh Lucide icons after changing them
-    lucide.createIcons();
-  });
-
-  // Close menu when clicking on a link
-  const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-  mobileMenuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-      menuOpen = false;
-      mobileMenuButton.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
-      lucide.createIcons();
-    });
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener("click", function (event) {
-    if (
-      !mobileMenu.contains(event.target) &&
-      !mobileMenuButton.contains(event.target) &&
-      menuOpen
-    ) {
-      mobileMenu.classList.add("hidden");
-      menuOpen = false;
-      mobileMenuButton.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
-      lucide.createIcons();
+    
+    // Function to close mobile menu
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('flex', 'opacity-100', 'scale-100');
+        mobileMenu.classList.add('hidden', 'opacity-0', 'scale-95');
+        document.body.classList.remove('overflow-hidden'); // Restore scrolling
     }
-  });
-
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth",
-      });
+    
+    // Event listener for hamburger menu button
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            openMobileMenu();
+        });
+    }
+    
+    // Event listener for close menu button
+    if (closeMenu) {
+        closeMenu.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMobileMenu();
+        });
+    }
+    
+    // Close menu when clicking outside of it
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', function(e) {
+            // Only close if clicking on the backdrop (the mobile-menu div itself)
+            if (e.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+    }
+    
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            closeMobileMenu();
+        }
     });
-  });
+    
+    // Handle language selection change (mobile)
+    if (languageSelect) {
+        languageSelect.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const href = selectedOption.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            }
+        });
+    }
+    
+    // Handle language selection change (desktop)
+    if (languageSelect2) {
+        languageSelect2.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const href = selectedOption.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            }
+        });
+    }
+    
+    // Close mobile menu when clicking on navigation links
+    const mobileNavLinks = mobileMenu?.querySelectorAll('nav a');
+    if (mobileNavLinks) {
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Add a small delay to allow navigation to start before closing menu
+                setTimeout(closeMobileMenu, 100);
+            });
+        });
+    }
 });

@@ -36,25 +36,34 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 max-w-6xl mx-auto">
               
-              @foreach ($servicess as $service)
-                <div
-                    class="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105">
-                    <img src="{{ $service->photo }}"
-                        alt="{{ $service->{'title_' . $sign} }}" class="w-full h-60 object-cover" />
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-blue-800 mb-2">
-                           {{ $service->{'title_' . $sign} }} 
-                        </h3>
-                        <p class="text-gray-600 text-sm">
-                          {{ $service->{'short_details_' . $sign} }}
-                        </p>
-                        <div class="mt-7 mb-4">
-                            <a class="text-sm border border-blue-800 text-blue-800 px-4 py-2 rounded-md shadow-md hover:bg-blue-800 hover:text-white transition duration-300"
-                                href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign} ,$lang]) }}"> {{ __('اعرف المزيد') }}</a>
-                        </div>
-                    </div>
-                </div>
-                 @endforeach
+        @foreach ($servicess as $service)
+    <a
+        href="{{ route('single-service.index'.$lang, ['slug' => $service->{'slug_' . $sign}, 'lang' => $lang]) }}"
+        class="group block bg-white shadow-md rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+    >
+        <img
+            src="{{ $service->photo }}"
+            alt="{{ $service->{'title_' . $sign} }}"
+            class="w-full h-60 object-cover"
+        />
+
+        <div class="p-4">
+            <h3 class="text-lg font-bold text-blue-800 mb-2">
+                {{ $service->{'title_' . $sign} }}
+            </h3>
+
+            <p class="text-gray-600 text-sm leading-7 min-h-[56px]">
+                {{ $service->{'short_details_' . $sign} }}
+            </p>
+
+            <div class="mt-7 mb-4">
+                <span class="inline-block text-sm border border-blue-800 text-blue-800 px-4 py-2 rounded-md shadow-md group-hover:bg-blue-800 group-hover:text-white transition duration-300">
+                    {{ __('اعرف المزيد') }}
+                </span>
+            </div>
+        </div>
+    </a>
+@endforeach
             </div>
 
             <!-- Pagination -->

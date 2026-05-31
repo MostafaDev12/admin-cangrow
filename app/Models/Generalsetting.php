@@ -30,6 +30,12 @@ class Generalsetting extends Model
 
 
 
+    public function getFaviconAttribute()
+    {
+        return !empty($this->attributes['favicon']) ? url('/') . '/assets/images/' . $this->attributes['favicon'] : '';
+    }
+
+
     public function getLogoEnAttribute()
     {
         return !empty($this->attributes['logo_en']) ? url('/') . '/assets/images/' . $this->attributes['logo_en'] : '';

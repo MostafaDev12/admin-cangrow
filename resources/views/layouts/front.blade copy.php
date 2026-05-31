@@ -176,6 +176,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('blogs.index') }}"> {{ __('المقالات') }}</a>
                     </li>
+                    
+                    
+                    <li class="nav-item">
+                   <a class="nav-link" href="{{ route('medical-tourism.index', ['lang' => $lang ?? null]) }}">
+                {{ __('السياحة العلاجية') }}
+             </a>
+            </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}"> {{ __('اتصل بنا') }} </a>
                     </li>
@@ -671,9 +678,12 @@
             });
         })
     </script>
-
+    
+    
 
     @yield('js')
+
+
 </body>
 
 </html>

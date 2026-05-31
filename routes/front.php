@@ -18,8 +18,8 @@ use App\Models\Language;
 |
 */
 
-
-Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
+// 'IpLocation', 
+Route::middleware(['FrontLanguages'])->group(function () {
 
   //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
 
@@ -45,6 +45,11 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
     Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
     Route::get('/videos', [HomeController::class, 'videos'])->name('videos.index');
+        // تعديل
+
+    Route::get('/medical-tourism', [HomeController::class, 'medicalTourism'])->name('medical-tourism.index');
+        // تعديل
+
     Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs.index');
 
     Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.index');
@@ -77,6 +82,10 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
     Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.indexen');
 
     Route::get('/videos', [HomeController::class, 'videos'])->name('videos.indexen');
+    // تعديل
+Route::get('/medical-tourism', [HomeController::class, 'medicalTourism'])->name('medical-tourism.indexen');
+// تعديل
+
     Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs.indexen');
 
     Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact.indexen');

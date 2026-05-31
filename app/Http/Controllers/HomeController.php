@@ -72,7 +72,7 @@ class HomeController extends Controller
     $medias = Media::get();
   
     
-    $blogs = Blog::orderby('id','desc')->get()->take(3);
+    $blogs = Blog::orderby('id','desc')->get()->take(4);
   
  //   return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
     
@@ -97,8 +97,21 @@ class HomeController extends Controller
 
     return view('front.about', compact('sign', 'sliders','lang', 'services', 'models', 'partners'));
   }
+// تعديل
+   public function medicalTourism(Request $request, $lang = 'ar')
+{
+    $sign = $this->langSign($lang);
+    $lang = $sign == 'en' ? 'en' : null;
 
-   
+    $sliders = Slider::first();
+
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $partners = Partner::get();
+
+    return view('front.medical-tourism', compact('sign', 'sliders', 'lang', 'services', 'models', 'partners'));
+}
+// تعديل
 
  
   public function doctors(Request $request,$lang = 'ar')

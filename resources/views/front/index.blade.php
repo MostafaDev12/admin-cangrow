@@ -177,41 +177,115 @@
 
 
           <!-- Video Testimonials Section -->
-          <section class="py-20 bg-gradient-to-b from-blue-50 to-white">
-              <div class="container mx-auto px-4">
-                  <h2
-                      class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-800 to-green-600 bg-clip-text text-transparent text-center mb-16">
-                      {{ __('فيديوهات عن الدكتور') }}
-                  </h2>
-                  <div class="max-w-5xl mx-auto">
-                      <div
-                          class="bg-gradient-to-br from-blue-900 to-green-900 rounded-2xl overflow-hidden aspect-video relative shadow-2xl border-4 border-blue-200">
-                          <img src="https://via.placeholder.com/800x400" alt="Video testimonial"
-                              class="object-cover w-full h-full">
-                          <div
-                              class="absolute inset-0 bg-gradient-to-br from-blue-900/60 to-green-900/60 flex items-center justify-center">
-                              <button
-                                  class="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white border-2 border-white rounded-full p-6 shadow-2xl hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-110">
-                                  <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                                      <path d="M8 5v14l11-7z" />
-                                  </svg>
-                              </button>
-                          </div>
-                          <div class="absolute bottom-6 left-6 text-white">
-                              <div class="flex items-center gap-3 bg-blue-600/80 backdrop-blur-sm rounded-full px-4 py-2">
-                                  <div
-                                      class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center">
-                                      <i data-lucide="users" class="w-5 h-5 text-white"></i>
-                                  </div>
-                                  <span class="font-semibold">reviews</span>
-                              </div>
-                          </div>
-                          <div class="absolute bottom-6 right-6 text-white">
-                              <div class="bg-green-600/80 backdrop-blur-sm rounded-full px-4 py-2 font-semibold">Share</div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </section>
+          <!--<section class="py-20 bg-gradient-to-b from-blue-50 to-white">-->
+          <!--    <div class="container mx-auto px-4">-->
+          <!--        <h2-->
+          <!--            class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-800 to-green-600 bg-clip-text text-transparent text-center mb-16">-->
+          <!--            {{ __('فيديوهات عن الدكتور') }}-->
+          <!--        </h2>-->
+          <!--        <div class="max-w-5xl mx-auto">-->
+          <!--            <div-->
+          <!--                class="bg-gradient-to-br from-blue-900 to-green-900 rounded-2xl overflow-hidden aspect-video relative shadow-2xl border-4 border-blue-200">-->
+          <!--                <img src="https://via.placeholder.com/800x400" alt="Video testimonial"-->
+          <!--                    class="object-cover w-full h-full">-->
+          <!--                <div-->
+          <!--                    class="absolute inset-0 bg-gradient-to-br from-blue-900/60 to-green-900/60 flex items-center justify-center">-->
+          <!--                    <button-->
+          <!--                        class="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white border-2 border-white rounded-full p-6 shadow-2xl hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-110">-->
+          <!--                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">-->
+          <!--                            <path d="M8 5v14l11-7z" />-->
+          <!--                        </svg>-->
+          <!--                    </button>-->
+          <!--                </div>-->
+          <!--                <div class="absolute bottom-6 left-6 text-white">-->
+          <!--                    <div class="flex items-center gap-3 bg-blue-600/80 backdrop-blur-sm rounded-full px-4 py-2">-->
+          <!--                        <div-->
+          <!--                            class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center">-->
+          <!--                            <i data-lucide="users" class="w-5 h-5 text-white"></i>-->
+          <!--                        </div>-->
+          <!--                        <span class="font-semibold">reviews</span>-->
+          <!--                    </div>-->
+          <!--                </div>-->
+          <!--                <div class="absolute bottom-6 right-6 text-white">-->
+          <!--                    <div class="bg-green-600/80 backdrop-blur-sm rounded-full px-4 py-2 font-semibold">Share</div>-->
+          <!--                </div>-->
+          <!--            </div>-->
+          <!--        </div>-->
+          <!--    </div>-->
+          <!--</section>-->
+
+
+
+ <section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-800 to-green-600 bg-clip-text text-transparent text-center mb-16">
+                فيديوهات عن الدكتور
+            </h2>
+            <!-- Outer container for swiper with relative positioning for navigation buttons -->
+            <div class="max-w-5xl mx-auto relative">
+                <!-- Swiper main container -->
+                <div id="doctorVideoSwiper" class="swiper rounded-2xl overflow-hidden shadow-2xl border-4 border-blue-200 bg-gradient-to-tr from-slate-200 to-white pb-16">
+                    <!-- Swiper wrapper -->
+                    <div class="swiper-wrapper">
+                        
+                          @foreach($medias as $video)
+                        <!-- Swiper slides. The `dsv-swiper-slide` class is for Swiper initialization. -->
+                        <div class="swiper-slide flex items-center justify-center">
+                            <div class="relative aspect-video overflow-hidden rounded-2xl w-full">
+                                <iframe src="{{$video->youtube_url}}"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen
+                                    class="absolute inset-0 w-full h-full"></iframe>
+                            </div>
+                        </div>
+@endforeach 
+                         
+                    </div>
+                </div>
+
+                <!-- Swiper navigation buttons styled with Tailwind -->
+                <div class="dsv-button-next absolute top-1/2 -right-7 -translate-y-1/2 z-10 text-white w-14 h-14 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out bg-gradient-to-r from-blue-600 to-green-400 hover:scale-110 hover:shadow-lg cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+                <div class="dsv-button-prev absolute top-1/2 -left-7 -translate-y-1/2 z-10 text-white w-14 h-14 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out bg-gradient-to-r from-green-400 to-blue-600 hover:scale-110 hover:shadow-lg cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+                </div>
+                
+                <!-- Swiper pagination -->
+                <div class="swiper-pagination dsv-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // Initialize Swiper after the page loads
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const swiper = new Swiper('#doctorVideoSwiper', {
+                // Optional parameters
+                loop: true,
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+
+                // If we need pagination
+                pagination: {
+                    el: '.dsv-pagination',
+                    clickable: true,
+                    // The bullet styling is handled by Swiper's default classes, which we can customize if needed.
+                },
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.dsv-button-next',
+                    prevEl: '.dsv-button-prev',
+                },
+            });
+        });
+    </script>
+
 
       @stop
