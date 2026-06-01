@@ -96,34 +96,82 @@
 
     </div>
  @stop
-    @section('js')
-        <script>
-            // JavaScript to handle button selection and custom amount input
-            document.addEventListener('DOMContentLoaded', function() {
-                const typeButtons = document.querySelectorAll('.option-btn.type');
-                const amountButtons = document.querySelectorAll('.option-btn.amount');
-                const customAmountInput = document.querySelector('.custom-amount-input');
-                const customtypeInput = document.querySelector('.custom-amount-type');
-    
-                typeButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        typeButtons.forEach(btn => btn.classList.remove('outline-active'));
-                        this.classList.add('outline-active');
-                          customtypeInput.value = this.textContent;
-                    });
-                });
-    
-                amountButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        amountButtons.forEach(btn => btn.classList.remove('outline-active'));
-                        this.classList.add('outline-active');
-                        customAmountInput.value = this.textContent;
-                    });
-                });
-    
-                customAmountInput.addEventListener('input', function() {
-                    amountButtons.forEach(btn => btn.classList.remove('outline-active'));
-                });
+   @section('js')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const typeButtons = document.querySelectorAll('.option-btn.type');
+        const amountButtons = document.querySelectorAll('.option-btn.amount');
+        const customAmountInput = document.querySelector('.custom-amount-input');
+        const customtypeInput = document.querySelector('.custom-amount-type');
+        const donateBtn = document.querySelector('.btn-donate');
+
+        typeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                typeButtons.forEach(btn => btn.classList.remove('outline-active'));
+                this.classList.add('outline-active');
+                customtypeInput.value = this.textContent.trim();
             });
-        </script>
- @stop
+        });
+
+        amountButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                amountButtons.forEach(btn => btn.classList.remove('outline-active'));
+                this.classList.add('outline-active');
+                customAmountInput.value = this.textContent.trim();
+            });
+        });
+
+        customAmountInput.addEventListener('input', function() {
+            amountButtons.forEach(btn => btn.classList.remove('outline-active'));
+        });
+
+        // Handle donate button click
+        donateBtn.addEventListener('click', function() {
+            const amount = document.getElementById('amount').value;
+            const type = document.getElementById('type').value;
+            const serviceName = document.getElementById('service_name').value;
+
+            // Validate amount
+            if (!amount || amount <= 0) {
+                alert('{{ __("الرجاء إدخال مبلغ التبرع") }}');
+                return;
+            }
+
+            // Show loading state
+            donateBtn.disabled = true;
+            donateBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> {{ __("جاري المعالجة...") }}';
+
+            // Send data to server
+            fetch('{{ route("kashier.create.session") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    amount: amount,
+                    type: type,
+                    service_name: serviceName
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.redirect_url) {
+                    // Redirect to Kashier payment page
+                    window.location.href = data.redirect_url;
+                } else {
+                    alert(data.message || '{{ __("حدث خطأ أثناء المعالجة") }}');
+                    donateBtn.disabled = false;
+                    donateBtn.innerHTML = '{{ __("تبرع الآن") }}<i class="fa-regular fa-heart"></i>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('{{ __("حدث خطأ أثناء الاتصال بالخادم") }}');
+                donateBtn.disabled = false;
+                donateBtn.innerHTML = '{{ __("تبرع الآن") }}<i class="fa-regular fa-heart"></i>';
+            });
+        });
+    });
+</script>
+@stop

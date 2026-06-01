@@ -86,15 +86,17 @@
 
                  <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24 items-center">
 
-                     <div class="lg:col-span-2 relative mt-20 lg:mt-0">
-                         <img src="{{ $ps->about_photo }}" alt="أطفال مبتسمون"
+                     <div class="lg:col-span-2 relative mt-20 h-full  lg:mt-0 flex items-start  ">
+                            <div class="overflow-hidden relative max-h-90">
+                                 <img src="{{ $ps->about_photo }}" alt="أطفال مبتسمون"
                              class="w-full h-auto rounded-lg shadow-xl object-cover">
 
-                         <div
-                             class="absolute bottom-0 start-0 w-2/3 md:w-3/4  rounded-lg shadow-2xl transform translate-y-1/3 md:translate-x-1/2">
-                             <img src="{{ asset('front/dareltawfik/') }}/assets/imgs/banner/image-2.jpg" alt="Life Makers Logo"
-                                 class="w-full h-full rounded-lg object-cover">
-                         </div>
+                         <!--<div-->
+                         <!--    class="absolute bottom-0 start-0 w-2/3 md:w-3/4  rounded-lg shadow-2xl transform translate-y-1/3 md:translate-x-1/2">-->
+                         <!--    <img src="{{ asset('front/dareltawfik/') }}/assets/imgs/banner/image-2.jpg" alt="Life Makers Logo"-->
+                         <!--        class="w-full h-full rounded-lg object-cover">-->
+                         <!--</div>-->
+                            </div>
                      </div>
 
                      <div class="lg:col-span-3">
@@ -336,7 +338,7 @@
                          </p>
                          <div class="flex gap-2">
                              <!-- Outline Button -->
-                             <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
+                             <a href="{{ route('single-request-from.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
                                  class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
                    {{ __('قدّم طلبك الآن') }}
                              </a>

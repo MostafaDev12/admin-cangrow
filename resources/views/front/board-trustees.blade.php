@@ -38,6 +38,7 @@
                       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 @foreach ($teams as $team)
                       <article class="rounded-lg group cursor-pointer transition-all duration-300">
+                           <a href="{{ route('about-doctor.index', ['lang' => $sign, 'id' => $team->id ]) }}">
                      <img src="{{ $team->photo_url }}" alt="{!! $team->{'name_' . $sign} ?? '' !!} "
                          class="w-full h-64 rounded-t-lg">
                      <div
@@ -45,6 +46,7 @@
                          <h3 class="text-xl font-bold text-slate-800 mb-1">   {!! $team->{'name_' . $sign} ?? '' !!}    </h3>
                          <p class="text-accent font-semibold">{!! $team->{'title_' . $sign} ?? '' !!}</p>
                      </div>
+                     </a>
                  </article>
 
                 @endforeach

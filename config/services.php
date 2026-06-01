@@ -30,4 +30,28 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+
+'kashier' => [
+    'mid' => env('KASHIER_MID'),
+    'api_key' => env('KASHIER_API_KEY'),
+    'secret_key' => env('KASHIER_SECRET_KEY'),
+    'mode' => env('KASHIER_MODE', 'test'),
+    'callback_url' => env('KASHIER_CALLBACK_URL'),
+],
+
+
+'kashier_zakat' => [
+    'mid' => env('KASHIER_ZAKAT_MID'),
+    'api_key' => env('KASHIER_ZAKAT_API_KEY'),
+    'secret_key' => env('KASHIER_ZAKAT_SECRET_KEY'),
+],
+
+'kashier_sadaqa' => [
+    'mid' => env('KASHIER_SADAQA_MID'),
+    'api_key' => env('KASHIER_SADAQA_API_KEY'),
+    'secret_key' => env('KASHIER_SADAQA_SECRET_KEY'),
+],
+
+
+
 ];

@@ -55,6 +55,7 @@ class Service extends Model
         'tags',
         'category_id',
         'parent_id',
+        'videos',
       
     ];
 

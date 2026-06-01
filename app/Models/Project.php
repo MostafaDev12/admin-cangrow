@@ -29,6 +29,7 @@ class Project extends Model
     protected $fillable = [
         
         'photo',
+        'videos',
         'title_ar',
         'title_en',
         'title_fr',

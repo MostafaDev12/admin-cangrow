@@ -83,7 +83,7 @@
                          </p>
                          <div class="flex gap-2">
                              <!-- Outline Button -->
-                             <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
+                             <a href="{{ route('single-request-from.index', ['lang' => $sign, 'slug' => $service->{'slug_' . $sign}]) }}"
                                  class="flex-1 text-custom-orange bg-white border-2 border-custom-orange font-semibold px-4 py-2 rounded-md text-center transition-all duration-300 ease-out hover:bg-custom-orange hover:text-white">
                    {{ __('قدّم طلبك الآن') }}
                              </a>

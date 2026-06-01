@@ -28,6 +28,7 @@ class Party extends Model
     }
     protected $fillable = [
         
+        'videos',
         'photo',
         'title_ar',
         'title_en',

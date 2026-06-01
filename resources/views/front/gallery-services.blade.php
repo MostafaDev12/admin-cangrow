@@ -89,13 +89,97 @@
                     </div>
                 </div>
   --}}
+   @php
+                    $videos = json_decode($project->videos, true) ?? [];
+                   
+                    $maxCount =  count($videos);
+                @endphp
+                
+                
+              @if($maxCount > 0)
+                 <div class="text-center mb-12 max-w-3xl mx-auto">
 
+
+
+                    <div class="text-center mb-12 max-w-3xl mx-auto">
+                        <div class="relative mb-10">
+                            <h1 class="text-sm font-extrabold text-custom-orange  mb-4">
+                                فيديوهات </h1>
+                            <div
+                                class="font-['Aref_Ruqaa'] text-[60px] font-normal text-[color:var(--funden-heading-color)] opacity-10 tracking-[0] absolute left-0 top-[30%] w-full -translate-y-1/2 capitalize leading-[1] z-1">
+                                دار التوفيق
+                            </div>
+                        </div>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            بعض فيديوهات مؤسسة دار التوفيق
+                        </p>
+                    </div>
+
+                </div>
+            @endif
             </div>
         </section>
 
+  @if($maxCount > 0)
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+        @for($i = 0; $i < $maxCount; $i++)
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  class="w-full h-full"
+                  src="{{ $videos[$i] ?? '' }}"
+                  title="YouTube video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+   @endfor
+    
+          </div>
+    
+          <!-- Navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+    
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>  
 
+  @endif
 
+ 
  @include('includes.share')
 
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  </script>
     </main>
  @stop

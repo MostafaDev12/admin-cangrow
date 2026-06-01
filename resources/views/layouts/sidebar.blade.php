@@ -141,6 +141,38 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.about_volunteering')</span>
                         </a>
                     </li>
+                     @if (Auth::guard('admin')->user()->sectionCheck('testimonials'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-testimonials-index') }}"
+                            aria-controls="sidebarblogs">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.testimonials')</span>
+                        </a>
+                    </li>
+                @endif
+                     @if (Auth::guard('admin')->user()->sectionCheck('seminars'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-seminars-index') }}"
+                            aria-controls="sidebarblogs">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.seminars')</span>
+                        </a>
+                    </li>
+                @endif
+                     @if (Auth::guard('admin')->user()->sectionCheck('meetings'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-meetings-index') }}"
+                            aria-controls="sidebarblogs">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.meetings')</span>
+                        </a>
+                    </li>
+                @endif
+                     @if (Auth::guard('admin')->user()->sectionCheck('museums'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-museums-index') }}"
+                            aria-controls="sidebarblogs">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.museums')</span>
+                        </a>
+                    </li>
+                @endif
                                             <!-- #region -->
                                         </ul>
                                     </div>
@@ -156,14 +188,7 @@
                         </a>
                     </li>
                 @endif
-       {{--         @if (Auth::guard('admin')->user()->sectionCheck('testimonials'))
-                    <li class="nav-item">
-                        <a class="nav-link  " href="{{ route('admin-testimonials-index') }}"
-                            aria-controls="sidebarblogs">
-                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.testimonials')</span>
-                        </a>
-                    </li>
-                @endif
+       {{--        
 
                 @if (Auth::guard('admin')->user()->sectionCheck('subcategories'))
                                     <li class="nav-item">
@@ -439,18 +464,18 @@
                                     <a href="{{ route('admin-gs-contact_messages') }}" class="nav-link"
                                         data-key="t-contact_messages"> @lang('translation.contact_messages') </a>
                                 </li>
-
-                                {{-- <li class="nav-item">
-                                    <a href="{{ route('admin-gs-subscriptions') }}" class="nav-link"
-                                        data-key="t-Manage_Roles"> @lang('translation.subscriptions') </a>
-                                </li> 
-
-                                @if (Auth::guard('admin')->user()->sectionCheck('social_settings'))
+  @if (Auth::guard('admin')->user()->sectionCheck('social_settings'))
                                     <li class="nav-item">
                                         <a href="{{ route('admin-social-index') }}" class="nav-link"
                                             data-key="t-Manage_Roles"> @lang('translation.social_settings') </a>
                                     </li>
                                 @endif
+                                {{-- <li class="nav-item">
+                                    <a href="{{ route('admin-gs-subscriptions') }}" class="nav-link"
+                                        data-key="t-Manage_Roles"> @lang('translation.subscriptions') </a>
+                                </li> 
+
+                              
 --}}
                                 @if (Auth::guard('admin')->user()->sectionCheck('super'))
                                     <li class="nav-item">

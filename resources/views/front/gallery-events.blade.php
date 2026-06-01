@@ -56,7 +56,15 @@
                     @endforeach
                 </div>
 
-                {{-- <div class="text-center mb-12 max-w-3xl mx-auto">
+           @php
+                    $videos = json_decode($service->videos, true) ?? [];
+                   
+                    $maxCount =  count($videos);
+                @endphp
+                
+                
+              @if($maxCount > 0)
+                 <div class="text-center mb-12 max-w-3xl mx-auto">
 
 
 
@@ -75,27 +83,71 @@
                     </div>
 
                 </div>
-
-                <div class="max-w-4xl mx-auto mb-8 rounded-lg overflow-hidden shadow-lg">
-                    <div class="relative aspect-video">
-                        <img src="https://via.placeholder.com/800x450/cccccc/969696?text=Main+Video" alt="Main Video"
-                            class="w-full h-full object-cover">
-                        <a href="#" class="absolute inset-0 flex items-center justify-center group">
-                            <div
-                                class="w-16 h-16 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-                                <i class="fa-solid fa-play text-white text-2xl ml-1"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-  --}}
+            @endif
+                
+   
 
             </div>
         </section>
 
+ 
+                @if($maxCount > 0)
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+        @for($i = 0; $i < $maxCount; $i++)
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  class="w-full h-full"
+                  src="{{ $videos[$i] ?? '' }}"
+                  title="YouTube video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+   @endfor
+    
+          </div>
+    
+          <!-- Navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+    
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>  
 
+  @endif
 
  @include('includes.share')
+<!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  </script>
     </main>
  @stop

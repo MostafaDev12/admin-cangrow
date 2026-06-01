@@ -27,9 +27,9 @@
      @endphp
  
      
-    <div class="container-body">
+    <div class="container-ody max-w-4xl mx-auto">
         
-        <main class="content-section">
+        <main class="content-seton">
             <div class="breadcrumbs">
              {{ __('الرئيسية') }}     <span>›</span>      {{ __('عن التطوع') }}
             </div>
@@ -40,10 +40,13 @@
                     <i class="fa-solid fa-share-from-square"></i> {{ __('شارك') }}
                 </button> --}}
             </div>
-
-            <div class="main-image-container">
-                <img src="{{ $ps->volunteering_photo }}" alt=" {{ $ps->{'volunteering_title_' . $sign}  ?? ''}}" class="main-image">
+         <div class="md:my-10 content-section items-center justify-between flex">
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fdaretawfik%2Fvideos%2F686099427081245%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3907281769527915%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
+            <!--<div class="main-image-container">-->
+            <!--    <img src="{{ $ps->volunteering_photo }}" alt=" {{ $ps->{'volunteering_title_' . $sign}  ?? ''}}" class="main-image">-->
+            <!--</div>-->
 
             {{-- <div class="progress-bar-container">
                 <div class="progress-fill"></div>
@@ -58,7 +61,7 @@
 
             {{-- <h3 class="cost-text">   {{ __('تكلفة السهم') }}: 500 {{ __('ج.م') }}</h3> --}}
         </main>
-
+       
         
     </div>
  @stop

@@ -388,7 +388,58 @@ $icons = [
                             </div>
                             --}}
                             
-
+       
+<div class="col-xl-12 col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title mb-0">{{ __('translation.videos') }}</h4>
+        </div>
+        <div class="card-body">
+            <div id="variations-container">
+                @php
+                    $videos = json_decode($data->videos, true) ?? [];
+                   
+                    $maxCount =  count($videos);
+                @endphp
+                
+                @if($maxCount > 0)
+                    @for($i = 0; $i < $maxCount; $i++)
+                        <div class="row variation-row mb-3">
+                            <div class="col-md-12">
+                                <label for="videos_{{ $i }}" class="form-label">{{ __('translation.emped_link') }}</label>
+                                <input type="text" class="form-control" name="videos[]" id="videos_{{ $i }}" 
+                                       value="{{ $videos[$i] ?? '' }}" 
+                                       placeholder="{{ __('translation.videos') }}">
+                            </div>
+                            
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="button" class="btn btn-danger remove-variation" style="{{ $maxCount <= 1 ? 'display: none;' : '' }}">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    @endfor
+                @else
+                    <div class="row variation-row mb-3">
+                        <div class="col-md-12">
+                            <label for="videos_0" class="form-label">{{ __('translation.emped_link') }}</label>
+                            <input type="text" class="form-control" name="videos[]" id="videos_0" placeholder="{{ __('translation.videos') }}">
+                        </div>
+                       
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button type="button" class="btn btn-danger remove-variation" style="display: none;">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <button type="button" class="btn btn-primary" id="add-variation">
+                <i class="ri-add-line"></i> add
+            </button>
+        </div>
+    </div>
+</div>
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -455,5 +506,48 @@ $(document).on('change','#cat',function () {
         }
       
       });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        let variationCount = {{ $maxCount > 0 ? $maxCount : 1 }};
+        
+        // Add new variation row
+        $('#add-variation').on('click', function() {
+            let newRow = `
+                <div class="row variation-row mb-3">
+                    <div class="col-md-12">
+                        <label for="videos_${variationCount}" class="form-label">{{ __('translation.emped_link') }}</label>
+                        <input type="text" class="form-control" name="videos[]" id="videos_${variationCount}" placeholder="{{ __('translation.videos') }}">
+                    </div>
+                    
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="button" class="btn btn-danger remove-variation">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            $('#variations-container').append(newRow);
+            variationCount++;
+            
+            // Show remove buttons if more than one row
+            if ($('.variation-row').length > 1) {
+                $('.remove-variation').show();
+            }
+        });
+        
+        // Remove variation row
+        $(document).on('click', '.remove-variation', function() {
+            $(this).closest('.variation-row').remove();
+            
+            // Hide remove buttons if only one row left
+            if ($('.variation-row').length === 1) {
+                $('.remove-variation').hide();
+            }
+        });
+    });
 </script>
 @stop

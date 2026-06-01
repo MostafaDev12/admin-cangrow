@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\KashierController;
 use App\Models\Language;
 
 /*
@@ -18,12 +19,21 @@ use App\Models\Language;
 |
 */
 
-
-Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
+// 'IpLocation',
+Route::middleware([ 'FrontLanguages'])->group(function () {
 
     //------------ ADMIN DASHBOARD & PROFILE SECTION ------------
 
 
+Route::post('/kashier/create-session', [KashierController::class, 'createPaymentSession'])
+    ->name('kashier.create.session');
+Route::post('/kashier/callback', [KashierController::class, 'handleCallback'])
+    ->name('kashier.callback');
+Route::get('/kashier/success', [KashierController::class, 'success'])
+    ->name('kashier.success');
+Route::get('/kashier/failure', [KashierController::class, 'failure'])
+    ->name('kashier.failure');
+        
 
         Route::get('change/{id}', [HomeController::class, 'change'])->name('change-lang.index');
 
@@ -63,7 +73,15 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy.index');
         Route::get('/events', [HomeController::class, 'events'])->name('events.index');
         
+        Route::get('/seminars', [HomeController::class, 'seminars'])->name('seminars.index');
+        Route::get('/meetings', [HomeController::class, 'meetings'])->name('meetings.index');
+        Route::get('/museum', [HomeController::class, 'museum'])->name('museum.index');
+        
+        Route::get('/about-doctor/{id}', [HomeController::class, 'about_doctor'])->name('about-doctor.index');
+        
 
+        Route::get('/meeting/{slug}', [HomeController::class, 'singleMeeting'])->name('single-meetings.index');
+        Route::get('/seminar/{slug}', [HomeController::class, 'singleSeminar'])->name('single-seminars.index');
         Route::get('/event/{slug}', [HomeController::class, 'singleEvent'])->name('single-events.index');
         
         Route::get('/events/gallery-events', [HomeController::class, 'galleryEvents'])->name('gallery-events.index');
@@ -78,6 +96,7 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/services-category/{slug}', [HomeController::class, 'singleCategoryService'])->name('single-category-service.index');
          
         Route::get('/service/{slug}', [HomeController::class, 'singleService'])->name('single-service-service.index');
+        Route::get('/request-from/{slug}', [HomeController::class, 'singleRequest_from'])->name('single-request-from.index');
 
         Route::get('/category/{slug}', [HomeController::class, 'blogsCategory'])->name('blogs-category.index');
 
@@ -116,7 +135,5 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
 
         Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
     
-
-        
    });
  

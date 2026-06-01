@@ -143,22 +143,22 @@
                     </div>
 
                     <div class="flex items-center gap-2">
-                         @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" aria-label="Twitter" class="hover:text-white transition-colors"><i
-                                class="fab fa-twitter"></i></a>
- @endif
- @if(App\Models\Socialsetting::find(1)->f_status == 1)
-                        <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" aria-label="Facebook"
-                            class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
- @endif
-  @if(App\Models\Socialsetting::find(1)->ystatus == 1)
-                        <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-label="YouTube" class="hover:text-white transition-colors"><i
-                                class="fab fa-youtube"></i></a>
- @endif
- @if(App\Models\Socialsetting::find(1)->i_status == 1)
-                        <a href="{{ App\Models\Socialsetting::find(1)->instagram }}" aria-label="Instagram" class="hover:text-white transition-colors"><i
-                                class="fab fa-instagram"></i></a>
- @endif
+                         @if(App\Models\Socialsetting::find(1)->d_status == 1) 
+                        <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" aria-label="Twitter" class="hover:text-white transition-colors"><i
+                            class="fab fa-tiktok"></i></a>
+                         @endif
+                         @if(App\Models\Socialsetting::find(1)->f_status == 1)
+                                                <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" aria-label="Facebook"
+                                                    class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                         @endif
+                          @if(App\Models\Socialsetting::find(1)->ystatus == 1)
+                                                <a href="{{ App\Models\Socialsetting::find(1)->youtube }}" aria-label="YouTube" class="hover:text-white transition-colors"><i
+                                                        class="fab fa-youtube"></i></a>
+                         @endif
+                         @if(App\Models\Socialsetting::find(1)->i_status == 1)
+                                                <a href="{{ App\Models\Socialsetting::find(1)->instagram }}" aria-label="Instagram" class="hover:text-white transition-colors"><i
+                                                        class="fab fa-instagram"></i></a>
+                         @endif
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
 
         <!-- Navigation -->
         <nav class="bg-white border-b border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class=" mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-24">
                     <!-- Logo -->
                     <div class="flex-shrink-0">
@@ -221,6 +221,18 @@
                                         <a href="{{ route('success-volunteers.index',$sign) }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange hidden"> 
                                              {{ __('شركاء النجاح') }}</a>
+                                        <a href="{{ route('reviews.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                             {{ __('اراء') }}</a>
+                                     <a href="{{ route('seminars.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                             {{ __('الندوات') }}</a>
+                                     <a href="{{ route('meetings.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                             {{ __('اللقاءات') }}</a>
+                                     <a href="{{ route('museum.index',$sign) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-custom-orange"> 
+                                             {{ __('المتحف') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -315,7 +327,10 @@
                                 {{ __('اتصل بنا') }}</a>
                         </div>
                     </div>
-
+                    <a href="{{ route('donate_campaigns.index',$sign) }}"
+                        class="hidden md:flex bg-custom-orange rounded-full text-white hover:bg-accent transition-colors mx-2 px-4 py-2 ">
+                       {{ __('التبرع عبر الموقع الإلكتروني') }} 
+                    </a>
                     <!-- Actions -->
                     <div class="flex items-center space-x-4 space-x-reverse">
                         <!-- Search -->
@@ -338,7 +353,9 @@
                             class="md:hidden text-gray-700 hover:text-custom-orange focus:outline-none">
                             <i class="fas fa-bars fa-lg"></i>
                         </button>
+                        
                     </div>
+                    
                 </div>
             </div>
 
@@ -376,6 +393,27 @@
                             <a href="{{ route('success-volunteers.index',$sign) }}"
                                 class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
                                      {{ __('شركاء النجاح') }}</a>
+                                     
+                            <a href="{{ route('reviews.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                     {{ __('اراء') }}</a>
+                                     
+                                        
+                            <a href="{{ route('seminars.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                     {{ __('الندوات') }}</a>
+                                     
+                                         
+                            <a href="{{ route('meetings.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                     {{ __('اللقاءات') }}</a>
+                                     
+                                        
+                            <a href="{{ route('museum.index',$sign) }}"
+                                class="block px-3 py-2 text-sm text-gray-600 hover:text-custom-orange hover:bg-gray-50"> 
+                                     {{ __('المتحف') }}</a>
+                                     
+                                     
                         </div>
                     </div>
 
@@ -462,6 +500,10 @@
                   @endif
                     </div>
                 </div>
+                 <a href="{{ route('donate_campaigns.index',$sign) }}"
+                        class="flex md:hidden bg-custom-orange rounded-full text-white hover:bg-accent transition-colors  m-2 px-4 py-2 ">
+                       {{ __('التبرع عبر الموقع الإلكتروني') }} 
+                    </a>
             </div>
         </nav>
     </header>
@@ -701,9 +743,9 @@
 
                 <div class="flex items-center gap-4">
 
-                     @if(App\Models\Socialsetting::find(1)->t_status == 1) 
-                        <a href="{{ App\Models\Socialsetting::find(1)->twitter }}" target="_blank" aria-label="Twitter" class="hover:text-slate-900 transition-colors"><i
-                                class="fa-brands fa-twitter text-lg"></i></a>
+                     @if(App\Models\Socialsetting::find(1)->d_status == 1) 
+                        <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" target="_blank" aria-label="Twitter" class="hover:text-slate-900 transition-colors"><i
+                                class="fa-brands fa-tiktok text-lg"></i></a>
                         @endif
                         @if(App\Models\Socialsetting::find(1)->f_status == 1)
                                                 <a href="{{ App\Models\Socialsetting::find(1)->facebook }}" target="_blank"  aria-label="Facebook"

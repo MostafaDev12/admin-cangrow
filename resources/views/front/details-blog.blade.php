@@ -26,6 +26,24 @@
          $randomPhone = Arr::random($phones);
      @endphp
  
+ <style>
+     .description{
+    column-count: 3;
+    column-gap: 15px;
+}
+
+.description p{
+    break-inside: avoid;
+}
+
+.description p img{
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: block;
+}
+
+ </style>
      
     <div class="container-body">
         

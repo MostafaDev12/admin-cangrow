@@ -41,7 +41,7 @@
                                 <span>0 تعليقات</span>
                             </div> --}}
                             <h3 class="text-xl font-bold text-slate-800 mb-3">
-                                <a href="#" class="transition-colors hover:text-accent">
+                                <a href="{{ route('single-blog.index',['lang'=> $sign , 'blog' =>$blog->{'slug_' . $sign} ]) }}" class="transition-colors hover:text-accent">
                                   {{ optional($blog)->{'title_' . $sign} }}
                                 </a>
                             </h3>

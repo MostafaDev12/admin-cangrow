@@ -30,20 +30,20 @@
                     <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 -mt-9 md:-mt-14">
                            {{ __('احتفالات مؤسسة دار التوفيق') }}
                     </h1>
-                    <p class="text-lg text-gray-600 mt-6 leading-relaxed max-w-2xl mx-auto">
-                           {{ __('لحظات فرح وتكريم نحتفل بها مع المستفيدين والداعمين لنُظهر قصص النجاح والتمكين') }}
-                    </p>
+                    <!--<p class="text-lg text-gray-600 mt-6 leading-relaxed max-w-2xl mx-auto">-->
+                    <!--       {{ __('لحظات فرح وتكريم نحتفل بها مع المستفيدين والداعمين لنُظهر قصص النجاح والتمكين') }}-->
+                    <!--</p>-->
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 md:mb-24">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 md:mb-24">
                     @foreach ($servicess as $service)
                         
                     <a href="{{ route('single-parties.index', ['lang' => $sign , 'slug' => $service->id ]) }}" class="rounded-lg overflow-hidden shadow-lg bg-white group">
                         <img src="{!! $service->photo !!}"
                             alt="{!! $service->{'title_' . $sign} ?? '' !!}"
-                            class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                            class="w-full h-48 object-fill transition-transform duration-300 group-hover:scale-105">
                         <div class="p-4">
-                            <h3 class="text-xl font-bold text-slate-800">  {!! $service->{'title_' . $sign} ?? '' !!}   </h3>
+                            <h3 class="text-xl font-bold text-slate-800 text-center">  {!! $service->{'title_' . $sign} ?? '' !!}   </h3>
                             <p class="text-gray-600 mt-2 text-sm leading-relaxed">
                                 {!! $service->{'short_details_' . $sign} ?? '' !!}
                             </p>

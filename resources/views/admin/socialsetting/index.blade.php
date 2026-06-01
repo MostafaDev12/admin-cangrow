@@ -59,7 +59,7 @@
 
 
                                               <!-- Checkbox Input -->
-                                              <div class="input-group">
+                                            <!--  <div class="input-group">
                                                   <div class="input-group-text">
                                                     <div class="form-check form-switch form-switch-secondary" style="padding-top: 4px;">
                                                       <input class="form-check-input mt-0" name="t_status" {{$data->t_status==1?"checked":""}} type="checkbox" value="1" aria-label="Checkbox for following text input">
@@ -68,11 +68,21 @@
                                                   <input type="text" class="form-control" name="twitter" id="twitter" value="{{ $data->twitter }}" aria-label="write link here">
                                                   <label class="input-group-text" for="twitter">Instagram</label>
                                               </div> 
-                                              <br>
+                                              <br>-->
 
 
                                               <!-- Checkbox Input -->
                                               <div class="input-group">
+                                                  <div class="input-group-text">
+                                                    <div class="form-check form-switch form-switch-secondary" style="padding-top: 4px;">
+                                                      <input class="form-check-input mt-0" name="i_status" {{$data->i_status==1?"checked":""}} type="checkbox" value="1" aria-label="Checkbox for following text input">
+                                                  </div>
+                                                  </div>
+                                                  <input type="text" class="form-control" name="instagram" id="instagram" value="{{ $data->instagram }}"  aria-label="write link here">
+                                                  <label class="input-group-text" for="instagram">instagram</label>
+                                              </div> 
+                                              <br>
+    <div class="input-group">
                                                   <div class="input-group-text">
                                                     <div class="form-check form-switch form-switch-secondary" style="padding-top: 4px;">
                                                       <input class="form-check-input mt-0" name="ystatus" {{$data->ystatus==1?"checked":""}} type="checkbox" value="1" aria-label="Checkbox for following text input">

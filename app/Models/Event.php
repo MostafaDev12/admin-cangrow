@@ -30,6 +30,7 @@ class Event extends Model
         
         'photo',
         'title_ar',
+        'videos',
         'title_en',
         'title_fr',
         'details_ar',

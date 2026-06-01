@@ -11,6 +11,8 @@ use App\Models\ModelCategory;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Event;
+use App\Models\Museum;
+use App\Models\Seminar;
 use App\Models\Partner;
 use App\Models\Contact;
 use App\Models\Category;
@@ -41,6 +43,7 @@ use App\Models\Subscribe;
 use App\Models\Subscription;
 use App\Models\Testimonial;
 use App\Models\Timeline;
+use App\Models\Meeting;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
@@ -112,6 +115,31 @@ $processes = Process::get();
             $certificates = Certificate::get();
 
     return view('front.about', compact('sign', 'sliders', 'teams', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+  }
+
+   
+
+  public function about_doctor(Request $request,$lang,$id)
+  {
+
+    $sign = $this->langSign($lang);
+
+    $sliders = Slider::get();
+    $points = AboutPoint::get();
+    $about_visions = AboutVision::get();
+    $services = Service::get();
+    $models = ModelCategory::get();
+    $partners = Partner::get();
+    $team = Doctor::find($id);
+    $processes = Process::get();
+       $timelines = Timeline::get();
+        $testimonials = Testimonial::get();
+            $certificates = Certificate::get();
+ if(!$team){
+
+      abort(404);
+    }
+    return view('front.about-doctor', compact('sign', 'sliders', 'team', 'points','about_visions','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
   }
 
    
@@ -624,6 +652,57 @@ $processes = Process::get();
 
     return view('front.events', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
   }  
+     
+  public function museum(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Museum::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.museum', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+   
+  public function seminars(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Seminar::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.seminars', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+  
+     
+  public function meetings(Request $request,$lang)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $sliders = Slider::first();
+    $points = AboutPoint::get();
+    $servicess = Meeting::paginate(6);
+    $models = PageModel::get();
+    $reviews = Partner::get();
+    $locations = Location::get();
+
+    return view('front.meetings', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
+  }  
+  
+  
   public function galleryEvents(Request $request,$lang)
   {
 
@@ -754,6 +833,88 @@ $processes = Process::get();
 
 
     return view('front.gallery-parties', compact('sign', 'service'));
+  }    
+  public function singleSeminar(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $service = Seminar::where('id', $slug)->first();
+    
+    if(!$service){
+
+      abort(404);
+    }
+
+    //      switch ($sign) {
+    //     case 'en':
+    //         $correctSlug = $service->slug_en;
+    //         break;
+    //     case 'ar':
+    //         $correctSlug = $service->slug_ar;
+    //         break;
+    //     case 'fr':
+    //         $correctSlug = $service->slug_fr;
+    //         break;
+    //     default:
+    //         $correctSlug = $service->slug_en;
+    // }
+    // if ($slug !== $correctSlug) {
+    //     if($lang){
+            
+    //     return redirect()->to("/$sign/party/$correctSlug");
+    //     }else{
+            
+            
+    //     return redirect()->to("/party/$correctSlug");
+    //     }
+    // }
+
+
+
+    return view('front.gallery-seminars', compact('sign', 'service'));
+  }
+  public function singleMeeting(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $service = Meeting::where('id', $slug)->first();
+    
+    if(!$service){
+
+      abort(404);
+    }
+
+    //      switch ($sign) {
+    //     case 'en':
+    //         $correctSlug = $service->slug_en;
+    //         break;
+    //     case 'ar':
+    //         $correctSlug = $service->slug_ar;
+    //         break;
+    //     case 'fr':
+    //         $correctSlug = $service->slug_fr;
+    //         break;
+    //     default:
+    //         $correctSlug = $service->slug_en;
+    // }
+    // if ($slug !== $correctSlug) {
+    //     if($lang){
+            
+    //     return redirect()->to("/$sign/party/$correctSlug");
+    //     }else{
+            
+            
+    //     return redirect()->to("/party/$correctSlug");
+    //     }
+    // }
+
+
+
+    return view('front.gallery-meetings', compact('sign', 'service'));
   }
   public function locations(Request $request)
   {
@@ -896,6 +1057,47 @@ $processes = Process::get();
 
 
     return view('front.details-service', compact('sign', 'service'));
+  }  
+  public function singleRequest_from(Request $request,$lang, $slug)
+  {
+
+    $sign = $this->langSign($lang);
+
+
+    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    
+    if(!$service){
+
+      abort(404);
+    }
+
+         switch ($sign) {
+        case 'en':
+            $correctSlug = $service->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $service->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $service->slug_fr;
+            break;
+        default:
+            $correctSlug = $service->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+            
+        return redirect()->to("/$sign/service/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/service/$correctSlug");
+        }
+    }
+
+
+
+    return view('front.request-from', compact('sign', 'service'));
   }
   public function singleCategory(Request $request,$lang, $slug)
   {
@@ -1138,13 +1340,26 @@ return redirect($newUrl);
         "<br>Email: " . $from .
         "<br>Service: " . $service .
         "<br>Message: " . $message;
+    } elseif (!empty($request->service_name)) {
+
+      $subject = "Service Request From Of " . $request->name;
+      $subject_title = $request->service;
+      $msg = "Name: " . $name .
+        "<br>Email: " . $from .
+        "<br>National ID: " . $request->national_id .
+        "<br>Phone: " . $request->phone .
+        "<br>Governorate: " . $request->governorate .
+        "<br>City: " . $request->city .
+        "<br>Service: " . $request->service_name .
+        "<br>Message: " . $message;
     } else {
 
-      $subject = "Email From Of " . $request->name;
+      $subject = "Contact Email From Of " . $request->name;
       $service = $request->specialty;
       $msg = "Name: " . $name . 
     //  "<br>Email: " . $from . 
       "<br>Phone: " . $phone . 
+      "<br>Subject: " . $request->subject . 
       // "<br>Age: " . $request->age . 
       // "<br>Specialty: " . $request->specialty . 
       // "<br>BookingDate: " . $request->bookingDate . 

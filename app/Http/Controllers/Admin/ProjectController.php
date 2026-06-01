@@ -89,7 +89,22 @@ class ProjectController extends Controller
          $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
          $input['slug_en'] = str_replace(' ','-',$request->slug_en);
          $input['slug_fr'] = str_replace(' ','-',$request->slug_fr);
-         
+           $variationAr = null;
+    
+    
+    if ($request->has('videos') && is_array($request->videos)) {
+        // Filter out empty values
+        $variationArFiltered = array_filter($request->videos, function($value) {
+            return !empty(trim($value));
+        });
+        
+        // Convert to JSON if there are variations
+        if (!empty($variationArFiltered)) {
+            $variationAr = json_encode(array_values($variationArFiltered));
+        }
+    }
+    
+           $input['videos'] = $variationAr;
         $data->fill($input)->save();
         //--- Logic Section Ends
       
@@ -144,7 +159,22 @@ class ProjectController extends Controller
          $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
          $input['slug_en'] = str_replace(' ','-',$request->slug_en);
          $input['slug_fr'] = str_replace(' ','-',$request->slug_fr);
-         
+           $variationAr = null;
+    
+    
+    if ($request->has('videos') && is_array($request->videos)) {
+        // Filter out empty values
+        $variationArFiltered = array_filter($request->videos, function($value) {
+            return !empty(trim($value));
+        });
+        
+        // Convert to JSON if there are variations
+        if (!empty($variationArFiltered)) {
+            $variationAr = json_encode(array_values($variationArFiltered));
+        }
+    }
+    
+           $input['videos'] = $variationAr;
         $data->update($input);
         //--- Logic Section Ends
 

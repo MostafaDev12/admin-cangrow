@@ -11,6 +11,7 @@ use App\Models\Event;
 use App\Models\Party;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\Seminar;
 use Image;
 
 class GalleryController extends Controller
@@ -56,6 +57,15 @@ class GalleryController extends Controller
                     $data[1] = $prod->galleries;
                 }
 
+            }elseif($type == 'Seminar'){
+                $prod = Seminar::findOrFail($id);
+             
+                if(count($prod->galleries))
+                {
+                    $data[0] = 1;
+                    $data[1] = $prod->galleries;
+                }
+
             }else{
              $prod = Service::findOrFail($id);
              
@@ -93,6 +103,7 @@ class GalleryController extends Controller
         $project_id = $request->project_id;
         $event_id = $request->event_id;
         $party_id = $request->party_id;
+        $seminar_id = $request->seminar_id;
         $subcategory_id = $request->subcategory_id;
         if ($files = $request->file('gallery')){
             foreach ($files as  $key => $file){
@@ -111,6 +122,7 @@ class GalleryController extends Controller
                     $gallery['project_id'] = $project_id ?? null;
                     $gallery['event_id'] = $event_id ?? null;
                     $gallery['party_id'] = $party_id ?? null;
+                    $gallery['seminar_id'] = $seminar_id ?? null;
                  
                     $gallery->save();
                     $data[] = $gallery;                        

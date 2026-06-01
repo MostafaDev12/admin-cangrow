@@ -38,6 +38,9 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProcessController;
 use App\Http\Controllers\Admin\TimelineController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\MuseumController;
+use App\Http\Controllers\Admin\SeminarController;
+use App\Http\Controllers\Admin\MeetingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -241,6 +244,39 @@ Route::prefix('admin')->group(function () {
       Route::post('/events/update/{id}', [EventController::class, 'update'])->name('admin-events-update');
 
       Route::get('/events/delete/{id}',  [EventController::class, 'destroy'])->name('admin-events-delete');
+    });
+    Route::group(['middleware' => 'permissions:seminars'], function () {
+
+      Route::get('/seminars/datatables',  [SeminarController::class, 'datatables'])->name('admin-seminars-datatables');
+      Route::get('/seminars',  [SeminarController::class, 'index'])->name('admin-seminars-index');
+      Route::get('/seminars/create',   [SeminarController::class, 'create'])->name('admin-seminars-create');
+      Route::post('/seminars/create',  [SeminarController::class, 'store'])->name('admin-seminars-store');
+      Route::get('/seminars/edit/{id}',  [SeminarController::class, 'edit'])->name('admin-seminars-edit');
+      Route::post('/seminars/update/{id}', [SeminarController::class, 'update'])->name('admin-seminars-update');
+
+      Route::get('/seminars/delete/{id}',  [SeminarController::class, 'destroy'])->name('admin-seminars-delete');
+    });
+    Route::group(['middleware' => 'permissions:meetings'], function () {
+
+      Route::get('/meetings/datatables',  [MeetingController::class, 'datatables'])->name('admin-meetings-datatables');
+      Route::get('/meetings',  [MeetingController::class, 'index'])->name('admin-meetings-index');
+      Route::get('/meetings/create',   [MeetingController::class, 'create'])->name('admin-meetings-create');
+      Route::post('/meetings/create',  [MeetingController::class, 'store'])->name('admin-meetings-store');
+      Route::get('/meetings/edit/{id}',  [MeetingController::class, 'edit'])->name('admin-meetings-edit');
+      Route::post('/meetings/update/{id}', [MeetingController::class, 'update'])->name('admin-meetings-update');
+
+      Route::get('/meetings/delete/{id}',  [MeetingController::class, 'destroy'])->name('admin-meetings-delete');
+    });
+    Route::group(['middleware' => 'permissions:museums'], function () {
+
+      Route::get('/museums/datatables',  [MuseumController::class, 'datatables'])->name('admin-museums-datatables');
+      Route::get('/museums',  [MuseumController::class, 'index'])->name('admin-museums-index');
+      Route::get('/museums/create',   [MuseumController::class, 'create'])->name('admin-museums-create');
+      Route::post('/museums/create',  [MuseumController::class, 'store'])->name('admin-museums-store');
+      Route::get('/museums/edit/{id}',  [MuseumController::class, 'edit'])->name('admin-museums-edit');
+      Route::post('/museums/update/{id}', [MuseumController::class, 'update'])->name('admin-museums-update');
+
+      Route::get('/museums/delete/{id}',  [MuseumController::class, 'destroy'])->name('admin-museums-delete');
     });
     Route::group(['middleware' => 'permissions:parties'], function () {
 

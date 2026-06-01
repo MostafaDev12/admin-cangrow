@@ -79,10 +79,10 @@
                                                 <input type="text" class="form-control" name="name_ar" id="name_ar"   value="{{ $data->name_ar }}"
                                                     placeholder="{{ __('translation.name') }}">
                                             </div>
-                                              <div class="mb-3">
+                                           <!--   <div class="mb-3">
                                                   <label for="job_ar" class="form-label">{{ __('translation.job') }}</label>
                                                   <input type="text" class="form-control" name="job_ar" value="{{ $data->job_ar }}" id="job_ar" placeholder="{{ __('translation.job') }}">
-                                              </div>
+                                              </div>-->
                                                
                                               <div class="mb-3">
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
@@ -99,10 +99,10 @@
                                                 <input type="text" class="form-control" name="name_en" id="name_en"   value="{{ $data->name_en }}"
                                                     placeholder="{{ __('translation.name') }}">
                                             </div>
-                                            <div class="mb-3">
+                                        <!--    <div class="mb-3">
                                               <label for="job_en" class="form-label">{{ __('translation.job') }}</label>
                                               <input type="text" class="form-control" name="job_en"  value="{{ $data->job_en }}"  id="job_en" placeholder="{{ __('translation.job') }}">
-                                          </div>
+                                          </div>-->
                                            
                                           <div class="mb-3">
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
@@ -117,11 +117,11 @@
                                             <h6 style="text-align: center;">{{ __('translation.france') }}</h6>
                                            
 
-                                            <div class="mb-3">
+                                           <!-- <div class="mb-3">
                                               <label for="job_fr" class="form-label">{{ __('translation.job') }}</label>
                                               <input type="text" class="form-control" name="job_fr"  value="{{ $data->job_fr }}"  id="job_fr" placeholder="{{ __('translation.job') }}">
                                           </div>
-                                           
+                                           -->
                                           <div class="mb-3">
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_fr }}</textarea>

@@ -107,7 +107,7 @@
                                         <label for="message"
                                             class="block text-sm font-semibold text-gray-700 mb-2"> 
                                             {{ __('محتوى الرسالة') }} </label>
-                                        <textarea name="message" id="message" rows="5" placeholder="{{ __('ما الذي تفكر فيه') }}"
+                                        <textarea name="text" id="message" rows="5" placeholder="{{ __('ما الذي تفكر فيه') }}"
                                             class="w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
                                     </div>
                                     <div class="md:col-span-2">
