@@ -48,7 +48,9 @@ private function setCredentialsByType(string $type): void
     $request->validate([
         'amount' => 'required|numeric|min:1',
         'type' => 'required|string',
-        'service_name' => 'required|string'
+        'service_name' => 'required|string',
+        'name' => 'required|string|max:255',
+        'phone' => 'required|string|max:20'
     ]);
 
     // Generate unique order ID
@@ -65,6 +67,8 @@ private function setCredentialsByType(string $type): void
             'amount' => $request->amount,
             'type' => $request->type,
             'service_name' => $request->service_name,
+            'name' => $request->name,
+            'phone' => $request->phone,
             'status' => 'pending',
             'currency' => 'EGP'
         ]);
@@ -91,11 +95,15 @@ private function setCredentialsByType(string $type): void
             'maxFailureAttempts' => 3,
             'customer' => [
                 'email' => 'donor@dareltawfik.org',
-                'reference' => $orderId
+                'reference' => $orderId,
+                'name' => $request->name,
+                'phone' => $request->phone
             ],
             'metaData' => [
                 'donation_type' => $request->type,
-                'service_name' => $request->service_name
+                'service_name' => $request->service_name,
+                'name' => $request->name,
+                'phone' => $request->phone
             ]
         ];
 
@@ -123,7 +131,8 @@ private function setCredentialsByType(string $type): void
             // Update donation with session details
             if (isset($donation)) {
                 $donation->update([
-                    'payment_session_id' => $data['_id'] ?? null
+                    'payment_session_id' => $data['_id'] ?? null,
+                    'status' => 'completed'
                 ]);
             }
 
@@ -143,6 +152,11 @@ private function setCredentialsByType(string $type): void
                 ], 400);
             }
         } else {
+             if (isset($donation)) {
+                $donation->update([
+                     'status' => 'failed'
+                ]);
+            }
             Log::error('Kashier API Error Response:', [
                 'status' => $response->status(),
                 'body' => $response->body(),

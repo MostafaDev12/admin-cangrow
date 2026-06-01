@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AboutVisionController;
 use App\Http\Controllers\Admin\AfterBeforeController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\DonateCampaignController;
+use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HumanitarianCaseController;
 use App\Http\Controllers\Admin\PartyController;
@@ -490,7 +491,14 @@ Route::prefix('admin')->group(function () {
       Route::post('/donate_campaigns/update/{id}', [DonateCampaignController::class, 'update'])->name('admin-donate_campaigns-update');
 
       Route::get('/donate_campaigns/delete/{id}',  [DonateCampaignController::class, 'destroy'])->name('admin-donate_campaigns-delete');
-   
+
+    });
+    Route::group(['middleware' => 'permissions:donate_campaigns'], function () {
+
+      Route::get('/donations/datatables',  [DonationController::class, 'datatables'])->name('admin-donations-datatables');
+      Route::get('/donations',  [DonationController::class, 'index'])->name('admin-donations-index');
+      Route::get('/donations/delete/{id}',  [DonationController::class, 'destroy'])->name('admin-donations-delete');
+
     });
     Route::group(['middleware' => 'permissions:timelines'], function () {
 

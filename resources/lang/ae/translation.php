@@ -273,6 +273,19 @@ return [
 "locations" => "المواقع",
 "blogs" => "المدونة",
 "language" => "اللغة",
-   
+"testimonials" => "آراء العملاء",
+"seminars" => "الندوات",
+"meetings" => "الاجتماعات",
+"museums" => "المتاحف",
+"donations" => "التبرعات",
+"order_id" => "رقم الطلب",
+"name" => "الاسم",
+"phone" => "رقم الهاتف",
+"amount" => "المبلغ",
+"type" => "النوع",
+"service_name" => "اسم الحملة",
+"status" => "الحالة",
+"date" => "التاريخ",
+
 ];
 ?>

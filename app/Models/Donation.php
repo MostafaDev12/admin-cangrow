@@ -14,6 +14,8 @@ class Donation extends Model
         'currency',
         'type',
         'service_name',
+        'name',
+        'phone',
         'payment_method',
         'status',
         'response_data'

@@ -408,7 +408,14 @@
                                          <i class="las la-tachometer-alt"></i>   <span>@lang('translation.donate_campaigns')</span>
                                     </a>
                                 </li>
-   
+
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="{{ route('admin-donations-index') }}"
+                                        aria-controls="sidebarmodels">
+                                         <i class="las la-hand-holding-heart"></i>   <span>@lang('translation.donations')</span>
+                                    </a>
+                                </li>
+
                 {{--  --}}
                 {{-- @if (Auth::guard('admin')->user()->sectionCheck('models'))
                     <li class="nav-item">

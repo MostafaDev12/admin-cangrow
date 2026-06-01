@@ -80,6 +80,13 @@
                 </div>
 
                 <input type="text" value="10" class="custom-amount-input"  id="amount"  placeholder="{{ __('أدخل قيمة') }}">
+
+                <span class="label"> :{{ __('الاسم') }}</span>
+                <input type="text" class="custom-amount-input" id="donor_name" placeholder="{{ __('أدخل اسمك') }}">
+
+                <span class="label"> :{{ __('رقم الهاتف') }}</span>
+                <input type="tel" class="custom-amount-input" id="donor_phone" placeholder="{{ __('أدخل رقم هاتفك') }}">
+
                 <input type="hidden" value="{{ __('زكاة المال') }}"  id="type"  class="custom-amount-type">
                 <input type="hidden" value="{{ $service->{'title_' . $sign} }}" id="service_name" class="custom-amount-service">
 
@@ -130,10 +137,24 @@
             const amount = document.getElementById('amount').value;
             const type = document.getElementById('type').value;
             const serviceName = document.getElementById('service_name').value;
+            const donorName = document.getElementById('donor_name').value.trim();
+            const donorPhone = document.getElementById('donor_phone').value.trim();
 
             // Validate amount
             if (!amount || amount <= 0) {
                 alert('{{ __("الرجاء إدخال مبلغ التبرع") }}');
+                return;
+            }
+
+            // Validate name
+            if (!donorName) {
+                alert('{{ __("الرجاء إدخال الاسم") }}');
+                return;
+            }
+
+            // Validate phone
+            if (!donorPhone) {
+                alert('{{ __("الرجاء إدخال رقم الهاتف") }}');
                 return;
             }
 
@@ -151,7 +172,9 @@
                 body: JSON.stringify({
                     amount: amount,
                     type: type,
-                    service_name: serviceName
+                    service_name: serviceName,
+                    name: donorName,
+                    phone: donorPhone
                 })
             })
             .then(response => response.json())

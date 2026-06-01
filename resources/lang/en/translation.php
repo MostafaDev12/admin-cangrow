@@ -293,6 +293,19 @@ return [
        "locations" => "locations",
        "blogs" => "blogs",
        "language" => "language",
+       "testimonials" => "testimonials",
+       "seminars" => "seminars",
+       "meetings" => "meetings",
+       "museums" => "museums",
+       "donations" => "donations",
+       "order_id" => "order id",
+       "name" => "name",
+       "phone" => "phone",
+       "amount" => "amount",
+       "type" => "type",
+       "service_name" => "service name",
+       "status" => "status",
+       "date" => "date",
        
        
        
