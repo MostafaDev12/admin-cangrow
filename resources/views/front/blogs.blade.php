@@ -45,13 +45,18 @@
                 <article
                     class="bg-white rounded-xl overflow-hidden shadow-custom transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-r {{ $gradientClass }} flex items-center justify-center">
-                        <i class="fas fa-car text-5xl text-white"></i>
+                       <!-- <i class="fas fa-car text-5xl text-white"></i>-->
+                       <img alt="رؤيتنا وأهدافنا" loading="lazy" width="400" height="200"
+                                  class="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+                                  style="color:transparent" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                  src="{{ $blog->photo }}"
+                                  onerror="this.onerror=null;this.src='{{ $blog->photo }}';" />
                     </div>
                     <div class="p-6">
                         <span class="text-sm text-blue-600 font-semibold">   {{ optional($blog->category)->{'title_' . $sign} }}</span>
                         <h3 class="text-xl font-semibold my-3">     {{ optional($blog)->{'title_' . $sign} }}     </h3>
                         <p class="text-gray-600">  {{ optional($blog)->{'short_details_' . $sign} }}</p>
-                        <a href="blog-details.html"
+                        <a href="{{ route('single-blog.index',['lang'=> $sign , 'blog' =>$blog->{'slug_' . $sign} ]) }}"
                             class="block mt-4 text-blue-600 font-semibold hover:text-blue-800"> {{ __('اقرأ المزيد') }}  </a>
                     </div>
                 </article>

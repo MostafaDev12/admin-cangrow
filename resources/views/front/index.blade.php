@@ -100,7 +100,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Benefit Card 1 -->
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="relative z-10 bg-white rounded-[15px] p-[30px] shadow-lg text-center overflow-hidden transition-all duration-300 hover:-translate-y-[10px] group">
                     <div
                         class="w-[70px] h-[70px] bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-[24px] transition-all duration-300 group-hover:bg-white group-hover:text-indigo-600">
@@ -116,10 +116,10 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 h-0 opacity-0 transition-all duration-300 group-hover:h-full group-hover:opacity-100 -z-10">
                     </div>
-                </div>
+                </a>
 
                 <!-- Benefit Card 2 -->
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="relative z-10 bg-white rounded-[15px] p-[30px] shadow-lg text-center overflow-hidden transition-all duration-300 hover:-translate-y-[10px] group">
                     <div
                         class="w-[70px] h-[70px] bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-[24px] transition-all duration-300 group-hover:bg-white group-hover:text-green-600">
@@ -135,10 +135,10 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 h-0 opacity-0 transition-all duration-300 group-hover:h-full group-hover:opacity-100 -z-10">
                     </div>
-                </div>
+                </a>
 
                 <!-- Benefit Card 3 -->
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="relative z-10 bg-white rounded-[15px] p-[30px] shadow-lg text-center overflow-hidden transition-all duration-300 hover:-translate-y-[10px] group">
                     <div
                         class="w-[70px] h-[70px] bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-[24px] transition-all duration-300 group-hover:bg-white group-hover:text-pink-600">
@@ -155,7 +155,7 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500 h-0 opacity-0 transition-all duration-300 group-hover:h-full group-hover:opacity-100 -z-10">
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -168,7 +168,7 @@
                     {{ __('ابدأ الآن واستفد من الفرص المتاحة أمامك') }}</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="benefit-card bg-white rounded-xl p-8 shadow-custom transition-all duration-300 hover:-translate-y-3 text-center relative overflow-hidden group">
                     <div
                         class="benefit-icon w-16 h-16 bg-gradient text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl transition-all duration-300 group-hover:bg-white group-hover:text-primary">
@@ -180,9 +180,9 @@
                     <div
                         class="absolute inset-0 bg-gradient opacity-0 transition-all duration-300 group-hover:opacity-100 -z-10">
                     </div>
-                </div>
+                </a>
 
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="benefit-card bg-white rounded-xl p-8 shadow-custom transition-all duration-300 hover:-translate-y-3 text-center relative overflow-hidden group">
                     <div
                         class="benefit-icon w-16 h-16 bg-gradient text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl transition-all duration-300 group-hover:bg-white group-hover:text-primary">
@@ -194,9 +194,9 @@
                     <div
                         class="absolute inset-0 bg-gradient opacity-0 transition-all duration-300 group-hover:opacity-100 -z-10">
                     </div>
-                </div>
+                </a>
 
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="benefit-card bg-white rounded-xl p-8 shadow-custom transition-all duration-300 hover:-translate-y-3 text-center relative overflow-hidden group">
                     <div
                         class="benefit-icon w-16 h-16 bg-gradient text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl transition-all duration-300 group-hover:bg-white group-hover:text-primary">
@@ -209,7 +209,7 @@
                     <div
                         class="absolute inset-0 bg-gradient opacity-0 transition-all duration-300 group-hover:opacity-100 -z-10">
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -222,41 +222,35 @@
                           {{ __('نحن معك حتى تصل') }}</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- الكارت الأول -->
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="bg-white rounded-xl p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 text-center relative overflow-hidden group">
 
-                    <!-- أيقونة -->
                     <div
                         class="w-16 h-16 bg-gradient-to-r from-primary to-pink-500 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl transition-transform duration-500 group-hover:scale-110 group-hover:bg-white group-hover:text-primary relative z-10">
                         <i class="fas fa-hands-helping"></i>
                     </div>
 
-                    <!-- العنوان -->
                     <h3
                         class="text-xl font-bold mb-4 transition-all duration-500 transform group-hover:-translate-y-1 group-hover:text-white relative z-10">
                                   {{ __('ندعمك في كل رحلة') }}
                     </h3>
 
-                    <!-- النص -->
                     <p
                         class="text-gray-600 transition-all duration-500 transform group-hover:-translate-y-1 group-hover:text-white relative z-10">
                          {{ __('نحن نريد لكل رحلة مع اوبر درايفر أن تكون ممتعة وسهلة. من خلال التطبيق، نحن هنا لتوفير المساعدة لك في كل خطوة.') }}
                     </p>
 
-                    <!-- خلفية متحركة -->
                     <div
                         class="absolute inset-0 bg-gradient-to-tr from-primary via-purple-500 to-pink-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[length:200%_200%] animate-[bg-move_6s_ease_infinite] -z-10">
                     </div>
 
-                    <!-- لمعة متحركة -->
                     <div
                         class="absolute top-0 left-0 w-full h-full -translate-x-full bg-white/20 rotate-12 group-hover:animate-[shine_1.5s_ease-in-out_forwards]">
                     </div>
-                </div>
+                </a>
 
                 <!-- الكارت الثاني -->
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="bg-white rounded-xl p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 text-center relative overflow-hidden group">
 
                     <!-- الأيقونة -->
@@ -287,10 +281,10 @@
                     <div
                         class="absolute top-0 left-0 w-full h-full -translate-x-full bg-white/20 rotate-12 group-hover:animate-[shine_1.5s_ease-in-out_forwards]">
                     </div>
-                </div>
+                </a>
 
                 <!-- الكارت الثالث -->
-                <div
+                <a href="{{ route('contact.index',$sign) }}"
                     class="bg-white rounded-xl p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 text-center relative overflow-hidden group">
 
                     <!-- الأيقونة -->
@@ -321,7 +315,7 @@
                     <div
                         class="absolute top-0 left-0 w-full h-full -translate-x-full bg-white/20 rotate-12 group-hover:animate-[shine_1.5s_ease-in-out_forwards]">
                     </div>
-                </div>
+                </a>
 
             </div>
         </div>
@@ -361,18 +355,18 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fadeInUp"
                         style="animation-delay: 0.6s;">
-                        <button
-                            class="bg-white text-custom-blue font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition duration-300 transform hover:-translate-y-1 animate-pulse-slow">
+                        <a  href="{{ route('about.index',$sign) }}"
+                            class="text-white bg-custom-blue font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition duration-300 transform hover:-translate-y-1 animate-pulse-slow">
                             <i class="fas fa-info-circle ml-2"></i>
                            
                             {{ __( 'تعرف على Uber Drive') }}
-                        </button>
-                        <button
-                            class="bg-transparent border-2 border-white font-semibold py-3 px-6 rounded-lg hover:bg-white hover:text-custom-blue transition duration-300 transform hover:-translate-y-1">
+                        </a>
+                        <a href="{{ route('contact.index',$sign) }}"
+                            class="bg-transparent border-2 border-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1">
                             <i class="fas fa-phone ml-2"></i>
                            
                             {{ __('تواصل معنا') }}
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -614,7 +608,7 @@
                         <span class="text-sm text-accent font-semibold"> {{ optional($blogg->category)->{'title_' . $sign} }}   </span>
                         <h3 class="text-xl font-semibold my-2">   {{ $blogg->{'title_' . $sign} }}    </h3>
                         <p class="text-gray-600">  {{ $blogg->{'short_details_' . $sign} }}</p>
-                        <a href="{{ route('single-blog.index',$blogg->{'slug_' . $sign}) }}" class="block mt-4 text-primary font-semibold hover:text-secondary transition"> 
+                        <a href="{{ route('single-blog.index',['lang'=> $sign , 'blog' =>$blogg->{'slug_' . $sign} ]) }}" class="block mt-4 text-primary font-semibold hover:text-secondary transition"> 
                                
                             {{ __('قراءة المزيد') }} 
                             <i class="fas fa-arrow-left ml-1"></i></a>

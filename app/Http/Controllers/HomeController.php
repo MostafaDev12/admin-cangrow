@@ -536,11 +536,13 @@ return redirect($newUrl);
       $msg = "Name: " . $name . 
     //  "<br>Email: " . $from . 
       "<br>Phone: " . $phone . 
-      // "<br>Age: " . $request->age . 
-      // "<br>Specialty: " . $request->specialty . 
-      // "<br>BookingDate: " . $request->bookingDate . 
+        "<br>Type: " . $request->type . 
+       "<br>Car type: " . $request->car_type . 
+      "<br>Location: " . $request->location  
     
-      "<br>Message: " . $message;
+     // "<br>Message: " . $message
+      
+      ;
 
     }
 

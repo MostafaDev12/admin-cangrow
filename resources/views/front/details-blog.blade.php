@@ -80,7 +80,7 @@ $randomPhone = Arr::random($phones);
                             $k++
                             @endphp
                 <div class="rounded shadow hover:shadow-lg p-4 transition-all duration-500">
-                    <a class="" href="{{ route('single-blog.index',$blogg->{'slug_' . $sign}) }}">
+                    <a class="" href="{{ route('single-blog.index',['lang'=> $sign , 'blog' =>$blogg->{'slug_' . $sign} ]) }}">
                         <img class="rounded"
                             src="{{ $blogg->photo }}"
                             srcset="{{ $blogg->photo }} 1x, {{ $blogg->photo }} 2x"

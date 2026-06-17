@@ -85,6 +85,24 @@
     <link rel="icon" type="image/x-icon" href="{{ $gs->favicon }}" />
     <!-- bootstrap -->
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLLHL0B28N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CLLHL0B28N');
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NG3XDDPZ');</script>
+<!-- End Google Tag Manager -->
 
 
 
@@ -279,7 +297,7 @@
                 <div>
                     <h3 class="text-xl font-semibold mb-4">     {{ __('روابط سريعة') }}</h3>
                     <ul class="space-y-2">
-                        <li><a href="#registration" class="hover:text-secondary transition">التسجيل</a></li>
+                        <li><a href="{{ route('contact.index',$sign) }}" class="hover:text-secondary transition">التسجيل</a></li>
                         <li><a href="#requirements" class="hover:text-secondary transition">المتطلبات</a></li>
                         <li><a href="#benefits" class="hover:text-secondary transition">المميزات</a></li>
                         <li><a href="#news" class="hover:text-secondary transition">الأخبار</a></li>
@@ -358,7 +376,7 @@
             class="group relative w-14 h-14 bg-gradient-to-br from-black via-black to-black text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:scale-110 hover:rotate-6 transition-all duration-500 ease-out">
             <i class="fab fa-instagram group-hover:animate-pulse"></i>
             <span
-                class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500"> {{ __('instagram') }}</span>
+                class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500"> {{ __('twitter') }}</span>
         </a>
             @endif
 @if(App\Models\Socialsetting::find(1)->f_status == 1) 
@@ -386,6 +404,24 @@
             <span
                 class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-green-700/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">Call</span>
         </a>
+        <a href="https://wa.me/2{{ $randomPhone }}"
+           target="_blank"
+           class="group relative w-14 h-14 bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(0,255,150,0.6)] hover:scale-110 hover:rotate-6 transition-all duration-500 ease-out">
+            <i class="fab fa-whatsapp group-hover:animate-pulse"></i>
+            <span class="absolute -right-24 opacity-0 group-hover:opacity-100 bg-emerald-700/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">
+                WhatsApp
+            </span>
+        </a>
+          @if(App\Models\Socialsetting::find(1)->d_status == 1)     
+        <a href="{{ App\Models\Socialsetting::find(1)->dribble }}"
+           target="_blank"
+            class="group relative w-14 h-14 bg-gradient-to-br from-black via-black to-black text-white rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:scale-110 hover:rotate-6 transition-all duration-500 ease-out">
+            <i class="fab fa-tiktok group-hover:animate-pulse"></i>
+            <span class="absolute -right-20 opacity-0 group-hover:opacity-100 bg-black/90 text-white text-sm px-3 py-1 rounded-lg shadow-lg transition-all duration-500">
+                TikTok
+            </span>
+        </a>
+@endif
     </div>
 
 
@@ -599,6 +635,10 @@
         })
     </script>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NG3XDDPZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 </body>
 
