@@ -1,10 +1,12 @@
 @extends('layouts.front')
 
-@section('title')
-   
-{{ $blog->{'title_' . $sign} }}   -  {{ $gs->{'title_' . $sign} }}
-     
-@stop
+@php
+    // SEO title: prefer the article's meta/SEO title; fall back to the article (H1) title.
+    $seoMetaTitle = trim((string) ($blog->{'meta_title_' . $sign} ?? ''));
+    $seoTitle     = $seoMetaTitle !== '' ? $seoMetaTitle : $blog->{'title_' . $sign};
+@endphp
+
+@section('title'){{ $seoTitle }} - {{ $gs->{'title_' . $sign} }}@stop
 
 @section('gsearch')
     <meta property="og:image" content=" {{ $gs->{'logo_' . $sign} }}" />

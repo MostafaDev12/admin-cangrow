@@ -21,31 +21,41 @@
 
 
     <meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
+
+    @php
+        // Site name used as the final SEO fallback.
+        $siteName = $gs->{'title_' . $sign};
+    @endphp
+
     @if (isset($page->meta_tag) && isset($page->meta_description))
+        {{-- Static/general pages --}}
         <meta name="keywords" content="{{ $page->meta_tag }}">
         <meta name="description" content="{{ $page->meta_description }}">
-        <title>@yield('title') -
+    @elseif (isset($blog))
+        {{-- Article / blog detail pages --}}
+        @php
+            $blogMetaTitle = trim((string) ($blog->{'meta_title_' . $sign} ?? ''));
+            $blogTitle     = trim((string) ($blog->{'title_' . $sign} ?? ''));
+            $blogMetaDesc  = trim((string) ($blog->{'meta_details_' . $sign} ?? ''));
 
-            {{ $gs->{'title_' . $sign} }}
-
-        </title>
-    @elseif(isset($blog->{'meta_details_' . $sign}))
-        <meta property="og:title" content="{{ $blog->{'meta_title_' . $sign} ?? $blog->{'title_' . $sign} }}">
-
-        <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->{'meta_details_' . $sign} }}">
-        <meta property="og:description" content="{{ $blog->{'meta_details_' . $sign} }}">
+            // og:title: social_title (n/a) -> meta_title -> article_title.
+            $ogTitle = $blogMetaTitle !== '' ? $blogMetaTitle : $blogTitle;
+            // Description falls back to the article title when no meta description is set.
+            $blogDesc = $blogMetaDesc !== '' ? $blogMetaDesc : $blogTitle;
+        @endphp
+        <meta property="og:title" content="{{ $ogTitle }}">
+        <meta name="keywords" content="{{ $blog->tags }}">
+        <meta name="description" content="{{ $blogDesc }}">
+        <meta property="og:description" content="{{ $blogDesc }}">
     @else
-        <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-        <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
-        </title>
-        <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
+        <meta property="og:title" content="{{ $siteName }}">
+        <meta property="og:description" content="{{ $siteName }}">
+        <meta name="author" content="{{ $siteName }}">
     @endif
 
 
-    <title>
-        @yield('title')
-    </title>
+    {{-- Single SEO <title>: page section value, else site name as final fallback. --}}
+    <title>@yield('title', $siteName)</title>
 
     <script type="application/ld+json">
     {
