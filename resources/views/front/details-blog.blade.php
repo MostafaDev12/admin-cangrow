@@ -17,14 +17,65 @@ $phones =  explode(',', $gs->phones);
  
 $randomPhone = Arr::random($phones);
 @endphp
-    <div class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">
-        <div class="text-center px-4">
-            <h1 class="text-xl sm:text-4xl font-bold mb-4">    {{ strip_tags($blog->{'title_' . $sign} ) }}    </h1>
-            <p class="text-sm sm:text-lg max-w-2xl mx-auto">
-             {{ $blog->{'short_details_' . $sign} }}
-            </p>
+<!-- Single Blog Hero -->
+<section class="relative w-full overflow-hidden text-white
+                aspect-[750/500] md:aspect-auto md:h-[550px]">
+
+    <!-- Mobile Background -->
+    <img
+        src="{{ asset('assets/images/about/about-slider-mobile.webp') }}"
+        alt="{{ strip_tags($blog->{'title_' . $sign}) }}"
+        class="absolute inset-0 block md:hidden
+               w-full h-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async">
+
+    <!-- Desktop Background -->
+    <img
+        src="{{ asset('assets/images/about/about-slider.webp') }}"
+        alt="{{ strip_tags($blog->{'title_' . $sign}) }}"
+        class="absolute inset-0 hidden md:block
+               w-full h-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async">
+
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r
+                from-[#1558e8]/70
+                via-[#168db5]/60
+                to-[#0ca85f]/70">
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 flex h-full items-center justify-center px-4 md:px-16">
+        <div class="max-w-4xl text-center">
+
+            <h1 class="text-2xl sm:text-4xl lg:text-5xl
+                       font-bold leading-tight drop-shadow-lg">
+                {{ strip_tags($blog->{'title_' . $sign}) }}
+            </h1>
+
+            @if(!empty($blog->{'short_details_' . $sign}))
+                <p class="mt-5 max-w-2xl mx-auto
+                          text-sm sm:text-lg
+                          leading-7 sm:leading-8
+                          text-white/95 drop-shadow-md">
+                    {{ strip_tags($blog->{'short_details_' . $sign}) }}
+                </p>
+            @endif
+
         </div>
     </div>
+
+</section>
+    <!--<div class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">-->
+    <!--    <div class="text-center px-4">-->
+    <!--        <h1 class="text-xl sm:text-4xl font-bold mb-4">    {{ strip_tags($blog->{'title_' . $sign} ) }}    </h1>-->
+    <!--        <p class="text-sm sm:text-lg max-w-2xl mx-auto">-->
+    <!--         {{ $blog->{'short_details_' . $sign} }}-->
+    <!--        </p>-->
+    <!--    </div>-->
+    <!--</div>-->
     <section class="container mx-auto px-4 py-8 lg:px-8 xl:max-w-7xl">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <!-- Article Content -->
@@ -87,9 +138,9 @@ $randomPhone = Arr::random($phones);
                     <h2 class="text-2xl sm:text-3xl font-bold text-blue-800 mt-8 mb-4">
                         {{ strip_tags($blog->{'title_' . $sign} ) }}
                     </h2>
-                    <p class="text-base sm:text-lg leading-relaxed">
-                         {!! $blog->{'details_' . $sign} !!} 
-                    </p>
+                    <div class="blog-details">
+                {!! $blog->{'details_' . $sign} !!}
+                </div>
                    
                 </div>
             </section>
@@ -197,4 +248,92 @@ $randomPhone = Arr::random($phones);
     
     </section>
 @include('includes.book')
+<style>
+    .blog-details {
+        color: #10233f;
+        font-size: 18px;
+        line-height: 2;
+    }
+
+    .blog-details h1,
+    .blog-details h2,
+    .blog-details h3,
+    .blog-details h4 {
+        color: #10233f;
+        font-weight: 800;
+        line-height: 1.5;
+        margin-top: 34px;
+        margin-bottom: 16px;
+    }
+
+    .blog-details h2 {
+        font-size: 30px;
+    }
+
+    .blog-details h3 {
+        font-size: 24px;
+    }
+
+    .blog-details h4 {
+        font-size: 20px;
+    }
+
+    .blog-details p {
+        margin-top: 0;
+        margin-bottom: 24px;
+        line-height: 2.1;
+    }
+
+    .blog-details ul,
+    .blog-details ol {
+        margin-top: 14px;
+        margin-bottom: 24px;
+        padding-right: 28px;
+    }
+
+    .blog-details ul {
+        list-style: disc;
+    }
+
+    .blog-details ol {
+        list-style: decimal;
+    }
+
+    .blog-details li {
+        margin-bottom: 10px;
+        line-height: 2;
+    }
+
+    .blog-details strong {
+        font-weight: 800;
+        color: #10233f;
+    }
+
+    @media (max-width: 640px) {
+        .blog-details {
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .blog-details h2 {
+            font-size: 24px;
+        }
+
+        .blog-details h3 {
+            font-size: 21px;
+        }
+
+        .blog-details h1,
+        .blog-details h2,
+        .blog-details h3,
+        .blog-details h4 {
+            margin-top: 26px;
+            margin-bottom: 12px;
+        }
+
+        .blog-details p {
+            margin-bottom: 18px;
+        }
+    }
+</style>
  @stop

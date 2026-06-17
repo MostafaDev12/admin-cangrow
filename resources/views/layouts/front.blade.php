@@ -221,13 +221,8 @@
             <a href="{{ route('videos.index'.$lang,$lang) }}"
                 class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('فيديوهات') }}</a>
                 
-                
-                <!--تعديل-->
-              <!--   <a href="{{ route('videos.index'.$lang,$lang) }}"-->
-              <!--  class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('السياحة العلاجية') }}</a>-->
-              <!--تعديل-->
-
-                
+                <a href="{{ route('medical-tourism.index'.$lang,$lang) }}" class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('السياحة العلاجية') }}</a>
+               
             <a href="{{ route('contact.index'.$lang,$lang) }}" 
                 class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('تواصل معنا') }}</a>
             
@@ -379,29 +374,83 @@
         <div class="max-w-7xl mx-auto">
             <!-- Footer Content -->
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 text-center lg:text-right">
-                <!-- Contact Us -->
-                <div class="lg:col-span-1">
-                    <h3 class="text-color_2 text-xl font-semibold uppercase mb-5"> {{ __('تواصل معنا') }}</h3>
-                    <div class="space-y-4">
-                        @foreach ($emails as $email)
-                            <a href="mailto:{{ $email }}" target="_blank"
-                                class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">
-                                {{ $email }}
-                            </a>
-                        @endforeach
-                        @foreach ($phones as $phone)
-                            <a href="tel:+2{{ $phone }}" target="_blank"
-                                class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">
-                                {{ $phone }}
-                            </a>
-                        @endforeach
-                        @foreach ($addresses as $address)
-                            <p class="text-color_1 font-semibold text-sm">
-                                {{ $address }}
-                            </p>
-                        @endforeach
-                    </div>
-                </div>
+             <div
+    dir="{{ $sign === 'en' ? 'ltr' : 'rtl' }}"
+    class="w-full max-w-sm
+           {{ $sign === 'en' ? 'text-left' : 'text-right' }}"
+>
+
+    <h3 class="mb-6 text-xl md:text-2xl font-extrabold text-white">
+        {{ __('تواصل معنا') }}
+    </h3>
+
+    <div class="space-y-4">
+
+        <!-- Email -->
+        @foreach ($emails as $email)
+            <a
+                href="mailto:{{ trim($email) }}"
+                class="group flex items-center gap-3 text-white hover:text-green-300 transition-colors duration-300"
+            >
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white group-hover:bg-green-500">
+                    <i class="fa-solid fa-envelope text-sm"></i>
+                </span>
+
+                <span
+                    dir="ltr"
+                    class="text-sm md:text-base font-semibold break-all"
+                >
+                    {{ trim($email) }}
+                </span>
+            </a>
+        @endforeach
+
+        <!-- Phone -->
+@foreach ($phones as $phone)
+    @php
+        $cleanPhone = preg_replace('/[^0-9+]/', '', trim($phone));
+
+        if (str_starts_with($cleanPhone, '0')) {
+            $cleanPhone = '+20' . substr($cleanPhone, 1);
+        } elseif (!str_starts_with($cleanPhone, '+')) {
+            $cleanPhone = '+' . $cleanPhone;
+        }
+    @endphp
+
+    <a
+        href="tel:{{ $cleanPhone }}"
+        class="group flex items-center gap-3 text-white hover:text-green-300 transition-colors duration-300"
+    >
+        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white group-hover:bg-green-500">
+            <i class="fa-solid fa-phone text-sm"></i>
+        </span>
+
+        <span dir="ltr" class="text-sm md:text-base font-semibold">
+            {{ trim($phone) }}
+        </span>
+    </a>
+@endforeach
+
+        <!-- Address -->
+        @foreach ($addresses as $address)
+            <a
+                href="https://maps.app.goo.gl/anJeL6VXLuoB61WK7?g_st=ac"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-start gap-3 text-white hover:text-green-300 transition-colors duration-300"
+            >
+                <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white group-hover:bg-green-500">
+                    <i class="fa-solid fa-location-dot text-sm"></i>
+                </span>
+
+                <span class="text-sm md:text-base font-semibold leading-7">
+                    {{ trim($address) }}
+                </span>
+            </a>
+        @endforeach
+
+    </div>
+</div>
                 <!-- Links -->
                 <div class="lg:col-span-1">
                     <h3 class="text-color_2 text-xl font-semibold uppercase mb-5">{{ __('الروابط') }}</h3>
@@ -419,10 +468,9 @@
                         <a href="{{ route('videos.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('فيديوهات') }}</a>
                             
-                            <!--تعديل-->
-                           <!--<a href="{{ route('videos.index'.$lang,$lang) }}"-->
-                           <!-- class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('السياحة العلاجية') }}</a>                     -->
-                            <!--تعديل-->
+                           <a href="{{ route('medical-tourism.index'.$lang,$lang) }}"
+                            class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">{{ __('السياحة العلاجية') }}</a>             
+                            
 
                         <a href="{{ route('contact.index'.$lang,$lang) }}"
                             class="text-color_1 font-semibold text-sm hover:text-blue-500 transition duration-300 block">

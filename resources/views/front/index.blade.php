@@ -20,65 +20,148 @@
               $randomPhone = Arr::random($phones);
           @endphp
 
-          <section class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">
-              <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-                  <div class="md:w-1/2 text-center md:text-right">
-                      <img src="{{ $gs->{'logo_' . $sign} }}" alt="Tooth Guard Clinic"
-                          class="w-64 sm:w-80 mx-auto md:mx-0 mb-8">
-                      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"> {{ $slider->{'title_' . $sign} ?? '' }}
-                      </h1>
-                      <p class="text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
-                          {!! $slider->{'details_' . $sign} ?? '' !!}
-                      </p>
-                      <div class="flex justify-center md:justify-start space-x-4 space-x-reverse">
-                          <a href="{{ route('about.index'.$lang,$lang) }}"
-                              class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">
-                              {{ __('معلومات عنا') }}
-                          </a>
-                          <a href="{{ route('contact.index'.$lang,$lang) }}"
-                              class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-500 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">
-                              {{ __('احجز موعدك') }}
-                          </a>
-                      </div>
-                  </div>
-                  <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-                      <img src="{{ $slider->{'photo'} ?? '' }}" alt="Tooth Guard Clinic"
-                          class="rounded-lg shadow-lg w-full max-w-md h-auto object-cover">
-                  </div>
-              </div>
-          </section>
-          <!-- Services Section -->
-          <section class="py-20 bg-gradient-to-b from-white to-blue-50">
-              <div class="container mx-auto px-4">
-                  <div class="grid md:grid-cols-3 gap-8">
-                      @foreach ($models as $k => $model)
-                          <!-- Service 1 -->
-                          <div
-                              class="text-center p-8 hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300 bg-gradient-to-br from-blue-50 to-white rounded-lg">
-                              <div class="space-y-6">
-                                  <div
-                                      class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto shadow-lg">
 
-                                      @if ($k == 0)
-                                          <i data-lucide="shield" class="w-10 h-10 text-white"></i>
-                                      @elseif($k == 1)
-                                          <i data-lucide="stethoscope" class="w-10 h-10 text-white"></i>
-                                      @else
-                                          <i data-lucide="users" class="w-10 h-10 text-white"></i>
-                                      @endif
-                                  </div>
-                                  <h3 class="text-2xl font-bold text-blue-800"> {{ $model->{'title_' . $sign} ?? '' }}
-                                  </h3>
-                                  <p class="text-gray-700 leading-relaxed text-lg">
-                                      {{ $model->{'details_' . $sign} ?? '' }}
-                                  </p>
-                              </div>
-                          </div>
-                      @endforeach
 
-                  </div>
-              </div>
-          </section>
+<!-- HERO SECTION -->
+<section class="relative min-h-[660px] md:min-h-[720px] overflow-hidden text-white">
+
+    <!-- Mobile Background -->
+    <div class="absolute inset-0 block md:hidden bg-[#0b4fa8]">
+
+        <img
+            src="{{ asset('assets/images/doctors /team-hero2-mobile.webp') }}"
+            alt="Tooth Guard Team"
+            class="absolute inset-0 w-full h-full object-cover object-top"
+        >
+
+    </div>
+
+    <!-- Desktop Background -->
+    <div class="absolute inset-0 hidden md:block">
+
+        <img
+            src="{{ asset('assets/images/doctors /team-hero.webp') }}"
+            alt="Tooth Guard Team"
+            class="absolute inset-0 w-full h-full object-cover object-center"
+        >
+
+    </div>
+
+    <!-- Blue / Green Overlay -->
+    <div class="absolute inset-0
+                bg-gradient-to-r
+                from-blue-700/90
+                via-blue-600/55
+                to-green-600/55">
+    </div>
+
+    <!-- Bottom Overlay -->
+    <div class="absolute inset-0
+                bg-gradient-to-t
+                from-[#062e67]/75
+                via-[#062e67]/10
+                to-transparent">
+    </div>
+
+ <!-- Content -->
+<div class="relative z-10 container mx-auto
+            min-h-[660px] md:min-h-[720px]
+            flex items-end
+            justify-center md:justify-start
+            px-5 md:px-16
+            pb-6 md:pb-8">
+
+    <div
+        dir="{{ $sign === 'en' ? 'ltr' : 'rtl' }}"
+        class="w-full md:w-1/2
+               text-center
+               {{ $sign === 'en' ? 'md:text-left' : 'md:text-right' }}">
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl
+                   font-extrabold mb-5 md:mb-6
+                   leading-tight drop-shadow-lg">
+
+            {{ $slider->{'title_' . $sign} ?? '' }}
+        </h1>
+
+        <div class="mx-auto md:mx-0 max-w-xl
+                    text-sm sm:text-lg md:text-xl
+                    mb-7 md:mb-8
+                    leading-7 sm:leading-8 md:leading-relaxed
+                    text-white/95 drop-shadow-md">
+
+            {!! $slider->{'details_' . $sign} ?? '' !!}
+        </div>
+
+        <div class="flex flex-wrap
+                    justify-center md:justify-start
+                    gap-3 md:gap-4">
+
+            <a
+                href="{{ route('about.index'.$lang, $lang) }}"
+                class="inline-flex items-center justify-center
+                       bg-green-500 hover:bg-green-600
+                       text-white font-semibold
+                       text-sm sm:text-lg
+                       py-3 px-6 sm:px-8
+                       rounded-full shadow-lg
+                       transition duration-300">
+
+                {{ __('معلومات عنا') }}
+            </a>
+
+            <a
+                href="{{ route('contact.index'.$lang, $lang) }}"
+                class="inline-flex items-center justify-center
+                       bg-transparent border-2 border-white
+                       hover:bg-white hover:text-blue-600
+                       text-white font-semibold
+                       text-sm sm:text-lg
+                       py-3 px-6 sm:px-8
+                       rounded-full
+                       transition duration-300">
+
+                {{ __('احجز موعدك') }}
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+          <!--<section class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">-->
+          <!--    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8">-->
+          <!--        <div class="md:w-1/2 text-center md:text-right">-->
+          <!--            <img src="{{ $gs->{'logo_' . $sign} }}" alt="Tooth Guard Clinic"-->
+          <!--                class="w-64 sm:w-80 mx-auto md:mx-0 mb-8">-->
+          <!--            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"> {{ $slider->{'title_' . $sign} ?? '' }}-->
+          <!--            </h1>-->
+          <!--            <p class="text-base sm:text-lg md:text-xl mb-8 leading-relaxed">-->
+          <!--                {!! $slider->{'details_' . $sign} ?? '' !!}-->
+          <!--            </p>-->
+          <!--            <div class="flex justify-center md:justify-start space-x-4 space-x-reverse">-->
+          <!--                <a href="{{ route('about.index'.$lang,$lang) }}"-->
+          <!--                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">-->
+          <!--                    {{ __('معلومات عنا') }}-->
+          <!--                </a>-->
+          <!--                <a href="{{ route('contact.index'.$lang,$lang) }}"-->
+          <!--                    class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-500 text-white font-semibold text-sm sm:text-lg py-2 px-4 sm:px-8 rounded-full transition duration-300">-->
+          <!--                    {{ __('احجز موعدك') }}-->
+          <!--                </a>-->
+          <!--            </div>-->
+          <!--        </div>-->
+          <!--        <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">-->
+          <!--            <img src="{{ $slider->{'photo'} ?? '' }}" alt="Tooth Guard Clinic"-->
+          <!--                class="rounded-lg shadow-lg w-full max-w-md h-auto object-cover">-->
+          <!--        </div>-->
+          <!--    </div>-->
+          <!--</section>-->
+   
+          
+          
           <section class="sm:py-16 py-10">
               <div class="sm:px-32 px-10 mx-auto text-center">
                   <h2 class="sm:text-4xl text-lg font-bold text-blue-800 mb-12">
@@ -121,6 +204,333 @@
                   </div>
               </div>
           </section>
+      
+      <!-- تجارب مرضانا -->
+<section id="testimonials"
+    class="relative -mt-6 pt-8 pb-12 md:pt-10 md:pb-14 overflow-hidden bg-gradient-to-br from-[#f8fbff] via-white to-[#eef7ff] rounded-[32px]">
+
+    <!-- Background Decoration -->
+    <div class="pointer-events-none absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#1670d8]/10 blur-3xl"></div>
+    <div class="pointer-events-none absolute -bottom-28 -right-20 w-80 h-80 rounded-full bg-[#12a86b]/10 blur-3xl"></div>
+
+    <div class="relative container mx-auto px-4 lg:px-8 xl:max-w-7xl">
+
+        <!-- Section Header -->
+        <div class="text-center mb-10 md:mb-14">
+
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <span class="w-20 h-px bg-gradient-to-l from-transparent to-[#1670d8]/40"></span>
+
+                <span class="w-11 h-11 rounded-full bg-white shadow-md border border-[#dcecff] text-[#1670d8] flex items-center justify-center">
+                    <i class="fa-solid fa-heart-pulse text-lg"></i>
+                </span>
+
+                <span class="w-20 h-px bg-gradient-to-r from-transparent to-[#1670d8]/40"></span>
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-extrabold text-[#10233f] leading-tight">
+                {{ __('تجارب مرضانا') }}
+            </h2>
+
+            <p class="mt-4 text-sm md:text-lg text-[#607086] leading-8 max-w-2xl mx-auto">
+                {{ __('آراء مرضانا وثقتهم هي ما يدفعنا لتقديم أفضل رعاية صحية يومًا بعد يوم') }}
+            </p>
+
+        </div>
+
+        @php
+            $patients = [
+                [
+                    'name' => 'hazem khaled',
+                    'country' => __('مصر'),
+                    'review' => __('افضل عيادة اسنان فى مدينة نصر تقريبا متخصصين فى كل ما يخص الاسنان من تقويم اسنان زراعة اسنان.')
+                ],
+                [
+                    'name' => 'Sama Emad',
+                    'country' => __('مصر'),
+                    'review' => __('تجربه ممتازه ودكاتره ممتازين واكتر حاجه مريحه بنسبالي هيا التعقيم والمواعيد ودي اكتر حاجه بيهتمو بيه حقيقي علي غير مراكز تانيه كتير شكرا توث جارد علي تجربتي معاكو 🌸')
+                ],
+                [
+                    'name' => 'Mohamed Abdelkader',
+                    'country' => __('مصر'),
+                    'review' => __('من افضل الاماكن والتعامل ويقدم افضل خدمة وخامة محترمة جدااا جداا.')
+                ],
+                [
+                    'name' => 'Nour',
+                    'country' => __('مصر'),
+                    'review' => __('أفضل تجربة لي، احترافية عالية. أنصح بها بشدة.')
+                ],
+                [
+                    'name' => 'Ahmed Fouad',
+                    'country' => __('مصر'),
+                    'review' => __('عيادة ممتازة مع أطباء ممتازين.')
+                ],
+                [
+                    'name' => 'Ahmed Ghaly',
+                    'country' => __('مصر'),
+                    'review' => __('تجربة رائعة.')
+                ],
+                [
+                    'name' => 'Wafaa Hegab',
+                    'country' => __('مصر'),
+                    'review' => __('أفضل الأطباء وأفضل عيادة.')
+                ],
+                [
+                    'name' => 'Ziad Muhammad',
+                    'country' => __('مصر'),
+                    'review' => __('عيادة أسنان تحفة في كل حاجة حرفيا نضافة جوده معاملة احترافيه بجد شكرا ليكم ❤️.')
+                ],
+                [
+                    'name' => 'Mohamed Hegab',
+                    'country' => __('مصر'),
+                    'review' => __('عيادة أسنان رائعة حقًا.')
+                ],
+            ];
+        @endphp
+
+        <div class="relative px-10 md:px-14">
+
+            <!-- Left Button -->
+            <button
+                type="button"
+                onclick="scrollPatients('left')"
+                aria-label="Previous"
+                class="absolute left-0 top-1/2 z-20 -translate-y-1/2
+                       w-10 h-10 md:w-12 md:h-12
+                       rounded-full bg-white shadow-xl
+                       border border-[#e3eefb]
+                       text-[#1670d8]
+                       flex items-center justify-center
+                       hover:bg-[#1670d8] hover:text-white
+                       transition-all duration-300">
+
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+
+            <!-- Right Button -->
+            <button
+                type="button"
+                onclick="scrollPatients('right')"
+                aria-label="Next"
+                class="absolute right-0 top-1/2 z-20 -translate-y-1/2
+                       w-10 h-10 md:w-12 md:h-12
+                       rounded-full bg-white shadow-xl
+                       border border-[#e3eefb]
+                       text-[#1670d8]
+                       flex items-center justify-center
+                       hover:bg-[#1670d8] hover:text-white
+                       transition-all duration-300">
+
+                <i class="fa-solid fa-chevron-right text-sm"></i>
+            </button>
+
+            <!-- Slider -->
+            <div
+                id="patientsSlider"
+                dir="ltr"
+                class="flex gap-5 md:gap-6 overflow-x-auto
+                       scroll-smooth snap-x snap-mandatory
+                       py-6 no-scrollbar">
+
+                @foreach($patients as $patient)
+
+                    @php
+                        $name = trim($patient['name']);
+                        $initial = mb_substr($name, 0, 1, 'UTF-8');
+
+                        // الكارت الثاني في كل 3 كروت مميز على الديسكتوب
+                        $featured = $loop->iteration % 3 === 2;
+                    @endphp
+
+                    <div class="patient-card group shrink-0 snap-center
+                                w-full
+                                md:w-[calc((100%_-_24px)/2)]
+                                lg:w-[calc((100%_-_48px)/3)]">
+
+                        <div
+                            dir="rtl"
+                            class="relative h-full
+                                   min-h-[340px] md:min-h-[360px]
+                                   bg-white rounded-[30px]
+                                   border overflow-hidden
+                                   transition-all duration-300
+
+                                   {{ $featured
+                                       ? 'border-[#1670d8]/45 shadow-[0_24px_70px_rgba(22,112,216,0.18)] lg:-translate-y-3'
+                                       : 'border-[#e8eef6] shadow-[0_18px_50px_rgba(15,39,64,0.08)]'
+                                   }}
+
+                                   group-hover:-translate-y-2
+                                   group-hover:shadow-[0_24px_70px_rgba(15,39,64,0.14)]">
+
+                            <!-- Google Logo -->
+                            <img
+                                src="{{ asset('assets/images/slider/google-icon.webp') }}"
+                                alt="Google Review"
+                                class="absolute top-5 left-5 z-10
+                                       w-6 h-6 object-contain"
+                                loading="lazy"
+                                decoding="async">
+
+                            @if($featured)
+
+                                <!-- Top Gradient -->
+                                <div class="absolute top-0 left-0 right-0 h-1
+                                            bg-gradient-to-l
+                                            from-[#12a86b]
+                                            via-[#1670d8]
+                                            to-[#38bdf8]">
+                                </div>
+
+                                <!-- Featured Star -->
+                                <div class="absolute -top-px left-1/2 -translate-x-1/2
+                                            w-11 h-11 rounded-full
+                                            bg-[#1670d8] text-white
+                                            shadow-lg
+                                            flex items-center justify-center">
+
+                                    <i class="fa-regular fa-star text-base"></i>
+                                </div>
+
+                            @endif
+
+                            <div class="h-full p-6 md:p-7
+                                        {{ $featured ? 'pt-9' : '' }}
+                                        flex flex-col">
+
+                                <!-- Header -->
+                                <div class="flex items-center gap-4 mb-6">
+
+                                    <!-- Avatar -->
+                                    <div class="shrink-0 w-16 h-16 rounded-full
+                                                bg-gradient-to-br
+                                                from-[#1670d8]
+                                                to-[#12a86b]
+                                                text-white
+                                                flex items-center justify-center
+                                                font-extrabold text-2xl uppercase
+                                                shadow-lg shadow-[#1670d8]/20
+                                                ring-4 ring-[#edf6ff]">
+
+                                        {{ $initial }}
+                                    </div>
+
+                                    <!-- Name & Country -->
+                                    <div class="min-w-0 text-right">
+
+                                        <h3 class="font-extrabold
+                                                   text-[#10233f]
+                                                   text-base md:text-lg
+                                                   leading-7 truncate">
+
+                                            {{ $patient['name'] }}
+                                        </h3>
+
+                                        <div class="mt-1 flex items-center gap-2
+                                                    text-[#66758a] text-sm">
+
+                                            <i class="fa-solid fa-location-dot text-[#1670d8]"></i>
+
+                                            <span>
+                                                {{ $patient['country'] }}
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px
+                                            bg-gradient-to-l
+                                            from-transparent
+                                            via-[#d9e5f3]
+                                            to-transparent
+                                            mb-6">
+                                </div>
+
+                                <!-- Review -->
+                                <p class="text-[#4d5d70]
+                                          text-sm md:text-[15px]
+                                          leading-8
+                                          text-right flex-1">
+
+                                    {{ $patient['review'] }}
+                                </p>
+
+                                <!-- Stars -->
+                                <div class="mt-7 flex items-center justify-center
+                                            gap-1 text-[#ffc107]
+                                            text-lg tracking-wide">
+
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                    <span>★</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- تجارب مرضانا -->
+
+
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+
+
+<script>
+    function scrollPatients(direction) {
+        const slider = document.getElementById('patientsSlider');
+
+        if (!slider) {
+            return;
+        }
+
+        const card = slider.querySelector('.patient-card');
+
+        if (!card) {
+            return;
+        }
+
+        const styles = window.getComputedStyle(slider);
+
+        const gap = parseFloat(
+            styles.gap || styles.columnGap || 24
+        );
+
+        const cardWidth = card.offsetWidth + gap;
+
+        // موبايل: كارت واحد
+        // ديسكتوب: 3 كروت
+        const cardsPerClick = window.innerWidth >= 1024 ? 3 : 1;
+
+        slider.scrollBy({
+            left: direction === 'left'
+                ? -(cardWidth * cardsPerClick)
+                : cardWidth * cardsPerClick,
+
+            behavior: 'smooth'
+        });
+    }
+</script>   
+          
+          
           <section class="sm:px-16 px-4 py-10 sm:py-16 bg-gray-100">
               <div class="sm:px-16 px-10 mx-auto text-center">
                   <h2 class="sm:text-4xl text-lg font-bold text-blue-800 mb-6">

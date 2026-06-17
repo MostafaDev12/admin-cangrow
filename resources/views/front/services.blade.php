@@ -12,17 +12,66 @@
 
 
 @section('content')
-    <!-- Hero Banner -->
-    <section class="">
-        <div class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">
-            <div class="text-center px-4">
-                <h1 class="text-xl sm:text-4xl font-bold mb-4">{{ __('الخدمات') }}</h1>
-                <p class="text-sm sm:text-lg mb-8 max-w-2xl mx-auto">
-                  
-                    {{ __('اكتشف مجموعتنا الواسعة من خدمات طب الأسنان للحصول على ابتسامة صحية وجميلة') }}
-                </p>
-            </div>
+<!-- Services Hero Banner -->
+<section class="relative w-full overflow-hidden text-white
+                aspect-[750/500] md:aspect-auto md:h-[550px]">
+
+    <!-- Mobile Background -->
+    <img
+        src="{{ asset('assets/images/about/about-slider-mobile.webp') }}"
+        alt="{{ __('الخدمات') }}"
+        class="absolute inset-0 block md:hidden
+               h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async">
+
+    <!-- Desktop Background -->
+    <img
+        src="{{ asset('assets/images/about/about-slider.webp') }}"
+        alt="{{ __('الخدمات') }}"
+        class="absolute inset-0 hidden md:block
+               h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async">
+
+    <!-- Unified Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r
+                from-[#1558e8]/70
+                via-[#168db5]/60
+                to-[#0ca85f]/70">
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 flex h-full items-center justify-center px-4 md:px-16">
+        <div class="max-w-3xl text-center">
+
+            <h1 class="text-2xl sm:text-4xl lg:text-5xl
+                       font-bold leading-tight drop-shadow-lg">
+                {{ __('الخدمات') }}
+            </h1>
+
+            <p class="mx-auto mt-5 max-w-2xl
+                      text-sm sm:text-lg
+                      leading-7 sm:leading-8
+                      text-white/95 drop-shadow-md">
+                {{ __('اكتشف مجموعتنا الواسعة من خدمات طب الأسنان للحصول على ابتسامة صحية وجميلة') }}
+            </p>
+
         </div>
+    </div>
+
+</section>
+    <!-- Hero Banner -->
+    <!--<section class="">-->
+    <!--    <div class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">-->
+    <!--        <div class="text-center px-4">-->
+    <!--            <h1 class="text-xl sm:text-4xl font-bold mb-4">{{ __('الخدمات') }}</h1>-->
+    <!--            <p class="text-sm sm:text-lg mb-8 max-w-2xl mx-auto">-->
+                  
+    <!--                {{ __('اكتشف مجموعتنا الواسعة من خدمات طب الأسنان للحصول على ابتسامة صحية وجميلة') }}-->
+    <!--            </p>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
         <div class="sm:px-16 px-4 py-10 sm:py-16 mx-auto text-center bg-gray-100">
             <h2 class="text-lg sm:text-4xl font-bold text-blue-800 mb-6">
