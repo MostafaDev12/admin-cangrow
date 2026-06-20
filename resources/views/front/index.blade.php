@@ -206,6 +206,7 @@
           </section>
       
       <!-- تجارب مرضانا -->
+@if(($testimonials ?? collect())->count())
 <section id="testimonials"
     class="relative -mt-6 pt-8 pb-12 md:pt-10 md:pb-14 overflow-hidden bg-gradient-to-br from-[#f8fbff] via-white to-[#eef7ff] rounded-[32px]">
 
@@ -239,53 +240,7 @@
         </div>
 
         @php
-            $patients = [
-                [
-                    'name' => 'hazem khaled',
-                    'country' => __('مصر'),
-                    'review' => __('افضل عيادة اسنان فى مدينة نصر تقريبا متخصصين فى كل ما يخص الاسنان من تقويم اسنان زراعة اسنان.')
-                ],
-                [
-                    'name' => 'Sama Emad',
-                    'country' => __('مصر'),
-                    'review' => __('تجربه ممتازه ودكاتره ممتازين واكتر حاجه مريحه بنسبالي هيا التعقيم والمواعيد ودي اكتر حاجه بيهتمو بيه حقيقي علي غير مراكز تانيه كتير شكرا توث جارد علي تجربتي معاكو 🌸')
-                ],
-                [
-                    'name' => 'Mohamed Abdelkader',
-                    'country' => __('مصر'),
-                    'review' => __('من افضل الاماكن والتعامل ويقدم افضل خدمة وخامة محترمة جدااا جداا.')
-                ],
-                [
-                    'name' => 'Nour',
-                    'country' => __('مصر'),
-                    'review' => __('أفضل تجربة لي، احترافية عالية. أنصح بها بشدة.')
-                ],
-                [
-                    'name' => 'Ahmed Fouad',
-                    'country' => __('مصر'),
-                    'review' => __('عيادة ممتازة مع أطباء ممتازين.')
-                ],
-                [
-                    'name' => 'Ahmed Ghaly',
-                    'country' => __('مصر'),
-                    'review' => __('تجربة رائعة.')
-                ],
-                [
-                    'name' => 'Wafaa Hegab',
-                    'country' => __('مصر'),
-                    'review' => __('أفضل الأطباء وأفضل عيادة.')
-                ],
-                [
-                    'name' => 'Ziad Muhammad',
-                    'country' => __('مصر'),
-                    'review' => __('عيادة أسنان تحفة في كل حاجة حرفيا نضافة جوده معاملة احترافيه بجد شكرا ليكم ❤️.')
-                ],
-                [
-                    'name' => 'Mohamed Hegab',
-                    'country' => __('مصر'),
-                    'review' => __('عيادة أسنان رائعة حقًا.')
-                ],
-            ];
+            $patients = $testimonials;
         @endphp
 
         <div class="relative px-10 md:px-14">
@@ -335,8 +290,10 @@
                 @foreach($patients as $patient)
 
                     @php
-                        $name = trim($patient['name']);
+                        $name = trim($patient->name);
                         $initial = mb_substr($name, 0, 1, 'UTF-8');
+                        $reviewText = $patient->{'review_' . $sign} ?: ($patient->review_ar ?: $patient->review_en);
+                        $avatar = $patient->photo_url;
 
                         // الكارت الثاني في كل 3 كروت مميز على الديسكتوب
                         $featured = $loop->iteration % 3 === 2;
@@ -402,6 +359,12 @@
                                 <div class="flex items-center gap-4 mb-6">
 
                                     <!-- Avatar -->
+                                    @if($avatar)
+                                        <img src="{{ $avatar }}" alt="{{ $patient->name }}"
+                                             class="shrink-0 w-16 h-16 rounded-full object-cover
+                                                    shadow-lg shadow-[#1670d8]/20 ring-4 ring-[#edf6ff]"
+                                             loading="lazy" decoding="async">
+                                    @else
                                     <div class="shrink-0 w-16 h-16 rounded-full
                                                 bg-gradient-to-br
                                                 from-[#1670d8]
@@ -414,6 +377,7 @@
 
                                         {{ $initial }}
                                     </div>
+                                    @endif
 
                                     <!-- Name & Country -->
                                     <div class="min-w-0 text-right">
@@ -423,8 +387,12 @@
                                                    text-base md:text-lg
                                                    leading-7 truncate">
 
-                                            {{ $patient['name'] }}
+                                            {{ $patient->name }}
                                         </h3>
+
+                                        @if($patient->service_name)
+                                            <div class="mt-0.5 text-[#1670d8] text-xs font-bold">{{ $patient->service_name }}</div>
+                                        @endif
 
                                         <div class="mt-1 flex items-center gap-2
                                                     text-[#66758a] text-sm">
@@ -432,7 +400,7 @@
                                             <i class="fa-solid fa-location-dot text-[#1670d8]"></i>
 
                                             <span>
-                                                {{ $patient['country'] }}
+                                                {{ $patient->location }}
                                             </span>
                                         </div>
 
@@ -454,7 +422,7 @@
                                           leading-8
                                           text-right flex-1">
 
-                                    {{ $patient['review'] }}
+                                    {{ $reviewText }}
                                 </p>
 
                                 <!-- Stars -->
@@ -462,11 +430,9 @@
                                             gap-1 text-[#ffc107]
                                             text-lg tracking-wide">
 
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
+                                    @for($s = 1; $s <= 5; $s++)
+                                        <span>{{ $s <= (int) $patient->rating ? '★' : '☆' }}</span>
+                                    @endfor
                                 </div>
 
                             </div>
@@ -479,6 +445,7 @@
         </div>
     </div>
 </section>
+@endif
 <!-- تجارب مرضانا -->
 
 
@@ -708,14 +675,19 @@
     |--------------------------------------------------------------------------
     */
 
-    $mapLink = 'https://maps.app.goo.gl/anJeL6VXLuoB61WK7?g_st=ac';
-
     $mapAddress = $addresses->first()
         ?: __('القاهرة، مصر');
 
-    $mapEmbedUrl = 'https://www.google.com/maps?q='
-        . rawurlencode($mapAddress)
-        . '&output=embed';
+    // Map driven by the dashboard (Home Page Map), with a safe fallback.
+    $homeMap = $homeMap ?? null;
+    $mapEnabled = $homeMap ? (bool) $homeMap->enabled : true;
+    $mapLink = ($homeMap && $homeMap->direct_link)
+        ? $homeMap->direct_link
+        : 'https://maps.app.goo.gl/anJeL6VXLuoB61WK7?g_st=ac';
+    $mapEmbedUrl = ($homeMap && $homeMap->embed_url)
+        ? $homeMap->embed_url
+        : 'https://www.google.com/maps?q=' . rawurlencode($mapAddress) . '&output=embed';
+    $mapTitle = ($homeMap && $homeMap->map_title) ? $homeMap->map_title : __('موقع Tooth Guard Clinics على الخريطة');
 
 
     /*
@@ -1053,7 +1025,7 @@
 
                         <iframe
                             src="{{ $mapEmbedUrl }}"
-                            title="{{ __('موقع Tooth Guard Clinics على الخريطة') }}"
+                            title="{{ $mapTitle }}"
                             class="pointer-events-none
                                    h-full w-full border-0"
                             loading="lazy"
@@ -1145,9 +1117,9 @@
                         'variant' => 'sidebar',
                         'formId' => 'bookingFormBox',
                         'wrapperClass' => 'mt-0',
-                       
                         'services' => $bookingServices,
                         'serviceTitleField' => 'title_ar',
+                        'leadForm' => ($homeForm ?? null),
                     ])
 
                 </div>

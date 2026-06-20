@@ -214,20 +214,16 @@
 
 <!-- SERVICE VIDEO DYNAMIC SECTION -->
 @php
-    $youtubeValue = trim($service->youtube_video_url ?? '');
-    $youtubeId = '';
-
-    if ($youtubeValue !== '') {
-        if (str_contains($youtubeValue, 'youtube.com') || str_contains($youtubeValue, 'youtu.be')) {
-            preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([^\&\?\/]+)/', $youtubeValue, $matches);
-            $youtubeId = $matches[1] ?? '';
-        } else {
-            $youtubeId = $youtubeValue;
-        }
-    }
+    $youtubeId = $service->youtube_id; // model accessor handles all URL forms
+    $videoBadge   = $service->{'video_badge_' . $sign}       ?: __('فيديو توضيحي');
+    $videoHeading = $service->{'video_heading_' . $sign}     ?: (__('شاهد فيديو عن') . ' ' . $service->{'title_' . $sign});
+    $videoDesc    = $service->{'video_description_' . $sign} ?: __('تعرف على أهم التفاصيل بطريقة بسيطة قبل حجز استشارتك.');
+    $videoBtnText = $service->{'video_button_text_' . $sign} ?: __('احجز الآن');
+    $videoBtnLink = $service->video_button_link;
+    $videoTitle   = $service->video_title ?: ('فيديو ' . ($service->{'title_' . $sign} ?? 'الخدمة'));
 @endphp
 
-@if($youtubeId !== '')
+@if($service->video_enabled && $youtubeId !== '')
 <section class="block w-full py-8 bg-[#f8fbff]">
     <div class="container mx-auto px-4 lg:px-8 xl:max-w-6xl">
 
@@ -241,7 +237,7 @@
                         <iframe
                             class="block w-full h-full"
                             src="https://www.youtube.com/embed/{{ $youtubeId }}"
-                            title="فيديو {{ $service->{'title_' . $sign} ?? 'الخدمة' }}"
+                            title="{{ $videoTitle }}"
                             frameborder="0"
                             loading="lazy"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -254,23 +250,31 @@
                 <div class="text-center lg:text-right order-2 lg:order-2">
 
                     <span class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-[#1670d8] text-sm font-bold mb-4">
-                        فيديو توضيحي
+                        {{ $videoBadge }}
                     </span>
 
                     <h3 class="text-xl md:text-3xl font-extrabold text-[#1670d8] mb-4 leading-tight">
-                        شاهد فيديو عن {{ $service->{'title_' . $sign} }}
+                        {{ $videoHeading }}
                     </h3>
 
                     <p class="text-gray-600 leading-8 mb-6">
-                        تعرف على أهم التفاصيل بطريقة بسيطة قبل حجز استشارتك.
+                        {{ $videoDesc }}
                     </p>
 
-                    <button type="button"
-                            onclick="document.getElementById('globalBookingModal').classList.remove('hidden'); document.body.style.overflow = 'hidden';"
-                            class="inline-flex items-center justify-center gap-2 border border-[#1670d8] text-[#1670d8] hover:bg-[#1670d8] hover:text-white px-7 py-3 rounded-xl font-bold transition">
-                        احجز الآن
-                        <i class="fa-regular fa-calendar"></i>
-                    </button>
+                    @if($videoBtnLink)
+                        <a href="{{ $videoBtnLink }}" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 border border-[#1670d8] text-[#1670d8] hover:bg-[#1670d8] hover:text-white px-7 py-3 rounded-xl font-bold transition">
+                            {{ $videoBtnText }}
+                            <i class="fa-regular fa-calendar"></i>
+                        </a>
+                    @else
+                        <button type="button"
+                                onclick="document.getElementById('globalBookingModal').classList.remove('hidden'); document.body.style.overflow = 'hidden';"
+                                class="inline-flex items-center justify-center gap-2 border border-[#1670d8] text-[#1670d8] hover:bg-[#1670d8] hover:text-white px-7 py-3 rounded-xl font-bold transition">
+                            {{ $videoBtnText }}
+                            <i class="fa-regular fa-calendar"></i>
+                        </button>
+                    @endif
 
                 </div>
 
@@ -283,7 +287,8 @@
 @endif
 
 <!-- BEFORE / AFTER DYNAMIC SECTION -->
-@if(!empty($service->beforeAfters) && $service->beforeAfters->count())
+@php $activeCases = $service->beforeAfters->where('active', 1); @endphp
+@if($activeCases->count())
 
 <section class="not-prose my-12">
 
@@ -348,24 +353,16 @@
         <!-- Cases -->
         <div class="relative z-10 space-y-8 md:space-y-12">
 
-            @foreach($service->beforeAfters as $case)
+            @foreach($activeCases as $case)
 
                 @php
-                    /*
-                     * لو الباك بيرجع لينك الصورة جاهز،
-                     * استخدم $case->before_photo مباشرة.
-                     *
-                     * لو بيخزن المسار داخل storage،
-                     * استخدم Storage::url().
-                     */
+                    // Stored via the project's public/assets convention; the
+                    // BeforeAfter model accessor returns the full image URL.
+                    $beforePhoto = $case->before_photo;
+                    $afterPhoto  = $case->after_photo;
 
-                    $beforePhoto = \Illuminate\Support\Facades\Storage::url(
-                        $case->before_photo
-                    );
-
-                    $afterPhoto = \Illuminate\Support\Facades\Storage::url(
-                        $case->after_photo
-                    );
+                    $beforeAlt = $case->before_alt ?: (__('قبل') . ' ' . $service->{'title_' . $sign});
+                    $afterAlt  = $case->after_alt  ?: (__('بعد') . ' ' . $service->{'title_' . $sign});
                 @endphp
 
                 <div
@@ -389,7 +386,7 @@
 
                             <img
                                 src="{{ $beforePhoto }}"
-                                alt="{{ __('قبل') }} {{ $service->{'title_' . $sign} }}"
+                                alt="{{ $beforeAlt }}"
                                 loading="lazy"
                                 decoding="async"
                                 width="1000"
@@ -449,7 +446,7 @@
 
                             <img
                                 src="{{ $afterPhoto }}"
-                                alt="{{ __('بعد') }} {{ $service->{'title_' . $sign} }}"
+                                alt="{{ $afterAlt }}"
                                 loading="lazy"
                                 decoding="async"
                                 width="1000"
@@ -585,7 +582,9 @@
         @include('components.booking-form', [
     'variant' => 'sidebar',
     'formId' => 'bookingFormBox',
-    'wrapperClass' => 'mt-6'
+    'wrapperClass' => 'mt-6',
+    'leadForm' => ($serviceForm ?? null),
+    'leadServiceId' => ($service->id ?? null),
 ])
                   </div>
               </aside>
@@ -595,7 +594,9 @@
 <div id="bottomBookingForm" class="scroll-mt-24">
     @include('components.booking-form', [
         'variant' => 'wide',
-        'formId' => 'bottomBookingFormFields'
+        'formId' => 'bottomBookingFormFields',
+        'leadForm' => ($serviceForm ?? null),
+        'leadServiceId' => ($service->id ?? null),
     ])
 </div>
 <style>

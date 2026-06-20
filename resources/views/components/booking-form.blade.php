@@ -16,7 +16,29 @@
         $buttonWrapClass = 'flex justify-center pt-2';
         $fullClass = '';
     }
+
+    // Use the dashboard-managed form configuration when one is available,
+    // falling back to the Homepage form so every booking modal saves a lead.
+    $leadForm = $leadForm ?? ($globalLeadForm ?? \App\Models\Form::byKey('homepage'));
+    $leadServiceId = $leadServiceId ?? ($globalLeadServiceId ?? null);
 @endphp
+
+@if($leadForm)
+    @include('components.dynamic-form', [
+        'form'            => $leadForm,
+        'sign'            => $sign ?? 'ar',
+        'serviceId'       => $leadServiceId,
+        'formId'          => $formId ?? 'bookingFormBox',
+        'showCard'        => true,
+        'showLabels'      => true,
+        'wrapperClass'    => $boxClass,
+        'cardClass'       => $cardClass,
+        'formClass'       => $formClass,
+        'buttonClass'     => $buttonClass,
+        'buttonWrapClass' => $buttonWrapClass,
+        'fullClass'       => $fullClass,
+    ])
+@else
 
 <!-- Booking Form -->
 <div id="{{ $formId ?? 'bookingFormBox' }}" class="{{ $boxClass }}">
@@ -119,6 +141,7 @@
     </div>
 </div>
 <!-- Booking Form -->
+@endif
 
 
 

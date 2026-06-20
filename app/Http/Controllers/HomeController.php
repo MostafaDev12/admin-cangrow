@@ -31,6 +31,10 @@ use App\Models\Process;
 use App\Models\Subscribe;
 use App\Models\Subscription;
 use App\Models\Testimonial;
+use App\Models\Form;
+use App\Models\Lead;
+use App\Models\MapSetting;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Timeline;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -73,11 +77,18 @@ class HomeController extends Controller
   
     
     $blogs = Blog::orderby('id','desc')->get()->take(4);
-  
+
+    $testimonials = Testimonial::where('active', 1)->orderBy('display_order')->orderBy('id')->get();
+    $homeForm = Form::byKey('homepage');
+    $homeMap  = MapSetting::byKey('homepage');
+
+    // Form used by the global booking modal on this page.
+    $globalLeadForm = $homeForm;
+
  //   return view('front.index', compact('sign', 'sliders','doctors','certificates','timelines','testimonials','after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners'));
-    
-    return view('front.index', compact('sign', 'slider','lang', 'home_services', 'models', 'features', 'partners', 'medias', 'blogs'));
-  
+
+    return view('front.index', compact('sign', 'slider','lang', 'home_services', 'models', 'features', 'partners', 'medias', 'blogs', 'testimonials', 'homeForm', 'homeMap', 'globalLeadForm'));
+
   }
 
   public function about(Request $request,$lang = 'ar')
@@ -109,7 +120,10 @@ class HomeController extends Controller
     $models = ModelCategory::get();
     $partners = Partner::get();
 
-    return view('front.medical-tourism', compact('sign', 'sliders', 'lang', 'services', 'models', 'partners'));
+    $medicalForm = Form::byKey('medical_tourism');
+    $globalLeadForm = $medicalForm;
+
+    return view('front.medical-tourism', compact('sign', 'sliders', 'lang', 'services', 'models', 'partners', 'medicalForm', 'globalLeadForm'));
 }
 // تعديل
 
@@ -194,7 +208,11 @@ class HomeController extends Controller
     $models = PageModel::get();
     $reviews = Partner::get();
 
-    return view('front.contact', compact('sign', 'sliders',   'services', 'lang', 'models', 'reviews'));
+    $contactForm = Form::byKey('contact_page');
+    $contactMap  = MapSetting::byKey('contact_page');
+    $globalLeadForm = $contactForm;
+
+    return view('front.contact', compact('sign', 'sliders',   'services', 'lang', 'models', 'reviews', 'contactForm', 'contactMap', 'globalLeadForm'));
   }
 
   public function singleBlog(Request $request, $slug,$lang = 'ar')
@@ -249,7 +267,11 @@ class HomeController extends Controller
     }
     $faqs = Faq::where('service_id', $service->id)->get();
 
-    return view('front.details-service', compact('sign', 'service','faqs','lang'));
+    $serviceForm = $this->serviceFormFor($service);
+    $globalLeadForm = $serviceForm;
+    $globalLeadServiceId = $service->id;
+
+    return view('front.details-service', compact('sign', 'service','faqs','lang','serviceForm','globalLeadForm','globalLeadServiceId'));
   }
   public function singleServiceen(Request $request,$lang = 'ar',$slug)
   {
@@ -265,7 +287,11 @@ class HomeController extends Controller
     }
     $faqs = Faq::where('service_id', $service->id)->get();
 
-    return view('front.details-service', compact('sign', 'service','faqs','lang'));
+    $serviceForm = $this->serviceFormFor($service);
+    $globalLeadForm = $serviceForm;
+    $globalLeadServiceId = $service->id;
+
+    return view('front.details-service', compact('sign', 'service','faqs','lang','serviceForm','globalLeadForm','globalLeadServiceId'));
   }
 
   public function singleCategoryService(Request $request, $slug,$lang = 'ar')
@@ -623,6 +649,97 @@ return redirect()->to($newUrl);
         $subscribe->save();
         return response()->json('You Have Subscribed Successfully.');
     }
+
+  /**
+   * Resolve the dashboard-managed form for a given service, falling back
+   * to the homepage form when a service form has not been created yet.
+   */
+  protected function serviceFormFor(Service $service)
+  {
+    $slug = $service->slug_ar ?: $service->slug_en ?: $service->id;
+    $form = Form::byKey('service_' . $slug);
+
+    return $form ?: Form::byKey('homepage');
+  }
+
+  /**
+   * Unified handler for every dashboard-managed form. Validates against the
+   * form's configured fields, stores a normalised Lead, and returns a JSON
+   * success message (for AJAX) or redirects back with a flash message.
+   */
+  public function leadStore(Request $request)
+  {
+    $key  = (string) $request->input('form_key');
+    $form = Form::with('visibleFields')->where('key', $key)->first();
+
+    if ($form && ! $form->enabled) {
+      $msg = 'This form is currently unavailable.';
+      return $request->ajax()
+        ? response()->json(['errors' => [0 => $msg]])
+        : back()->with('lead_error', $msg);
+    }
+
+    // Build validation rules from the visible field configuration.
+    $rules  = [];
+    $fields = $form ? $form->visibleFields : collect();
+    foreach ($fields as $f) {
+      $r = [$f->required ? 'required' : 'nullable'];
+      if ($f->type === 'email') {
+        $r[] = 'email';
+      }
+      if (in_array($f->type, ['text', 'tel', 'email', 'select', 'date'])) {
+        $r[] = 'max:191';
+      }
+      $rules[$f->name] = implode('|', $r);
+    }
+    if (empty($rules)) {
+      $rules = ['name' => 'required|max:191', 'phone' => 'nullable|max:191'];
+    }
+
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+      if ($request->ajax() || $request->wantsJson()) {
+        return response()->json(['errors' => $validator->getMessageBag()->toArray()]);
+      }
+      return back()->withErrors($validator)->withInput();
+    }
+
+    $normalized = ['name', 'phone', 'email', 'city', 'country', 'subject', 'treatment', 'message'];
+
+    $lead = [
+      'form_id'        => $form->id ?? null,
+      'form_key'       => $key,
+      'source_page'    => $request->input('source_page') ?: url()->previous(),
+      'service_id'     => $request->input('service_id') ?: ($form->service_id ?? null),
+      'preferred_date' => $request->input('preferred_date'),
+      'status'         => 'new',
+    ];
+    foreach ($normalized as $col) {
+      $lead[$col] = $request->input($col);
+    }
+
+    // Legacy booking select posts a "service" value; keep it as treatment.
+    if (empty($lead['treatment']) && $request->filled('service')) {
+      $lead['treatment'] = $request->input('service');
+    }
+
+    // Anything else (incl. custom future fields) is preserved in payload.
+    $exclude  = array_merge($normalized, ['_token', 'form_key', 'source_page', 'service_id', 'preferred_date', 'service']);
+    $payload  = collect($request->except($exclude))->filter(fn ($v) => $v !== null && $v !== '')->toArray();
+    $lead['payload'] = $payload ?: null;
+
+    Lead::create($lead);
+
+    $sign       = Session::get('sign', 'ar');
+    $successMsg = ($form ? $form->{'success_message_' . $sign} : null)
+      ?: __('تم استلام طلبك بنجاح.');
+
+    if ($request->ajax() || $request->wantsJson()) {
+      return response()->json($successMsg);
+    }
+
+    return back()->with('lead_success', $successMsg);
+  }
   public function refresh_code()
   {
 

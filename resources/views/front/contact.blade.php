@@ -48,16 +48,26 @@
         |--------------------------------------------------------------------------
         */
 
-        $mapLink = 'https://maps.app.goo.gl/anJeL6VXLuoB61WK7?g_st=ac';
-
         $mapAddress = trim(
             $addresses[0]
             ?? '17 Makram Ebaid St. Nasr City, Cairo, Egypt'
         );
 
-        $mapEmbedUrl = 'https://www.google.com/maps?q='
-            . rawurlencode($mapAddress)
-            . '&output=embed';
+        // Map driven by the dashboard (Contact Page Map), with a safe fallback.
+        $contactMap = $contactMap ?? null;
+        $mapEnabled = $contactMap ? (bool) $contactMap->enabled : true;
+        $mapLink = ($contactMap && $contactMap->direct_link)
+            ? $contactMap->direct_link
+            : 'https://maps.app.goo.gl/anJeL6VXLuoB61WK7?g_st=ac';
+        $mapEmbedUrl = ($contactMap && $contactMap->embed_url)
+            ? $contactMap->embed_url
+            : 'https://www.google.com/maps?q=' . rawurlencode($mapAddress) . '&output=embed';
+        $mapTitle = ($contactMap && $contactMap->map_title)
+            ? $contactMap->map_title
+            : __('موقع Tooth Guard Clinics على الخريطة');
+        $mapButtonText = ($contactMap && $contactMap->{'button_text_' . $sign})
+            ? $contactMap->{'button_text_' . $sign}
+            : __('فتح الموقع على خرائط جوجل');
     @endphp
 
 
@@ -329,104 +339,27 @@
                             class="mb-2 text-xl font-bold
                                    text-blue-800 sm:text-3xl"
                         >
-                            {{ __('تواصل معنا عن طريق الرسائل') }}
+                            {{ ($contactForm && $contactForm->{'heading_' . $sign}) ? $contactForm->{'heading_' . $sign} : __('تواصل معنا عن طريق الرسائل') }}
                         </h3>
 
 
                         <p class="mb-6 text-sm text-slate-500">
-                            {{ __('إذا كان لديك سؤال، املأ هذا النموذج') }}
+                            {{ ($contactForm && $contactForm->{'description_' . $sign}) ? $contactForm->{'description_' . $sign} : __('إذا كان لديك سؤال، املأ هذا النموذج') }}
                         </p>
 
 
-                        <form
-                            action="{{ route('front.contact.submit') }}"
-                            name="appointment"
-                            id="email-form"
-                            method="POST"
-                            autocomplete="off"
-                            class="cons-contact-form"
-                        >
-
-                            {{ csrf_field() }}
-
-
-                            <div class="form-group w-full">
-                                <div class="response w-full"></div>
-                            </div>
-
-
-                            <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                placeholder="{{ __('الاسم') }}"
-                                class="fname mb-4 block w-full
-                                       rounded-md border border-gray-300
-                                       px-4 py-3 text-sm
-                                       focus:outline-none
-                                       focus:ring-2 focus:ring-blue-500"
-                                required
-                            >
-
-
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                placeholder="{{ __('البريد الإلكتروني') }}"
-                                class="mb-4 block w-full
-                                       rounded-md border border-gray-300
-                                       px-4 py-3 text-sm
-                                       focus:outline-none
-                                       focus:ring-2 focus:ring-blue-500"
-                                required
-                            >
-
-
-                            <input
-                                id="phone"
-                                name="phone"
-                                type="tel"
-                                dir="ltr"
-                                placeholder="{{ __('رقم الهاتف') }}"
-                                class="mb-4 block w-full
-                                       rounded-md border border-gray-300
-                                       px-4 py-3 text-sm
-                                       focus:outline-none
-                                       focus:ring-2 focus:ring-blue-500"
-                            >
-
-
-                            <textarea
-                                id="message"
-                                name="text"
-                                placeholder="{{ __('الرسالة') }}"
-                                class="mb-4 block w-full resize-y
-                                       rounded-md border border-gray-300
-                                       px-4 py-3 text-sm
-                                       focus:outline-none
-                                       focus:ring-2 focus:ring-blue-500"
-                                rows="5"
-                                required
-                            ></textarea>
-
-
-                            <div class="flex justify-end">
-
-                                <button
-                                    type="submit"
-                                    class="rounded-md bg-blue-700
-                                           px-6 py-2 font-semibold
-                                           text-white
-                                           transition duration-300
-                                           hover:bg-blue-800"
-                                >
-                                    {{ __('إرسال') }}
-                                </button>
-
-                            </div>
-
-                        </form>
+                        @include('components.dynamic-form', [
+                            'form'            => ($contactForm ?? null),
+                            'sign'            => $sign,
+                            'formId'          => 'contactForm',
+                            'showCard'        => false,
+                            'showLabels'      => false,
+                            'formClass'       => '',
+                            'inputClass'      => 'mb-4 block w-full rounded-md border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500',
+                            'textareaClass'   => 'mb-4 block w-full resize-y rounded-md border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500',
+                            'buttonClass'     => 'rounded-md bg-blue-700 px-6 py-2 font-semibold text-white transition duration-300 hover:bg-blue-800',
+                            'buttonWrapClass' => 'flex justify-end',
+                        ])
 
                     </section>
 
@@ -439,6 +372,7 @@
 
 
         <!-- Google Map Section -->
+        @if($mapEnabled)
         <section
             class="bg-gray-100 px-5 pb-10
                    sm:px-16 sm:pb-20"
@@ -480,7 +414,7 @@
 
                     <iframe
                         src="{{ $mapEmbedUrl }}"
-                        title="{{ __('موقع Tooth Guard Clinics على الخريطة') }}"
+                        title="{{ $mapTitle }}"
                         class="pointer-events-none
                                h-full w-full border-0"
                         loading="lazy"
@@ -518,7 +452,7 @@
 
                             <i class="fa-solid fa-location-dot"></i>
 
-                            {{ __('فتح الموقع على خرائط جوجل') }}
+                            {{ $mapButtonText }}
 
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
 
@@ -531,6 +465,7 @@
             </div>
 
         </section>
+        @endif
 
     </section>
 

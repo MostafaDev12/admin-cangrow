@@ -21,6 +21,12 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\FormController;
+use App\Http\Controllers\Admin\LeadController;
+use App\Http\Controllers\Admin\BeforeAfterController;
+use App\Http\Controllers\Admin\ServiceVideoController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\MapSettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -273,6 +279,62 @@ Route::prefix('admin')->group(function () {
       Route::get('/languages/delete/{id}', [LanguageController::class, 'destroy'])->name('admin-flang-delete');
       Route::get('/languages/statusupdate/{id}/{status}', [LanguageController::class, 'statusupdate'])->name('admin-flang-statusupdate');
        });
+    // ------------ WEBSITE CONTENT SECTION ------------
+
+    Route::group(['middleware' => 'permissions:website_content'], function () {
+
+      // Forms (settings + fields)
+      Route::get('/forms/datatables', [FormController::class, 'datatables'])->name('admin-forms-datatables');
+      Route::get('/forms', [FormController::class, 'index'])->name('admin-forms-index');
+      Route::get('/forms/edit/{id}', [FormController::class, 'edit'])->name('admin-forms-edit');
+      Route::post('/forms/update/{id}', [FormController::class, 'update'])->name('admin-forms-update');
+      Route::get('/forms/{id}/fields/datatables', [FormController::class, 'fieldsDatatables'])->name('admin-forms-fields-datatables');
+      Route::get('/forms/{id}/fields/create', [FormController::class, 'fieldCreate'])->name('admin-forms-field-create');
+      Route::post('/forms/{id}/fields/store', [FormController::class, 'fieldStore'])->name('admin-forms-field-store');
+      Route::get('/forms/fields/edit/{id}', [FormController::class, 'fieldEdit'])->name('admin-forms-field-edit');
+      Route::post('/forms/fields/update/{id}', [FormController::class, 'fieldUpdate'])->name('admin-forms-field-update');
+      Route::get('/forms/fields/delete/{id}', [FormController::class, 'fieldDestroy'])->name('admin-forms-field-delete');
+
+      // Before & After cases
+      Route::get('/before-after/datatables', [BeforeAfterController::class, 'datatables'])->name('admin-before-after-datatables');
+      Route::get('/before-after', [BeforeAfterController::class, 'index'])->name('admin-before-after-index');
+      Route::get('/before-after/create', [BeforeAfterController::class, 'create'])->name('admin-before-after-create');
+      Route::post('/before-after/store', [BeforeAfterController::class, 'store'])->name('admin-before-after-store');
+      Route::get('/before-after/edit/{id}', [BeforeAfterController::class, 'edit'])->name('admin-before-after-edit');
+      Route::post('/before-after/update/{id}', [BeforeAfterController::class, 'update'])->name('admin-before-after-update');
+      Route::get('/before-after/delete/{id}', [BeforeAfterController::class, 'destroy'])->name('admin-before-after-delete');
+
+      // Service videos
+      Route::get('/service-video/datatables', [ServiceVideoController::class, 'datatables'])->name('admin-service-video-datatables');
+      Route::get('/service-video', [ServiceVideoController::class, 'index'])->name('admin-service-video-index');
+      Route::get('/service-video/edit/{id}', [ServiceVideoController::class, 'edit'])->name('admin-service-video-edit');
+      Route::post('/service-video/update/{id}', [ServiceVideoController::class, 'update'])->name('admin-service-video-update');
+
+      // Testimonials
+      Route::get('/testimonials/datatables', [TestimonialController::class, 'datatables'])->name('admin-testimonials-datatables');
+      Route::get('/testimonials', [TestimonialController::class, 'index'])->name('admin-testimonials-index');
+      Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('admin-testimonials-create');
+      Route::post('/testimonials/store', [TestimonialController::class, 'store'])->name('admin-testimonials-store');
+      Route::get('/testimonials/edit/{id}', [TestimonialController::class, 'edit'])->name('admin-testimonials-edit');
+      Route::post('/testimonials/update/{id}', [TestimonialController::class, 'update'])->name('admin-testimonials-update');
+      Route::get('/testimonials/delete/{id}', [TestimonialController::class, 'destroy'])->name('admin-testimonials-delete');
+
+      // Maps
+      Route::get('/maps', [MapSettingController::class, 'index'])->name('admin-maps-index');
+      Route::get('/maps/edit/{key}', [MapSettingController::class, 'edit'])->name('admin-maps-edit');
+      Route::post('/maps/update/{key}', [MapSettingController::class, 'update'])->name('admin-maps-update');
+    });
+
+    // ------------ LEADS SECTION ------------
+
+    Route::group(['middleware' => 'permissions:leads'], function () {
+      Route::get('/leads/datatables', [LeadController::class, 'datatables'])->name('admin-leads-datatables');
+      Route::get('/leads', [LeadController::class, 'index'])->name('admin-leads-index');
+      Route::get('/leads/show/{id}', [LeadController::class, 'show'])->name('admin-leads-show');
+      Route::post('/leads/update/{id}', [LeadController::class, 'update'])->name('admin-leads-update');
+      Route::get('/leads/delete/{id}', [LeadController::class, 'destroy'])->name('admin-leads-delete');
+    });
+
     // GALLERY SECTION ------------
 
     Route::get('/gallery/show', [GalleryController::class, 'show'])->name('admin-gallery-show');

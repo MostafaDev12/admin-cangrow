@@ -827,7 +827,9 @@
         @include('components.booking-form', [
             'variant' => 'sidebar',
             'formId' => 'globalBookingFormBox',
-            'wrapperClass' => ''
+            'wrapperClass' => '',
+            'leadForm' => ($globalLeadForm ?? null),
+            'leadServiceId' => ($globalLeadServiceId ?? null),
         ])
 
     </div>

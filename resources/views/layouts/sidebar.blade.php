@@ -186,6 +186,52 @@
                     </li>
                 @endif
 
+                @if (Auth::guard('admin')->user()->sectionCheck('website_content'))
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#websiteContent" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="websiteContent">
+                            <i class="las la-pager"></i> <span>Website Content</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="websiteContent">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin-forms-index') }}">Forms &amp; Fields</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin-before-after-index') }}">Before &amp; After Results</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin-service-video-index') }}">Service Videos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin-testimonials-index') }}">Testimonials</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin-maps-index') }}">Maps</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('leads'))
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#leads" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="leads">
+                            <i class="las la-inbox"></i> <span>Leads</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="leads">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-leads-index') }}">All Leads</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-leads-index', ['group' => 'service']) }}">Service Leads</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-leads-index', ['group' => 'contact']) }}">Contact Leads</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-leads-index', ['group' => 'medical_tourism']) }}">Medical Tourism Leads</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-leads-index', ['group' => 'homepage']) }}">Homepage Leads</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
                 @if (Auth::guard('admin')->user()->sectionCheck('general_settings'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#general" data-bs-toggle="collapse" role="button"
