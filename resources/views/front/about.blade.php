@@ -62,84 +62,140 @@
     <!--    </p>-->
     <!--</section>-->
     
+<!-- ABOUT TOOTH GUARD -->
+@php
+    $currentLanguage = request()->route('lang')
+        ?? request()->route('locale')
+        ?? request()->segment(1)
+        ?? app()->getLocale();
 
-    <!-- ABOUT TOOTH GUARD -->
-<section id="about"
-         class="relative overflow-hidden bg-[#f7faf8] py-10 md:py-16">
+    $isArabic = str_starts_with(
+        strtolower((string) $currentLanguage),
+        'ar'
+    );
+@endphp
+
+
+<section
+    id="about"
+    dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+    class="relative overflow-hidden bg-[#f7faf8] py-10 md:py-16"
+>
 
     <div class="container mx-auto px-4 lg:px-8 xl:max-w-7xl">
 
-        <div class="overflow-hidden rounded-[28px]
-                    border border-[#dcebe3]
-                    bg-white
-                    shadow-[0_24px_70px_rgba(15,39,64,0.12)]">
+        <div
+            class="overflow-hidden rounded-[28px]
+                   border border-[#dcebe3]
+                   bg-white
+                   shadow-[0_24px_70px_rgba(15,39,64,0.12)]"
+        >
 
             <!-- Top Brand Line -->
-            <div class="h-2 w-full
-                        bg-gradient-to-r
-                        from-[#2457ff]
-                        via-[#168db5]
-                        to-[#16bf62]">
+            <div
+                class="h-2 w-full
+                       bg-gradient-to-r
+                       from-[#2457ff]
+                       via-[#168db5]
+                       to-[#16bf62]"
+            >
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2">
+
+            <!--
+                English:
+                Text left / Image right
+
+                Arabic:
+                Text right / Image left
+            -->
+            <div
+                dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                class="grid grid-cols-1 lg:grid-cols-2"
+            >
 
                 <!-- Part 1: Text -->
-                <div dir="rtl"
-                     class="relative flex min-h-[480px] items-center
-                            overflow-hidden
-                            bg-gradient-to-br
-                            from-[#2457ff]
-                            via-[#164c96]
-                            to-[#07366f]
-                            px-6 py-12
-                            text-right
-                            md:px-12 md:py-16
-                            lg:min-h-[620px] lg:px-14">
+                <div
+                    dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                    class="relative flex min-h-[480px]
+                           items-center overflow-hidden
+                           bg-gradient-to-br
+                           from-[#2457ff]
+                           via-[#164c96]
+                           to-[#07366f]
+                           px-6 py-12
+                           md:px-12 md:py-16
+                           lg:min-h-[620px] lg:px-14
+                           {{ $isArabic ? 'text-right' : 'text-left' }}"
+                >
 
                     <!-- Background Decorations -->
-                    <div class="absolute -right-32 -top-32
-                                h-96 w-96 rounded-full
-                                bg-[#16bf62]/10 blur-3xl">
+                    <div
+                        class="absolute -right-32 -top-32
+                               h-96 w-96 rounded-full
+                               bg-[#16bf62]/10 blur-3xl"
+                    >
                     </div>
 
-                    <div class="absolute -bottom-40 -left-28
-                                h-96 w-96 rounded-full
-                                bg-[#4d8eff]/15 blur-3xl">
+                    <div
+                        class="absolute -bottom-40 -left-28
+                               h-96 w-96 rounded-full
+                               bg-[#4d8eff]/15 blur-3xl"
+                    >
                     </div>
 
-                    <div class="absolute left-0 top-0
-                                h-full w-full
-                                bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_45%)]">
+                    <div
+                        class="absolute left-0 top-0
+                               h-full w-full
+                               bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_45%)]"
+                    >
                     </div>
+
 
                     <div class="relative z-10 w-full">
 
                         <!-- Title -->
-                        <h2 class="text-center text-3xl font-extrabold
-                                   leading-tight text-white
-                                   md:text-4xl lg:text-5xl">
-
-                            {{ $aboutSection->title ?? __('اكثر من 20 عاماً من الخبرة والتمييز') }}
+                        <h2
+                            dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                            class="text-center text-3xl
+                                   font-extrabold leading-tight
+                                   text-white
+                                   md:text-4xl lg:text-5xl"
+                        >
+                            {{ $aboutSection->title
+                                ?? __('اكثر من 20 عاماً من الخبرة والتمييز') }}
                         </h2>
 
-                        <!-- Subtitle -->
-                        <p class="mt-4 text-center text-xl font-extrabold
-                                  text-[#45d36c]
-                                  md:text-2xl lg:text-3xl">
 
-                            {{ $aboutSection->subtitle ?? __('شركائك في صحة الأسنان') }}
+                        <!-- Subtitle -->
+                        <p
+                            dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                            class="mt-4 text-center
+                                   text-xl font-extrabold
+                                   text-[#45d36c]
+                                   md:text-2xl lg:text-3xl"
+                        >
+                            {{ $aboutSection->subtitle
+                                ?? __('شركائك في صحة الأسنان') }}
                         </p>
 
+
                         <!-- Divider -->
-                        <div class="mx-auto mt-7 flex max-w-sm items-center gap-4">
+                        <div
+                            class="mx-auto mt-7 flex
+                                   max-w-sm items-center gap-4"
+                        >
 
                             <span class="h-px flex-1 bg-white/30"></span>
 
-                            <span class="flex h-11 w-11 items-center justify-center
-                                         rounded-full border border-[#45d36c]/50
-                                         bg-white/5 text-[#45d36c]">
-
+                            <span
+                                class="flex h-11 w-11
+                                       items-center justify-center
+                                       rounded-full
+                                       border border-[#45d36c]/50
+                                       bg-white/5
+                                       text-[#45d36c]"
+                            >
                                 <i class="fa-solid fa-tooth text-lg"></i>
                             </span>
 
@@ -147,117 +203,160 @@
 
                         </div>
 
-                        <!-- Description -->
-                        <div class="mx-auto mt-7 max-w-2xl
-                                    text-center text-base leading-9
-                                    text-white/90 md:text-lg md:leading-10">
 
+                        <!-- Description -->
+                        <div
+                            dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                            class="mx-auto mt-7 max-w-2xl
+                                   text-base leading-9
+                                   text-white/90
+                                   md:text-lg md:leading-10
+                                   {{ $isArabic ? 'text-right' : 'text-left' }}"
+                        >
                             {!! nl2br(e(
                                 $aboutSection->description
                                 ?? __('في عيادات توث جارد، نؤمن بأن العناية بالأسنان يجب أن تكون تجربة شخصية ومتميزة. يضم فريقنا نخبة من الخبراء البارزين وقادة المجال، بما في ذلك أعضاء هيئة التدريس من أرقى الجامعات المصرية. نحن ملتزمون بالابتكار المستمر في طب الأسنان، لضمان تقديم أعلى مستوى من الرعاية لابتسامتك.')
                             )) !!}
                         </div>
 
+
                         <!-- Features -->
-                        <div class="mt-10 grid grid-cols-2
-                                    border-t border-white/15 pt-9
-                                    md:grid-cols-4">
+                        <div
+                            class="mt-10 grid grid-cols-2
+                                   border-t border-white/15
+                                   pt-9 md:grid-cols-4"
+                        >
 
                             <!-- Item 1 -->
-                            <div class="px-3 py-3 text-center
-                                        md:border-l md:border-white/20">
+                            <div
+                                class="px-3 py-3 text-center
+                                       md:border-l md:border-white/20"
+                            >
 
-                                <div class="mx-auto flex h-12 w-12
-                                            items-center justify-center
-                                            text-[#65e780]">
-
+                                <div
+                                    class="mx-auto flex h-12 w-12
+                                           items-center justify-center
+                                           text-[#65e780]"
+                                >
                                     <i class="fa-solid fa-users text-3xl"></i>
                                 </div>
 
-                                <p class="mt-3 text-sm font-bold
-                                          leading-6 text-white">
-
-                                    {{ $aboutSection->feature_one ?? __('فريق من الخبراء') }}
+                                <p
+                                    class="mt-3 text-sm font-bold
+                                           leading-6 text-white"
+                                >
+                                    {{ $aboutSection->feature_one
+                                        ?? __('فريق من الخبراء') }}
                                 </p>
+
                             </div>
 
+
                             <!-- Item 2 -->
-                            <div class="px-3 py-3 text-center
-                                        md:border-l md:border-white/20">
+                            <div
+                                class="px-3 py-3 text-center
+                                       md:border-l md:border-white/20"
+                            >
 
-                                <div class="mx-auto flex h-12 w-12
-                                            items-center justify-center
-                                            text-[#65e780]">
-
+                                <div
+                                    class="mx-auto flex h-12 w-12
+                                           items-center justify-center
+                                           text-[#65e780]"
+                                >
                                     <i class="fa-solid fa-graduation-cap text-3xl"></i>
                                 </div>
 
-                                <p class="mt-3 text-sm font-bold
-                                          leading-6 text-white">
-
-                                    {{ $aboutSection->feature_two ?? __('أعضاء هيئة تدريس') }}
+                                <p
+                                    class="mt-3 text-sm font-bold
+                                           leading-6 text-white"
+                                >
+                                    {{ $aboutSection->feature_two
+                                        ?? __('أعضاء هيئة تدريس') }}
                                 </p>
+
                             </div>
 
+
                             <!-- Item 3 -->
-                            <div class="px-3 py-3 text-center
-                                        md:border-l md:border-white/20">
+                            <div
+                                class="px-3 py-3 text-center
+                                       md:border-l md:border-white/20"
+                            >
 
-                                <div class="mx-auto flex h-12 w-12
-                                            items-center justify-center
-                                            text-[#65e780]">
-
+                                <div
+                                    class="mx-auto flex h-12 w-12
+                                           items-center justify-center
+                                           text-[#65e780]"
+                                >
                                     <i class="fa-solid fa-shield-heart text-3xl"></i>
                                 </div>
 
-                                <p class="mt-3 text-sm font-bold
-                                          leading-6 text-white">
-
-                                    {{ $aboutSection->feature_three ?? __('رعاية متكاملة') }}
+                                <p
+                                    class="mt-3 text-sm font-bold
+                                           leading-6 text-white"
+                                >
+                                    {{ $aboutSection->feature_three
+                                        ?? __('رعاية متكاملة') }}
                                 </p>
+
                             </div>
+
 
                             <!-- Item 4 -->
                             <div class="px-3 py-3 text-center">
 
-                                <div class="mx-auto flex h-12 w-12
-                                            items-center justify-center
-                                            text-[#65e780]">
-
+                                <div
+                                    class="mx-auto flex h-12 w-12
+                                           items-center justify-center
+                                           text-[#65e780]"
+                                >
                                     <i class="fa-solid fa-tooth text-3xl"></i>
                                 </div>
 
-                                <p class="mt-3 text-sm font-bold
-                                          leading-6 text-white">
-
-                                    {{ $aboutSection->feature_four ?? __('ابتسامتك أولويتنا') }}
+                                <p
+                                    class="mt-3 text-sm font-bold
+                                           leading-6 text-white"
+                                >
+                                    {{ $aboutSection->feature_four
+                                        ?? __('ابتسامتك أولويتنا') }}
                                 </p>
+
                             </div>
 
                         </div>
 
                     </div>
+
                 </div>
 
 
                 <!-- Part 2: Image -->
-                <div class="relative min-h-[420px] md:min-h-[540px] lg:min-h-[620px]">
+                <div
+                    class="relative min-h-[420px]
+                           md:min-h-[540px]
+                           lg:min-h-[620px]"
+                >
 
                     <img
                         src="{{ !empty($aboutSection->image)
                             ? asset('assets/images/about/' . $aboutSection->image)
                             : asset('assets/images/about/Reception.webp') }}"
                         alt="{{ $aboutSection->title ?? __('توث جارد') }}"
-                        class="absolute inset-0 h-full w-full object-cover"
+                        class="absolute inset-0
+                               h-full w-full object-cover"
                         loading="lazy"
+                        decoding="async"
                     >
 
+
                     <!-- Soft Image Overlay -->
-                    <div class="absolute inset-0
-                                bg-gradient-to-t
-                                from-[#071e35]/20
-                                via-transparent
-                                to-transparent">
+                    <div
+                        class="absolute inset-0
+                               bg-gradient-to-t
+                               from-[#071e35]/20
+                               via-transparent
+                               to-transparent"
+                    >
                     </div>
 
                 </div>
@@ -269,81 +368,155 @@
     </div>
 
 </section>
-
     
-    
-
 <!-- TEAM SECTION -->
+
 @php
-    $isArabic = app()->getLocale() === 'ar';
+    /*
+    |--------------------------------------------------------------------------
+    | Current Language
+    |--------------------------------------------------------------------------
+    | يدعم اللغة القادمة من:
+    | $sign
+    | route: lang
+    | route: locale
+    | أول جزء من الرابط
+    | app locale
+    */
+
+    $languageCandidate = $sign
+        ?? request()->route('lang')
+        ?? request()->route('locale')
+        ?? request()->segment(1)
+        ?? app()->getLocale();
+
+    $languageCandidate = strtolower(
+        str_replace('_', '-', trim((string) $languageCandidate))
+    );
+
+    if (
+        !str_starts_with($languageCandidate, 'ar')
+        && !str_starts_with($languageCandidate, 'en')
+    ) {
+        $languageCandidate = strtolower(
+            str_replace('_', '-', (string) app()->getLocale())
+        );
+    }
+
+    $isArabic = str_starts_with($languageCandidate, 'ar');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Doctors Data
+    |--------------------------------------------------------------------------
+    | كل النصوص داخل __() حتى تظهر في ملف الترجمة بالداشبورد.
+    */
 
     $doctors = [
         [
             'name' => __('دكتور محمد حجاب'),
+
             'title' => __('أخصائي تجميل وزراعة الأسنان'),
+
             'academic_title' => __('تجميل وجراحة الأسنان جامعة عين شمس'),
+
             'description' => __('متخصص في تجميل الأسنان وزراعة الأسنان وتصميم الابتسامة.'),
+
             'image' => asset('assets/images/doctors /D-mohamed-h.webp'),
+
             'featured' => true,
         ],
 
         [
             'name' => __('دكتور علي وهبة'),
+
             'title' => __('أخصائي جراحات اللثة وزراعة الأسنان'),
+
             'academic_title' => __('أستاذ مساعد في الجامعة الروسية'),
+
             'description' => __('متخصص في جراحات اللثة وزراعة الأسنان باستخدام أحدث التقنيات.'),
+
             'image' => asset('assets/images/doctors /D-ali.webp'),
+
             'featured' => false,
         ],
 
         [
             'name' => __('دكتور محمد زايد'),
+
             'title' => __('أستاذ طب أسنان الأطفال'),
+
             'academic_title' => '',
+
             'description' => __('متخصص في طب أسنان الأطفال وتقديم الرعاية المناسبة لمختلف الأعمار.'),
+
             'image' => asset('assets/images/doctors /D-mohmed-z.webp'),
+
             'featured' => false,
         ],
 
         [
             'name' => __('دكتورة ولاء جاد'),
+
             'title' => __('أخصائية تقويم الأسنان'),
+
             'academic_title' => __('أستاذ مساعد في جامعة القاهرة'),
+
             'description' => __('متخصصة في تقويم الأسنان وتحسين انتظام الأسنان والابتسامة.'),
+
             'image' => asset('assets/images/doctors /ولاء جاد.webp'),
+
             'featured' => false,
         ],
 
         [
             'name' => __('دكتورة خلود'),
+
             'title' => __('أخصائية طب الأسنان'),
+
             'academic_title' => '',
+
             'description' => __('تقديم خطط علاج متكاملة ومناسبة لكل حالة باهتمام واحترافية.'),
+
             'image' => asset('assets/images/doctors /D-Kholoud.webp'),
+
             'featured' => false,
         ],
 
         [
             'name' => __('دكتور أحمد عصمت'),
+
             'title' => __('أخصائي علاج الجذور'),
+
             'academic_title' => '',
+
             'description' => __('متخصص في علاج جذور الأسنان والحفاظ على الأسنان بأحدث التقنيات.'),
+
             'image' => asset('assets/images/doctors /D-ahmed-a.webp'),
+
             'featured' => false,
         ],
 
         [
             'name' => __('دكتور أحمد ممدوح'),
+
             'title' => __('أخصائي تركيبات الأسنان'),
+
             'academic_title' => __('أستاذ مساعد في جامعة عين شمس'),
+
             'description' => __('متخصص في تركيبات الأسنان الثابتة والمتحركة واستعادة جمال الابتسامة.'),
+
             'image' => asset('assets/images/doctors /D-ahmed-m.webp'),
+
             'featured' => false,
         ],
     ];
 
+
     $featuredDoctor = collect($doctors)
         ->firstWhere('featured', true);
+
 
     $otherDoctors = collect($doctors)
         ->where('featured', '!=', true)
@@ -353,74 +526,110 @@
 
 <section
     id="team"
+    lang="{{ $isArabic ? 'ar' : 'en' }}"
     dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
     class="relative overflow-hidden bg-[#f7faf8] py-16 md:py-24"
 >
 
     <!-- Decorative Background -->
     <div
-        class="absolute left-0 top-0 h-72 w-72
-               rounded-full bg-[#16bf62]/5 blur-3xl">
+        class="absolute left-0 top-0
+               h-72 w-72
+               rounded-full bg-[#16bf62]/5 blur-3xl"
+    >
     </div>
 
     <div
-        class="absolute right-0 top-0 h-72 w-72
-               rounded-full bg-[#2457ff]/5 blur-3xl">
+        class="absolute right-0 top-0
+               h-72 w-72
+               rounded-full bg-[#2457ff]/5 blur-3xl"
+    >
     </div>
 
     <div
-        class="absolute bottom-0 left-0 h-96 w-96
-               rounded-full bg-[#16bf62]/[0.07] blur-3xl">
+        class="absolute bottom-0 left-0
+               h-96 w-96
+               rounded-full bg-[#16bf62]/[0.07] blur-3xl"
+    >
     </div>
 
 
-    <div class="container relative z-10 mx-auto px-4 lg:px-8 xl:max-w-7xl">
+    <div
+        class="container relative z-10
+               mx-auto px-4
+               lg:px-8 xl:max-w-7xl"
+    >
 
         <!-- Section Heading -->
-        <div class="mx-auto mb-12 max-w-4xl text-center md:mb-16">
+        <div
+            class="mx-auto mb-12
+                   max-w-4xl text-center
+                   md:mb-16"
+        >
 
             <h2
-                class="text-4xl font-extrabold leading-tight
-                       text-[#2457ff] md:text-6xl">
+                class="text-4xl font-extrabold
+                       leading-tight text-[#2457ff]
+                       md:text-6xl"
+            >
                 {{ __('فريقنا') }}
             </h2>
 
+
             <p
                 class="mt-3 text-xl font-extrabold
-                       text-[#16bf62] md:text-3xl">
+                       text-[#16bf62]
+                       md:text-3xl"
+            >
                 {{ __('خبراء شغوفون ملتزمون بابتسامتك') }}
             </p>
 
+
             <p
                 class="mt-5 text-sm leading-8
-                       text-[#3f4a56] md:text-base">
+                       text-[#3f4a56]
+                       md:text-base"
+            >
                 {{ __('يتكون فريقنا في Tooth Guard Clinics من متخصصين ذوي مهارات عالية لتقديم رعاية أسنان متطورة، يجلب كل عضو في الفريق خبرة فريدة والتزامًا بالتميز.') }}
             </p>
 
         </div>
 
 
+
         <!-- Cards Area -->
         <div
             class="relative overflow-hidden
-                   rounded-[32px] border border-[#cdeedd]
+                   rounded-[32px]
+                   border border-[#cdeedd]
                    bg-gradient-to-br
-                   from-[#eefaf3] via-white to-[#eaf8f1]
+                   from-[#eefaf3]
+                   via-white
+                   to-[#eaf8f1]
                    p-5
                    shadow-[0_30px_100px_rgba(15,39,64,0.08)]
-                   md:rounded-[42px] md:p-8 lg:p-10"
+                   md:rounded-[42px]
+                   md:p-8
+                   lg:p-10"
         >
 
             <!-- Decorative Dots -->
-            <div class="absolute left-8 top-8 hidden opacity-30 md:block">
+            <div
+                class="absolute left-8 top-8
+                       hidden opacity-30
+                       md:block"
+            >
 
                 <div class="grid grid-cols-6 gap-3">
 
                     @for($i = 0; $i < 24; $i++)
+
                         <span
                             class="block h-1.5 w-1.5
-                                   rounded-full bg-[#16bf62]">
+                                   rounded-full bg-[#16bf62]"
+                        >
                         </span>
+
                     @endfor
 
                 </div>
@@ -430,21 +639,32 @@
 
             <div
                 class="absolute bottom-10 right-10
-                       h-72 w-72 rounded-full
-                       bg-[#16bf62]/[0.08] blur-2xl">
+                       h-72 w-72
+                       rounded-full
+                       bg-[#16bf62]/[0.08]
+                       blur-2xl"
+            >
             </div>
+
 
             <div
                 class="absolute -bottom-20 -left-20
-                       h-80 w-80 rounded-full
-                       border border-[#16bf62]/20">
+                       h-80 w-80
+                       rounded-full
+                       border border-[#16bf62]/20"
+            >
             </div>
+
 
 
             <!-- Featured Doctor -->
             @if($featuredDoctor)
 
-                <div class="relative z-10 mx-auto mb-8 max-w-5xl">
+                <div
+                    class="relative z-10
+                           mx-auto mb-8
+                           max-w-5xl"
+                >
 
                     <div
                         class="group overflow-hidden
@@ -458,33 +678,49 @@
                                md:rounded-[32px]"
                     >
 
+                        <!--
+                            English:
+                            Image left / Text right
+
+                            Arabic:
+                            Image right / Text left
+                        -->
                         <div
                             dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
-                            class="grid min-h-[330px] grid-cols-1
+                            class="grid min-h-[330px]
+                                   grid-cols-1
                                    md:grid-cols-[300px_minmax(0,1fr)]"
                         >
 
                             <!-- Featured Doctor Image -->
                             <div
-                                class="relative flex min-h-[280px]
+                                class="relative flex
+                                       min-h-[280px]
                                        items-end justify-center
-                                       overflow-hidden bg-[#f4fbf7]"
+                                       overflow-hidden
+                                       bg-[#f4fbf7]"
                             >
 
                                 <div
                                     class="absolute bottom-0 left-0
                                            h-[85%] w-full
-                                           rounded-tr-[150px]
-                                           bg-[#e9f8ef]">
+                                           bg-[#e9f8ef]
+                                           {{ $isArabic
+                                                ? 'rounded-tl-[150px]'
+                                                : 'rounded-tr-[150px]'
+                                           }}"
+                                >
                                 </div>
 
 
                                 <!-- Small Logo -->
                                 <div
-                                    class="absolute left-5 top-5 z-20
+                                    class="absolute top-5 z-20
                                            flex h-14 w-14
                                            items-center justify-center
-                                           rounded-2xl bg-white shadow-md"
+                                           rounded-2xl
+                                           bg-white shadow-md
+                                           {{ $isArabic ? 'right-5' : 'left-5' }}"
                                 >
 
                                     <img
@@ -503,7 +739,8 @@
                                     loading="lazy"
                                     decoding="async"
                                     class="relative z-10
-                                           h-[270px] max-w-full
+                                           h-[270px]
+                                           max-w-full
                                            rounded-[28px]
                                            object-contain
                                            transition-transform duration-500
@@ -515,27 +752,38 @@
                             </div>
 
 
+
                             <!-- Featured Doctor Text -->
                             <div
-                                class="flex flex-col justify-center
-                                       p-6 md:p-10
+                                dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                                class="flex min-w-0
+                                       flex-col justify-center
+                                       p-6
+                                       md:p-10
                                        {{ $isArabic ? 'text-right' : 'text-left' }}"
                             >
 
+                                <!-- Featured Badge -->
                                 <div
                                     class="mb-5 flex
-                                           {{ $isArabic ? 'justify-end' : 'justify-start' }}"
+                                           {{ $isArabic ? 'justify-start' : 'justify-start' }}"
                                 >
 
                                     <span
                                         class="inline-flex items-center gap-2
-                                               rounded-full bg-[#dff5e8]
+                                               rounded-full
+                                               bg-[#dff5e8]
                                                px-4 py-1.5
                                                text-xs font-extrabold
-                                               text-[#129d50] md:text-sm"
+                                               text-[#129d50]
+                                               md:text-sm"
                                     >
 
-                                        <i class="fa-solid fa-star text-[11px]"></i>
+                                        <i
+                                            class="fa-solid fa-star
+                                                   text-[11px]"
+                                        >
+                                        </i>
 
                                         {{ __('عضو رئيسي في الفريق') }}
 
@@ -546,7 +794,8 @@
 
                                 <h3
                                     class="text-3xl font-extrabold
-                                           leading-tight text-[#2457ff]
+                                           leading-tight
+                                           text-[#2457ff]
                                            md:text-5xl"
                                 >
                                     {{ $featuredDoctor['name'] }}
@@ -554,8 +803,10 @@
 
 
                                 <p
-                                    class="mt-3 text-lg font-extrabold
-                                           text-[#16bf62] md:text-2xl"
+                                    class="mt-3
+                                           text-lg font-extrabold
+                                           text-[#16bf62]
+                                           md:text-2xl"
                                 >
                                     {{ $featuredDoctor['title'] }}
                                 </p>
@@ -564,15 +815,21 @@
                                 @if(!empty($featuredDoctor['academic_title']))
 
                                     <div
-                                        class="mt-3 flex items-start gap-2
-                                               text-sm font-bold leading-7
-                                               text-[#287258] md:text-base"
+                                        dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                                        class="mt-3 flex
+                                               items-start gap-2
+                                               text-sm font-bold
+                                               leading-7
+                                               text-[#287258]
+                                               md:text-base"
                                     >
 
                                         <i
-                                            class="fa-solid fa-graduation-cap
+                                            class="fa-solid
+                                                   fa-graduation-cap
                                                    mt-1.5 shrink-0
-                                                   text-[#16bf62]">
+                                                   text-[#16bf62]"
+                                        >
                                         </i>
 
                                         <span>
@@ -587,8 +844,12 @@
                                 @if(!empty($featuredDoctor['description']))
 
                                     <p
-                                        class="mt-4 text-sm leading-8
-                                               text-[#4b5563] md:text-base"
+                                        dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                                        class="mt-5
+                                               text-sm leading-8
+                                               text-[#4b5563]
+                                               md:text-base
+                                               {{ $isArabic ? 'text-right' : 'text-left' }}"
                                     >
                                         {{ $featuredDoctor['description'] }}
                                     </p>
@@ -606,177 +867,47 @@
             @endif
 
 
-            <!-- Row 2: Three Doctors -->
+
+            <!-- Other Doctors -->
             <div
-                class="relative z-10 mb-8
-                       grid grid-cols-1 gap-6
-                       md:grid-cols-2 xl:grid-cols-3"
-            >
-
-                @foreach($otherDoctors->take(3) as $doctor)
-
-                    <div
-                        class="group h-full min-h-[215px]
-                               rounded-[24px]
-                               border border-[#e2f3ea]
-                               bg-white p-5
-                               shadow-[0_18px_55px_rgba(15,39,64,0.09)]
-                               transition-all duration-300
-                               hover:-translate-y-2
-                               hover:shadow-[0_24px_75px_rgba(15,39,64,0.13)]
-                               md:rounded-[28px] md:p-6"
-                    >
-
-                        <div
-                            dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
-                            class="grid h-full grid-cols-1
-                                   items-center gap-5
-                                   text-center
-                                   sm:grid-cols-[130px_minmax(0,1fr)]
-                                   {{ $isArabic ? 'sm:text-right' : 'sm:text-left' }}"
-                        >
-
-                            <!-- Doctor Image -->
-                            <div class="relative">
-
-                                <!-- Small Logo -->
-                                <div
-                                    class="absolute -right-3 -top-3 z-20
-                                           flex h-12 w-12
-                                           items-center justify-center
-                                           rounded-2xl bg-white shadow-md"
-                                >
-
-                                    <img
-                                        src="{{ asset('assets/images/doctors /اللوجو.png') }}"
-                                        alt="Tooth Guard Logo"
-                                        class="h-8 w-8 object-contain"
-                                    >
-
-                                </div>
-
-
-                                <div
-                                    class="mx-auto h-32 w-32
-                                           rounded-full bg-[#eef8f2] p-2
-                                           md:h-36 md:w-36"
-                                >
-
-                                    <img
-                                        src="{{ $doctor['image'] }}"
-                                        alt="{{ $doctor['name'] }}"
-                                        loading="lazy"
-                                        decoding="async"
-                                        width="144"
-                                        height="144"
-                                        class="h-full w-full
-                                               rounded-full
-                                               object-cover object-top
-                                               transition-transform
-                                               duration-500
-                                               group-hover:scale-105"
-                                    >
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- Doctor Text -->
-                            <div class="flex min-w-0 flex-col justify-center">
-
-                                <h3
-                                    class="text-xl font-extrabold
-                                           leading-tight text-[#2457ff]
-                                           md:text-2xl"
-                                >
-                                    {{ $doctor['name'] }}
-                                </h3>
-
-
-                                <p
-                                    class="mt-2 text-sm font-extrabold
-                                           leading-6 text-[#16bf62]
-                                           md:text-lg"
-                                >
-                                    {{ $doctor['title'] }}
-                                </p>
-
-
-                                @if(!empty($doctor['academic_title']))
-
-                                    <div
-                                        class="mt-2 flex items-start gap-2
-                                               text-xs font-bold leading-6
-                                               text-[#287258] md:text-sm"
-                                    >
-
-                                        <i
-                                            class="fa-solid fa-graduation-cap
-                                                   mt-1 shrink-0
-                                                   text-[#16bf62]">
-                                        </i>
-
-                                        <span>
-                                            {{ $doctor['academic_title'] }}
-                                        </span>
-
-                                    </div>
-
-                                @endif
-
-
-                                @if(!empty($doctor['description']))
-
-                                    <p
-                                        class="mt-2 text-sm leading-6
-                                               text-[#4b5563]
-                                               md:text-[15px]"
-                                    >
-                                        {{ $doctor['description'] }}
-                                    </p>
-
-                                @endif
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                @endforeach
-
-            </div>
-
-
-            <!-- Row 3: Three Doctors -->
-            <div
+                dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
                 class="relative z-10
-                       grid grid-cols-1 gap-6
-                       md:grid-cols-2 xl:grid-cols-3"
+                       grid grid-cols-1
+                       gap-6
+                       md:grid-cols-2
+                       xl:grid-cols-3"
             >
 
-                @foreach($otherDoctors->slice(3, 3) as $doctor)
+                @foreach($otherDoctors as $doctor)
 
                     <div
-                        class="group h-full min-h-[215px]
+                        class="group h-full
+                               min-h-[215px]
                                rounded-[24px]
                                border border-[#e2f3ea]
-                               bg-white p-5
+                               bg-white
+                               p-5
                                shadow-[0_18px_55px_rgba(15,39,64,0.09)]
                                transition-all duration-300
                                hover:-translate-y-2
                                hover:shadow-[0_24px_75px_rgba(15,39,64,0.13)]
-                               md:rounded-[28px] md:p-6"
+                               md:rounded-[28px]
+                               md:p-6"
                     >
 
+                        <!--
+                            English:
+                            Image left / Text right
+
+                            Arabic:
+                            Image right / Text left
+                        -->
                         <div
                             dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
-                            class="grid h-full grid-cols-1
+                            class="grid h-full
+                                   grid-cols-1
                                    items-center gap-5
-                                   text-center
-                                   sm:grid-cols-[130px_minmax(0,1fr)]
-                                   {{ $isArabic ? 'sm:text-right' : 'sm:text-left' }}"
+                                   sm:grid-cols-[130px_minmax(0,1fr)]"
                         >
 
                             <!-- Doctor Image -->
@@ -784,10 +915,12 @@
 
                                 <!-- Small Logo -->
                                 <div
-                                    class="absolute -right-3 -top-3 z-20
+                                    class="absolute -top-3 z-20
                                            flex h-12 w-12
                                            items-center justify-center
-                                           rounded-2xl bg-white shadow-md"
+                                           rounded-2xl
+                                           bg-white shadow-md
+                                           {{ $isArabic ? '-right-3' : '-left-3' }}"
                                 >
 
                                     <img
@@ -800,8 +933,11 @@
 
 
                                 <div
-                                    class="mx-auto h-32 w-32
-                                           rounded-full bg-[#eef8f2] p-2
+                                    class="mx-auto
+                                           h-32 w-32
+                                           rounded-full
+                                           bg-[#eef8f2]
+                                           p-2
                                            md:h-36 md:w-36"
                                 >
 
@@ -815,8 +951,7 @@
                                         class="h-full w-full
                                                rounded-full
                                                object-cover object-top
-                                               transition-transform
-                                               duration-500
+                                               transition-transform duration-500
                                                group-hover:scale-105"
                                     >
 
@@ -825,12 +960,20 @@
                             </div>
 
 
+
                             <!-- Doctor Text -->
-                            <div class="flex min-w-0 flex-col justify-center">
+                            <div
+                                dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                                class="flex w-full min-w-0
+                                       flex-col justify-center
+                                       {{ $isArabic ? 'text-right' : 'text-left' }}"
+                            >
 
                                 <h3
-                                    class="text-xl font-extrabold
-                                           leading-tight text-[#2457ff]
+                                    class="break-words
+                                           text-xl font-extrabold
+                                           leading-tight
+                                           text-[#2457ff]
                                            md:text-2xl"
                                 >
                                     {{ $doctor['name'] }}
@@ -838,8 +981,10 @@
 
 
                                 <p
-                                    class="mt-2 text-sm font-extrabold
-                                           leading-6 text-[#16bf62]
+                                    class="mt-2 break-words
+                                           text-sm font-extrabold
+                                           leading-6
+                                           text-[#16bf62]
                                            md:text-lg"
                                 >
                                     {{ $doctor['title'] }}
@@ -849,18 +994,24 @@
                                 @if(!empty($doctor['academic_title']))
 
                                     <div
-                                        class="mt-2 flex items-start gap-2
-                                               text-xs font-bold leading-6
-                                               text-[#287258] md:text-sm"
+                                        dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                                        class="mt-2 flex
+                                               items-start gap-2
+                                               text-xs font-bold
+                                               leading-6
+                                               text-[#287258]
+                                               md:text-sm"
                                     >
 
                                         <i
-                                            class="fa-solid fa-graduation-cap
+                                            class="fa-solid
+                                                   fa-graduation-cap
                                                    mt-1 shrink-0
-                                                   text-[#16bf62]">
+                                                   text-[#16bf62]"
+                                        >
                                         </i>
 
-                                        <span>
+                                        <span class="break-words">
                                             {{ $doctor['academic_title'] }}
                                         </span>
 
@@ -872,9 +1023,12 @@
                                 @if(!empty($doctor['description']))
 
                                     <p
-                                        class="mt-2 text-sm leading-6
+                                        dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                                        class="mt-3 break-words
+                                               text-sm leading-7
                                                text-[#4b5563]
-                                               md:text-[15px]"
+                                               md:text-base
+                                               {{ $isArabic ? 'text-right' : 'text-left' }}"
                                     >
                                         {{ $doctor['description'] }}
                                     </p>
@@ -896,20 +1050,68 @@
     </div>
 
 </section>
+```
 
-    <!-- Key Features -->
-    <section class="bg-gradient-to-r from-blue-600 to-green-400 py-12">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-white px-6">
-           
-            @foreach ($models as $model)
-            <div class="flex flex-col items-center md:items-start text-center md:text-right">
-                <h3 class="text-xl sm:text-2xl font-bold mb-2"> {{ $model->{'title_' . $sign} }}     </h3>
-                <p class="text-sm sm:text-base">  {{ $model->{'details_' . $sign}  ?? ''}}</p>
+  <!-- Key Features -->
+@php
+    $currentLanguage = strtolower((string) (
+        $sign
+        ?? request()->route('lang')
+        ?? request()->segment(1)
+        ?? app()->getLocale()
+    ));
+
+    $isArabic = str_starts_with($currentLanguage, 'ar');
+
+    $titleField = 'title_' . $sign;
+    $detailsField = 'details_' . $sign;
+@endphp
+
+
+<section
+    dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+    class="bg-gradient-to-r from-blue-600 to-green-400 py-12"
+>
+    <div
+        class="mx-auto grid max-w-7xl
+               grid-cols-1 gap-8 px-6
+               text-white md:grid-cols-3"
+    >
+
+        @foreach ($models as $model)
+
+            <div
+                dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
+                @class([
+                    'flex w-full flex-col items-center text-center',
+
+                    'md:items-end md:text-right' => $isArabic,
+
+                    'md:items-start md:text-left' => !$isArabic,
+                ])
+            >
+
+                <h3
+                    class="mb-2 text-xl font-bold
+                           leading-normal sm:text-2xl"
+                >
+                    {{ $model->{$titleField} ?? '' }}
+                </h3>
+
+
+                <p
+                    class="text-sm leading-7
+                           sm:text-base sm:leading-8"
+                >
+                    {{ $model->{$detailsField} ?? '' }}
+                </p>
+
             </div>
-             @endforeach
-             
-        </div>
-    </section>
+
+        @endforeach
+
+    </div>
+</section>
 
     <!-- Before and After Slider -->
     <section class="py-10 sm:py-20 bg-blue-100 px-5 lg:px-28">
