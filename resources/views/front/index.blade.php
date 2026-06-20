@@ -21,114 +21,104 @@
           @endphp
 
 
-
 <!-- HERO SECTION -->
-<section class="relative min-h-[660px] md:min-h-[720px] overflow-hidden text-white">
-
-    <!-- Mobile Background -->
-    <div class="absolute inset-0 block md:hidden bg-[#0b4fa8]">
-
-        <img
-            src="{{ asset('assets/images/doctors /team-hero2-mobile.webp') }}"
-            alt="Tooth Guard Team"
-            class="absolute inset-0 w-full h-full object-cover object-top"
-        >
-
-    </div>
+<section class="relative min-h-[650px] md:min-h-[720px] overflow-hidden text-white">
+    
+<!-- Mobile Background -->
+<div class="absolute inset-0 block md:hidden bg-gradient-to-r from-blue-600 to-green-600">
+    <img
+        src="{{ asset('assets/images/about/about-slider-mobile.webp') }}"
+        alt="Tooth Guard Team"
+        class="absolute inset-0 w-full h-full object-contain object-top"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+    >
+</div>
 
     <!-- Desktop Background -->
     <div class="absolute inset-0 hidden md:block">
-
         <img
             src="{{ asset('assets/images/doctors /team-hero.webp') }}"
             alt="Tooth Guard Team"
             class="absolute inset-0 w-full h-full object-cover object-center"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
         >
-
     </div>
 
     <!-- Blue / Green Overlay -->
-    <div class="absolute inset-0
-                bg-gradient-to-r
-                from-blue-700/90
-                via-blue-600/55
+    <div class="absolute inset-0 bg-gradient-to-r
+                from-blue-700/85
+                via-blue-600/50
                 to-green-600/55">
     </div>
 
     <!-- Bottom Overlay -->
-    <div class="absolute inset-0
-                bg-gradient-to-t
-                from-[#062e67]/75
+    <div class="absolute inset-0 bg-gradient-to-t
+                from-[#062e67]/70
                 via-[#062e67]/10
                 to-transparent">
     </div>
 
- <!-- Content -->
-<div class="relative z-10 container mx-auto
-            min-h-[660px] md:min-h-[720px]
-            flex items-end
-            justify-center md:justify-start
-            px-5 md:px-16
-            pb-6 md:pb-8">
+    <!-- Content -->
+    <div class="relative z-10 container mx-auto
+                min-h-[590px] md:min-h-[720px]
+                flex items-end justify-center md:justify-start
+                px-5 md:px-16
+                pb-8 md:pb-8">
 
-    <div
-        dir="{{ $sign === 'en' ? 'ltr' : 'rtl' }}"
-        class="w-full md:w-1/2
-               text-center
-               {{ $sign === 'en' ? 'md:text-left' : 'md:text-right' }}">
+        <div
+            dir="{{ $sign === 'en' ? 'ltr' : 'rtl' }}"
+            class="w-full md:w-1/2 text-center
+                   {{ $sign === 'en' ? 'md:text-left' : 'md:text-right' }}">
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl
-                   font-extrabold mb-5 md:mb-6
-                   leading-tight drop-shadow-lg">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl
+                       font-extrabold mb-4 md:mb-6
+                       leading-tight drop-shadow-lg">
+                {{ $slider->{'title_' . $sign} ?? '' }}
+            </h1>
 
-            {{ $slider->{'title_' . $sign} ?? '' }}
-        </h1>
+            <div class="mx-auto md:mx-0 max-w-xl
+                        text-sm sm:text-lg md:text-xl
+                        mb-6 md:mb-8
+                        leading-7 sm:leading-8 md:leading-relaxed
+                        text-white/95 drop-shadow-md">
+                {!! $slider->{'details_' . $sign} ?? '' !!}
+            </div>
 
-        <div class="mx-auto md:mx-0 max-w-xl
-                    text-sm sm:text-lg md:text-xl
-                    mb-7 md:mb-8
-                    leading-7 sm:leading-8 md:leading-relaxed
-                    text-white/95 drop-shadow-md">
+            <div class="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4">
 
-            {!! $slider->{'details_' . $sign} ?? '' !!}
-        </div>
+                <a
+                    href="{{ route('about.index'.$lang, $lang) }}"
+                    class="inline-flex items-center justify-center
+                           bg-green-500 hover:bg-green-600
+                           text-white font-semibold
+                           text-sm sm:text-lg
+                           py-3 px-6 sm:px-8
+                           rounded-full shadow-lg
+                           transition duration-300">
+                    {{ __('معلومات عنا') }}
+                </a>
 
-        <div class="flex flex-wrap
-                    justify-center md:justify-start
-                    gap-3 md:gap-4">
+                <a
+                    href="{{ route('contact.index'.$lang, $lang) }}"
+                    class="inline-flex items-center justify-center
+                           bg-transparent border-2 border-white
+                           hover:bg-white hover:text-blue-600
+                           text-white font-semibold
+                           text-sm sm:text-lg
+                           py-3 px-6 sm:px-8
+                           rounded-full transition duration-300">
+                    {{ __('احجز موعدك') }}
+                </a>
 
-            <a
-                href="{{ route('about.index'.$lang, $lang) }}"
-                class="inline-flex items-center justify-center
-                       bg-green-500 hover:bg-green-600
-                       text-white font-semibold
-                       text-sm sm:text-lg
-                       py-3 px-6 sm:px-8
-                       rounded-full shadow-lg
-                       transition duration-300">
-
-                {{ __('معلومات عنا') }}
-            </a>
-
-            <a
-                href="{{ route('contact.index'.$lang, $lang) }}"
-                class="inline-flex items-center justify-center
-                       bg-transparent border-2 border-white
-                       hover:bg-white hover:text-blue-600
-                       text-white font-semibold
-                       text-sm sm:text-lg
-                       py-3 px-6 sm:px-8
-                       rounded-full
-                       transition duration-300">
-
-                {{ __('احجز موعدك') }}
-            </a>
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 </section>
 
