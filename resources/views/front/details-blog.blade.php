@@ -82,32 +82,32 @@ $randomPhone = Arr::random($phones);
             <section class="lg:col-span-8">
                 <div class="prose prose-lg max-w-none text-gray-700">
                 
-                  <div class=" flex items-center gap-4">
+                  @php
+    $authorName = $blog->doctor_name ?? __('دكتور محمد حجاب');
+    $authorTitle = $blog->doctor_title ?? __('استشاري طب وجراحة الفم والأسنان');
+    $authorImage = $blog->doctor_image ?? $ps->about_photo;
+@endphp
 
-                        <div class="relative shrink-0">
-                            <img 
-                           src="{{ $ps->about_photo }}" alt="Dr. Mohamed Hegab"
-                            class="w-20 h-20 rounded-full object-cover border-2 border-gray-100 shadow-sm">
-                        </div>
-                        <div class="flex flex-col">
-                            <h1 class="text-xl md:text-2xl font-bold text-blue-800 leading-tight">
+<div class="flex items-center gap-4">
+    <div class="relative shrink-0">
+        <img 
+            src="{{ $authorImage }}"
+            alt="{{ $authorName }}"
+            class="w-20 h-20 rounded-full object-cover border-2 border-gray-100 shadow-sm">
+    </div>
 
-                              <a href="{{ route('about.index'.$lang,$lang) }}"
-                class="">
-                              {{ __('الكاتب: دكتور محمد حجاب') }}
-                
-                </a>
-                
-                
-                
-                              
-                              
-                            </h1>
-                            <h2 class="text-sm md:text-base font-semibold text-[#0f2c4a] mt-1">
-                                    استشاري طب وجراحة الفم والأسنان                
-                            </h2>
-                        </div>
-                    </div>  
+    <div class="flex flex-col">
+        <h1 class="text-xl md:text-2xl font-bold text-blue-800 leading-tight">
+            <a href="{{ route('about.index'.$lang, $lang) }}" class="">
+                {{ __('الكاتب:') }} {{ $authorName }}
+            </a>
+        </h1>
+
+        <h2 class="text-sm md:text-base font-semibold text-[#0f2c4a] mt-1">
+            {{ $authorTitle }}
+        </h2>
+    </div>
+</div>
                     {{-- <p class="text-base sm:text-lg leading-relaxed">
                         <strong>
                             أصبحت زراعة الأسنان واحدة من أكثر الخيارات انتشارًا لاستعادة الأسنان المفقودة، لأنها توفر

@@ -138,8 +138,24 @@
             <a href="{{ route('about.index'.$lang,$lang) }}"
                 class="text-white text-lg hover:font-semibold transition duration-300">
                 {{ __('معلومات عنا') }}</a>
-            <a href="{{ route('services.index'.$lang,$lang) }}"
-                class="text-white text-lg hover:font-semibold transition duration-300">{{ __('الخدمات') }}</a>
+                <li class="relative group list-none before:hidden">
+    <a href="{{ route('services.index'.$lang, $lang) }}"
+       class="text-white text-lg hover:font-semibold transition duration-300 flex items-center justify-center gap-2">
+        {{ __('الخدمات') }}
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+    </a>
+
+    <ul class="absolute left-1/2 -translate-x-1/2 top-full z-50 hidden group-hover:block bg-white min-w-max rounded-xl shadow-xl border border-gray-100 overflow-hidden text-center px-4 py-3 list-none">
+        @foreach ($services as $service)
+            <li class="list-none">
+                <a href="{{ route('single-service.index'.$lang, ['slug' => $service->{'slug_' . $sign}, 'lang' => $lang]) }}"
+                   class="block whitespace-nowrap text-center px-6 py-3 text-sm font-semibold text-[#0f2c4a] hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">
+                    {{ $service->{'title_' . $sign} }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</li>
             <a href="{{ route('blogs.index'.$lang,$lang) }}"
                 class="text-white text-lg hover:font-semibold transition duration-300">{{ __('المقالات') }}</a>
             <a href="{{ route('videos.index'.$lang,$lang) }}"
@@ -214,8 +230,27 @@
                 class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('الرئيسية') }}</a>
             <a href="{{ route('about.index'.$lang,$lang) }}" 
                 class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('معلومات عنا') }}</a>
-            <a href="{{ route('services.index'.$lang,$lang) }}"
-                class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('الخدمات') }}</a>
+   <li class="list-none w-full">
+    <button type="button"
+        onclick="document.getElementById('mobileServicesMenu').classList.toggle('hidden')"
+        class="w-full text-white text-lg font-semibold flex items-center justify-center gap-2 py-2">
+        {{ __('الخدمات') }}
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+    </button>
+
+    <ul id="mobileServicesMenu"
+        class="hidden mt-2 mx-auto bg-white rounded-xl shadow-lg overflow-hidden list-none w-fit min-w-[170px] px-3 py-2 text-center">
+
+        @foreach ($services as $service)
+            <li class="list-none">
+                <a href="{{ route('single-service.index'.$lang, ['slug' => $service->{'slug_' . $sign}, 'lang' => $lang]) }}"
+                   class="block whitespace-nowrap px-4 py-2 text-sm font-bold text-[#0f2c4a] hover:bg-blue-50 rounded-lg">
+                    {{ $service->{'title_' . $sign} }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</li>
             <a href="{{ route('blogs.index'.$lang,$lang) }}"
                 class="hover:font-semibold transition duration-300 hover:text-green-300">{{ __('المقالات') }}</a>
             <a href="{{ route('videos.index'.$lang,$lang) }}"

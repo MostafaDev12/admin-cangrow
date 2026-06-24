@@ -417,9 +417,7 @@
         [
             'name' => __('دكتور محمد حجاب'),
 
-            'title' => __('أخصائي تجميل وزراعة الأسنان'),
-
-            'academic_title' => __('تجميل وجراحة الأسنان جامعة عين شمس'),
+            'title' => __('اخصائي تجميل وزراعه الأسنان'),
 
             'description' => __('متخصص في تجميل الأسنان وزراعة الأسنان وتصميم الابتسامة.'),
 
@@ -431,9 +429,7 @@
         [
             'name' => __('دكتور علي وهبة'),
 
-            'title' => __('أخصائي جراحات اللثة وزراعة الأسنان'),
-
-            'academic_title' => __('أستاذ مساعد في الجامعة الروسية'),
+            'title' => __('مدرس جراحات اللثه وزراعه الأسنان'),
 
             'description' => __('متخصص في جراحات اللثة وزراعة الأسنان باستخدام أحدث التقنيات.'),
 
@@ -445,9 +441,7 @@
         [
             'name' => __('دكتور محمد زايد'),
 
-            'title' => __('أستاذ طب أسنان الأطفال'),
-
-            'academic_title' => '',
+            'title' => __('استاذ طب اسنان وأطفال جامعه عين شمس'),
 
             'description' => __('متخصص في طب أسنان الأطفال وتقديم الرعاية المناسبة لمختلف الأعمار.'),
 
@@ -459,9 +453,7 @@
         [
             'name' => __('دكتورة ولاء جاد'),
 
-            'title' => __('أخصائية تقويم الأسنان'),
-
-            'academic_title' => __('أستاذ مساعد في جامعة القاهرة'),
+            'title' => __('اخصائي ودكتوراه تقويم الاسنان جامعه القاهره'),
 
             'description' => __('متخصصة في تقويم الأسنان وتحسين انتظام الأسنان والابتسامة.'),
 
@@ -489,8 +481,6 @@
 
             'title' => __('أخصائي علاج الجذور'),
 
-            'academic_title' => '',
-
             'description' => __('متخصص في علاج جذور الأسنان والحفاظ على الأسنان بأحدث التقنيات.'),
 
             'image' => asset('assets/images/doctors /D-ahmed-a.webp'),
@@ -502,8 +492,6 @@
             'name' => __('دكتور أحمد ممدوح'),
 
             'title' => __('أخصائي تركيبات الأسنان'),
-
-            'academic_title' => __('أستاذ مساعد في جامعة عين شمس'),
 
             'description' => __('متخصص في تركيبات الأسنان الثابتة والمتحركة واستعادة جمال الابتسامة.'),
 
@@ -1050,9 +1038,8 @@
     </div>
 
 </section>
-```
 
-  <!-- Key Features -->
+ <!-- Key Features -->
 @php
     $currentLanguage = strtolower((string) (
         $sign
@@ -1067,77 +1054,79 @@
     $detailsField = 'details_' . $sign;
 @endphp
 
-
 <section
     dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
     class="bg-gradient-to-r from-blue-600 to-green-400 py-12"
 >
-    <div
-        class="mx-auto grid max-w-7xl
-               grid-cols-1 gap-8 px-6
-               text-white md:grid-cols-3"
-    >
+    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 text-white md:grid-cols-3">
 
         @foreach ($models as $model)
-
             <div
                 dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
-                @class([
-                    'flex w-full flex-col items-center text-center',
-
-                    'md:items-end md:text-right' => $isArabic,
-
-                    'md:items-start md:text-left' => !$isArabic,
-                ])
+                class="flex w-full flex-col items-center text-center"
             >
-
-                <h3
-                    class="mb-2 text-xl font-bold
-                           leading-normal sm:text-2xl"
-                >
+                <h3 class="mb-4 text-xl font-bold leading-normal sm:text-2xl">
                     {{ $model->{$titleField} ?? '' }}
                 </h3>
 
-
-                <p
-                    class="text-sm leading-7
-                           sm:text-base sm:leading-8"
-                >
+                <p class="max-w-sm mx-auto text-sm leading-7 sm:text-base sm:leading-8">
                     {{ $model->{$detailsField} ?? '' }}
                 </p>
-
             </div>
-
         @endforeach
 
     </div>
 </section>
 
+
     <!-- Before and After Slider -->
-    <section class="py-10 sm:py-20 bg-blue-100 px-5 lg:px-28">
-        <div class="text-center">
-            <h3 class="text-xl sm:text-4xl font-bold text-blue-800 mb-4"> {{ __('التحولات في طب الأسنان') }} </h3>
-            <p class="text-blue-800 sm:text-lg lg:w-3/4 mx-auto mb-8">
- 
-                {{ __('شاهد النتائج المذهلة التي حققها فريقنا الماهر في عيادات توث جارد. يعرض معرضنا قبل وبعد القوة التحويلية لعلاجات الأسنان لدينا، من التحسينات التجميلية إلى الحلول الترميمية.') }}
-            </p>
-        </div>
-        <div class="w-full relative py-10">
-            <div class="relative w-full max-w-[700px] aspect-[70/45] mx-auto overflow-hidden select-none">
-                <img class="w-full h-full object-cover" alt="Before" draggable="false"
-                    src="{{ $ps->before_photo }}">
-                <div class="absolute top-0 left-0 right-0 w-full max-w-[700px] aspect-[70/45] mx-auto overflow-hidden select-none"
-                    style="clip-path: inset(0 50% 0 0);">
-                    <img class="w-full h-full object-cover" draggable="false" alt="After"
-                        src="{{ $ps->after_photo }}">
+<!-- Before and After -->
+<section class="py-10 sm:py-20 bg-blue-100 px-5 lg:px-28">
+
+    <div class="text-center">
+        <h3 class="text-xl sm:text-4xl font-bold text-blue-800 mb-4">
+            {{ __('التحولات في طب الأسنان') }}
+        </h3>
+
+        <p class="text-blue-800 sm:text-lg lg:w-3/4 mx-auto mb-8">
+            {{ __('شاهد النتائج المذهلة التي حققها فريقنا الماهر في عيادات توث جارد. يعرض معرضنا قبل وبعد القوة التحويلية لعلاجات الأسنان لدينا، من التحسينات التجميلية إلى الحلول الترميمية.') }}
+        </p>
+    </div>
+
+    <div class="w-full relative py-10">
+        <div class="max-w-5xl mx-auto rounded-[36px] bg-gradient-to-br from-white via-blue-50 to-green-50 border border-green-200 p-6 md:p-10 shadow-sm">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+                {{-- Before --}}
+                <div class="relative rounded-3xl overflow-hidden border-[3px] border-white shadow-xl">
+                    <span class="absolute top-5 right-5 z-10 bg-blue-600 text-white px-5 py-2 rounded-full font-bold shadow">
+                        {{ __('قبل') }}
+                    </span>
+
+                  <img 
+                    src="{{ $ps->before_photo }}"
+                alt="Before"
+                  class="w-full h-auto object-contain bg-white">
                 </div>
-                <div id="slider" class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
-                    style="left: calc(50% - 1px);">
-                    <div class="bg-white absolute rounded-full h-3 w-3 -left-1 top-[calc(50%-6px)]"></div>
+                
+                      {{-- After --}}
+                <div class="relative rounded-3xl overflow-hidden border-[3px] border-white shadow-xl">
+                    <span class="absolute top-5 right-5 z-10 bg-green-500 text-white px-5 py-2 rounded-full font-bold shadow">
+                        {{ __('بعد') }}
+                    </span>
+
+                <img 
+                src="{{ $ps->after_photo }}"
+               alt="After"
+                 class="w-full h-auto object-contain bg-white">
                 </div>
+
             </div>
         </div>
-    </section>
+    </div>
+
+</section>
 
     <!-- Contact Call-to-Action -->
  
