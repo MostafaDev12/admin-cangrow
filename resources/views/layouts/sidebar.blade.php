@@ -209,6 +209,28 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin-maps-index') }}">Maps</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin-doctors-index') }}">Doctors / Authors</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('medical_tourism'))
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#medicalTourism" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="medicalTourism">
+                            <i class="las la-plane"></i> <span>Medical Tourism</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="medicalTourism">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-mt-settings') }}">Page Settings &amp; SEO</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-mt-blocks-index', 'benefit') }}">Benefits</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-mt-blocks-index', 'journey') }}">Journey Steps</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-mt-blocks-index', 'support') }}">Support Items</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-mt-blocks-index', 'faq') }}">FAQ</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('admin-mt-featured') }}">Featured Content</a></li>
                             </ul>
                         </div>
                     </li>

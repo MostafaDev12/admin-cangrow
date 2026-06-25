@@ -83,14 +83,18 @@ $randomPhone = Arr::random($phones);
                 <div class="prose prose-lg max-w-none text-gray-700">
                 
                   @php
-    $authorName = $blog->doctor_name ?? __('دكتور محمد حجاب');
-    $authorTitle = $blog->doctor_title ?? __('استشاري طب وجراحة الفم والأسنان');
-    $authorImage = $blog->doctor_image ?? $ps->about_photo;
+    // Dashboard-managed article author (doctor) with a safe fallback
+    // so older articles without an assigned doctor still display.
+    $author = $blog->doctor;
+    $authorName  = $author ? ($author->{'name_' . $sign} ?: $author->name_ar) : __('دكتور محمد حجاب');
+    $authorTitle = $author ? ($author->{'title_' . $sign} ?: $author->title_ar) : __('استشاري طب وجراحة الفم والأسنان');
+    $authorImage = ($author && $author->photo_url) ? $author->photo_url : ($ps->about_photo ?? asset('assets/images/noimage.png'));
+    $authorBio   = $author ? ($author->{'bio_' . $sign} ?: $author->bio_ar) : null;
 @endphp
 
 <div class="flex items-center gap-4">
     <div class="relative shrink-0">
-        <img 
+        <img
             src="{{ $authorImage }}"
             alt="{{ $authorName }}"
             class="w-20 h-20 rounded-full object-cover border-2 border-gray-100 shadow-sm">
@@ -106,6 +110,10 @@ $randomPhone = Arr::random($phones);
         <h2 class="text-sm md:text-base font-semibold text-[#0f2c4a] mt-1">
             {{ $authorTitle }}
         </h2>
+
+        @if(!empty($authorBio))
+            <p class="text-xs md:text-sm text-gray-500 mt-1 leading-6">{{ $authorBio }}</p>
+        @endif
     </div>
 </div>
                     {{-- <p class="text-base sm:text-lg leading-relaxed">

@@ -58,6 +58,7 @@ class BlogController extends Controller
         //--- Validation Section
         $rules = [
                'photo'      => '',
+               'doctor_id'  => 'required|exists:doctors,id',
                 ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -108,6 +109,7 @@ class BlogController extends Controller
         //--- Validation Section
         $rules = [
                'photo'      => '',
+               'doctor_id'  => 'required|exists:doctors,id',
                 ];
 
         $validator = Validator::make($request->all(), $rules);

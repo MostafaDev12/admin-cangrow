@@ -123,7 +123,33 @@ class HomeController extends Controller
     $medicalForm = Form::byKey('medical_tourism');
     $globalLeadForm = $medicalForm;
 
-    return view('front.medical-tourism', compact('sign', 'sliders', 'lang', 'services', 'models', 'partners', 'medicalForm', 'globalLeadForm'));
+    // Dashboard-managed Medical Tourism content.
+    $mt = \App\Models\MedicalTourismSetting::current();
+
+    $mtBenefits = \App\Models\MedicalTourismBlock::ofType('benefit');
+    $mtJourney  = \App\Models\MedicalTourismBlock::ofType('journey');
+    $mtSupport  = \App\Models\MedicalTourismBlock::ofType('support');
+    $mtFaqs     = \App\Models\MedicalTourismBlock::ofType('faq');
+
+    // Featured services fall back to all services if none selected.
+    $mtServices = Service::where('mt_featured', 1)->orderBy('mt_order')->orderBy('id')->get();
+    if ($mtServices->isEmpty()) {
+        $mtServices = $services;
+    }
+
+    $mtBeforeAfters = \App\Models\BeforeAfter::where('mt_featured', 1)->where('active', 1)
+        ->orderBy('display_order')->orderBy('id')->get();
+
+    $mtTestimonials = Testimonial::where('active', 1)->where('mt_featured', 1)
+        ->orderBy('display_order')->orderBy('id')->get();
+    if ($mtTestimonials->isEmpty()) {
+        $mtTestimonials = Testimonial::where('active', 1)->orderBy('display_order')->orderBy('id')->get();
+    }
+
+    return view('front.medical-tourism', compact(
+        'sign', 'sliders', 'lang', 'services', 'models', 'partners', 'medicalForm', 'globalLeadForm',
+        'mt', 'mtBenefits', 'mtJourney', 'mtSupport', 'mtFaqs', 'mtServices', 'mtBeforeAfters', 'mtTestimonials'
+    ));
 }
 // تعديل
 

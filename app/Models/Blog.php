@@ -47,8 +47,13 @@ class Blog extends Model
         'slug_en',
         'slug_fr',
         'tags',
-      
+        'doctor_id',
     ];
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
 
     
  

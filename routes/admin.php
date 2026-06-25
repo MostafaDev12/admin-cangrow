@@ -27,6 +27,9 @@ use App\Http\Controllers\Admin\BeforeAfterController;
 use App\Http\Controllers\Admin\ServiceVideoController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\MapSettingController;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\MedicalTourismController;
+use App\Http\Controllers\Admin\MedicalTourismBlockController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -323,6 +326,33 @@ Route::prefix('admin')->group(function () {
       Route::get('/maps', [MapSettingController::class, 'index'])->name('admin-maps-index');
       Route::get('/maps/edit/{key}', [MapSettingController::class, 'edit'])->name('admin-maps-edit');
       Route::post('/maps/update/{key}', [MapSettingController::class, 'update'])->name('admin-maps-update');
+
+      // Doctors / Article Authors
+      Route::get('/doctors/datatables', [DoctorController::class, 'datatables'])->name('admin-doctors-datatables');
+      Route::get('/doctors', [DoctorController::class, 'index'])->name('admin-doctors-index');
+      Route::get('/doctors/create', [DoctorController::class, 'create'])->name('admin-doctors-create');
+      Route::post('/doctors/store', [DoctorController::class, 'store'])->name('admin-doctors-store');
+      Route::get('/doctors/edit/{id}', [DoctorController::class, 'edit'])->name('admin-doctors-edit');
+      Route::post('/doctors/update/{id}', [DoctorController::class, 'update'])->name('admin-doctors-update');
+      Route::get('/doctors/delete/{id}', [DoctorController::class, 'destroy'])->name('admin-doctors-delete');
+    });
+
+    // ------------ MEDICAL TOURISM SECTION ------------
+
+    Route::group(['middleware' => 'permissions:medical_tourism'], function () {
+      Route::get('/medical-tourism/settings', [MedicalTourismController::class, 'settings'])->name('admin-mt-settings');
+      Route::post('/medical-tourism/settings/update', [MedicalTourismController::class, 'settingsUpdate'])->name('admin-mt-settings-update');
+      Route::get('/medical-tourism/featured', [MedicalTourismController::class, 'featured'])->name('admin-mt-featured');
+      Route::post('/medical-tourism/featured/update', [MedicalTourismController::class, 'featuredUpdate'])->name('admin-mt-featured-update');
+
+      // Blocks (benefit | journey | support | faq)
+      Route::get('/medical-tourism/blocks/{type}/datatables', [MedicalTourismBlockController::class, 'datatables'])->name('admin-mt-blocks-datatables');
+      Route::get('/medical-tourism/blocks/{type}', [MedicalTourismBlockController::class, 'index'])->name('admin-mt-blocks-index');
+      Route::get('/medical-tourism/blocks/{type}/create', [MedicalTourismBlockController::class, 'create'])->name('admin-mt-blocks-create');
+      Route::post('/medical-tourism/blocks/{type}/store', [MedicalTourismBlockController::class, 'store'])->name('admin-mt-blocks-store');
+      Route::get('/medical-tourism/blocks/{type}/edit/{id}', [MedicalTourismBlockController::class, 'edit'])->name('admin-mt-blocks-edit');
+      Route::post('/medical-tourism/blocks/{type}/update/{id}', [MedicalTourismBlockController::class, 'update'])->name('admin-mt-blocks-update');
+      Route::get('/medical-tourism/blocks/{type}/delete/{id}', [MedicalTourismBlockController::class, 'destroy'])->name('admin-mt-blocks-delete');
     });
 
     // ------------ LEADS SECTION ------------

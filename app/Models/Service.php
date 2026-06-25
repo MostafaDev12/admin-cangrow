@@ -53,6 +53,7 @@ class Service extends Model
         'video_description_ar', 'video_description_en', 'video_description_fr',
         'video_button_text_ar', 'video_button_text_en', 'video_button_text_fr',
         'video_button_link', 'video_thumbnail', 'video_title', 'video_order',
+        'mt_featured', 'mt_order',
     ];
 
 

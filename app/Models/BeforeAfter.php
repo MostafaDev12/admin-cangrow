@@ -15,7 +15,7 @@ class BeforeAfter extends Model
         'title_ar', 'title_en', 'title_fr',
         'description_ar', 'description_en', 'description_fr',
         'before_photo', 'after_photo', 'before_alt', 'after_alt',
-        'active', 'display_order',
+        'active', 'display_order', 'mt_featured',
     ];
 
     public function service()

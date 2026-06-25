@@ -37,4 +37,14 @@ class FrontPagesSmokeTest extends TestCase
         }
         $this->get('/services/' . $service->slug_ar)->assertStatus(200);
     }
+
+    /** @test */
+    public function blog_detail_page_renders_with_dynamic_author()
+    {
+        $blog = \App\Models\Blog::whereNotNull('slug_ar')->first();
+        if (! $blog) {
+            $this->markTestSkipped('No blog with slug available.');
+        }
+        $this->get('/blogs/' . $blog->slug_ar)->assertStatus(200);
+    }
 }

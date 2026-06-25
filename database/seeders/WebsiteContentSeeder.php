@@ -2,10 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\BeforeAfter;
+use App\Models\Blog;
+use App\Models\Doctor;
 use App\Models\Form;
 use App\Models\FormField;
 use App\Models\Lead;
 use App\Models\MapSetting;
+use App\Models\MedicalTourismBlock;
+use App\Models\MedicalTourismSetting;
 use App\Models\Service;
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
@@ -21,6 +26,111 @@ class WebsiteContentSeeder extends Seeder
         $this->seedMaps();
         $this->seedTestimonials();
         $this->importContactsAsLeads();
+        $this->seedDoctors();
+        $this->seedMedicalTourism();
+    }
+
+    protected function seedDoctors(): void
+    {
+        $doctor = Doctor::firstOrCreate(
+            ['name_ar' => 'دكتور محمد حجاب'],
+            [
+                'name_en'       => 'Dr. Mohamed Hegab',
+                'title_ar'      => 'استشاري طب وجراحة الفم والأسنان',
+                'title_en'      => 'Consultant of Oral & Maxillofacial Surgery',
+                'active'        => 1,
+                'display_order' => 0,
+            ]
+        );
+
+        // Backfill existing articles that have no assigned author.
+        if (Schema::hasColumn('blogs', 'doctor_id')) {
+            Blog::whereNull('doctor_id')->update(['doctor_id' => $doctor->id]);
+        }
+    }
+
+    protected function seedMedicalTourism(): void
+    {
+        $mt = MedicalTourismSetting::current();
+        if (! $mt->hero_heading_ar) {
+            $mt->update([
+                'enabled'                 => 1,
+                'hero_badge_ar'           => 'السياحة العلاجية للأسنان في مصر',
+                'hero_heading_ar'         => 'السياحة العلاجية',
+                'hero_highlight_ar'       => 'للأسنان في مصر',
+                'hero_description_ar'     => 'ابتسامتك المثالية تبدأ الآن مع خطة علاج متكاملة تشمل العلاج، الراحة، والمتابعة داخل مصر.',
+                'treatments_heading_ar'   => 'علاجات الأسنان في زيارات قصيرة',
+                'treatments_subheading_ar'=> 'حلول علاجية وتجميلية متقدمة خلال فترة مناسبة لرحلتك',
+                'benefits_heading_ar'     => 'لماذا تختار مصر وتوث جارد',
+                'journey_heading_ar'      => 'رحلة علاجك خطوة بخطوة',
+                'journey_description_ar'  => 'خطوات واضحة من إرسال حالتك وحتى المتابعة بعد العلاج.',
+                'support_heading_ar'      => 'دعم المرضى الدوليين',
+                'beforeafter_heading_ar'  => 'نتائج قبل وبعد',
+                'testimonials_heading_ar' => 'تجارب مرضانا',
+                'faq_heading_ar'          => 'الأسئلة الشائعة',
+                'final_cta_heading_ar'    => 'ابدأ رحلتك نحو ابتسامة جديدة',
+                'final_cta_description_ar'=> 'تواصل معنا الآن واحصل على استشارتك المجانية وخطة علاجية مخصصة لك',
+                'final_cta_button_ar'     => 'احجز استشارتك الان',
+                'meta_title_ar'           => 'السياحة العلاجية للأسنان في مصر | توث جارد',
+                'meta_description_ar'     => 'خطط علاج أسنان متكاملة للمرضى الدوليين في مصر مع توث جارد: جودة عالمية، أسعار مناسبة، وتنسيق كامل لرحلتك العلاجية.',
+            ]);
+        }
+
+        $this->seedBlocks('benefit', [
+            ['icon' => '🛡️', 'title_ar' => 'جودة عالية', 'description_ar' => 'رعاية طبية بمعايير عالمية'],
+            ['icon' => '💰', 'title_ar' => 'أسعار أقل', 'description_ar' => 'توفير يصل إلى 70%'],
+            ['icon' => '📅', 'title_ar' => 'تنسيق رحلة علاجية', 'description_ar' => 'تنظيم كامل لمواعيدك'],
+            ['icon' => '👨‍⚕️', 'title_ar' => 'رعاية شخصية', 'description_ar' => 'فريق طبي وخطة علاج مخصصة'],
+            ['icon' => '🏨', 'title_ar' => 'إقامة مريحة', 'description_ar' => 'خيارات إقامة مناسبة'],
+            ['icon' => '✈️', 'title_ar' => 'تنقلات سهلة', 'description_ar' => 'مساعدة في التنقل والوصول'],
+        ]);
+
+        $this->seedBlocks('journey', [
+            ['icon' => 'fa-solid fa-x-ray', 'title_ar' => 'أرسل حالتك وأشعتك', 'description_ar' => 'شارك صور الأشعة والتقارير لتقييم حالتك.'],
+            ['icon' => 'fa-solid fa-file-medical', 'title_ar' => 'استلم خطة علاج مبدئية', 'description_ar' => 'نرسل لك خطة علاج وتكلفة تقديرية قبل السفر.'],
+            ['icon' => 'fa-solid fa-plane', 'title_ar' => 'أكد السفر والموعد', 'description_ar' => 'نساعدك في تنظيم موعدك وترتيبات الرحلة.'],
+            ['icon' => 'fa-solid fa-tooth', 'title_ar' => 'العلاج داخل العيادة', 'description_ar' => 'تنفيذ خطة العلاج بأحدث التقنيات.'],
+            ['icon' => 'fa-solid fa-heart-pulse', 'title_ar' => 'متابعة بعد العلاج', 'description_ar' => 'متابعة حالتك بعد عودتك إلى بلدك.'],
+        ]);
+
+        $this->seedBlocks('support', [
+            ['icon' => 'fa-solid fa-calendar-check', 'title_ar' => 'تنسيق المواعيد', 'description_ar' => 'تنظيم كامل لمواعيد العلاج بدون انتظار.'],
+            ['icon' => 'fa-solid fa-file-medical', 'title_ar' => 'خطة علاج قبل السفر', 'description_ar' => 'خطة علاج مبدئية وتكلفة قبل الحجز.'],
+            ['icon' => 'fa-solid fa-headset', 'title_ar' => 'دعم ومتابعة', 'description_ar' => 'إرشادات للإقامة والتنقل ومتابعة بعد العلاج.'],
+        ]);
+
+        $this->seedBlocks('faq', [
+            ['title_ar' => 'كيف أحصل على خطة علاج قبل السفر؟', 'description_ar' => 'أرسل لنا صور الأشعة والتقارير وسنرسل لك خطة علاج مبدئية وتكلفة تقديرية.'],
+            ['title_ar' => 'كم يجب أن أبقى في مصر؟', 'description_ar' => 'تعتمد المدة على نوع العلاج، ونحددها لك ضمن الخطة المبدئية.'],
+            ['title_ar' => 'ما المستندات أو الأشعة المطلوبة؟', 'description_ar' => 'صور أشعة بانوراما حديثة وأي تقارير طبية سابقة متاحة.'],
+            ['title_ar' => 'هل يمكن إنهاء العلاج في زيارة واحدة؟', 'description_ar' => 'بعض الحالات تكتمل في زيارة واحدة، وأخرى تحتاج أكثر، ويوضح ذلك في خطتك.'],
+            ['title_ar' => 'كيف أحجز موعدي؟', 'description_ar' => 'املأ نموذج الحجز في الصفحة أو تواصل معنا عبر واتساب.'],
+        ]);
+
+        // Default the page to feature current content (skip if admin already chose).
+        if (Service::where('mt_featured', 1)->doesntExist()) {
+            Service::query()->update(['mt_featured' => 1]);
+        }
+        if (Testimonial::where('mt_featured', 1)->doesntExist()) {
+            Testimonial::where('active', 1)->update(['mt_featured' => 1]);
+        }
+        if (BeforeAfter::where('mt_featured', 1)->doesntExist()) {
+            BeforeAfter::where('active', 1)->update(['mt_featured' => 1]);
+        }
+    }
+
+    protected function seedBlocks(string $type, array $items): void
+    {
+        if (MedicalTourismBlock::where('type', $type)->exists()) {
+            return;
+        }
+        foreach ($items as $order => $item) {
+            MedicalTourismBlock::create(array_merge([
+                'type'          => $type,
+                'active'        => 1,
+                'display_order' => $order,
+            ], $item));
+        }
     }
 
     /**

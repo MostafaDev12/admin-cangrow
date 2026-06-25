@@ -195,6 +195,17 @@
                                 </div>
                             </div>
                             <div class="col-xl-12 col-md-12">
+                                <div class="mb-3">
+                                    <label for="doctor_id" class="form-label">Article Author / Doctor <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="doctor_id" id="doctor_id" required>
+                                        <option value="">-- Select author --</option>
+                                        @foreach(\App\Models\Doctor::where('active',1)->orderBy('display_order')->get() as $doc)
+                                            <option value="{{ $doc->id }}" @selected($data->doctor_id == $doc->id)>{{ $doc->name_ar ?: $doc->name_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title mb-0"> {{ __('translation.photo') }}</h4>

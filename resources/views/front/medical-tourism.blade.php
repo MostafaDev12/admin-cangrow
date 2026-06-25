@@ -1,11 +1,16 @@
 @extends('layouts.front')
 
 @section('title')
-    {{ __('السياحة العلاجية') }} - {{ $gs->{'title_' . $sign} }}
+    {{ ($mt->{'meta_title_' . $sign} ?? null) ?: __('السياحة العلاجية') }} - {{ $gs->{'title_' . $sign} }}
 @stop
 
 @section('gsearch')
-    <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}" />
+    @php $mtMetaDesc = $mt->{'meta_description_' . $sign} ?? null; @endphp
+    @if($mtMetaDesc)
+        <meta name="description" content="{{ $mtMetaDesc }}" />
+        <meta property="og:description" content="{{ $mtMetaDesc }}" />
+    @endif
+    <meta property="og:image" content="{{ $mt->imageUrl('og_image') ?: $gs->{'logo_' . $sign} }}" />
 @stop
 
 @section('content')
@@ -13,6 +18,12 @@
         $phones = !empty($gs->phones) ? array_filter(array_map('trim', explode(',', $gs->phones))) : [];
         $randomPhone = count($phones) ? Arr::random($phones) : '201555004694';
         $whatsappPhone = preg_replace('/\D+/', '', $randomPhone);
+
+        // Localized helper for Medical Tourism settings (falls back to Arabic).
+        $mtv = function ($field, $default = '') use ($mt, $sign) {
+            $val = $mt->{$field . '_' . $sign} ?? null;
+            return $val !== null && $val !== '' ? $val : (($mt->{$field . '_ar'} ?? null) ?: $default);
+        };
     @endphp
 
 <section class="py-8 bg-[#f6f8fb]">
@@ -25,9 +36,9 @@
         <!-- Image -->
         <div class="relative order-1 lg:order-1">
             <div class="relative overflow-hidden rounded-[24px] shadow-md">
-                <img 
-                    src="{{ asset('assets/images/medical-tourism/hero.jpg') }}"
-                    alt="{{ __('السياحة العلاجية للأسنان في مصر') }}"
+                <img
+                    src="{{ $mt->imageUrl('hero_image') ?: asset('assets/images/medical-tourism/hero.jpg') }}"
+                    alt="{{ $mtv('hero_heading', __('السياحة العلاجية للأسنان في مصر')) }}"
                     class="w-full h-[210px] sm:h-[260px] md:h-[380px] lg:h-[430px] object-cover object-[35%_center] lg:object-center"
                 >
 
@@ -38,16 +49,16 @@
         <!-- Content -->
         <div class="text-center lg:text-right order-2 lg:order-2">
             <span class="inline-flex mb-4 rounded-full bg-blue-50 px-4 py-2 text-sm font-bold text-[#1670d8]">
-                {{ __('السياحة العلاجية للأسنان في مصر') }}
+                {{ $mtv('hero_badge', __('السياحة العلاجية للأسنان في مصر')) }}
             </span>
 
             <h1 class="text-3xl md:text-5xl font-extrabold text-[#1670d8] leading-tight mb-4">
-                {{ __('السياحة العلاجية') }}<br>
-                <span class="text-[#12a86b]">{{ __('للأسنان في مصر') }}</span>
+                {{ $mtv('hero_heading', __('السياحة العلاجية')) }}<br>
+                <span class="text-[#12a86b]">{{ $mtv('hero_highlight', __('للأسنان في مصر')) }}</span>
             </h1>
 
             <p class="text-gray-600 text-base md:text-lg leading-8 mb-6 max-w-xl mx-auto lg:mx-0">
-                {{ __('ابتسامتك المثالية تبدأ الآن مع خطة علاج متكاملة تشمل العلاج، الراحة، والمتابعة داخل مصر.') }}
+                {{ $mtv('hero_description', __('ابتسامتك المثالية تبدأ الآن مع خطة علاج متكاملة تشمل العلاج، الراحة، والمتابعة داخل مصر.')) }}
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-700 mb-7">
@@ -94,11 +105,11 @@
 <div class="mt-12" id="treatments">
     <div class="text-center mb-8">
         <h2 class="text-2xl md:text-4xl font-extrabold text-[#1670d8] mb-3">
-            {{ __('علاجات الأسنان في زيارات قصيرة') }}
+            {{ $mtv('treatments_heading', __('علاجات الأسنان في زيارات قصيرة')) }}
         </h2>
 
         <p class="text-gray-500 text-sm md:text-base">
-            {{ __('حلول علاجية وتجميلية متقدمة خلال فترة مناسبة لرحلتك') }}
+            {{ $mtv('treatments_subheading', __('حلول علاجية وتجميلية متقدمة خلال فترة مناسبة لرحلتك')) }}
         </p>
     </div>
 
@@ -180,26 +191,12 @@
             dir="ltr"
             class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-3 no-scrollbar"
         >
-            @foreach($services as $item)
+            @foreach($mtServices as $item)
 
            @php
-    if (!empty( $item->{'slug_' . $sign} )) {
-        $serviceUrl = route('single-service.index'.$lang, [
-            'slug' => $item->{'slug_' . $sign},
-            'lang' => $lang
-        ]);
-    } else {
-        $linkedService = $services->first(function ($servic) use ($item, $sign) {
-            return trim($servic->{'title_' . $sign}) === trim($item['title']);
-        });
-
-        $serviceUrl = $linkedService
-            ? route('single-service.index'.$lang, [
-                'slug' => $linkedService->{'slug_' . $sign},
-                'lang' => $lang
-            ])
-            : '#';
-    }
+    $serviceUrl = !empty($item->{'slug_' . $sign})
+        ? route('single-service.index'.$lang, ['slug' => $item->{'slug_' . $sign}, 'lang' => $lang])
+        : '#';
 @endphp
 
                 <a 
@@ -281,14 +278,20 @@
 <!-- FEATURES -->
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-6">
     @php
-        $features = [
-            ['icon' => '🛡️', 'title' => __('جودة عالية'), 'text' => __('رعاية طبية بمعايير عالمية')],
-            ['icon' => '💰', 'title' => __('أسعار أقل'), 'text' => __('توفير يصل إلى 70%')],
-            ['icon' => '📅', 'title' => __('تنسيق رحلة علاجية'), 'text' => __('تنظيم كامل لمواعيدك')],
-            ['icon' => '👨‍⚕️', 'title' => __('رعاية شخصية'), 'text' => __('فريق طبي وخطة علاج')],
-            ['icon' => '🏨', 'title' => __('إقامة مريحة'), 'text' => __('خيارات إقامة مناسبة')],
-            ['icon' => '✈️', 'title' => __('تنقلات سهلة'), 'text' => __('مساعدة في التنقل والوصول')],
-        ];
+        $features = $mtBenefits->count()
+            ? $mtBenefits->map(fn($b) => [
+                'icon'  => $b->icon ?: '🦷',
+                'title' => $b->{'title_' . $sign} ?: $b->title_ar,
+                'text'  => $b->{'description_' . $sign} ?: $b->description_ar,
+            ])
+            : collect([
+                ['icon' => '🛡️', 'title' => __('جودة عالية'), 'text' => __('رعاية طبية بمعايير عالمية')],
+                ['icon' => '💰', 'title' => __('أسعار أقل'), 'text' => __('توفير يصل إلى 70%')],
+                ['icon' => '📅', 'title' => __('تنسيق رحلة علاجية'), 'text' => __('تنظيم كامل لمواعيدك')],
+                ['icon' => '👨‍⚕️', 'title' => __('رعاية شخصية'), 'text' => __('فريق طبي وخطة علاج')],
+                ['icon' => '🏨', 'title' => __('إقامة مريحة'), 'text' => __('خيارات إقامة مناسبة')],
+                ['icon' => '✈️', 'title' => __('تنقلات سهلة'), 'text' => __('مساعدة في التنقل والوصول')],
+            ]);
     @endphp
 
     @foreach($features as $feature)
@@ -367,33 +370,34 @@
 <div class="mt-10 rounded-3xl overflow-hidden shadow-sm border border-gray-100">
 
     <!-- What Journey Includes -->
- <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-3xl mx-auto">
-
-    <div class="flex flex-col items-center gap-2">
-        <div class="w-11 h-11 rounded-2xl bg-white text-[#1670d8] flex items-center justify-center shadow-sm">
-            <i class="fa-solid fa-headset text-lg"></i>
-        </div>
-        <h3 class="text-sm font-extrabold text-[#0b4f8f]">{{ __('مترجم طبي') }}</h3>
-        <p class="text-xs text-gray-500">{{ __('عند الحاجة') }}</p>
+ @php
+        $supportItems = $mtSupport->count()
+            ? $mtSupport->map(fn($s) => [
+                'icon'  => $s->icon ?: 'fa-solid fa-headset',
+                'title' => $s->{'title_' . $sign} ?: $s->title_ar,
+                'text'  => $s->{'description_' . $sign} ?: $s->description_ar,
+            ])
+            : collect([
+                ['icon' => 'fa-solid fa-headset', 'title' => __('مترجم طبي'), 'text' => __('عند الحاجة')],
+                ['icon' => 'fa-solid fa-calendar-check', 'title' => __('جدول مواعيد منظم'), 'text' => __('بدون انتظار')],
+                ['icon' => 'fa-solid fa-seedling', 'title' => __('متابعة بعد العودة'), 'text' => __('وأنت في بلدك')],
+            ]);
+    @endphp
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-3xl mx-auto">
+        @foreach($supportItems as $sup)
+            <div class="flex flex-col items-center gap-2">
+                <div class="w-11 h-11 rounded-2xl bg-white text-[#1670d8] flex items-center justify-center shadow-sm">
+                    @if(\Illuminate\Support\Str::startsWith($sup['icon'], 'fa'))
+                        <i class="{{ $sup['icon'] }} text-lg"></i>
+                    @else
+                        <span class="text-lg">{{ $sup['icon'] }}</span>
+                    @endif
+                </div>
+                <h3 class="text-sm font-extrabold text-[#0b4f8f]">{{ $sup['title'] }}</h3>
+                <p class="text-xs text-gray-500">{{ $sup['text'] }}</p>
+            </div>
+        @endforeach
     </div>
-
-    <div class="flex flex-col items-center gap-2">
-        <div class="w-11 h-11 rounded-2xl bg-white text-[#1670d8] flex items-center justify-center shadow-sm">
-            <i class="fa-solid fa-calendar-check text-lg"></i>
-        </div>
-        <h3 class="text-sm font-extrabold text-[#0b4f8f]">{{ __('جدول مواعيد منظم') }}</h3>
-        <p class="text-xs text-gray-500">{{ __('بدون انتظار') }}</p>
-    </div>
-
-    <div class="flex flex-col items-center gap-2">
-        <div class="w-11 h-11 rounded-2xl bg-white text-[#1670d8] flex items-center justify-center shadow-sm">
-            <i class="fa-solid fa-seedling text-lg"></i>
-        </div>
-        <h3 class="text-sm font-extrabold text-[#0b4f8f]">{{ __('متابعة بعد العودة') }}</h3>
-        <p class="text-xs text-gray-500">{{ __('وأنت في بلدك') }}</p>
-    </div>
-
-</div>
     <!-- Stats Band -->
     <div class="relative overflow-hidden bg-[#06416f] px-5 py-6 text-white">
 
@@ -459,6 +463,35 @@
 
 
 
+<!-- PATIENT JOURNEY -->
+@if($mtJourney->count())
+<div class="mt-10 bg-white rounded-3xl shadow-sm border border-gray-100 p-5 md:p-8" id="journey">
+    <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1670d8] mb-3">
+            {{ $mtv('journey_heading', __('رحلة علاجك خطوة بخطوة')) }}
+        </h2>
+        @if($mtv('journey_description'))
+            <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">{{ $mtv('journey_description') }}</p>
+        @endif
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        @foreach($mtJourney as $i => $step)
+            <div class="relative bg-[#f6f8fb] rounded-2xl border border-gray-100 shadow-sm p-5 text-center">
+                <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#1670d8] to-[#12a86b] text-white flex items-center justify-center font-extrabold">
+                    {{ $i + 1 }}
+                </div>
+                <h3 class="font-extrabold text-[#1670d8] text-sm mb-2">{{ $step->{'title_' . $sign} ?: $step->title_ar }}</h3>
+                @if($step->{'description_' . $sign} ?: $step->description_ar)
+                    <p class="text-xs text-gray-600 leading-6">{{ $step->{'description_' . $sign} ?: $step->description_ar }}</p>
+                @endif
+            </div>
+        @endforeach
+    </div>
+</div>
+@endif
+<!-- PATIENT JOURNEY -->
+
 <!-- TRAVEL GOAL -->
 <div class="mt-8 bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden p-5 md:p-7">
     <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 items-center min-h-[430px]">
@@ -507,56 +540,48 @@
 
 
      
+<!-- BEFORE / AFTER -->
+@if($mtBeforeAfters->count())
+<div class="mt-10" id="before-after">
+    <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1670d8] mb-3">
+            {{ $mtv('beforeafter_heading', __('نتائج قبل وبعد')) }}
+        </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        @foreach($mtBeforeAfters as $case)
+            <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden p-4">
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="relative overflow-hidden rounded-2xl">
+                        <img src="{{ $case->before_photo }}" alt="{{ $case->before_alt ?: __('قبل') }}"
+                             class="h-[180px] w-full object-cover" loading="lazy">
+                        <span class="absolute right-3 top-3 rounded-full bg-[#1670d8] px-3 py-1 text-xs font-extrabold text-white">{{ __('قبل') }}</span>
+                    </div>
+                    <div class="relative overflow-hidden rounded-2xl">
+                        <img src="{{ $case->after_photo }}" alt="{{ $case->after_alt ?: __('بعد') }}"
+                             class="h-[180px] w-full object-cover" loading="lazy">
+                        <span class="absolute right-3 top-3 rounded-full bg-[#12a86b] px-3 py-1 text-xs font-extrabold text-white">{{ __('بعد') }}</span>
+                    </div>
+                </div>
+                @if($case->{'title_' . $sign} ?: $case->title_ar)
+                    <h3 class="text-center font-extrabold text-[#1670d8] mt-4">{{ $case->{'title_' . $sign} ?: $case->title_ar }}</h3>
+                @endif
+                @if($case->{'description_' . $sign} ?: $case->description_ar)
+                    <p class="text-center text-gray-600 text-sm leading-7 mt-1">{{ $case->{'description_' . $sign} ?: $case->description_ar }}</p>
+                @endif
+            </div>
+        @endforeach
+    </div>
+</div>
+@endif
+<!-- BEFORE / AFTER -->
+
 <!-- TESTIMONIALS -->
 <div class="mt-10" id="testimonials">
     <h2 class="text-2xl md:text-3xl font-extrabold text-center text-[#1670d8] mb-6">
-        {{ __('تجارب مرضانا') }}
+        {{ $mtv('testimonials_heading', __('تجارب مرضانا')) }}
     </h2>
-
-    @php
-        $patients = [
-            [
-                'name' => 'hazem khaled',
-                'country' => __('مصر'),
-                'review' =>__('افضل عيادة اسنان فى مدينة نصر تقريبا متخصصين فى كل ما يخص الاسنان من تقويم اسنان زراعة اسنان.')
-            ],
-            [
-                'name' => 'Sama Emad',
-                'country' => __('مصر'),
-                'review' => __('تجربه ممتازه ودكاتره ممتازين واكتر حاجه مريحه بنسبالي هيا التعقيم والمواعيد ودي اكتر حاجه بيهتمو بيه حقيقي علي غير مراكز تانيه كتير شكرا توث جارد علي تجربتي معاكو 🌸')
-            ],
-            [
-                'name' => 'Mohamed Abdelkader',
-                'country' => __('مصر'),
-                'review' => __('من افضل الاماكن والتعامل ويقدم افضل خدمة وخامة محترمة جدااا جداا.')
-            ],
-            [
-                'name' => 'Nour',
-                'country' => __('مصر'),
-                'review' => __('أفضل تجربة لي، احترافية عالية. أنصح بها بشدة.')
-            ],
-            [
-                'name' => 'Ahmed Fouad',
-                'country' => __('مصر'),
-                'review' => __('عيادة ممتازة مع أطباء ممتازين.')
-            ],
-            [
-                'name' => 'Ahmed Ghaly',
-                'country' => __('مصر'),
-                'review' => __('تجربة رائعة.')
-            ],
-            [
-                'name' => 'Wafaa Hegab',
-                'country' => __('مصر'),
-                'review' => __('أفضل الأطباء وأفضل عيادة.')
-            ],
-            [
-                'name' => 'Mohamed Hegab',
-                'country' => __('مصر'),
-                'review' => __('عيادة أسنان رائعة حقًا.')
-            ],
-        ];
-    @endphp
 
     <div class="relative px-10 md:px-14">
 
@@ -582,32 +607,39 @@
             dir="ltr"
             class="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory py-3 no-scrollbar"
         >
-            @foreach($patients as $patient)
+            @foreach($mtTestimonials as $patient)
                 @php
-                    $name = trim($patient['name']);
+                    $name = trim($patient->name);
                     $initial = mb_substr($name, 0, 1, 'UTF-8');
+                    $review = $patient->{'review_' . $sign} ?: ($patient->review_ar ?: $patient->review_en);
+                    $avatar = $patient->photo_url;
                 @endphp
 
                 <div class="patient-card shrink-0 snap-start w-full lg:w-[calc((100%-40px)/3)] bg-white rounded-3xl shadow-sm border border-gray-100 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
 
                     <div dir="rtl" class="flex items-start gap-4">
 
-                        <!-- Initial Avatar -->
-                        <div class="shrink-0 w-16 h-16 rounded-full border-4 border-[#f6f8fb] bg-gradient-to-br from-[#1670d8] to-[#12a86b] text-white flex items-center justify-center font-extrabold text-2xl uppercase">
-                            {{ $initial }}
-                        </div>
+                        <!-- Avatar (image or initial fallback) -->
+                        @if($avatar)
+                            <img src="{{ $avatar }}" alt="{{ $patient->name }}"
+                                 class="shrink-0 w-16 h-16 rounded-full object-cover border-4 border-[#f6f8fb]" loading="lazy">
+                        @else
+                            <div class="shrink-0 w-16 h-16 rounded-full border-4 border-[#f6f8fb] bg-gradient-to-br from-[#1670d8] to-[#12a86b] text-white flex items-center justify-center font-extrabold text-2xl uppercase">
+                                {{ $initial }}
+                            </div>
+                        @endif
 
                         <div class="text-right flex-1">
                             <h3 class="font-extrabold text-[#1670d8] text-base leading-6">
-                                {{ $patient['name'] }} - {{ $patient['country'] }}
+                                {{ $patient->name }}{{ $patient->location ? ' - ' . $patient->location : '' }}
                             </h3>
 
                             <p class="text-gray-600 text-sm leading-7 mt-2 min-h-[96px] lg:min-h-[110px]">
-                                {{ $patient['review'] }}
+                                {{ $review }}
                             </p>
 
                             <div class="text-yellow-400 text-sm mt-2">
-                                ★★★★★
+                                @for($s = 1; $s <= 5; $s++){{ $s <= (int) $patient->rating ? '★' : '☆' }}@endfor
                             </div>
                         </div>
                     </div>
@@ -640,13 +672,58 @@
 </script>
          <!-- TESTIMONIALS -->
          
-         <!-- CTA BANNER -->
+         <!-- FAQ -->
+@if($mtFaqs->count())
+<div class="mt-10 bg-white rounded-3xl shadow-sm border border-gray-100 p-5 md:p-8" id="faq">
+    <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1670d8]">
+            {{ $mtv('faq_heading', __('الأسئلة الشائعة')) }}
+        </h2>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-3" x-data>
+        @foreach($mtFaqs as $faq)
+            <details class="group bg-[#f6f8fb] rounded-2xl border border-gray-100 p-4">
+                <summary class="flex items-center justify-between cursor-pointer font-extrabold text-[#0b4f8f] text-sm md:text-base list-none">
+                    <span>{{ $faq->{'title_' . $sign} ?: $faq->title_ar }}</span>
+                    <i class="fa-solid fa-chevron-down text-[#1670d8] transition-transform group-open:rotate-180"></i>
+                </summary>
+                @if($faq->{'description_' . $sign} ?: $faq->description_ar)
+                    <p class="text-gray-600 text-sm leading-7 mt-3">{{ $faq->{'description_' . $sign} ?: $faq->description_ar }}</p>
+                @endif
+            </details>
+        @endforeach
+    </div>
+</div>
+@endif
+<!-- FAQ -->
+
+<!-- LEAD FORM -->
+@if($medicalForm && $medicalForm->enabled)
+<div class="mt-10" id="medical-tourism-form">
+    @include('components.dynamic-form', [
+        'form'       => $medicalForm,
+        'sign'       => $sign,
+        'formId'     => 'medicalTourismForm',
+        'showCard'   => true,
+        'showLabels' => true,
+        'wrapperClass' => 'max-w-3xl mx-auto',
+        'cardClass'  => 'bg-white rounded-3xl shadow-sm border border-gray-100 p-6 md:p-8 relative',
+        'formClass'  => 'grid grid-cols-1 md:grid-cols-2 gap-4',
+        'fullClass'  => 'md:col-span-2',
+        'buttonWrapClass' => 'md:col-span-2 flex justify-center pt-2',
+    ])
+</div>
+@endif
+<!-- LEAD FORM -->
+
+<!-- CTA BANNER -->
 <div class="mt-10 rounded-3xl overflow-hidden shadow-sm relative bg-[#0b4f8f]">
 
     <!-- Background Image -->
     <img
-        src="{{ asset('assets/images/medical-tourism/النيل.png') }}"
-        alt="{{ __('ابدأ رحلتك نحو ابتسامة جديدة') }}"
+        src="{{ $mt->imageUrl('final_cta_image') ?: asset('assets/images/medical-tourism/النيل.png') }}"
+        alt="{{ $mtv('final_cta_heading', __('ابدأ رحلتك نحو ابتسامة جديدة')) }}"
         class="w-full h-[520px] md:h-[390px] object-cover object-center"
     >
 
@@ -660,11 +737,11 @@
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pb-40 md:pb-20">
 
         <h2 class="text-white text-2xl md:text-4xl font-extrabold mb-3 leading-tight drop-shadow">
-            {{ __('ابدأ رحلتك نحو ابتسامة جديدة') }}
+            {{ $mtv('final_cta_heading', __('ابدأ رحلتك نحو ابتسامة جديدة')) }}
         </h2>
 
         <p class="text-white/95 mb-6 max-w-3xl mx-auto leading-8 text-sm md:text-base drop-shadow">
-            {{ __('تواصل معنا الآن واحصل على استشارتك المجانية وخطة علاجية مخصصة لك') }}
+            {{ $mtv('final_cta_description', __('تواصل معنا الآن واحصل على استشارتك المجانية وخطة علاجية مخصصة لك')) }}
         </p>
 
         <!-- Buttons -->
@@ -682,7 +759,7 @@
          <button type="button"
         onclick="document.getElementById('globalBookingModal').classList.remove('hidden'); document.body.style.overflow = 'hidden';"
         class="inline-flex items-center justify-center border border-[#12a86b] text-[#12a86b] hover:bg-[#12a86b] hover:text-white px-7 py-3.5 rounded-xl font-bold text-sm transition w-full sm:w-auto min-w-[220px]">
-    {{ __('احجز استشارتك الان') }}
+    {{ $mtv('final_cta_button', __('احجز استشارتك الان')) }}
 </button>
         </div>
     </div>

@@ -14,7 +14,7 @@ class Testimonial extends Model
         'name', 'photo',
         'review_ar', 'review_en', 'review_fr',
         'rating', 'service_name', 'location',
-        'active', 'display_order',
+        'active', 'display_order', 'mt_featured',
     ];
 
     /**
