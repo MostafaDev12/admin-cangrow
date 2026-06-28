@@ -88,7 +88,7 @@
                ajax: '{{ route('admin-doctors-datatables') }}',
                columns: [
                        
-                        { data: 'title_ar', name: 'title_ar' },
+                        { data: 'name_ar', name: 'name_ar' },
                         
                         { data: 'action', searchable: false, orderable: false }
 

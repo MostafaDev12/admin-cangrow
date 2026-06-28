@@ -24,7 +24,7 @@
     $randomPhone = Arr::random($phones);
 @endphp
 
- <section class="py-16 bg-gray-50"
+ <section class="py-16 bg-gray-50 md:h-screen"
      style="background-image: url({{ asset('front/innova/assets/7.jpg') }});
     background-position: bottom center;
     background-size: cover;">

@@ -288,7 +288,7 @@ return [
        "small_changes" => "Small changes",
        "doctors" => "Doctors",
        "locations" => "Locations",
-       "blogs" => "Blogs",
+       "blogs" => "المقالات",
        "language" => "Language",
 ];
 ?>

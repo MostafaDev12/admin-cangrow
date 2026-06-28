@@ -68,62 +68,49 @@
     $randomPhone = Arr::random($phones);
 @endphp
     <!-- end header -->
-    <section class="">
+    <section class="container mx-auto px-4 my-4 md:my-10">
         <div class="mx-auto">
             <!-- Grid container -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                 <!-- Left image column -->
-                <div class="col-span-1">
+                <div class="">
                     <picture>
                         <source
-                            srcset="{{ asset('front/innova/assets/3.webp') }}"
+                            srcset="{{ asset('front/innova/assets/14.jpg') }}"
                             type="image/avif">
                         <source
-                            srcset="{{ asset('front/innova/assets/3.webp') }}"
+                            srcset="{{ asset('front/innova/assets/14.jpg') }}"
                             type="image/webp">
-                        <img src="{{ asset('front/innova/assets/3.webp') }}"
-                            class="w-full h-auto object-cover" alt="Smiling patient" loading="lazy">
+                        <img src="{{ asset('front/innova/assets/14.jpg') }}"
+                            class="w-full h-[240px] object-content  rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" alt="Smiling patient" loading="lazy">
                     </picture>
                 </div>
 
                 <!-- Middle content column -->
-                <div class="col-span-1 p-6 flex flex-col justify-center">
-                    <div class="space-y-6">
+                <div class="p-6">
+                    <div class="">
                         <p class="text-lg font-medium text-gray-700">{{ __('Unmatched Quality.') }}</p>
-                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">{{ __('Invisalign in LA') }}</h2>
+                        <h2 class="text-4xl font-bold text-gray-900">{{ __('Invisalign in LA') }}</h2>
                         <p class="text-gray-600 md:text-lg">
                             {{ __('Book your FREE virtual consultation and receive your coupon') }}<br>
                             {{ __('Hurry! Your coupon is good for two weeks') }}
                         </p>
 
-                        <!-- Calendly Widget (desktop only) -->
-                        <div class="hidden md:block w-full">
-                            <div class="calendly-inline-widget"
-                                data-url="https://calendly.com/ladental/invisalign-virtual-consultation"
-                                style="min-width:320px;height:630px;"></div>
-                        </div>
-
-                        <!-- Book Now Button -->
-                        <button
-                            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/ladental/invisalign-virtual-consultation'});return false;"
-                            class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
-                            Book Now
-                        </button>
                     </div>
                 </div>
 
                 <!-- Right image column (hidden on mobile) -->
-                <div class="hidden md:block col-span-1">
+                <div class="">
                     <picture>
                         <source
-                            srcset="{{ asset('front/innova/assets/2.webp') }}"
+                            srcset="{{ asset('front/innova/assets/15.jpg') }}"
                             type="image/avif">
                         <source
-                            srcset="{{ asset('front/innova/assets/2.webp') }}"
+                            srcset="{{ asset('front/innova/assets/15.jpg') }}"
                             type="image/webp">
-                        <img src="{{ asset('front/innova/assets/2.webp') }}"
-                            class="w-full h-auto object-cover" alt="Smiling patient" loading="lazy">
+                        <img src="{{ asset('front/innova/assets/15.jpg') }}"
+                            class="w-full h-[240px] object-cover  rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1" alt="Smiling patient" loading="lazy">
                     </picture>
                 </div>
             </div>
@@ -140,18 +127,19 @@
                     <div class="w-full">
                         <picture>
                             <source
-                                srcset="{{ asset('front/innova/assets/1.webp') }}"
+                                srcset="{{ asset('front/innova/assets/8.jpg') }}"
                                 type="image/avif">
                             <source
-                                srcset="{{ asset('front/innova/assets/1.webp') }}"
+                                srcset="{{ asset('front/innova/assets/8.jpg') }}"
                                 type="image/webp">
-                            <img src="{{ asset('front/innova/assets/1.webp') }}"
+                            <img src="{{ asset('front/innova/assets/8.jpg') }}"
                                 class="w-full h-auto rounded-lg shadow-md" alt="Smiling patients" loading="lazy">
                         </picture>
                     </div>
 
                     <!-- Logo grid -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {{--
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 d-none">
                         <!-- Invisalign Provider Logo -->
                         <div class="flex items-center justify-center">
                             <picture>
@@ -187,6 +175,8 @@
                             </picture>
                         </div>
                     </div>
+                    --}}
+                    
                 </div>
 
                 <!-- Right column - Content -->
@@ -267,42 +257,74 @@
             </div>
         </div>
     </section>
-
-    <section class="bg-white py-10">
-        <div class="container mx-auto">
-            <div class="swiper image-swiper">
-                <div class="swiper-wrapper">
-                    @foreach($after_befores as $image)
+<section class="bg-white py-10">
+    <div class="container mx-auto">
+        <div class="swiper image-swiper">
+            <div class="swiper-wrapper">
+                @foreach($after_befores as $image)
                     <div class="swiper-slide">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
-                            
-                            <div class="md:col-span-2">
-                               
-                                <div class="mt-4 grid grid-cols-2 gap-4">
-                                    
-                                    <div>
-                                        <img src="{{ $image->photo }}" data-src="{{ $image->photo }}"
-                                            alt="Gillespie_Cravon_After"
-                                            class="lazyload rounded-md shadow-md w-full h-auto object-cover cursor-zoom-in"
-                                            style="max-height: 250px;" data-index="2" />
-                                        <p class="text-center mt-2 text-gray-500"> {{ $image->{'title_' . $sign} ?? '' }}</p>
-                                    </div>
-
-                                </div>
+                        {{-- Each slide now focuses on a single "before" and "after" card --}}
+                        <!--<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">-->
+                            {{-- "Before" Card --}}
+                            <div class="bg-gray-100 rounded-lg shadow-lg p-4 flex flex-col items-center"> {{-- Added padding and center alignment --}}
+                                <img src="{{ $image->photo }}" data-src="{{ $image->photo }}"
+                                    alt="Before Image - {{ $image->{'title_' . $sign} ?? '' }}"
+                                    class="lazyload rounded-md w-full object-cover cursor-zoom-in" {{-- Key changes here: w-full and removed max-height --}}
+                                    style="height: 250px;" /> {{-- Set a fixed height for consistency if desired, or remove for auto height --}}
+                                <p class="text-center mt-2 text-gray-700 font-semibold text-lg">Before: {{ $image->{'title_' . $sign} ?? '' }}</p>
                             </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    
-                </div>
-                <div class="swiper-pagination mt-4 flex justify-center"></div>
-                <div class="swiper-button-prev absolute top-1/2 -translate-y-1/2 left-2 z-10"></div>
-                <div class="swiper-button-next absolute top-1/2 -translate-y-1/2 right-2 z-10"></div>
-            </div>
-        </div>
-    </section>
 
- 
+                            <!--{{-- "After" Card (assuming you have an 'after_photo' and 'after_title' in your $image object) --}}-->
+                            <!--@if(isset($image->after_photo))-->
+                            <!--    <div class="bg-gray-100 rounded-lg shadow-lg p-4 flex flex-col items-center"> {{-- Added padding and center alignment --}}-->
+                            <!--        <img src="{{ $image->after_photo }}" data-src="{{ $image->after_photo }}"-->
+                            <!--            alt="After Image - {{ $image->{'after_title_' . $sign} ?? '' }}"-->
+                            <!--            class="lazyload rounded-md w-full object-cover cursor-zoom-in" {{-- Key changes here: w-full and removed max-height --}}-->
+                            <!--            style="height: 250px;" /> {{-- Set a fixed height for consistency if desired, or remove for auto height --}}-->
+                            <!--        <p class="text-center mt-2 text-gray-700 font-semibold text-lg">After: {{ $image->{'after_title_' . $sign} ?? '' }}</p>-->
+                            <!--    </div>-->
+                            <!--@endif-->
+                        <!--</div>-->
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="swiper-pagination mt-4 flex justify-center"></div>
+
+            <div class="swiper-button-prev absolute top-1/2 -translate-y-1/2 left-2 z-10"></div>
+            <div class="swiper-button-next absolute top-1/2 -translate-y-1/2 right-2 z-10"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Initialize Swiper (make sure you've included Swiper's CSS and JS files)
+    const imageSwiper = new Swiper('.image-swiper', {
+        loop: true, // Optional: Enables continuous loop mode
+        spaceBetween: 30, // Space between slides
+
+        // Responsive breakpoints
+        breakpoints: {
+            // When window width is <= 640px (typical mobile breakpoint)
+            0: {
+                slidesPerView: 1,
+            },
+            // When window width is >= 768px (typical tablet/desktop breakpoint)
+            768: {
+                slidesPerView: 3,
+            }
+        },
+
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
  
     @stop
 

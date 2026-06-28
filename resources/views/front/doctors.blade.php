@@ -28,16 +28,23 @@
             <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-8">
                
                 @foreach ($doctors as $doctor)
-                <!-- Team Member 1 -->
-                <div class="text-center">
-                    <div class="overflow-hidden rounded-lg mb-4">
-                        <img src="{{ $doctor->photo_url }}"
-                            alt="{{ $doctor->{'name_' . $sign}  ?? ''}}"
-                            class="w-full h-auto transition-transform duration-300 hover:scale-105">
-                    </div>
-                    <h5 class="font-semibold text-gray-800">{{ $doctor->{'name_' . $sign}  ?? ''}}</h5>
-                    <p class="text-gray-600 text-sm">{{ $doctor->{'title_' . $sign}  ?? ''}}</p>
+               <div class="bg-white group rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="overflow-hidden rounded-lg mb-5">
+                    <img src="{{ $doctor->photo_url }}"
+                        alt="{{ $doctor->{'name_' . $sign} ?? '' }}"
+                        class="w-full h-50 object-cover transition-transform duration-300 hover:scale-110">
                 </div>
+                <div class="px-3 pb-3">
+                    <h2 class="font-extrabold text-2xl text-gray-800 mb-1 truncate">{{ $doctor->{'name_' . $sign} ?? '' }}</h2>
+              <p class="text-sm text-gray-600 font-medium
+                          truncate
+                          group-hover:whitespace-normal
+                          group-hover:overflow-visible
+                          group-hover:text-clip
+                          transition-all duration-600 ease-in-out">
+                    {{ $doctor->{'title_' . $sign} ?? '' }}
+                </p>                </div>
+            </div>
         @endforeach
                  
                 

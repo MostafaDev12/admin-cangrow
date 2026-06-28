@@ -108,7 +108,14 @@
                 </li>
 
 
-
+ @if (Auth::guard('admin')->user()->sectionCheck('testimonials'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-testimonials-index') }}"
+                            aria-controls="sidebarblogs">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.dentistry')</span>
+                        </a>
+                    </li>
+                @endif 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#models1" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="models1">

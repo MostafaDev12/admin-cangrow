@@ -12,11 +12,11 @@
             Dashboards
         @endslot
         @slot('title')
-        {{ __('translation.testimonials') }}
+        {{ __('translation.dentistry') }}
         @endslot
     @endcomponent
  
-          <input type="hidden" id="headerdata" value="{{ __('translation.testimonials') }}">
+          <input type="hidden" id="headerdata" value="{{ __('translation.dentistry') }}">
                          <div class="col-lg-12"  >
                             <div class="card">
                                 <div class="card-header">
@@ -88,7 +88,7 @@
                ajax: '{{ route('admin-testimonials-datatables') }}',
                columns: [
                        
-                        { data: 'title_ar', name: 'title_ar' },
+                        { data: 'name_ar', name: 'name_ar' },
                         
                         { data: 'action', searchable: false, orderable: false }
 
@@ -101,7 +101,7 @@
         $(function() {
         $(".btn-area").append('<div class="col-sm-4 table-contents">'+
           '<a class="add-btn  btn btn-sm btn-secondary" href="{{route('admin-testimonials-create')}}">'+
-          '<i class="fas fa-plus"></i> {{ __("translation.add_testimonial") }}'+
+          '<i class="fas fa-plus"></i> {{ __("translation.add") }}'+
           '</a>'+
           '</div>');
       });
