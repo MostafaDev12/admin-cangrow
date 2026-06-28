@@ -1,6 +1,5 @@
 <IfModule mod_rewrite.c>
 Options -MultiViews
-
 # Activates URL rewriting (like myproject.com/controller/action/1/2/3)
 RewriteEngine On
 # Handle Authorization Header
@@ -8,7 +7,6 @@ RewriteCond %{HTTP:Authorization} .
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 # Prevent people from looking directly into folders
 Options -Indexes
-
 # If the following conditions are true, then rewrite the URL:
 # If the requested filename is not a directory,
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -21,5 +19,5 @@ RewriteCond %{REQUEST_FILENAME} !-l
 # "url" query parameter to index.php. Append any query string from
 # the original URL as further query parameters (QSA), and stop
 # processing this .htaccess file (L).
-RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+RewriteRule ^(.+)$ index.php
 </IfModule>

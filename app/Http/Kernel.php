@@ -37,9 +37,13 @@ class Kernel extends HttpKernel
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
-            \App\Http\Middleware\Localization::class,
+            // \App\Http\Middleware\Localization::class,
            
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            //\App\Http\Middleware\CleanLocalizationUrls::class,
+
+            // \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+            // \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
 
         ],
 
@@ -75,6 +79,12 @@ class Kernel extends HttpKernel
         'permissions' => \App\Http\Middleware\Permissions::class,
         'IpLocation' => \App\Http\Middleware\IpLocation::class,
         'FrontLanguages' => \App\Http\Middleware\FrontLanguages::class,
+        'RedirectToLocale' => \App\Http\Middleware\RedirectToLocale::class,
         'super' => \App\Http\Middleware\SuperAdmin::class,
+        'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
     ];
 }

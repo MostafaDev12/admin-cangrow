@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutPoint;
 use App\Models\User;
+use App\Models\Counter;
 use App\Models\Doctor;
 use App\Models\Language;
 use App\Models\PageModel;
@@ -42,24 +43,182 @@ class HomeController extends Controller
    *
    * @return void
    */
-  public function __construct()
+   
+   
+//   public function __construct()
+//   {
+     
+//     if (isset($_SERVER['HTTP_REFERER'])) {
+//       $referral = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
+//       if ($referral != $_SERVER['SERVER_NAME']) {
+
+//         $brwsr = Counter::where('type', 'browser')->where('referral', $this->getOS());
+//         if ($brwsr->count() > 0) {
+//           $brwsr = $brwsr->first();
+//           $tbrwsr['total_count'] = $brwsr->total_count + 1;
+//           $brwsr->update($tbrwsr);
+//         } else {
+//           $newbrws = new Counter();
+//           $newbrws['referral'] = $this->getOS();
+//           $newbrws['type'] = "browser";
+//           $newbrws['total_count'] = 1;
+//           $newbrws->save();
+//         }
+
+//         $count = Counter::where('referral', $referral);
+//         if ($count->count() > 0) {
+//           $counts = $count->first();
+//           $tcount['total_count'] = $counts->total_count + 1;
+//           $counts->update($tcount);
+//         } else {
+//           $newcount = new Counter();
+//           $newcount['referral'] = $referral;
+//           $newcount['total_count'] = 1;
+//           $newcount->save();
+//         }
+//       }
+//     } else {
+//       $brwsr = Counter::where('type', 'browser')->where('referral', $this->getOS());
+//       if ($brwsr->count() > 0) {
+//         $brwsr = $brwsr->first();
+//         $tbrwsr['total_count'] = $brwsr->total_count + 1;
+//         $brwsr->update($tbrwsr);
+//       } else {
+//         $newbrws = new Counter();
+//         $newbrws['referral'] = $this->getOS();
+//         $newbrws['type'] = "browser";
+//         $newbrws['total_count'] = 1;
+//         $newbrws->save();
+//       }
+//     }
+//   }
+
+  function getOS()
   {
-    // $this->middleware('auth');
+
+    $user_agent     =   $_SERVER['HTTP_USER_AGENT'];
+
+    $os_platform    =   "Unknown OS Platform";
+
+    $os_array       =   array(
+      '/windows nt 10/i'     =>  'Windows 10',
+      '/windows nt 6.3/i'     =>  'Windows 8.1',
+      '/windows nt 6.2/i'     =>  'Windows 8',
+      '/windows nt 6.1/i'     =>  'Windows 7',
+      '/windows nt 6.0/i'     =>  'Windows Vista',
+      '/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
+      '/windows nt 5.1/i'     =>  'Windows XP',
+      '/windows xp/i'         =>  'Windows XP',
+      '/windows nt 5.0/i'     =>  'Windows 2000',
+      '/windows me/i'         =>  'Windows ME',
+      '/win98/i'              =>  'Windows 98',
+      '/win95/i'              =>  'Windows 95',
+      '/win16/i'              =>  'Windows 3.11',
+      '/macintosh|mac os x/i' =>  'Mac OS X',
+      '/mac_powerpc/i'        =>  'Mac OS 9',
+      '/linux/i'              =>  'Linux',
+      '/ubuntu/i'             =>  'Ubuntu',
+      '/iphone/i'             =>  'iPhone',
+      '/ipod/i'               =>  'iPod',
+      '/ipad/i'               =>  'iPad',
+      '/android/i'            =>  'Android',
+      '/blackberry/i'         =>  'BlackBerry',
+      '/webos/i'              =>  'Mobile'
+    );
+
+    foreach ($os_array as $regex => $value) {
+
+      if (preg_match($regex, $user_agent)) {
+        $os_platform    =   $value;
+      }
+    }
+    return $os_platform;
   }
+
 
   /**
    * Show the application dashboard.
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
+   public function removeTrailingSlash($html)
+{
+    return preg_replace_callback('/href="([^"]+)"/i', function ($matches) {
+        $url = $matches[1];
+
+        // نفصل الـ query أو hash لو موجود
+        preg_match('/^([^?#]*)(.*)$/', $url, $parts);
+        $base = $parts[1];
+        $rest = $parts[2] ?? '';
+
+        // نستخدم rtrim لإزالة الـ / من نهاية الجزء الأساسي فقط
+        $base = rtrim($base, '/');
+
+        return 'href="' . $base . $rest . '"';
+    }, $html);
+}
+  public function fixLinks($html)
+{
+    return preg_replace_callback('/href="([^"]+)"/i', function ($matches) {
+        $url = $matches[1];
+
+        // نفصل الـ query أو hash لو موجود
+        preg_match('/^([^?#]*)(.*)$/', $url, $parts);
+        $base = $parts[1];
+        $rest = $parts[2] ?? '';
+
+        // لو مش منتهي بـ /
+        if (!str_ends_with($base, '/')) {
+            $base .= '/';
+        }
+
+        return 'href="' . $base . $rest . '"';
+    }, $html);
+   }
+
+  
+ function fixLang($content,$lang) {
+    return preg_replace(
+        '/href="https:\/\/innovadentalclinics\.com\/(?!'.$lang.'\/)([^"]*)"/',
+        'href="https://innovadentalclinics.com/'.$lang.'/$1"',
+        $content
+    );
+}
+
+
+  
+  public function update_blogs()
+    {
+        
+        // dd(123);
+    
+    $blogs = Blog::orderby('id','desc')->get();
+    
+    foreach($blogs as $blog){
+     
+    $details_en = $this->removeTrailingSlash($blog->details_en);
+    $details_ar = $this->removeTrailingSlash($blog->details_ar);
+    
+    
+    $blog->details_en = $details_en;
+    $blog->details_ar = $details_ar;
+    
+    $blog->update();
+    
+    
+    }
+    echo 'done';
+     }
+
+
+
   public function index(Request $request)
   {
     // if (view()->exists($request->path())) {
     //     return view($request->path());
     // }
     // return abort(404);
-    $sign = $this->langSign();
-
+    $sign = app()->getLocale(); 
     $sliders = Slider::get();
     $points = AboutPoint::get();
     $home_services = Service::get()->take(10);
@@ -80,7 +239,7 @@ class HomeController extends Controller
   public function about(Request $request)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
@@ -99,22 +258,23 @@ class HomeController extends Controller
   public function dentistry(Request $request)
   {
 
-    $sign = $this->langSign();
-
+   $sign = app()->getLocale(); 
     $sliders = Slider::first();
     $points = AboutPoint::get();
     $child_services = Service::where('parent_id','!=',0)->get();
     $models = ModelCategory::get();
     $reviews = Partner::get();
+        $testimonials = Testimonial::get();
 
-    return view('front.dentistry', compact('sign', 'sliders', 'points', 'child_services', 'models', 'reviews'));
+
+    return view('front.dentistry', compact('sign', 'sliders', 'points', 'child_services', 'models', 'reviews', 'testimonials'));
   }
 
   
   public function invisalign(Request $request)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
@@ -128,7 +288,7 @@ class HomeController extends Controller
   public function dental_implants(Request $request)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
@@ -143,7 +303,7 @@ class HomeController extends Controller
   public function veneers(Request $request)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
@@ -160,7 +320,7 @@ class HomeController extends Controller
   public function doctors(Request $request)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
  
     $points = AboutPoint::get();
     $services = Service::where('parent_id','!=',0)->get();
@@ -175,7 +335,7 @@ class HomeController extends Controller
   public function videos(Request $request)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
 
     $videos = Media::get();
 
@@ -185,8 +345,7 @@ class HomeController extends Controller
   public function blogs(Request $request)
   {
 
-    $sign = $this->langSign();
-
+$sign = app()->getLocale(); 
  
     $blogs = Blog::orderby('blog_date','desc')->paginate(9);
 
@@ -196,7 +355,7 @@ class HomeController extends Controller
   public function services(Request $request)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
 
 
     $sliders = Slider::first();
@@ -207,11 +366,20 @@ class HomeController extends Controller
 
     return view('front.services', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
+//   تعديل
+  
+  public function medicalTourism(Request $request)
+{
+    $sign = app()->getLocale();
+
+    return view('front.medical-tourism', compact('sign'));
+} 
+  //   تعديل
+
   public function BookNow(Request $request)
   {
 
-    $sign = $this->langSign();
-
+$sign = app()->getLocale(); 
 
     $sliders = Slider::first();
     $points = AboutPoint::get();
@@ -224,7 +392,7 @@ class HomeController extends Controller
  public function contact(Request $request)
   {
 
-    $sign = $this->langSign();
+$sign = app()->getLocale(); 
 
 
     $sliders = Slider::first();
@@ -236,10 +404,10 @@ class HomeController extends Controller
     return view('front.contact', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }
 
-  public function singleBlog(Request $request, $slug)
+  public function singleBlog(Request $request , $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
 
 
     $blog = Blog::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
@@ -248,6 +416,26 @@ class HomeController extends Controller
 
       abort(404);
     }
+    
+    
+        switch ($sign) {
+            case 'en':
+                $correctSlug = $blog->slug_en;
+                break;
+            case 'ar':
+                $correctSlug = $blog->slug_ar;
+                break;
+            case 'fr':
+                $correctSlug = $blog->slug_fr;
+                break;
+            default:
+                $correctSlug = $blog->slug_en;
+        }
+    
+        // If slug in URL does not match the correct one, redirect
+        if ($slug !== $correctSlug) {
+            return redirect()->to("/$sign/$correctSlug");
+        }
 
     return view('front.details-blog', compact('sign', 'blog'));
   }
@@ -255,7 +443,8 @@ class HomeController extends Controller
   public function singleService(Request $request, $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
+
 
 
     $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
@@ -269,7 +458,7 @@ class HomeController extends Controller
   public function singleCategoryService(Request $request, $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
     $category = Category::where('slug_ar', $slug)->orwhere('slug_en',$slug)
      ->orwhere('slug_fr',$slug)->first();
 
@@ -376,14 +565,36 @@ class HomeController extends Controller
     $u =  url()->previous();
 
 
-    $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
+   // $x =  str_replace('/' . $lang->sign, '/' . $data->sign, $u);
 
 
     // echo $x;
 
     //  return redirect($x);
 
-    return redirect()->back();
+ //   return redirect()->back();
+ 
+ // Parse the URL
+$parsedUrl = parse_url($u);
+$path = $parsedUrl['path'] ?? '/';
+
+// Split path into segments
+$segments = explode('/', trim($path, '/'));
+
+// Replace the first segment if it matches old language sign
+if (!empty($segments[0]) && $segments[0] === $lang->sign) {
+    $segments[0] = $data->sign;
+} else {
+    // If no language in URL, just prepend new one
+    array_unshift($segments, $data->sign);
+}
+
+// Build new URL
+$newPath = implode('/', $segments);
+$newUrl = url($newPath);
+
+// Redirect
+    return redirect($newUrl, 301);
   }
 
 
@@ -691,7 +902,7 @@ class HomeController extends Controller
   public function blogsCategory(Request $request, $slug)
   {
 
-    $sign = $this->langSign();
+    $sign = app()->getLocale(); 
 
 
     $category = BlogCategory::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
@@ -703,6 +914,28 @@ class HomeController extends Controller
 
 
     return view('front.blog_categories', compact('sign', 'category'));
+  }
+ 
+  
+  public function change_data(Request $request)
+  {
+
+    $blogs = Blog::get();
+    
+    foreach($blogs as $blog){
+        
+       
+        $blog->details_ar = preg_replace(
+        '#https://innovadentalclinics\.com/ar(?!/)#',
+        'https://innovadentalclinics.com/ar/',
+        $blog->details_ar
+    );
+
+    $blog->save();
+    }
+ 
+
+    return 'done';
   }
  
 
