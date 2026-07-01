@@ -102,6 +102,10 @@
                                                   <label for="meta_details_ar" class="form-label">{{ __('translation.meta_details') }}</label>
                                                   <textarea class="form-control" name="meta_details_ar"  id="meta_details_ar" rows="3" placeholder="{{ __('translation.meta_details') }}">{{ $data->meta_details_ar }}</textarea>
                                               </div> 
+                                              <div class="mb-3">
+                                                  <label for="header_code_ar" class="form-label">{{ __('translation.header_code') }}</label>
+                                                  <textarea class="form-control" name="header_code_ar"  id="header_code_ar" rows="3" placeholder="{{ __('translation.header_code') }}">{{ $data->header_code_ar }}</textarea>
+                                              </div> 
                                         </div>
                                         <div class="tab-pane {{$gs->lang_arabic == 0 ? 'active' : '' }}" id="base-justified-product" role="tabpanel">
                                             <h6 style="text-align: center;"> {{ __('translation.english') }}</h6>
@@ -135,6 +139,11 @@
                                               <div class="mb-3">
                                                   <label for="meta_details_en" class="form-label">{{ __('translation.meta_details') }}</label>
                                                   <textarea class="form-control" name="meta_details_en"  id="meta_details_en" rows="3" placeholder="{{ __('translation.meta_details') }}"> {{ $data->meta_details_en }}</textarea>
+                                              </div>   
+                                          
+                                              <div class="mb-3">
+                                                  <label for="header_code_en" class="form-label">{{ __('translation.header_code') }}</label>
+                                                  <textarea class="form-control" name="header_code_en"  id="header_code_en" rows="3" placeholder="{{ __('translation.header_code') }}"> {{ $data->header_code_en }}</textarea>
                                               </div>   
                                           
                                         </div>

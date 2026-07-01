@@ -43,6 +43,81 @@ class HomeController extends Controller
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
+   
+   
+        public function removeTrailingSlash($html)
+{
+    return preg_replace_callback('/href="([^"]+)"/i', function ($matches) {
+        $url = $matches[1];
+
+        // نفصل الـ query أو hash لو موجود
+        preg_match('/^([^?#]*)(.*)$/', $url, $parts);
+        $base = $parts[1];
+        $rest = $parts[2] ?? '';
+
+        // نستخدم rtrim لإزالة الـ / من نهاية الجزء الأساسي فقط
+        $base = rtrim($base, '/');
+
+        return 'href="' . $base . $rest . '"';
+    }, $html);
+}
+  public function fixLinks($html)
+{
+    return preg_replace_callback('/href="([^"]+)"/i', function ($matches) {
+        $url = $matches[1];
+
+        // نفصل الـ query أو hash لو موجود
+        preg_match('/^([^?#]*)(.*)$/', $url, $parts);
+        $base = $parts[1];
+        $rest = $parts[2] ?? '';
+
+        // لو مش منتهي بـ /
+        if (!str_ends_with($base, '/')) {
+            $base .= '/';
+        }
+
+        return 'href="' . $base . $rest . '"';
+    }, $html);
+   }
+
+  
+ function fixLang($content,$lang) {
+    return preg_replace(
+        '/href="https:\/\/innovadentalclinics\.com\/(?!'.$lang.'\/)([^"]*)"/',
+        'href="https://innovadentalclinics.com/'.$lang.'/$1"',
+        $content
+    );
+}
+
+
+  
+  public function update_blogs()
+    {
+        
+        // dd(123);
+    
+    $blogs = Blog::orderby('id','desc')->get();
+    
+    foreach($blogs as $blog){
+     
+    // $details_en = $this->fixLang($blog->details_en,'en');
+    // $details_ar = $this->fixLang($blog->details_ar,'ar');
+    $details_en = $this->removeTrailingSlash($blog->details_en);
+    $details_ar = $this->removeTrailingSlash($blog->details_ar);
+    
+    
+    $blog->details_en = $details_en;
+    $blog->details_ar = $details_ar;
+    
+    $blog->update();
+    
+    
+    }
+    echo 'done';
+     }
+
+
+
   public function index(Request $request,$lang = 'ar')
   {
     // if (view()->exists($request->path())) {
@@ -379,11 +454,11 @@ $slug = urldecode(basename($url));
     if ($slug !== $correctSlug) {
         if($lang){
             
-        return redirect()->to("/$sign/$correctSlug");
+        return redirect()->to("/$sign/services/$correctSlug");
         }else{
             
             
-        return redirect()->to("/$correctSlug");
+        return redirect()->to("/services/$correctSlug");
         }
     }
 
@@ -420,14 +495,14 @@ $lang =  $sign == 'en' ? 'en' : null;
      
     
     if ($slug !== $correctSlug) {
-          dd($service);
+        //  dd($service);
         if($lang){
             
-        return redirect()->to("/$sign/$correctSlug");
+        return redirect()->to("/$sign/services/$correctSlug");
         }else{
             
             
-        return redirect()->to("/$correctSlug");
+        return redirect()->to("/services/$correctSlug");
         }
     }
 
@@ -446,6 +521,37 @@ $lang =  $sign == 'en' ? 'en' : null;
 
       abort(404);
     }
+    
+    
+    
+     switch ($sign) {
+        case 'en':
+            $correctSlug = $category->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $category->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $category->slug_fr;
+            break;
+        default:
+            $correctSlug = $category->slug_en;
+    }
+     
+    
+    if ($slug !== $correctSlug) {
+        //  dd($category);
+        if($lang){
+            
+        return redirect()->to("/$sign/services-category/$correctSlug");
+        }else{
+            
+            
+        return redirect()->to("/services-category/$correctSlug");
+        }
+    }
+
+    
     return view('front.category', compact('sign', 'category','lang'));
   }
 
@@ -462,6 +568,7 @@ $lang =  $sign == 'en' ? 'en' : null;
       abort(404);
     }
     
+    
      switch ($sign) {
         case 'en':
             $correctSlug = $category->slug_en;
@@ -475,17 +582,19 @@ $lang =  $sign == 'en' ? 'en' : null;
         default:
             $correctSlug = $category->slug_en;
     }
+     
+    
     if ($slug !== $correctSlug) {
+        //  dd($category);
         if($lang){
             
-        return redirect()->to("/$sign/$correctSlug");
+        return redirect()->to("/$sign/services-category/$correctSlug");
         }else{
             
             
-        return redirect()->to("/$correctSlug");
+        return redirect()->to("/services-category/$correctSlug");
         }
     }
-
     
     return view('front.category', compact('sign', 'category','lang'));
   }

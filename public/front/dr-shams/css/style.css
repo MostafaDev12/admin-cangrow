@@ -10,39 +10,53 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Cairo, sans-serif;
+    font-family: Cairo, sans-serif !important;
     overflow-x: hidden;
 }
+/* أساس الساب منيو */
 .dropdown-menu .dropdown-menu {
-    position: absolute;
-    right: 100%;
-    top: 0;
-    margin-top: -1px;
-    display: none;
+  position: absolute;
+  top: 0;
+  margin-top: -1px;
+  display: none;
 }
-.dropdown-item {
-    text-align: right;
+
+/* AR (RTL) → يفتح شمال */
+html[lang="ar"] .dropdown-menu .dropdown-menu {
+  right: 100%;
+  left: auto;
 }
-html[lang="en"] .dropdown-item{
-    text-align: left;
+
+/* EN (LTR) → يفتح يمين */
+html[lang="en"] .dropdown-menu .dropdown-menu {
+  left: 100%;
+  right: auto;
 }
+
+/* hover يفتح الساب منيو */
+.dropdown-menu > li:hover > .dropdown-menu {
+  display: block;
+}
+
+/* منع Bootstrap arrow */
 .dropdown-menu .dropdown-toggle::after {
-    display: none;
+  display: none;
 }
-.dropdown-menu > .dropdown:hover > .dropdown-menu {
-    display: block;
+
+/* text alignment */
+.dropdown-item {
+  text-align: right;
 }
-.dropdown-menu {
-    display: none;
-  }
-  .nav-item.dropdown:hover > .dropdown-menu {
-    display: block;
-  }
-  
-  .dropdown-item.dropdown-toggle:hover + .dropdown-menu {
-    display: block;
-  }
-  
+
+html[lang="en"] .dropdown-item {
+  text-align: left;
+}
+
+/* فتح المين dropdown */
+.nav-item.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
 .social-media i {
     width: 50px;
     height: 50px;
@@ -1036,4 +1050,27 @@ a {
 .accordion-button {
     color:#314c5b;
     font-weight:bold;
+}
+
+.blog-detils{
+    font-family: Cairo, sans-serif !important;
+}
+.doctor img {
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 100% !important;
+        object-fit: contain;
+    }
+    .doctor h2 {
+       font-size: 20px
+        }
+    .doctor p{
+        font-size: 16px !important;
+        color: #000;
+    }
+
+
+.accordion-body{
+        font-family: Cairo, sans-serif !important;
+
 }

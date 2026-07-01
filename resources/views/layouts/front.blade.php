@@ -40,47 +40,58 @@
         <title>
             @yield('title')
         </title>
+        
+        
+        
     @else
         <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
-        <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
+        <meta property="og:title" content="دكتور عبد الرحمن شمس مدرس طب وجراحة العيون">
         <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
         <title>
             @yield('title')
         </title>
+        
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "MedicalOrganization",
+          "name": "عيادات الدكتور عبدالرحمن شمس للعيون", 
+          "url": "https://abdelrhmanshams.com/",
+          "logo": "{{ $gs->{'logo_' . $sign} }}",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+201118886541",
+            "contactType": "customer service",
+            "areaServed": "EG",
+            "availableLanguage": "Arabic"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "99 شارع النصر",
+            "addressLocality": "المعادي الجديدة",
+            "addressRegion": "القاهرة",
+            "addressCountry": "EG"
+          },
+          "sameAs": [
+            "https://www.facebook.com/DrAbdelrahmanShams", 
+            "https://www.youtube.com/@Dr.AbdelrahmanShams", 
+            "https://www.linkedin.com/in/dr-abdelrahman-shams-92809b24b/",
+            "https://www.instagram.com/dr.abdelrhmanshams/?igsh=MWZ3N3RzaW5mOThrMw",
+            "https://www.tiktok.com/@dr.abdelrhmanshams?_t=8kQIekjhT3W&_r=1"
+          ],
+          "medicalSpecialty": "Ophthalmology" 
+        }
+     </script>
     @endif
 
-<link rel="canonical" href="https://abdelrhmanshams.com/%D8%B3%D8%B9%D8%B1-%D8%B9%D9%85%D9%84%D9%8A%D8%A9-%D8%A7%D9%84%D9%84%D9%8A%D8%B2%D9%83-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1/" />
+ @if(isset($blog->{'header_code_' . $sign}))
+ 
+   {!! $blog->{'header_code_' . $sign} !!}
+ 
+ @endif
+ <link rel="canonical" href="{{ url()->current() }}" />
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "{{url('/')}}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}"
-    }
-    </script>
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ $gs->{'title_' . $sign} }}",
-    "url": "{{url('/')}}",
-    "description": "",
-    "image": "{{ $gs->{'logo_' . $sign} }}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}",
-      "sameAs": ["{{ App\Models\Socialsetting::find(1)->facebook }}", "{{ App\Models\Socialsetting::find(1)->twitter }}", "{{ App\Models\Socialsetting::find(1)->instagram }}"],
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "",
-      "addressRegion": "Cairo",
-      "postalCode": "11341",
-      "addressCountry": "Egypt"
-    }
-  }
-</script>
-
+   
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RJGGYWDV7"></script>
 <script>
@@ -312,10 +323,25 @@
 
                       <i class="fab fa-whatsapp"></i><a target="_blank"  href="http://wa.me/2{{ $phone }}" target="_blank">{{ $phone }}</a><br>
                       @endforeach
-                      @foreach ($addresses as $address)
-                        <i class="fas fa-location"></i> <a href="#">   {{ $address }}   </a>
-                        <br>
-                        @endforeach
+                     
+                   <!--تعديل-->
+            @php
+    $mapLang = $sign == 'ar' ? 'ar' : 'en';
+@endphp
+
+@foreach ($addresses as $address)
+    <i class="fas fa-location"></i>
+    <a
+        href="https://www.google.com/maps?cid=14755123623181241467&hl={{ $mapLang }}&gl=EG"
+        target="_blank"
+        rel="noopener"
+        class="hover:text-accent transition">
+        {{ $address }}
+    </a>
+    <br>
+@endforeach
+               <!--تعديل-->
+                        
                     </p>
                 </div>
             </div>

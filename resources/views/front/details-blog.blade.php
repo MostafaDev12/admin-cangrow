@@ -2,12 +2,41 @@
 
 @section('title')
    
-{{ $blog->{'title_' . $sign} }}   -  {{ $gs->{'title_' . $sign} }}
+{{ $blog->{'title_' . $sign} }} 
      
 @stop
 
 @section('gsearch')
     <meta property="og:image" content=" {{ $gs->{'logo_' . $sign} }}" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ route('single-blog.index'.$lang,['blog' =>$blog->{'slug_' . $sign} ,'lang'=> $lang ]) }}/"
+  },
+  "headline": "{{ $blog->{'meta_title_' . $sign} }}",
+  "image": "{{ $blog->photo }}",
+  "datePublished": "{{ $blog->blog_date }}",
+  "dateModified": "{{ $blog->blog_date }}",
+  "description": "{{ $blog->{'meta_details_' . $sign} }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ $gs->{'title_' . $sign} }}",
+    "url": "{{ url('/')}}",
+    "jobTitle": "{{ $gs->{'title_' . $sign} }}"
+  },
+  "publisher": {
+    "@type": "MedicalOrganization",
+    "name": "عيادات الدكتور عبدالرحمن شمس للعيون",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ $gs->{'logo_' . $sign} }}"
+    }
+  }
+}
+</script>
 @stop
 
 
@@ -17,7 +46,14 @@ $phones =  explode(',', $gs->phones);
  
 $randomPhone = Arr::random($phones);
 @endphp
-    <div class="header-title ">
+
+<style>
+    .font-cairo {
+    font-family: Cairo, sans-serif !important;
+}
+</style>
+
+    <div class="header-title blog-detils">
         <div class="overlay d-flex justify-content-center align-items-center">
          
             <h1> {{ $blog->{'title_' . $sign} }}   </h1>
@@ -30,7 +66,26 @@ $randomPhone = Arr::random($phones);
     <div class="content">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-8 col-md-6">
+                  <div class="doctor">
+                            <div class="d-flex  gap-10 align-items-center" style="gap:10px">
+                                       <img src="{{ asset('assets/images/blog.jpeg') }}" alt="">
+
+                                     <h2>
+                                        <a class="nav-link" href="{{ route('about.index'.$lang,$lang) }}/">
+                                            أ
+                                            .
+                                            د.عبد الرحمن شمس
+                                        </a>
+                                    </h2>
+                               
+                                </div>
+                                    <p>
+استشاري جراحات المياه البيضاء وتصحيح الابصار وعلاج جفاف العيون                                    </p>
+        
+                        </div>
+            </div>
+            <div class="row font-cairo">
+                <div class="col-12 col-lg-8 col-md-6 font-cairo">
                     <div class="fw-bold">
                         <img class="mb-4" width="100%" src="{{ $blog->photo }}" alt="">
                         
@@ -49,7 +104,7 @@ $randomPhone = Arr::random($phones);
 
                             @foreach($blog->faqs as $k=>$faq )
 
-                            <div class="accordion-item box">
+                            <div class="accordion-item box font-cairo">
                                 <h3 class="accordion-header">
                                 <button class="accordion-button @if($k != 0) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#ss{{$faq->id}}" aria-expanded="true" aria-controls="ss{{$faq->id}}">
                                     {!! $faq->{'title_' . $sign} !!} 

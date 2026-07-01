@@ -29,7 +29,7 @@ class FaqController extends Controller
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
                             ->editColumn('blog_id', function(Faq $data) {
-                                $blog =  $data->blog->title_ar;
+                                $blog =  optional($data->blog)->title_ar;
                               
                                 return  $blog;
                             })

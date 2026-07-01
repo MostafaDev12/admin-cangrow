@@ -61,6 +61,9 @@ Route::middleware([ 'FrontLanguages'])->group(function () {
  Route::group([], function () {
 
 
+        Route::get('/update_blogs', [HomeController::class, 'update_blogs'])->name('update_blogs.index');
+    
+
         Route::get('/', [HomeController::class, 'index'])->name('front.index');
         Route::get('/عن-الدكتور/', [HomeController::class, 'about'])->name('about.index');
         Route::get('/services/', [HomeController::class, 'services'])->name('services.index');
@@ -93,5 +96,6 @@ Route::middleware([ 'FrontLanguages'])->group(function () {
 
   
   Route::get('/languages/change/{id}', [HomeController::class, 'change'])->name('front.lang-change');
+   
 
 });
