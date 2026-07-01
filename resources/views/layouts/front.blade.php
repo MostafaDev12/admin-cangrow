@@ -31,15 +31,28 @@
             {{ $gs->{'title_' . $sign} }}
 
         </title>
-    @elseif(isset($blog->{'meta_title_' . $sign}) && isset($blog->{'meta_details_' . $sign}))
-        <meta name="keywords" content="{{ $blog->{'meta_title_' . $sign} }}">
-        <meta name="description" content="{{ $blog->{'meta_details_' . $sign} }}">
-        <meta property="og:title" content="{{ $blog->{'meta_title_' . $sign} }}">
-        <meta property="og:description" content="{{ $blog->{'meta_details_' . $sign} }}">
+    @elseif(isset($blog))
+        @php
+            $articleTitle = $blog->{'title_' . $sign};        // visible <h1>
+            $metaTitle    = $blog->{'meta_title_' . $sign};   // SEO title
 
-        <title>
-            @yield('title')
-        </title>
+            // <title>: meta_title -> article_title -> site name (final fallback).
+            $seoTitle = $metaTitle ?: ($articleTitle ?: $gs->{'title_' . $sign});
+
+            // og:title: social_title (not in schema) -> meta_title -> article_title.
+            $ogTitle = $metaTitle ?: $articleTitle;
+
+            // SEO description: meta_details -> short_details -> safe excerpt from the article body.
+            $seoDescription = $blog->{'meta_details_' . $sign}
+                ?: ($blog->{'short_details_' . $sign}
+                ?: \Illuminate\Support\Str::limit(trim(strip_tags($blog->{'details_' . $sign})), 160));
+        @endphp
+        <meta name="keywords" content="{{ $metaTitle }}">
+        <meta name="description" content="{{ $seoDescription }}">
+        <meta property="og:title" content="{{ $ogTitle }}">
+        <meta property="og:description" content="{{ $seoDescription }}">
+
+        <title>{{ $seoTitle }}</title>
         
         
         
