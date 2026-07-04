@@ -140,21 +140,7 @@ $processes = Process::get();
     return view('front.products', compact('sign', 'sliders', 'points', 'services', 'models', 'reviews'));
   }  
   
-  public function services(Request $request)
-  {
 
-    $sign = $this->langSign();
-
-
-    $sliders = Slider::first();
-    $points = AboutPoint::get();
-    $servicess = Subcategory::paginate(8);
-    $models = PageModel::get();
-    $reviews = Partner::get();
-
-    return view('front.services', compact('sign', 'sliders', 'points', 'servicess', 'models', 'reviews'));
-  }  
-  
   public function locations(Request $request)
   {
 
@@ -256,46 +242,21 @@ $processes = Process::get();
     return view('front.details-product', compact('sign', 'service'));
   } 
   
-  public function singleService(Request $request,$lang, $slug)
-  {
-
+public function services(Request $request, $lang)
+{
     $sign = $this->langSign($lang);
 
+    return view('front.services', compact('sign'));
+}
+  
+//   تعديل
+public function singleService(Request $request, $lang, $slug)
+{
+    $sign = $this->langSign($lang);
 
-    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
-    if(!$service){
-
-      abort(404);
-    }
-
-         switch ($sign) {
-        case 'en':
-            $correctSlug = $service->slug_en;
-            break;
-        case 'ar':
-            $correctSlug = $service->slug_ar;
-            break;
-        case 'fr':
-            $correctSlug = $service->slug_fr;
-            break;
-        default:
-            $correctSlug = $service->slug_en;
-    }
-    if ($slug !== $correctSlug) {
-        if($lang){
-            
-        return redirect()->to("/$sign/service/$correctSlug");
-        }else{
-            
-            
-        return redirect()->to("/service/$correctSlug");
-        }
-    }
-
-
-
-    return view('front.details-service', compact('sign', 'service'));
-  }
+    return view('front.details-service', compact('sign', 'slug'));
+}
+// تعديل
   public function singleCategory(Request $request,$lang, $slug)
   {
 
@@ -332,21 +293,12 @@ $processes = Process::get();
     return view('front.gallery', compact('sign','images'));
   }
 
-  public function singleCategoryService(Request $request,$lang, $slug)
-  {
-
+  public function singleCategoryService(Request $request, $lang, $slug)
+{
     $sign = $this->langSign($lang);
-    $category = Category::where('slug_ar', $slug)->orwhere('slug_en',$slug)
-     ->orwhere('slug_fr',$slug)->first();
 
-    
-    if(!$category){
-
-      abort(404);
-    }
-     $servicess  = $category->parentServices()->paginate(8);
-    return view('front.category', compact('sign', 'category','servicess'));
-  }
+    return view('front.category', compact('sign', 'slug'));
+}
 
   public function root()
   {

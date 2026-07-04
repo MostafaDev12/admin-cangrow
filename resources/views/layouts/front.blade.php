@@ -13,7 +13,19 @@
     @endphp
 
 
+<meta name="google-site-verification" content="ZcfPDEqhHasKzuMSstRL9kFRO_WINOX_n3xaSjXTMWk" />
+ 
 
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CFB5B13HTJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CFB5B13HTJ');
+</script>
 
     <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
     <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
@@ -112,155 +124,693 @@
  
  
 <body class="bg-gray-50 text-gray-800 font-tajawal" dir="{{ session::get('front_language_duraction') }}" lang="{{ $sign }}">
-    <header
-        class="desktopHeader fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 text-gray-800 hidden lg:block transition-all duration-300 shadow-sm">
+<header
+    class="desktopHeader fixed top-0 w-full z-50 text-white hidden lg:block transition-all duration-300 overflow-visible bg-[#020817]/95 backdrop-blur-xl shadow-[0_15px_45px_rgba(0,0,0,.45)]">
 
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center w-full">
-
-            <div class="flex items-center animate-slideInRight" style="animation-delay: 0.2s;">
-                <a href="{{ route('front.index',$sign) }}">
-                    <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-16">
+    <div class="container mx-auto px-6 overflow-visible">
+<div class="grid grid-cols-[220px_1fr_220px] items-center gap-6 h-[100px] overflow-visible">
+            <!-- CTA - Left -->
+            <div class="flex justify-start">
+                <a href="{{ asset('assets/images/files/catalog1.pdf') }}"
+                   download="catalog1.pdf"
+                   class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00c8ff] to-[#0877ff] px-6 py-3 text-sm font-bold text-white shadow-[0_0_25px_rgba(0,174,255,.45)] hover:scale-[1.03] transition">
+                    <span>{{ __('تحميل كتالوج PDF') }}</span>
+                    <i class="fas fa-download text-xs"></i>
                 </a>
             </div>
 
-            <nav class="animate-slideInRight" style="animation-delay: 0.4s;">
-                <ul class="flex items-center gap-6 text-lg font-medium">
-                    <li><a href="{{ route('front.index',$sign) }}" class="hover:text-primary transition">{{ __('الرئيسية') }}</a></li>
-                    <li><a href="{{ route('about.index',$sign) }}" class="hover:text-primary transition">    {{ __('من نحن') }}</a></li>
-
-                    <li class="relative group">
-                        <a href="#" class="hover:text-primary transition flex items-center gap-1">
-                            {{ __('الخدمات') }}
-                            <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+         <!-- Menu - Center -->
+            <nav class="flex justify-center">
+             <ul class="flex items-center gap-10 font-extrabold [&>li>a]:text-[19px]"><li>
+                        <a href="{{ route('front.index',$sign) }}"
+                           class="relative text-[#00c8ff] pb-4 after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-full after:bg-[#00c8ff] after:rounded-full">
+                            {{ __('الرئيسية') }}
                         </a>
-                        <ul
-                            class="absolute right-0 mt-2 w-56 bg-white text-gray-700 rounded-lg shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300">
-                            @foreach ($services as $service)
-                            <li><a href="{{ route('single-service-service.index',['lang' => $sign,'slug' => $service->{'slug_' . $sign} ]) }}" class="block px-4 py-2 hover:text-primary hover:bg-gray-50">   
-                                     {{ $service->{'title_' . $sign} }}</a></li>
-                          @endforeach
+                    </li>
+
+                    <li>
+                        <a href="{{ route('about.index',$sign) }}"
+                           class="text-white/90 hover:text-[#00c8ff] transition">
+                            {{ __('من نحن') }}
+                        </a>
+                    </li>
+
+                    <!-- منتجاتنا -->
+                    <li class="relative group">
+                        <a href="{{ route('services.index', $sign) }}"
+                           class="text-white/90 hover:text-[#00c8ff] transition flex items-center gap-2">
+                            {{ __('المنتجات') }}
+                            <i class="fas fa-chevron-down text-[11px] transition-transform group-hover:rotate-180"></i>
+                        </a>
+
+                        <ul class="absolute right-0 top-full mt-7 w-80 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-visible">
+
+                            <li>
+                                <a href="{{ route('services.index', $sign) }}"
+                                   class="block px-4 py-3 font-bold text-[#00a8e8] bg-[#eefaff]">
+                                    {{ __('عرض كل المنتجات') }}
+                                </a>
+                            </li>
+
+                            <!-- خزانات المياه -->
+                            <li class="relative group/tanks">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'خزانات-المياه']) }}"
+                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
+                                    <span>{{ __('خزانات المياه') }}</span>
+                                    <i class="fas fa-chevron-left text-xs"></i>
+                                </a>
+
+                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/tanks:opacity-100 group-hover/tanks:visible transition-all duration-300 z-50 overflow-hidden">
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-مياه-أفقية']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات مياه أفقية') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-مياه-رأسية']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات مياه رأسية') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-البولي-إيثيلين']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات بولي إيثيلين') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-الفيبر-جلاس']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات فيبر جلاس') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-الاستانلس-ستيل']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات استانلس ستيل') }}</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- أكشاك وحمامات متنقلة -->
+                            <li class="relative group/booths">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'أكشاك-وحمامات-متنقلة']) }}"
+                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
+                                    <span>{{ __('أكشاك وحمامات متنقلة') }}</span>
+                                    <i class="fas fa-chevron-left text-xs"></i>
+                                </a>
+
+                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/booths:opacity-100 group-hover/booths:visible transition-all duration-300 z-50 overflow-hidden">
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أكشاك-حراسة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('أكشاك حراسة') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حمامات-متنقلة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('حمامات متنقلة') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'كرفانات']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('كرفانات') }}</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- مستلزمات المرور -->
+                            <li class="relative group/traffic">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'مستلزمات-المرور']) }}"
+                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
+                                    <span>{{ __('مستلزمات المرور') }}</span>
+                                    <i class="fas fa-chevron-left text-xs"></i>
+                                </a>
+
+                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/traffic:opacity-100 group-hover/traffic:visible transition-all duration-300 z-50 overflow-hidden">
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حواجز-مرورية']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('حواجز مرورية') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أقماع-مرور']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('أقماع مرور') }}</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- تجهيز النوادي والكيدز اريا -->
+                            <li class="relative group/clubs">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'تجهيز-النوادي-والكيدز-اريا']) }}"
+                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
+                                    <span>{{ __('تجهيز النوادي والكيدز اريا') }}</span>
+                                    <i class="fas fa-chevron-left text-xs"></i>
+                                </a>
+
+                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/clubs:opacity-100 group-hover/clubs:visible transition-all duration-300 z-50 overflow-hidden">
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أحواض-الزرع']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('أحواض الزرع') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'شازلونج']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('شازلونج') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'ممر-عائم']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('ممر عائم') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'مقاعد-بلاستيك']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('مقاعد بلاستيك') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'كراسي-هزاز-أطفالي']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('كراسي هزاز أطفالي') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'ترابيزات-قهوة-وسفرة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('ترابيزات قهوة وسفرة') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'طقطوقة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('طقطوقة') }}</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- منتجات بلاستيكية متنوعة -->
+                            <li class="relative group/plastic">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'منتجات-بلاستيكية-متنوعة']) }}"
+                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
+                                    <span>{{ __('منتجات بلاستيكية متنوعة') }}</span>
+                                    <i class="fas fa-chevron-left text-xs"></i>
+                                </a>
+
+                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/plastic:opacity-100 group-hover/plastic:visible transition-all duration-300 z-50 overflow-hidden">
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'بالتات']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('بالتات') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'آيس-بوكس']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('آيس بوكس') }}</a></li>
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حاويات-وسلات-قمامة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('حاويات وسلات قمامة') }}</a></li>
+                                </ul>
+                            </li>
+
                         </ul>
                     </li>
 
-                    <li><a href="{{ route('blogs.index',$sign) }}" class="hover:text-primary transition">{{ __('المقالات') }}</a></li>
-                    <li><a href="{{ route('gallery.index',$sign) }}" class="hover:text-primary transition">{{ __('المعرض') }}</a></li>
-                    <li><a href="{{ route('contact.index',$sign) }}" class="hover:text-primary transition"> {{ __('اتصل بنا') }}  </a></li>
+                    <li>
+                        <a href="{{ route('gallery.index',$sign) }}" class="text-white/90 hover:text-[#00c8ff] transition">
+                            {{ __('المعرض') }}
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('blogs.index',$sign) }}" class="text-white/90 hover:text-[#00c8ff] transition">
+                            {{ __('المقالات') }}
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('contact.index',$sign) }}" class="text-white/90 hover:text-[#00c8ff] transition">
+                            {{ __('اتصل بنا') }}
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
+            <!-- Logo - Right -->
+            <div class="flex justify-end overflow-visible">
+                <a href="{{ route('front.index',$sign) }}" class="block overflow-visible">
+                    <img src="{{ $gs->{'logo_' . $sign} }}"
+                         alt="{{ __('شعار الشركة') }}"
+                         width="220"
+                         height="120"
+                         class="h-[105px] w-auto object-contain scale-[1.35] origin-center">
+                </a>
+            </div>
+
         </div>
-    </header>
+    </div>
+</header>
 
-    <header
-        class="mobileHeader fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 text-gray-800 lg:hidden transition-all duration-300 shadow-sm">
+<header
+    class="mobileHeader fixed top-0 w-full bg-[#020817]/95 backdrop-blur-xl z-[99999] text-white lg:hidden transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,.45)]">
 
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="{{ route('front.index',$sign) }}">
-                <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-14">
+    @php
+        $catalogUrl = asset('assets/images/files/catalog1.pdf');
+    @endphp
+
+    <div class="container mx-auto px-4 h-[86px] flex justify-between items-center">
+
+        <a href="{{ route('front.index',$sign) }}" class="block overflow-visible">
+            <img src="{{ $gs->{'logo_' . $sign} }}"
+                 alt="{{ __('شعار الشركة') }}"
+                 width="150"
+                 height="90"
+                 class="h-[74px] w-auto object-contain">
+        </a>
+
+        <div class="flex items-center gap-2">
+
+            <a href="{{ asset('assets/images/files/catalog1_mobile_.pdf') }}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[#00c8ff] to-[#0877ff] px-3.5 py-2.5 text-xs font-bold text-white shadow-[0_0_20px_rgba(0,174,255,.4)] whitespace-nowrap transition">
+                <span>{{ __('كتالوج PDF') }}</span>
+                <i class="fas fa-download text-[11px]"></i>
             </a>
 
-            <button id="menu-btn" class="focus:outline-none text-gray-800 text-3xl">
+            <button id="menu-btn" type="button"
+                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white text-xl hover:bg-white/15 transition">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
-        <!-- القائمة الجانبية -->
-        <div id="mobile-menu"
-            class="fixed top-0 right-0 w-full !bg-white text-gray-800 shadow-lg transform translate-x-full transition-transform duration-300 z-[9999]">
-            <div class="flex justify-between items-center p-4 border-b border-gray-200">
-                <span class="font-bold text-lg">{{ __('القائمة') }}</span>
-                <button id="close-btn" class="focus:outline-none text-primary text-2xl">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+    </div>
 
-            <ul class="flex flex-col gap-4 p-4 text-lg">
-                <li><a href="{{ route('front.index',$sign) }}" class="hover:text-primary transition">{{ __('الرئيسية') }}</a></li>
-                <li><a href="{{ route('about.index',$sign) }}" class="hover:text-primary transition"> {{ __('من نحن') }}  </a></li>
+    <!-- القائمة الجانبية -->
+    <div id="mobile-menu"
+         class="fixed inset-0 h-screen w-full bg-[#020817] text-white shadow-2xl
+                transform translate-x-full transition-transform duration-300 z-[999999]
+                overflow-y-auto overscroll-contain pb-32">
 
-                <li>
-                    <button class="flex justify-between items-center w-full focus:outline-none submenu-btn">
-                        <span>{{ __('الخدمات') }}</span>
-                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                    </button>
-                    <ul class="submenu hidden  flex-col pr-4 mt-2 gap-2 text-base text-gray-600">
-                      @foreach ($services as $service)
-                      <li><a href="{{ route('single-service-service.index',['lang' => $sign,'slug' => $service->{'slug_' . $sign} ]) }}" class="hover:text-primary">    {{ $service->{'title_' . $sign} }}  </a></li>
-                         @endforeach  
-                    </ul>
-                </li>
+        <div class="sticky top-0 z-10 flex justify-between items-center p-4 border-b border-white/10 bg-[#020817]">
+            <span class="font-bold text-lg text-[#00c8ff]">{{ __('القائمة') }}</span>
 
-                <li><a href="{{ route('blogs.index',$sign) }}" class="hover:text-primary transition">{{ __('المقالات') }}</a></li>
-                <li><a href="{{ route('gallery.index',$sign) }}" class="hover:text-primary transition">{{ __('المعرض') }}</a></li>
-                <li><a href="{{ route('contact.index',$sign) }}" class="hover:text-primary transition">   {{ __('اتصل بنا') }}</a></li>
-            </ul>
+            <button id="close-btn" type="button"
+                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
 
-        <!-- خلفية شفافة تغلق القائمة -->
-        <!-- <div id="overlay" class="fixed inset-0 bg-black/30 hidden opacity-0 transition-opacity duration-300 z-[9998]">
-        </div> -->
-    </header>
+        <ul class="flex flex-col gap-3 p-4 pb-36 text-lg font-bold">
+
+            <li>
+                <a href="{{ route('front.index',$sign) }}" class="block rounded-xl px-4 py-3 text-[#00c8ff] bg-white/5">
+                    {{ __('الرئيسية') }}
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('about.index',$sign) }}" class="block rounded-xl px-4 py-3 hover:bg-white/5 hover:text-[#00c8ff] transition">
+                    {{ __('من نحن') }}
+                </a>
+            </li>
+
+         
+            <li>
+                <details class="group">
+                    <summary class="flex cursor-pointer list-none items-center justify-between w-full">
+                        <span>{{ __('منتجاتنا') }}</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
+                    </summary>
+
+                    <div class="mt-3 flex flex-col gap-3 pr-4 text-base text-gray-700">
+
+                        <a href="{{ route('services.index', $sign) }}"
+                           class="block rounded-lg bg-[#e8f8ff] px-4 py-3 font-bold text-[#00a8e8]">
+                            {{ __('عرض كل المنتجات') }}
+                        </a>
+
+                        <!-- خزانات المياه -->
+                        <details class="group/tanks rounded-lg bg-gray-50 px-4 py-3">
+                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
+                                <span>{{ __('خزانات المياه') }}</span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/tanks:rotate-180"></i>
+                            </summary>
+
+                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'خزانات-المياه']) }}"
+                                   class="block py-2 font-bold text-[#00a8e8]">
+                                    {{ __('عرض القسم') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-مياه-أفقية']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('خزانات مياه أفقية') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-مياه-رأسية']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('خزانات مياه رأسية') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-البولي-إيثيلين']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('خزانات بولي إيثيلين') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-الفيبر-جلاس']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('خزانات فيبر جلاس') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-الاستانلس-ستيل']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('خزانات استانلس ستيل') }}
+                                </a>
+                            </div>
+                        </details>
+
+                        <!-- أكشاك وحمامات متنقلة -->
+                        <details class="group/booths rounded-lg bg-gray-50 px-4 py-3">
+                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
+                                <span>{{ __('أكشاك وحمامات متنقلة') }}</span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/booths:rotate-180"></i>
+                            </summary>
+
+                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'أكشاك-وحمامات-متنقلة']) }}"
+                                   class="block py-2 font-bold text-[#00a8e8]">
+                                    {{ __('عرض القسم') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أكشاك-حراسة']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('أكشاك حراسة') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حمامات-متنقلة']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('حمامات متنقلة') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'كرفانات']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('كرفانات') }}
+                                </a>
+                            </div>
+                        </details>
+
+                        <!-- مستلزمات المرور -->
+                        <details class="group/traffic rounded-lg bg-gray-50 px-4 py-3">
+                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
+                                <span>{{ __('مستلزمات المرور') }}</span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/traffic:rotate-180"></i>
+                            </summary>
+
+                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'مستلزمات-المرور']) }}"
+                                   class="block py-2 font-bold text-[#00a8e8]">
+                                    {{ __('عرض القسم') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حواجز-مرورية']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('حواجز مرورية') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أقماع-مرور']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('أقماع مرور') }}
+                                </a>
+                            </div>
+                        </details>
+
+                        <!-- تجهيز النوادي والكيدز اريا -->
+                        <details class="group/clubs rounded-lg bg-gray-50 px-4 py-3">
+                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
+                                <span>{{ __('تجهيز النوادي والكيدز اريا') }}</span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/clubs:rotate-180"></i>
+                            </summary>
+
+                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'تجهيز-النوادي-والكيدز-اريا']) }}"
+                                   class="block py-2 font-bold text-[#00a8e8]">
+                                    {{ __('عرض القسم') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أحواض-الزرع']) }}" class="block py-2 hover:text-primary">{{ __('أحواض الزرع') }}</a>
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'شازلونج']) }}" class="block py-2 hover:text-primary">{{ __('شازلونج') }}</a>
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'ممر-عائم']) }}" class="block py-2 hover:text-primary">{{ __('ممر عائم') }}</a>
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'مقاعد-بلاستيك']) }}" class="block py-2 hover:text-primary">{{ __('مقاعد بلاستيك') }}</a>
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'كراسي-هزاز-أطفالي']) }}" class="block py-2 hover:text-primary">{{ __('كراسي هزاز أطفالي') }}</a>
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'ترابيزات-قهوة-وسفرة']) }}" class="block py-2 hover:text-primary">{{ __('ترابيزات قهوة وسفرة') }}</a>
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'طقطوقة']) }}" class="block py-2 hover:text-primary">{{ __('طقطوقة') }}</a>
+                            </div>
+                        </details>
+
+                        <!-- منتجات بلاستيكية متنوعة -->
+                        <details class="group/plastic rounded-lg bg-gray-50 px-4 py-3">
+                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
+                                <span>{{ __('منتجات بلاستيكية متنوعة') }}</span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/plastic:rotate-180"></i>
+                            </summary>
+
+                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'منتجات-بلاستيكية-متنوعة']) }}"
+                                   class="block py-2 font-bold text-[#00a8e8]">
+                                    {{ __('عرض القسم') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'بالتات']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('بالتات') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'آيس-بوكس']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('آيس بوكس') }}
+                                </a>
+
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حاويات-وسلات-قمامة']) }}" class="block py-2 hover:text-primary">
+                                    {{ __('حاويات وسلات قمامة') }}
+                                </a>
+                            </div>
+                        </details>
+
+                    </div>
+                </details>
+            </li>
 
 
+            <li>
+                <a href="{{ route('blogs.index',$sign) }}" class="block rounded-xl px-4 py-3 hover:bg-white/5 hover:text-[#00c8ff] transition">
+                    {{ __('المقالات') }}
+                </a>
+            </li>
 
+            <li>
+                <a href="{{ route('gallery.index',$sign) }}" class="block rounded-xl px-4 py-3 hover:bg-white/5 hover:text-[#00c8ff] transition">
+                    {{ __('المعرض') }}
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('contact.index',$sign) }}" class="block rounded-xl px-4 py-3 hover:bg-white/5 hover:text-[#00c8ff] transition">
+                    {{ __('اتصل بنا') }}
+                </a>
+            </li>
+
+            <li class="pt-4 border-t border-white/10">
+                <a href="{{ asset('assets/images/files/catalog1_mobile_.pdf') }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00c8ff] to-[#0877ff] px-4 py-3 text-sm font-bold text-white shadow-[0_0_20px_rgba(0,174,255,.35)]">
+                    <span>{{ __('تحميل كتالوج PDF') }}</span>
+                    <i class="fas fa-download text-xs"></i>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const openBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const floatingSocial = document.getElementById('floating-social');
+
+        if (openBtn && mobileMenu) {
+            openBtn.addEventListener('click', function () {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                document.body.style.overflow = 'hidden';
+
+                if (floatingSocial) {
+                    floatingSocial.classList.add('hidden');
+                }
+            });
+        }
+
+        if (closeBtn && mobileMenu) {
+            closeBtn.addEventListener('click', function () {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenu.classList.remove('translate-x-0');
+                document.body.style.overflow = '';
+
+                if (floatingSocial) {
+                    floatingSocial.classList.remove('hidden');
+                }
+            });
+        }
+    });
+</script>
     @yield('content')
  
+ 
+ <!--السوشيال-->
+ @php
+    $social = App\Models\Socialsetting::find(1);
+
+    $phones = !empty($gs->phones) ? explode(',', $gs->phones) : [];
+    $firstPhone = count($phones) ? trim($phones[0]) : '';
+    $cleanPhone = preg_replace('/\D+/', '', $firstPhone);
+@endphp
+
+<div class="fixed left-2 top-1/2 -translate-y-1/2 z-[99999] flex flex-col gap-2 md:left-4 md:gap-3">
+
+    {{-- Facebook --}}
+    @if($social && $social->f_status == 1 && !empty($social->facebook))
+        <a href="{{ $social->facebook }}"
+           target="_blank"
+           aria-label="Facebook"
+           class="flex h-10 w-10 items-center justify-center rounded-full bg-[#1f4452] text-white shadow-lg transition duration-300 hover:scale-110 hover:bg-[#00a8e8] hover:shadow-[0_0_22px_rgba(0,168,232,0.65)] md:h-12 md:w-12">
+            <i class="fa-brands fa-facebook-f text-lg md:text-xl"></i>
+        </a>
+    @endif
+
+
+    {{-- WhatsApp --}}
+    @if(!empty($cleanPhone))
+        <a href="https://wa.me/{{ $cleanPhone }}"
+           target="_blank"
+           aria-label="WhatsApp"
+           class="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition duration-300 hover:scale-110 hover:bg-[#18b957] hover:shadow-[0_0_22px_rgba(37,211,102,0.65)] md:h-12 md:w-12">
+            <i class="fa-brands fa-whatsapp text-lg md:text-xl"></i>
+        </a>
+    @endif
+
+    {{-- Phone --}}
+    @if(!empty($firstPhone))
+        <a href="tel:{{ $firstPhone }}"
+           aria-label="Phone"
+           class="flex h-10 w-10 items-center justify-center rounded-full bg-[#1f4452] text-white shadow-lg transition duration-300 hover:scale-110 hover:bg-[#00a8e8] hover:shadow-[0_0_22px_rgba(0,168,232,0.65)] md:h-12 md:w-12">
+            <i class="fa-solid fa-phone text-base md:text-lg"></i>
+        </a>
+    @endif
+
+ 
+
+</div>
+ <!--السوشيال-->
+
 
     <footer class="bg-gray-900 text-gray-300 pt-16 pb-8 mt-12">
         <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
 
             <div>
                 <a href="{{ route('front.index',$sign) }}">
-                    <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-28 mb-4">
-                </a>
+               <img src="{{ $gs->{'logo_' . $sign} }}" alt="شعار الشركة" class="h-19 w-auto">    
+               </a>
                 <p class="text-sm text-gray-400 leading-relaxed">
                     {{ $gs->{'footer_' . $sign} }}
                 </p>
             </div>
 
-            <div>
-                <h3 class="text-lg font-semibold text-white mb-4">خزانات المياه</h3>
-                <ul class="space-y-2 text-gray-400">
-                      @foreach ($services as $service)
-                  <li><a href="{{ route('single-service-service.index',['lang' => $sign,'slug' => $service->{'slug_' . $sign}  ]) }}" class="hover:text-accent transition">  {{ $service->{'title_' . $sign} }}</a></li>
-                    @endforeach
-                </ul>
-            </div>
+             <div>
+    <h3 class="text-xl font-black text-white mb-6">
+        {{ __('منتجاتنا') }}
+    </h3>
+
+    <ul class="space-y-4 text-gray-300">
+
+        <li>
+            <a href="{{ route('single-category-service.index', [
+                    'lang' => $sign,
+                    'slug' => 'خزانات-المياه'
+                ]) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('خزانات المياه') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('single-category-service.index', [
+                    'lang' => $sign,
+                    'slug' => 'أكشاك-وحمامات-متنقلة'
+                ]) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('أكشاك وحمامات متنقلة') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('single-category-service.index', [
+                    'lang' => $sign,
+                    'slug' => 'مستلزمات-المرور'
+                ]) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('مستلزمات المرور') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('single-category-service.index', [
+                    'lang' => $sign,
+                    'slug' => 'تجهيز-النوادي-والكيدز-اريا'
+                ]) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('تجهيز النوادي والكيدز اريا') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('single-category-service.index', [
+                    'lang' => $sign,
+                    'slug' => 'منتجات-بلاستيكية-متنوعة'
+                ]) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('منتجات بلاستيكية متنوعة') }}
+            </a>
+        </li>
+
+    </ul>
+</div>
 
             <div>
-                <h3 class="text-lg font-semibold text-white mb-4">الشركة</h3>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="{{ route('about.index',$sign) }}" class="hover:text-accent transition">   {{ __('من نحن') }}</a></li>
-                    
-                    <li><a href="{{ route('blogs.index',$sign) }}" class="hover:text-accent transition">{{ __('المقالات') }}</a></li>
-                    <li><a href="{{ route('gallery.index',$sign) }}" class="hover:text-accent transition">{{ __('المعرض') }}</a></li>
-                    <li><a href="{{ route('contact.index',$sign) }}" class="hover:text-accent transition">   {{ __('اتصل بنا') }}</a></li>
-                </ul>
-            </div>
+    <h3 class="text-lg font-semibold text-white mb-4">
+        {{ __('الشركة') }}
+    </h3>
 
-            <div>
-                <h3 class="text-lg font-semibold text-white mb-4">{{ __('تواصل معنا') }}  </h3>
-                <ul class="space-y-3 text-gray-400">
-                    @foreach ($addresses as $address)
-                  <li class="flex items-start gap-2">
-                        <i class="fas fa-map-marker-alt text-accent mt-1"></i>
-                        <span>   {{ $address }}  </span>
-                    </li>
-                     @endforeach
-                      @foreach ($phones as $phone)
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-phone text-accent"></i>
-                        <a href="tel:+2{{ $phone }}" class="hover:text-accent transition">{{ $phone }}</a>
-                    </li>
-                       @endforeach
-                </ul>
-            </div>
+    <ul class="space-y-2 text-gray-400">
+        <li>
+            <a href="{{ route('about.index',$sign) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('من نحن') }}
+            </a>
+        </li>
 
+        <li>
+            <a href="{{ route('blogs.index',$sign) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('المقالات') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('gallery.index',$sign) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('المعرض') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('contact.index',$sign) }}"
+               class="transition hover:text-[#00a8e8]">
+                {{ __('اتصل بنا') }}
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="text-right" dir="rtl">
+    <h3 class="text-lg font-semibold text-white mb-4">
+        {{ __('تواصل معنا') }}
+    </h3>
+
+    <ul class="space-y-3 text-gray-400">
+
+        @foreach ($addresses as $address)
+            <li class="flex items-start justify-start gap-2">
+                <i class="fas fa-map-marker-alt text-accent mt-1"></i>
+                <span>{{ $address }}</span>
+            </li>
+        @endforeach
+
+        @foreach ($phones as $phone)
+            <li class="flex items-center justify-start gap-2">
+                <i class="fas fa-phone text-accent"></i>
+               <a href="tel:+2{{ $phone }}" class="hover:text-[#00a8e8] transition">
+             {{ $phone }}
+             </a>
+              </li>
+        @endforeach
+
+    </ul>
+
+    @php
+        $social = App\Models\Socialsetting::find(1);
+
+        $phonesList = !empty($gs->phones) ? explode(',', $gs->phones) : [];
+        $firstPhone = count($phonesList) ? trim($phonesList[0]) : '';
+        $cleanPhone = preg_replace('/\D+/', '', $firstPhone);
+    @endphp
+
+    <div class="mt-6 flex items-center justify-start gap-3">
+
+        {{-- Facebook --}}
+        @if($social && $social->f_status == 1 && !empty($social->facebook))
+            <a href="{{ $social->facebook }}"
+               target="_blank"
+               aria-label="Facebook"
+               class="flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white shadow-lg transition duration-300 hover:scale-110">
+                <i class="fa-brands fa-facebook-f text-lg"></i>
+            </a>
+        @endif
+
+      
+
+        {{-- WhatsApp --}}
+        @if(!empty($cleanPhone))
+            <a href="https://wa.me/{{ $cleanPhone }}"
+               target="_blank"
+               aria-label="WhatsApp"
+               class="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition duration-300 hover:scale-110">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+            </a>
+        @endif
+
+        {{-- Phone --}}
+        @if(!empty($firstPhone))
+            <a href="tel:{{ $firstPhone }}"
+               aria-label="Phone"
+               class="flex h-11 w-11 items-center justify-center rounded-full bg-[#00a8e8] text-white shadow-lg transition duration-300 hover:scale-110">
+                <i class="fa-solid fa-phone text-base"></i>
+            </a>
+        @endif
+
+       
+
+    </div>
+</div>
         </div>
 
         <div class="mt-12 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
             © {{ date('Y') }}     {{ __('شركة النور لخزانات المياه. جميع الحقوق محفوظة.') }}
         </div>
+        
+        
     </footer>
+    
+  
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -471,8 +1021,72 @@
             });
         })
     </script>
+    
+<style>
+    .desktopHeader.scrolled {
+        background: rgba(2, 8, 23, 0.95) !important;
+        color: #ffffff !important;
+    }
 
+    .desktopHeader.scrolled a,
+    .desktopHeader.scrolled nav a,
+    .desktopHeader.scrolled nav ul li a,
+    .desktopHeader.scrolled .group > a,
+    .desktopHeader.scrolled i {
+        color: #ffffff !important;
+    }
 
+    .desktopHeader.scrolled a:hover,
+    .desktopHeader.scrolled nav a:hover,
+    .desktopHeader.scrolled .group > a:hover {
+        color: #00c8ff !important;
+    }
+
+    .desktopHeader.scrolled nav ul li:first-child a {
+        color: #00c8ff !important;
+    }
+
+    .desktopHeader.scrolled .group ul a {
+        color: #374151 !important;
+    }
+
+    .desktopHeader.scrolled .group ul a:hover {
+        color: #00a8e8 !important;
+    }
+</style>
+<style>
+    .mobileHeader.scrolled {
+        background: rgba(2, 8, 23, 0.95) !important;
+        color: #ffffff !important;
+        box-shadow: 0 10px 35px rgba(0,0,0,.45) !important;
+    }
+
+    .mobileHeader.scrolled a,
+    .mobileHeader.scrolled i,
+    .mobileHeader.scrolled button {
+        color: #ffffff !important;
+    }
+
+    .mobileHeader.scrolled #menu-btn {
+        background: rgba(255,255,255,.10) !important;
+        color: #ffffff !important;
+    }
+</style>
+
+<script>
+    window.addEventListener('scroll', function () {
+        const desktopHeader = document.querySelector('.desktopHeader');
+        const mobileHeader = document.querySelector('.mobileHeader');
+
+        if (window.scrollY > 40) {
+            desktopHeader?.classList.add('scrolled');
+            mobileHeader?.classList.add('scrolled');
+        } else {
+            desktopHeader?.classList.remove('scrolled');
+            mobileHeader?.classList.remove('scrolled');
+        }
+    });
+</script>
 </body>
 
 </html>
