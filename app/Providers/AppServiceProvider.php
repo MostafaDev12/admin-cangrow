@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('references', ModelCategory::get());
             $settings->with('locations', Location::get());
             $settings->with('servicesWithoutCats', Service::whereNull('category_id')->get());
+            $settings->with('navCategories', Category::where('is_active',1)->orderBy('sort_order')->orderBy('id')->with('activeServices')->get());
         });
 
 

@@ -22,8 +22,8 @@
     <!-- Background -->
     <div class="absolute inset-0">
       <img
-    src="{{ asset('assets/images/about/about-hero.webp') }}"
-    alt="{{ __('من نحن') }}"
+    src="{{ $ps->about_hero_image ?: asset('assets/images/about/about-hero.webp') }}"
+    alt="{{ $ps->{'about_hero_title_' . $sign} ?? __('من نحن') }}"
     width="1600"
     height="900"
     fetchpriority="high"
@@ -38,15 +38,15 @@
     <!-- Content -->
     <div class="relative z-10 text-center px-4">
         <span class="inline-block mb-4 px-5 py-2 rounded-full bg-white/10 text-white/90 text-sm backdrop-blur-sm border border-white/20">
-            {{ __('شركة النور لخزانات المياه') }}
+            {{ $ps->{'about_hero_badge_' . $sign} ?? __('شركة النور لخزانات المياه') }}
         </span>
 
         <h1 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg">
-            {{ __('من نحن') }}
+            {{ $ps->{'about_hero_title_' . $sign} ?? __('من نحن') }}
         </h1>
 
         <p class="mt-5 max-w-2xl mx-auto text-white/85 text-lg leading-8">
-            {{ __('خبرة وجودة وثقة في صناعة خزانات المياه بأعلى معايير الأمان.') }}
+            {{ $ps->{'about_hero_details_' . $sign} ?? __('خبرة وجودة وثقة في صناعة خزانات المياه بأعلى معايير الأمان.') }}
         </p>
     </div>
 </section>
@@ -73,7 +73,7 @@
 
                 <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white bg-white p-3">
                     <img
-                        src="{{ asset('assets/images/about/about1.png') }}"
+                        src="{{ $ps->about_side_image ?: asset('assets/images/about/about1.png') }}"
                         alt="{{ __('عن الشركة') }}"
                         class="w-full h-[360px] md:h-[520px] object-cover rounded-[1.5rem]">
                 </div>
@@ -86,7 +86,7 @@
 
                 <div>
                     <span class="inline-block mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold">
-                        {{ __('نبذة عن الشركة') }}
+                        {{ $ps->{'about_badge_' . $sign} ?? __('نبذة عن الشركة') }}
                     </span>
 
                     <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
@@ -100,61 +100,29 @@
 
                 <!-- Stats -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    @foreach ($aboutPageStats as $stat)
                     <div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100">
-                        <div class="text-3xl font-extrabold text-primary mb-1">{{ __('10+') }}</div>
-                        <div class="text-sm text-gray-500">{{ __('عام خبرة') }}</div>
+                        <div class="text-3xl font-extrabold text-primary mb-1">{{ $stat->value }}</div>
+                        <div class="text-sm text-gray-500">{{ $stat->{'title_' . $sign} }}</div>
                     </div>
-
-                    <div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100">
-                        <div class="text-3xl font-extrabold text-primary mb-1">{{ __('99.7%') }}</div>
-                        <div class="text-sm text-gray-500">{{ __('رضا العملاء') }}</div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100">
-                        <div class="text-3xl font-extrabold text-primary mb-1">{{ __('45+') }}</div>
-                        <div class="text-sm text-gray-500">{{ __('منتج متنوع') }}</div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100">
-                        <div class="text-3xl font-extrabold text-primary mb-1">{{ __('24/7') }}</div>
-                        <div class="text-sm text-gray-500">{{ __('خدمة الدعم') }}</div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <!-- Product Features -->
                 <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
                     <h3 class="text-xl font-extrabold text-primary mb-5">
-                        {{ __('ما يميز منتجاتنا') }}
+                        {{ $ps->{'about_features_title_' . $sign} ?? __('ما يميز منتجاتنا') }}
                     </h3>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        @foreach ($aboutChecklist as $item)
                         <div class="flex items-center gap-3 text-gray-700">
                             <span class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                                 <i class="fas fa-check"></i>
                             </span>
-                            {{ __('خامات عالية الجودة') }}
+                            {{ $item->{'title_' . $sign} }}
                         </div>
-
-                        <div class="flex items-center gap-3 text-gray-700">
-                            <span class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                                <i class="fas fa-check"></i>
-                            </span>
-                            {{ __('مقاومة للصدأ والتآكل') }}
-                        </div>
-
-                        <div class="flex items-center gap-3 text-gray-700">
-                            <span class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                                <i class="fas fa-check"></i>
-                            </span>
-                            {{ __('تصميم آمن وصحي') }}
-                        </div>
-
-                        <div class="flex items-center gap-3 text-gray-700">
-                            <span class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                                <i class="fas fa-check"></i>
-                            </span>
-                            {{ __('سهولة النقل والتركيب') }}
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -165,53 +133,19 @@
         <!-- Mission + Values -->
         <div class="mt-20 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
+            @foreach ($aboutValues as $value)
             <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:-translate-y-1 transition">
                 <div class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center mb-5">
-                    <i data-lucide="award" class="h-6 w-6"></i>
+                    <i data-lucide="{{ $value->icon }}" class="h-6 w-6"></i>
                 </div>
                 <h3 class="text-lg font-extrabold text-gray-900 mb-3">
-                    {{ __('جودة مضمونة') }}
+                    {{ $value->{'title_' . $sign} }}
                 </h3>
                 <p class="text-gray-600 leading-7">
-                    {{ __('جميع الخزانات مصنوعة من خامات معتمدة ومعالجة غذائيًا لتخزين مياه الشرب بشكل آمن.') }}
+                    {{ $value->{'details_' . $sign} }}
                 </p>
             </div>
-
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:-translate-y-1 transition">
-                <div class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center mb-5">
-                    <i data-lucide="target" class="h-6 w-6"></i>
-                </div>
-                <h3 class="text-lg font-extrabold text-gray-900 mb-3">
-                    {{ __('التزام وموثوقية') }}
-                </h3>
-                <p class="text-gray-600 leading-7">
-                    {{ __('نحرص على تسليم منتجاتنا في المواعيد المحددة مع متابعة مستمرة لما بعد البيع.') }}
-                </p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:-translate-y-1 transition">
-                <div class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center mb-5">
-                    <i data-lucide="users" class="h-6 w-6"></i>
-                </div>
-                <h3 class="text-lg font-extrabold text-gray-900 mb-3">
-                    {{ __('عملاء سعداء') }}
-                </h3>
-                <p class="text-gray-600 leading-7">
-                    {{ __('نفتخر بوجود آلاف العملاء الراضين عن منتجاتنا داخل مصر وخارجها.') }}
-                </p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:-translate-y-1 transition">
-                <div class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center mb-5">
-                    <i data-lucide="lightbulb" class="h-6 w-6"></i>
-                </div>
-                <h3 class="text-lg font-extrabold text-gray-900 mb-3">
-                    {{ __('ابتكار وتطوير') }}
-                </h3>
-                <p class="text-gray-600 leading-7">
-                    {{ __('نواكب أحدث التقنيات العالمية في صناعة الخزانات ونطور منتجاتنا باستمرار.') }}
-                </p>
-            </div>
+            @endforeach
 
         </div>
 
@@ -220,10 +154,10 @@
         <div class="mt-16 bg-gradient-to-l from-primary to-secondary rounded-[2rem] p-8 md:p-12 text-white shadow-xl">
             <div class="max-w-4xl mx-auto text-center">
                 <h3 class="text-2xl md:text-4xl font-extrabold mb-5">
-                    {{ __('رسالتنا') }}
+                    {{ $ps->{'mission_title_' . $sign} ?? __('رسالتنا') }}
                 </h3>
                 <p class="text-white/90 leading-9 text-lg">
-                    {{ __('أن نكون الرواد في مجال صناعة خزانات المياه والحلول المتكاملة لتخزين المياه والمواد، مع توفير منتجات آمنة، صحية، وبأسعار في متناول الجميع.') }}
+                    {{ $ps->{'mission_details_' . $sign} ?? __('أن نكون الرواد في مجال صناعة خزانات المياه والحلول المتكاملة لتخزين المياه والمواد، مع توفير منتجات آمنة، صحية، وبأسعار في متناول الجميع.') }}
                 </p>
             </div>
         </div>

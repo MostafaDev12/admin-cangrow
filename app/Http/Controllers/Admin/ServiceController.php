@@ -7,7 +7,6 @@ use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Validator;
 
 class ServiceController extends Controller
@@ -25,13 +24,26 @@ class ServiceController extends Controller
          return Datatables::of($datas)
                             ->editColumn('photo', function(Service $data) {
                                 $photo =  $data->photo;
-                              
+
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
+                            })
+                            ->editColumn('title_ar', function(Service $data) {
+                                $badge = (empty($data->short_details_ar) && empty($data->details_ar))
+                                    ? ' <span class="badge bg-warning text-dark">يحتاج محتوى</span>'
+                                    : '';
+
+                                return e($data->title_ar) . $badge;
                             })
                              ->addColumn('category', function(Service $data) {
                                 $photo =  optional($data->category)->title_ar ?? '';
-                              
+
                                 return  $photo;
+                            })
+                            ->editColumn('sort_order', function(Service $data) {
+                                return $data->sort_order;
+                            })
+                            ->editColumn('is_active', function(Service $data) {
+                                return $data->is_active == 1 ? '<span class="badge bg-success">مفعل</span>' : '<span class="badge bg-danger">مخفي</span>';
                             })
                             ->addColumn('action', function(Service $data) {
                                 return '<div class="action-list">
@@ -43,7 +55,7 @@ class ServiceController extends Controller
                               <a href="javascript:;" data-href="' . route('admin-services-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
-                            ->rawColumns(['photo','action','category'])
+                            ->rawColumns(['photo','title_ar','action','category','is_active'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
 

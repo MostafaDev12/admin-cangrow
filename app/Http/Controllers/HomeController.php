@@ -33,6 +33,8 @@ use App\Models\Subscribe;
 use App\Models\Subscription;
 use App\Models\Testimonial;
 use App\Models\Timeline;
+use App\Models\SiteStat;
+use App\Models\Feature;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -67,7 +69,7 @@ class HomeController extends Controller
     $home_services = Service::get()->take(10);
     $models = PageModel::get();
     $features = ModelCategory::get();
-    $partners = Partner::get();
+    $partners = Partner::where('is_active',1)->orderBy('sort_order')->orderBy('id')->get();
     $medias = Media::get()->take(3);
     $after_befores = AfterBefore::get();
 $processes = Process::get();
@@ -75,9 +77,14 @@ $processes = Process::get();
     $timelines = Timeline::get();
           $testimonials = Testimonial::get();
     $blogs = Blog::orderby('id','desc')->get()->take(3);
-  $certificates = Certificate::get();
+  $certificates = Certificate::where('is_active',1)->orderBy('sort_order')->orderBy('id')->get();
   $servicess = Service::get();
-    return view('front.index', compact('sign', 'slider','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess'));
+    $homeSliders = Slider::where('is_active',1)->orderBy('sort_order')->orderBy('id')->get();
+    $homeCategories = Category::where('is_active',1)->orderBy('home_sort_order')->orderBy('id')->get();
+    $heroStats = SiteStat::where('is_active',1)->where('section','home_hero')->orderBy('sort_order')->orderBy('id')->get();
+    $aboutStats = SiteStat::where('is_active',1)->where('section','home_about')->orderBy('sort_order')->orderBy('id')->get();
+    $flipCards = Feature::where('is_active',1)->where('section','home_flip')->orderBy('sort_order')->orderBy('id')->get();
+    return view('front.index', compact('sign', 'slider','doctors','testimonials','processes','certificates','timelines', 'after_befores','medias', 'features', 'points','blogs', 'home_services', 'models', 'partners', 'servicess', 'homeSliders', 'homeCategories', 'heroStats', 'aboutStats', 'flipCards'));
   }
 
 
@@ -97,8 +104,11 @@ $processes = Process::get();
        $timelines = Timeline::get();
         $testimonials = Testimonial::get();
             $certificates = Certificate::get();
+    $aboutPageStats = SiteStat::where('is_active',1)->where('section','about_page')->orderBy('sort_order')->orderBy('id')->get();
+    $aboutChecklist = Feature::where('is_active',1)->where('section','about_checklist')->orderBy('sort_order')->orderBy('id')->get();
+    $aboutValues = Feature::where('is_active',1)->where('section','about_values')->orderBy('sort_order')->orderBy('id')->get();
 
-    return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
+    return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners', 'aboutPageStats', 'aboutChecklist', 'aboutValues'));
   }
 
    
@@ -246,17 +256,49 @@ public function services(Request $request, $lang)
 {
     $sign = $this->langSign($lang);
 
-    return view('front.services', compact('sign'));
+    $mainCategories = Category::where('is_active',1)->orderBy('sort_order')->orderBy('id')->get();
+
+    return view('front.services', compact('sign', 'mainCategories'));
 }
-  
-//   تعديل
+
 public function singleService(Request $request, $lang, $slug)
 {
     $sign = $this->langSign($lang);
 
-    return view('front.details-service', compact('sign', 'slug'));
+    $service = Service::where('is_active',1)->where(function($query) use ($slug) {
+        $query->where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug);
+    })->first();
+    if(!$service){
+
+      abort(404);
+    }
+
+         switch ($sign) {
+        case 'en':
+            $correctSlug = $service->slug_en;
+            break;
+        case 'ar':
+            $correctSlug = $service->slug_ar;
+            break;
+        case 'fr':
+            $correctSlug = $service->slug_fr;
+            break;
+        default:
+            $correctSlug = $service->slug_en;
+    }
+    if ($slug !== $correctSlug) {
+        if($lang){
+
+        return redirect()->to("/$sign/service/$correctSlug");
+        }else{
+
+
+        return redirect()->to("/service/$correctSlug");
+        }
+    }
+
+    return view('front.details-service', compact('sign', 'service'));
 }
-// تعديل
   public function singleCategory(Request $request,$lang, $slug)
   {
 
@@ -297,7 +339,15 @@ public function singleService(Request $request, $lang, $slug)
 {
     $sign = $this->langSign($lang);
 
-    return view('front.category', compact('sign', 'slug'));
+    $category = Category::where('is_active',1)->where(function($query) use ($slug) {
+        $query->where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug);
+    })->first();
+
+    $products = $category
+        ? $category->services()->where('is_active',1)->orderBy('sort_order')->orderBy('id')->get()
+        : collect();
+
+    return view('front.category', compact('sign', 'slug', 'category', 'products'));
 }
 
   public function root()

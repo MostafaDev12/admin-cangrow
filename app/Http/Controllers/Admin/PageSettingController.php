@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Currency;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Validator;
 
 class PageSettingController extends Controller
@@ -90,8 +89,48 @@ class PageSettingController extends Controller
                 $data->upload($name,$file,$data->before_photo);
                 $input['before_photo'] = $name;
             }
-              
-           
+
+
+            if ($file = $request->file('home_hero_image'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->getRawOriginal('home_hero_image'));
+                $input['home_hero_image'] = $name;
+            }
+
+
+            if ($file = $request->file('home_hero_image_mobile'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->getRawOriginal('home_hero_image_mobile'));
+                $input['home_hero_image_mobile'] = $name;
+            }
+
+
+            if ($file = $request->file('home_about_image'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->getRawOriginal('home_about_image'));
+                $input['home_about_image'] = $name;
+            }
+
+
+            if ($file = $request->file('about_hero_image'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->getRawOriginal('about_hero_image'));
+                $input['about_hero_image'] = $name;
+            }
+
+
+            if ($file = $request->file('about_side_image'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $data->upload($name,$file,$data->getRawOriginal('about_side_image'));
+                $input['about_side_image'] = $name;
+            }
+
+
         $data->update($input);
         //--- Logic Section Ends
 
@@ -115,6 +154,18 @@ class PageSettingController extends Controller
     public function aboutUs()
     {
         return view('admin.pagesetting.about_us');
+    }
+
+
+    public function homePage()
+    {
+        return view('admin.pagesetting.home_page');
+    }
+
+
+    public function aboutPage()
+    {
+        return view('admin.pagesetting.about_page');
     }
 
  

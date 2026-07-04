@@ -28,8 +28,9 @@ class Certificate extends Model
         'title_ar',
         'title_en',
         'title_fr',
-       
-      
+        'sort_order',
+        'is_active',
+
     ];
 
     

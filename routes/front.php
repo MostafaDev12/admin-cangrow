@@ -77,7 +77,8 @@ Route::middleware(['IpLocation', 'FrontLanguages'])->group(function () {
         Route::get('/contact/refresh_code', [HomeController::class, 'refresh_code'])->name('refresh_code.index');
         
 
-        Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
+        // Disabled for production: one-off WordPress import dev tool (unauthenticated, mutates blogs and ends in dd()).
+        // Route::get('/import-xml', [HomeController::class, 'import_xml'])->name('import_xml.index');
     
 
 

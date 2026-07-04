@@ -13,18 +13,18 @@
     @endphp
 
 
-<meta name="google-site-verification" content="ZcfPDEqhHasKzuMSstRL9kFRO_WINOX_n3xaSjXTMWk" />
- 
+<meta name="google-site-verification" content="{{ $gs->google_verification ?: 'ZcfPDEqhHasKzuMSstRL9kFRO_WINOX_n3xaSjXTMWk' }}" />
+
 
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CFB5B13HTJ"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $gs->analytics_id ?: 'G-CFB5B13HTJ' }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-CFB5B13HTJ');
+  gtag('config', '{{ $gs->analytics_id ?: 'G-CFB5B13HTJ' }}');
 </script>
 
     <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
@@ -131,10 +131,10 @@
 <div class="grid grid-cols-[220px_1fr_220px] items-center gap-6 h-[100px] overflow-visible">
             <!-- CTA - Left -->
             <div class="flex justify-start">
-                <a href="{{ asset('assets/images/files/catalog1.pdf') }}"
-                   download="catalog1.pdf"
+                <a href="{{ asset('assets/images/files/' . ($gs->catalog_file ?: 'catalog1.pdf')) }}"
+                   download="{{ $gs->catalog_file ?: 'catalog1.pdf' }}"
                    class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00c8ff] to-[#0877ff] px-6 py-3 text-sm font-bold text-white shadow-[0_0_25px_rgba(0,174,255,.45)] hover:scale-[1.03] transition">
-                    <span>{{ __('تحميل كتالوج PDF') }}</span>
+                    <span>{{ $gs->{'catalog_label_' . $sign} ?? __('تحميل كتالوج PDF') }}</span>
                     <i class="fas fa-download text-xs"></i>
                 </a>
             </div>
@@ -172,85 +172,29 @@
                                 </a>
                             </li>
 
-                            <!-- خزانات المياه -->
-                            <li class="relative group/tanks">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'خزانات-المياه']) }}"
+                            @php
+                                $menuGroups = ['tanks', 'booths', 'traffic', 'clubs', 'plastic'];
+                            @endphp
+                            @foreach ($navCategories as $navCategory)
+                            @php
+                                $menuGroup = $menuGroups[$loop->index % count($menuGroups)];
+                            @endphp
+                            <li class="relative group/{{ $menuGroup }}">
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => $navCategory->{'slug_' . $sign}]) }}"
                                    class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
-                                    <span>{{ __('خزانات المياه') }}</span>
+                                    <span>{{ $navCategory->{'title_' . $sign} }}</span>
                                     <i class="fas fa-chevron-left text-xs"></i>
                                 </a>
 
-                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/tanks:opacity-100 group-hover/tanks:visible transition-all duration-300 z-50 overflow-hidden">
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-مياه-أفقية']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات مياه أفقية') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-مياه-رأسية']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات مياه رأسية') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-البولي-إيثيلين']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات بولي إيثيلين') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-الفيبر-جلاس']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات فيبر جلاس') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-الاستانلس-ستيل']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('خزانات استانلس ستيل') }}</a></li>
+                                @if ($navCategory->activeServices->count())
+                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/{{ $menuGroup }}:opacity-100 group-hover/{{ $menuGroup }}:visible transition-all duration-300 z-50 overflow-hidden">
+                                    @foreach ($navCategory->activeServices as $navService)
+                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => $navService->{'slug_' . $sign}]) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ $navService->{'title_' . $sign} }}</a></li>
+                                    @endforeach
                                 </ul>
+                                @endif
                             </li>
-
-                            <!-- أكشاك وحمامات متنقلة -->
-                            <li class="relative group/booths">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'أكشاك-وحمامات-متنقلة']) }}"
-                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
-                                    <span>{{ __('أكشاك وحمامات متنقلة') }}</span>
-                                    <i class="fas fa-chevron-left text-xs"></i>
-                                </a>
-
-                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/booths:opacity-100 group-hover/booths:visible transition-all duration-300 z-50 overflow-hidden">
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أكشاك-حراسة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('أكشاك حراسة') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حمامات-متنقلة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('حمامات متنقلة') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'كرفانات']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('كرفانات') }}</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- مستلزمات المرور -->
-                            <li class="relative group/traffic">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'مستلزمات-المرور']) }}"
-                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
-                                    <span>{{ __('مستلزمات المرور') }}</span>
-                                    <i class="fas fa-chevron-left text-xs"></i>
-                                </a>
-
-                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/traffic:opacity-100 group-hover/traffic:visible transition-all duration-300 z-50 overflow-hidden">
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حواجز-مرورية']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('حواجز مرورية') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أقماع-مرور']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('أقماع مرور') }}</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- تجهيز النوادي والكيدز اريا -->
-                            <li class="relative group/clubs">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'تجهيز-النوادي-والكيدز-اريا']) }}"
-                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
-                                    <span>{{ __('تجهيز النوادي والكيدز اريا') }}</span>
-                                    <i class="fas fa-chevron-left text-xs"></i>
-                                </a>
-
-                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/clubs:opacity-100 group-hover/clubs:visible transition-all duration-300 z-50 overflow-hidden">
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أحواض-الزرع']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('أحواض الزرع') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'شازلونج']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('شازلونج') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'ممر-عائم']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('ممر عائم') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'مقاعد-بلاستيك']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('مقاعد بلاستيك') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'كراسي-هزاز-أطفالي']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('كراسي هزاز أطفالي') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'ترابيزات-قهوة-وسفرة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('ترابيزات قهوة وسفرة') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'طقطوقة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('طقطوقة') }}</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- منتجات بلاستيكية متنوعة -->
-                            <li class="relative group/plastic">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'منتجات-بلاستيكية-متنوعة']) }}"
-                                   class="flex items-center justify-between px-4 py-3 font-bold hover:text-[#00a8e8] hover:bg-[#eefaff]">
-                                    <span>{{ __('منتجات بلاستيكية متنوعة') }}</span>
-                                    <i class="fas fa-chevron-left text-xs"></i>
-                                </a>
-
-                                <ul class="absolute right-full top-0 w-72 bg-white text-gray-700 rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover/plastic:opacity-100 group-hover/plastic:visible transition-all duration-300 z-50 overflow-hidden">
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'بالتات']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('بالتات') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'آيس-بوكس']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('آيس بوكس') }}</a></li>
-                                    <li><a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حاويات-وسلات-قمامة']) }}" class="block px-4 py-3 hover:text-[#00a8e8] hover:bg-[#eefaff]">{{ __('حاويات وسلات قمامة') }}</a></li>
-                                </ul>
-                            </li>
+                            @endforeach
 
                         </ul>
                     </li>
@@ -309,11 +253,11 @@
 
         <div class="flex items-center gap-2">
 
-            <a href="{{ asset('assets/images/files/catalog1_mobile_.pdf') }}"
+            <a href="{{ asset('assets/images/files/' . ($gs->catalog_file_mobile ?: 'catalog1_mobile_.pdf')) }}"
                target="_blank"
                rel="noopener noreferrer"
                class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[#00c8ff] to-[#0877ff] px-3.5 py-2.5 text-xs font-bold text-white shadow-[0_0_20px_rgba(0,174,255,.4)] whitespace-nowrap transition">
-                <span>{{ __('كتالوج PDF') }}</span>
+                <span>{{ $gs->{'catalog_label_short_' . $sign} ?? __('كتالوج PDF') }}</span>
                 <i class="fas fa-download text-[11px]"></i>
             </a>
 
@@ -369,140 +313,33 @@
                             {{ __('عرض كل المنتجات') }}
                         </a>
 
-                        <!-- خزانات المياه -->
-                        <details class="group/tanks rounded-lg bg-gray-50 px-4 py-3">
+                        @php
+                            $mobileMenuGroups = ['tanks', 'booths', 'traffic', 'clubs', 'plastic'];
+                        @endphp
+                        @foreach ($navCategories as $navCategory)
+                        @php
+                            $mobileMenuGroup = $mobileMenuGroups[$loop->index % count($mobileMenuGroups)];
+                        @endphp
+                        <details class="group/{{ $mobileMenuGroup }} rounded-lg bg-gray-50 px-4 py-3">
                             <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
-                                <span>{{ __('خزانات المياه') }}</span>
-                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/tanks:rotate-180"></i>
+                                <span>{{ $navCategory->{'title_' . $sign} }}</span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/{{ $mobileMenuGroup }}:rotate-180"></i>
                             </summary>
 
                             <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'خزانات-المياه']) }}"
+                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => $navCategory->{'slug_' . $sign}]) }}"
                                    class="block py-2 font-bold text-[#00a8e8]">
                                     {{ __('عرض القسم') }}
                                 </a>
 
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-مياه-أفقية']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('خزانات مياه أفقية') }}
+                                @foreach ($navCategory->activeServices as $navService)
+                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => $navService->{'slug_' . $sign}]) }}" class="block py-2 hover:text-primary">
+                                    {{ $navService->{'title_' . $sign} }}
                                 </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-مياه-رأسية']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('خزانات مياه رأسية') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-البولي-إيثيلين']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('خزانات بولي إيثيلين') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-الفيبر-جلاس']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('خزانات فيبر جلاس') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'خزانات-الاستانلس-ستيل']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('خزانات استانلس ستيل') }}
-                                </a>
+                                @endforeach
                             </div>
                         </details>
-
-                        <!-- أكشاك وحمامات متنقلة -->
-                        <details class="group/booths rounded-lg bg-gray-50 px-4 py-3">
-                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
-                                <span>{{ __('أكشاك وحمامات متنقلة') }}</span>
-                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/booths:rotate-180"></i>
-                            </summary>
-
-                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'أكشاك-وحمامات-متنقلة']) }}"
-                                   class="block py-2 font-bold text-[#00a8e8]">
-                                    {{ __('عرض القسم') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أكشاك-حراسة']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('أكشاك حراسة') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حمامات-متنقلة']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('حمامات متنقلة') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'كرفانات']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('كرفانات') }}
-                                </a>
-                            </div>
-                        </details>
-
-                        <!-- مستلزمات المرور -->
-                        <details class="group/traffic rounded-lg bg-gray-50 px-4 py-3">
-                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
-                                <span>{{ __('مستلزمات المرور') }}</span>
-                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/traffic:rotate-180"></i>
-                            </summary>
-
-                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'مستلزمات-المرور']) }}"
-                                   class="block py-2 font-bold text-[#00a8e8]">
-                                    {{ __('عرض القسم') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حواجز-مرورية']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('حواجز مرورية') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أقماع-مرور']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('أقماع مرور') }}
-                                </a>
-                            </div>
-                        </details>
-
-                        <!-- تجهيز النوادي والكيدز اريا -->
-                        <details class="group/clubs rounded-lg bg-gray-50 px-4 py-3">
-                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
-                                <span>{{ __('تجهيز النوادي والكيدز اريا') }}</span>
-                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/clubs:rotate-180"></i>
-                            </summary>
-
-                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'تجهيز-النوادي-والكيدز-اريا']) }}"
-                                   class="block py-2 font-bold text-[#00a8e8]">
-                                    {{ __('عرض القسم') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'أحواض-الزرع']) }}" class="block py-2 hover:text-primary">{{ __('أحواض الزرع') }}</a>
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'شازلونج']) }}" class="block py-2 hover:text-primary">{{ __('شازلونج') }}</a>
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'ممر-عائم']) }}" class="block py-2 hover:text-primary">{{ __('ممر عائم') }}</a>
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'مقاعد-بلاستيك']) }}" class="block py-2 hover:text-primary">{{ __('مقاعد بلاستيك') }}</a>
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'كراسي-هزاز-أطفالي']) }}" class="block py-2 hover:text-primary">{{ __('كراسي هزاز أطفالي') }}</a>
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'ترابيزات-قهوة-وسفرة']) }}" class="block py-2 hover:text-primary">{{ __('ترابيزات قهوة وسفرة') }}</a>
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'طقطوقة']) }}" class="block py-2 hover:text-primary">{{ __('طقطوقة') }}</a>
-                            </div>
-                        </details>
-
-                        <!-- منتجات بلاستيكية متنوعة -->
-                        <details class="group/plastic rounded-lg bg-gray-50 px-4 py-3">
-                            <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-800">
-                                <span>{{ __('منتجات بلاستيكية متنوعة') }}</span>
-                                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open/plastic:rotate-180"></i>
-                            </summary>
-
-                            <div class="mt-3 flex flex-col gap-2 pr-3 text-sm text-gray-600">
-                                <a href="{{ route('single-category-service.index', ['lang' => $sign, 'slug' => 'منتجات-بلاستيكية-متنوعة']) }}"
-                                   class="block py-2 font-bold text-[#00a8e8]">
-                                    {{ __('عرض القسم') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'بالتات']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('بالتات') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'آيس-بوكس']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('آيس بوكس') }}
-                                </a>
-
-                                <a href="{{ route('single-service-service.index', ['lang' => $sign, 'slug' => 'حاويات-وسلات-قمامة']) }}" class="block py-2 hover:text-primary">
-                                    {{ __('حاويات وسلات قمامة') }}
-                                </a>
-                            </div>
-                        </details>
+                        @endforeach
 
                     </div>
                 </details>
@@ -528,11 +365,11 @@
             </li>
 
             <li class="pt-4 border-t border-white/10">
-                <a href="{{ asset('assets/images/files/catalog1_mobile_.pdf') }}"
+                <a href="{{ asset('assets/images/files/' . ($gs->catalog_file_mobile ?: 'catalog1_mobile_.pdf')) }}"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00c8ff] to-[#0877ff] px-4 py-3 text-sm font-bold text-white shadow-[0_0_20px_rgba(0,174,255,.35)]">
-                    <span>{{ __('تحميل كتالوج PDF') }}</span>
+                    <span>{{ $gs->{'catalog_label_' . $sign} ?? __('تحميل كتالوج PDF') }}</span>
                     <i class="fas fa-download text-xs"></i>
                 </a>
             </li>
@@ -642,55 +479,17 @@
 
     <ul class="space-y-4 text-gray-300">
 
+        @foreach ($navCategories as $navCategory)
         <li>
             <a href="{{ route('single-category-service.index', [
                     'lang' => $sign,
-                    'slug' => 'خزانات-المياه'
+                    'slug' => $navCategory->{'slug_' . $sign}
                 ]) }}"
                class="transition hover:text-[#00a8e8]">
-                {{ __('خزانات المياه') }}
+                {{ $navCategory->{'title_' . $sign} }}
             </a>
         </li>
-
-        <li>
-            <a href="{{ route('single-category-service.index', [
-                    'lang' => $sign,
-                    'slug' => 'أكشاك-وحمامات-متنقلة'
-                ]) }}"
-               class="transition hover:text-[#00a8e8]">
-                {{ __('أكشاك وحمامات متنقلة') }}
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('single-category-service.index', [
-                    'lang' => $sign,
-                    'slug' => 'مستلزمات-المرور'
-                ]) }}"
-               class="transition hover:text-[#00a8e8]">
-                {{ __('مستلزمات المرور') }}
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('single-category-service.index', [
-                    'lang' => $sign,
-                    'slug' => 'تجهيز-النوادي-والكيدز-اريا'
-                ]) }}"
-               class="transition hover:text-[#00a8e8]">
-                {{ __('تجهيز النوادي والكيدز اريا') }}
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('single-category-service.index', [
-                    'lang' => $sign,
-                    'slug' => 'منتجات-بلاستيكية-متنوعة'
-                ]) }}"
-               class="transition hover:text-[#00a8e8]">
-                {{ __('منتجات بلاستيكية متنوعة') }}
-            </a>
-        </li>
+        @endforeach
 
     </ul>
 </div>
@@ -804,7 +603,7 @@
         </div>
 
         <div class="mt-12 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
-            © {{ date('Y') }}     {{ __('شركة النور لخزانات المياه. جميع الحقوق محفوظة.') }}
+            © {{ date('Y') }}     {{ $gs->{'copyright_' . $sign} ?? __('شركة النور لخزانات المياه. جميع الحقوق محفوظة.') }}
         </div>
         
         
@@ -938,7 +737,23 @@
     <script type="text/javascript">
         var mainurl = "{{ url('/' . $sign) }}";
         var mainurl2 = "{{ url('/') }}";
-        var gs = {!! json_encode($gs) !!};
+        {{-- Frontend-safe settings only: never serialize the full generalsettings row
+             (it holds SMTP credentials and other private configuration). --}}
+        var gs = {!! json_encode($gs->only([
+            'favicon', 'logo_ar', 'logo_en', 'logo_fr',
+            'title_ar', 'title_en', 'title_fr',
+            'footer_ar', 'footer_en', 'footer_fr',
+            'phones', 'emails',
+            'addresses_ar', 'addresses_en', 'addresses_fr',
+            'map', 'map_link',
+            'working_days_ar', 'working_days_en',
+            'working_hours_ar', 'working_hours_en',
+            'copyright_ar', 'copyright_en',
+            'catalog_file', 'catalog_file_mobile',
+            'catalog_label_ar', 'catalog_label_en',
+            'catalog_label_short_ar', 'catalog_label_short_en',
+            'lang_arabic', 'lang_english', 'lang_france',
+        ])) !!};
         var langg = {!! json_encode($sign) !!};
         var mainurl2 = "{{ url('/') }}";
 

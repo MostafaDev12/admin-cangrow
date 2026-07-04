@@ -28,7 +28,8 @@
                                         <thead>
                                             <tr>
                                               <th>{{ __('translation.photo') }}</th>
-                                          
+                                              <th>الترتيب</th>
+                                              <th>الحالة</th>
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
                                         </thead>
@@ -87,7 +88,8 @@
                ajax: '{{ route('admin-certificates-datatables') }}',
                columns: [
                         { data: 'photo', name: 'photo' },
-                         
+                        { data: 'sort_order', name: 'sort_order' },
+                        { data: 'is_active', name: 'is_active' },
                         { data: 'action', searchable: false, orderable: false }
 
                      ],

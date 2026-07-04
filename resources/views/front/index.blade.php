@@ -30,9 +30,9 @@
     <!-- Background Image -->
     <picture class="absolute inset-0">
         <source media="(max-width:767px)"
-            srcset="{{ asset('assets/images/about/hero-mob.png') }}">
+            srcset="{{ $ps->home_hero_image_mobile ?: asset('assets/images/about/hero-mob.png') }}">
 
-        <img src="{{ asset('assets/images/about/hero-des.png') }}"
+        <img src="{{ $ps->home_hero_image ?: asset('assets/images/about/hero-des.png') }}"
              alt="خزانات مياه النور"
              width="1920"
              height="5450"
@@ -56,7 +56,7 @@
             <!-- Text -->
             <div class="max-w-xl text-right">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-                    {{ __(' أفضل شركة خزانات مياه في مصر') }}
+                    {{ $ps->{'home_hero_title_' . $sign} ?? __(' أفضل شركة خزانات مياه في مصر') }}
                 </h1>
 
                 <p class="mt-6 text-base md:text-lg text-white/85 leading-8">
@@ -64,9 +64,9 @@
                 </p>
 
                 <div class="mt-8 flex justify-end">
-                    <a href="{{ route('contact.index', ['lang' => $sign]) }}"
+                    <a href="{{ $ps->home_hero_cta_link ?: route('contact.index', ['lang' => $sign]) }}"
                        class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#00c8ff] to-[#0877ff] px-8 py-3.5 text-sm font-bold text-white shadow-[0_0_25px_rgba(0,174,255,.45)] hover:scale-[1.03] transition">
-                        {{ __('تواصل معنا') }}
+                        {{ $ps->{'home_hero_cta_text_' . $sign} ?? __('تواصل معنا') }}
                         <i class="fas fa-arrow-left text-xs"></i>
                     </a>
                 </div>
@@ -83,53 +83,19 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 
+                @foreach ($heroStats as $stat)
                 <div class="rounded-2xl border border-white/10 bg-white/8 backdrop-blur-md p-5 shadow-[0_15px_35px_rgba(0,0,0,.25)]">
                     <div class="flex items-center gap-4">
                         <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#00c8ff]/15 text-[#00c8ff] text-xl">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="{{ $stat->icon }}"></i>
                         </span>
                         <div>
-                            <div class="text-2xl font-extrabold text-[#00c8ff]">100%</div>
-                            <div class="text-sm text-white/80">{{ __('جودة مضمونة') }}</div>
+                            <div class="text-2xl font-extrabold text-[#00c8ff]">{{ $stat->value }}</div>
+                            <div class="text-sm text-white/80">{{ $stat->{'title_' . $sign} }}</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="rounded-2xl border border-white/10 bg-white/8 backdrop-blur-md p-5 shadow-[0_15px_35px_rgba(0,0,0,.25)]">
-                    <div class="flex items-center gap-4">
-                        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#00c8ff]/15 text-[#00c8ff] text-xl">
-                            <i class="fas fa-users"></i>
-                        </span>
-                        <div>
-                            <div class="text-2xl font-extrabold text-[#00c8ff]">5000+</div>
-                            <div class="text-sm text-white/80">{{ __('عميل راضٍ') }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rounded-2xl border border-white/10 bg-white/8 backdrop-blur-md p-5 shadow-[0_15px_35px_rgba(0,0,0,.25)]">
-                    <div class="flex items-center gap-4">
-                        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#00c8ff]/15 text-[#00c8ff] text-xl">
-                            <i class="fas fa-award"></i>
-                        </span>
-                        <div>
-                            <div class="text-2xl font-extrabold text-[#00c8ff]">10+</div>
-                            <div class="text-sm text-white/80">{{ __('سنوات خبرة') }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rounded-2xl border border-white/10 bg-white/8 backdrop-blur-md p-5 shadow-[0_15px_35px_rgba(0,0,0,.25)]">
-                    <div class="flex items-center gap-4">
-                        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#00c8ff]/15 text-[#00c8ff] text-xl">
-                            <i class="fas fa-tint"></i>
-                        </span>
-                        <div>
-                            <div class="text-2xl font-extrabold text-[#00c8ff]">100%</div>
-                            <div class="text-sm text-white/80">{{ __('مواد آمنة') }}</div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
@@ -149,7 +115,7 @@
             <!-- Text -->
             <div class="order-1 lg:order-1 text-right">
                 <span class="inline-flex items-center rounded-full bg-primary/10 text-primary px-5 py-2 text-sm font-bold mb-5">
-                    {{ __('من نحن') }}
+                    {{ $ps->{'home_about_badge_' . $sign} ?? __('من نحن') }}
                 </span>
 
                 <h2 class="text-4xl md:text-5xl font-extrabold text-[#020817] leading-tight mb-6">
@@ -161,25 +127,17 @@
                 </div>
 
                 <div class="grid grid-cols-3 gap-4 mb-8 max-w-xl">
+                    @foreach ($aboutStats as $stat)
                     <div class="rounded-2xl bg-white shadow-md border border-gray-100 p-4 text-center">
-                        <div class="text-2xl font-extrabold text-primary">10+</div>
-                        <div class="text-xs text-gray-500 mt-1">{{ __('سنوات خبرة') }}</div>
+                        <div class="text-2xl font-extrabold text-primary">{{ $stat->value }}</div>
+                        <div class="text-xs text-gray-500 mt-1">{{ $stat->{'title_' . $sign} }}</div>
                     </div>
-
-                    <div class="rounded-2xl bg-white shadow-md border border-gray-100 p-4 text-center">
-                        <div class="text-2xl font-extrabold text-primary">5000+</div>
-                        <div class="text-xs text-gray-500 mt-1">{{ __('عميل') }}</div>
-                    </div>
-
-                    <div class="rounded-2xl bg-white shadow-md border border-gray-100 p-4 text-center">
-                        <div class="text-2xl font-extrabold text-primary">100%</div>
-                        <div class="text-xs text-gray-500 mt-1">{{ __('جودة') }}</div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <a href="{{ route('about.index', $sign) }}"
                    class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#00c8ff] to-[#0877ff] text-white px-8 py-4 rounded-2xl font-bold shadow-[0_15px_35px_rgba(0,174,255,.25)] transition hover:scale-[1.03]">
-                    {{ __('اقرأ المزيد') }}
+                    {{ $ps->{'home_about_cta_text_' . $sign} ?? __('اقرأ المزيد') }}
                     <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
@@ -191,14 +149,14 @@
     <div class="relative rounded-[3.5rem] bg-white p-10 md:p-12 shadow-2xl border border-white max-w-[620px] mx-auto">
         <picture>
             <source media="(max-width: 767px)"
-                srcset="{{ asset('assets/images/about/about-nour.webp') }}">
+                srcset="{{ $ps->home_about_image ?: asset('assets/images/about/about-nour.webp') }}">
 
             <source media="(min-width: 768px)"
-                srcset="{{ asset('assets/images/about/about-nour.webp') }}">
+                srcset="{{ $ps->home_about_image ?: asset('assets/images/about/about-nour.webp') }}">
 
             <img
-                src="{{ asset('assets/images/about/about-nour.webp') }}"
-                alt="{{ __('من نحن') }}"
+                src="{{ $ps->home_about_image ?: asset('assets/images/about/about-nour.webp') }}"
+                alt="{{ $ps->{'home_about_badge_' . $sign} ?? __('من نحن') }}"
                 width="900"
                 height="620"
                 loading="lazy"
@@ -213,32 +171,38 @@
 </section>
 <!-- ABOUT PREVIEW SECTION -->
 <!-- منتجاتنا -->
+@php
+    $slideCount = max($homeSliders->count(), 1);
+    $slideDuration = 4 * $slideCount;
+    $slideOut = (int) round(100 / $slideCount);
+    $slideIn = max($slideOut - 5, 1);
+@endphp
 <style>
     @keyframes productFade {
-        0%, 28% { opacity: 1; }
-        33%, 100% { opacity: 0; }
+        0%, {{ $slideIn }}% { opacity: 1; }
+        {{ $slideOut }}%, 100% { opacity: 0; }
     }
 
     .product-slide {
-        animation: productFade 12s infinite ease-in-out;
+        animation: productFade {{ $slideDuration }}s infinite ease-in-out;
     }
 
-    .product-slide:nth-child(1) { animation-delay: 0s; }
-    .product-slide:nth-child(2) { animation-delay: 4s; }
-    .product-slide:nth-child(3) { animation-delay: 8s; }
+    @foreach ($homeSliders as $slide)
+    .product-slide:nth-child({{ $loop->iteration }}) { animation-delay: {{ $loop->index * 4 }}s; }
+    @endforeach
 
     @keyframes dotActive {
-        0%, 28% { width: 32px; opacity: 1; }
-        33%, 100% { width: 8px; opacity: .35; }
+        0%, {{ $slideIn }}% { width: 32px; opacity: 1; }
+        {{ $slideOut }}%, 100% { width: 8px; opacity: .35; }
     }
 
     .product-dot {
-        animation: dotActive 12s infinite ease-in-out;
+        animation: dotActive {{ $slideDuration }}s infinite ease-in-out;
     }
 
-    .product-dot:nth-child(1) { animation-delay: 0s; }
-    .product-dot:nth-child(2) { animation-delay: 4s; }
-    .product-dot:nth-child(3) { animation-delay: 8s; }
+    @foreach ($homeSliders as $slide)
+    .product-dot:nth-child({{ $loop->iteration }}) { animation-delay: {{ $loop->index * 4 }}s; }
+    @endforeach
 </style>
 
 <section class="w-full py-8 px-3 bg-[#f3f8fc] overflow-hidden max-md:py-5 max-md:px-2">
@@ -246,17 +210,11 @@
 
         <!-- Slides -->
         <div class="absolute inset-0">
-            <img src="{{ asset('assets/images/about/منتجاتنا1.webp') }}"
-                 alt="{{ __('منتجاتنا') }}"
-                 class="product-slide absolute inset-0 w-full h-full object-cover object-center">
-
-            <img src="{{ asset('assets/images/about/منتجاتنا2.webp') }}"
-                 alt="{{ __('منتجاتنا') }}"
-                 class="product-slide absolute inset-0 w-full h-full object-cover object-center opacity-0">
-
-            <img src="{{ asset('assets/images/about/منتجاتنا3.webp') }}"
-                 alt="{{ __('منتجاتنا') }}"
-                 class="product-slide absolute inset-0 w-full h-full object-cover object-center opacity-0">
+            @foreach ($homeSliders as $slide)
+            <img src="{{ $slide->photo }}"
+                 alt="{{ $slide->{'title_' . $sign} ?? __('منتجاتنا') }}"
+                 class="product-slide absolute inset-0 w-full h-full object-cover object-center{{ $loop->first ? '' : ' opacity-0' }}">
+            @endforeach
         </div>
 
         <!-- Corner Shapes -->
@@ -277,9 +235,9 @@
 
         <!-- Dots -->
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[5] flex items-center gap-2 max-md:bottom-2">
+            @foreach ($homeSliders as $slide)
             <span class="product-dot h-2 rounded-full bg-[#12a8db]"></span>
-            <span class="product-dot h-2 rounded-full bg-[#12a8db]"></span>
-            <span class="product-dot h-2 rounded-full bg-[#12a8db]"></span>
+            @endforeach
         </div>
 
     </div>
@@ -334,127 +292,71 @@
        <div class="text-center mb-14">
     <h2 class="flex items-center justify-center gap-3 text-3xl md:text-4xl font-extrabold text-[#172033]">
         <i class="fas fa-gem text-primary text-2xl md:text-3xl"></i>
-        {{ __('استثمار يدوم... وجودة تثق بها') }}
+        {{ $ps->{'home_cards_title_' . $sign} ?? __('استثمار يدوم... وجودة تثق بها') }}
     </h2>
 
     <p class="mt-4 text-gray-600 text-lg">
-        {{ __('منتجات مصممة لتتحمل أقسى الظروف، وتوفر أعلى مستويات الأمان والكفاءة.') }}
+        {{ $ps->{'home_cards_details_' . $sign} ?? __('منتجات مصممة لتتحمل أقسى الظروف، وتوفر أعلى مستويات الأمان والكفاءة.') }}
     </p>
 </div>
 
+        @php
+            $flipStyles = [
+                ['border' => 'border-[#172033]', 'text' => 'text-[#172033]', 'back' => 'bg-[#172033]'],
+                ['border' => 'border-[#00a8e8]', 'text' => 'text-[#00a8e8]', 'back' => 'bg-[#00a8e8]'],
+                ['border' => 'border-primary', 'text' => 'text-primary', 'back' => 'bg-[#172033]'],
+            ];
+        @endphp
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            <!-- Card 1 -->
+            @foreach ($flipCards as $card)
+            @php
+                $flipStyle = $flipStyles[$loop->index % count($flipStyles)];
+            @endphp
             <div class="flip-card h-[390px]">
                 <div class="flip-inner relative w-full h-full">
 
                     <!-- Front -->
                     <div class="flip-front absolute inset-0 bg-white rounded-[22px] overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,.12)] border border-gray-100 text-center">
                         <div class="relative h-full flex flex-col items-center justify-center px-6">
-                            <img src="{{ asset('assets/images/about/الشركة.webp') }}"
-                                 alt="{{ __('الشركة') }}"
+                            <img src="{{ $card->photo }}"
+                                 alt="{{ $card->{'title_' . $sign} }}"
                                  class="absolute inset-0 w-full h-full object-cover">
 
                             <div class="absolute inset-0 bg-gradient-to-b from-black/15 via-white/35 to-white"></div>
 
-                            <div class="relative z-10 mt-10 w-32 h-32 rounded-full bg-white border-2 border-[#172033] shadow-[0_12px_35px_rgba(0,0,0,.15)] flex items-center justify-center">
-                                <i class="fas fa-handshake text-[#172033] text-5xl"></i>
+                            <div class="relative z-10 mt-10 w-32 h-32 rounded-full bg-white border-2 {{ $flipStyle['border'] }} shadow-[0_12px_35px_rgba(0,0,0,.15)] flex items-center justify-center">
+                                <i class="{{ $card->icon }} {{ $flipStyle['text'] }} text-5xl"></i>
                             </div>
 
-                            <h3 class="relative z-10 mt-8 text-2xl font-extrabold text-[#172033]">
-                                {{ __('الشركة') }}
+                            <h3 class="relative z-10 mt-8 text-2xl font-extrabold {{ $flipStyle['text'] }}">
+                                {{ $card->{'title_' . $sign} }}
                             </h3>
                         </div>
                     </div>
 
                     <!-- Back -->
-                    <div class="flip-back absolute inset-0 bg-[#172033] rounded-[22px] shadow-[0_18px_45px_rgba(0,0,0,.12)] text-white p-8 flex items-center">
+                    <div class="flip-back absolute inset-0 {{ $flipStyle['back'] }} rounded-[22px] shadow-[0_18px_45px_rgba(0,0,0,.12)] text-white p-8 flex items-center">
                         <ul class="space-y-4 text-sm md:text-base leading-8 font-semibold text-start">
-                            <li>• {{ __('شركة نور تانك للصناعات البلاستيكية من الشركات الرائدة في تصنيع خزانات المياه.') }}</li>
-                            <li>• {{ __('نلتزم بتقديم منتجات موثوقة وآمنة تلبي احتياجات العملاء.') }}</li>
-                            <li>• {{ __('رؤيتنا أن نكون الاختيار الأول في حلول تخزين المياه.') }}</li>
+                            @foreach (preg_split('/\r\n|\r|\n/', (string) $card->{'details_' . $sign}) as $line)
+                            @if (trim($line) !== '')
+                            <li>• {{ $line }}</li>
+                            @endif
+                            @endforeach
                         </ul>
                     </div>
 
                 </div>
             </div>
-
-            <!-- Card 2 -->
-            <div class="flip-card h-[390px]">
-                <div class="flip-inner relative w-full h-full">
-
-                    <!-- Front -->
-                    <div class="flip-front absolute inset-0 bg-white rounded-[22px] overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,.12)] border border-gray-100 text-center">
-                        <div class="relative h-full flex flex-col items-center justify-center px-6">
-                            <img src="{{ asset('assets/images/about/team.webp') }}"
-                                 alt="{{ __('فريق العمل') }}"
-                                 class="absolute inset-0 w-full h-full object-cover">
-
-                            <div class="absolute inset-0 bg-gradient-to-b from-black/15 via-white/35 to-white"></div>
-
-                            <div class="relative z-10 mt-10 w-32 h-32 rounded-full bg-white border-2 border-[#00a8e8] shadow-[0_12px_35px_rgba(0,0,0,.15)] flex items-center justify-center">
-                                <i class="fas fa-users text-[#00a8e8] text-5xl"></i>
-                            </div>
-
-                            <h3 class="relative z-10 mt-8 text-2xl font-extrabold text-[#00a8e8]">
-                                {{ __('فريق العمل') }}
-                            </h3>
-                        </div>
-                    </div>
-
-                    <!-- Back -->
-                    <div class="flip-back absolute inset-0 bg-[#00a8e8] rounded-[22px] shadow-[0_18px_45px_rgba(0,0,0,.12)] text-white p-8 flex items-center">
-                        <ul class="space-y-4 text-sm md:text-base leading-8 font-semibold text-start">
-                            <li>• {{ __('لدينا فريق من المهندسين والفنيين ذوي الخبرة والكفاءة العالية.') }}</li>
-                            <li>• {{ __('نعمل بروح واحدة لتحقيق الجودة والدقة في كل مرحلة من مراحل التصنيع.') }}</li>
-                            <li>• {{ __('نؤمن أن العنصر البشري هو أساس النجاح والابتكار.') }}</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="flip-card h-[390px]">
-                <div class="flip-inner relative w-full h-full">
-
-                    <!-- Front -->
-                    <div class="flip-front absolute inset-0 bg-white rounded-[22px] overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,.12)] border border-gray-100 text-center">
-                        <div class="relative h-full flex flex-col items-center justify-center px-6">
-                            <img src="{{ asset('assets/images/about/تقنيات حديثة.webp') }}"
-                                 alt="{{ __('تقنيات حديثة') }}"
-                                 class="absolute inset-0 w-full h-full object-cover">
-
-                            <div class="absolute inset-0 bg-gradient-to-b from-black/15 via-white/35 to-white"></div>
-
-                            <div class="relative z-10 mt-10 w-32 h-32 rounded-full bg-white border-2 border-primary shadow-[0_12px_35px_rgba(0,0,0,.15)] flex items-center justify-center">
-                                <i class="fas fa-industry text-primary text-5xl"></i>
-                            </div>
-
-                            <h3 class="relative z-10 mt-8 text-2xl font-extrabold text-primary">
-                                {{ __('تقنيات حديثة') }}
-                            </h3>
-                        </div>
-                    </div>
-
-                    <!-- Back -->
-                   <div class="flip-back absolute inset-0 bg-[#172033] rounded-[22px] shadow-[0_18px_45px_rgba(0,0,0,.12)] text-white p-8 flex items-center">
-                        <ul class="space-y-4 text-sm md:text-base leading-8 font-semibold text-start">
-                            <li>• {{ __('نستخدم أحدث التقنيات والمعدات في عمليات التصنيع.') }}</li>
-                            <li>• {{ __('نحرص على التطوير المستمر لمواكبة أعلى معايير الجودة.') }}</li>
-                            <li>• {{ __('منتجاتنا مصممة لتدوم طويلاً وتتحمل مختلف الظروف.') }}</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
+            @endforeach
 
         </div>
 
         <div class="mt-14 text-center">
             <a href="{{ route('about.index', $sign) }}"
                class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition">
-                {{ __('المزيد عن نور تانك') }}
+                {{ $ps->{'home_cards_cta_text_' . $sign} ?? __('المزيد عن نور تانك') }}
                 <i class="fas fa-arrow-left"></i>
             </a>
         </div>
@@ -470,29 +372,17 @@
 
         <div class="text-center mb-10 md:mb-12 px-4">
             <span class="inline-flex rounded-full bg-primary/10 text-primary px-5 py-2 font-bold mb-4">
-                شركاء النجاح
+                {{ $ps->{'home_clients_badge_' . $sign} ?? 'شركاء النجاح' }}
             </span>
 
             <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-[#0F2740]">
-                عملاؤنا
+                {{ $ps->{'home_clients_title_' . $sign} ?? 'عملاؤنا' }}
             </h2>
 
             <p class="text-gray-600 text-lg md:text-xl">
-                نفخر بثقة كبرى الشركات والمؤسسات في منتجات النور تانك وخدماتها.
+                {{ $ps->{'home_clients_details_' . $sign} ?? 'نفخر بثقة كبرى الشركات والمؤسسات في منتجات النور تانك وخدماتها.' }}
             </p>
         </div>
-
-        @php
-            $clients = [
-                ['steel.webp', 'Egyptian Steel'],
-                ['ennpi.webp', 'Enppi'],
-                ['misr-elkhair.webp', 'Misr El Kheir'],
-                ['tmg.webp', 'TMG'],
-                ['damac.webp', 'Damac'],
-                ['besix.webp', 'Besix'],
-                ['m-f.webp', 'Madaar'],
-            ];
-        @endphp
 
         <div class="relative w-full py-5 overflow-hidden">
 
@@ -503,11 +393,11 @@
                 <div class="clients-track">
 
                     <div class="clients-set">
-                        @foreach ($clients as $client)
+                        @foreach ($partners as $client)
                             <div class="client-card">
                                 <img
-                                    src="{{ asset('assets/images/about/' . $client[0]) }}"
-                                    alt="{{ $client[1] }}"
+                                    src="{{ $client->photo }}"
+                                    alt="{{ $client->{'title_' . $sign} }}"
                                     loading="lazy"
                                     decoding="async"
                                     class="client-img">
@@ -516,10 +406,10 @@
                     </div>
 
                     <div class="clients-set" aria-hidden="true">
-                        @foreach ($clients as $client)
+                        @foreach ($partners as $client)
                             <div class="client-card">
                                 <img
-                                    src="{{ asset('assets/images/about/' . $client[0]) }}"
+                                    src="{{ $client->photo }}"
                                     alt=""
                                     loading="lazy"
                                     decoding="async"
@@ -529,10 +419,10 @@
                     </div>
 
                     <div class="clients-set" aria-hidden="true">
-                        @foreach ($clients as $client)
+                        @foreach ($partners as $client)
                             <div class="client-card">
                                 <img
-                                    src="{{ asset('assets/images/about/' . $client[0]) }}"
+                                    src="{{ $client->photo }}"
                                     alt=""
                                     loading="lazy"
                                     decoding="async"
@@ -662,77 +552,19 @@
 <section id="services" class="py-20 bg-gray-50 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-       @php
-    $homeCategories = [
-        [
-            'title' => __('أكشاك وحمامات متنقلة'),
-            'description' => __('حلول عملية للمواقع والشركات والنوادي، تشمل أكشاك الحراسة والحمامات المتنقلة والكرفانات بمقاسات متعددة.'),
-            'image' => asset('assets/images/services/portable-booths-webp'),
-            'url' => route('single-category-service.index', [
-                'lang' => $sign,
-                'slug' => 'أكشاك-وحمامات-متنقلة'
-            ]),
-            'icon' => 'fa-solid fa-house'
-        ],
-
-        [
-            'title' => __('مستلزمات المرور'),
-            'description' => __('منتجات مخصصة لتنظيم المرور وتعزيز السلامة، مثل الحواجز المرورية وأقماع المرور والمنتجات التحذيرية.'),
-            'image' => asset('assets/images/services/traffic-supplies.webp'),
-            'url' => route('single-category-service.index', [
-                'lang' => $sign,
-                'slug' => 'مستلزمات-المرور'
-            ]),
-            'icon' => 'fa-solid fa-road-barrier'
-        ],
-
-        [
-            'title' => __('خزانات المياه'),
-            'description' => __('خزانات مياه عالية الجودة بمختلف الأنواع والمقاسات، تشمل الخزانات الرأسية والأفقية والبولي إيثيلين والفيبر جلاس والاستانلس ستيل.'),
-            'image' => asset('assets/images/services/water-tanks.webp'),
-            'url' => route('single-category-service.index', [
-                'lang' => $sign,
-                'slug' => 'خزانات-المياه'
-            ]),
-            'icon' => 'fa-solid fa-water'
-        ],
-
-        [
-            'title' => __('تجهيز النوادي والكيدز اريا'),
-            'description' => __('تجهيزات عملية للنوادي ومناطق الأطفال، تشمل أحواض الزرع والشازلونج والمقاعد والترابيزات والمنتجات المتنوعة.'),
-            'image' => asset('assets/images/services/clubs-kids-area.webp'),
-            'url' => route('single-category-service.index', [
-                'lang' => $sign,
-                'slug' => 'تجهيز-النوادي-والكيدز-اريا'
-            ]),
-            'icon' => 'fa-solid fa-umbrella-beach'
-        ],
-
-        [
-            'title' => __('منتجات بلاستيكية متنوعة'),
-            'description' => __('منتجات بلاستيكية متعددة الاستخدامات، مثل البالتات والآيس بوكس وحاويات وسلات القمامة والمنتجات الصناعية.'),
-            'image' => asset('assets/images/services/plastic-products.webp'),
-            'url' => route('single-category-service.index', [
-                'lang' => $sign,
-                'slug' => 'منتجات-بلاستيكية-متنوعة'
-            ]),
-            'icon' => 'fa-solid fa-boxes-stacked'
-        ],
-    ];
-@endphp
         {{-- Section Header --}}
         <div class="text-center mb-14">
 
             <span class="inline-flex items-center justify-center rounded-full bg-[#e8f8ff] px-5 py-2 text-sm font-bold text-[#00a8e8] mb-4">
-                {{ __('خدماتنا ومنتجاتنا') }}
+                {{ $ps->{'home_products_badge_' . $sign} ?? __('خدماتنا ومنتجاتنا') }}
             </span>
 
             <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-                {{ __('منتجاتنا') }}
+                {{ $ps->{'home_products_title_' . $sign} ?? __('منتجاتنا') }}
             </h2>
 
             <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-8">
-                {{ __('نقدم حلول متكاملة لتخزين المياه والمنتجات المصنوعة من أجود الخامات وبأعلى معايير الجودة.') }}
+                {{ $ps->{'home_products_details_' . $sign} ?? __('نقدم حلول متكاملة لتخزين المياه والمنتجات المصنوعة من أجود الخامات وبأعلى معايير الجودة.') }}
             </p>
 
         </div>
@@ -752,7 +584,10 @@
             };
         @endphp
 
-        <a href="{{ $category['url'] }}"
+        <a href="{{ route('single-category-service.index', [
+                'lang' => $sign,
+                'slug' => $category->{'slug_' . $sign}
+            ]) }}"
            class="group flex flex-col overflow-hidden rounded-[22px] bg-white border border-[#e5f3fa]
                   shadow-[0_14px_40px_rgba(0,168,232,0.10)]
                   transition duration-300 hover:-translate-y-1
@@ -763,8 +598,8 @@
 <div class="relative h-[220px] bg-white overflow-visible">
 
     <div class="h-full w-full overflow-hidden">
-        <img src="{{ $category['image'] }}"
-             alt="{{ $category['title'] }}"
+        <img src="{{ $category->photo }}"
+             alt="{{ $category->{'title_' . $sign} }}"
              width="600"
              height="420"
              loading="lazy"
@@ -777,7 +612,7 @@
                 rounded-2xl bg-[#00a8e8] text-white
                 shadow-[0_10px_25px_rgba(0,168,232,0.35)]">
 
-        <i class="{{ $category['icon'] }} text-lg"></i>
+        <i class="{{ $category->icon }} text-lg"></i>
 
     </div>
 
@@ -787,11 +622,11 @@
             <div class="flex flex-col flex-1 px-5 pb-5 pt-9 text-right">
 
                 <h3 class="text-lg md:text-xl font-black text-gray-900 mb-2 transition group-hover:text-[#00a8e8]">
-                    {{ $category['title'] }}
+                    {{ $category->{'title_' . $sign} }}
                 </h3>
 
                 <p class="text-sm text-gray-600 leading-7">
-                    {{ $category['description'] }}
+                    {{ $category->{'short_details_' . $sign} }}
                 </p>
 
                 <div class="mt-auto pt-5 inline-flex items-center gap-2 text-[#00a8e8] font-black text-sm">
@@ -816,7 +651,7 @@
           text-white font-black shadow-[0_14px_30px_rgba(0,168,232,0.25)]
           transition duration-300 hover:-translate-y-1 hover:bg-[#0096cf]">
 
-    {{ __('عرض جميع المنتجات') }}
+    {{ $ps->{'home_products_cta_text_' . $sign} ?? __('عرض جميع المنتجات') }}
 
     <i class="fa-solid fa-arrow-left text-sm"></i>
 
@@ -843,19 +678,6 @@
             </p>
         </div>
 
-        @php
-            $certificates = [
-                'cert-1.png',
-                'cert-2.png',
-                'cert-3.png',
-                'cert-4.png',
-                'cert-5.png',
-                'cert-6.png',
-                'cert-7.png',
-                'cert-8.png',
-            ];
-        @endphp
-
         <!-- الشريط -->
         <div class="relative w-full py-5 overflow-hidden">
 
@@ -868,11 +690,11 @@
 
                     {{-- النسخة الأولى --}}
                     <div class="certificates-set">
-                        @foreach ($certificates as $index => $certificate)
+                        @foreach ($certificates as $certificate)
                             <div class="cert-card">
                                 <img
-                                    src="{{ asset('assets/images/home/' . $certificate) }}"
-                                    alt="Certificate {{ $index + 1 }}"
+                                    src="{{ $certificate->photo }}"
+                                    alt="Certificate {{ $loop->iteration }}"
                                     loading="lazy"
                                     decoding="async"
                                     class="cert-img">
@@ -885,7 +707,7 @@
                         @foreach ($certificates as $certificate)
                             <div class="cert-card">
                                 <img
-                                    src="{{ asset('assets/images/home/' . $certificate) }}"
+                                    src="{{ $certificate->photo }}"
                                     alt=""
                                     loading="lazy"
                                     decoding="async"
@@ -899,7 +721,7 @@
                         @foreach ($certificates as $certificate)
                             <div class="cert-card">
                                 <img
-                                    src="{{ asset('assets/images/home/' . $certificate) }}"
+                                    src="{{ $certificate->photo }}"
                                     alt=""
                                     loading="lazy"
                                     decoding="async"
@@ -1038,15 +860,15 @@
         <div class="text-center mb-14">
             <span class="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-5 py-2 font-bold mb-4">
                 <i data-lucide="message-circle" class="w-5 h-5"></i>
-                {{ __('تواصل معنا') }}
+                {{ $ps->{'home_contact_badge_' . $sign} ?? __('تواصل معنا') }}
             </span>
 
             <h2 class="text-4xl md:text-6xl font-extrabold text-[#0F2740] leading-tight">
-                {{ __('جاهزون للرد على استفسارك') }}
+                {{ $ps->{'home_contact_title_' . $sign} ?? __('جاهزون للرد على استفسارك') }}
             </h2>
 
             <p class="mt-5 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                {{ __('فريق النور تانك هنا لمساعدتك في اختيار المنتج المناسب والإجابة على جميع أسئلتك.') }}
+                {{ $ps->{'home_contact_details_' . $sign} ?? __('فريق النور تانك هنا لمساعدتك في اختيار المنتج المناسب والإجابة على جميع أسئلتك.') }}
             </p>
         </div>
 
@@ -1115,14 +937,14 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1">{{ __('ساعات العمل') }}</h4>
-                                    <p class="text-white/75">{{ __('طوال أيام الأسبوع') }}</p>
-                                    <p class="text-white/75">{{ __('من 9 صباحاً حتى 10 مساءً') }}</p>
+                                    <p class="text-white/75">{{ $gs->{'working_days_' . $sign} ?? __('طوال أيام الأسبوع') }}</p>
+                                    <p class="text-white/75">{{ $gs->{'working_hours_' . $sign} ?? __('من 9 صباحاً حتى 10 مساءً') }}</p>
                                 </div>
                             </div>
 
                         </div>
 
-                        <a href="https://maps.app.goo.gl/rq4VFn4fLJr2vsKf8" target="_blank"
+                        <a href="{{ $gs->map_link ?: 'https://maps.app.goo.gl/rq4VFn4fLJr2vsKf8' }}" target="_blank"
                            class="mt-8 inline-flex items-center justify-center gap-2 w-full rounded-2xl bg-primary hover:bg-secondary text-white font-bold py-4 transition shadow-lg">
                             <i data-lucide="navigation" class="w-5 h-5"></i>
                             {{ __('افتح الموقع على خرائط جوجل') }}

@@ -6,7 +6,6 @@ use DataTables;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Validator;
 
 class CategoryController extends Controller
@@ -27,6 +26,12 @@ class CategoryController extends Controller
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
+                            ->editColumn('sort_order', function(Category $data) {
+                                return $data->sort_order;
+                            })
+                            ->editColumn('is_active', function(Category $data) {
+                                return $data->is_active == 1 ? '<span class="badge bg-success">مفعل</span>' : '<span class="badge bg-danger">مخفي</span>';
+                            })
                             ->addColumn('action', function(Category $data) {
                                 return '<div class="action-list">
                                 <a class=" btn btn-sm btn-secondary" href="' . route('admin-categories-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
@@ -36,7 +41,7 @@ class CategoryController extends Controller
                               <a href="javascript:;" data-href="' . route('admin-categories-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
-                            ->rawColumns(['photo','action'])
+                            ->rawColumns(['photo','is_active','action'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
 

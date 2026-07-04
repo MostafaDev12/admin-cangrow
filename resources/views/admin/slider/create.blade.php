@@ -156,6 +156,40 @@
 
 
 
+                        <div class="row">
+
+
+                            <div class="col-xl-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="sort_order" class="form-label">الترتيب</label>
+                                                    <input type="number" class="form-control" name="sort_order" id="sort_order" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="is_active" class="form-label">الحالة</label>
+                                                    <select class="form-control" name="is_active" id="is_active">
+                                                        <option value="1">مفعل</option>
+                                                        <option value="0">مخفي</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end card body -->
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+
+
+                        </div>
+
+
+
                         <br>
                         <br>
                         <br>

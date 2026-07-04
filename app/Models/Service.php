@@ -55,14 +55,21 @@ class Service extends Model
         'tags',
         'category_id',
         'parent_id',
-      
+        'sort_order',
+        'is_active',
+
     ];
 
-    
+
     public function galleries()
     {
         return $this->hasMany(Gallery::class);
-    }    
+    }
+
+    public function sections()
+    {
+        return $this->hasMany(ServiceSection::class,'service_id')->where('is_active','=',1)->orderBy('sort_order')->orderBy('id');
+    }
     
     public function childs()
     {

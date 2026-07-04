@@ -42,18 +42,29 @@ class Category extends Model
         'slug_en',
         'slug_fr',
         'tags',
-      
+        'icon',
+        'short_details_ar',
+        'short_details_en',
+        'short_details_fr',
+        'sort_order',
+        'home_sort_order',
+        'is_active',
+
     ];
 
-    
+
     public function services()
     {
         return $this->hasMany(Service::class);
-    }   
+    }
     public function parentServices()
     {
         return $this->hasMany(Service::class)->where('parent_id','=',0);
-    }   
+    }
+    public function activeServices()
+    {
+        return $this->hasMany(Service::class)->where('is_active','=',1)->orderBy('sort_order')->orderBy('id');
+    }
     public function subcategories()
     {
         return $this->hasMany(Subcategory::class);

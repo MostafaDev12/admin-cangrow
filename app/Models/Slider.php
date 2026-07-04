@@ -31,7 +31,9 @@ class Slider extends Model
         'details_ar',
         'details_en',
         'details_fr',
-      
+        'sort_order',
+        'is_active',
+
     ];
 
     

@@ -246,7 +246,26 @@
                                 </div>  
                             </div>
                             --}}
-                            
+
+
+                            <div class="col-xl-12 col-md-12">
+
+                                <div class="mb-3">
+                                    <label for="sort_order" class="form-label">الترتيب داخل القسم</label>
+                                    <input type="number" class="form-control" name="sort_order" id="sort_order" value="{{ $data->sort_order }}">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12 col-md-12">
+
+                                <div class="mb-3">
+                                    <label for="is_active" class="form-label">الحالة</label>
+                                    <select class="form-control" name="is_active" id="is_active">
+                                        <option value="1" {{ $data->is_active == 1 ? 'selected' : '' }}>مفعل</option>
+                                        <option value="0" {{ $data->is_active == 0 ? 'selected' : '' }}>مخفي</option>
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="col-xl-12 col-md-12">
                                 <div class="card">

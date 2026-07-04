@@ -9,65 +9,6 @@
 <section class="pt-32 pb-20 bg-[#f4f8fb] min-h-screen">
     <div class="container mx-auto px-4">
 
-        @php
-            $mainCategories = [
-                [
-                    'title' => __('خزانات المياه'),
-                    'description' => __('خزانات مياه عالية الجودة بمختلف الأنواع والمقاسات، تشمل الخزانات الرأسية والأفقية والبولي إيثيلين والفيبر جلاس والاستانلس ستيل.'),
-                    'image' => asset('assets/images/services/water-tanks.webp'),
-                    'url' => route('single-category-service.index', [
-                        'lang' => $sign,
-                        'slug' => 'خزانات-المياه'
-                    ]),
-                    'icon' => 'fa-solid fa-water'
-                ],
-
-                [
-                    'title' => __('أكشاك وحمامات متنقلة'),
-                    'description' => __('حلول عملية للمواقع والشركات والنوادي، تشمل أكشاك الحراسة والحمامات المتنقلة والكرفانات بمقاسات متعددة.'),
-                    'image' => asset('assets/images/services/portable-booths-webp'),
-                    'url' => route('single-category-service.index', [
-                        'lang' => $sign,
-                        'slug' => 'أكشاك-وحمامات-متنقلة'
-                    ]),
-                    'icon' => 'fa-solid fa-house'
-                ],
-
-                [
-                    'title' => __('مستلزمات المرور'),
-                    'description' => __('منتجات مخصصة لتنظيم المرور وتعزيز السلامة، مثل الحواجز المرورية وأقماع المرور والمنتجات التحذيرية.'),
-                    'image' => asset('assets/images/services/traffic-supplies.webp'),
-                    'url' => route('single-category-service.index', [
-                        'lang' => $sign,
-                        'slug' => 'مستلزمات-المرور'
-                    ]),
-                    'icon' => 'fa-solid fa-road-barrier'
-                ],
-
-                [
-                    'title' => __('تجهيز النوادي والكيدز اريا'),
-                    'description' => __('تجهيزات عملية للنوادي ومناطق الأطفال، تشمل أحواض الزرع والشازلونج والمقاعد والترابيزات والمنتجات المتنوعة.'),
-                    'image' => asset('assets/images/services/clubs-kids-area.webp'),
-                    'url' => route('single-category-service.index', [
-                        'lang' => $sign,
-                        'slug' => 'تجهيز-النوادي-والكيدز-اريا'
-                    ]),
-                    'icon' => 'fa-solid fa-umbrella-beach'
-                ],
-
-                [
-                    'title' => __('منتجات بلاستيكية متنوعة'),
-                    'description' => __('منتجات بلاستيكية متعددة الاستخدامات، مثل البالتات والآيس بوكس وحاويات وسلات القمامة والمنتجات الصناعية.'),
-                    'image' => asset('assets/images/services/plastic-products.webp'),
-                    'url' => route('single-category-service.index', [
-                        'lang' => $sign,
-                        'slug' => 'منتجات-بلاستيكية-متنوعة'
-                    ]),
-                    'icon' => 'fa-solid fa-boxes-stacked'
-                ],
-            ];
-        @endphp
-
         {{-- Page Header --}}
         <div class="text-center mb-12">
 
@@ -90,7 +31,10 @@
 
             @foreach($mainCategories as $category)
 
-                <a href="{{ $category['url'] }}"
+                <a href="{{ route('single-category-service.index', [
+                        'lang' => $sign,
+                        'slug' => $category->{'slug_' . $sign}
+                    ]) }}"
                    class="group flex flex-col overflow-hidden rounded-[26px] bg-white border border-[#e5f3fa]
                           shadow-[0_14px_40px_rgba(0,168,232,0.10)]
                           transition duration-300 hover:-translate-y-1
@@ -101,8 +45,8 @@
                     {{-- Image --}}
                     <div class="relative h-[260px] bg-[#f8fbfd]">
 
-                        <img src="{{ $category['image'] }}"
-                             alt="{{ $category['title'] }}"
+                        <img src="{{ $category->photo }}"
+                             alt="{{ $category->{'title_' . $sign} }}"
                              width="600"
                              height="420"
                              loading="lazy"
@@ -113,7 +57,7 @@
                         <div class="absolute -bottom-7 right-6 z-10 flex h-14 w-14 items-center justify-center
                                     rounded-2xl bg-[#00a8e8] text-white
                                     shadow-[0_10px_25px_rgba(0,168,232,0.35)]">
-                            <i class="{{ $category['icon'] }} text-xl"></i>
+                            <i class="{{ $category->icon }} text-xl"></i>
                         </div>
 
                     </div>
@@ -122,11 +66,11 @@
                     <div class="flex flex-col flex-1 px-6 pb-6 pt-12 text-right">
 
                         <h2 class="text-xl md:text-2xl font-black text-[#111827] mb-3 transition group-hover:text-[#00a8e8]">
-                            {{ $category['title'] }}
+                            {{ $category->{'title_' . $sign} }}
                         </h2>
 
                         <p class="text-sm md:text-base text-gray-600 leading-8">
-                            {{ $category['description'] }}
+                            {{ $category->{'short_details_' . $sign} }}
                         </p>
 
                         <div class="mt-auto pt-6 inline-flex items-center gap-2 text-[#00a8e8] font-black">

@@ -10,7 +10,6 @@ use App\Models\Currency;
 use App\Models\Contact;
 use DataTables;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Validator;
 
 class GeneralSettingController extends Controller
@@ -107,9 +106,39 @@ class GeneralSettingController extends Controller
                 $data->uploadvideo($name,$file,$data->home_video);
                 $input['home_video'] = $name;
             }
-           
-             
-            
+
+
+            if ($file = $request->file('catalog_file'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $file->move('assets/images/files/', $name);
+                $oldname = $data->getRawOriginal('catalog_file');
+                if($oldname != null)
+                {
+                    if (file_exists(public_path().'/assets/images/files/'.$oldname)) {
+                        unlink(public_path().'/assets/images/files/'.$oldname);
+                    }
+                }
+                $input['catalog_file'] = $name;
+            }
+
+
+            if ($file = $request->file('catalog_file_mobile'))
+            {
+                $name = time().$file->getClientOriginalName();
+                $file->move('assets/images/files/', $name);
+                $oldname = $data->getRawOriginal('catalog_file_mobile');
+                if($oldname != null)
+                {
+                    if (file_exists(public_path().'/assets/images/files/'.$oldname)) {
+                        unlink(public_path().'/assets/images/files/'.$oldname);
+                    }
+                }
+                $input['catalog_file_mobile'] = $name;
+            }
+
+
+
             if(!empty($request->contact_emails)){
                 if(in_array(null, $request->contact_emails) )
             {
@@ -793,5 +822,9 @@ class GeneralSettingController extends Controller
     public function home_content()
     {
         return view('admin.generalsetting.home_content');
-    } 
+    }
+    public function siteExtras()
+    {
+        return view('admin.generalsetting.site_extras');
+    }
 }

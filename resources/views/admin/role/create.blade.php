@@ -75,6 +75,54 @@
                             <label class="form-check-label" for="super">{{ __('Manage Role & Cache clear') }}  </label>
                         </div>
 
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="page_settings" role="switch" name="section[]"  id="page_settings" >
+                            <label class="form-check-label" for="page_settings">محتوى الصفحات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="slider" role="switch" name="section[]"  id="slider" >
+                            <label class="form-check-label" for="slider">السلايدر</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="categories" role="switch" name="section[]"  id="categories" >
+                            <label class="form-check-label" for="categories">أقسام المنتجات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="services" role="switch" name="section[]"  id="services" >
+                            <label class="form-check-label" for="services">المنتجات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="site_stats" role="switch" name="section[]"  id="site_stats" >
+                            <label class="form-check-label" for="site_stats">الإحصائيات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="features" role="switch" name="section[]"  id="features" >
+                            <label class="form-check-label" for="features">الكروت والمميزات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="partners" role="switch" name="section[]"  id="partners" >
+                            <label class="form-check-label" for="partners">عملاؤنا</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="certificates" role="switch" name="section[]"  id="certificates" >
+                            <label class="form-check-label" for="certificates">شهادات الجودة</label>
+                        </div>
+
                         
 
 

@@ -6,7 +6,6 @@ use DataTables;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Validator;
 
 class PartnerController extends Controller
@@ -27,13 +26,19 @@ class PartnerController extends Controller
                               
                                 return  '<div><img style="width:200px;height:100px" src="'.$photo.'"></div>';
                             })
+                            ->editColumn('sort_order', function(Partner $data) {
+                                return $data->sort_order;
+                            })
+                            ->editColumn('is_active', function(Partner $data) {
+                                return $data->is_active == 1 ? '<span class="badge bg-success">مفعل</span>' : '<span class="badge bg-danger">مخفي</span>';
+                            })
                             ->addColumn('action', function(Partner $data) {
                                 return '<div class="action-list">
                                 <a class=" btn btn-sm btn-secondary" href="' . route('admin-partners-edit',$data->id) . '"> <i class="las la-edit"></i>تعديل</a>
                                 <a href="javascript:;" data-href="' . route('admin-partners-delete',$data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete  btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                                 </div>';
                             }) 
-                            ->rawColumns(['photo','action'])
+                            ->rawColumns(['photo','is_active','action'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
 

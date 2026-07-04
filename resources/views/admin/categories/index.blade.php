@@ -108,7 +108,9 @@
                                             <tr>
                                               <th>{{ __('translation.photo') }}</th>
                                               <th>{{ __('translation.title') }}</th>
-                                          
+                                              <th>الترتيب</th>
+                                              <th>الحالة</th>
+
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
                                         </thead>
@@ -212,7 +214,9 @@
                columns: [
                         { data: 'photo', name: 'photo' },
                         { data: 'title_ar', name: 'title_ar' },
-                         
+                        { data: 'sort_order', name: 'sort_order' },
+                        { data: 'is_active', name: 'is_active' },
+
                         { data: 'action', searchable: false, orderable: false }
 
                      ],

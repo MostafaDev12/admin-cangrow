@@ -20,10 +20,18 @@ class Generalsetting extends Model
    
     'smtp_host','smtp_port','smtp_user','smtp_pass','from_email',
     'from_name' 
-     ,'is_verification_email' 
-     ,'is_smtp' 
-     ,'is_capcha' 
-     ,'home_video' 
+     ,'is_verification_email'
+     ,'is_smtp'
+     ,'is_capcha'
+     ,'home_video'
+    ,'catalog_file','catalog_file_mobile'
+    ,'catalog_label_ar','catalog_label_en'
+    ,'catalog_label_short_ar','catalog_label_short_en'
+    ,'analytics_id','google_verification'
+    ,'working_days_ar','working_days_en'
+    ,'working_hours_ar','working_hours_en'
+    ,'map_link'
+    ,'copyright_ar','copyright_en'
 ];
 
     public $timestamps = false;

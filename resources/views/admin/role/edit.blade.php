@@ -75,6 +75,54 @@
                             <label class="form-check-label" for="super">{{ __('Manage Role & Cache clear') }}  </label>
                         </div>
 
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="page_settings" role="switch" name="section[]"  id="page_settings" {{ $data->sectionCheck('page_settings') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="page_settings">محتوى الصفحات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="slider" role="switch" name="section[]"  id="slider" {{ $data->sectionCheck('slider') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="slider">السلايدر</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="categories" role="switch" name="section[]"  id="categories" {{ $data->sectionCheck('categories') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="categories">أقسام المنتجات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="services" role="switch" name="section[]"  id="services" {{ $data->sectionCheck('services') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="services">المنتجات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="site_stats" role="switch" name="section[]"  id="site_stats" {{ $data->sectionCheck('site_stats') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="site_stats">الإحصائيات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="features" role="switch" name="section[]"  id="features" {{ $data->sectionCheck('features') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="features">الكروت والمميزات</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="partners" role="switch" name="section[]"  id="partners" {{ $data->sectionCheck('partners') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="partners">عملاؤنا</label>
+                        </div>
+
+                        <!-- Switches Color -->
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="certificates" role="switch" name="section[]"  id="certificates" {{ $data->sectionCheck('certificates') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="certificates">شهادات الجودة</label>
+                        </div>
+
                       
     <br>
     <br>

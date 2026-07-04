@@ -83,6 +83,10 @@
                                                   <label for="details_ar" class="form-label">{{ __('translation.details') }}</label>
                                                   <textarea class="form-control ckeditor" name="details_ar"  id="details_ar" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_ar }}</textarea>
                                               </div>
+                                              <div class="mb-3">
+                                                  <label for="short_details_ar" class="form-label">الوصف المختصر (يظهر في كروت الرئيسية وصفحة المنتجات)</label>
+                                                  <textarea class="form-control" name="short_details_ar"  id="short_details_ar" rows="4">{{ $data->short_details_ar }}</textarea>
+                                              </div>
                                                 <div class="mb-3">
                                                   <label for="slug_ar" class="form-label">{{ __('translation.slug') }}</label>
                                                   <input type="text" class="form-control" name="slug_ar" id="slug_ar"  value="{{ $data->slug_ar }}"  placeholder="{{ __('translation.slug') }}">
@@ -111,7 +115,12 @@
                                               <label for="details_en" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_en"  id="details_en" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_en }}</textarea>
                                           </div>
-                                          
+
+                                          <div class="mb-3">
+                                              <label for="short_details_en" class="form-label">الوصف المختصر (يظهر في كروت الرئيسية وصفحة المنتجات)</label>
+                                              <textarea class="form-control" name="short_details_en"  id="short_details_en" rows="4">{{ $data->short_details_en }}</textarea>
+                                          </div>
+
                                            <div class="mb-3">
                                                   <label for="slug_en" class="form-label">{{ __('translation.slug') }}</label>
                                                   <input type="text" class="form-control" name="slug_en" id="slug_en"  value="{{ $data->slug_en }}"  placeholder="{{ __('translation.slug') }}">
@@ -142,9 +151,12 @@
                                               <label for="details_fr" class="form-label">{{ __('translation.details') }}</label>
                                               <textarea class="form-control ckeditor" name="details_fr"  id="details_fr" rows="3" placeholder="{{ __('translation.details') }}">{{ $data->details_fr }}</textarea>
                                           </div>
-                                          
-                                          
-                                             
+
+                                          <div class="mb-3">
+                                              <label for="short_details_fr" class="form-label">الوصف المختصر (يظهر في كروت الرئيسية وصفحة المنتجات)</label>
+                                              <textarea class="form-control" name="short_details_fr"  id="short_details_fr" rows="4">{{ $data->short_details_fr }}</textarea>
+                                          </div>
+
                                            <div class="mb-3">
                                                   <label for="slug_fr" class="form-label">{{ __('translation.slug') }}</label>
                                                   <input type="text" class="form-control" name="slug_fr" id="slug_fr"  value="{{ $data->slug_fr }}" placeholder="{{ __('translation.slug') }}">
@@ -168,6 +180,45 @@
                         </div>
                     </div>
   
+                        <div class="row">
+
+
+                            <div class="col-xl-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <div class="mb-3">
+                                            <label for="icon" class="form-label">الأيقونة (FontAwesome)</label>
+                                            <input type="text" class="form-control" name="icon" id="icon" value="{{ $data->icon }}" placeholder="مثال: fa-solid fa-water">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="sort_order" class="form-label">الترتيب (القائمة وصفحة المنتجات)</label>
+                                            <input type="number" class="form-control" name="sort_order" id="sort_order" value="{{ $data->sort_order }}">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="home_sort_order" class="form-label">الترتيب في الصفحة الرئيسية</label>
+                                            <input type="number" class="form-control" name="home_sort_order" id="home_sort_order" value="{{ $data->home_sort_order }}">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="is_active" class="form-label">الحالة</label>
+                                            <select class="form-control" name="is_active" id="is_active">
+                                                <option value="1" {{ $data->is_active == 1 ? 'selected' : '' }}>مفعل</option>
+                                                <option value="0" {{ $data->is_active == 0 ? 'selected' : '' }}>مخفي</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <!-- end card body -->
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+
+
+                        </div>
+
                         <div class="row">
 
 

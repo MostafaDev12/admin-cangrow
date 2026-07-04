@@ -110,6 +110,8 @@
                                               <th>{{ __('translation.title_ar') }}</th>
                                               <th>{{ __('translation.title_en') }}</th>
                                           {{-- <th>{{ __('translation.category') }}</th>  --}}
+                                              <th>الترتيب</th>
+                                              <th>الحالة</th>
                                           <th>{{ __('translation.actions') }}</th>
                                             </tr>
                                         </thead>
@@ -215,6 +217,8 @@
                         { data: 'title_ar', name: 'title_ar' },
                         { data: 'title_en', name: 'title_en' },
                           // { data: 'category', name: 'category' },
+                        { data: 'sort_order', name: 'sort_order' },
+                        { data: 'is_active', name: 'is_active' },
                         { data: 'action', searchable: false, orderable: false }
 
                      ],

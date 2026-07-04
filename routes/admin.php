@@ -30,6 +30,9 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ProcessController;
 use App\Http\Controllers\Admin\TimelineController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\SiteStatController;
+use App\Http\Controllers\Admin\FeatureController;
+use App\Http\Controllers\Admin\ServiceSectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -209,6 +212,40 @@ Route::prefix('admin')->group(function () {
       Route::post('/services/update/{id}', [ServiceController::class, 'update'])->name('admin-services-update');
 
       Route::get('/services/delete/{id}',  [ServiceController::class, 'destroy'])->name('admin-services-delete');
+
+
+      Route::get('/service_sections/datatables',  [ServiceSectionController::class, 'datatables'])->name('admin-service_sections-datatables');
+      Route::get('/service_sections',  [ServiceSectionController::class, 'index'])->name('admin-service_sections-index');
+      Route::get('/service_sections/create',   [ServiceSectionController::class, 'create'])->name('admin-service_sections-create');
+      Route::post('/service_sections/create',  [ServiceSectionController::class, 'store'])->name('admin-service_sections-store');
+      Route::get('/service_sections/edit/{id}',  [ServiceSectionController::class, 'edit'])->name('admin-service_sections-edit');
+      Route::post('/service_sections/update/{id}', [ServiceSectionController::class, 'update'])->name('admin-service_sections-update');
+
+      Route::get('/service_sections/delete/{id}',  [ServiceSectionController::class, 'destroy'])->name('admin-service_sections-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:site_stats'], function () {
+
+      Route::get('/site_stats/datatables',  [SiteStatController::class, 'datatables'])->name('admin-site_stats-datatables');
+      Route::get('/site_stats',  [SiteStatController::class, 'index'])->name('admin-site_stats-index');
+      Route::get('/site_stats/create',   [SiteStatController::class, 'create'])->name('admin-site_stats-create');
+      Route::post('/site_stats/create',  [SiteStatController::class, 'store'])->name('admin-site_stats-store');
+      Route::get('/site_stats/edit/{id}',  [SiteStatController::class, 'edit'])->name('admin-site_stats-edit');
+      Route::post('/site_stats/update/{id}', [SiteStatController::class, 'update'])->name('admin-site_stats-update');
+
+      Route::get('/site_stats/delete/{id}',  [SiteStatController::class, 'destroy'])->name('admin-site_stats-delete');
+    });
+
+    Route::group(['middleware' => 'permissions:features'], function () {
+
+      Route::get('/features/datatables',  [FeatureController::class, 'datatables'])->name('admin-features-datatables');
+      Route::get('/features',  [FeatureController::class, 'index'])->name('admin-features-index');
+      Route::get('/features/create',   [FeatureController::class, 'create'])->name('admin-features-create');
+      Route::post('/features/create',  [FeatureController::class, 'store'])->name('admin-features-store');
+      Route::get('/features/edit/{id}',  [FeatureController::class, 'edit'])->name('admin-features-edit');
+      Route::post('/features/update/{id}', [FeatureController::class, 'update'])->name('admin-features-update');
+
+      Route::get('/features/delete/{id}',  [FeatureController::class, 'destroy'])->name('admin-features-delete');
     });
 
     Route::group(['middleware' => 'permissions:categories'], function () {
@@ -270,6 +307,7 @@ Route::prefix('admin')->group(function () {
 
       Route::get('/general-settings/logo', [GeneralSettingController::class, 'logo'])->name('admin-gs-logo');
       Route::get('/general-settings/contents', [GeneralSettingController::class, 'contents'])->name('admin-gs-contents');
+      Route::get('/general-settings/site_extras', [GeneralSettingController::class, 'siteExtras'])->name('admin-gs-site_extras');
       Route::post('/general-settings/update/all', [GeneralSettingController::class, 'generalupdate'])->name('admin-gs-update');
       Route::get('/general-settings/Adminloader', [GeneralSettingController::class, 'load2'])->name('admin-gs-load2');
       Route::get('/general-settings/home_video', [GeneralSettingController::class, 'home_video'])->name('admin-gs-home_video');
@@ -291,6 +329,8 @@ Route::prefix('admin')->group(function () {
 
 
       Route::get('/page-settings/about_us', [PageSettingController::class, 'aboutUs'])->name('admin-ps-about_us');
+      Route::get('/page-settings/home_page', [PageSettingController::class, 'homePage'])->name('admin-ps-home_page');
+      Route::get('/page-settings/about_page', [PageSettingController::class, 'aboutPage'])->name('admin-ps-about_page');
       Route::get('/page-settings/portfolio', [PageSettingController::class, 'portfolio'])->name('admin-ps-portfolio');
       Route::get('/page-settings/after_before', [PageSettingController::class, 'after_before'])->name('admin-ps-after_before');
       Route::get('/page-settings/our_team', [PageSettingController::class, 'our_team'])->name('admin-ps-our_team');

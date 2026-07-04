@@ -50,11 +50,23 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.sliders')</span>
                         </a>
                     </li>
-                @endif 
+                @endif
 
 
 
                             @if (Auth::guard('admin')->user()->sectionCheck('page_settings'))
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="{{ route('admin-ps-home_page') }}"
+                                        aria-controls="sidebarhome_page">
+                                        <i class="las la-tachometer-alt"></i> <span>الصفحة الرئيسية</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link  " href="{{ route('admin-ps-about_page') }}"
+                                        aria-controls="sidebarabout_page">
+                                        <i class="las la-tachometer-alt"></i> <span>صفحة من نحن</span>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link  " href="{{ route('admin-ps-about_us') }}"
                                         aria-controls="sidebarabout_us">
@@ -68,6 +80,42 @@
                                     </a>
                                 </li> {{--  --}}
                             @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('site_stats'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-site_stats-index') }}"
+                            aria-controls="sidebarsite_stats">
+                            <i class="las la-tachometer-alt"></i> <span>الإحصائيات</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('features'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-features-index') }}"
+                            aria-controls="sidebarfeatures">
+                            <i class="las la-tachometer-alt"></i> <span>الكروت والمميزات</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('partners'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-partners-index') }}"
+                            aria-controls="sidebarpartners">
+                            <i class="las la-tachometer-alt"></i> <span>عملاؤنا</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::guard('admin')->user()->sectionCheck('certificates'))
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-certificates-index') }}"
+                            aria-controls="sidebarcertificates">
+                            <i class="las la-tachometer-alt"></i> <span>شهادات الجودة</span>
+                        </a>
+                    </li>
+                @endif
                             
 {{--                             
                             @if (Auth::guard('admin')->user()->sectionCheck('processes'))
@@ -266,12 +314,26 @@
                         </a>
                     </li>
                 @endif  --}}
+                  @if (Auth::guard('admin')->user()->sectionCheck('categories'))
+                     <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-categories-index') }}"
+                            aria-controls="sidebarcategories">
+                            <i class="las la-tachometer-alt"></i> <span>أقسام المنتجات</span>
+                        </a>
+                    </li>
+                    @endif
                   @if (Auth::guard('admin')->user()->sectionCheck('services'))
-         
+
                      <li class="nav-item">
                         <a class="nav-link  " href="{{ route('admin-services-index') }}"
                             aria-controls="sidebarservices">
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.services')</span>
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-service_sections-index') }}"
+                            aria-controls="sidebarservice_sections">
+                            <i class="las la-tachometer-alt"></i> <span>أقسام صفحة المنتج</span>
                         </a>
                     </li>
                     @endif
@@ -364,6 +426,11 @@
                                 <li class="nav-item">
                                     <a href="{{ route('admin-gs-contents') }}" class="nav-link"
                                         data-key="t-Website_Contents"> @lang('translation.content') </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin-gs-site_extras') }}" class="nav-link"
+                                        data-key="t-Site_Extras"> إعدادات إضافية </a>
                                 </li>
 
                                 <li class="nav-item">
