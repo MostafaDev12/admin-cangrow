@@ -102,11 +102,14 @@ class HomeController extends Controller
     $services = Service::get();
     $models = ModelCategory::get();
     $partners = Partner::get();
-     
+
+    // Team section is managed from the dashboard (Doctors).
+    $doctors = Doctor::forWebsite()->get();
+
 
    // return view('front.about', compact('sign', 'sliders', 'points','certificates', 'timelines','testimonials', 'processes', 'services', 'models', 'partners'));
 
-    return view('front.about', compact('sign', 'sliders','lang', 'services', 'models', 'partners'));
+    return view('front.about', compact('sign', 'sliders','lang', 'services', 'models', 'partners', 'doctors'));
   }
 // تعديل
    public function medicalTourism(Request $request, $lang = 'ar')

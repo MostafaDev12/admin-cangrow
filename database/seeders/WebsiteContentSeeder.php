@@ -32,20 +32,129 @@ class WebsiteContentSeeder extends Seeder
 
     protected function seedDoctors(): void
     {
-        $doctor = Doctor::firstOrCreate(
-            ['name_ar' => 'دكتور محمد حجاب'],
+        // The About page team section is rendered from this table.
+        // "featured" marks the doctor shown in the large highlighted card.
+        $roster = [
             [
+                'name_ar'       => 'دكتور محمد حجاب',
                 'name_en'       => 'Dr. Mohamed Hegab',
                 'title_ar'      => 'استشاري طب وجراحة الفم والأسنان',
                 'title_en'      => 'Consultant of Oral & Maxillofacial Surgery',
-                'active'        => 1,
+                'bio_ar'        => 'متخصص في تجميل الأسنان وزراعة الأسنان وتصميم الابتسامة.',
+                'bio_en'        => 'Specialized in cosmetic dentistry, dental implants and smile design.',
+                'photo'         => 'D-mohamed-h.webp',
+                'featured'      => 1,
                 'display_order' => 0,
-            ]
-        );
+            ],
+            [
+                'name_ar'       => 'دكتور علي وهبة',
+                'name_en'       => 'Dr. Ali Wahba',
+                'title_ar'      => 'مدرس جراحات اللثه وزراعه الأسنان',
+                'title_en'      => 'Lecturer of Periodontology & Dental Implantology',
+                'bio_ar'        => 'متخصص في جراحات اللثة وزراعة الأسنان باستخدام أحدث التقنيات.',
+                'bio_en'        => 'Specialized in gum surgery and dental implants using the latest techniques.',
+                'photo'         => 'D-ali.webp',
+                'featured'      => 0,
+                'display_order' => 1,
+            ],
+            [
+                'name_ar'       => 'دكتور محمد زايد',
+                'name_en'       => 'Dr. Mohamed Zayed',
+                'title_ar'      => 'استاذ طب اسنان وأطفال جامعه عين شمس',
+                'title_en'      => 'Professor of Pediatric Dentistry, Ain Shams University',
+                'bio_ar'        => 'متخصص في طب أسنان الأطفال وتقديم الرعاية المناسبة لمختلف الأعمار.',
+                'bio_en'        => 'Specialized in pediatric dentistry and age-appropriate dental care.',
+                'photo'         => 'D-mohmed-z.webp',
+                'featured'      => 0,
+                'display_order' => 2,
+            ],
+            [
+                'name_ar'       => 'دكتورة ولاء جاد',
+                'name_en'       => 'Dr. Walaa Gad',
+                'title_ar'      => 'اخصائي ودكتوراه تقويم الاسنان جامعه القاهره',
+                'title_en'      => 'Orthodontics Specialist, PhD - Cairo University',
+                'bio_ar'        => 'متخصصة في تقويم الأسنان وتحسين انتظام الأسنان والابتسامة.',
+                'bio_en'        => 'Specialized in orthodontics and improving teeth alignment and smiles.',
+                'photo'         => 'D-walaa-gad.webp',
+                'featured'      => 0,
+                'display_order' => 3,
+            ],
+            [
+                'name_ar'       => 'دكتورة خلود',
+                'name_en'       => 'Dr. Kholoud',
+                'title_ar'      => 'أخصائية طب الأسنان',
+                'title_en'      => 'Dentistry Specialist',
+                'bio_ar'        => 'تقديم خطط علاج متكاملة ومناسبة لكل حالة باهتمام واحترافية.',
+                'bio_en'        => 'Provides complete treatment plans tailored to each case with care and professionalism.',
+                'photo'         => 'D-Kholoud.webp',
+                'featured'      => 0,
+                'display_order' => 4,
+            ],
+            [
+                'name_ar'       => 'دكتور أحمد عصمت',
+                'name_en'       => 'Dr. Ahmed Esmat',
+                'title_ar'      => 'أخصائي علاج الجذور',
+                'title_en'      => 'Endodontics Specialist',
+                'bio_ar'        => 'متخصص في علاج جذور الأسنان والحفاظ على الأسنان بأحدث التقنيات.',
+                'bio_en'        => 'Specialized in root canal treatment and tooth preservation with the latest techniques.',
+                'photo'         => 'D-ahmed-a.webp',
+                'featured'      => 0,
+                'display_order' => 5,
+            ],
+            [
+                'name_ar'       => 'دكتور أحمد ممدوح',
+                'name_en'       => 'Dr. Ahmed Mamdouh',
+                'title_ar'      => 'أخصائي تركيبات الأسنان',
+                'title_en'      => 'Prosthodontics Specialist',
+                'bio_ar'        => 'متخصص في تركيبات الأسنان الثابتة والمتحركة واستعادة جمال الابتسامة.',
+                'bio_en'        => 'Specialized in fixed and removable prosthetics and restoring beautiful smiles.',
+                'photo'         => 'D-ahmed-m.webp',
+                'featured'      => 0,
+                'display_order' => 6,
+            ],
+        ];
+
+        $hasFeatured = Schema::hasColumn('doctors', 'featured');
+        $first = null;
+
+        foreach ($roster as $row) {
+            if (! $hasFeatured) {
+                unset($row['featured']);
+            }
+
+            $doctor = Doctor::firstOrCreate(
+                ['name_ar' => $row['name_ar']],
+                $row + ['active' => 1]
+            );
+
+            // Fill only what is still missing so dashboard edits are never overwritten.
+            $missing = [];
+            foreach (['name_en', 'title_ar', 'title_en', 'bio_ar', 'bio_en', 'photo'] as $field) {
+                if (empty($doctor->{$field}) && ! empty($row[$field])) {
+                    $missing[$field] = $row[$field];
+                }
+            }
+            if ($missing) {
+                $doctor->update($missing);
+            }
+
+            $first = $first ?: $doctor;
+        }
+
+        // If nobody is featured yet, promote the default team lead(s) so the
+        // About page keeps its highlighted card. Existing choices are kept.
+        if ($hasFeatured && Doctor::where('featured', 1)->count() === 0) {
+            $featuredNames = array_column(
+                array_filter($roster, fn ($row) => ! empty($row['featured'])),
+                'name_ar'
+            );
+
+            Doctor::whereIn('name_ar', $featuredNames)->update(['featured' => 1]);
+        }
 
         // Backfill existing articles that have no assigned author.
-        if (Schema::hasColumn('blogs', 'doctor_id')) {
-            Blog::whereNull('doctor_id')->update(['doctor_id' => $doctor->id]);
+        if ($first && Schema::hasColumn('blogs', 'doctor_id')) {
+            Blog::whereNull('doctor_id')->update(['doctor_id' => $first->id]);
         }
     }
 

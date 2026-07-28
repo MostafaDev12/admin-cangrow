@@ -15,8 +15,29 @@ class Doctor extends Model
         'title_ar', 'title_en',
         'photo',
         'bio_ar', 'bio_en',
-        'active', 'display_order',
+        'active', 'featured', 'display_order',
     ];
+
+    /**
+     * Active doctors in the order they should appear on the website.
+     */
+    public function scopeForWebsite($query)
+    {
+        return $query->where('active', 1)
+            ->orderBy('display_order')
+            ->orderBy('id');
+    }
+
+    /**
+     * Localized name / title / bio with a fallback to the other language.
+     */
+    public function localized(string $field, string $sign)
+    {
+        $sign = $sign === 'en' ? 'en' : 'ar';
+        $other = $sign === 'en' ? 'ar' : 'en';
+
+        return $this->{$field . '_' . $sign} ?: $this->{$field . '_' . $other};
+    }
 
     public function blogs()
     {

@@ -36,6 +36,14 @@
         </div>
     </div>
     <div class="col-md-6 mb-3">
+        <label class="form-label d-block">Featured</label>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="featured" value="1" @checked(old('featured', $data->featured ?? 0))>
+            <label class="form-check-label">Show as a main team member on the About page</label>
+        </div>
+        <small class="text-muted">Featured doctors appear in the large highlighted card of the team section.</small>
+    </div>
+    <div class="col-md-6 mb-3">
         <label class="form-label">Profile Image</label>
         <input type="file" class="form-control" name="photo" accept="image/png, image/jpeg, image/gif, image/webp">
         @if($data && $data->photo_url)

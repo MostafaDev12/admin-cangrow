@@ -101,11 +101,11 @@ $randomPhone = Arr::random($phones);
     </div>
 
     <div class="flex flex-col">
-        <h1 class="text-xl md:text-2xl font-bold text-blue-800 leading-tight">
+        <h2 class="text-xl md:text-2xl font-bold text-blue-800 leading-tight">
             <a href="{{ route('about.index'.$lang, $lang) }}" class="">
                 {{ __('الكاتب:') }} {{ $authorName }}
             </a>
-        </h1>
+        </h2>
 
         <h2 class="text-sm md:text-base font-semibold text-[#0f2c4a] mt-1">
             {{ $authorTitle }}
@@ -210,7 +210,7 @@ $randomPhone = Arr::random($phones);
         <!-- Header -->
         <div class="bg-gradient-to-r from-blue-500 to-green-600 text-white py-16 px-4 md:px-16">
             <div class="text-center px-4">
-                <h1 class="text-xl sm:text-4xl font-bold mb-4"> {{ __('المقالات متعلقة') }}</h1>
+                <h2 class="text-xl sm:text-4xl font-bold mb-4"> {{ __('المقالات متعلقة') }}</h2>
                 <p class="text-sm sm:text-lg mb-8 max-w-2xl mx-auto">
                      
                     {{ __(' اكتشف أحدث النصائح والمعلومات حول صحة الأسنان من خلال مدونتنا ') }}

@@ -14,7 +14,9 @@
 
     <meta name="google-site-verification" content="XmE4cT8eN-RTm7fLfT_e-ap_toosMuXQwzYRDNRZqaM" />
 
-    <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
+    @unless (isset($blog))
+        <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
+    @endunless
 
     <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
     <meta property="og:url" content="{{ url('/') }}">
@@ -30,10 +32,27 @@
             {{ $gs->{'title_' . $sign} }}
 
         </title>
-    @elseif(isset($blog->meta_tag) || isset($blog->{'meta_details_' . $sign}))
+    @elseif(isset($blog))
+        @php
+            $articleTitle = strip_tags($blog->{'title_' . $sign});   // visible <h1>
+            $metaTitle    = $blog->{'meta_title_' . $sign};          // SEO title
+
+            // <title>: meta_title -> article_title -> site name (final fallback).
+            $seoTitle = $metaTitle ?: ($articleTitle ?: $gs->{'title_' . $sign});
+
+            // og:title: social_title (not in schema) -> meta_title -> article_title.
+            $ogTitle = $metaTitle ?: $articleTitle;
+
+            // SEO description: meta_details -> short_details -> safe excerpt from the article body.
+            $seoDescription = $blog->{'meta_details_' . $sign}
+                ?: ($blog->{'short_details_' . $sign}
+                ?: \Illuminate\Support\Str::limit(trim(strip_tags($blog->{'details_' . $sign})), 160));
+        @endphp
         <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->{'meta_details_' . $sign} }}">
-        <meta property="og:description" content="{{ $blog->{'meta_details_' . $sign} }}">
+        <meta name="description" content="{{ $seoDescription }}">
+        <meta property="og:title" content="{{ $ogTitle }}">
+        <meta property="og:description" content="{{ $seoDescription }}">
+        <title>{{ $seoTitle }}</title>
     @else
         <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
         <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">

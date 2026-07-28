@@ -18,6 +18,7 @@
                             <th>Name</th>
                             <th>Title / Specialty</th>
                             <th>Order</th>
+                            <th>Featured</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -39,6 +40,7 @@
             { data: 'name', name: 'name' },
             { data: 'title', name: 'title' },
             { data: 'display_order', name: 'display_order' },
+            { data: 'featured', name: 'featured', searchable: false },
             { data: 'status', name: 'status', searchable: false },
             { data: 'action', searchable: false, orderable: false }
         ],

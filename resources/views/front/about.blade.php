@@ -410,107 +410,28 @@
     |--------------------------------------------------------------------------
     | Doctors Data
     |--------------------------------------------------------------------------
-    | كل النصوص داخل __() حتى تظهر في ملف الترجمة بالداشبورد.
+    | البيانات تأتي من الداشبورد: Doctors (admin/doctors).
+    | خانة "Featured" في الداشبورد تحدد من يظهر في الكارت الكبير.
     */
 
-    $doctors = [
-        [
-            'name' => __('دكتور محمد حجاب'),
+    $doctorSign = $isArabic ? 'ar' : 'en';
 
-            'title' => __('اخصائي تجميل وزراعه الأسنان'),
+    $teamDoctors = collect($doctors ?? []);
 
-            'description' => __('متخصص في تجميل الأسنان وزراعة الأسنان وتصميم الابتسامة.'),
-
-            'image' => asset('assets/images/doctors /D-mohamed-h.webp'),
-
-            'featured' => true,
-        ],
-
-        [
-            'name' => __('دكتور علي وهبة'),
-
-            'title' => __('مدرس جراحات اللثه وزراعه الأسنان'),
-
-            'description' => __('متخصص في جراحات اللثة وزراعة الأسنان باستخدام أحدث التقنيات.'),
-
-            'image' => asset('assets/images/doctors /D-ali.webp'),
-
-            'featured' => false,
-        ],
-
-        [
-            'name' => __('دكتور محمد زايد'),
-
-            'title' => __('استاذ طب اسنان وأطفال جامعه عين شمس'),
-
-            'description' => __('متخصص في طب أسنان الأطفال وتقديم الرعاية المناسبة لمختلف الأعمار.'),
-
-            'image' => asset('assets/images/doctors /D-mohmed-z.webp'),
-
-            'featured' => false,
-        ],
-
-        [
-            'name' => __('دكتورة ولاء جاد'),
-
-            'title' => __('اخصائي ودكتوراه تقويم الاسنان جامعه القاهره'),
-
-            'description' => __('متخصصة في تقويم الأسنان وتحسين انتظام الأسنان والابتسامة.'),
-
-            'image' => asset('assets/images/doctors /ولاء جاد.webp'),
-
-            'featured' => false,
-        ],
-
-        [
-            'name' => __('دكتورة خلود'),
-
-            'title' => __('أخصائية طب الأسنان'),
-
-            'academic_title' => '',
-
-            'description' => __('تقديم خطط علاج متكاملة ومناسبة لكل حالة باهتمام واحترافية.'),
-
-            'image' => asset('assets/images/doctors /D-Kholoud.webp'),
-
-            'featured' => false,
-        ],
-
-        [
-            'name' => __('دكتور أحمد عصمت'),
-
-            'title' => __('أخصائي علاج الجذور'),
-
-            'description' => __('متخصص في علاج جذور الأسنان والحفاظ على الأسنان بأحدث التقنيات.'),
-
-            'image' => asset('assets/images/doctors /D-ahmed-a.webp'),
-
-            'featured' => false,
-        ],
-
-        [
-            'name' => __('دكتور أحمد ممدوح'),
-
-            'title' => __('أخصائي تركيبات الأسنان'),
-
-            'description' => __('متخصص في تركيبات الأسنان الثابتة والمتحركة واستعادة جمال الابتسامة.'),
-
-            'image' => asset('assets/images/doctors /D-ahmed-m.webp'),
-
-            'featured' => false,
-        ],
-    ];
-
-
-    $featuredDoctor = collect($doctors)
-        ->firstWhere('featured', true);
-
-
-    $otherDoctors = collect($doctors)
-        ->where('featured', '!=', true)
+    $featuredDoctors = $teamDoctors
+        ->filter(fn ($doctor) => (int) $doctor->featured === 1)
         ->values();
+
+    $otherDoctors = $teamDoctors
+        ->filter(fn ($doctor) => (int) $doctor->featured !== 1)
+        ->values();
+
+    $teamLogo = asset('assets/images/doctors/اللوجو.png');
+    $teamPlaceholder = asset('assets/images/noimage.png');
 @endphp
 
+
+@if($teamDoctors->isNotEmpty())
 
 <section
     id="team"
@@ -645,8 +566,14 @@
 
 
 
-            <!-- Featured Doctor -->
-            @if($featuredDoctor)
+            <!-- Featured Doctors -->
+            @foreach($featuredDoctors as $featuredDoctor)
+
+                @php
+                    $featuredName = $featuredDoctor->localized('name', $doctorSign);
+                    $featuredTitle = $featuredDoctor->localized('title', $doctorSign);
+                    $featuredBio = $featuredDoctor->localized('bio', $doctorSign);
+                @endphp
 
                 <div
                     class="relative z-10
@@ -712,7 +639,7 @@
                                 >
 
                                     <img
-                                        src="{{ asset('assets/images/doctors /اللوجو.png') }}"
+                                        src="{{ $teamLogo }}"
                                         alt="Tooth Guard Logo"
                                         class="h-9 w-9 object-contain"
                                     >
@@ -722,8 +649,8 @@
 
                                 <!-- Doctor Image -->
                                 <img
-                                    src="{{ $featuredDoctor['image'] }}"
-                                    alt="{{ $featuredDoctor['name'] }}"
+                                    src="{{ $featuredDoctor->photo_url ?: $teamPlaceholder }}"
+                                    alt="{{ $featuredName }}"
                                     loading="lazy"
                                     decoding="async"
                                     class="relative z-10
@@ -786,50 +713,25 @@
                                            text-[#2457ff]
                                            md:text-5xl"
                                 >
-                                    {{ $featuredDoctor['name'] }}
+                                    {{ $featuredName }}
                                 </h3>
 
 
-                                <p
-                                    class="mt-3
-                                           text-lg font-extrabold
-                                           text-[#16bf62]
-                                           md:text-2xl"
-                                >
-                                    {{ $featuredDoctor['title'] }}
-                                </p>
+                                @if(!empty($featuredTitle))
 
-
-                                @if(!empty($featuredDoctor['academic_title']))
-
-                                    <div
-                                        dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
-                                        class="mt-3 flex
-                                               items-start gap-2
-                                               text-sm font-bold
-                                               leading-7
-                                               text-[#287258]
-                                               md:text-base"
+                                    <p
+                                        class="mt-3
+                                               text-lg font-extrabold
+                                               text-[#16bf62]
+                                               md:text-2xl"
                                     >
-
-                                        <i
-                                            class="fa-solid
-                                                   fa-graduation-cap
-                                                   mt-1.5 shrink-0
-                                                   text-[#16bf62]"
-                                        >
-                                        </i>
-
-                                        <span>
-                                            {{ $featuredDoctor['academic_title'] }}
-                                        </span>
-
-                                    </div>
+                                        {{ $featuredTitle }}
+                                    </p>
 
                                 @endif
 
 
-                                @if(!empty($featuredDoctor['description']))
+                                @if(!empty($featuredBio))
 
                                     <p
                                         dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
@@ -839,7 +741,7 @@
                                                md:text-base
                                                {{ $isArabic ? 'text-right' : 'text-left' }}"
                                     >
-                                        {{ $featuredDoctor['description'] }}
+                                        {{ $featuredBio }}
                                     </p>
 
                                 @endif
@@ -852,7 +754,7 @@
 
                 </div>
 
-            @endif
+            @endforeach
 
 
 
@@ -867,6 +769,12 @@
             >
 
                 @foreach($otherDoctors as $doctor)
+
+                    @php
+                        $doctorName = $doctor->localized('name', $doctorSign);
+                        $doctorTitle = $doctor->localized('title', $doctorSign);
+                        $doctorBio = $doctor->localized('bio', $doctorSign);
+                    @endphp
 
                     <div
                         class="group h-full
@@ -912,7 +820,7 @@
                                 >
 
                                     <img
-                                        src="{{ asset('assets/images/doctors /اللوجو.png') }}"
+                                        src="{{ $teamLogo }}"
                                         alt="Tooth Guard Logo"
                                         class="h-8 w-8 object-contain"
                                     >
@@ -930,8 +838,8 @@
                                 >
 
                                     <img
-                                        src="{{ $doctor['image'] }}"
-                                        alt="{{ $doctor['name'] }}"
+                                        src="{{ $doctor->photo_url ?: $teamPlaceholder }}"
+                                        alt="{{ $doctorName }}"
                                         loading="lazy"
                                         decoding="async"
                                         width="144"
@@ -964,51 +872,26 @@
                                            text-[#2457ff]
                                            md:text-2xl"
                                 >
-                                    {{ $doctor['name'] }}
+                                    {{ $doctorName }}
                                 </h3>
 
 
-                                <p
-                                    class="mt-2 break-words
-                                           text-sm font-extrabold
-                                           leading-6
-                                           text-[#16bf62]
-                                           md:text-lg"
-                                >
-                                    {{ $doctor['title'] }}
-                                </p>
+                                @if(!empty($doctorTitle))
 
-
-                                @if(!empty($doctor['academic_title']))
-
-                                    <div
-                                        dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
-                                        class="mt-2 flex
-                                               items-start gap-2
-                                               text-xs font-bold
+                                    <p
+                                        class="mt-2 break-words
+                                               text-sm font-extrabold
                                                leading-6
-                                               text-[#287258]
-                                               md:text-sm"
+                                               text-[#16bf62]
+                                               md:text-lg"
                                     >
-
-                                        <i
-                                            class="fa-solid
-                                                   fa-graduation-cap
-                                                   mt-1 shrink-0
-                                                   text-[#16bf62]"
-                                        >
-                                        </i>
-
-                                        <span class="break-words">
-                                            {{ $doctor['academic_title'] }}
-                                        </span>
-
-                                    </div>
+                                        {{ $doctorTitle }}
+                                    </p>
 
                                 @endif
 
 
-                                @if(!empty($doctor['description']))
+                                @if(!empty($doctorBio))
 
                                     <p
                                         dir="{{ $isArabic ? 'rtl' : 'ltr' }}"
@@ -1018,7 +901,7 @@
                                                md:text-base
                                                {{ $isArabic ? 'text-right' : 'text-left' }}"
                                     >
-                                        {{ $doctor['description'] }}
+                                        {{ $doctorBio }}
                                     </p>
 
                                 @endif
@@ -1038,6 +921,8 @@
     </div>
 
 </section>
+
+@endif
 
  <!-- Key Features -->
 @php

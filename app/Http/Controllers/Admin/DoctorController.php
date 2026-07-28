@@ -40,13 +40,18 @@ class DoctorController extends Controller
                     ? '<span class="badge bg-success">Active</span>'
                     : '<span class="badge bg-danger">Inactive</span>';
             })
+            ->addColumn('featured', function (Doctor $data) {
+                return $data->featured
+                    ? '<span class="badge bg-warning"><i class="fas fa-star"></i> Featured</span>'
+                    : '<span class="badge bg-light text-dark">—</span>';
+            })
             ->addColumn('action', function (Doctor $data) {
                 return '<div class="action-list">
                     <a class="btn btn-sm btn-secondary" href="' . route('admin-doctors-edit', $data->id) . '"><i class="las la-edit"></i></a>
                     <a href="javascript:;" data-href="' . route('admin-doctors-delete', $data->id) . '" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete btn btn-sm btn-danger"><i class="las la-trash"></i></a>
                 </div>';
             })
-            ->rawColumns(['photo', 'status', 'action'])
+            ->rawColumns(['photo', 'status', 'featured', 'action'])
             ->toJson();
     }
 
@@ -74,6 +79,7 @@ class DoctorController extends Controller
 
         $input = $request->except('photo');
         $input['active'] = $request->has('active') ? 1 : 0;
+        $input['featured'] = $request->has('featured') ? 1 : 0;
         $input['display_order'] = $request->display_order ?? 0;
         if ($file = $request->file('photo')) {
             $input['photo'] = $this->storeImage($file, $this->folder);
@@ -106,6 +112,7 @@ class DoctorController extends Controller
 
         $input = $request->except('photo');
         $input['active'] = $request->has('active') ? 1 : 0;
+        $input['featured'] = $request->has('featured') ? 1 : 0;
         $input['display_order'] = $request->display_order ?? 0;
         if ($file = $request->file('photo')) {
             $new = $this->storeImage($file, $this->folder);
