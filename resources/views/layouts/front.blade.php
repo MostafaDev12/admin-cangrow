@@ -14,10 +14,7 @@
 
     <meta name="google-site-verification" content="XmE4cT8eN-RTm7fLfT_e-ap_toosMuXQwzYRDNRZqaM" />
 
-    @unless (isset($blog))
-        <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
-    @endunless
-
+  
     <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:type" content="website">
@@ -52,8 +49,10 @@
         <meta name="description" content="{{ $seoDescription }}">
         <meta property="og:title" content="{{ $ogTitle }}">
         <meta property="og:description" content="{{ $seoDescription }}">
-        <title>{{ $seoTitle }}</title>
+        {{-- <title>{{ $seoTitle }}</title> --}}
+        <title>   @yield('title')</title>
     @else
+       <meta property="og:title" content="{{ $gs->{'title_' . $sign} }}">
         <meta name="+author" content=" {{ $gs->{'title_' . $sign} }}">
         <meta property="og:description" content="{{ $gs->{'title_' . $sign} }}">
         <title>
