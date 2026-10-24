@@ -73,7 +73,7 @@ class HomeController extends Controller
 
         // لو مش منتهي بـ /
         if (!str_ends_with($base, '/')) {
-            $base .= '/';
+            
         }
 
         return 'href="' . $base . $rest . '"';
@@ -724,13 +724,20 @@ public function change($id)
 
     // خريطة المسارات بين العربي والإنجليزي
     $slug_map = [
-        '/عن-الدكتور/' => '/about-doctor/',
-        '/فيديوهات/'   => '/videos/',
-        '/المقالات/'   => '/blogs/',
-        '/اتصل-بنا/'   => '/contact-us/',
-        '/احجز-الان/'  => '/book-now/',
+        '/عن-الدكتور' => '/about-doctor',
+        '/فيديوهات'   => '/videos',
+        '/المقالات'   => '/blogs',
+        '/اتصل-بنا'   => '/contact-us',
+        '/احجز-الان'  => '/book-now',
     ];
 
+//   $slug_map = [
+//         '/عن-الدكتور/' => '/about-doctor/',
+//         '/فيديوهات/'   => '/videos/',
+//         '/المقالات/'   => '/blogs/',
+//         '/اتصل-بنا/'   => '/contact-us/',
+//         '/احجز-الان/'  => '/book-now/',
+//     ];
     // فك الرابط لأجزاء
     $parsed = parse_url($u);
     $scheme = $parsed['scheme'] ?? 'http';

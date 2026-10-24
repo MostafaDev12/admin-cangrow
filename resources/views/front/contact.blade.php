@@ -23,39 +23,164 @@ $randomPhone = Arr::random($phones);
         <div class="overlay d-flex justify-content-center align-items-center">
             <h1>   {{ __('اتصل بنا') }}</h1>
         </div>
-
+        
     </div>
-    <div class="contact p-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-lg-6 col-md-4">
-                    <div class="p-4 mt-4 wow animate__animated animate__fadeInLeft" data-wow-delay="1s" data-wow-duration="1s">
-                        <span class="mb-3 d-block">  {{ __('ابقى على تواصل') }}</span>
-                        <p>  {{ __('يمكنكم زياراتنا ومراسلتنا') }}</p>
-                        <p>{{ __('نعمل علي مدار اليوم لاستقبال طلباتكم') }}</p>
-                    </div>
+ <div class="contact p-4">
+    <div class="container">
+
+        {{-- INTRO --}}
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-lg-7">
+
+                <div
+                    class="clinic-contact-intro text-center wow animate__animated animate__fadeInDown"
+                    data-wow-delay=".1s"
+                    data-wow-duration="1s"
+                >
+
+                    <span class="mb-3 d-block">
+                        {{ __('ابقى على تواصل') }}
+                    </span>
+
+                    <p>
+                        {{ __('يمكنكم زياراتنا ومراسلتنا') }}
+                    </p>
+
+                    <p>
+                        {{ __('نعمل علي مدار اليوم لاستقبال طلباتكم') }}
+                    </p>
+
                 </div>
-                <div class="col-12 col-lg-3 col-md-4">
-                    <div class="text-center mb-3 contact-div p-4 wow animate__animated animate__fadeInDown" data-wow-delay="1s" data-wow-duration="1s">
-                        <i class="fas fa-location"></i>
-                        <h2>{{ __('العنوان') }}</h2>
-                        @foreach ($addresses as $address)
-                
-                        <p> {{ $address }}  </p>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-12 col-lg-3 col-md-4">
-                    <div class="text-center contact-div p-4 wow animate__animated animate__fadeInDown" data-wow-delay="1s" data-wow-duration="1s">
-                        <i class="fas fa-phone"></i>
-                        <h2>{{ __('الموبيل') }}</h2>
-                        @foreach ($phones as $phone)
-                        <a href="tel:+2{{ $phone }}">{{ $phone }}</a>
-                        @endforeach
-                    </div>
-                </div>
+
             </div>
         </div>
+
+
+        {{-- 3 INFO CARDS --}}
+        <div class="row align-items-stretch clinic-contact-row">
+
+            {{-- PHONE --}}
+            <div class="col-12 col-lg-4 col-md-6">
+
+                <div
+                    class="clinic-info-card wow animate__animated animate__fadeInUp"
+                    data-wow-delay=".15s"
+                >
+
+                    <div class="clinic-info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+
+                    <h2>
+                        {{ __('الموبايل') }}
+                    </h2>
+
+                    <div class="clinic-card-divider">
+                        <span></span>
+                    </div>
+
+                    @foreach ($phones as $phone)
+                        <a
+                            href="tel:+2{{ $phone }}"
+                            class="clinic-info-value"
+                        >
+                            {{ $phone }}
+                        </a>
+                    @endforeach
+
+                </div>
+
+            </div>
+
+
+            {{-- ADDRESS --}}
+            <div class="col-12 col-lg-4 col-md-6">
+
+                <div
+                    class="clinic-info-card wow animate__animated animate__fadeInUp"
+                    data-wow-delay=".25s"
+                >
+
+                    <div class="clinic-info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+
+                    <h2>
+                        {{ __('العنوان') }}
+                    </h2>
+
+                    <div class="clinic-card-divider">
+                        <span></span>
+                    </div>
+
+                    @foreach ($addresses as $address)
+                        <p class="clinic-info-value">
+                            {{ $address }}
+                        </p>
+                    @endforeach
+
+                </div>
+
+            </div>
+
+
+            {{-- APPOINTMENTS --}}
+            <div class="col-12 col-lg-4 col-md-12">
+
+                <div
+                    class="clinic-info-card clinic-card-appointments wow animate__animated animate__fadeInUp"
+                    data-wow-delay=".35s"
+                >
+
+                    <div class="clinic-info-icon">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+
+                    <h2>
+                        {{ __('مواعيد العيادة') }}
+                    </h2>
+
+                    <div class="clinic-card-divider">
+                        <span></span>
+                    </div>
+
+                    <div class="clinic-appointments">
+
+                        <p>
+                            <strong>{{ __('السبت') }}</strong>
+                            <span>{{ __('من الساعة ٢ حتى الساعة ٥') }}</span>
+                        </p>
+
+                        <p>
+                            <strong>{{ __('الأحد') }}</strong>
+                            <span>{{ __('من الساعة ٧ حتى الساعة ٩') }}</span>
+                        </p>
+
+<p>
+    <strong>{{ __('الاثنين') }}</strong>
+    <span>{{ __('من الساعة ٧ حتى الساعة ٩') }}</span>
+</p>
+
+<p>
+    <strong>{{ __('الثلاثاء') }}</strong>
+    <span>{{ __('من الساعة ٢ حتى الساعة ٥') }}</span>
+</p>
+
+                        <p>
+                            <strong>{{ __('الأربعاء') }}</strong>
+                            <span>{{ __('من الساعة ٧ حتى الساعة ٩') }}</span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
         <div class="container-fluid mt-5 wow animate__animated animate__fadeInDown" data-wow-delay="1s" data-wow-duration="1s">
             <div>
               {!! $gs->map !!}

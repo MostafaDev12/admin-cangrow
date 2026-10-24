@@ -14,11 +14,11 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "{{ route('single-blog.index'.$lang,['blog' =>$blog->{'slug_' . $sign} ,'lang'=> $lang ]) }}/"
+    "@id": "{{ route('single-blog.index'.$lang,['blog' =>$blog->{'slug_' . $sign} ,'lang'=> $lang ]) }}"
   },
   "headline": "{{ $blog->{'meta_title_' . $sign} }}",
   "image": "{{ $blog->photo }}",
-  "datePublished": "{{ $blog->blog_date }}",
+  "datePublished": "{{ $blog->created_at }}",
   "dateModified": "{{ $blog->blog_date }}",
   "description": "{{ $blog->{'meta_details_' . $sign} }}",
   "author": {
@@ -49,8 +49,215 @@ $randomPhone = Arr::random($phones);
 
 <style>
     .font-cairo {
-    font-family: Cairo, sans-serif !important;
+        font-family: Cairo, sans-serif !important;
+    }
+
+    /* =========================
+       INLINE ARTICLE VIDEO
+       shortcode: [video:ID]
+    ========================== */
+    .article-video-card {
+        width: 100%;
+        max-width: 760px;
+        margin: 32px auto;
+        direction: rtl;
+    }
+    .article-video-card__trigger {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        display: block;
+        cursor: pointer;
+        text-align: inherit;
+    }
+    .article-video-card__frame {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 2px solid #4ac8de;
+        background: #000;
+        box-shadow: 0 8px 22px rgba(0,0,0,.18);
+    }
+    .article-video-card__thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .3s ease;
+    }
+    .article-video-card__trigger:hover .article-video-card__thumb { transform: scale(1.025); }
+    .article-video-card__shade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,.72) 0%, rgba(0,0,0,.10) 35%, rgba(0,0,0,.10) 58%, rgba(0,0,0,.78) 100%);
+        pointer-events: none;
+    }
+    .article-video-card__top,
+    .article-video-card__bottom {
+        position: absolute;
+        z-index: 2;
+        right: 18px;
+        left: 18px;
+        color: #fff;
+    }
+    .article-video-card__top { top: 13px; text-align: center; }
+    .article-video-card__title {
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        line-height: 1.45;
+        font-weight: 800;
+        text-shadow: 0 2px 7px rgba(0,0,0,.65);
+    }
+    .article-video-card__author {
+        display: block;
+        color: #dff7ff;
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 3px;
+    }
+    .article-video-card__bottom {
+        bottom: 13px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 14px;
+    }
+    .article-video-card__brand {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        color: #fff;
+        font-size: 13px;
+        line-height: 1.4;
+        text-align: right;
+        font-weight: 700;
+    }
+    .article-video-card__youtube {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        flex: 0 0 auto;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: rgba(0,0,0,.48);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 800;
+    }
+    .article-video-card__youtube i { color: #ff0000; font-size: 20px; }
+    .article-video-card__play {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+        width: 72px;
+        height: 50px;
+        transform: translate(-50%, -50%);
+        border-radius: 13px;
+        background: #ff0000;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 7px 18px rgba(0,0,0,.3);
+        transition: transform .25s ease, background .25s ease;
+    }
+    .article-video-card__play::before {
+        content: '';
+        width: 0;
+        height: 0;
+        margin-left: 4px;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+        border-left: 15px solid #fff;
+    }
+    .article-video-card__trigger:hover .article-video-card__play {
+        transform: translate(-50%, -50%) scale(1.08);
+        background: #e60000;
+    }
+    .article-video-card iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media (max-width: 767.98px) {
+        .article-video-card { margin: 24px auto; }
+        .article-video-card__frame { border-radius: 9px; }
+        .article-video-card__top,
+        .article-video-card__bottom { right: 10px; left: 10px; }
+        .article-video-card__top { top: 9px; }
+        .article-video-card__bottom { bottom: 9px; }
+        .article-video-card__title { font-size: 14px; }
+        .article-video-card__author,
+        .article-video-card__brand,
+        .article-video-card__youtube { font-size: 11px; }
+        .article-video-card__play { width: 58px; height: 40px; }
+        .article-video-card__play::before {
+            border-top-width: 7px;
+            border-bottom-width: 7px;
+            border-left-width: 12px;
+        }
+    }
+    @media (max-width: 767px) {
+
+    /* العمودين نفس العرض */
+    .social-connect .row > div {
+        display: flex;
+    }
+
+    /* زر WhatsApp و Call Us نفس المقاس */
+    .social-connect .btn-responsive-action {
+        width: 100% !important;
+        height: 64px !important;
+        min-height: 64px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 0 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* المحتوى جوه الزر */
+    .social-connect .btn-responsive-action .icon-container {
+        width: 100% !important;
+        height: 100% !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 8px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* النص ماينزلش سطر تاني */
+    .social-connect .btn-responsive-action .icon-container p {
+        margin: 0 !important;
+        padding: 0 !important;
+
+        white-space: nowrap !important;
+        width: auto !important;
+
+        font-size: 14px !important;
+        line-height: 1 !important;
+    }
+
+    /* الأيقونات نفس الحجم */
+    .social-connect .btn-responsive-action .icon-container i {
+        font-size: 20px !important;
+        width: auto !important;
+        height: auto !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+        flex: 0 0 auto !important;
+    }
 }
+ 
 </style>
 
     <div class="header-title blog-detils">
@@ -58,7 +265,7 @@ $randomPhone = Arr::random($phones);
          
             <h1> {{ $blog->{'title_' . $sign} }}   </h1>
             <br>
-            @if(!empty(optional($blog->category)->{'title_' . $sign} )) <a href="{{ route('blogs-category.index'.$lang, ['slug' => $blog->category->{'slug_' . $sign} ,'lang'=> $lang ]) }}/" class="">{{ optional($blog->category)->{'title_' . $sign} }}</a> @endif
+            @if(!empty(optional($blog->category)->{'title_' . $sign} )) <a href="{{ route('blogs-category.index'.$lang, ['slug' => $blog->category->{'slug_' . $sign} ,'lang'=> $lang ]) }}" class="">{{ optional($blog->category)->{'title_' . $sign} }}</a> @endif
 
         </div>
 
@@ -71,7 +278,7 @@ $randomPhone = Arr::random($phones);
                                        <img src="{{ asset('assets/images/blog.jpeg') }}" alt="">
 
                                      <h2>
-                                        <a class="nav-link" href="{{ route('about.index'.$lang,$lang) }}/">
+                                        <a class="nav-link" href="{{ route('about.index'.$lang,$lang) }}">
                                             أ
                                             .
                                             د.عبد الرحمن شمس
@@ -90,67 +297,191 @@ $randomPhone = Arr::random($phones);
                         <img class="mb-4" width="100%" src="{{ $blog->photo }}" alt="">
                         
                         @php
-                        $WhatsApp = __('WhatsApp');
-                        $Call =     __('Call Us');
-                        
-                        $content =  $blog->{'details_' . $sign};
-                         $content = str_replace(['{{ $randomPhone }}', "{{ __(&#39;WhatsApp&#39;) }}", "{{ __(&#39;Call Us&#39;) }}"], [$randomPhone,$WhatsApp, $Call ], $content);
+                            $WhatsApp = __('WhatsApp');
+                            $Call = __('Call Us');
 
-                        @endphp
-                        <p>   {!! $content !!}   </p>
-                        @if(count($blog->faqs) > 0)
-                        <h2 class="mb-3">الاسئله الشائعة</h2>
-                        <div class="accordion" id="accordionExample">
+                            /*
+                            |--------------------------------------------------------------------------
+                            | Reusable Contact Buttons
+                            |--------------------------------------------------------------------------
+                            | نفس البلوك والكلاسات الحالية يُستخدم:
+                            | 1) داخل المقال عند كتابة [contact_buttons]
+                            | 2) كأزرار ثابتة في آخر محتوى المقال
+                            |--------------------------------------------------------------------------
+                            */
+                            $contactButtons = <<<HTML
+                            <div class="social-connect">
+                                <div class="container">
+                                    <div class="row px-2">
+                                        <div class="col-6 col-md-6 col-lg-4 mb-2 mb-lg-0">
+                                            <a href="http://wa.me/2{$randomPhone}" target="_blank" class="btn-custom btn-responsive-action">
+                                                <div class="icon-container d-flex pt-3">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                    <p class="color-white-important">{$WhatsApp}</p>
+                                                </div>
+                                            </a>
+                                        </div>
 
-                            @foreach($blog->faqs as $k=>$faq )
-
-                            <div class="accordion-item box font-cairo">
-                                <h3 class="accordion-header">
-                                <button class="accordion-button @if($k != 0) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#ss{{$faq->id}}" aria-expanded="true" aria-controls="ss{{$faq->id}}">
-                                    {!! $faq->{'title_' . $sign} !!} 
-                                </button>
-                                </h3>
-                                <div id="ss{{$faq->id}}" class="accordion-collapse collapse  @if($k == 0) show @endif " data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    {!! $faq->{'details_' . $sign} !!}  
-                                </div>
+                                        <div class="col-6 col-md-6 col-lg-4 mb-2 mb-lg-0">
+                                            <a href="tel:+2{$randomPhone}" class="btn-custom btn-responsive-action bg-2">
+                                                <div class="icon-container d-flex pt-3">
+                                                    <i class="fas fa-phone-alt"></i>
+                                                    <p class="color-white-important">{$Call}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            HTML;
 
-                            
-                            @endforeach
-                                            
+                            $content = $blog->{'details_' . $sign};
 
-   <div class="social-connect">
-    <div class="container">
-        <div class="row px-2">
-            <div class="col-6 col-md-6 col-lg-4 mb-2 mb-lg-0">
-                <a href="http://wa.me/2{{ $randomPhone }}" target="_blank" class="btn-custom btn-responsive-action">
-                    <div class="icon-container d-flex pt-3">
-                        <i class="fab fa-whatsapp"></i>
-                        <p class="color-white-important"> {{ __('WhatsApp') }}</p>
+                            // دعم القيم القديمة الموجودة بالفعل داخل محتوى المقال
+                            $content = str_replace(
+                                ['{{ $randomPhone }}', "{{ __(&#39;WhatsApp&#39;) }}", "{{ __(&#39;Call Us&#39;) }}"],
+                                [$randomPhone, $WhatsApp, $Call],
+                                $content
+                            );
 
-                    </div>
-                </a>
-            </div>
+                            /*
+                            |--------------------------------------------------------------------------
+                            | [contact_buttons] Shortcode
+                            |--------------------------------------------------------------------------
+                            | الكاتب يضعه في أي مكان داخل المقال من الداشبورد.
+                            | لو الـEditor لفّه داخل <p> نشيل الـ<p> أولاً حتى يظل الـHTML صحيحاً.
+                            |--------------------------------------------------------------------------
+                            */
+                            $content = preg_replace(
+                                '/<p[^>]*>\s*(?:&nbsp;\s*)*\[contact_buttons\](?:\s*&nbsp;)*\s*<\/p>/i',
+                                $contactButtons,
+                                $content
+                            );
 
-            <div class="col-6 col-md-6 col-lg-4 mb-2 mb-lg-0">
-                <a href="tel:+2{{ $randomPhone }}" class="btn-custom btn-responsive-action bg-2">
-                    <div class="icon-container  d-flex pt-3">
-                        <i class="fas fa-phone-alt"></i>
-                        <p class="color-white-important"> {{ __('Call Us') }}</p>
-
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
+                            // fallback لو الـshortcode غير موجود داخل <p>
+                            $content = str_replace('[contact_buttons]', $contactButtons, $content);
 
 
-</div>
-                        </div>
+                     /*
+|--------------------------------------------------------------------------
+| [video:URL] Shortcode
+|--------------------------------------------------------------------------
+| مثال:
+| [video:https://www.youtube.com/embed/ZwdlthI_aoU?si=xxxx]
+|--------------------------------------------------------------------------
+*/
 
+$content = preg_replace_callback(
+    '/\[video:(https?:\/\/[^\]]+)\]/i',
+    function ($matches) {
+
+        $youtubeUrl = trim(html_entity_decode($matches[1]));
+
+        // استخراج YouTube ID من الرابط
+        if (!preg_match(
+            '~(?:youtube(?:-nocookie)?\.com/(?:embed/|watch\?(?:.*&)?v=|shorts/)|youtu\.be/)([A-Za-z0-9_-]{11})~i',
+            $youtubeUrl,
+            $ytMatch
+        )) {
+            return '';
+        }
+
+        $youtubeId = $ytMatch[1];
+
+        $embedUrl = 'https://www.youtube.com/embed/' . $youtubeId;
+        $thumbnail = 'https://img.youtube.com/vi/' . $youtubeId . '/hqdefault.jpg';
+
+        return
+            '<div class="article-video-card" data-video-url="' . $embedUrl . '">' .
+
+                '<button class="article-video-card__trigger" type="button">' .
+
+                    '<div class="article-video-card__frame">' .
+
+                        '<img
+                            class="article-video-card__thumb"
+                            src="' . $thumbnail . '"
+                            alt="شاهد الفيديو"
+                            loading="lazy"
+                        >' .
+
+                        '<span class="article-video-card__shade"></span>' .
+
+                        '<span class="article-video-card__top">' .
+                            '<span class="article-video-card__title">
+                                شاهد الفيديو
+                            </span>' .
+                            '<span class="article-video-card__author">
+                                د. عبدالرحمن شمس
+                            </span>' .
+                        '</span>' .
+
+                        '<span class="article-video-card__play"></span>' .
+
+                        '<span class="article-video-card__bottom">' .
+
+                            '<span class="article-video-card__brand">' .
+                                '<span>للاستفسار والتثقيف</span>' .
+                            '</span>' .
+
+                            '<span class="article-video-card__youtube">' .
+                                '<i class="fab fa-youtube"></i>' .
+                                '<span>شاهد على YouTube</span>' .
+                            '</span>' .
+
+                        '</span>' .
+
+                    '</div>' .
+
+                '</button>' .
+
+            '</div>';
+    },
+    $content
+);
+
+                        @endphp
+
+                        {{-- محتوى المقال --}}
+                        {!! $content !!}
+
+                        {{-- FAQ --}}
+                        @if(count($blog->faqs) > 0)
+                            <h2 class="mb-3">الاسئله الشائعة</h2>
+                            <div class="accordion" id="accordionExample">
+
+                                @foreach($blog->faqs as $k => $faq)
+                                    <div class="accordion-item box font-cairo">
+                                        <h3 class="accordion-header">
+                                            <button
+                                                class="accordion-button @if($k != 0) collapsed @endif"
+                                                type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#ss{{$faq->id}}"
+                                                aria-expanded="{{ $k == 0 ? 'true' : 'false' }}"
+                                                aria-controls="ss{{$faq->id}}"
+                                            >
+                                                {!! $faq->{'title_' . $sign} !!}
+                                            </button>
+                                        </h3>
+
+                                        <div
+                                            id="ss{{$faq->id}}"
+                                            class="accordion-collapse collapse @if($k == 0) show @endif"
+                                            data-bs-parent="#accordionExample"
+                                        >
+                                            <div class="accordion-body">
+                                                {!! $faq->{'details_' . $sign} !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
                         @endif
+
+                        {{-- الأزرار الثابتة في آخر المقال --}}
+                        {!! $contactButtons !!}
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-md-6 box">
@@ -159,13 +490,13 @@ $randomPhone = Arr::random($phones);
                             <h2> {{ __('احدث المقالات') }}</h2>
                             <hr>
 
-                            @foreach (App\Models\Blog::orderBy('blog_date', 'desc')->where('id','!=',$blog->id)->limit(6)->get() as $k=> $blogg)
+                            @foreach (App\Models\Blog::orderBy('blog_date', 'desc')->where('id','!=',$blog->id)->limit(4)->get() as $k=> $blogg)
                             @php
                             $k++
                             @endphp
                             <div class="d-flex justify-content-between">
                                 <div class="pt-2">
-                                    <h3> <a href="{{ route('single-blog.index'.$lang, ['blog' =>$blogg->{'slug_' . $sign} ,'lang'=> $lang ]) }}/"> {{ $blogg->{'title_' . $sign} }} </a> </h3>
+                                    <span> <a href="{{ route('single-blog.index'.$lang, ['blog' =>$blogg->{'slug_' . $sign} ,'lang'=> $lang ]) }}"> {{ $blogg->{'title_' . $sign} }} </a> </span>
                                     <span>{{ $blogg->blog_date }}</span>
                                 </div>
                                 <img class="mb-4" src="{{ $blogg->photo }}" alt="">
@@ -245,9 +576,37 @@ $randomPhone = Arr::random($phones);
               <p>  {{ __('هل تريد حجز موعد وسنتواصل معك') }}     </p>
             </div>
             <div class="col-6">
-              <button   onclick="window.location.href='{{ route('book.index'.$lang,$lang) }}/'"> {{ __('احجز الان') }}   </button>
+              <button   onclick="window.location.href='{{ route('book.index'.$lang,$lang) }}'"> {{ __('احجز الان') }}   </button>
             </div>
           </div>
         </div>
       </div>
+      
+    <script>
+        document.addEventListener('click', function (event) {
+            const trigger = event.target.closest('.article-video-card__trigger');
+            if (!trigger) return;
+
+            const card = trigger.closest('.article-video-card');
+            if (!card) return;
+
+            const videoUrl = card.getAttribute('data-video-url');
+            if (!videoUrl) return;
+
+            const separator = videoUrl.includes('?') ? '&' : '?';
+
+            card.innerHTML = `
+                <div class="article-video-card__frame">
+                    <iframe
+                        src="${videoUrl}${separator}autoplay=1&rel=0"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            `;
+        });
+    </script>
+
       @stop

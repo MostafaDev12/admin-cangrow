@@ -131,14 +131,38 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="{{ asset('front/dr-shams/') }}/css/style.css">
-
+<link rel="stylesheet"
+      href="{{ asset('front/dr-shams/css/style.css') }}?v={{ filemtime(public_path('front/dr-shams/css/style.css')) }}">
 
 
     <link rel="stylesheet" href="{{ asset('build/css/toastr.css') }}">
 
     @yield('css')
 
+
+
+    <style>
+        @media (min-width: 992px) {
+            .header .navbar-nav > .dropdown:hover > .dropdown-menu { display:block; }
+            .header .navbar-nav .dropdown-menu > .dropdown { position:relative; }
+            .header .navbar-nav .dropdown-menu > .dropdown:hover > .dropdown-menu { display:block; top:0; margin-top:0; }
+            html[dir="rtl"] .header .navbar-nav .dropdown-menu > .dropdown > .dropdown-menu { right:100%; left:auto; margin-right:6px; }
+            html[dir="ltr"] .header .navbar-nav .dropdown-menu > .dropdown > .dropdown-menu { left:100%; right:auto; margin-left:6px; }
+        }
+        @media (max-width: 991.98px) {
+            .header .navbar-collapse { max-height:calc(100vh - 115px); overflow-y:auto; overflow-x:hidden; padding:12px 0 20px; }
+            .header .navbar-nav, .header .navbar-nav .nav-item, .header .navbar-nav .dropdown { width:100%; }
+            .header .navbar-nav .nav-link { width:100%; display:flex; align-items:center; justify-content:space-between; padding:10px 14px; }
+            .header .navbar-nav .dropdown-menu { position:static !important; inset:auto !important; transform:none !important; width:100%; min-width:0; margin:0; padding:5px 10px; border:0; border-radius:0; box-shadow:none; background:#f7f7f7; }
+            .header .navbar-nav .dropdown-menu:not(.show) { display:none; }
+            .header .navbar-nav .dropdown-menu.show { display:block; }
+            .header .navbar-nav .dropdown-menu .dropdown-menu { margin:4px 0 6px; padding:4px 12px; background:#fff; border-inline-start:2px solid #324f5d; }
+            .header .navbar-nav .dropdown-item { width:100%; white-space:normal; padding:9px 12px; text-align:start; }
+            .header .navbar-nav .dropdown > .dropdown-toggle { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+            .header .navbar-nav .dropdown > .dropdown-toggle::after { margin-inline-start:auto; transition:transform .2s ease; }
+            .header .navbar-nav .dropdown.submenu-open > .dropdown-toggle::after { transform:rotate(180deg); }
+        }
+    </style>
 
 </head>
 
@@ -190,7 +214,7 @@
                                 href="{{ route('front.index'.$lang,$lang) }}">{{ __('الرئيسية') }} </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about.index'.$lang,$lang) }}/">{{ __('عن الشركة') }}</a>
+                            <a class="nav-link" href="{{ route('about.index'.$lang,$lang) }}">{{ __('عن الشركة') }}</a>
                         </li>
 
 {{-- 
@@ -219,7 +243,7 @@
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('services.index'.$lang,$lang) }}/" id="servicesDropdown" role="button"
+                            <a class="nav-link dropdown-toggle services-menu-toggle" href="{{ route('services.index'.$lang,$lang) }}" id="servicesDropdown" role="button"
                                 aria-expanded="false">
                                 {{ __('الخدمات') }}
                             </a>
@@ -227,13 +251,13 @@
 
                                 @foreach ($categories as $category)
                                 <li class="dropdown">
-                                <a  @if(count($category->services) > 0) @endif   class="dropdown-item dropdown-toggle" href="{{ route('single-category-service.index'.$lang,['slug' => $category->{'slug_' . $sign}  ,'lang'=> $lang ]) }}/">{{ $category->{'title_' . $sign} }}</a>
+                                <a class="dropdown-item @if(count($category->services) > 0) dropdown-toggle service-submenu-toggle @endif" href="{{ route('single-category-service.index'.$lang,['slug' => $category->{'slug_' . $sign}  ,'lang'=> $lang ]) }}">{{ $category->{'title_' . $sign} }}</a>
                                 @if(count($category->services) > 0)
                                 <ul class="dropdown-menu"> 
                                     
                                 
                                     @foreach ($category->services as $service)
-                                    <li><a class="dropdown-item" href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign}  ,'lang'=> $lang ]) }}/">{{ $service->{'title_' . $sign} }}  </a></li>
+                                    <li><a class="dropdown-item" href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign}  ,'lang'=> $lang ]) }}">{{ $service->{'title_' . $sign} }}  </a></li>
                                     @endforeach
                                     
                                 </ul>
@@ -244,7 +268,7 @@
 
                                 @foreach ($servicesWithoutCats as $service)
                                 <li class="dropdown">
-                                <a    class="dropdown-item dropdown-toggle" href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign} ,'lang'=> $lang ]) }}/">{{ $service->{'title_' . $sign} }}</a>
+                                <a class="dropdown-item" href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign} ,'lang'=> $lang ]) }}">{{ $service->{'title_' . $sign} }}</a>
                               
                                 </li>
                                 @endforeach
@@ -254,16 +278,16 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('videos.index'.$lang,$lang) }}/">{{ __('الفيديوهات') }}</a>
+                            <a class="nav-link" href="{{ route('videos.index'.$lang,$lang) }}">{{ __('الفيديوهات') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blogs.index'.$lang,$lang) }}/">{{ __('المقالات') }}</a>
+                            <a class="nav-link" href="{{ route('blogs.index'.$lang,$lang) }}">{{ __('المقالات') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('book.index'.$lang,$lang) }}/"> {{ __('احجز الان') }}  </a>
+                            <a class="nav-link" href="{{ route('book.index'.$lang,$lang) }}"> {{ __('احجز الان') }}  </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index'.$lang,$lang) }}/">   {{ __('اتصل بنا') }}</a>
+                            <a class="nav-link" href="{{ route('contact.index'.$lang,$lang) }}">   {{ __('اتصل بنا') }}</a>
                         </li>
 
                     </ul>
@@ -305,18 +329,18 @@
                     <p class="title-footer">{{ __('روابط هامة') }}</p>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('front.index'.$lang,$lang) }}">{{ __('الرئيسية') }}</a></li>
-                        <li><a href="{{ route('about.index'.$lang,$lang) }}/"> {{ __('عن الشركة') }} </a></li>
-                        <li><a href="{{ route('services.index'.$lang,$lang) }}/"> {{ __('الخدمات') }}</a></li>
-                        <li><a href="{{ route('videos.index'.$lang,$lang) }}/">{{ __('الفيديوهات') }}</a></li>
-                        <li><a href="{{ route('book.index'.$lang,$lang) }}/">{{ __('احجز الان') }}</a></li>
-                        <li><a href="{{ route('contact.index'.$lang,$lang) }}/">    {{ __('اتصل بنا') }}</a></li>
+                        <li><a href="{{ route('about.index'.$lang,$lang) }}"> {{ __('عن الشركة') }} </a></li>
+                        <li><a href="{{ route('services.index'.$lang,$lang) }}"> {{ __('الخدمات') }}</a></li>
+                        <li><a href="{{ route('videos.index'.$lang,$lang) }}">{{ __('الفيديوهات') }}</a></li>
+                        <li><a href="{{ route('book.index'.$lang,$lang) }}">{{ __('احجز الان') }}</a></li>
+                        <li><a href="{{ route('contact.index'.$lang,$lang) }}">    {{ __('اتصل بنا') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 ">
                     <p  class="title-footer"> {{ __('الخدمات') }}</p>
                     <ul class="list-unstyled">
                       @foreach ($services->shuffle()->take(6) as $service)
-                      <li><a href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign}  ,'lang'=> $lang ]) }}/"> {{ $service->{'title_' . $sign} }}  </a></li>
+                      <li><a href="{{ route('single-service.index'.$lang,['slug' => $service->{'slug_' . $sign}  ,'lang'=> $lang ]) }}"> {{ $service->{'title_' . $sign} }}  </a></li>
                       @endforeach
                      
                        
@@ -694,6 +718,63 @@
                     .random());
             });
         })
+    </script>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMax = 991.98;
+            const servicesToggle = document.getElementById('servicesDropdown');
+            if (!servicesToggle) return;
+            const servicesItem = servicesToggle.closest('.dropdown');
+            const servicesMenu = servicesItem ? servicesItem.querySelector(':scope > .dropdown-menu') : null;
+            const isMobileNav = () => window.innerWidth <= mobileMax;
+
+            servicesToggle.addEventListener('click', function (e) {
+                if (!isMobileNav() || !servicesMenu) return;
+                e.preventDefault();
+                e.stopPropagation();
+                const willOpen = !servicesMenu.classList.contains('show');
+                servicesMenu.classList.toggle('show', willOpen);
+                servicesItem.classList.toggle('submenu-open', willOpen);
+                servicesToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+                if (!willOpen) {
+                    servicesMenu.querySelectorAll('.dropdown-menu.show').forEach(menu => menu.classList.remove('show'));
+                    servicesMenu.querySelectorAll('.submenu-open').forEach(item => item.classList.remove('submenu-open'));
+                }
+            });
+
+            document.querySelectorAll('.service-submenu-toggle').forEach(function (toggle) {
+                toggle.addEventListener('click', function (e) {
+                    if (!isMobileNav()) return;
+                    const parent = toggle.closest('.dropdown');
+                    const submenu = parent ? parent.querySelector(':scope > .dropdown-menu') : null;
+                    if (!submenu) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (parent.parentElement) {
+                        parent.parentElement.querySelectorAll(':scope > .dropdown.submenu-open').forEach(function (sibling) {
+                            if (sibling === parent) return;
+                            sibling.classList.remove('submenu-open');
+                            const openMenu = sibling.querySelector(':scope > .dropdown-menu.show');
+                            if (openMenu) openMenu.classList.remove('show');
+                        });
+                    }
+                    const willOpen = !submenu.classList.contains('show');
+                    submenu.classList.toggle('show', willOpen);
+                    parent.classList.toggle('submenu-open', willOpen);
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                if (!isMobileNav()) {
+                    document.querySelectorAll('#navbarNavDropdown .dropdown-menu.show').forEach(menu => menu.classList.remove('show'));
+                    document.querySelectorAll('#navbarNavDropdown .submenu-open').forEach(item => item.classList.remove('submenu-open'));
+                    servicesToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
     </script>
 
 
