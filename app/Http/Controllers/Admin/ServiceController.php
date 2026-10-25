@@ -63,7 +63,7 @@ class ServiceController extends Controller
                'photo'      => '',
                 ];
 
-        $validator = Validator::make($request->all(), $rules);
+        $validator = \App\Support\ServiceSeoInput::validator($request);
         
         if ($validator->fails()) {
           return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
@@ -72,7 +72,7 @@ class ServiceController extends Controller
 
         //--- Logic Section
         $data = new Service();
-        $input = $request->all();
+        $input = \App\Support\ServiceSeoInput::input($request);
         
         if ($file = $request->file('photo')) 
         {              
@@ -82,11 +82,8 @@ class ServiceController extends Controller
         $input['photo'] = $name;
         } 
         
-         $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
-         $input['slug_en'] = str_replace(' ','-',$request->slug_en);
-         $input['slug_fr'] = str_replace(' ','-',$request->slug_fr);
          
-        $data->fill($input)->save();
+        \Illuminate\Support\Facades\DB::transaction(fn () => $data->fill($input)->save());
         //--- Logic Section Ends
       
         //--- Redirect Section
@@ -114,7 +111,7 @@ class ServiceController extends Controller
                'photo'      => '',
                 ];
 
-        $validator = Validator::make($request->all(), $rules);
+        $validator = \App\Support\ServiceSeoInput::validator($request, (int) $id);
         
         if ($validator->fails()) {
           return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
@@ -123,7 +120,7 @@ class ServiceController extends Controller
 
         //--- Logic Section
         $data = Service::findOrFail($id);
-        $input = $request->all();
+        $input = \App\Support\ServiceSeoInput::input($request);
         if ($file = $request->file('photo')) 
         {              
             $name = time().$file->getClientOriginalName();
@@ -137,11 +134,8 @@ class ServiceController extends Controller
         $input['photo'] = $name;
         } 
         
-         $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
-         $input['slug_en'] = str_replace(' ','-',$request->slug_en);
-         $input['slug_fr'] = str_replace(' ','-',$request->slug_fr);
          
-        $data->update($input);
+        \Illuminate\Support\Facades\DB::transaction(fn () => $data->update($input));
         //--- Logic Section Ends
 
         //--- Redirect Section

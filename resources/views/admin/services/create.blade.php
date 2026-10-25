@@ -285,6 +285,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-7">
+                                @include('admin.services.seo')
                                 <button class="addProductSubmit-btn btn btn-secondary"
                                     type="submit">{{ __('translation.save') }}</button>
                             </div>

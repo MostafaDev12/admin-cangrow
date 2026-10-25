@@ -5,7 +5,6 @@
   @stop
 
   @section('gsearch')
-      <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}" />
   @stop
   @section('css')
 
@@ -29,7 +28,7 @@
                   <img class="rounded" src="{{ $service->photo }}" srcset="{{ $service->photo }} 1x, {{ $service->photo }} 2x"
                       alt="{{ $service->{'title_' . $sign} }}" title="{{ $service->{'title_' . $sign} }}">
                   <div class="">
-                      <h1 class="text-3xl font-bold my-4">{{ $service->{'title_' . $sign} }}</h1>
+                      <h1 class="text-3xl font-bold my-4">{{ $serviceSeo['name'] }}</h1>
                     
                       <p class="text-gray my-4">
                           {!! $service->{'details_' . $sign} !!}
@@ -44,15 +43,15 @@
       <!-- services -->
     <section class="py-12 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4">
-             @foreach ($services as $service)
-             @if(count($service->galleries) > 0)
-            <h2 class="text-2xl font-bold mb-4">{{ $service->{'title_' . $sign} }}</h2>
+             @foreach ($services as $galleryService)
+             @if(count($galleryService->galleries) > 0)
+            <h2 class="text-2xl font-bold mb-4">{{ $galleryService->{'title_' . $sign} }}</h2>
            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-               @foreach ($service->galleries as $gallery)
+               @foreach ($galleryService->galleries as $gallery)
                 <div
                     class="overflow-hidden rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-                    <img src="{{ $gallery->photo_url }}" alt="{{ $service->{'title_' . $sign} }}"
+                    <img src="{{ $gallery->photo_url }}" alt="{{ $galleryService->{'title_' . $sign} }}"
                         class="w-full h-auto object-cover transition-transform duration-500 hover:rotate-1">
                 </div>
                    

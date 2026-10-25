@@ -2,3 +2,4 @@ User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
 Sitemap: https://innovadentalclinics.com/sitemap.xml
+Sitemap: https://innovadentalclinics.com/sitemap-services.xml

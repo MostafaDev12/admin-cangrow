@@ -93,7 +93,7 @@
                                               </div>
                                                 <div class="mb-3">
                                                   <label for="slug_ar" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar"  value="{{ $data->slug_ar }}"  placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_ar" id="slug_ar"  value="{{ $data->getRawOriginal('slug_ar') }}"  placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>
@@ -132,7 +132,7 @@
                                           
                                            <div class="mb-3">
                                                   <label for="slug_en" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_en" id="slug_en"  value="{{ $data->slug_en }}"  placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_en" id="slug_en"  value="{{ $data->getRawOriginal('slug_en') }}"  placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>
@@ -177,7 +177,7 @@
                                              
                                            <div class="mb-3">
                                                   <label for="slug_fr" class="form-label">{{ __('translation.slug') }}</label>
-                                                  <input type="text" class="form-control" name="slug_fr" id="slug_fr"  value="{{ $data->slug_fr }}" placeholder="{{ __('translation.slug') }}">
+                                                  <input type="text" class="form-control" name="slug_fr" id="slug_fr"  value="{{ $data->getRawOriginal('slug_fr') }}" placeholder="{{ __('translation.slug') }}">
                                               </div>
                                                
                                            <hr>
@@ -277,6 +277,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-7">
+                                @include('admin.services.seo')
                                 <button class="addProductSubmit-btn btn btn-secondary"
                                     type="submit">{{ __('translation.save') }}</button>
                             </div>

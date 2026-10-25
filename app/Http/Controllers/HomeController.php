@@ -450,12 +450,34 @@ $sign = app()->getLocale();
 
 
 
-    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    $service = Service::where('is_published', true)->where(function ($query) use ($slug) {
+        $query->where('slug_ar', $slug)->orWhere('slug_en', $slug)->orWhere('slug_fr', $slug);
+    })->first();
     if(!$service){
-
-      abort(404);
+      $history = \Illuminate\Support\Facades\DB::table('service_slug_histories')->where('slug', $slug)->first();
+      $target = $history ? Service::where('is_published', true)->find($history->service_id) : null;
+      abort_unless($target, 404);
+      $current = $target->getAttribute('slug_'.$history->locale);
+      abort_if(blank($current) || $current === $slug, 404);
+      return redirect()->to(\App\Support\ServiceSeo::url($current), 301);
     }
-    return view('front.details-service', compact('sign', 'service'));
+    foreach (config('service_seo.locales') as $locale) {
+        if ($service->getRawOriginal('slug_'.$locale) === $slug) {
+            $sign = $locale;
+            break;
+        }
+    }
+    app()->setLocale($sign);
+    $serviceSeo = \App\Support\ServiceSeo::metadata($service, $sign);
+    $serviceSeo['url'] = \App\Support\ServiceSeo::url($slug);
+    if (app()->environment('production')) {
+        $origin = parse_url(\App\Support\ServiceSeo::origin());
+        $expectedOrigin = ($origin['scheme'] ?? 'https').'://'.($origin['host'] ?? '').(isset($origin['port']) ? ':'.$origin['port'] : '');
+        if ($request->getSchemeAndHttpHost() !== $expectedOrigin) {
+            return redirect()->to($serviceSeo['url'], 301);
+        }
+    }
+    return view('front.details-service', compact('sign', 'service', 'serviceSeo'));
   }
 
   public function singleCategoryService(Request $request, $slug)

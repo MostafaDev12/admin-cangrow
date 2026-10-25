@@ -17,13 +17,15 @@
  
 
  
+    <meta name="google-site-verification" content="fILhxCvzmcgwtK0tCkHeQ16wXhpRH55UG8z4wyaE_cs" />
+    <meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
+    @if(isset($serviceSeo))
+        @include('front.service-seo')
+    @else
     <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
     <meta property="og:url" content="{{ url('/') }}/">
     <meta property="og:type" content="website">
     
-    <meta name="google-site-verification" content="fILhxCvzmcgwtK0tCkHeQ16wXhpRH55UG8z4wyaE_cs" />
-
-    <meta name="google-site-verification" content="IdWOrbHM6JKC0_evYH8uNuHf2MuPTGcup45QC7eNyzU" />
   
     @if (isset($page->meta_tag) && isset($page->meta_description))
         <meta name="keywords" content="{{ $page->meta_tag }}">
@@ -65,6 +67,7 @@
     @endif
 
 <link rel="canonical" href="{{ url()->current() }}" />
+    @endif
 
 
    <script type="application/ld+json">
@@ -349,7 +352,7 @@
         <!--Medical tourism-->
 
     <li>
-    <a href="{{ route('medical-tourism.index') }}"
+    <a href="{{ isset($serviceSeo) && !Route::has('medical-tourism.index') ? route('contact.index') : route('medical-tourism.index') }}"
         class="flex items-center px-4 py-3 hover:bg-[#3e3c3f] hover:text-white transition-all duration-700">
         <span class="font-medium">{{ __('السياحة العلاجية') }}</span>
     </a>
@@ -385,9 +388,7 @@
 
         $targetSlug = $service->{'slug_' . $target};
 
-        $languageUrl = url(
-            $target . '/service/' . $targetSlug
-        );
+        $languageUrl = route('single-service.index', ['slug' => $targetSlug]);
 
     } else {
 

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\ProjectDatabase;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -14,7 +14,8 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
+        ProjectDatabase::create();
+        $response = $this->withSession(['ip_address' => '127.0.0.1'])->get('https://example.test/');
 
         $response->assertStatus(200);
     }
