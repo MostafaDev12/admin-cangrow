@@ -91,7 +91,7 @@
                 <div class="p-6">
                     <div class="">
                         <p class="text-lg font-medium text-gray-700">{{ __('Unmatched Quality.') }}</p>
-                        <h2 class="text-4xl font-bold text-gray-900">{{ __('Invisalign in LA') }}</h2>
+                        <h1 class="text-4xl font-bold text-gray-900">{{ __('Invisalign in LA') }}</h1>
                         <p class="text-gray-600 md:text-lg">
                             {{ __('Book your FREE virtual consultation and receive your coupon') }}<br>
                             {{ __('Hurry! Your coupon is good for two weeks') }}

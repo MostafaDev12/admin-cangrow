@@ -34,7 +34,7 @@
  
     <section class="py-12 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-10">{{ __('Veneers Before & After') }}</h2>
+            <h1 class="text-3xl font-bold text-center mb-10">{{ __('Veneers Before & After') }}</h1>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($after_befores as $after_before)

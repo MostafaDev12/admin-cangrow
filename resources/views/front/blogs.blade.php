@@ -40,9 +40,9 @@
                         </div>
                 
                         <!-- Title -->
-                        <h1 class="text-xl mt-4 font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                        <h4 class="text-xl mt-4 font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                             {{ $blog->{'title_' . $sign} }}
-                        </h1>
+                        </h4>
                 
                         <!-- Short Description -->
                         <p class="text-gray-600 text-sm line-clamp-2">

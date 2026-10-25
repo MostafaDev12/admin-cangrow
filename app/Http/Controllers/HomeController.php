@@ -437,7 +437,10 @@ $sign = app()->getLocale();
             return redirect()->to("/$sign/$correctSlug");
         }
 
-    return view('front.details-blog', compact('sign', 'blog'));
+
+        $faqs = $blog->faqs;
+        
+    return view('front.details-blog', compact('sign', 'blog','faqs'));
   }
 
   public function singleService(Request $request, $slug)

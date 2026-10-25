@@ -20,7 +20,7 @@
         <div class="container mx-auto px-4">
             <!-- Heading -->
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-2xl font-bold text-gray-800">{{ __('Meet Our Team') }} </h2>
+                <h1 class="text-2xl font-bold text-gray-800">{{ __('Meet Our Team') }} </h1>
                 <p class="text-gray-600 mt-2">{{ __('Friendly, professional, and dedicated to your smile.') }}</p>
             </div>
 

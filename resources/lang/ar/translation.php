@@ -290,6 +290,9 @@ return [
        "locations" => "Locations",
        "blogs" => "المقالات",
        "language" => "Language",
+       "about_us" => "من نحن",
+        "staff"    => "الفريق الطبي",
+       "contact"  => "اتصل بنا",
 ];
 ?>
 

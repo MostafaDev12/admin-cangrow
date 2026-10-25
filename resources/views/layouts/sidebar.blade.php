@@ -334,6 +334,11 @@
                             <i class="las la-tachometer-alt"></i> <span>@lang('translation.blogs')</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ route('admin-faqs-index') }}" aria-controls="sidebarfaqs">
+                            <i class="las la-tachometer-alt"></i> <span>@lang('translation.faqs')</span>
+                        </a>
+                    </li>
                 @endif
 
                 @if (Auth::guard('admin')->user()->sectionCheck('general_settings'))

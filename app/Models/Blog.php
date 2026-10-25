@@ -75,7 +75,14 @@ class Blog extends Model
      *
      * @var array<string, string>
      */
-    
+     
+    //  تعديل
+     public function faqs()
+{
+    return $this->hasMany(Faq::class, 'blog_id');
+}
+        //  تعديل
+
 public function getDetailsMergedArAttribute()
 {
     $content = $this->details_ar;

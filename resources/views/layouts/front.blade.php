@@ -67,37 +67,36 @@
 <link rel="canonical" href="{{ url()->current() }}" />
 
 
-
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "{{url('/')}}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}"
-    }
-    </script>
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ $gs->{'title_' . $sign} }}",
-    "url": "{{url('/')}}",
-    "description": "",
-    "image": "{{ $gs->{'logo_' . $sign} }}",
-      "logo": "{{ $gs->{'logo_' . $sign} }}",
-      "sameAs": ["{{ App\Models\Socialsetting::find(1)->facebook }}", "{{ App\Models\Socialsetting::find(1)->twitter }}", "{{ App\Models\Socialsetting::find(1)->instagram }}"],
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "",
-      "addressRegion": "Cairo",
-      "postalCode": "11341",
-      "addressCountry": "Egypt"
-    }
-  }
-</script>
+   <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "MedicalOrganization",
+          "name": "عيادات إينوفا لطب الأسنان", 
+          "url": "{{url('/')}}",
+          "logo": "{{ $gs->{'logo_' . $sign} }}",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+201016188222",
+            "contactType": "customer service",
+            "areaServed": "EG",
+            "availableLanguage": "Arabic"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "١٥ شارع عبد الحميد بدوي، المطار",
+            "addressLocality": "النزهة ",
+            "addressRegion": "القاهرة",
+            "addressCountry": "EG"
+          },
+          "sameAs": [
+            "https://www.tiktok.com/@dr.mohamed.atef?_t=ZS-8weFNKWRBay&_r=1", 
+            "https://www.facebook.com/share/1AZLVt2oCj/", 
+            "https://youtube.com/@dentomaze?si=sfs98iGR2ZmNpmgk",
+            "https://www.instagram.com/dr.mohamed.atef?igsh=emQ5OXJoZm9hMzhu" 
+          ],
+          "medicalSpecialty": "Dentistry" 
+        }
+     </script>
 
 
     @yield('gsearch')
@@ -315,18 +314,36 @@
             <div class="flex items-center px-4 py-3 cursor-pointer">
                 <span class="font-medium mr-1">{{ __('About Us') }}</span>
             </div>
-            <ul class="absolute left-0 text-[#3e3c3f] mt-2 w-full bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 rounded-md">
-                <li>
-                    <a href="{{ route('doctors.index') }}" class="block px-4 py-2 hover:bg-gray-100">
-                        {{ __('Staff') }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('contact.index') }}" class="block px-4 py-2 hover:bg-gray-100">
-                        {{ __('Contact') }}
-                    </a>
-                </li>
-            </ul>
+         <ul class="absolute left-1/2 -translate-x-1/2 mt-2
+           w-max min-w-[170px]
+           bg-white text-[#3e3c3f] shadow-lg rounded-md
+           opacity-0 invisible
+           group-hover:opacity-100 group-hover:visible
+           transition-all duration-200 z-50 py-2">
+
+    <li>
+        <a href="{{ route('doctors.index') }}"
+           class="block px-5 py-2 text-center whitespace-nowrap hover:bg-gray-100">
+
+            <span class="font-medium whitespace-nowrap">
+                {{ __('Staff') }}
+            </span>
+
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ route('contact.index') }}"
+           class="block px-5 py-2 text-center whitespace-nowrap hover:bg-gray-100">
+
+            <span class="font-medium whitespace-nowrap">
+                {{ __('Contact') }}
+            </span>
+
+        </a>
+    </li>
+
+</ul>
         </li>
         
         <!--Medical tourism-->
@@ -357,30 +374,44 @@
 
     
     <li>
-        
 @php
+
     $locale = app()->getLocale();
+
     $target = $locale === 'ar' ? 'en' : 'ar';
 
-    // remove current locale from URL
-    $path = request()->path(); // e.g. ar/service
-    $segments = explode('/', $path);
 
-    // remove first segment if it's locale
-    if (in_array($segments[0], ['ar', 'en'])) {
-        array_shift($segments);
+    if (request()->routeIs('single-service.index') && isset($service)) {
+
+        $targetSlug = $service->{'slug_' . $target};
+
+        $languageUrl = url(
+            $target . '/service/' . $targetSlug
+        );
+
+    } else {
+
+
+
+        $path = request()->path();
+        $segments = explode('/', $path);
+
+        if (isset($segments[0]) && in_array($segments[0], ['ar', 'en'])) {
+            array_shift($segments);
+        }
+
+        $newPath = implode('/', $segments);
+
+        $languageUrl = url(
+            $target . ($newPath ? '/' . $newPath : '')
+        );
     }
 
-    $newPath = implode('/', $segments);
 @endphp
 
-<a href="/{{ $target }}{{ $newPath ? '/' . $newPath : '' }}">
+<a href="{{ $languageUrl }}">
     {{ strtoupper($target) }}
 </a>
-
-
-
-
 
     </li>
 </ul>                

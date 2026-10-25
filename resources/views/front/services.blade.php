@@ -12,60 +12,59 @@
 
 <section class="bg-white py-12 px-4 max-w-7xl mx-auto overflow-hidden">
 
-    <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4">
-            {{ __('Service Is Our #1 Priority.') }}
-        </h2>
+   <div class="text-center mb-12">
+    <h1 class="text-3xl font-bold mb-4">
+        {{ __('Service Is Our #1 Priority.') }}
+    </h1>
 
-        <p class="text-gray-600 max-w-2xl mx-auto">
-            {{ __('We want to ensure that your visit to the dentist is as pleasant as possible. Innova Dental uses the most advanced and proven technology to help you maintain that beautiful smile and to ensure that your next visit is an enjoyable one!') }}
-        </p>
-    </div>
+    <p class="text-gray-600 max-w-2xl mx-auto">
+        {{ __('We want to ensure that your visit to the dentist is as pleasant as possible. Innova Dental uses the most advanced and proven technology to help you maintain that beautiful smile and to ensure that your next visit is an enjoyable one!') }}
+    </p>
+</div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        @foreach ($parentservices as $k => $home_service)
+    @foreach ($parentservices as $k => $home_service)
 
-            @php
-                $serviceUrl = route('single-service.index', [
-                    'lang' => $sign,
-                    'slug' => $home_service->{'slug_' . $sign}
-                ]);
-            @endphp
+        @php
+            $serviceUrl = route('single-service.index', [
+                'slug' => $home_service->{'slug_' . $sign}
+            ]);
+        @endphp
 
-            <div class="text-center rounded shadow overflow-hidden p-4">
+        <div class="text-center rounded shadow overflow-hidden p-4">
 
-                <a href="{{ $serviceUrl }}"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    <img src="{{ $home_service->photo_url }}"
-                         alt="{{ $home_service->{'title_' . $sign} }}"
-                         class="mx-auto mb-4 w-50 h-30 object-contain">
+            {{-- Service Image --}}
+            <a href="{{ $serviceUrl }}">
+                <img
+                    src="{{ $home_service->photo_url }}"
+                    alt="{{ $home_service->{'title_' . $sign} }}"
+                    class="mx-auto mb-4 w-50 h-30 object-contain"
+                >
+            </a>
+
+            {{-- Service Title --}}
+            <h4 class="text-xl font-semibold py-2">
+                <a
+                    href="{{ $serviceUrl }}"
+                    class="hover:text-blue-500"
+                >
+                    {{ $home_service->{'title_' . $sign} }}
                 </a>
+            </h4>
 
-                <h4 class="text-xl font-semibold py-2">
-                    <a href="{{ $serviceUrl }}"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="hover:text-blue-500">
-                        {{ $home_service->{'title_' . $sign} }}
-                    </a>
-                </h4>
+            {{-- Service Description --}}
+            <p class="text-gray-600">
+                <a href="{{ $serviceUrl }}">
+                    {{ $home_service->{'short_details_' . $sign} }}
+                </a>
+            </p>
 
-                <p class="text-gray-600">
-                    <a href="{{ $serviceUrl }}"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        {{ $home_service->{'short_details_' . $sign} }}
-                    </a>
-                </p>
+        </div>
 
-            </div>
+    @endforeach
 
-        @endforeach
-
-    </div>
-
+</div>
 </section>
 
 {{-- 

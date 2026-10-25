@@ -290,6 +290,10 @@ return [
        "locations" => "Locations",
        "blogs" => "Blogs",
        "language" => "Language",
+       
+       "about_us" => "About Us",
+       "staff"    => "Staff",
+        "contact"  => "Contact",
 ];
 ?>
 
