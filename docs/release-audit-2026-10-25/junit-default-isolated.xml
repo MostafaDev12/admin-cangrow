@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\laragon\www\admin-cangrows\phpunit.xml" tests="24" assertions="86" errors="0" failures="1" skipped="9" time="26.995653">
+    <testsuite name="Unit" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.015281">
+      <testsuite name="Tests\Unit\ExampleTest" file="C:\laragon\www\admin-cangrows\tests\Unit\ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.015281">
+        <testcase name="test_example" file="C:\laragon\www\admin-cangrows\tests\Unit\ExampleTest.php" line="14" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.015281"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="23" assertions="85" errors="0" failures="1" skipped="9" time="26.980371">
+      <testsuite name="Tests\Feature\ExampleTest" file="C:\laragon\www\admin-cangrows\tests\Feature\ExampleTest.php" tests="1" assertions="1" errors="0" failures="1" skipped="0" time="24.404183">
+        <testcase name="test_example" file="C:\laragon\www\admin-cangrows\tests\Feature\ExampleTest.php" line="15" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="1" time="24.404183">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\ExampleTest::test_example&#13;
+Expected response status code [200] but received 500.
+Failed asserting that 500 is identical to 200.&#13;
+&#13;
+The following exception occurred during the last request:&#13;
+&#13;
+PDOException: SQLSTATE[HY000]: General error: 1 no such table: generalsettings in C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Connection.php:423
+Stack trace:
+#0 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Connection.php(423): PDO-&gt;prepare('select * from "...')
+#1 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Connection.php(816): Illuminate\Database\Connection-&gt;Illuminate\Database\{closure}('select * from "...', Array)
+#2 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Connection.php(783): Illuminate\Database\Connection-&gt;runQueryCallback('select * from "...', Array, Object(Closure))
+#3 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Connection.php(431): Illuminate\Database\Connection-&gt;run('select * from "...', Array, Object(Closure))
+#4 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2872): Illuminate\Database\Connection-&gt;select('select * from "...', Array, true)
+#5 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2860): Illuminate\Database\Query\Builder-&gt;runSelect()
+#6 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(3414): Illuminate\Database\Query\Builder-&gt;Illuminate\Database\Query\{closure}()
+#7 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2861): Illuminate\Database\Query\Builder-&gt;onceWithColumns(Array, Object(Closure))
+#8 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(739): Illuminate\Database\Query\Builder-&gt;get(Array)
+#9 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(723): Illuminate\Database\Eloquent\Builder-&gt;getModels(Array)
+#10 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Concerns\BuildsQueries.php(333): Illuminate\Database\Eloquent\Builder-&gt;get(Array)
+#11 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(449): Illuminate\Database\Eloquent\Builder-&gt;first(Array)
+#12 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php(23): Illuminate\Database\Eloquent\Builder-&gt;find(1)
+#13 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(2334): Illuminate\Database\Eloquent\Model-&gt;forwardCallTo(Object(Illuminate\Database\Eloquent\Builder), 'find', Array)
+#14 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(2346): Illuminate\Database\Eloquent\Model-&gt;__call('find', Array)
+#15 C:\laragon\www\admin-cangrows\app\Http\Middleware\HTTPSConnection.php(16): Illuminate\Database\Eloquent\Model::__callStatic('find', Array)
+#16 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): App\Http\Middleware\HTTPSConnection-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(40): Illuminate\Foundation\Http\Middleware\TransformsRequest-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Foundation\Http\Middleware\TrimStrings-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Foundation\Http\Middleware\ValidatePostSize-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(99): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(49): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Http\Middleware\HandleCors-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(39): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Http\Middleware\TrustProxies-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#28 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(119): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#29 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline-&gt;then(Object(Closure))
+#30 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel-&gt;sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#31 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(586): Illuminate\Foundation\Http\Kernel-&gt;handle(Object(Illuminate\Http\Request))
+#32 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(346): Illuminate\Foundation\Testing\TestCase-&gt;call('GET', '/', Array, Array, Array, Array)
+#33 C:\laragon\www\admin-cangrows\tests\Feature\ExampleTest.php(17): Illuminate\Foundation\Testing\TestCase-&gt;get('/')
+#34 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestCase.php(1188): Tests\Feature\ExampleTest-&gt;test_example()
+#35 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php(61): PHPUnit\Framework\TestCase-&gt;runTest()
+#36 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestCase.php(687): Illuminate\Foundation\Testing\TestCase-&gt;runTest()
+#37 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestRunner.php(104): PHPUnit\Framework\TestCase-&gt;runBare()
+#38 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestCase.php(517): PHPUnit\Framework\TestRunner-&gt;run(Object(Tests\Feature\ExampleTest))
+#39 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestSuite.php(378): PHPUnit\Framework\TestCase-&gt;run()
+#40 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestSuite.php(378): PHPUnit\Framework\TestSuite-&gt;run()
+#41 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestSuite.php(378): PHPUnit\Framework\TestSuite-&gt;run()
+#42 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(62): PHPUnit\Framework\TestSuite-&gt;run()
+#43 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\TextUI\Application.php(200): PHPUnit\TextUI\TestRunner-&gt;run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#44 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application-&gt;run(Array)
+#45 {main}
+
+Next Illuminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 no such table: generalsettings (Connection: sqlite, SQL: select * from "generalsettings" where "generalsettings"."id" = 1 limit 1) in C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Connection.php:829
+Stack trace:
+#0 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Connection.php(783): Illuminate\Database\Connection-&gt;runQueryCallback('select * from "...', Array, Object(Closure))
+#1 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Connection.php(431): Illuminate\Database\Connection-&gt;run('select * from "...', Array, Object(Closure))
+#2 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2872): Illuminate\Database\Connection-&gt;select('select * from "...', Array, true)
+#3 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2860): Illuminate\Database\Query\Builder-&gt;runSelect()
+#4 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(3414): Illuminate\Database\Query\Builder-&gt;Illuminate\Database\Query\{closure}()
+#5 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2861): Illuminate\Database\Query\Builder-&gt;onceWithColumns(Array, Object(Closure))
+#6 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(739): Illuminate\Database\Query\Builder-&gt;get(Array)
+#7 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(723): Illuminate\Database\Eloquent\Builder-&gt;getModels(Array)
+#8 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Concerns\BuildsQueries.php(333): Illuminate\Database\Eloquent\Builder-&gt;get(Array)
+#9 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(449): Illuminate\Database\Eloquent\Builder-&gt;first(Array)
+#10 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php(23): Illuminate\Database\Eloquent\Builder-&gt;find(1)
+#11 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(2334): Illuminate\Database\Eloquent\Model-&gt;forwardCallTo(Object(Illuminate\Database\Eloquent\Builder), 'find', Array)
+#12 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(2346): Illuminate\Database\Eloquent\Model-&gt;__call('find', Array)
+#13 C:\laragon\www\admin-cangrows\app\Http\Middleware\HTTPSConnection.php(16): Illuminate\Database\Eloquent\Model::__callStatic('find', Array)
+#14 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): App\Http\Middleware\HTTPSConnection-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#15 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#16 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(40): Illuminate\Foundation\Http\Middleware\TransformsRequest-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Foundation\Http\Middleware\TrimStrings-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#18 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#19 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Foundation\Http\Middleware\ValidatePostSize-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(99): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(49): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Http\Middleware\HandleCors-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(39): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(183): Illuminate\Http\Middleware\TrustProxies-&gt;handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(119): Illuminate\Pipeline\Pipeline-&gt;Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline-&gt;then(Object(Closure))
+#28 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel-&gt;sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#29 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(586): Illuminate\Foundation\Http\Kernel-&gt;handle(Object(Illuminate\Http\Request))
+#30 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(346): Illuminate\Foundation\Testing\TestCase-&gt;call('GET', '/', Array, Array, Array, Array)
+#31 C:\laragon\www\admin-cangrows\tests\Feature\ExampleTest.php(17): Illuminate\Foundation\Testing\TestCase-&gt;get('/')
+#32 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestCase.php(1188): Tests\Feature\ExampleTest-&gt;test_example()
+#33 C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php(61): PHPUnit\Framework\TestCase-&gt;runTest()
+#34 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestCase.php(687): Illuminate\Foundation\Testing\TestCase-&gt;runTest()
+#35 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestRunner.php(104): PHPUnit\Framework\TestCase-&gt;runBare()
+#36 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestCase.php(517): PHPUnit\Framework\TestRunner-&gt;run(Object(Tests\Feature\ExampleTest))
+#37 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestSuite.php(378): PHPUnit\Framework\TestCase-&gt;run()
+#38 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestSuite.php(378): PHPUnit\Framework\TestSuite-&gt;run()
+#39 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\Framework\TestSuite.php(378): PHPUnit\Framework\TestSuite-&gt;run()
+#40 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(62): PHPUnit\Framework\TestSuite-&gt;run()
+#41 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\src\TextUI\Application.php(200): PHPUnit\TextUI\TestRunner-&gt;run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#42 C:\laragon\www\admin-cangrows\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application-&gt;run(Array)
+#43 {main}&#13;
+&#13;
+----------------------------------------------------------------------------------&#13;
+&#13;
+SQLSTATE[HY000]: General error: 1 no such table: generalsettings (Connection: sqlite, SQL: select * from "generalsettings" where "generalsettings"."id" = 1 limit 1)
+&#13;
+C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:148
+C:\laragon\www\admin-cangrows\tests\Feature\ExampleTest.php:19
+C:\laragon\www\admin-cangrows\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:61</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\ReleaseRegressionTest" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" tests="9" assertions="0" errors="0" failures="0" skipped="9" time="0.000000">
+        <testcase name="test_real_composers_home_articles_categories_and_service_heads" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="32" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+        <testcase name="test_api_contract_and_category_relation_exclude_drafts_but_admin_sees_them" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="54" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+        <testcase name="test_real_admin_forms_and_update_show_saved_multilingual_metadata" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="68" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+        <testcase name="test_migration_round_trip_on_disposable_legacy_rows" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="79" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+        <testcase name="test_http_redirect_host_query_and_deleted_history_do_not_loop" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="97" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+        <testcase name="test_local_http_canonical_and_production_https_policy_are_consistent" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="110" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+        <testcase name="test_numeric_zero_slug_history_is_kept" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="120" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+        <testcase name="test_regular_service_photo_upload_uses_public_directory" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="130" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+        <testcase name="test_sitemap_matches_actual_public_routes_when_language_navigation_is_disabled" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="145" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="0" time="0.000000">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\ServiceSeoTest" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" tests="13" assertions="84" errors="0" failures="0" skipped="0" time="2.576189">
+        <testcase name="test_admin_create_update_and_persistence_preserve_omitted_metadata" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="81" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.192752"/>
+        <testcase name="test_metadata_fallbacks_and_localization" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="94" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.262409"/>
+        <testcase name="test_rendered_metadata_is_unique_escaped_and_has_valid_json" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="107" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="11" time="0.114233"/>
+        <testcase name="test_publication_scope_and_sitemap_are_fresh" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="123" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="10" time="0.197894"/>
+        <testcase name="test_slug_history_and_existing_route_redirect" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="145" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.078866"/>
+        <testcase name="test_invalid_metadata_and_duplicate_slugs_are_rejected" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="158" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="4" time="0.099331"/>
+        <testcase name="test_robots_and_admin_auth_middleware_remain_present" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="169" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.055919"/>
+        <testcase name="test_complete_public_html_and_unpublished_http_restriction" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="180" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="23" time="0.769720"/>
+        <testcase name="test_http_admin_guest_denied_and_authorized_save" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="207" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.183225"/>
+        <testcase name="test_admin_without_services_permission_cannot_save" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="217" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="3" time="0.143949"/>
+        <testcase name="test_og_upload_persists_and_empty_upload_preserves_it" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="228" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="3" time="0.165050"/>
+        <testcase name="test_array_slug_is_validation_error_and_missing_slug_cannot_create" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="247" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="2" time="0.061643"/>
+        <testcase name="test_blog_head_branch_is_preserved_even_with_service_loop_variable" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="256" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="3" time="0.251197"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

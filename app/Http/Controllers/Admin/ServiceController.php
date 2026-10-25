@@ -59,9 +59,7 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //--- Validation Section
-        $rules = [
-               'photo'      => '',
-                ];
+        $rules = \App\Support\ServiceSeoValidation::rules($request);
 
         $validator = Validator::make($request->all(), $rules);
         
@@ -72,19 +70,24 @@ class ServiceController extends Controller
 
         //--- Logic Section
         $data = new Service();
-        $input = $request->all();
+        $input = $request->except('og_image');
+        if ($file = $request->file('og_image')) {
+            $name = \Illuminate\Support\Str::uuid().'.'.$file->extension();
+            $file->move(public_path('assets/images/services'), $name);
+            $input['og_image'] = $name;
+        }
         
         if ($file = $request->file('photo')) 
         {              
-            $name = time().$file->getClientOriginalName();
-            $file->move('assets/images/services/',$name);
+            $name = \Illuminate\Support\Str::uuid().'.'.$file->extension();
+            $file->move(public_path('assets/images/services'), $name);
                     
         $input['photo'] = $name;
         } 
         
-         $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
-         $input['slug_en'] = str_replace(' ','-',$request->slug_en);
-         $input['slug_fr'] = str_replace(' ','-',$request->slug_fr);
+         if ($request->has('slug_ar')) { $input['slug_ar'] = str_replace(' ','-',trim($request->slug_ar ?? '')); }
+         if ($request->has('slug_en')) { $input['slug_en'] = str_replace(' ','-',trim($request->slug_en ?? '')); }
+         if ($request->has('slug_fr')) { $input['slug_fr'] = str_replace(' ','-',trim($request->slug_fr ?? '')); }
          
         $data->fill($input)->save();
         //--- Logic Section Ends
@@ -110,9 +113,7 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         //--- Validation Section
-        $rules = [
-               'photo'      => '',
-                ];
+        $rules = \App\Support\ServiceSeoValidation::rules($request, $id ?? null);
 
         $validator = Validator::make($request->all(), $rules);
         
@@ -123,25 +124,25 @@ class ServiceController extends Controller
 
         //--- Logic Section
         $data = Service::findOrFail($id);
-        $input = $request->all();
+        $input = $request->except('og_image');
+        if ($file = $request->file('og_image')) {
+            $name = \Illuminate\Support\Str::uuid().'.'.$file->extension();
+            $file->move(public_path('assets/images/services'), $name);
+            $input['og_image'] = $name;
+        }
         if ($file = $request->file('photo')) 
         {              
-            $name = time().$file->getClientOriginalName();
-            $file->move('assets/images/services/',$name);
-            if($data->photo != null)
-            {
-                if (file_exists(public_path().'/assets/images/services/'.$data->photo)) {
-                    unlink(public_path().'/assets/images/services/'.$data->photo);
-                }
-            }            
+            $name = \Illuminate\Support\Str::uuid().'.'.$file->extension();
+            $file->move(public_path('assets/images/services'), $name);
+            // Retain previous files: do not remove an image before the database save succeeds.
         $input['photo'] = $name;
         } 
         
-         $input['slug_ar'] = str_replace(' ','-',$request->slug_ar);
-         $input['slug_en'] = str_replace(' ','-',$request->slug_en);
-         $input['slug_fr'] = str_replace(' ','-',$request->slug_fr);
+         if ($request->has('slug_ar')) { $input['slug_ar'] = str_replace(' ','-',trim($request->slug_ar ?? '')); }
+         if ($request->has('slug_en')) { $input['slug_en'] = str_replace(' ','-',trim($request->slug_en ?? '')); }
+         if ($request->has('slug_fr')) { $input['slug_fr'] = str_replace(' ','-',trim($request->slug_fr ?? '')); }
          
-        $data->update($input);
+        \Illuminate\Support\Facades\DB::transaction(fn () => $data->update($input));
         //--- Logic Section Ends
 
         //--- Redirect Section

@@ -1,0 +1,209 @@
+[
+  {
+    "url": "/services/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "خدمة اختبار - عيادة الاختبار",
+    "titles": 1,
+    "descriptions": 1,
+    "canonicals": 1,
+    "ogImages": 1
+  },
+  {
+    "url": "/en/services/release-service",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "Release service - Test clinic",
+    "titles": 1,
+    "descriptions": 1,
+    "canonicals": 1,
+    "ogImages": 1
+  },
+  {
+    "url": "/services/custom-ar",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "عنوان SEO مخصص",
+    "titles": 1,
+    "descriptions": 1,
+    "canonicals": 1,
+    "ogImages": 1
+  },
+  {
+    "url": "/en/services/custom-en",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "Custom SEO title",
+    "titles": 1,
+    "descriptions": 1,
+    "canonicals": 1,
+    "ogImages": 1
+  },
+  {
+    "url": "/services/hidden-ar",
+    "status": 404,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "Not Found",
+    "titles": 1,
+    "descriptions": 0,
+    "canonicals": 0,
+    "ogImages": 0
+  },
+  {
+    "url": "/en/services/hidden-en",
+    "status": 404,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "Not Found",
+    "titles": 1,
+    "descriptions": 0,
+    "canonicals": 0,
+    "ogImages": 0
+  },
+  {
+    "url": "/en/services/old-custom",
+    "status": 301,
+    "location": "https://localhost:18881/en/services/custom-en",
+    "contentType": "text/html; charset=utf-8",
+    "title": "Redirecting to https://localhost:18881/en/services/custom-en",
+    "titles": 1,
+    "descriptions": 0,
+    "canonicals": 0,
+    "ogImages": 0
+  },
+  {
+    "url": "/en/services/custom-en/",
+    "status": 301,
+    "location": "https://localhost:18881/en/services/custom-en",
+    "contentType": "text/html; charset=utf-8",
+    "title": "Redirecting to https://localhost:18881/en/services/custom-en",
+    "titles": 1,
+    "descriptions": 0,
+    "canonicals": 0,
+    "ogImages": 0
+  },
+  {
+    "url": "/sitemap.xml",
+    "status": 200,
+    "location": null,
+    "contentType": "application/xml; charset=UTF-8",
+    "titles": 0,
+    "descriptions": 0,
+    "canonicals": 0,
+    "ogImages": 0
+  },
+  {
+    "url": "/robots.txt",
+    "status": 200,
+    "location": null,
+    "contentType": "text/plain; charset=UTF-8",
+    "titles": 0,
+    "descriptions": 0,
+    "canonicals": 0,
+    "ogImages": 0
+  },
+  {
+    "url": "/",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "عيادة الاختبار",
+    "titles": 1,
+    "descriptions": 0,
+    "canonicals": 1,
+    "ogImages": 2
+  },
+  {
+    "url": "/en",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "Test clinic",
+    "titles": 1,
+    "descriptions": 0,
+    "canonicals": 1,
+    "ogImages": 2
+  },
+  {
+    "url": "/article-ar",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "عنوان المقال",
+    "titles": 1,
+    "descriptions": 1,
+    "canonicals": 1,
+    "ogImages": 2
+  },
+  {
+    "url": "/en/article-en",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "Article SEO title",
+    "titles": 1,
+    "descriptions": 1,
+    "canonicals": 1,
+    "ogImages": 2
+  },
+  {
+    "url": "/services-category/category-ar",
+    "status": 200,
+    "location": null,
+    "contentType": "text/html; charset=UTF-8",
+    "title": "تصنيف اختبار -  عيادة الاختبار",
+    "titles": 1,
+    "descriptions": 0,
+    "canonicals": 1,
+    "ogImages": 2
+  },
+  {
+    "url": "/api/services",
+    "status": 200,
+    "location": null,
+    "contentType": "application/json",
+    "titles": 0,
+    "descriptions": 0,
+    "canonicals": 0,
+    "ogImages": 0
+  },
+  {
+    "url": "/admin/login POST (synthetic account)",
+    "status": 302,
+    "location": "https://localhost:18881/admin"
+  },
+  {
+    "url": "/admin/services/create",
+    "status": 200,
+    "hasSeo": true,
+    "hasSavedEnglishTitle": false
+  },
+  {
+    "url": "/admin/services/edit/2",
+    "status": 200,
+    "hasSeo": true,
+    "hasSavedEnglishTitle": true
+  },
+  {
+    "url": "/admin/services/edit/3",
+    "status": 200,
+    "hasSeo": true,
+    "hasSavedEnglishTitle": false
+  },
+  {
+    "url": "Loopback HTTP to canonical TLS host",
+    "status": 301,
+    "location": "https://localhost:18881/en/services/custom-en"
+  },
+  {
+    "url": "Existing API/web-session diagnostic",
+    "status": 302,
+    "location": "https://localhost:18881/admin/login",
+    "sessionPreserved": false
+  }
+]

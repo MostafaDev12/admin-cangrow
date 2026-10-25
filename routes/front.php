@@ -18,6 +18,9 @@ use App\Models\Language;
 |
 */
 
+Route::get('/sitemap.xml', [\App\Http\Controllers\SeoController::class, 'sitemap'])->name('sitemap');
+Route::get('/robots.txt', [\App\Http\Controllers\SeoController::class, 'robots'])->name('robots');
+
 // 'IpLocation',
 Route::middleware([ 'FrontLanguages'])->group(function () {
 

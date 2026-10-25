@@ -38,6 +38,18 @@
                     </div>
                 </div> 
                 @endforeach
+                @foreach($services as $listedService)
+                    @if(filled($listedService->{'slug_'.$sign}))
+                    <div class="col-12 col-lg-4 col-md-4 mb-3">
+                        <div class="text-center box service-div">
+                            <img src="{{ $listedService->photo }}" alt="{{ $listedService->{'title_'.$sign} }}">
+                            <div class="p-5">
+                                <h2 class="fw-bold"><a href="{{ \App\Support\ServiceSeo::url($listedService, $sign) }}">{{ $listedService->{'title_'.$sign} }}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                @endforeach
 
 
             </div>

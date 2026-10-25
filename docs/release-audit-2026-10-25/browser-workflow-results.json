@@ -1,0 +1,92 @@
+[
+  {
+    "name": "admin-login",
+    "url": "https://localhost:18881/admin/login",
+    "title": "Sign In | Admin & Dashboard",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 0,
+    "seoFields": 0,
+    "bodyWidth": 1440,
+    "viewport": 1440,
+    "forms": 1
+  },
+  {
+    "name": "admin-edit",
+    "url": "https://localhost:18881/admin/services/edit/2",
+    "title": "Analytics| Admin & Dashboard",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 0,
+    "seoFields": 7,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 3
+  },
+  {
+    "name": "admin-create",
+    "url": "https://localhost:18881/admin/services/create",
+    "title": "Analytics| Admin & Dashboard",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 0,
+    "seoFields": 7,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 3
+  },
+  {
+    "name": "browser-create-with-og-upload",
+    "status": 200,
+    "result": "New Data Added Successfully.<a href=\"https://localhost:18881/admin/services\">View services Lists.</a>"
+  },
+  {
+    "name": "browser-created-edit",
+    "url": "https://localhost:18881/admin/services/edit/5",
+    "title": "Analytics| Admin & Dashboard",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 0,
+    "seoFields": 7,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 3
+  },
+  {
+    "name": "browser-persistence",
+    "title": "Browser SEO title",
+    "og": "Browser OG title",
+    "image": "https://localhost:18881/assets/images/services/f7c8612c-e58b-4ac5-a88e-a35d1ae5d9ed.png"
+  },
+  {
+    "name": "browser-update",
+    "status": 200,
+    "result": "Data Updated Successfully.<a href=\"https://localhost:18881/admin/services\">View services Lists.</a>"
+  },
+  {
+    "name": "browser-created-public",
+    "url": "https://localhost:18881/en/services/browser-updated-en-1792907536373",
+    "title": "Browser updated title",
+    "h1": [
+      "Browser service"
+    ],
+    "canonical": "https://localhost:18881/en/services/browser-updated-en-1792907536373",
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 1,
+    "seoFields": 0,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 1
+  },
+  {
+    "name": "browser-old-slug",
+    "finalStatus": 200,
+    "redirected": true,
+    "finalUrl": "https://localhost:18881/en/services/browser-updated-en-1792907536373"
+  }
+]

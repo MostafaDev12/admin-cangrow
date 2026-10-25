@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\laragon\www\admin-cangrows\phpunit.release.xml" tests="24" assertions="230" errors="0" failures="0" skipped="0" time="24.777480">
+    <testsuite name="All existing and release tests" tests="24" assertions="230" errors="0" failures="0" skipped="0" time="24.777480">
+      <testsuite name="Tests\Feature\ExampleTest" file="C:\laragon\www\admin-cangrows\tests\Feature\ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="4.344668">
+        <testcase name="test_example" file="C:\laragon\www\admin-cangrows\tests\Feature\ExampleTest.php" line="15" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="1" time="4.344668"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ReleaseRegressionTest" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" tests="9" assertions="144" errors="0" failures="0" skipped="0" time="18.317960">
+        <testcase name="test_real_composers_home_articles_categories_and_service_heads" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="32" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="68" time="3.969631"/>
+        <testcase name="test_api_contract_and_category_relation_exclude_drafts_but_admin_sees_them" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="54" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="22" time="0.223849"/>
+        <testcase name="test_real_admin_forms_and_update_show_saved_multilingual_metadata" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="68" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="13" time="12.101711"/>
+        <testcase name="test_migration_round_trip_on_disposable_legacy_rows" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="79" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="8" time="0.324698"/>
+        <testcase name="test_http_redirect_host_query_and_deleted_history_do_not_loop" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="97" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="16" time="0.542489"/>
+        <testcase name="test_local_http_canonical_and_production_https_policy_are_consistent" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="110" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="7" time="0.330540"/>
+        <testcase name="test_numeric_zero_slug_history_is_kept" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="120" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="4" time="0.182887"/>
+        <testcase name="test_regular_service_photo_upload_uses_public_directory" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="130" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="3" time="0.162256"/>
+        <testcase name="test_sitemap_matches_actual_public_routes_when_language_navigation_is_disabled" file="C:\laragon\www\admin-cangrows\tests\Feature\ReleaseRegressionTest.php" line="145" class="Tests\Feature\ReleaseRegressionTest" classname="Tests.Feature.ReleaseRegressionTest" assertions="3" time="0.479899"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ServiceSeoTest" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" tests="13" assertions="84" errors="0" failures="0" skipped="0" time="2.114697">
+        <testcase name="test_admin_create_update_and_persistence_preserve_omitted_metadata" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="81" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.318801"/>
+        <testcase name="test_metadata_fallbacks_and_localization" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="94" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.163419"/>
+        <testcase name="test_rendered_metadata_is_unique_escaped_and_has_valid_json" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="107" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="11" time="0.098585"/>
+        <testcase name="test_publication_scope_and_sitemap_are_fresh" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="123" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="10" time="0.099143"/>
+        <testcase name="test_slug_history_and_existing_route_redirect" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="145" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.204270"/>
+        <testcase name="test_invalid_metadata_and_duplicate_slugs_are_rejected" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="158" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="4" time="0.078958"/>
+        <testcase name="test_robots_and_admin_auth_middleware_remain_present" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="169" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.100096"/>
+        <testcase name="test_complete_public_html_and_unpublished_http_restriction" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="180" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="23" time="0.269030"/>
+        <testcase name="test_http_admin_guest_denied_and_authorized_save" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="207" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="5" time="0.197403"/>
+        <testcase name="test_admin_without_services_permission_cannot_save" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="217" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="3" time="0.211048"/>
+        <testcase name="test_og_upload_persists_and_empty_upload_preserves_it" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="228" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="3" time="0.107333"/>
+        <testcase name="test_array_slug_is_validation_error_and_missing_slug_cannot_create" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="247" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="2" time="0.145502"/>
+        <testcase name="test_blog_head_branch_is_preserved_even_with_service_loop_variable" file="C:\laragon\www\admin-cangrows\tests\Feature\ServiceSeoTest.php" line="256" class="Tests\Feature\ServiceSeoTest" classname="Tests.Feature.ServiceSeoTest" assertions="3" time="0.121108"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\ExampleTest" file="C:\laragon\www\admin-cangrows\tests\Unit\ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000154">
+        <testcase name="test_example" file="C:\laragon\www\admin-cangrows\tests\Unit\ExampleTest.php" line="14" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.000154"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

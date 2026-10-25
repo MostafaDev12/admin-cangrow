@@ -1,0 +1,44 @@
+﻿ M app/Http/Controllers/Admin/ServiceController.php
+M  app/Http/Controllers/HomeController.php
+ M app/Http/Middleware/HTTPSConnection.php
+ M app/Models/Service.php
+ D public/robots.txt
+ D public/sitemap.xml
+ M resources/views/admin/services/create.blade.php
+ M resources/views/admin/services/edit.blade.php
+ M resources/views/front/details-service.blade.php
+ M resources/views/front/services.blade.php
+ M resources/views/layouts/front.blade.php
+ M routes/front.php
+?? SERVICE_SEO_RELEASE_AUDIT_AR.md
+?? SERVICE_SEO_REPORT_AR.md
+?? app/Http/Controllers/SeoController.php
+?? app/Support/ServiceSeo.php
+?? app/Support/ServiceSeoValidation.php
+?? database/migrations/2026_10_25_000001_add_service_social_metadata.php
+?? docs/release-audit-2026-10-25/admin-edit.png
+?? docs/release-audit-2026-10-25/browser-initial-failed-results.json
+?? docs/release-audit-2026-10-25/browser-results.json
+?? docs/release-audit-2026-10-25/browser-workflow-exceptions.json
+?? docs/release-audit-2026-10-25/browser-workflow-results.json
+?? docs/release-audit-2026-10-25/changed-files.txt
+?? docs/release-audit-2026-10-25/http-results.json
+?? docs/release-audit-2026-10-25/junit-default-isolated.xml
+?? docs/release-audit-2026-10-25/junit-release.xml
+?? docs/release-audit-2026-10-25/service-english.png
+?? docs/release-audit-2026-10-25/service-mobile.png
+?? docs/release-audit-2026-10-25/tests-release.txt
+?? phpunit.release.xml
+?? resources/seo/robots-original.txt
+?? resources/seo/sitemap-base.xml
+?? resources/views/admin/services/seo-settings.blade.php
+?? resources/views/front/partials/service-seo.blade.php
+?? tests/Feature/ReleaseRegressionTest.php
+?? tests/Feature/ServiceSeoTest.php
+?? tests/Fixtures/legacy-columns.json
+?? tests/Support/ReleaseFixture.php
+?? tests/Support/release-browser-qa.cjs
+?? tests/Support/release-http-qa.cjs
+?? tests/Support/release-tls-proxy.cjs
+?? tests/Support/serve-release.php
+?? tests/release-bootstrap.php

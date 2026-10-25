@@ -16,14 +16,18 @@
 
 
 
+@if(!request()->routeIs('single-service.index', 'single-service.indexen'))
 <meta property="og:image" content="{{ $gs->{'logo_' . $sign} }}">
 <meta property="og:url" content="{{ url('/') }}">
 <meta property="og:type" content="website">
+@endif
 
 
 <meta name="google-site-verification" content="jdqb87iJXXXUrCGlimEZq1LLuffzAaAW3tDfKWboVLg" />
 
-    @if (isset($page->meta_tag) && isset($page->meta_description))
+    @if(request()->routeIs('single-service.index', 'single-service.indexen'))
+        @include('front.partials.service-seo')
+    @elseif (isset($page->meta_tag) && isset($page->meta_description))
         <meta name="keywords" content="{{ $page->meta_tag }}">
         <meta name="description" content="{{ $page->meta_description }}">
         <title>@yield('title') -
@@ -102,7 +106,7 @@
    {!! $blog->{'header_code_' . $sign} !!}
  
  @endif
- <link rel="canonical" href="{{ url()->current() }}" />
+ @if(!request()->routeIs('single-service.index', 'single-service.indexen'))<link rel="canonical" href="{{ url()->current() }}" />@endif
 
    
 <!-- Google tag (gtag.js) -->

@@ -17,6 +17,8 @@ class Service extends Model
     
      protected $appends = ['photo','photo_url'];
 
+    protected $casts = ['is_published' => 'boolean'];
+
 
     public function getPhotoAttribute()
     {
@@ -28,6 +30,7 @@ class Service extends Model
     }
     protected $fillable = [
         
+        'og_image', 'is_published', 'og_title_ar', 'og_title_en', 'og_title_fr', 'og_description_ar', 'og_description_en', 'og_description_fr',
         'photo',
         'title_ar',
         'title_en',
@@ -55,6 +58,36 @@ class Service extends Model
     ];
 
     
+    protected static function booted()
+    {
+        static::updating(function (self $service) {
+            foreach (['ar', 'en', 'fr'] as $locale) {
+                $old = $service->getRawOriginal('slug_'.$locale);
+                if (filled($old) && $service->isDirty('slug_'.$locale)) {
+                    \Illuminate\Support\Facades\DB::table('service_slug_redirects')->updateOrInsert(
+                        ['locale' => $locale, 'slug' => $old], ['service_id' => $service->id]
+                    );
+                }
+            }
+        });
+        static::addGlobalScope('published', function (\Illuminate\Database\Eloquent\Builder $query) {
+            if (!request()->is('admin', 'admin/*')) {
+                $query->where('services.is_published', true);
+            }
+        });
+    }
+
+    public static function forPublicSlug(string $slug, string $locale): ?self
+    {
+        $service = static::where('slug_'.$locale, $slug)->first();
+        if ($service) {
+            return $service;
+        }
+        $id = \Illuminate\Support\Facades\DB::table('service_slug_redirects')->where('locale', $locale)->where('slug', $slug)->value('service_id');
+
+        return ($id ? static::find($id) : null) ?: static::where('slug_ar', $slug)->orWhere('slug_en', $slug)->orWhere('slug_fr', $slug)->first();
+    }
+
     public function galleries()
     {
         return $this->hasMany(Gallery::class);

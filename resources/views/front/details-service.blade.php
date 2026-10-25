@@ -6,9 +6,7 @@
      
 @stop
 
-@section('gsearch')
-    <meta property="og:image" content=" {{ $gs->{'logo_' . $sign} }}" />
-@stop
+
 
 
 @section('content')
@@ -25,7 +23,7 @@
             <div class="row">
                 <div class="col-12 col-lg-6 col-md-6">
                     <div>
-                        <img width="100%" src="{{ $service->photo }}" alt="">
+                        <img width="100%" src="{{ $service->photo }}" alt="{{ $service->{'title_' . $sign} }}">
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 col-md-6 fw-bold">

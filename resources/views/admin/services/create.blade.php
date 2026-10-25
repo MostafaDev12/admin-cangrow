@@ -26,6 +26,7 @@
                 <form id="geniusform" action="{{ route('admin-services-create') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @include('includes.admin.form-both')
+                    @include('admin.services.seo-settings')
 
 
 

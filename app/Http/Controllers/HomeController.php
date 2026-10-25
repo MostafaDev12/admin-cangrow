@@ -432,7 +432,7 @@ $slug = urldecode(basename($url));
     $lang =  $sign == 'en' ? 'en' : null;
 
 
-    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    $service = Service::forPublicSlug($slug, $sign);
     if(!$service){
 
       abort(404);
@@ -451,27 +451,21 @@ $slug = urldecode(basename($url));
         default:
             $correctSlug = $service->slug_en;
     }
-    if ($slug !== $correctSlug) {
-        if($lang){
-            
-        return redirect()->to("/$sign/services/$correctSlug");
-        }else{
-            
-            
-        return redirect()->to("/services/$correctSlug");
-        }
+    abort_unless(filled($correctSlug), 404);
+    $canonical = \App\Support\ServiceSeo::url($service, $sign);
+    if (rawurldecode($request->getSchemeAndHttpHost().$request->getBaseUrl().$request->getPathInfo()) !== rawurldecode($canonical)) {
+        return redirect()->to($canonical, 301);
     }
-
     return view('front.details-service', compact('sign', 'service','lang'));
   }
 
-  public function singleServiceen(Request $request,$lang = 'ar', $slug)
+  public function singleServiceen(Request $request, $lang, $slug)
   {
 
     $sign = $this->langSign($lang);
 $lang =  $sign == 'en' ? 'en' : null;
 
-    $service = Service::where('slug_ar', $slug)->orwhere('slug_en', $slug)->orwhere('slug_fr', $slug)->first();
+    $service = Service::forPublicSlug($slug, $sign);
  
     if(!$service){
 
@@ -494,18 +488,11 @@ $lang =  $sign == 'en' ? 'en' : null;
     }
      
     
-    if ($slug !== $correctSlug) {
-        //  dd($service);
-        if($lang){
-            
-        return redirect()->to("/$sign/services/$correctSlug");
-        }else{
-            
-            
-        return redirect()->to("/services/$correctSlug");
-        }
+    abort_unless(filled($correctSlug), 404);
+    $canonical = \App\Support\ServiceSeo::url($service, $sign);
+    if (rawurldecode($request->getSchemeAndHttpHost().$request->getBaseUrl().$request->getPathInfo()) !== rawurldecode($canonical)) {
+        return redirect()->to($canonical, 301);
     }
-
     return view('front.details-service', compact('sign', 'service','lang'));
   }
 

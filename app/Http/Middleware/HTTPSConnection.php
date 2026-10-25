@@ -8,6 +8,10 @@ class HTTPSConnection {
 
     public function handle($request, Closure $next)
     {
+        // A local HTTP canonical must not bounce forever between this middleware and the controller.
+        if ($request->is('services/*', 'en/services/*') && parse_url(\App\Support\ServiceSeo::root(), PHP_URL_SCHEME) === 'http') {
+            return $next($request);
+        }
         
         $gs = Generalsetting::find(1);
 
@@ -17,7 +21,7 @@ class HTTPSConnection {
 
            if (!$request->secure()) {
 
-                   return redirect()->secure($request->getRequestUri());
+                   return redirect()->secure($request->getRequestUri(), $request->is('services/*', 'en/services/*') ? 301 : 302);
             }
             return $next($request);
 

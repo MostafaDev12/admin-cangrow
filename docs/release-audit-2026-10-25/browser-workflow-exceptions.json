@@ -1,0 +1,34 @@
+[
+  {
+    "url": "https://localhost:18881/build/js/pages/form-file-upload.init.js",
+    "text": "TypeError: Cannot set properties of null (setting 'id')\n    at https://localhost:18881/build/js/pages/form-file-upload.init.js:11:24"
+  },
+  {
+    "url": "https://localhost:18881/build/js/app.js",
+    "text": "TypeError: Cannot read properties of null (reading 'innerHTML')\n    at https://localhost:18881/build/js/app.js:16:61\n    at https://localhost:18881/build/js/app.js:2017:3"
+  },
+  {
+    "url": "https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js",
+    "text": "TypeError: Failed to fetch\n    at c.loadIconData (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:299952)\n    at c.createPlayer (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:298395)\n    at c.connectedCallback (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:297732)\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317243\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317266\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317270"
+  },
+  {
+    "url": "https://localhost:18881/build/js/pages/form-file-upload.init.js",
+    "text": "TypeError: Cannot set properties of null (setting 'id')\n    at https://localhost:18881/build/js/pages/form-file-upload.init.js:11:24"
+  },
+  {
+    "url": "https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js",
+    "text": "TypeError: Failed to fetch\n    at c.loadIconData (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:299952)\n    at c.createPlayer (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:298395)\n    at c.connectedCallback (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:297732)\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317243\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317266\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317270"
+  },
+  {
+    "url": "https://localhost:18881/build/js/pages/form-file-upload.init.js",
+    "text": "TypeError: Cannot set properties of null (setting 'id')\n    at https://localhost:18881/build/js/pages/form-file-upload.init.js:11:24"
+  },
+  {
+    "url": "https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js",
+    "text": "TypeError: Failed to fetch\n    at c.loadIconData (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:299952)\n    at c.createPlayer (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:298395)\n    at c.connectedCallback (https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:297732)\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317243\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317266\n    at https://localhost:18881/build/js/pages/plugins/lord-icon-2.1.0.js:1:317270"
+  },
+  {
+    "url": "https://localhost:18881/build/js/pages/form-file-upload.init.js",
+    "text": "TypeError: Cannot set properties of null (setting 'id')\n    at https://localhost:18881/build/js/pages/form-file-upload.init.js:11:24"
+  }
+]

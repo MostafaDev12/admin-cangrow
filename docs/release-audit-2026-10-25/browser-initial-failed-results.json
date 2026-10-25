@@ -1,0 +1,171 @@
+[
+  {
+    "name": "arabic",
+    "url": "https://localhost:18881/services/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1",
+    "title": "خدمة اختبار - عيادة الاختبار",
+    "h1": [
+      "خدمة اختبار"
+    ],
+    "canonical": "https://localhost:18881/services/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1",
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 1,
+    "seoFields": 0,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 1
+  },
+  {
+    "name": "english",
+    "url": "https://localhost:18881/en/services/custom-en",
+    "title": "Custom SEO title",
+    "h1": [
+      "Custom service"
+    ],
+    "canonical": "https://localhost:18881/en/services/custom-en",
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 1,
+    "seoFields": 0,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 1
+  },
+  {
+    "name": "arabic-mobile",
+    "url": "https://localhost:18881/services/custom-ar",
+    "title": "عنوان SEO مخصص",
+    "h1": [
+      "خدمة مخصصة"
+    ],
+    "canonical": "https://localhost:18881/services/custom-ar",
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 1,
+    "seoFields": 0,
+    "bodyWidth": 390,
+    "viewport": 390,
+    "forms": 1
+  },
+  {
+    "name": "homepage",
+    "url": "https://localhost:18881/",
+    "title": "عيادة الاختبار",
+    "h1": [
+      "مرحبا",
+      "مرحبا",
+      "",
+      "الخدمات",
+      "احجز الان كشفك اون لاين",
+      "افضل دكتور عيون وليزك في مصر",
+      "ماذا قال عملاءنا"
+    ],
+    "canonical": "https://localhost:18881/",
+    "titles": 1,
+    "descriptions": 0,
+    "ogImages": 2,
+    "seoFields": 0,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 0
+  },
+  {
+    "name": "article",
+    "url": "https://localhost:18881/article-ar",
+    "title": "عنوان المقال",
+    "h1": [
+      "مقال اختبار"
+    ],
+    "canonical": "https://localhost:18881/article-ar",
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 2,
+    "seoFields": 0,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 1
+  },
+  {
+    "name": "admin-login",
+    "url": "https://localhost:18881/admin/login",
+    "title": "Sign In | Admin & Dashboard",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 0,
+    "seoFields": 0,
+    "bodyWidth": 1440,
+    "viewport": 1440,
+    "forms": 1
+  },
+  {
+    "name": "admin-edit",
+    "url": "https://localhost:18881/admin/services/edit/2",
+    "title": "Analytics| Admin & Dashboard",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 0,
+    "seoFields": 7,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 3
+  },
+  {
+    "name": "admin-create",
+    "url": "https://localhost:18881/admin/services/create",
+    "title": "Analytics| Admin & Dashboard",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 0,
+    "seoFields": 7,
+    "bodyWidth": 1425,
+    "viewport": 1440,
+    "forms": 3
+  },
+  {
+    "name": "browser-create-with-og-upload",
+    "status": 200,
+    "result": "New Data Added Successfully.<a href=\"https://localhost:18881/admin/services\">View services Lists.</a>"
+  },
+  {
+    "name": "browser-created-edit",
+    "url": "https://localhost:18881/admin/login",
+    "title": "Sign In | Admin & Dashboard",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 1,
+    "ogImages": 0,
+    "seoFields": 0,
+    "bodyWidth": 1440,
+    "viewport": 1440,
+    "forms": 1
+  },
+  {
+    "name": "browser-persistence"
+  },
+  {
+    "name": "browser-update",
+    "message": "Failed to construct 'FormData': parameter 1 is not of type 'HTMLFormElement'."
+  },
+  {
+    "name": "browser-created-public",
+    "url": "https://localhost:18881/en/services/browser-updated-en",
+    "title": "Not Found",
+    "h1": [],
+    "titles": 1,
+    "descriptions": 0,
+    "ogImages": 0,
+    "seoFields": 0,
+    "bodyWidth": 1440,
+    "viewport": 1440,
+    "forms": 0
+  },
+  {
+    "name": "browser-old-slug",
+    "finalStatus": 200,
+    "redirected": false,
+    "finalUrl": "https://localhost:18881/en/services/browser-created-en"
+  }
+]
